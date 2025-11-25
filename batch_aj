@@ -1,0 +1,97 @@
+  ('Modifier', 'Regulatory', false, 'Billing Modifier', null, 'Code added to show special circumstances.', 'Add modifier 25 to E&M.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','coding']),
+  ('Upcoding', 'Regulatory', false, 'Upcoding', null, 'Illegally billing for more complex service than provided.', 'Upcoding is fraud.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','compliance','coding']),
+  ('Downcoding', 'Regulatory', false, 'Downcoding', null, 'When insurance reduces payment by changing code.', 'Claim downcoded.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','coding']),
+  ('Medical Coding', 'Regulatory', false, 'Medical Coding', null, 'Converting diagnoses and procedures to numeric codes.', 'Medical coding for billing.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','coding']),
+  ('Medical Billing', 'Regulatory', false, 'Medical Billing', null, 'Submitting claims to insurance for payment.', 'Medical billing department.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing']),
+  ('Charge Capture', 'Regulatory', false, 'Charge Capture', null, 'Recording all services provided for billing.', 'Charge capture in EHR.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing']),
+  ('Clean Claim', 'Regulatory', false, 'Clean Claim', null, 'Insurance claim with no errors that processes quickly.', 'Submit clean claims.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing']),
+  ('Rejected Claim', 'Regulatory', false, 'Rejected Claim', null, 'Claim returned due to errors before processing.', 'Fix rejected claim.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing']),
+  ('Denied Claim', 'Regulatory', false, 'Denied Claim', null, 'Claim processed but not paid.', 'Appeal denied claim.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing']),
+  ('Appeal', 'Regulatory', false, 'Insurance Appeal', null, 'Requesting insurance to reconsider denied claim.', 'File appeal within 30 days.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','billing','insurance']),
+  ('Remittance', 'Regulatory', false, 'Remittance Advice', null, 'Statement showing what insurance paid.', 'Review remittance for payment.', ARRAY[]::text[], ARRAY['ERA','EOB'], ARRAY['regulatory','billing'])
+ON CONFLICT (term) DO UPDATE SET
+  category = EXCLUDED.category,
+  is_abbreviation = EXCLUDED.is_abbreviation,
+  full_form = EXCLUDED.full_form,
+  definition = EXCLUDED.definition,
+  example_usage = EXCLUDED.example_usage,
+  synonyms = EXCLUDED.synonyms,
+  aliases = EXCLUDED.aliases,
+  tags = EXCLUDED.tags;
+
+-- Batch 37
+INSERT INTO medical_terms (term, category, is_abbreviation, full_form, breakdown, definition, example_usage, synonyms, aliases, tags)
+VALUES
+  ('PCP', 'Staff', false, 'Primary Care Physician', null, 'Main doctor providing general healthcare.', 'Established with PCP.', ARRAY[]::text[], ARRAY['primary care provider'], ARRAY['staff','role']),
+  ('Attending', 'Staff', false, 'Attending Physician', null, 'Supervising doctor responsible for patient care.', 'Attending made final decision.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Resident', 'Staff', false, 'Medical Resident', null, 'Doctor in training after medical school.', 'Resident presented case.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role','trainee']),
+  ('Intern', 'Staff', false, 'Medical Intern', null, 'First-year resident doctor.', 'Intern on overnight call.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role','trainee']),
+  ('Fellow', 'Staff', false, 'Medical Fellow', null, 'Doctor in specialty training after residency.', 'Cardiology fellow.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role','trainee']),
+  ('Medical Student', 'Staff', false, 'Medical Student', null, 'Student training to become a doctor.', 'Medical student shadowing.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role','trainee']),
+  ('APP', 'Staff', false, 'Advanced Practice Provider', null, 'Nurse practitioner or physician assistant.', 'APP saw patient.', ARRAY[]::text[], ARRAY['mid-level provider'], ARRAY['staff','role']),
+  ('NP', 'Staff', false, 'Nurse Practitioner', null, 'Advanced practice nurse who can diagnose and prescribe.', 'NP manages diabetes.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('PA', 'Staff', false, 'Physician Assistant', null, 'Licensed provider who works with physicians.', 'PA-C assisted in surgery.', ARRAY[]::text[], ARRAY['PA-C'], ARRAY['staff','role']),
+  ('RN', 'Staff', false, 'Registered Nurse', null, 'Licensed nurse providing patient care.', 'RN administered medication.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('LPN', 'Staff', false, 'Licensed Practical Nurse', null, 'Nurse providing basic care under RN supervision.', 'LPN checked vitals.', ARRAY[]::text[], ARRAY['LVN'], ARRAY['staff','role']),
+  ('CNA', 'Staff', false, 'Certified Nursing Assistant', null, 'Nursing assistant helping with basic patient care.', 'CNA helped patient to bathroom.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('MA', 'Staff', false, 'Medical Assistant', null, 'Assistant helping with clinical and clerical tasks.', 'MA roomed the patient.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Scribe', 'Staff', false, 'Medical Scribe', null, 'Person who documents for provider during visits.', 'Scribe entered note in real-time.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Pharmacist', 'Staff', false, 'Pharmacist', null, 'Licensed professional who prepares and dispenses medications.', 'Pharmacist reviewed medications.', ARRAY[]::text[], ARRAY['PharmD','RPh'], ARRAY['staff','role']),
+  ('Pharmacy Technician', 'Staff', false, 'Pharmacy Technician', null, 'Assistant helping pharmacist.', 'Pharmacy tech filled prescription.', ARRAY[]::text[], ARRAY['pharm tech'], ARRAY['staff','role']),
+  ('Respiratory Therapist', 'Staff', false, 'Respiratory Therapist', null, 'Professional treating breathing and lung problems.', 'RT gave breathing treatment.', ARRAY[]::text[], ARRAY['RT'], ARRAY['staff','role']),
+  ('Physical Therapist', 'Staff', false, 'Physical Therapist', null, 'Professional helping patients regain movement and strength.', 'PT evaluated mobility.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Occupational Therapist', 'Staff', false, 'Occupational Therapist', null, 'Professional helping patients with daily living activities.', 'OT assessed hand function.', ARRAY[]::text[], ARRAY['OT'], ARRAY['staff','role']),
+  ('Speech Therapist', 'Staff', false, 'Speech-Language Pathologist', null, 'Professional treating speech and swallowing problems.', 'Speech therapist evaluated swallow.', ARRAY[]::text[], ARRAY['SLP','speech therapy'], ARRAY['staff','role']),
+  ('Dietitian', 'Staff', false, 'Registered Dietitian', null, 'Professional providing nutrition counseling.', 'Dietitian created meal plan.', ARRAY[]::text[], ARRAY['nutritionist','RD'], ARRAY['staff','role']),
+  ('Social Worker', 'Staff', false, 'Social Worker', null, 'Professional helping with social and emotional needs.', 'Social worker arranged home care.', ARRAY[]::text[], ARRAY['SW','LSW','LCSW'], ARRAY['staff','role']),
+  ('Case Manager', 'Staff', false, 'Case Manager', null, 'Professional coordinating patient care and resources.', 'Case manager scheduled follow-up.', ARRAY[]::text[], ARRAY['care coordinator'], ARRAY['staff','role']),
+  ('Patient Navigator', 'Staff', false, 'Patient Navigator', null, 'Staff helping patients navigate healthcare system.', 'Navigator helped schedule appointments.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Care Coordinator', 'Staff', false, 'Care Coordinator', null, 'Staff organizing and managing patient care.', 'Care coordinator called patient.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role'])
+ON CONFLICT (term) DO UPDATE SET
+  category = EXCLUDED.category,
+  is_abbreviation = EXCLUDED.is_abbreviation,
+  full_form = EXCLUDED.full_form,
+  definition = EXCLUDED.definition,
+  example_usage = EXCLUDED.example_usage,
+  synonyms = EXCLUDED.synonyms,
+  aliases = EXCLUDED.aliases,
+  tags = EXCLUDED.tags;
+
+-- Batch 38
+INSERT INTO medical_terms (term, category, is_abbreviation, full_form, breakdown, definition, example_usage, synonyms, aliases, tags)
+VALUES
+  ('Referral Coordinator', 'Staff', false, 'Referral Coordinator', null, 'Staff managing specialist referrals.', 'Referral coordinator scheduled appointment.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Scheduler', 'Staff', false, 'Scheduler', null, 'Staff scheduling patient appointments.', 'Scheduler called to confirm.', ARRAY[]::text[], ARRAY['appointment coordinator'], ARRAY['staff','role']),
+  ('Front Desk', 'Staff', false, 'Front Desk Staff', null, 'Staff greeting patients and managing check-in.', 'Front desk collected copay.', ARRAY[]::text[], ARRAY['receptionist'], ARRAY['staff','role']),
+  ('Medical Records', 'Staff', false, 'Medical Records Staff', null, 'Staff managing patient charts and documents.', 'Medical records released information.', ARRAY[]::text[], ARRAY['health information management','HIM'], ARRAY['staff','role']),
+  ('Billing Staff', 'Staff', false, 'Billing Staff', null, 'Staff submitting insurance claims and collecting payment.', 'Billing department sent statement.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Coder', 'Staff', false, 'Medical Coder', null, 'Staff assigning diagnostic and procedure codes.', 'Coder reviewed chart for accuracy.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Radiology Technician', 'Staff', false, 'Radiology Technician', null, 'Technician performing X-rays and imaging.', 'Rad tech took chest X-ray.', ARRAY[]::text[], ARRAY['rad tech','radiologic technologist'], ARRAY['staff','role']),
+  ('Lab Technician', 'Staff', false, 'Laboratory Technician', null, 'Technician performing lab tests.', 'Lab tech drew blood.', ARRAY[]::text[], ARRAY['phlebotomist','medical technologist'], ARRAY['staff','role']),
+  ('Surgical Tech', 'Staff', false, 'Surgical Technologist', null, 'Technician assisting in surgery.', 'Surgical tech prepared instruments.', ARRAY[]::text[], ARRAY['scrub tech'], ARRAY['staff','role']),
+  ('Anesthesiologist', 'Staff', false, 'Anesthesiologist', null, 'Doctor providing anesthesia for surgery.', 'Anesthesiologist intubated patient.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('CRNA', 'Staff', false, 'Certified Registered Nurse Anesthetist', null, 'Advanced practice nurse providing anesthesia.', 'CRNA gave spinal anesthesia.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Paramedic', 'Staff', false, 'Paramedic', null, 'Emergency medical professional on ambulance.', 'Paramedic started IV.', ARRAY[]::text[], ARRAY['EMT-P'], ARRAY['staff','role']),
+  ('EMT', 'Staff', false, 'Emergency Medical Technician', null, 'Emergency medical professional providing basic care.', 'EMT provided first aid.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('ER Tech', 'Staff', false, 'Emergency Room Technician', null, 'Technician assisting in emergency room.', 'ER tech splinted arm.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Unit Clerk', 'Staff', false, 'Unit Clerk', null, 'Staff doing clerical work on hospital unit.', 'Unit clerk answered phone.', ARRAY[]::text[], ARRAY['unit secretary'], ARRAY['staff','role']),
+  ('Patient Advocate', 'Staff', false, 'Patient Advocate', null, 'Staff helping resolve patient concerns.', 'Patient advocate addressed complaint.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Quality Coordinator', 'Staff', false, 'Quality Improvement Coordinator', null, 'Staff working on quality improvement projects.', 'Quality coordinator tracked metrics.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Infection Preventionist', 'Staff', false, 'Infection Preventionist', null, 'Staff preventing and controlling infections.', 'IP investigated outbreak.', ARRAY[]::text[], ARRAY['infection control'], ARRAY['staff','role']),
+  ('Risk Manager', 'Staff', false, 'Risk Manager', null, 'Staff managing patient safety and liability.', 'Risk manager reviewed incident.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Compliance Officer', 'Staff', false, 'Compliance Officer', null, 'Staff ensuring rules and regulations are followed.', 'Compliance officer conducted audit.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['staff','role']),
+  ('Connection Center', 'Workflow', false, 'Connection Center', null, 'Centralized call center handling patient calls and scheduling.', 'Connection center scheduled appointment.', ARRAY[]::text[], ARRAY['call center','contact center'], ARRAY['workflow']),
+  ('Patient Experience', 'Workflow', false, 'Patient Experience', null, 'How patients feel about their healthcare.', 'Improve patient experience scores.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['workflow','quality']),
+  ('Patient Satisfaction', 'Workflow', false, 'Patient Satisfaction', null, 'How happy patients are with their care.', 'Patient satisfaction survey.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['workflow','quality']),
+  ('Press Ganey', 'Workflow', false, 'Press Ganey', null, 'Company measuring patient satisfaction.', 'Press Ganey scores improved.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['workflow','quality']),
+  ('HCAHPS', 'Regulatory', false, 'Hospital Consumer Assessment of Healthcare Providers and Systems', null, 'Survey measuring hospital patient experience.', 'HCAHPS scores affect reimbursement.', ARRAY[]::text[], ARRAY[]::text[], ARRAY['regulatory','quality','hospital'])
+ON CONFLICT (term) DO UPDATE SET
+  category = EXCLUDED.category,
+  is_abbreviation = EXCLUDED.is_abbreviation,
+  full_form = EXCLUDED.full_form,
+  definition = EXCLUDED.definition,
+  example_usage = EXCLUDED.example_usage,
+  synonyms = EXCLUDED.synonyms,
+  aliases = EXCLUDED.aliases,
+  tags = EXCLUDED.tags;
+

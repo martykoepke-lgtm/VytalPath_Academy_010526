@@ -1,0 +1,131 @@
+term,category,is_abbreviat,full_form,breakdown,definition,example_usage,synonyms,aliases,tags
+Ac,Suffix,FALSE,Pertaining To,-ac,Pertaining to.,Cardiac pertains to the heart.,{},"{}",{suffix}
+Al,Suffix,FALSE,Pertaining To,-al,Pertaining to.,Abdominal pertains to the abdomen.,{},"{}",{suffix}
+Algia,Suffix,FALSE,Pain,-algia,Pain.,Neuralgia is nerve pain.,Dynia,"{}",{suffix}
+Ar,Suffix,FALSE,Pertaining To,-ar,Pertaining to.,Vascular pertains to vessels.,{},"{}",{suffix}
+Ary,Suffix,FALSE,Pertaining To,-ary,Pertaining to.,Pulmonary pertains to the lungs.,{},"{}",{suffix}
+Ase,Suffix,FALSE,Enzyme,-ase,Enzyme.,Lipase breaks down fat.,{},"{}",{suffix}
+Asthenia,Suffix,FALSE,Weakness,-asthenia,Weakness or lack of strength.,Myasthenia is muscle weakness.,{},"{}",{suffix}
+Ate,Suffix,FALSE,Use or Action,-ate,Use or action or having.,Dehydrate removes water.,{},"{}",{suffix}
+Centesis,Suffix,FALSE,Surgical Puncture,-centesis,Surgical puncture to remove fluid.,Thoracentesis is puncture of chest wall.,{},"{}",{suffix}
+Cele,Suffix,FALSE,Hernia or Protrusion,-cele,Hernia or protrusion.,Rectocele is rectal protrusion.,{},"{}",{suffix}
+Clasis,Suffix,FALSE,Breaking,-clasis,Breaking or fracture.,Osteoclasis breaks bone.,{},"{}",{suffix}
+Clast,Suffix,FALSE,Cell that Breaks Down,-clast,Cell that breaks down.,Osteoclast breaks down bone.,{},"{}",{suffix}
+Cyte,Suffix,FALSE,Cell,-cyte,Cell.,Erythrocyte is red blood cell.,{},"{}",{suffix}
+Cytosis,Suffix,FALSE,Increase in Cells,-cytosis,Increase in cells.,Leukocytosis is increase in white blood cells.,{},"{}",{suffix}
+Desis,Suffix,FALSE,Surgical Fusion,-desis,Surgical fusion or binding.,Arthrodesis is surgical fusion of joint.,{},"{}",{suffix}
+Dynia,Suffix,FALSE,Pain,-dynia,Pain.,Pleurodynia is chest wall pain.,Algia,"{}",{suffix}
+Eal,Suffix,FALSE,Pertaining To,-eal,Pertaining to.,Esophageal pertains to the esophagus.,{},"{}",{suffix}
+Ectasis,Suffix,FALSE,Dilation or Expansion,-ectasis,Dilation or expansion.,Bronchiectasis is airway dilation.,{},"{}",{suffix}
+Ectomy,Suffix,FALSE,Surgical Removal,-ectomy,Surgical removal or excision.,Appendectomy is removal of appendix.,{},"{}",{suffix}
+Edema,Suffix,FALSE,Swelling,-edema,Swelling or fluid accumulation.,Lymphedema is lymph fluid swelling.,{},"{}",{suffix}
+Emia,Suffix,FALSE,Blood Condition,-emia,Blood condition.,Anemia is low red blood cell condition.,{},"{}",{suffix}
+Emesis,Suffix,FALSE,Vomiting,-emesis,Vomiting.,Hematemesis is vomiting blood.,{},"{}",{suffix}
+Ent,Suffix,FALSE,Agent or One Who,-ent,Agent or one who.,Reagent is chemical agent.,{},"{}",{suffix}
+Er,Suffix,FALSE,One Who,-er,One who or that which.,Thermometer measures temperature.,{},"{}",{suffix}
+Esis,Suffix,FALSE,Condition or State,-esis,Condition or state.,Diuresis is increased urination.,{},"{}",{suffix}
+Form,Suffix,FALSE,Shaped Like,-form,Shaped like or resembling.,Vermiform is worm-shaped.,{},"{}",{suffix}
+Gen,Suffix,FALSE,Producing,-gen,Producing or origin.,Carcinogen produces cancer.,Genic,"{}",{suffix}
+Genesis,Suffix,FALSE,Origin or Production,-genesis,Origin or production.,Pathogenesis is disease origin.,{},"{}",{suffix}
+Genic,Suffix,FALSE,Producing,-genic,Producing or causing.,Pathogenic causes disease.,Gen,"{}",{suffix}
+Gnosis,Suffix,FALSE,Knowledge,-gnosis,Knowledge.,Diagnosis is complete knowledge.,{},"{}",{suffix}
+Gram,Suffix,FALSE,Record or Image,-gram,Record or image.,Electrocardiogram is heart recording.,{},"{}",{suffix}
+Graph,Suffix,FALSE,Instrument for Recording,-graph,Instrument for recording.,Electrocardiograph records heart activity.,{},"{}",{suffix}
+Graphy,Suffix,FALSE,Process of Recording,-graphy,Process of recording.,Radiography is process of taking X-rays.,{},"{}",{suffix}
+Iasis,Suffix,FALSE,Abnormal Condition,-iasis,Abnormal condition or infestation.,Psoriasis is chronic skin condition.,{},"{}",{suffix}
+Ia,Suffix,FALSE,Condition,-ia,Condition or state.,Anoxia is lack of oxygen.,{},"{}",{suffix}
+Iatry,Suffix,FALSE,Treatment,-iatry,Treatment or healing.,Psychiatry treats mental illness.,{},"{}",{suffix}
+Ic,Suffix,FALSE,Pertaining To,-ic,Pertaining to.,Gastric pertains to the stomach.,{},"{}",{suffix}
+Icle,Suffix,FALSE,Small,-icle,Small.,Ventricle is small cavity.,{},"{}",{suffix}
+Ics,Suffix,FALSE,Science or Study,-ics,Science or study or practice.,Pediatrics studies child health.,{},"{}",{suffix}
+Ile,Suffix,FALSE,Capable of,-ile,Capable of or pertaining to.,Contractile can contract.,{},"{}",{suffix}
+In,Suffix,FALSE,Substance,-in,Substance or chemical.,Insulin regulates sugar.,{},"{}",{suffix}
+Ine,Suffix,FALSE,Pertaining To,-ine,Pertaining to or chemical substance.,Uterine pertains to uterus.,{},"{}",{suffix}
+Ion,Suffix,FALSE,Process or Condition,-ion,Process or condition.,Excision is cutting out.,{},"{}",{suffix}
+Ism,Suffix,FALSE,Condition or Doctrine,-ism,Condition or doctrine.,Hypothyroidism is low thyroid condition.,{},"{}",{suffix}
+Ist,Suffix,FALSE,Specialist,-ist,Specialist.,Cardiologist is a heart specialist.,{},"{}",{suffix}
+Itis,Suffix,FALSE,Inflammation,-itis,Inflammation.,Arthritis is inflammation of joints.,{},"{}",{suffix}
+Ity,Suffix,FALSE,State or Condition,-ity,State or condition.,Acidity is acidic state.,{},"{}",{suffix}
+Ium,Suffix,FALSE,Structure or Tissue,-ium,Structure or tissue.,Pericardium surrounds heart.,{},"{}",{suffix}
+Ive,Suffix,FALSE,Performs or Tends Toward,-ive,Performs or tends toward.,Laxative promotes bowel movement.,{},"{}",{suffix}
+Kinesis,Suffix,FALSE,Movement,-kinesis,Movement or motion.,Dyskinesia is abnormal movement.,{},"{}",{suffix}
+Lepsy,Suffix,FALSE,Seizure,-lepsy,Seizure or attack.,Epilepsy causes seizures.,{},"{}",{suffix}
+Logist,Suffix,FALSE,One Who Studies,-logist,One who studies.,Neurologist studies the nervous system.,{},"{}",{suffix}
+Logy,Suffix,FALSE,Study Of,-logy,Study of.,Cardiology is the study of the heart.,Ology,"{}",{suffix}
+Lysis,Suffix,FALSE,Destruction or Separation,-lysis,Destruction or separation or loosening.,Hemolysis is destruction of red blood cells.,{},"{}",{suffix}
+Malacia,Suffix,FALSE,Softening,-malacia,Softening.,Osteomalacia is softening of bones.,{},"{}",{suffix}
+Mania,Suffix,FALSE,Excessive Preoccupation,-mania,Excessive preoccupation or madness.,Kleptomania is compulsive stealing.,{},"{}",{suffix}
+Megaly,Suffix,FALSE,Enlargement,-megaly,Enlargement.,Cardiomegaly is enlarged heart.,{},"{}",{suffix}
+Meter,Suffix,FALSE,Measuring Instrument,-meter,Measuring instrument.,Thermometer measures temperature.,{},"{}",{suffix}
+Metry,Suffix,FALSE,Measurement,-metry,Measurement or process of measuring.,Spirometry measures lung function.,{},"{}",{suffix}
+Oid,Suffix,FALSE,Resembling,-oid,Resembling or like.,Thyroid resembles shield.,{},"{}",{suffix}
+Ology,Suffix,FALSE,Science Of,-ology,Science of or study of.,Pathology is the science of disease.,Logy,"{}",{suffix}
+Oma,Suffix,FALSE,Tumor or Mass,-oma,Tumor or mass.,Carcinoma is a cancerous tumor.,{},"{}",{suffix}
+Opia,Suffix,FALSE,Vision,-opia,Vision or vision condition.,Myopia is nearsightedness.,{},"{}",{suffix}
+Opsy,Suffix,FALSE,Viewing,-opsy,Viewing or examination.,Biopsy views tissue.,{},"{}",{suffix}
+Or,Suffix,FALSE,One Who or That Which,-or,One who or that which.,Donor gives.,{},"{}",{suffix}
+Ose,Suffix,FALSE,Sugar,-ose,Sugar or carbohydrate.,Glucose is blood sugar.,{},"{}",{suffix}
+Osis,Suffix,FALSE,Abnormal Condition,-osis,Abnormal condition or disease or increase.,Osteoporosis is abnormal bone condition.,{},"{}",{suffix}
+Ostomy,Suffix,FALSE,Create Opening,-ostomy,Creating an artificial opening.,Colostomy is creating opening in colon.,{},"{}",{suffix}
+Otomy,Suffix,FALSE,Incision Into,-otomy,Incision or cutting into.,Tracheotomy is incision into trachea.,Tomy,"{}",{suffix}
+Ous,Suffix,FALSE,Pertaining To,-ous,Pertaining to or full of.,Venous pertains to veins.,{},"{}",{suffix}
+Paresis,Suffix,FALSE,Weakness,-paresis,Weakness or partial paralysis.,Hemiparesis is weakness of one side.,{},"{}",{suffix}
+Pathy,Suffix,FALSE,Disease,-pathy,Disease or disorder or feeling.,Neuropathy is nerve disease.,{},"{}",{suffix}
+Penia,Suffix,FALSE,Deficiency,-penia,Deficiency or decrease.,Leukopenia is deficiency of white blood cells.,{},"{}",{suffix}
+Pepsia,Suffix,FALSE,Digestion,-pepsia,Digestion.,Dyspepsia is poor digestion.,{},"{}",{suffix}
+Pexy,Suffix,FALSE,Surgical Fixation,-pexy,Surgical fixation.,Nephropexy is surgical fixation of kidney.,{},"{}",{suffix}
+Phagia,Suffix,FALSE,Eating or Swallowing,-phagia,Eating or swallowing.,Dysphagia is difficulty swallowing.,{},"{}",{suffix}
+Phasia,Suffix,FALSE,Speech,-phasia,Speech.,Aphasia is inability to speak.,{},"{}",{suffix}
+Phil,Suffix,FALSE,Attraction,-phil,Attraction or affinity.,Eosinophil attracts acidic stain.,Philia,"{}",{suffix}
+Philia,Suffix,FALSE,Attraction To,-philia,Attraction to or affinity or love.,Hemophilia is blood clotting disorder.,Phil,"{}",{suffix}
+Phobia,Suffix,FALSE,Fear,-phobia,Fear or abnormal fear.,Claustrophobia is fear of enclosed spaces.,{},"{}",{suffix}
+Phonia,Suffix,FALSE,Voice or Sound,-phonia,Voice or sound.,Aphonia is loss of voice.,{},"{}",{suffix}
+Phoresis,Suffix,FALSE,Carrying or Transmission,-phoresis,Carrying or transmission.,Electrophoresis separates molecules.,{},"{}",{suffix}
+Phylaxis,Suffix,FALSE,Protection,-phylaxis,Protection.,Prophylaxis prevents disease.,{},"{}",{suffix}
+Physis,Suffix,FALSE,Growth,-physis,Growth.,Epiphysis is bone growth plate.,{},"{}",{suffix}
+Plakia,Suffix,FALSE,Plaque or Patch,-plakia,Plaque or patch.,Leukoplakia is white patch.,{},"{}",{suffix}
+Plasia,Suffix,FALSE,Formation or Growth,-plasia,Formation or growth or development.,Dysplasia is abnormal cell growth.,{},"{}",{suffix}
+Plasm,Suffix,FALSE,Formation or Substance,-plasm,Formation or substance.,Neoplasm is new growth.,{},"{}",{suffix}
+Plasty,Suffix,FALSE,Surgical Repair,-plasty,Surgical repair or reconstruction.,Rhinoplasty is surgical repair of nose.,{},"{}",{suffix}
+Plegia,Suffix,FALSE,Paralysis,-plegia,Paralysis.,Hemiplegia is paralysis of one side.,{},"{}",{suffix}
+Pnea,Suffix,FALSE,Breathing,-pnea,Breathing.,Apnea is absence of breathing.,{},"{}",{suffix}
+Poiesis,Suffix,FALSE,Formation or Production,-poiesis,Formation or production.,Hematopoiesis is blood cell formation.,{},"{}",{suffix}
+Porosis,Suffix,FALSE,Porous Condition,-porosis,Porous condition.,Osteoporosis is porous bones.,{},"{}",{suffix}
+Praxia,Suffix,FALSE,Action,-praxia,Action or movement.,Apraxia affects purposeful movement.,{},"{}",{suffix}
+Ptosis,Suffix,FALSE,Drooping or Sagging,-ptosis,Drooping or sagging or falling.,Blepharoptosis is drooping eyelid.,{},"{}",{suffix}
+Ptysis,Suffix,FALSE,Spitting,-ptysis,Spitting.,Hemoptysis is coughing blood.,{},"{}",{suffix}
+Rrhage,Suffix,FALSE,Excessive Bleeding,-rrhage,Excessive bleeding or flow.,Hemorrhage is excessive bleeding.,Rrhagia,"{}",{suffix}
+Rrhagia,Suffix,FALSE,Excessive Bleeding,-rrhagia,Excessive bleeding or discharge.,Menorrhagia is excessive menstrual bleeding.,Rrhage,"{}",{suffix}
+Rrhaphy,Suffix,FALSE,Suturing,-rrhaphy,Suturing or stitching.,Herniorrhaphy is suturing of hernia.,{},"{}",{suffix}
+Rrhea,Suffix,FALSE,Flow or Discharge,-rrhea,Flow or discharge.,Diarrhea is excessive bowel discharge.,{},"{}",{suffix}
+Rrhexis,Suffix,FALSE,Rupture,-rrhexis,Rupture.,Cardiorrhexis is rupture of the heart.,{},"{}",{suffix}
+Salpinx,Suffix,FALSE,Tube,-salpinx,Tube (fallopian or eustachian).,Hematosalpinx is blood in tube.,{},"{}",{suffix}
+Sarcoma,Suffix,FALSE,Malignant Tumor,-sarcoma,Malignant tumor of connective tissue.,Osteosarcoma is bone cancer.,{},"{}",{suffix}
+Schisis,Suffix,FALSE,Splitting,-schisis,Splitting or cleft.,Rachischisis is spina bifida.,{},"{}",{suffix}
+Sclerosis,Suffix,FALSE,Hardening,-sclerosis,Hardening.,Atherosclerosis is hardening of arteries.,{},"{}",{suffix}
+Scope,Suffix,FALSE,Instrument for Viewing,-scope,Instrument for viewing.,Endoscope views inside body.,{},"{}",{suffix}
+Scopy,Suffix,FALSE,Visual Examination,-scopy,Visual examination.,Colonoscopy is visual exam of colon.,{},"{}",{suffix}
+Somnia,Suffix,FALSE,Sleep,-somnia,Sleep.,Insomnia is inability to sleep.,{},"{}",{suffix}
+Spasm,Suffix,FALSE,Involuntary Contraction,-spasm,Involuntary contraction or twitching.,Bronchospasm is airway constriction.,{},"{}",{suffix}
+Stalsis,Suffix,FALSE,Contraction,-stalsis,Contraction.,Peristalsis is wave-like contraction.,{},"{}",{suffix}
+Stasis,Suffix,FALSE,Stopping or Controlling,-stasis,Stopping or controlling or standing.,Hemostasis is stopping of bleeding.,{},"{}",{suffix}
+Stenosis,Suffix,FALSE,Narrowing,-stenosis,Narrowing.,Aortic stenosis is narrowing of aortic valve.,{},"{}",{suffix}
+Stomy,Suffix,FALSE,Opening,-stomy,Creating an opening.,Tracheostomy creates opening in trachea.,Ostomy,"{}",{suffix}
+Taxia,Suffix,FALSE,Coordination,-taxia,Coordination or order.,Ataxia is lack of coordination.,{},"{}",{suffix}
+Tension,Suffix,FALSE,Pressure,-tension,Pressure.,Hypertension is high blood pressure.,{},"{}",{suffix}
+Therapy,Suffix,FALSE,Treatment,-therapy,Treatment.,Chemotherapy treats with chemicals.,{},"{}",{suffix}
+Thermy,Suffix,FALSE,Heat,-thermy,Heat.,Diathermy uses heat treatment.,{},"{}",{suffix}
+Tic,Suffix,FALSE,Pertaining To,-tic,Pertaining to.,Lymphatic pertains to lymph.,{},"{}",{suffix}
+Tocia,Suffix,FALSE,Labor or Birth,-tocia,Labor or birth.,Dystocia is difficult labor.,{},"{}",{suffix}
+Tome,Suffix,FALSE,Cutting Instrument,-tome,Cutting instrument.,Microtome cuts thin sections.,{},"{}",{suffix}
+Tomy,Suffix,FALSE,Cutting,-tomy,Cutting or incision.,Phlebotomy is cutting into a vein.,Otomy,"{}",{suffix}
+Tonia,Suffix,FALSE,Tension or Tone,-tonia,Tension or tone.,Dystonia is abnormal muscle tone.,{},"{}",{suffix}
+Tripsy,Suffix,FALSE,Crushing,-tripsy,Crushing.,Lithotripsy is crushing of stones.,{},"{}",{suffix}
+Trophy,Suffix,FALSE,Development or Nourishment,-trophy,Development or nourishment or growth.,Atrophy is wasting away.,{},"{}",{suffix}
+Tropia,Suffix,FALSE,Turning,-tropia,Turning.,Esotropia is inward eye turn.,{},"{}",{suffix}
+Tropion,Suffix,FALSE,Turning,-tropion,Turning or influence.,Gonadotropin influences gonads.,{},"{}",{suffix}
+Ule,Suffix,FALSE,Small,-ule,Small.,Venule is small vein.,{},"{}",{suffix}
+Um,Suffix,FALSE,Structure or Tissue,-um,Structure or tissue or membrane.,Septum is dividing wall.,{},"{}",{suffix}
+Uria,Suffix,FALSE,Urine Condition,-uria,Urine condition.,Hematuria is blood in urine.,{},"{}",{suffix}
+Us,Suffix,FALSE,Structure or Thing,-us,Structure or thing.,Uterus is womb.,{},"{}",{suffix}
+Y,Suffix,FALSE,Process or Condition,-y,Process or condition or state.,Biopsy views tissue process.,{},"{}",{suffix}

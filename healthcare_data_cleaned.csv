@@ -1,0 +1,951 @@
+term,category,is_abbreviation,full_form,breakdown,definition,example_usage,synonyms,aliases,tags
+Digoxin Level,Lab Test,False,Digoxin Level,,Measures blood level of digoxin heart medicine.,Digoxin level is 1.2 ng/mL in therapeutic range.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+Vancomycin Level,Lab Test,False,Vancomycin Level,,Measures blood level of vancomycin antibiotic.,Vancomycin trough is 18 mcg/mL.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+Phenytoin Level,Lab Test,False,Phenytoin Level,,Measures blood level of anti-seizure medicine phenytoin.,Phenytoin level too low at 6 mcg/mL.,{},"{Dilantin level}",{lab,diagnostic,chemistry,therapeutic-drug}
+Theophylline Level,Lab Test,False,Theophylline Level,,Measures blood level of theophylline asthma medicine.,Theophylline level is 12 mcg/mL within range.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+HIV Test,Lab Test,False,HIV Test,,A screening test for human immunodeficiency virus.,Fourth generation HIV test is best.,{},"{HIV antibody,{HIV antigen},{lab,diagnostic,immunology,infectious}
+Hepatitis Panel,Lab Panel,False,Hepatitis Panel,,Tests for hepatitis A B and C viruses.,Hepatitis panel ordered for yellow skin patient.,{},"{}",{lab,diagnostic,immunology,infectious}
+HBsAg,Lab Test,True,Hepatitis B Surface Antigen,,A marker of active hepatitis B infection.,Positive HBsAg means current HBV infection.,{},"{}",{lab,diagnostic,immunology,infectious}
+Anti-HBs,Lab Test,False,Hepatitis B Surface Antibody,,Shows immunity to hepatitis B from vaccine or past infection.,Positive anti-HBs shows HBV immunity.,{},"{}",{lab,diagnostic,immunology,infectious}
+HCV Antibody,Lab Test,False,Hepatitis C Antibody,,Screening test for hepatitis C virus.,Positive HCV antibody needs RNA test to confirm.,{},"{}",{lab,diagnostic,immunology,infectious}
+RPR,Lab Test,True,Rapid Plasma Reagin,,A screening test for syphilis.,Positive RPR confirmed with FTA-ABS.,{},"{}",{lab,diagnostic,immunology,infectious}term,category,is_abbreviation,full_form,breakdown,definition,example_usage,synonyms,aliases,tags}
+RTE,Insurance,True,Real-Time Eligibility,,A computer check that shows if a patient's insurance is active and what it covers.,Front desk staff run RTE before scheduling.,{},"{}",{insurance,billing}
+Co-pay,Insurance,False,Co-payment,,A set amount of money a patient pays when they visit the doctor.,Patient paid a $20 co-pay at check-in.,{},"{}",{insurance,billing}
+Deductible,Insurance,False,Insurance Deductible,,The amount a patient must pay before their insurance starts paying for care.,The patient has a $1500 deductible to meet.,{},"{}",{insurance,billing}
+Coinsurance,Insurance,False,Coinsurance,,The percentage of the bill a patient pays after meeting their deductible.,Patient is responsible for 20% coinsurance.,{},"{}",{insurance,billing}
+EOB,Insurance,True,Explanation of Benefits,,A paper or online statement showing what the insurance paid and what the patient owes.,Review the EOB to understand the claim payment.,{},"{}",{insurance,billing}
+OOP,Insurance,True,Out-of-Pocket,,The most money a patient pays in one year before insurance covers everything.,Patient has reached their $5000 OOP maximum.,{},"{out-of-pocket maximum}",{insurance,billing}
+Prior Auth,Insurance,False,Prior Authorization,,Permission from insurance needed before getting certain tests or treatments.,MRI requires prior auth before scheduling.,{},"{PA,{pre-authorization},{insurance,billing,approval}
+PPO,Insurance,True,Preferred Provider Organization,,A type of insurance plan where you can see any doctor but pay less for in-network doctors.,Patient has a PPO plan and can self-refer.,{},"{}",{insurance,plan-type}
+HMO,Insurance,True,Health Maintenance Organization,,A type of insurance that requires you to use specific doctors and get referrals to see specialists.,HMO patients need a referral to see specialists.,{},"{}",{insurance,plan-type}
+POS,Insurance,True,Point of Service,,An insurance plan that mixes HMO and PPO rules.,POS plan requires PCP coordination but allows out-of-network.,{},"{}",{insurance,plan-type}
+Medicare,Insurance,False,Medicare,,Government health insurance mainly for people 65 and older.,Patient is eligible for Medicare Part B.,{},"{}",{insurance,government}
+Medicaid,Insurance,False,Medicaid,,Government health insurance for people with low income.,Patient has Medicaid coverage for the visit.,{},"{}",{insurance,government}
+Premium,Insurance,False,Insurance Premium,,The monthly payment to keep an insurance plan active.,Monthly premium is $450 for family coverage.,{},"{}",{insurance,billing}
+Covered Services,Insurance,False,Covered Services,,Medical care and tests that an insurance plan will pay for.,Annual physical is a covered service.,{},"{}",{insurance,benefits}
+Exclusions,Insurance,False,Insurance Exclusions,,Services or treatments that insurance will not pay for.,Cosmetic procedures are plan exclusions.,{},"{}",{insurance,benefits}
+In-Network,Insurance,False,In-Network Provider,,Doctors and hospitals that have an agreement with your insurance company.,Using in-network providers saves money.,{},"{}",{insurance,network}
+Out-of-Network,Insurance,False,Out-of-Network Provider,,Doctors and hospitals that do not have an agreement with your insurance company.,Out-of-network services cost more for patients.,{},"{}",{insurance,network}
+Allowable Amount,Insurance,False,Allowable Amount,,The maximum amount insurance will pay for a service.,The allowable amount for the visit was $150.,{},"{}",{insurance,billing}
+Claim,Insurance,False,Insurance Claim,,A request sent to insurance asking them to pay for services.,Submit the claim within 30 days of service.,{},"{}",{insurance,billing}
+Denied Claim,Insurance,False,Denied Claim,,An insurance request that was rejected and will not be paid.,The claim was denied due to missing information.,{},"{}",{insurance,billing}
+GERD,Insurance,False,Gastroesophageal Reflux Disease,,A common condition where stomach acid flows back into the throat causing heartburn.,Patient diagnosed with GERD needs PPI medication.,{},"{acid reflux,{heartburn},{insurance,diagnosis,gi}
+TES,Insurance,True,Third-Party Eligibility System,,A system that checks if a patient's insurance is active and what services are covered.,Run TES check before scheduling the appointment.,{},"{}",{insurance,billing,system}
+HPI,Documentation,True,History of Present Illness,,A description of when the patient's symptoms started and how they have changed.,The HPI documents when pain started and how bad it is.,{},"{}",{documentation,clinical}
+ROS,Documentation,True,Review of Systems,,A checklist asking about symptoms in different parts of the body.,Complete ROS includes all 14 body systems.,{},"{}",{documentation,clinical}
+PE,Documentation,True,Physical Examination,,When a doctor checks the patient's body by looking listening and touching.,PE showed normal heart and lung sounds.,{},"{physical exam}",{documentation,clinical}
+Dx,Documentation,True,Diagnosis,,The name of the disease or condition the patient has.,Primary Dx is type 2 diabetes.,{},"{}",{documentation,clinical}
+Tx,Documentation,True,Treatment,,The medical care given to help the patient get better.,Tx includes lifestyle changes and metformin.,{},"{}",{documentation,clinical}
+Encounter,Documentation,False,Patient Encounter,,A single visit between a patient and their doctor.,Document the encounter in the EHR.,{},"{visit,{appointment},{documentation,workflow}
+Episode,Documentation,False,Episode of Care,,A group of visits for the same health problem.,The pneumonia episode included 3 office visits.,{},"{}",{documentation,workflow}
+SOAP,Documentation,True,Subjective Objective Assessment Plan,,A way to write medical notes using four sections.,Use SOAP format for progress notes.,{},"{}",{documentation,format}
+CC,Documentation,True,Chief Complaint,,The main reason the patient came to see the doctor.,CC is chest pain for 2 hours.,{},"{}",{documentation,clinical}
+PMH,Documentation,True,Past Medical History,,A list of all health problems the patient has had before.,PMH includes high blood pressure and GERD.,{},"{}",{documentation,clinical}
+PSH,Documentation,True,Past Surgical History,,A list of all surgeries the patient has had.,PSH includes appendectomy in 2010.,{},"{}",{documentation,clinical}
+FH,Documentation,True,Family History,,Information about diseases that run in the patient's family.,FH significant for heart disease and diabetes.,{},"{}",{documentation,clinical}
+SH,Documentation,True,Social History,,Information about the patient's lifestyle like smoking and drinking.,SH reveals 20 pack-year smoking history.,{},"{}",{documentation,clinical}
+Allergies,Documentation,False,Allergy List,,A list of things that cause bad reactions in the patient.,Allergies include penicillin and shellfish.,{},"{}",{documentation,clinical,safety}
+Medications,Documentation,False,Medication List,,A current list of all medicines the patient is taking.,Medication list updated at every visit.,{},"{med list,{current meds},{documentation,clinical,safety}
+Vital Signs,Documentation,False,Vital Signs,,Basic body measurements like temperature and blood pressure.,Vital signs stable and normal.,{},"{vitals}",{documentation,clinical}
+Progress Note,Documentation,False,Progress Note,,A note written during follow-up visits showing how the patient is doing.,Progress note shows improvement in symptoms.,{},"{}",{documentation,clinical}
+Discharge Summary,Documentation,False,Discharge Summary,,A report written when a patient leaves the hospital.,Discharge summary sent to PCP.,{},"{}",{documentation,clinical}
+H&P,Documentation,True,History and Physical,,A complete first exam including patient history and physical check.,Complete H&P documented on admission.,{},"{}",{documentation,clinical}
+Impression,Documentation,False,Clinical Impression,,The doctor's conclusion about what is wrong with the patient.,Impression is acute bronchitis.,{},"{}",{documentation,clinical}
+Plan of Care,Documentation,False,Plan of Care,,The treatment plan and next steps for the patient.,Plan of care includes antibiotics and recheck in 3 days.,{},"{treatment plan}",{documentation,clinical}
+Orders,Documentation,False,Medical Orders,,Instructions written by the doctor for medicines or tests.,Orders include CBC and basic metabolic panel.,{},"{}",{documentation,clinical}
+CBC,Lab Panel,True,Complete Blood Count,,A blood test that measures different parts of blood including red cells white cells and platelets.,Order CBC to check for anemia.,{},"{complete blood count}",{lab,diagnostic,hematology}
+WBC,Lab Test,True,White Blood Cell Count,,Counts the number of white blood cells that fight infection.,High WBC suggests infection.,{},"{leukocyte count}",{lab,diagnostic,hematology}
+RBC,Lab Test,True,Red Blood Cell Count,,Counts the number of red blood cells that carry oxygen.,Low RBC means anemia.,{},"{erythrocyte count}",{lab,diagnostic,hematology}
+Hemoglobin,Lab Test,False,Hemoglobin,,A protein in red blood cells that carries oxygen through the body.,Hemoglobin is 10.2 showing anemia.,{},"{Hgb,{Hb},{lab,diagnostic,hematology}
+Hematocrit,Lab Test,False,Hematocrit,,Shows what percent of blood is made of red blood cells.,Hematocrit of 32% is below normal.,{},"{Hct}",{lab,diagnostic,hematology}
+Platelet Count,Lab Test,False,Platelet Count,,Counts the platelets that help blood clot.,Low platelets increase bleeding risk.,{},"{PLT}",{lab,diagnostic,hematology}
+MCV,Lab Test,True,Mean Corpuscular Volume,,Measures the average size of red blood cells.,High MCV may mean vitamin deficiency.,{},"{}",{lab,diagnostic,hematology}
+MCH,Lab Test,True,Mean Corpuscular Hemoglobin,,Measures how much hemoglobin is in each red blood cell.,MCH helps find the type of anemia.,{},"{}",{lab,diagnostic,hematology}
+MCHC,Lab Test,True,Mean Corpuscular Hemoglobin Concentration,,Measures how concentrated hemoglobin is in red blood cells.,High MCHC seen in some blood disorders.,{},"{}",{lab,diagnostic,hematology}
+RDW,Lab Test,True,Red Cell Distribution Width,,Measures if red blood cells are different sizes.,High RDW shows mixed types of anemia.,{},"{}",{lab,diagnostic,hematology}
+Differential,Lab Test,False,Differential Count,,Breaks down the different types of white blood cells.,Differential shows high neutrophils.,{},"{diff,{WBC diff},{lab,diagnostic,hematology}
+Neutrophils,Lab Test,False,Neutrophils,,White blood cells that fight bacterial infections.,High neutrophils mean bacterial infection.,{},"{polys,{PMNs},{lab,diagnostic,hematology}
+Lymphocytes,Lab Test,False,Lymphocytes,,White blood cells that fight viruses and help immunity.,High lymphocytes suggest viral infection.,{},"{lymphs}",{lab,diagnostic,hematology}
+Monocytes,Lab Test,False,Monocytes,,White blood cells that eat germs and dead cells.,High monocytes in long-term inflammation.,{},"{monos}",{lab,diagnostic,hematology}
+Eosinophils,Lab Test,False,Eosinophils,,White blood cells involved in allergies and parasite infections.,High eosinophils suggest allergies or parasites.,{},"{eos}",{lab,diagnostic,hematology}
+Basophils,Lab Test,False,Basophils,,White blood cells involved in allergic reactions.,High basophils are rare.,{},"{basos}",{lab,diagnostic,hematology}
+BMP,Lab Panel,True,Basic Metabolic Panel,,A blood test checking electrolytes kidney function and blood sugar.,Order BMP to check kidney function.,{},"{}",{lab,diagnostic,chemistry}
+Sodium,Lab Test,False,Sodium,,A salt in blood that helps balance fluids and nerves.,Sodium level is 138 mEq/L.,{},"{Na}",{lab,diagnostic,chemistry}
+Potassium,Lab Test,False,Potassium,,A mineral critical for heart and muscle function.,Potassium is 4.2 mEq/L.,{},"{K}",{lab,diagnostic,chemistry}
+Chloride,Lab Test,False,Chloride,,A salt that helps maintain fluid balance in the body.,Chloride level is normal at 102 mEq/L.,{},"{Cl}",{lab,diagnostic,chemistry}
+CO2,Lab Test,False,Carbon Dioxide,,Measures bicarbonate which shows acid-base balance.,CO2 of 24 means normal balance.,{},"{bicarbonate,{HCO3},{lab,diagnostic,chemistry}
+BUN,Lab Test,True,Blood Urea Nitrogen,,Measures waste filtered by kidneys to check kidney function.,High BUN suggests kidney problems.,{},"{}",{lab,diagnostic,chemistry,renal}
+Creatinine,Lab Test,False,Creatinine,,A waste product used to check how well kidneys work.,Creatinine of 1.8 means decreased kidney function.,{},"{Cr}",{lab,diagnostic,chemistry,renal}
+Glucose,Lab Test,False,Blood Glucose,,Measures the amount of sugar in the blood.,Fasting glucose is 110 mg/dL.,{},"{blood sugar}",{lab,diagnostic,chemistry,diabetes}
+CMP,Lab Panel,True,Comprehensive Metabolic Panel,,A bigger blood test that includes BMP plus liver and protein tests.,Order CMP for complete health check.,{},"{}",{lab,diagnostic,chemistry}
+Total Protein,Lab Test,False,Total Protein,,Measures all proteins in blood to check nutrition and liver health.,Total protein helps check liver function.,{},"{}",{lab,diagnostic,chemistry}
+Albumin,Lab Test,False,Albumin,,A protein made by the liver that keeps fluid balanced.,Low albumin means malnutrition or liver disease.,{},"{}",{lab,diagnostic,chemistry}
+AST,Lab Test,True,Aspartate Aminotransferase,,A liver enzyme that goes up when the liver is damaged.,AST of 85 suggests liver inflammation.,{},"{SGOT}",{lab,diagnostic,chemistry,hepatic}
+ALT,Lab Test,True,Alanine Aminotransferase,,A liver enzyme that is very specific for liver damage.,High ALT means liver injury.,{},"{SGPT}",{lab,diagnostic,chemistry,hepatic}
+ALP,Lab Test,True,Alkaline Phosphatase,,An enzyme in liver and bones that goes up with certain diseases.,High ALP suggests blocked bile ducts.,{},"{}",{lab,diagnostic,chemistry,hepatic}
+Total Bilirubin,Lab Test,False,Total Bilirubin,,A yellow substance from broken down red blood cells.,High bilirubin causes jaundice.,{},"{}",{lab,diagnostic,chemistry,hepatic}
+Direct Bilirubin,Lab Test,False,Direct Bilirubin,,Bilirubin that has been processed by the liver.,High direct bilirubin in blocked bile ducts.,{},"{}",{lab,diagnostic,chemistry,hepatic}
+Indirect Bilirubin,Lab Test,False,Indirect Bilirubin,,Bilirubin that has not been processed by the liver yet.,High indirect bilirubin in blood cell breakdown.,{},"{}",{lab,diagnostic,chemistry,hepatic}
+Calcium,Lab Test,False,Calcium,,A mineral important for bones nerves and muscles.,Calcium level is 9.5 mg/dL.,{},"{Ca}",{lab,diagnostic,chemistry}
+Lipid Panel,Lab Panel,False,Lipid Panel,,A blood test checking cholesterol and fats to assess heart risk.,Fasting lipid panel shows high LDL.,{},"{cholesterol panel}",{lab,diagnostic,chemistry,cardiology}
+Total Cholesterol,Lab Test,False,Total Cholesterol,,Measures all cholesterol in blood including good and bad types.,Total cholesterol is 220 mg/dL.,{},"{}",{lab,diagnostic,chemistry,cardiology}
+HDL,Lab Test,True,High-Density Lipoprotein,,Good cholesterol that helps remove bad cholesterol from blood.,HDL of 55 mg/dL is protective.,{},"{good cholesterol}",{lab,diagnostic,chemistry,cardiology}
+LDL,Lab Test,True,Low-Density Lipoprotein,,Bad cholesterol that can clog arteries and cause heart disease.,LDL of 150 mg/dL is above goal.,{},"{bad cholesterol}",{lab,diagnostic,chemistry,cardiology}
+Triglycerides,Lab Test,False,Triglycerides,,A type of fat in blood that increases heart disease risk when high.,Triglycerides are 180 mg/dL.,{},"{TG}",{lab,diagnostic,chemistry,cardiology}
+VLDL,Lab Test,True,Very Low-Density Lipoprotein,,A type of cholesterol that carries triglycerides in blood.,VLDL is calculated from triglycerides.,{},"{}",{lab,diagnostic,chemistry,cardiology}
+HbA1c,Lab Test,True,Hemoglobin A1c,,Shows average blood sugar over the past 2-3 months for diabetes.,HbA1c of 7.2% means diabetes not well controlled.,{},"{glycated hemoglobin,{A1c},{lab,diagnostic,chemistry,diabetes}
+Thyroid Panel,Lab Panel,False,Thyroid Panel,,Tests that check how well the thyroid gland is working.,Thyroid panel ordered to check for low thyroid.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+TSH,Lab Test,True,Thyroid-Stimulating Hormone,,A hormone that controls the thyroid gland.,High TSH means low thyroid function.,{},"{thyrotropin}",{lab,diagnostic,chemistry,endocrine}
+T3,Lab Test,True,Triiodothyronine,,Active thyroid hormone that controls metabolism.,Free T3 helps check thyroid function.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+T4,Lab Test,True,Thyroxine,,Main hormone made by the thyroid gland.,Free T4 measures available hormone.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Free T3,Lab Test,False,Free Triiodothyronine,,Active thyroid hormone not bound to proteins.,Free T3 is low in low thyroid.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Free T4,Lab Test,False,Free Thyroxine,,Thyroid hormone not attached to proteins.,Free T4 is the best thyroid test.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Coagulation Panel,Lab Panel,False,Coagulation Panel,,Tests that check how well blood clots.,Coag panel ordered before surgery.,{},"{coag panel}",{lab,diagnostic,hematology}
+PT,Lab Test,True,Prothrombin Time,,Measures how long it takes blood to clot.,PT is 12.5 seconds which is normal.,{},"{}",{lab,diagnostic,hematology,coagulation}
+INR,Lab Test,True,International Normalized Ratio,,A standard way to measure PT used for blood thinner medicine.,INR goal is 2-3 for atrial fibrillation.,{},"{}",{lab,diagnostic,hematology,coagulation}
+PTT,Lab Test,True,Partial Thromboplastin Time,,Measures a different clotting pathway used for heparin medicine.,PTT is longer on heparin therapy.,{},"{aPTT}",{lab,diagnostic,hematology,coagulation}
+D-dimer,Lab Test,False,D-dimer,,A protein fragment that goes up when blood clots break down.,High D-dimer suggests possible blood clot.,{},"{}",{lab,diagnostic,hematology,coagulation}
+Iron Studies,Lab Panel,False,Iron Studies,,Tests that check iron levels in the body.,Iron studies ordered to check for low iron.,{},"{}",{lab,diagnostic,chemistry,hematology}
+Serum Iron,Lab Test,False,Serum Iron,,Measures how much iron is in the blood.,Low serum iron means iron deficiency.,{},"{}",{lab,diagnostic,chemistry,hematology}
+TIBC,Lab Test,True,Total Iron-Binding Capacity,,Measures blood's ability to carry iron.,High TIBC in iron deficiency anemia.,{},"{}",{lab,diagnostic,chemistry,hematology}
+Ferritin,Lab Test,False,Ferritin,,A protein that stores iron shows total body iron.,Low ferritin confirms iron deficiency.,{},"{}",{lab,diagnostic,chemistry,hematology}
+Transferrin,Lab Test,False,Transferrin,,A protein that carries iron in blood.,Transferrin test helps diagnose iron problems.,{},"{}",{lab,diagnostic,chemistry,hematology}
+CRP,Lab Test,True,C-Reactive Protein,,A marker of inflammation in the body.,High CRP means active inflammation.,{},"{}",{lab,diagnostic,chemistry,inflammation}
+ESR,Lab Test,True,Erythrocyte Sedimentation Rate,,A test for inflammation by how fast red blood cells settle.,High ESR suggests inflammatory process.,{},"{sed rate}",{lab,diagnostic,hematology,inflammation}
+Troponin,Lab Test,False,Troponin,,A heart enzyme released during heart muscle damage.,High troponin confirms heart attack.,{},"{cTn,{troponin I,troponin T},{lab,diagnostic,chemistry,cardiology}
+BNP,Lab Test,True,B-type Natriuretic Peptide,,A hormone released by the heart when it's failing.,BNP of 450 means heart failure.,{},"{}",{lab,diagnostic,chemistry,cardiology}
+ProBNP,Lab Test,True,N-terminal pro-B-type Natriuretic Peptide,,A precursor to BNP that is a more stable heart failure marker.,High NT-proBNP in heart failure.,{},"{NT-proBNP}",{lab,diagnostic,chemistry,cardiology}
+PSA,Lab Test,True,Prostate-Specific Antigen,,A protein made by prostate that goes up with cancer or enlargement.,PSA screening in men over 50.,{},"{}",{lab,diagnostic,chemistry,oncology}
+CEA,Lab Test,True,Carcinoembryonic Antigen,,A tumor marker that goes up in colon and other cancers.,CEA watched in colon cancer patients.,{},"{}",{lab,diagnostic,chemistry,oncology}
+CA 19-9,Lab Test,False,Carbohydrate Antigen 19-9,,A tumor marker for pancreatic and stomach cancers.,CA 19-9 high in pancreatic cancer.,{},"{}",{lab,diagnostic,chemistry,oncology}
+CA-125,Lab Test,False,Cancer Antigen 125,,A tumor marker for ovarian cancer.,CA-125 watched in ovarian cancer treatment.,{},"{}",{lab,diagnostic,chemistry,oncology}
+AFP,Lab Test,True,Alpha-Fetoprotein,,A tumor marker for liver cancer.,High AFP suggests liver cancer.,{},"{}",{lab,diagnostic,chemistry,oncology}
+Urinalysis,Lab Panel,False,Urinalysis,,A test that checks urine for kidney disease or infection.,UA shows bacteria and white blood cells.,{},"{UA}",{lab,diagnostic,urology}
+Urine Culture,Lab Test,False,Urine Culture,,A test to find bacteria causing urinary tract infection.,Urine culture grew E. coli.,{},"{}",{lab,diagnostic,microbiology,urology}
+Blood Culture,Lab Test,False,Blood Culture,,A test to find bacteria or fungi in the bloodstream.,Blood cultures drawn before starting antibiotics.,{},"{}",{lab,diagnostic,microbiology}
+Sputum Culture,Lab Test,False,Sputum Culture,,A test to find germs causing lung infection.,Sputum culture positive for pneumonia bacteria.,{},"{}",{lab,diagnostic,microbiology,pulmonary}
+GFR,Lab Test,True,Glomerular Filtration Rate,,A calculated number showing how well kidneys work.,eGFR of 55 means stage 3 kidney disease.,{},"{eGFR}",{lab,diagnostic,chemistry,renal}
+Microalbumin,Lab Test,False,Microalbuminuria,,Small amounts of protein in urine showing early kidney damage.,Positive microalbumin in diabetic patient.,{},"{urine albumin}",{lab,diagnostic,chemistry,renal}
+Vitamin D,Lab Test,False,25-Hydroxyvitamin D,,Measures vitamin D levels in blood.,Vitamin D level is 22 which is low.,{},"{25-OH vitamin D}",{lab,diagnostic,chemistry}
+Vitamin B12,Lab Test,False,Vitamin B12,,Measures B12 levels important for nerves and blood cells.,Low B12 causes big red blood cells.,{},"{cobalamin}",{lab,diagnostic,chemistry}
+Folate,Lab Test,False,Folate,,Measures folic acid levels important for cell growth and blood.,Low folate causes anemia.,{},"{folic acid}",{lab,diagnostic,chemistry}
+Magnesium,Lab Test,False,Magnesium,,A mineral important for muscles and nerves.,Magnesium level is 1.8 mEq/L.,{},"{Mg}",{lab,diagnostic,chemistry}
+Phosphorus,Lab Test,False,Phosphorus,,A mineral important for bones and energy.,Phosphorus checked in kidney disease.,{},"{phosphate}",{lab,diagnostic,chemistry}
+Uric Acid,Lab Test,False,Uric Acid,,A waste product that goes up in gout and kidney stones.,High uric acid level triggers gout attack.,{},"{}",{lab,diagnostic,chemistry}
+Ammonia,Lab Test,False,Ammonia,,A waste product broken down by liver.,High ammonia causes confusion in liver failure.,{},"{}",{lab,diagnostic,chemistry,hepatic}
+Lactate,Lab Test,False,Lactate,,A byproduct made when body doesn't get enough oxygen.,High lactate means sepsis or shock.,{},"{lactic acid}",{lab,diagnostic,chemistry}
+Amylase,Lab Test,False,Amylase,,An enzyme that digests carbohydrates.,High amylase suggests pancreatitis.,{},"{}",{lab,diagnostic,chemistry}
+Lipase,Lab Test,False,Lipase,,An enzyme that digests fats more specific for pancreas problems.,High lipase in pancreas inflammation.,{},"{}",{lab,diagnostic,chemistry}
+CK,Lab Test,True,Creatine Kinase,,An enzyme in muscles and heart that goes up with muscle damage.,High CK after intense exercise.,{},"{creatine phosphokinase,{CPK},{lab,diagnostic,chemistry}
+CK-MB,Lab Test,False,Creatine Kinase-MB,,A heart-specific enzyme that goes up in heart attack.,High CK-MB confirms heart muscle damage.,{},"{}",{lab,diagnostic,chemistry,cardiology}
+LDH,Lab Test,True,Lactate Dehydrogenase,,An enzyme in many tissues that goes up in cell damage.,High LDH in blood cell breakdown.,{},"{}",{lab,diagnostic,chemistry}
+Cortisol,Lab Test,False,Cortisol,,A hormone made by adrenal glands for stress response.,Low morning cortisol in adrenal problems.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+ACTH,Lab Test,True,Adrenocorticotropic Hormone,,A brain hormone that tells adrenal glands to make cortisol.,ACTH test checks adrenal function.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Testosterone,Lab Test,False,Testosterone,,A hormone important for male development and function.,Low testosterone causes hypogonadism.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Estradiol,Lab Test,False,Estradiol,,A form of estrogen important for female reproduction.,Estradiol watched in fertility treatment.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Progesterone,Lab Test,False,Progesterone,,A hormone important for periods and pregnancy.,Progesterone level confirms ovulation.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+FSH,Lab Test,True,Follicle-Stimulating Hormone,,A hormone that controls reproduction.,High FSH means menopause.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+LH,Lab Test,True,Luteinizing Hormone,,A hormone that triggers ovulation and controls sex hormones.,LH surge triggers ovulation.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+Prolactin,Lab Test,False,Prolactin,,A hormone that makes breast milk.,High prolactin causes milk production when not pregnant.,{},"{}",{lab,diagnostic,chemistry,endocrine}
+hCG,Lab Test,True,Human Chorionic Gonadotropin,,A hormone made during pregnancy used in pregnancy tests.,Positive hCG confirms pregnancy.,{},"{beta-hCG}",{lab,diagnostic,chemistry,pregnancy}
+Digoxin Level,Lab Test,False,Digoxin Level,,Measures blood level of digoxin to ensure therapeutic dosing.,Digoxin level is 1.2 ng/mL therapeutic range.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+Vancomycin Level,Lab Test,False,Vancomycin Level,,Measures blood level of vancomycin antibiotic to guide dosing.,Vancomycin trough is 18 mcg/mL.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+Phenytoin Level,Lab Test,False,Phenytoin Level,,Measures blood level of anti-seizure medication phenytoin.,Phenytoin level subtherapeutic at 6 mcg/mL.,{},"{Dilantin level}",{lab,diagnostic,chemistry,therapeutic-drug}
+Theophylline Level,Lab Test,False,Theophylline Level,,Measures blood level of theophylline bronchodilator medication.,Theophylline level is 12 mcg/mL within range.,{},"{}",{lab,diagnostic,chemistry,therapeutic-drug}
+HIV Test,Lab Test,False,HIV Test,,A screening test for human immunodeficiency virus.,Fourth generation HIV test is preferred.,{},"{HIV antibody,{HIV antigen},{lab,diagnostic,immunology,infectious}
+Hepatitis Panel,Lab Panel,False,Hepatitis Panel,,Tests for hepatitis A B and C viruses.,Hepatitis panel ordered for jaundiced patient.,{},"{}",{lab,diagnostic,immunology,infectious}
+HBsAg,Lab Test,True,Hepatitis B Surface Antigen,,A marker of active hepatitis B infection.,Positive HBsAg indicates current HBV infection.,{},"{}",{lab,diagnostic,immunology,infectious}
+Anti-HBs,Lab Test,False,Hepatitis B Surface Antibody,,Indicates immunity to hepatitis B from vaccine or past infection.,Positive anti-HBs shows HBV immunity.,{},"{}",{lab,diagnostic,immunology,infectious}
+HCV Antibody,Lab Test,False,Hepatitis C Antibody,,Screening test for hepatitis C virus.,Positive HCV antibody requires RNA confirmation.,{},"{}",{lab,diagnostic,immunology,infectious}
+RPR,Lab Test,True,Rapid Plasma Reagin,,A screening test for syphilis.,Positive RPR confirmed with FTA-ABS.,{},"{}",{lab,diagnostic,immunology,infectious}
+Mono Test,Lab Test,False,Mononucleosis Test,,A rapid test for Epstein-Barr virus causing infectious mononucleosis.,Mono test positive with atypical lymphocytes.,{},"{monospot,{heterophile antibody},{lab,diagnostic,immunology,infectious}
+Strep Test,Lab Test,False,Strep Test,,A rapid antigen test for Group A Streptococcus causing strep throat.,Rapid strep test positive treat with antibiotics.,{},"{rapid strep,{strep antigen},{lab,diagnostic,microbiology,infectious}
+Flu Test,Lab Test,False,Influenza Test,,A rapid test detecting influenza A and B viruses.,Flu test positive for influenza A.,{},"{rapid flu,{influenza antigen},{lab,diagnostic,microbiology,infectious}
+COVID-19 Test,Lab Test,False,COVID-19 Test,,A test detecting SARS-CoV-2 virus causing COVID-19.,PCR COVID test is most accurate.,{},"{SARS-CoV-2 test}",{lab,diagnostic,microbiology,infectious}
+ANA,Lab Test,True,Antinuclear Antibody,,An autoimmune marker elevated in lupus and other connective tissue diseases.,Positive ANA with speckled pattern.,{},"{}",{lab,diagnostic,immunology,rheumatology}
+RF,Lab Test,True,Rheumatoid Factor,,An autoantibody elevated in rheumatoid arthritis.,Positive RF supports RA diagnosis.,{},"{}",{lab,diagnostic,immunology,rheumatology}
+Anti-CCP,Lab Test,True,Anti-Cyclic Citrullinated Peptide,,A specific antibody for rheumatoid arthritis.,Anti-CCP is more specific than RF for RA.,{},"{}",{lab,diagnostic,immunology,rheumatology}
+Complement C3,Lab Test,False,Complement C3,,A protein part of immune system low in active lupus.,Low C3 indicates lupus flare.,{},"{}",{lab,diagnostic,immunology,rheumatology}
+Complement C4,Lab Test,False,Complement C4,,A protein part of immune system low in active lupus.,Low C4 with low C3 in lupus nephritis.,{},"{}",{lab,diagnostic,immunology,rheumatology}
+Stool Occult Blood,Lab Test,False,Fecal Occult Blood Test,,A screening test for hidden blood in stool indicating GI bleeding or cancer.,Positive FOBT requires colonoscopy.,{},"{FOBT,{guaiac test},{lab,diagnostic,gi}
+Stool Culture,Lab Test,False,Stool Culture,,A test identifying bacteria causing diarrhea.,Stool culture positive for Salmonella.,{},"{}",{lab,diagnostic,microbiology,gi}
+C. diff Toxin,Lab Test,False,Clostridium difficile Toxin,,A test detecting toxin from C. diff bacteria causing severe diarrhea.,C. diff toxin positive start vancomycin.,{},"{C. difficile,{CDI},{lab,diagnostic,microbiology,gi}
+H. pylori Test,Lab Test,False,Helicobacter pylori Test,,A test for bacteria that causes stomach ulcers.,Positive H. pylori treat with triple therapy.,{},"{}",{lab,diagnostic,microbiology,gi}
+Pregnancy Test,Lab Test,False,Pregnancy Test,,A urine or blood test detecting hCG to confirm pregnancy.,Urine pregnancy test positive.,{},"{urine hCG,{beta-hCG},{lab,diagnostic,pregnancy}
+Pap Smear,Lab Test,False,Papanicolaou Test,,A cervical cancer screening test examining cervical cells.,Pap smear shows ASCUS repeat in 1 year.,{},"{}",{lab,diagnostic,oncology,gynecology}
+Semen Analysis,Lab Test,False,Semen Analysis,,A test evaluating sperm count motility and morphology for fertility.,Semen analysis shows oligospermia.,{},"{}",{lab,diagnostic,fertility}
+HTN,Condition,True,Hypertension,,High blood pressure that can damage the heart and blood vessels over time.,Patient has HTN controlled with medication.,{},"{high blood pressure}",{condition,cardiovascular}
+DM,Condition,True,Diabetes Mellitus,,A disease where blood sugar is too high because the body can't make or use insulin properly.,Patient has DM type 2 managed with metformin.,{},"{diabetes}",{condition,endocrine}
+Type 1 Diabetes,Condition,False,Type 1 Diabetes Mellitus,,A type of diabetes where the body doesn't make insulin at all.,Type 1 diabetes requires insulin injections.,{},"{T1DM,{juvenile diabetes},{condition,endocrine}
+Type 2 Diabetes,Condition,False,Type 2 Diabetes Mellitus,,A type of diabetes where the body doesn't use insulin well.,Type 2 diabetes managed with diet and pills.,{},"{T2DM,{adult-onset diabetes},{condition,endocrine}
+COPD,Condition,True,Chronic Obstructive Pulmonary Disease,,A lung disease that makes it hard to breathe usually from smoking.,COPD patient uses inhalers daily.,{},"{emphysema,{chronic bronchitis},{condition,pulmonary}
+CHF,Condition,True,Congestive Heart Failure,,A condition where the heart can't pump blood well causing fluid buildup.,CHF patient has swelling in legs.,{},"{heart failure,{HF},{condition,cardiovascular}
+CKD,Condition,True,Chronic Kidney Disease,,Long-term kidney damage that gets worse over time.,CKD stage 3 requires monitoring.,{},"{chronic renal disease}",{condition,renal}
+MI,Condition,True,Myocardial Infarction,,A heart attack where blood flow to heart muscle is blocked.,Patient had MI last year needs cardiac rehab.,{},"{heart attack}",{condition,cardiovascular}
+CVA,Condition,True,Cerebrovascular Accident,,A stroke where blood flow to the brain is blocked or a blood vessel bursts.,CVA left patient with right-sided weakness.,{},"{stroke}",{condition,neurological}
+TIA,Condition,True,Transient Ischemic Attack,,A mini-stroke with temporary symptoms that go away.,TIA is a warning sign for future stroke.,{},"{mini-stroke}",{condition,neurological}
+CAD,Condition,True,Coronary Artery Disease,,Narrowing of arteries that supply blood to the heart.,CAD patient may need cardiac catheterization.,{},"{coronary heart disease}",{condition,cardiovascular}
+PAD,Condition,True,Peripheral Arterial Disease,,Narrowing of arteries in the legs causing pain with walking.,PAD causes leg pain when walking.,{},"{peripheral vascular disease}",{condition,cardiovascular}
+A-fib,Condition,False,Atrial Fibrillation,,An irregular heart rhythm that can cause blood clots.,A-fib patient takes blood thinner.,{},"{AFib,{AF},{condition,cardiovascular}
+DVT,Condition,True,Deep Vein Thrombosis,,A blood clot in a deep vein usually in the leg.,DVT requires anticoagulation therapy.,{},"{blood clot}",{condition,cardiovascular}
+PE,Condition,True,Pulmonary Embolism,,A blood clot that travels to the lungs and blocks blood flow.,PE is life-threatening requires immediate treatment.,{},"{lung clot}",{condition,pulmonary,cardiovascular}
+Asthma,Condition,False,Asthma,,A lung condition causing airways to narrow and swell making breathing difficult.,Asthma patient uses rescue inhaler.,{},"{}",{condition,pulmonary}
+Depression,Condition,False,Major Depressive Disorder,,A mental health condition causing persistent sadness and loss of interest.,Depression treated with therapy and medication.,{},"{MDD,{clinical depression},{condition,mental-health}
+Anxiety,Condition,False,Generalized Anxiety Disorder,,A mental health condition with excessive worry and fear.,Anxiety managed with counseling and medication.,{},"{GAD}",{condition,mental-health}
+PTSD,Condition,True,Post-Traumatic Stress Disorder,,A mental health condition triggered by experiencing or witnessing a traumatic event.,PTSD patient has flashbacks and nightmares.,{},"{}",{condition,mental-health}
+OCD,Condition,True,Obsessive-Compulsive Disorder,,A mental health condition with unwanted repetitive thoughts and behaviors.,OCD patient has intrusive thoughts.,{},"{}",{condition,mental-health}
+ADHD,Condition,True,Attention-Deficit/Hyperactivity Disorder,,A condition causing difficulty paying attention and controlling impulsive behaviors.,ADHD managed with stimulant medication.,{},"{}",{condition,mental-health,neurological}
+Bipolar Disorder,Condition,False,Bipolar Disorder,,A mental health condition with extreme mood swings from high to low.,Bipolar patient has manic and depressive episodes.,{},"{manic depression}",{condition,mental-health}
+Schizophrenia,Condition,False,Schizophrenia,,A mental health condition affecting how a person thinks feels and behaves.,Schizophrenia treated with antipsychotic medication.,{},"{}",{condition,mental-health}
+GERD,Condition,False,Gastroesophageal Reflux Disease,,A condition where stomach acid flows back into the throat causing heartburn.,GERD treated with proton pump inhibitors.,{},"{acid reflux,{heartburn},{condition,gastrointestinal}
+IBS,Condition,True,Irritable Bowel Syndrome,,A disorder causing cramping bloating gas and diarrhea or constipation.,IBS symptoms triggered by certain foods.,{},"{}",{condition,gastrointestinal}
+IBD,Condition,True,Inflammatory Bowel Disease,,Chronic inflammation of the digestive tract including Crohn's and ulcerative colitis.,IBD requires ongoing treatment.,{},"{}",{condition,gastrointestinal}
+Crohn Disease,Condition,False,Crohn Disease,,A type of IBD causing inflammation anywhere in the digestive tract.,Crohn disease patient has frequent diarrhea.,{},"{Crohn's}",{condition,gastrointestinal}
+Ulcerative Colitis,Condition,False,Ulcerative Colitis,,A type of IBD causing inflammation and ulcers in the colon and rectum.,Ulcerative colitis patient has bloody diarrhea.,{},"{UC}",{condition,gastrointestinal}
+Celiac Disease,Condition,False,Celiac Disease,,An autoimmune disorder where eating gluten damages the small intestine.,Celiac disease requires gluten-free diet.,{},"{}",{condition,gastrointestinal,autoimmune}
+Diverticulitis,Condition,False,Diverticulitis,,Inflammation of small pouches in the colon wall.,Diverticulitis causes left lower abdominal pain.,{},"{}",{condition,gastrointestinal}
+Cirrhosis,Condition,False,Cirrhosis,,Severe scarring of the liver from long-term damage.,Cirrhosis from chronic alcohol use.,{},"{}",{condition,hepatic}
+Hepatitis,Condition,False,Hepatitis,,Inflammation of the liver usually from a virus.,Hepatitis B can become chronic.,{},"{}",{condition,hepatic,infectious}
+Pancreatitis,Condition,False,Pancreatitis,,Inflammation of the pancreas causing severe abdominal pain.,Acute pancreatitis requires hospitalization.,{},"{}",{condition,gastrointestinal}
+Cholecystitis,Condition,False,Cholecystitis,,Inflammation of the gallbladder usually from gallstones.,Cholecystitis treated with gallbladder removal.,{},"{}",{condition,gastrointestinal}
+Appendicitis,Condition,False,Appendicitis,,Inflammation of the appendix requiring emergency surgery.,Appendicitis causes right lower abdominal pain.,{},"{}",{condition,gastrointestinal}
+Hypothyroidism,Condition,False,Hypothyroidism,,A condition where the thyroid gland doesn't make enough thyroid hormone.,Hypothyroidism causes fatigue and weight gain.,{},"{underactive thyroid}",{condition,endocrine}
+Hyperthyroidism,Condition,False,Hyperthyroidism,,A condition where the thyroid gland makes too much thyroid hormone.,Hyperthyroidism causes weight loss and rapid heartbeat.,{},"{overactive thyroid}",{condition,endocrine}
+Graves Disease,Condition,False,Graves Disease,,An autoimmune disorder causing hyperthyroidism.,Graves disease can cause bulging eyes.,{},"{}",{condition,endocrine,autoimmune}
+Hashimoto Thyroiditis,Condition,False,Hashimoto Thyroiditis,,An autoimmune disorder causing hypothyroidism.,Hashimoto disease most common cause of hypothyroidism.,{},"{Hashimoto's}",{condition,endocrine,autoimmune}
+Addison Disease,Condition,False,Addison Disease,,A rare disorder where adrenal glands don't make enough hormones.,Addison disease causes weakness and low blood pressure.,{},"{adrenal insufficiency}",{condition,endocrine}
+Cushing Syndrome,Condition,False,Cushing Syndrome,,A condition caused by too much cortisol hormone.,Cushing syndrome causes weight gain and round face.,{},"{}",{condition,endocrine}
+Obesity,Condition,False,Obesity,,Having too much body fat increasing health risks.,Obesity increases risk of diabetes and heart disease.,{},"{}",{condition,metabolic}
+Metabolic Syndrome,Condition,False,Metabolic Syndrome,,A cluster of conditions increasing risk of heart disease and diabetes.,Metabolic syndrome includes high BP sugar and cholesterol.,{},"{}",{condition,metabolic}
+Hyperlipidemia,Condition,False,Hyperlipidemia,,High levels of fats in the blood including cholesterol.,Hyperlipidemia treated with statins.,{},"{high cholesterol}",{condition,metabolic}
+Gout,Condition,False,Gout,,A type of arthritis causing sudden severe joint pain from uric acid crystals.,Gout attack affects big toe.,{},"{}",{condition,rheumatology}
+RA,Condition,True,Rheumatoid Arthritis,,An autoimmune disease causing painful swelling in the joints.,RA affects hands and feet symmetrically.,{},"{}",{condition,rheumatology,autoimmune}
+OA,Condition,True,Osteoarthritis,,Wear and tear arthritis from cartilage breakdown.,OA most common in knees and hips.,{},"{degenerative joint disease}",{condition,rheumatology}
+Lupus,Condition,False,Systemic Lupus Erythematosus,,An autoimmune disease affecting multiple organs.,Lupus causes butterfly rash on face.,{},"{SLE}",{condition,rheumatology,autoimmune}
+Fibromyalgia,Condition,False,Fibromyalgia,,A disorder causing widespread muscle pain and fatigue.,Fibromyalgia patient has multiple tender points.,{},"{}",{condition,rheumatology}
+Osteoporosis,Condition,False,Osteoporosis,,A condition where bones become weak and brittle.,Osteoporosis increases fracture risk.,{},"{}",{condition,rheumatology}
+Anemia,Condition,False,Anemia,,A condition with too few red blood cells or low hemoglobin.,Anemia causes fatigue and weakness.,{},"{}",{condition,hematology}
+Sickle Cell Disease,Condition,False,Sickle Cell Disease,,An inherited blood disorder with abnormal red blood cells.,Sickle cell disease causes pain crises.,{},"{SCD}",{condition,hematology}
+Hemophilia,Condition,False,Hemophilia,,An inherited bleeding disorder where blood doesn't clot properly.,Hemophilia patient needs clotting factor.,{},"{}",{condition,hematology}
+Leukemia,Condition,False,Leukemia,,Cancer of blood-forming tissues including bone marrow.,Leukemia causes too many abnormal white blood cells.,{},"{}",{condition,hematology,oncology}
+Lymphoma,Condition,False,Lymphoma,,Cancer of the lymphatic system.,Lymphoma causes swollen lymph nodes.,{},"{}",{condition,oncology}
+Multiple Myeloma,Condition,False,Multiple Myeloma,,Cancer of plasma cells in bone marrow.,Multiple myeloma causes bone pain and fractures.,{},"{}",{condition,hematology,oncology}
+Breast Cancer,Condition,False,Breast Cancer,,Cancer that forms in breast tissue.,Breast cancer detected on mammogram.,{},"{}",{condition,oncology}
+Lung Cancer,Condition,False,Lung Cancer,,Cancer that starts in the lungs usually from smoking.,Lung cancer diagnosed with CT scan and biopsy.,{},"{}",{condition,oncology,pulmonary}
+Colon Cancer,Condition,False,Colorectal Cancer,,Cancer of the colon or rectum.,Colon cancer screening starts at age 45.,{},"{CRC}",{condition,oncology,gastrointestinal}
+Prostate Cancer,Condition,False,Prostate Cancer,,Cancer of the prostate gland in men.,Prostate cancer detected by elevated PSA.,{},"{}",{condition,oncology,urology}
+Skin Cancer,Condition,False,Skin Cancer,,Cancer that develops in skin cells.,Skin cancer includes melanoma and basal cell.,{},"{}",{condition,oncology,dermatology}
+Melanoma,Condition,False,Melanoma,,The most serious type of skin cancer.,Melanoma can spread to other organs.,{},"{}",{condition,oncology,dermatology}
+Alzheimer Disease,Condition,False,Alzheimer Disease,,A brain disorder causing memory loss and confusion.,Alzheimer disease is most common dementia.,{},"{AD}",{condition,neurological}
+Dementia,Condition,False,Dementia,,A decline in memory and thinking skills affecting daily life.,Dementia includes Alzheimer and vascular types.,{},"{}",{condition,neurological}
+Parkinson Disease,Condition,False,Parkinson Disease,,A brain disorder causing tremor and movement problems.,Parkinson disease causes shuffling walk.,{},"{PD}",{condition,neurological}
+Multiple Sclerosis,Condition,False,Multiple Sclerosis,,An autoimmune disease damaging nerve coverings in brain and spine.,MS causes vision problems and weakness.,{},"{MS}",{condition,neurological,autoimmune}
+Epilepsy,Condition,False,Epilepsy,,A brain disorder causing repeated seizures.,Epilepsy controlled with anti-seizure medication.,{},"{seizure disorder}",{condition,neurological}
+Migraine,Condition,False,Migraine,,A type of headache causing severe throbbing pain.,Migraine patient has nausea and light sensitivity.,{},"{migraine headache}",{condition,neurological}
+Neuropathy,Condition,False,Peripheral Neuropathy,,Nerve damage causing numbness tingling and pain usually in hands and feet.,Diabetic neuropathy is most common type.,{},"{}",{condition,neurological}
+Bell Palsy,Condition,False,Bell Palsy,,Sudden weakness or paralysis of facial muscles on one side.,Bell palsy causes drooping on one side of face.,{},"{Bell's palsy}",{condition,neurological}
+Carpal Tunnel Syndrome,Condition,False,Carpal Tunnel Syndrome,,Numbness and tingling in hand from compressed nerve in wrist.,Carpal tunnel syndrome from repetitive hand use.,{},"{CTS}",{condition,neurological,orthopedic}
+Sleep Apnea,Condition,False,Obstructive Sleep Apnea,,A disorder where breathing stops and starts during sleep.,Sleep apnea treated with CPAP machine.,{},"{OSA}",{condition,pulmonary}
+Pneumonia,Condition,False,Pneumonia,,Infection causing inflammation in the lungs.,Pneumonia causes cough fever and shortness of breath.,{},"{}",{condition,pulmonary,infectious}
+Bronchitis,Condition,False,Bronchitis,,Inflammation of the airways in the lungs.,Acute bronchitis causes cough with mucus.,{},"{}",{condition,pulmonary}
+Tuberculosis,Condition,False,Tuberculosis,,A serious bacterial infection affecting the lungs.,TB requires months of antibiotics.,{},"{TB}",{condition,pulmonary,infectious}
+COVID-19,Condition,False,Coronavirus Disease 2019,,An infectious disease caused by SARS-CoV-2 virus.,COVID-19 patient has fever and cough.,{},"{coronavirus}",{condition,infectious}
+Influenza,Condition,False,Influenza,,A contagious respiratory illness caused by flu viruses.,Influenza causes fever body aches and fatigue.,{},"{flu}",{condition,infectious,pulmonary}
+URI,Condition,True,Upper Respiratory Infection,,Infection of nose throat and airways.,URI includes common cold.,{},"{upper respiratory tract infection}",{condition,infectious}
+Sinusitis,Condition,False,Sinusitis,,Inflammation of the sinuses causing facial pain and congestion.,Acute sinusitis treated with antibiotics.,{},"{sinus infection}",{condition,infectious}
+Pharyngitis,Condition,False,Pharyngitis,,Inflammation of the throat causing sore throat.,Strep pharyngitis requires antibiotics.,{},"{sore throat}",{condition,infectious}
+Otitis Media,Condition,False,Otitis Media,,Middle ear infection common in children.,Otitis media causes ear pain and fever.,{},"{ear infection}",{condition,infectious}
+UTI,Condition,True,Urinary Tract Infection,,Infection in any part of the urinary system.,UTI causes burning with urination.,{},"{bladder infection}",{condition,infectious,urology}
+Pyelonephritis,Condition,False,Pyelonephritis,,Kidney infection usually from untreated UTI.,Pyelonephritis causes back pain and high fever.,{},"{kidney infection}",{condition,infectious,renal}
+Cystitis,Condition,False,Cystitis,,Bladder inflammation usually from infection.,Cystitis causes frequent painful urination.,{},"{bladder infection}",{condition,infectious,urology}
+Cellulitis,Condition,False,Cellulitis,,A bacterial skin infection causing redness and swelling.,Cellulitis requires antibiotics.,{},"{}",{condition,infectious,dermatology}
+Abscess,Condition,False,Abscess,,A collection of pus from bacterial infection.,Abscess requires drainage and antibiotics.,{},"{}",{condition,infectious}
+Sepsis,Condition,False,Sepsis,,A life-threatening response to infection affecting the whole body.,Sepsis requires ICU care and IV antibiotics.,{},"{blood infection}",{condition,infectious,critical-care}
+Meningitis,Condition,False,Meningitis,,Inflammation of membranes covering brain and spinal cord.,Bacterial meningitis is a medical emergency.,{},"{}",{condition,infectious,neurological}
+Encephalitis,Condition,False,Encephalitis,,Inflammation of the brain usually from viral infection.,Encephalitis causes confusion and seizures.,{},"{}",{condition,infectious,neurological}
+HIV,Condition,True,Human Immunodeficiency Virus,,A virus that attacks the immune system.,HIV managed with antiretroviral therapy.,{},"{AIDS virus}",{condition,infectious,immunology}
+AIDS,Condition,True,Acquired Immunodeficiency Syndrome,,The most advanced stage of HIV infection.,AIDS diagnosis when CD4 count very low.,{},"{}",{condition,infectious,immunology}
+Hepatitis B,Condition,False,Hepatitis B,,A viral infection causing liver inflammation.,Hepatitis B vaccine prevents infection.,{},"{HBV}",{condition,infectious,hepatic}
+Hepatitis C,Condition,False,Hepatitis C,,A viral infection causing chronic liver disease.,Hepatitis C now curable with antiviral drugs.,{},"{HCV}",{condition,infectious,hepatic}
+Herpes Simplex,Condition,False,Herpes Simplex Virus,,A viral infection causing cold sores or genital lesions.,HSV-1 causes cold sores on mouth.,{},"{HSV}",{condition,infectious,dermatology}
+Shingles,Condition,False,Herpes Zoster,,A painful rash from reactivation of chickenpox virus.,Shingles vaccine recommended after age 50.,{},"{zoster}",{condition,infectious,dermatology}
+Chickenpox,Condition,False,Varicella,,A contagious infection causing itchy rash and blisters.,Chickenpox vaccine given to children.,{},"{varicella}",{condition,infectious,dermatology}
+Measles,Condition,False,Measles,,A highly contagious viral infection with rash and fever.,Measles preventable with MMR vaccine.,{},"{rubeola}",{condition,infectious}
+Mumps,Condition,False,Mumps,,A viral infection causing swelling of salivary glands.,Mumps preventable with MMR vaccine.,{},"{}",{condition,infectious}
+Rubella,Condition,False,Rubella,,A viral infection with mild rash dangerous in pregnancy.,Rubella preventable with MMR vaccine.,{},"{German measles}",{condition,infectious}
+Mononucleosis,Condition,False,Infectious Mononucleosis,,A viral infection causing extreme fatigue and sore throat.,Mono caused by Epstein-Barr virus.,{},"{mono,{kissing disease},{condition,infectious}
+Lyme Disease,Condition,False,Lyme Disease,,A bacterial infection from tick bites.,Lyme disease causes bull's-eye rash.,{},"{}",{condition,infectious}
+MRSA,Condition,True,Methicillin-Resistant Staphylococcus Aureus,,A type of staph bacteria resistant to many antibiotics.,MRSA skin infection requires special antibiotics.,{},"{superbug}",{condition,infectious}
+C. diff,Condition,False,Clostridioides difficile Infection,,A bacterial infection causing severe diarrhea.,C. diff from antibiotic use.,{},"{CDI}",{condition,infectious,gastrointestinal}
+Scabies,Condition,False,Scabies,,A skin infestation by mites causing intense itching.,Scabies spreads through close contact.,{},"{}",{condition,infectious,dermatology}
+Acne,Condition,False,Acne Vulgaris,,A skin condition with pimples from clogged pores.,Acne treated with topical and oral medications.,{},"{}",{condition,dermatology}
+Eczema,Condition,False,Atopic Dermatitis,,A condition causing itchy inflamed skin.,Eczema managed with moisturizers and steroids.,{},"{atopic dermatitis}",{condition,dermatology}
+Psoriasis,Condition,False,Psoriasis,,An autoimmune condition causing thick scaly skin patches.,Psoriasis treated with topical and systemic drugs.,{},"{}",{condition,dermatology,autoimmune}
+Rosacea,Condition,False,Rosacea,,A skin condition causing facial redness and bumps.,Rosacea triggered by sun and spicy foods.,{},"{}",{condition,dermatology}
+BPH,Condition,True,Benign Prostatic Hyperplasia,,Enlarged prostate gland causing urinary problems.,BPH common in older men.,{},"{enlarged prostate}",{condition,urology}
+ED,Condition,True,Erectile Dysfunction,,Inability to achieve or maintain an erection.,ED treated with medications like sildenafil.,{},"{impotence}",{condition,urology}
+Endometriosis,Condition,False,Endometriosis,,A condition where uterine tissue grows outside the uterus causing pain.,Endometriosis causes severe menstrual cramps.,{},"{}",{condition,gynecology}
+PCOS,Condition,True,Polycystic Ovary Syndrome,,A hormonal disorder causing irregular periods and cysts on ovaries.,PCOS causes irregular periods and excess hair.,{},"{}",{condition,gynecology,endocrine}
+Fibroids,Condition,False,Uterine Fibroids,,Noncancerous growths in the uterus.,Fibroids can cause heavy menstrual bleeding.,{},"{leiomyomas}",{condition,gynecology}
+PID,Condition,True,Pelvic Inflammatory Disease,,Infection of female reproductive organs.,PID from untreated STI can cause infertility.,{},"{}",{condition,gynecology,infectious}
+STI,Condition,True,Sexually Transmitted Infection,,An infection passed through sexual contact.,STI screening important for sexually active people.,{},"{STD,{sexually transmitted disease},{condition,infectious}
+Chlamydia,Condition,False,Chlamydia,,A common bacterial STI often without symptoms.,Chlamydia treated with antibiotics.,{},"{}",{condition,infectious,sti}
+Gonorrhea,Condition,False,Gonorrhea,,A bacterial STI causing discharge and pain.,Gonorrhea treated with antibiotics.,{},"{}",{condition,infectious,sti}
+Syphilis,Condition,False,Syphilis,,A bacterial STI that progresses through stages.,Syphilis treated with penicillin.,{},"{}",{condition,infectious,sti}
+HPV,Condition,True,Human Papillomavirus,,A viral infection causing warts and linked to cancer.,HPV vaccine prevents most cancer-causing types.,{},"{genital warts}",{condition,infectious,sti}
+Herpes,Condition,False,Genital Herpes,,A viral STI causing painful genital sores.,Genital herpes caused by HSV-2.,{},"{HSV-2}",{condition,infectious,sti}
+Trichomoniasis,Condition,False,Trichomoniasis,,A parasitic STI causing discharge and irritation.,Trichomoniasis treated with metronidazole.,{},"{trich}",{condition,infectious,sti}
+BV,Condition,True,Bacterial Vaginosis,,An imbalance of vaginal bacteria causing discharge.,BV treated with metronidazole.,{},"{}",{condition,gynecology,infectious}
+Candidiasis,Condition,False,Vaginal Yeast Infection,,A fungal infection causing itching and discharge.,Yeast infection treated with antifungal cream.,{},"{yeast infection}",{condition,gynecology,infectious}
+Preeclampsia,Condition,False,Preeclampsia,,High blood pressure during pregnancy that can be dangerous.,Preeclampsia requires close monitoring.,{},"{}",{condition,gynecology,pregnancy}
+Gestational Diabetes,Condition,False,Gestational Diabetes,,High blood sugar that develops during pregnancy.,Gestational diabetes usually resolves after delivery.,{},"{GDM}",{condition,endocrine,pregnancy}
+Glaucoma,Condition,False,Glaucoma,,Eye disease with increased pressure damaging the optic nerve.,Glaucoma can cause blindness if untreated.,{},"{}",{condition,ophthalmology}
+Cataracts,Condition,False,Cataracts,,Clouding of the eye lens causing blurry vision.,Cataracts treated with surgery.,{},"{}",{condition,ophthalmology}
+Macular Degeneration,Condition,False,Age-Related Macular Degeneration,,Eye disease causing loss of central vision.,Macular degeneration most common in elderly.,{},"{AMD,{ARMD},{condition,ophthalmology}
+Diabetic Retinopathy,Condition,False,Diabetic Retinopathy,,Eye damage from diabetes affecting the retina.,Diabetic retinopathy can cause blindness.,{},"{}",{condition,ophthalmology,endocrine}
+Vertigo,Condition,False,Vertigo,,A sensation of spinning or dizziness.,Vertigo from inner ear problems.,{},"{}",{condition,ent}
+Meniere Disease,Condition,False,Meniere Disease,,Inner ear disorder causing vertigo and hearing loss.,Meniere disease causes episodes of severe dizziness.,{},"{Meniere's}",{condition,ent}
+Tinnitus,Condition,False,Tinnitus,,Ringing or buzzing sound in the ears.,Tinnitus often from noise exposure.,{},"{}",{condition,ent}
+TMJ,Condition,True,Temporomandibular Joint Disorder,,Jaw joint problems causing pain and clicking.,TMJ causes jaw pain and headaches.,{},"{TMD}",{condition,dental}
+Gingivitis,Condition,False,Gingivitis,,Inflammation of the gums.,Gingivitis from poor oral hygiene.,{},"{}",{condition,dental}
+Periodontitis,Condition,False,Periodontitis,,Serious gum infection damaging soft tissue and bone.,Periodontitis can cause tooth loss.,{},"{gum disease}",{condition,dental}
+Varicose Veins,Condition,False,Varicose Veins,,Swollen twisted veins visible under the skin.,Varicose veins most common in legs.,{},"{}",{condition,vascular}
+Hemorrhoids,Condition,False,Hemorrhoids,,Swollen veins in the rectum or anus.,Hemorrhoids cause rectal bleeding and pain.,{},"{piles}",{condition,gastrointestinal}
+Anal Fissure,Condition,False,Anal Fissure,,A small tear in the lining of the anus.,Anal fissure causes pain with bowel movements.,{},"{}",{condition,gastrointestinal}
+Hernia,Condition,False,Hernia,,When an organ pushes through a weak spot in muscle.,Inguinal hernia common in groin area.,{},"{}",{condition,surgical}
+Gallstones,Condition,False,Cholelithiasis,,Hard deposits in the gallbladder.,Gallstones can cause severe pain.,{},"{}",{condition,gastrointestinal}
+Kidney Stones,Condition,False,Nephrolithiasis,,Hard deposits in the kidneys causing severe pain.,Kidney stones pass through urinary tract.,{},"{renal calculi}",{condition,renal,urology}
+BPH,Condition,True,Benign Prostatic Hyperplasia,,Non-cancerous enlargement of the prostate.,BPH causes urinary frequency.,{},"{enlarged prostate}",{condition,urology}
+Incontinence,Condition,False,Urinary Incontinence,,Involuntary leakage of urine.,Urinary incontinence common in elderly.,{},"{}",{condition,urology}
+Overactive Bladder,Condition,False,Overactive Bladder,,Sudden urge to urinate that's difficult to control.,OAB causes frequent urgent urination.,{},"{OAB}",{condition,urology}
+AKI,Condition,True,Acute Kidney Injury,,Sudden decrease in kidney function.,AKI requires urgent treatment.,{},"{acute renal failure}",{condition,renal}
+ESRD,Condition,True,End-Stage Renal Disease,,Complete or near-complete kidney failure.,ESRD requires dialysis or transplant.,{},"{kidney failure}",{condition,renal}
+Dehydration,Condition,False,Dehydration,,Loss of too much body fluid.,Dehydration causes dizziness and dry mouth.,{},"{}",{condition,general}
+Heat Stroke,Condition,False,Heat Stroke,,Life-threatening condition from overheating.,Heat stroke is medical emergency.,{},"{}",{condition,emergency}
+Hypothermia,Condition,False,Hypothermia,,Dangerously low body temperature.,Hypothermia from prolonged cold exposure.,{},"{}",{condition,emergency}
+Frostbite,Condition,False,Frostbite,,Freezing of skin and tissues from extreme cold.,Frostbite affects fingers and toes.,{},"{}",{condition,emergency}
+Burns,Condition,False,Burns,,Tissue damage from heat chemicals or electricity.,Burns classified by degree of severity.,{},"{}",{condition,emergency}
+Fracture,Condition,False,Bone Fracture,,A broken bone.,Fracture requires immobilization or surgery.,{},"{broken bone}",{condition,orthopedic}
+Sprain,Condition,False,Sprain,,Stretched or torn ligament.,Ankle sprain from twisting injury.,{},"{}",{condition,orthopedic}
+Strain,Condition,False,Muscle Strain,,Stretched or torn muscle or tendon.,Back strain from heavy lifting.,{},"{pulled muscle}",{condition,orthopedic}
+Tendinitis,Condition,False,Tendinitis,,Inflammation of a tendon.,Achilles tendinitis from overuse.,{},"{tendonitis}",{condition,orthopedic}
+Bursitis,Condition,False,Bursitis,,Inflammation of fluid-filled sacs cushioning joints.,Shoulder bursitis causes pain with movement.,{},"{}",{condition,orthopedic}
+Scoliosis,Condition,False,Scoliosis,,Sideways curvature of the spine.,Scoliosis screened in adolescents.,{},"{}",{condition,orthopedic}
+Herniated Disc,Condition,False,Herniated Disc,,When disc cushion between vertebrae pushes out.,Herniated disc causes back and leg pain.,{},"{slipped disc,{ruptured disc},{condition,orthopedic,neurological}
+Sciatica,Condition,False,Sciatica,,Pain radiating along the sciatic nerve from back to leg.,Sciatica from herniated disc.,{},"{}",{condition,orthopedic,neurological}
+Rotator Cuff Tear,Condition,False,Rotator Cuff Tear,,Tear in shoulder muscles or tendons.,Rotator cuff tear limits shoulder movement.,{},"{}",{condition,orthopedic}
+ACL Tear,Condition,True,Anterior Cruciate Ligament Tear,,Tear of major knee ligament.,ACL tear common in athletes requires surgery.,{},"{}",{condition,orthopedic}
+Meniscus Tear,Condition,False,Meniscus Tear,,Tear of knee cartilage.,Meniscus tear causes knee pain and swelling.,{},"{}",{condition,orthopedic}
+Appendectomy,Procedure,False,Appendectomy,,Surgery to remove the appendix.,Emergency appendectomy performed for appendicitis.,{},"{}",{procedure,surgery,gastrointestinal}
+Cholecystectomy,Procedure,False,Cholecystectomy,,Surgery to remove the gallbladder.,Laparoscopic cholecystectomy for gallstones.,{},"{}",{procedure,surgery,gastrointestinal}
+Colectomy,Procedure,False,Colectomy,,Surgery to remove all or part of the colon.,Colectomy performed for colon cancer.,{},"{}",{procedure,surgery,gastrointestinal}
+Colonoscopy,Procedure,False,Colonoscopy,,A test using a camera to look inside the colon.,Colonoscopy screening at age 45.,{},"{}",{procedure,diagnostic,gastrointestinal}
+Endoscopy,Procedure,False,Endoscopy,,A test using a camera to look inside the digestive tract.,Upper endoscopy to check for ulcers.,{},"{EGD}",{procedure,diagnostic,gastrointestinal}
+EGD,Procedure,True,Esophagogastroduodenoscopy,,A test looking inside the esophagus stomach and small intestine.,EGD shows gastritis.,{},"{}",{procedure,diagnostic,gastrointestinal}
+ERCP,Procedure,True,Endoscopic Retrograde Cholangiopancreatography,,A procedure to diagnose and treat bile duct and pancreas problems.,ERCP to remove bile duct stone.,{},"{}",{procedure,diagnostic,gastrointestinal}
+Sigmoidoscopy,Procedure,False,Sigmoidoscopy,,A test using a camera to look inside the lower colon.,Flexible sigmoidoscopy checks for polyps.,{},"{}",{procedure,diagnostic,gastrointestinal}
+Biopsy,Procedure,False,Biopsy,,Removing a small piece of tissue to check for disease.,Skin biopsy to rule out cancer.,{},"{}",{procedure,diagnostic}
+Excisional Biopsy,Procedure,False,Excisional Biopsy,,Removing an entire lump or area of abnormal tissue.,Excisional biopsy of breast lump.,{},"{}",{procedure,diagnostic,surgery}
+Incisional Biopsy,Procedure,False,Incisional Biopsy,,Removing a small piece of a larger abnormal area.,Incisional biopsy of large skin lesion.,{},"{}",{procedure,diagnostic,surgery}
+Needle Biopsy,Procedure,False,Needle Biopsy,,Using a needle to remove cells or tissue.,Fine needle biopsy of thyroid nodule.,{},"{FNA,{fine needle aspiration},{procedure,diagnostic}
+Core Biopsy,Procedure,False,Core Biopsy,,Using a larger needle to remove a tissue sample.,Core biopsy of breast mass.,{},"{}",{procedure,diagnostic}
+CABG,Procedure,True,Coronary Artery Bypass Graft,,Heart surgery creating new routes around blocked arteries.,CABG after heart attack.,{},"{bypass surgery,{heart bypass},{procedure,surgery,cardiovascular}
+Angioplasty,Procedure,False,Angioplasty,,Opening blocked arteries with a balloon.,Coronary angioplasty with stent placement.,{},"{PCI}",{procedure,cardiovascular}
+Stent,Procedure,False,Stent Placement,,Inserting a small tube to keep an artery open.,Cardiac stent keeps artery open.,{},"{}",{procedure,cardiovascular}
+Cardiac Catheterization,Procedure,False,Cardiac Catheterization,,Threading a tube through blood vessels to the heart.,Cardiac cath to check for blockages.,{},"{heart cath}",{procedure,diagnostic,cardiovascular}
+Pacemaker,Procedure,False,Pacemaker Insertion,,Implanting a device to control heart rhythm.,Pacemaker for slow heart rate.,{},"{}",{procedure,cardiovascular}
+ICD,Procedure,True,Implantable Cardioverter Defibrillator,,A device that shocks the heart if dangerous rhythm occurs.,ICD for heart failure patient.,{},"{}",{procedure,cardiovascular}
+Ablation,Procedure,False,Cardiac Ablation,,Destroying heart tissue causing abnormal rhythm.,Ablation for atrial fibrillation.,{},"{}",{procedure,cardiovascular}
+Valve Replacement,Procedure,False,Heart Valve Replacement,,Surgery to replace a damaged heart valve.,Aortic valve replacement for stenosis.,{},"{}",{procedure,surgery,cardiovascular}
+Angiogram,Procedure,False,Angiogram,,X-ray test using dye to see blood vessels.,Coronary angiogram shows blockages.,{},"{arteriogram}",{procedure,diagnostic,cardiovascular}
+Echocardiogram,Procedure,False,Echocardiogram,,Ultrasound of the heart.,Echo shows ejection fraction.,{},"{echo}",{procedure,diagnostic,cardiovascular}
+Stress Test,Procedure,False,Cardiac Stress Test,,A test checking heart function during exercise.,Stress test shows ischemia.,{},"{exercise stress test,{treadmill test},{procedure,diagnostic,cardiovascular}
+Holter Monitor,Procedure,False,Holter Monitor,,A portable device recording heart rhythm for 24-48 hours.,Holter monitor to catch arrhythmia.,{},"{}",{procedure,diagnostic,cardiovascular}
+Event Monitor,Procedure,False,Event Monitor,,A portable device worn for weeks to record irregular heartbeats.,Event monitor for intermittent palpitations.,{},"{}",{procedure,diagnostic,cardiovascular}
+Cardioversion,Procedure,False,Cardioversion,,Using electricity to restore normal heart rhythm.,Cardioversion for persistent A-fib.,{},"{}",{procedure,cardiovascular}
+Thrombolysis,Procedure,False,Thrombolysis,,Using clot-busting drugs to dissolve blood clots.,Thrombolysis for acute stroke.,{},"{clot busting}",{procedure,cardiovascular}
+Embolization,Procedure,False,Embolization,,Blocking blood vessels to stop bleeding or shrink tumors.,Uterine artery embolization for fibroids.,{},"{}",{procedure,interventional}
+Thoracentesis,Procedure,False,Thoracentesis,,Removing fluid from around the lungs with a needle.,Thoracentesis for pleural effusion.,{},"{}",{procedure,pulmonary}
+Paracentesis,Procedure,False,Paracentesis,,Removing fluid from the abdomen with a needle.,Paracentesis for ascites.,{},"{}",{procedure,gastrointestinal}
+Bronchoscopy,Procedure,False,Bronchoscopy,,A test using a camera to look inside the airways.,Bronchoscopy to check for lung cancer.,{},"{}",{procedure,diagnostic,pulmonary}
+Thoracotomy,Procedure,False,Thoracotomy,,Surgery opening the chest.,Thoracotomy for lung resection.,{},"{}",{procedure,surgery,pulmonary}
+Lobectomy,Procedure,False,Lobectomy,,Surgery to remove a lobe of the lung.,Lobectomy for lung cancer.,{},"{}",{procedure,surgery,pulmonary}
+Pneumonectomy,Procedure,False,Pneumonectomy,,Surgery to remove an entire lung.,Pneumonectomy for advanced lung cancer.,{},"{}",{procedure,surgery,pulmonary}
+Tracheostomy,Procedure,False,Tracheostomy,,Creating an opening in the neck into the windpipe.,Tracheostomy for prolonged ventilation.,{},"{trach}",{procedure,surgery,pulmonary}
+Intubation,Procedure,False,Endotracheal Intubation,,Inserting a breathing tube through the mouth into the windpipe.,Intubation for surgery or respiratory failure.,{},"{}",{procedure,pulmonary,critical-care}
+Mechanical Ventilation,Procedure,False,Mechanical Ventilation,,Using a machine to help or replace breathing.,Patient on ventilator in ICU.,{},"{ventilator,{life support},{procedure,pulmonary,critical-care}
+CPAP,Procedure,True,Continuous Positive Airway Pressure,,A machine keeping airways open during sleep.,CPAP for sleep apnea.,{},"{}",{procedure,pulmonary}
+BiPAP,Procedure,True,Bilevel Positive Airway Pressure,,A machine providing two levels of air pressure for breathing.,BiPAP for respiratory distress.,{},"{}",{procedure,pulmonary}
+Spirometry,Procedure,False,Spirometry,,A breathing test measuring lung function.,Spirometry shows obstructive pattern.,{},"{}",{procedure,diagnostic,pulmonary}
+PFT,Procedure,True,Pulmonary Function Test,,Tests measuring how well the lungs work.,PFT ordered for COPD evaluation.,{},"{lung function test}",{procedure,diagnostic,pulmonary}
+Peak Flow,Procedure,False,Peak Flow Measurement,,A test measuring how fast air comes out of lungs.,Peak flow monitoring for asthma.,{},"{}",{procedure,diagnostic,pulmonary}
+Arterial Blood Gas,Procedure,False,Arterial Blood Gas,,A blood test checking oxygen and carbon dioxide levels.,ABG shows respiratory acidosis.,{},"{ABG}",{procedure,diagnostic,pulmonary}
+Chest Tube,Procedure,False,Chest Tube Insertion,,Placing a tube in the chest to drain air or fluid.,Chest tube for pneumothorax.,{},"{thoracostomy tube}",{procedure,pulmonary}
+Lumbar Puncture,Procedure,False,Lumbar Puncture,,Using a needle to collect spinal fluid.,Lumbar puncture to rule out meningitis.,{},"{spinal tap,{LP},{procedure,diagnostic,neurological}
+EEG,Procedure,True,Electroencephalogram,,A test recording electrical activity in the brain.,EEG to diagnose seizures.,{},"{}",{procedure,diagnostic,neurological}
+EMG,Procedure,True,Electromyography,,A test checking muscle and nerve function.,EMG shows nerve compression.,{},"{}",{procedure,diagnostic,neurological}
+Nerve Conduction Study,Procedure,False,Nerve Conduction Study,,A test measuring how fast nerves send signals.,NCS confirms carpal tunnel syndrome.,{},"{NCS}",{procedure,diagnostic,neurological}
+Craniotomy,Procedure,False,Craniotomy,,Surgery opening the skull to access the brain.,Craniotomy to remove brain tumor.,{},"{}",{procedure,surgery,neurological}
+Brain Biopsy,Procedure,False,Brain Biopsy,,Removing a small piece of brain tissue for testing.,Stereotactic brain biopsy.,{},"{}",{procedure,diagnostic,neurological}
+VP Shunt,Procedure,True,Ventriculoperitoneal Shunt,,A tube draining excess fluid from the brain to the abdomen.,VP shunt for hydrocephalus.,{},"{}",{procedure,neurological}
+Laminectomy,Procedure,False,Laminectomy,,Surgery removing part of vertebra to relieve nerve pressure.,Laminectomy for herniated disc.,{},"{decompression surgery}",{procedure,surgery,orthopedic}
+Spinal Fusion,Procedure,False,Spinal Fusion,,Surgery joining two or more vertebrae together.,Spinal fusion for severe scoliosis.,{},"{}",{procedure,surgery,orthopedic}
+Discectomy,Procedure,False,Discectomy,,Surgery removing a herniated disc.,Microdiscectomy for sciatica.,{},"{}",{procedure,surgery,orthopedic}
+Joint Replacement,Procedure,False,Joint Replacement,,Surgery replacing a damaged joint with artificial one.,Total knee replacement for osteoarthritis.,{},"{arthroplasty}",{procedure,surgery,orthopedic}
+Hip Replacement,Procedure,False,Hip Replacement,,Surgery replacing hip joint.,Total hip arthroplasty for severe arthritis.,{},"{total hip arthroplasty,{THA},{procedure,surgery,orthopedic}
+Knee Replacement,Procedure,False,Knee Replacement,,Surgery replacing knee joint.,Total knee arthroplasty bilateral.,{},"{total knee arthroplasty,{TKA},{procedure,surgery,orthopedic}
+Shoulder Replacement,Procedure,False,Shoulder Replacement,,Surgery replacing shoulder joint.,Reverse shoulder arthroplasty.,{},"{}",{procedure,surgery,orthopedic}
+Arthroscopy,Procedure,False,Arthroscopy,,Surgery using a small camera to look inside and repair a joint.,Knee arthroscopy for torn meniscus.,{},"{}",{procedure,surgery,orthopedic}
+ACL Reconstruction,Procedure,False,ACL Reconstruction,,Surgery to repair torn knee ligament.,ACL reconstruction using patellar tendon graft.,{},"{}",{procedure,surgery,orthopedic}
+Rotator Cuff Repair,Procedure,False,Rotator Cuff Repair,,Surgery to fix torn shoulder tendons.,Arthroscopic rotator cuff repair.,{},"{}",{procedure,surgery,orthopedic}
+Fracture Reduction,Procedure,False,Fracture Reduction,,Setting a broken bone back in place.,Closed reduction of wrist fracture.,{},"{}",{procedure,orthopedic}
+ORIF,Procedure,True,Open Reduction Internal Fixation,,Surgery using plates and screws to fix broken bones.,ORIF of ankle fracture.,{},"{}",{procedure,surgery,orthopedic}
+Cast Application,Procedure,False,Cast Application,,Applying a hard shell to immobilize a body part.,Short arm cast for wrist fracture.,{},"{}",{procedure,orthopedic}
+Splint Application,Procedure,False,Splint Application,,Applying a removable support to immobilize a body part.,Thumb spica splint for scaphoid fracture.,{},"{}",{procedure,orthopedic}
+Joint Aspiration,Procedure,False,Joint Aspiration,,Removing fluid from a joint with a needle.,Knee aspiration for joint effusion.,{},"{arthrocentesis}",{procedure,diagnostic,orthopedic}
+Joint Injection,Procedure,False,Joint Injection,,Injecting medication into a joint.,Cortisone injection for knee arthritis.,{},"{intra-articular injection}",{procedure,orthopedic}
+Trigger Point Injection,Procedure,False,Trigger Point Injection,,Injecting medication into tight muscle knots.,Trigger point injection for back pain.,{},"{}",{procedure,pain-management}
+Epidural Steroid Injection,Procedure,False,Epidural Steroid Injection,,Injecting steroid medicine around spinal nerves.,Epidural injection for radiculopathy.,{},"{ESI}",{procedure,pain-management}
+Nerve Block,Procedure,False,Nerve Block,,Injecting medication to block pain signals in nerves.,Intercostal nerve block for rib pain.,{},"{}",{procedure,pain-management}
+Dialysis,Procedure,False,Dialysis,,A procedure filtering blood when kidneys don't work.,Patient on dialysis three times weekly.,{},"{hemodialysis}",{procedure,renal}
+Hemodialysis,Procedure,False,Hemodialysis,,Filtering blood through a machine outside the body.,Hemodialysis via AV fistula.,{},"{HD}",{procedure,renal}
+Peritoneal Dialysis,Procedure,False,Peritoneal Dialysis,,Filtering blood using the abdomen lining.,Home peritoneal dialysis.,{},"{PD}",{procedure,renal}
+Kidney Transplant,Procedure,False,Kidney Transplant,,Surgery replacing a failed kidney with a healthy donor kidney.,Living donor kidney transplant.,{},"{renal transplant}",{procedure,surgery,renal}
+Nephrectomy,Procedure,False,Nephrectomy,,Surgery to remove a kidney.,Partial nephrectomy for kidney tumor.,{},"{}",{procedure,surgery,renal}
+Lithotripsy,Procedure,False,Lithotripsy,,Using shock waves to break up kidney stones.,ESWL for renal calculus.,{},"{ESWL,{shock wave lithotripsy},{procedure,urology}
+Cystoscopy,Procedure,False,Cystoscopy,,A test using a camera to look inside the bladder.,Cystoscopy to check for bladder cancer.,{},"{}",{procedure,diagnostic,urology}
+TURP,Procedure,True,Transurethral Resection of Prostate,,Surgery removing part of enlarged prostate.,TURP for BPH.,{},"{}",{procedure,surgery,urology}
+Vasectomy,Procedure,False,Vasectomy,,A permanent birth control surgery for men cutting tubes that carry sperm.,Vasectomy for family planning.,{},"{}",{procedure,surgery,urology}
+Circumcision,Procedure,False,Circumcision,,Surgery removing foreskin from penis.,Newborn circumcision.,{},"{}",{procedure,surgery,urology}
+Urodynamics,Procedure,False,Urodynamic Testing,,Tests measuring bladder and urethra function.,Urodynamics for incontinence evaluation.,{},"{}",{procedure,diagnostic,urology}
+Prostate Biopsy,Procedure,False,Prostate Biopsy,,Removing small pieces of prostate tissue for testing.,Transrectal prostate biopsy for elevated PSA.,{},"{}",{procedure,diagnostic,urology}
+Hysterectomy,Procedure,False,Hysterectomy,,Surgery to remove the uterus.,Total hysterectomy for fibroids.,{},"{}",{procedure,surgery,gynecology}
+D&C,Procedure,True,Dilation and Curettage,,A procedure scraping the uterus lining.,D&C for abnormal bleeding.,{},"{}",{procedure,gynecology}
+Colposcopy,Procedure,False,Colposcopy,,A test using a magnifying device to examine the cervix.,Colposcopy after abnormal Pap smear.,{},"{}",{procedure,diagnostic,gynecology}
+LEEP,Procedure,True,Loop Electrosurgical Excision Procedure,,Removing abnormal cervical tissue with an electric wire loop.,LEEP for cervical dysplasia.,{},"{}",{procedure,gynecology}
+Hysteroscopy,Procedure,False,Hysteroscopy,,A test using a camera to look inside the uterus.,Hysteroscopy to check for polyps.,{},"{}",{procedure,diagnostic,gynecology}
+Laparoscopy,Procedure,False,Laparoscopy,,Surgery through small incisions using a camera.,Diagnostic laparoscopy for pelvic pain.,{},"{minimally invasive surgery}",{procedure,surgery}
+Tubal Ligation,Procedure,False,Tubal Ligation,,A permanent birth control surgery for women tying or cutting fallopian tubes.,Postpartum tubal ligation.,{},"{tubes tied}",{procedure,surgery,gynecology}
+C-section,Procedure,False,Cesarean Section,,Surgery to deliver a baby through the abdomen.,Repeat C-section at 39 weeks.,{},"{cesarean delivery}",{procedure,surgery,gynecology,obstetrics}
+Amniocentesis,Procedure,False,Amniocentesis,,Removing amniotic fluid with a needle to test the baby.,Amniocentesis for genetic testing.,{},"{amnio}",{procedure,diagnostic,obstetrics}
+IVF,Procedure,True,In Vitro Fertilization,,A fertility treatment fertilizing eggs outside the body.,IVF cycle with embryo transfer.,{},"{}",{procedure,gynecology,fertility}
+IUI,Procedure,True,Intrauterine Insemination,,A fertility treatment placing sperm directly in the uterus.,IUI with ovulation induction.,{},"{}",{procedure,gynecology,fertility}
+Mammogram,Procedure,False,Mammogram,,An X-ray of the breast to screen for cancer.,Annual screening mammogram.,{},"{mammography}",{procedure,diagnostic,oncology}
+Breast Biopsy,Procedure,False,Breast Biopsy,,Removing breast tissue to check for cancer.,Ultrasound-guided breast biopsy.,{},"{}",{procedure,diagnostic,oncology}
+Lumpectomy,Procedure,False,Lumpectomy,,Surgery removing a breast tumor and small amount of surrounding tissue.,Lumpectomy with sentinel node biopsy.,{},"{breast-conserving surgery}",{procedure,surgery,oncology}
+Mastectomy,Procedure,False,Mastectomy,,Surgery removing all or part of the breast.,Total mastectomy for breast cancer.,{},"{}",{procedure,surgery,oncology}
+Sentinel Node Biopsy,Procedure,False,Sentinel Lymph Node Biopsy,,Removing the first lymph nodes to check if cancer has spread.,Sentinel node biopsy negative.,{},"{}",{procedure,diagnostic,oncology}
+Lymph Node Dissection,Procedure,False,Lymph Node Dissection,,Surgery removing lymph nodes to check for cancer spread.,Axillary lymph node dissection.,{},"{}",{procedure,surgery,oncology}
+Bone Marrow Biopsy,Procedure,False,Bone Marrow Biopsy,,Removing bone marrow to check for blood disorders or cancer.,Bone marrow biopsy for anemia workup.,{},"{}",{procedure,diagnostic,hematology}
+Bone Marrow Transplant,Procedure,False,Bone Marrow Transplant,,Replacing diseased bone marrow with healthy stem cells.,Allogeneic bone marrow transplant for leukemia.,{},"{stem cell transplant}",{procedure,hematology,oncology}
+Blood Transfusion,Procedure,False,Blood Transfusion,,Giving blood or blood products through an IV.,Two units PRBC transfusion.,{},"{}",{procedure,hematology}
+Chemotherapy,Procedure,False,Chemotherapy,,Using drugs to kill cancer cells.,Starting first cycle of chemotherapy.,{},"{chemo}",{procedure,oncology}
+Radiation Therapy,Procedure,False,Radiation Therapy,,Using high-energy rays to kill cancer cells.,External beam radiation for prostate cancer.,{},"{radiotherapy,{XRT},{procedure,oncology}
+Immunotherapy,Procedure,False,Immunotherapy,,Using the immune system to fight cancer.,Immunotherapy for melanoma.,{},"{}",{procedure,oncology}
+Targeted Therapy,Procedure,False,Targeted Therapy,,Using drugs that target specific cancer cell features.,Targeted therapy for HER2-positive breast cancer.,{},"{}",{procedure,oncology}
+PET Scan,Procedure,True,Positron Emission Tomography,,A scan showing how tissues and organs function.,PET scan for cancer staging.,{},"{}",{procedure,diagnostic,imaging}
+CT Scan,Procedure,True,Computed Tomography,,A detailed X-ray scan creating cross-sectional images.,CT chest abdomen and pelvis.,{},"{CAT scan}",{procedure,diagnostic,imaging}
+MRI,Procedure,True,Magnetic Resonance Imaging,,A scan using magnets and radio waves to create detailed images.,MRI brain with and without contrast.,{},"{}",{procedure,diagnostic,imaging}
+X-ray,Procedure,False,X-ray,,A test using radiation to create images of bones and organs.,Chest X-ray shows pneumonia.,{},"{radiograph}",{procedure,diagnostic,imaging}
+Ultrasound,Procedure,False,Ultrasound,,A test using sound waves to create images.,Abdominal ultrasound for gallstones.,{},"{sonogram,{US},{procedure,diagnostic,imaging}
+DEXA Scan,Procedure,True,Dual-Energy X-ray Absorptiometry,,A scan measuring bone density.,DEXA scan shows osteoporosis.,{},"{bone density scan}",{procedure,diagnostic,imaging}
+Fluoroscopy,Procedure,False,Fluoroscopy,,Real-time moving X-ray images.,Fluoroscopy-guided injection.,{},"{}",{procedure,diagnostic,imaging}
+Barium Swallow,Procedure,False,Barium Swallow,,X-rays of the throat and esophagus after drinking contrast.,Barium swallow shows stricture.,{},"{esophagram}",{procedure,diagnostic,imaging,gastrointestinal}
+Upper GI Series,Procedure,False,Upper GI Series,,X-rays of esophagus stomach and small intestine with contrast.,Upper GI shows ulcer.,{},"{}",{procedure,diagnostic,imaging,gastrointestinal}
+Barium Enema,Procedure,False,Barium Enema,,X-rays of the colon after contrast inserted through rectum.,Barium enema to check for polyps.,{},"{}",{procedure,diagnostic,imaging,gastrointestinal}
+Myelogram,Procedure,False,Myelogram,,X-rays of the spine after injecting contrast into spinal fluid.,Myelogram for herniated disc.,{},"{}",{procedure,diagnostic,imaging,neurological}
+Venogram,Procedure,False,Venogram,,X-rays of veins after injecting contrast dye.,Venogram to check for DVT.,{},"{}",{procedure,diagnostic,imaging,vascular}
+IVP,Procedure,True,Intravenous Pyelogram,,X-rays of kidneys and urinary tract after IV contrast.,IVP shows kidney stones.,{},"{}",{procedure,diagnostic,imaging,urology}
+Nuclear Medicine Scan,Procedure,False,Nuclear Medicine Scan,,A scan using radioactive material to see organ function.,Thyroid scan with radioactive iodine.,{},"{}",{procedure,diagnostic,imaging}
+Bone Scan,Procedure,False,Bone Scan,,A nuclear medicine scan looking for bone problems.,Bone scan to check for metastases.,{},"{}",{procedure,diagnostic,imaging,orthopedic}
+VQ Scan,Procedure,True,Ventilation-Perfusion Scan,,A lung scan checking airflow and blood flow.,VQ scan to rule out pulmonary embolism.,{},"{}",{procedure,diagnostic,imaging,pulmonary}
+HIDA Scan,Procedure,True,Hepatobiliary Iminodiacetic Acid Scan,,A scan checking gallbladder and bile duct function.,HIDA scan shows cholecystitis.,{},"{}",{procedure,diagnostic,imaging,gastrointestinal}
+Cardiac PET,Procedure,False,Cardiac PET Scan,,A heart scan showing blood flow to heart muscle.,Cardiac PET shows ischemia.,{},"{}",{procedure,diagnostic,imaging,cardiovascular}
+EKG,Procedure,True,Electrocardiogram,,A test recording the heart's electrical activity.,EKG shows ST elevation.,{},"{ECG}",{procedure,diagnostic,cardiovascular}
+Treadmill Stress Test,Procedure,False,Treadmill Stress Test,,Testing heart function while walking on a treadmill.,Positive stress test for ischemia.,{},"{exercise stress test}",{procedure,diagnostic,cardiovascular}
+Nuclear Stress Test,Procedure,False,Nuclear Stress Test,,Heart imaging with radioactive tracer during stress.,Pharmacologic nuclear stress test.,{},"{}",{procedure,diagnostic,cardiovascular}
+TEE,Procedure,True,Transesophageal Echocardiogram,,Ultrasound of the heart through the esophagus.,TEE to check for blood clot in heart.,{},"{}",{procedure,diagnostic,cardiovascular}
+Cardiac MRI,Procedure,False,Cardiac MRI,,MRI scan of the heart.,Cardiac MRI shows cardiomyopathy.,{},"{}",{procedure,diagnostic,imaging,cardiovascular}
+Carotid Ultrasound,Procedure,False,Carotid Ultrasound,,Ultrasound of neck arteries.,Carotid duplex shows stenosis.,{},"{carotid doppler}",{procedure,diagnostic,imaging,vascular}
+Venous Doppler,Procedure,False,Venous Doppler Ultrasound,,Ultrasound checking blood flow in veins.,Lower extremity venous doppler for DVT.,{},"{}",{procedure,diagnostic,imaging,vascular}
+ABI,Procedure,True,Ankle-Brachial Index,,Comparing blood pressure in ankle and arm.,ABI of 0.7 indicates PAD.,{},"{}",{procedure,diagnostic,vascular}
+Skin Biopsy,Procedure,False,Skin Biopsy,,Removing a piece of skin to check for disease.,Punch biopsy of suspicious mole.,{},"{}",{procedure,diagnostic,dermatology}
+Excision,Procedure,False,Excision,,Surgically cutting out tissue or a growth.,Excision of lipoma.,{},"{surgical removal}",{procedure,surgery}
+Incision and Drainage,Procedure,False,Incision and Drainage,,Cutting open and draining an abscess.,I&D of abscess with packing.,{},"{I&D}",{procedure,surgery}
+Cryotherapy,Procedure,False,Cryotherapy,,Freezing tissue to destroy abnormal cells.,Cryotherapy for warts.,{},"{}",{procedure,dermatology}
+Electrocautery,Procedure,False,Electrocautery,,Using heat to remove or destroy tissue.,Electrocautery of skin tag.,{},"{}",{procedure,dermatology,surgery}
+Laser Therapy,Procedure,False,Laser Therapy,,Using focused light to treat tissue.,Laser treatment for retinopathy.,{},"{}",{procedure}
+Phototherapy,Procedure,False,Phototherapy,,Using light to treat skin conditions.,UV phototherapy for psoriasis.,{},"{light therapy}",{procedure,dermatology}
+Mohs Surgery,Procedure,False,Mohs Surgery,,Specialized skin cancer surgery removing one layer at a time.,Mohs surgery for basal cell carcinoma.,{},"{}",{procedure,surgery,dermatology,oncology}
+Debridement,Procedure,False,Debridement,,Removing dead or infected tissue from a wound.,Wound debridement for diabetic ulcer.,{},"{}",{procedure,surgery}
+Wound VAC,Procedure,False,Wound Vacuum-Assisted Closure,,Using suction to help wounds heal.,Wound VAC for pressure ulcer.,{},"{negative pressure wound therapy}",{procedure}
+Suturing,Procedure,False,Suturing,,Stitching a wound closed.,Suturing of laceration with 4-0 nylon.,{},"{stitches}",{procedure,surgery}
+Stapling,Procedure,False,Stapling,,Using metal clips to close a wound.,Staple removal in 10 days.,{},"{}",{procedure,surgery}
+Tube Thoracostomy,Procedure,False,Tube Thoracostomy,,Inserting a chest tube.,Chest tube for hemothorax.,{},"{}",{procedure,pulmonary}
+Central Line,Procedure,False,Central Line Insertion,,Placing a large IV catheter in a major vein.,Central line for chemotherapy.,{},"{central venous catheter,{CVC},{procedure}
+PICC Line,Procedure,True,Peripherally Inserted Central Catheter,,A long IV line inserted through arm vein.,PICC line for long-term antibiotics.,{},"{}",{procedure}
+Port,Procedure,False,Port Placement,,Implanting a device under skin for easy IV access.,Port-a-cath for chemotherapy.,{},"{port-a-cath}",{procedure,oncology}
+Foley Catheter,Procedure,False,Foley Catheter Insertion,,Inserting a tube into the bladder to drain urine.,Foley catheter for urinary retention.,{},"{urinary catheter}",{procedure,urology}
+NG Tube,Procedure,True,Nasogastric Tube,,A tube through the nose into the stomach.,NG tube for decompression.,{},"{}",{procedure,gastrointestinal}
+PEG Tube,Procedure,True,Percutaneous Endoscopic Gastrostomy,,A feeding tube placed through the abdomen into stomach.,PEG tube for long-term nutrition.,{},"{feeding tube}",{procedure,gastrointestinal}
+Tracheostomy Care,Procedure,False,Tracheostomy Care,,Maintaining and cleaning a tracheostomy.,Daily trach care with dressing change.,{},"{}",{procedure,pulmonary}
+Wound Care,Procedure,False,Wound Care,,Cleaning and dressing wounds.,Daily wound care with wet-to-dry dressings.,{},"{}",{procedure}
+Ostomy Care,Procedure,False,Ostomy Care,,Caring for a surgical opening for waste elimination.,Colostomy care teaching.,{},"{}",{procedure,gastrointestinal}
+IV Therapy,Procedure,False,Intravenous Therapy,,Giving fluids or medications through a vein.,IV fluids for dehydration.,{},"{}",{procedure}
+Blood Draw,Procedure,False,Venipuncture,,Drawing blood from a vein.,Venipuncture for labs.,{},"{phlebotomy}",{procedure,diagnostic}
+Injections,Procedure,False,Injections,,Giving medication through a needle.,IM injection of antibiotic.,{},"{}",{procedure}
+Intramuscular Injection,Procedure,False,Intramuscular Injection,,Injecting medication into a muscle.,IM injection in deltoid.,{},"{IM injection}",{procedure}
+Subcutaneous Injection,Procedure,False,Subcutaneous Injection,,Injecting medication under the skin.,SubQ insulin injection.,{},"{SubQ injection}",{procedure}
+Nebulizer Treatment,Procedure,False,Nebulizer Treatment,,Breathing in medication as a mist.,Albuterol nebulizer for asthma.,{},"{breathing treatment}",{procedure,pulmonary}
+Oxygen Therapy,Procedure,False,Oxygen Therapy,,Giving extra oxygen to breathe.,Patient on 2L nasal cannula.,{},"{}",{procedure,pulmonary}
+Pulse Oximetry,Procedure,False,Pulse Oximetry,,Measuring oxygen level in blood.,Pulse ox 95% on room air.,{},"{O2 sat,{oxygen saturation},{procedure,diagnostic}
+Capnography,Procedure,False,Capnography,,Monitoring carbon dioxide in exhaled breath.,End-tidal CO2 monitoring.,{},"{ETCO2}",{procedure,diagnostic,pulmonary}
+Allergy Testing,Procedure,False,Allergy Testing,,Testing for allergic reactions to substances.,Skin prick allergy testing.,{},"{}",{procedure,diagnostic,allergy}
+Patch Test,Procedure,False,Patch Test,,Testing for contact allergies by placing substances on skin.,Patch test for contact dermatitis.,{},"{}",{procedure,diagnostic,allergy,dermatology}
+Vision Test,Procedure,False,Vision Test,,Checking how well a person can see.,Snellen chart vision test.,{},"{eye exam}",{procedure,diagnostic,ophthalmology}
+Tonometry,Procedure,False,Tonometry,,Measuring pressure inside the eye.,Tonometry to screen for glaucoma.,{},"{}",{procedure,diagnostic,ophthalmology}
+Fundoscopy,Procedure,False,Fundoscopy,,Looking at the back of the eye.,Dilated fundoscopic exam.,{},"{ophthalmoscopy}",{procedure,diagnostic,ophthalmology}
+Hearing Test,Procedure,False,Audiometry,,Testing hearing ability.,Audiogram shows hearing loss.,{},"{hearing test}",{procedure,diagnostic,ent}
+Tympanometry,Procedure,False,Tympanometry,,Testing middle ear function.,Tympanometry shows fluid.,{},"{}",{procedure,diagnostic,ent}
+Sleep Study,Procedure,False,Polysomnography,,An overnight test monitoring sleep.,Sleep study shows severe apnea.,{},"{sleep study}",{procedure,diagnostic,pulmonary}
+Glucose Tolerance Test,Procedure,False,Glucose Tolerance Test,,A test checking how the body processes sugar.,Oral glucose tolerance test for gestational diabetes.,{},"{GTT,{OGTT},{procedure,diagnostic,endocrine}
+Tilt Table Test,Procedure,False,Tilt Table Test,,A test checking blood pressure and heart rate with position changes.,Tilt table test for syncope.,{},"{}",{procedure,diagnostic,cardiovascular}
+Sweat Test,Procedure,False,Sweat Chloride Test,,A test for cystic fibrosis.,Sweat test positive.,{},"{}",{procedure,diagnostic}
+IR,Specialty,True,Interventional Radiology,,A medical specialty using imaging to guide minimally invasive procedures.,IR placed drain for abscess.,{},"{}",{specialty,radiology,imaging}
+Radiology,Specialty,False,Radiology,,The medical specialty using imaging to diagnose and treat diseases.,Radiology read the CT scan.,{},"{diagnostic radiology}",{specialty,imaging}
+Diagnostic Radiology,Specialty,False,Diagnostic Radiology,,The branch of radiology focused on interpreting medical images.,Diagnostic radiology report.,{},"{}",{specialty,imaging}
+Nuclear Medicine,Specialty,False,Nuclear Medicine,,A specialty using radioactive materials to diagnose and treat disease.,Nuclear medicine performed thyroid scan.,{},"{}",{specialty,imaging}
+Cardiology,Specialty,False,Cardiology,,The medical specialty focused on the heart and blood vessels.,Cardiology consult for chest pain.,{},"{}",{specialty}
+Interventional Cardiology,Specialty,False,Interventional Cardiology,,Cardiology subspecialty performing procedures like stents.,Interventional cardiology did cardiac cath.,{},"{}",{specialty,cardiology}
+Electrophysiology,Specialty,False,Cardiac Electrophysiology,,Cardiology subspecialty focused on heart rhythm disorders.,EP study for atrial fibrillation.,{},"{EP}",{specialty,cardiology}
+Pulmonology,Specialty,False,Pulmonology,,The medical specialty focused on lungs and breathing.,Pulmonology manages COPD.,{},"{pulmonary medicine}",{specialty}
+Critical Care,Specialty,False,Critical Care Medicine,,The specialty caring for severely ill patients in ICU.,Critical care team rounded in ICU.,{},"{intensive care,{ICU},{specialty}
+Emergency Medicine,Specialty,False,Emergency Medicine,,The specialty providing immediate care for urgent medical problems.,Emergency medicine physician in ER.,{},"{EM}",{specialty}
+Gastroenterology,Specialty,False,Gastroenterology,,The medical specialty focused on digestive system.,Gastroenterology performed colonoscopy.,{},"{GI}",{specialty}
+Hepatology,Specialty,False,Hepatology,,The subspecialty focused on liver diseases.,Hepatology manages cirrhosis.,{},"{}",{specialty,gastroenterology}
+Nephrology,Specialty,False,Nephrology,,The medical specialty focused on kidneys.,Nephrology started dialysis.,{},"{}",{specialty}
+Endocrinology,Specialty,False,Endocrinology,,The medical specialty focused on hormones and glands.,Endocrinology adjusts diabetes medications.,{},"{}",{specialty}
+Hematology,Specialty,False,Hematology,,The medical specialty focused on blood disorders.,Hematology treats anemia.,{},"{}",{specialty}
+Oncology,Specialty,False,Oncology,,The medical specialty focused on cancer.,Medical oncology started chemotherapy.,{},"{}",{specialty}
+Radiation Oncology,Specialty,False,Radiation Oncology,,The specialty using radiation to treat cancer.,Radiation oncology planned treatment.,{},"{}",{specialty,oncology}
+Hematology-Oncology,Specialty,False,Hematology-Oncology,,The combined specialty treating blood cancers and disorders.,Heme-onc manages leukemia.,{},"{hem-onc}",{specialty}
+Rheumatology,Specialty,False,Rheumatology,,The medical specialty focused on arthritis and autoimmune diseases.,Rheumatology treats rheumatoid arthritis.,{},"{}",{specialty}
+Infectious Disease,Specialty,False,Infectious Disease,,The specialty focused on infections and antibiotics.,ID consult for resistant bacteria.,{},"{ID}",{specialty}
+Allergy and Immunology,Specialty,False,Allergy and Immunology,,The specialty treating allergies and immune disorders.,Allergy testing performed.,{},"{}",{specialty}
+Dermatology,Specialty,False,Dermatology,,The medical specialty focused on skin hair and nails.,Dermatology biopsied the mole.,{},"{derm}",{specialty}
+Neurology,Specialty,False,Neurology,,The medical specialty focused on the brain and nervous system.,Neurology manages seizures.,{},"{neuro}",{specialty}
+Neurosurgery,Specialty,False,Neurosurgery,,The surgical specialty operating on brain and spine.,Neurosurgery removed brain tumor.,{},"{NSG}",{specialty,surgery}
+Psychiatry,Specialty,False,Psychiatry,,The medical specialty treating mental health conditions.,Psychiatry prescribed antidepressant.,{},"{psych}",{specialty}
+Pain Management,Specialty,False,Pain Management,,The specialty focused on treating chronic pain.,Pain management did epidural injection.,{},"{pain medicine}",{specialty}
+Physical Medicine and Rehabilitation,Specialty,False,Physical Medicine and Rehabilitation,,The specialty helping patients recover function after injury or illness.,PM&R ordered physical therapy.,{},"{PM&R,{physiatry},{specialty}
+Palliative Care,Specialty,False,Palliative Care,,The specialty focused on comfort and quality of life for serious illness.,Palliative care manages symptoms.,{},"{palliative medicine}",{specialty}
+Hospice,Specialty,False,Hospice Care,,End-of-life care focusing on comfort not cure.,Patient transitioned to hospice.,{},"{}",{specialty}
+General Surgery,Specialty,False,General Surgery,,The surgical specialty performing operations on abdomen and related areas.,General surgery did appendectomy.,{},"{surgery}",{specialty,surgery}
+Trauma Surgery,Specialty,False,Trauma Surgery,,The surgical specialty treating severe injuries.,Trauma surgery in OR for MVA victim.,{},"{}",{specialty,surgery}
+Cardiothoracic Surgery,Specialty,False,Cardiothoracic Surgery,,The surgical specialty operating on heart and chest.,CT surgery performed CABG.,{},"{CT surgery}",{specialty,surgery}
+Vascular Surgery,Specialty,False,Vascular Surgery,,The surgical specialty operating on blood vessels.,Vascular surgery repaired aneurysm.,{},"{}",{specialty,surgery}
+Transplant Surgery,Specialty,False,Transplant Surgery,,The surgical specialty performing organ transplants.,Transplant surgery did kidney transplant.,{},"{}",{specialty,surgery}
+Surgical Oncology,Specialty,False,Surgical Oncology,,The surgical specialty removing cancerous tumors.,Surgical oncology performed tumor resection.,{},"{}",{specialty,surgery,oncology}
+Orthopedic Surgery,Specialty,False,Orthopedic Surgery,,The surgical specialty focused on bones and joints.,Orthopedics did knee replacement.,{},"{orthopedics,{ortho},{specialty,surgery}
+Sports Medicine,Specialty,False,Sports Medicine,,The specialty treating athletic injuries.,Sports medicine manages ACL tear.,{},"{}",{specialty,orthopedics}
+Hand Surgery,Specialty,False,Hand Surgery,,The surgical subspecialty operating on hands.,Hand surgery repaired tendon.,{},"{}",{specialty,surgery,orthopedics}
+Spine Surgery,Specialty,False,Spine Surgery,,The surgical subspecialty operating on the spine.,Spine surgery did spinal fusion.,{},"{}",{specialty,surgery,orthopedics}
+Plastic Surgery,Specialty,False,Plastic Surgery,,The surgical specialty reconstructing or altering body parts.,Plastic surgery did breast reconstruction.,{},"{plastics}",{specialty,surgery}
+Oral and Maxillofacial Surgery,Specialty,False,Oral and Maxillofacial Surgery,,The surgical specialty operating on mouth jaw and face.,OMFS removed wisdom teeth.,{},"{OMFS}",{specialty,surgery,dental}
+Otolaryngology,Specialty,False,Otolaryngology,,The surgical specialty treating ear nose and throat.,ENT removed tonsils.,{},"{ENT,{ear nose throat},{specialty,surgery}
+Ophthalmology,Specialty,False,Ophthalmology,,The medical and surgical specialty treating eyes.,Ophthalmology performed cataract surgery.,{},"{}",{specialty}
+Optometry,Specialty,False,Optometry,,The profession examining eyes and prescribing glasses.,Optometry prescribed new glasses.,{},"{OD}",{specialty}
+Urology,Specialty,False,Urology,,The surgical specialty treating urinary tract and male reproductive organs.,Urology did TURP.,{},"{}",{specialty,surgery}
+Obstetrics and Gynecology,Specialty,False,Obstetrics and Gynecology,,The specialty caring for women's reproductive health and pregnancy.,OB-GYN delivered baby.,{},"{OB-GYN,{OB/GYN},{specialty}
+Maternal-Fetal Medicine,Specialty,False,Maternal-Fetal Medicine,,The subspecialty managing high-risk pregnancies.,MFM monitors twins.,{},"{MFM,{perinatology},{specialty,obstetrics}
+Gynecologic Oncology,Specialty,False,Gynecologic Oncology,,The subspecialty treating female reproductive cancers.,Gyn-onc manages ovarian cancer.,{},"{gyn-onc}",{specialty,gynecology,oncology}
+Reproductive Endocrinology,Specialty,False,Reproductive Endocrinology and Infertility,,The subspecialty treating infertility and hormones.,REI performed IVF.,{},"{REI,{fertility},{specialty,gynecology}
+Pediatrics,Specialty,False,Pediatrics,,The medical specialty caring for children.,Pediatrics saw child for well visit.,{},"{peds}",{specialty}
+Neonatology,Specialty,False,Neonatology,,The subspecialty caring for newborns especially premature babies.,Neonatology in NICU.,{},"{}",{specialty,pediatrics}
+Pediatric Surgery,Specialty,False,Pediatric Surgery,,The surgical specialty operating on children.,Pediatric surgery repaired hernia.,{},"{}",{specialty,surgery,pediatrics}
+Pediatric Cardiology,Specialty,False,Pediatric Cardiology,,The subspecialty treating heart problems in children.,Pediatric cardiology manages congenital heart defect.,{},"{}",{specialty,cardiology,pediatrics}
+Geriatrics,Specialty,False,Geriatrics,,The medical specialty focused on elderly patients.,Geriatrics manages complex medications.,{},"{}",{specialty}
+Family Medicine,Specialty,False,Family Medicine,,The specialty providing comprehensive care for all ages.,Family medicine is primary care.,{},"{family practice}",{specialty,primary-care}
+Internal Medicine,Specialty,False,Internal Medicine,,The specialty focused on adult medical care.,Internal medicine manages chronic diseases.,{},"{}",{specialty,primary-care}
+Hospitalist,Specialty,False,Hospital Medicine,,Physicians who care for hospitalized patients.,Hospitalist rounded on medical floor.,{},"{}",{specialty}
+Sleep Medicine,Specialty,False,Sleep Medicine,,The specialty diagnosing and treating sleep disorders.,Sleep medicine ordered sleep study.,{},"{}",{specialty}
+Bariatrics,Specialty,False,Bariatric Surgery,,The surgical specialty performing weight loss surgery.,Bariatrics did gastric bypass.,{},"{weight loss surgery}",{specialty,surgery}
+Podiatry,Specialty,False,Podiatry,,The medical profession treating feet and ankles.,Podiatry treats diabetic foot ulcers.,{},"{DPM}",{specialty}
+Pathology,Specialty,False,Pathology,,The specialty examining tissues and lab samples to diagnose disease.,Pathology examined biopsy.,{},"{}",{specialty}
+Anesthesiology,Specialty,False,Anesthesiology,,The specialty providing anesthesia for surgery and pain management.,Anesthesiology gave spinal for C-section.,{},"{anesthesia}",{specialty}
+Medical Genetics,Specialty,False,Medical Genetics,,The specialty diagnosing and managing genetic disorders.,Genetics ordered chromosome analysis.,{},"{genetics}",{specialty}
+Preventive Medicine,Specialty,False,Preventive Medicine,,The specialty focused on disease prevention and public health.,Preventive medicine promotes vaccination.,{},"{}",{specialty}
+Occupational Medicine,Specialty,False,Occupational Medicine,,The specialty treating work-related injuries and illnesses.,Occupational medicine cleared for work.,{},"{}",{specialty}
+Cardi,Root,False,Heart,cardi/o,Relating to the heart.,Cardiology is the study of the heart.,{},"{}",{root,anatomy}
+Pulmon,Root,False,Lung,pulmon/o,Relating to the lungs.,Pulmonary means related to lungs.,{},"{}",{root,anatomy}
+Gastr,Root,False,Stomach,gastr/o,Relating to the stomach.,Gastritis is stomach inflammation.,{},"{}",{root,anatomy}
+Enter,Root,False,Intestine,enter/o,Relating to the intestines.,Enteritis is intestine inflammation.,{},"{}",{root,anatomy}
+Hepat,Root,False,Liver,hepat/o,Relating to the liver.,Hepatitis is liver inflammation.,{},"{}",{root,anatomy}
+Nephr,Root,False,Kidney,nephr/o,Relating to the kidneys.,Nephrology studies kidneys.,{},"{}",{root,anatomy}
+Ren,Root,False,Kidney,ren/o,Relating to the kidneys.,Renal means related to kidneys.,{},"{}",{root,anatomy}
+Cyst,Root,False,Bladder,cyst/o,Relating to the bladder.,Cystitis is bladder inflammation.,{},"{}",{root,anatomy}
+Ur,Root,False,Urine,ur/o,Relating to urine.,Urology studies urinary system.,{},"{}",{root,anatomy}
+Hem,Root,False,Blood,hem/o,Relating to blood.,Hematology studies blood.,{},"{}",{root,anatomy}
+Hemat,Root,False,Blood,hemat/o,Relating to blood.,Hematoma is a blood collection.,{},"{}",{root,anatomy}
+Angi,Root,False,Vessel,angi/o,Relating to blood vessels.,Angiogram images blood vessels.,{},"{}",{root,anatomy}
+Vas,Root,False,Vessel,vas/o,Relating to blood vessels.,Vascular means related to vessels.,{},"{}",{root,anatomy}
+Neur,Root,False,Nerve,neur/o,Relating to nerves.,Neurology studies the nervous system.,{},"{}",{root,anatomy}
+Encephal,Root,False,Brain,encephal/o,Relating to the brain.,Encephalitis is brain inflammation.,{},"{}",{root,anatomy}
+Cerebr,Root,False,Brain,cerebr/o,Relating to the brain.,Cerebral means related to brain.,{},"{}",{root,anatomy}
+Myel,Root,False,Spinal Cord or Bone Marrow,myel/o,Relating to spinal cord or bone marrow.,Myelogram images spinal cord.,{},"{}",{root,anatomy}
+Oste,Root,False,Bone,oste/o,Relating to bones.,Osteoporosis is bone thinning.,{},"{}",{root,anatomy}
+Arthr,Root,False,Joint,arthr/o,Relating to joints.,Arthritis is joint inflammation.,{},"{}",{root,anatomy}
+Chondr,Root,False,Cartilage,chondr/o,Relating to cartilage.,Chondromalacia is cartilage softening.,{},"{}",{root,anatomy}
+My,Root,False,Muscle,my/o,Relating to muscles.,Myalgia is muscle pain.,{},"{}",{root,anatomy}
+Muscul,Root,False,Muscle,muscul/o,Relating to muscles.,Muscular means related to muscles.,{},"{}",{root,anatomy}
+Derm,Root,False,Skin,derm/o,Relating to skin.,Dermatology studies skin.,{},"{}",{root,anatomy}
+Dermat,Root,False,Skin,dermat/o,Relating to skin.,Dermatitis is skin inflammation.,{},"{}",{root,anatomy}
+Ophthalm,Root,False,Eye,ophthalm/o,Relating to eyes.,Ophthalmology studies eyes.,{},"{}",{root,anatomy}
+Ot,Root,False,Ear,ot/o,Relating to ears.,Otitis is ear inflammation.,{},"{}",{root,anatomy}
+Rhin,Root,False,Nose,rhin/o,Relating to the nose.,Rhinitis is nose inflammation.,{},"{}",{root,anatomy}
+Laryng,Root,False,Larynx,laryng/o,Relating to the voice box.,Laryngitis is voice box inflammation.,{},"{}",{root,anatomy}
+Pharyn,Root,False,Pharynx,pharyng/o,Relating to the throat.,Pharyngitis is throat inflammation.,{},"{}",{root,anatomy}
+Trache,Root,False,Trachea,trache/o,Relating to the windpipe.,Tracheostomy opens the windpipe.,{},"{}",{root,anatomy}
+Bronch,Root,False,Bronchus,bronch/o,Relating to airways in lungs.,Bronchitis is airway inflammation.,{},"{}",{root,anatomy}
+Pneum,Root,False,Lung or Air,pneum/o,Relating to lungs or air.,Pneumonia is lung infection.,{},"{}",{root,anatomy}
+Pneumon,Root,False,Lung,pneumon/o,Relating to lungs.,Pneumonectomy removes a lung.,{},"{}",{root,anatomy}
+Thorac,Root,False,Chest,thorac/o,Relating to the chest.,Thoracic means related to chest.,{},"{}",{root,anatomy}
+Abdomin,Root,False,Abdomen,abdomin/o,Relating to the abdomen.,Abdominal pain in belly area.,{},"{}",{root,anatomy}
+Gastr,Root,False,Stomach,gastr/o,Relating to the stomach.,Gastric means related to stomach.,{},"{}",{root,anatomy}
+Col,Root,False,Colon,col/o,Relating to the colon.,Colitis is colon inflammation.,{},"{}",{root,anatomy}
+Proct,Root,False,Rectum,proct/o,Relating to the rectum.,Proctology studies rectum.,{},"{}",{root,anatomy}
+Cholecyst,Root,False,Gallbladder,cholecyst/o,Relating to the gallbladder.,Cholecystectomy removes gallbladder.,{},"{}",{root,anatomy}
+Pancreat,Root,False,Pancreas,pancreat/o,Relating to the pancreas.,Pancreatitis is pancreas inflammation.,{},"{}",{root,anatomy}
+Splen,Root,False,Spleen,splen/o,Relating to the spleen.,Splenectomy removes the spleen.,{},"{}",{root,anatomy}
+Thyr,Root,False,Thyroid,thyr/o,Relating to the thyroid gland.,Thyroid controls metabolism.,{},"{}",{root,anatomy}
+Adren,Root,False,Adrenal Gland,adren/o,Relating to adrenal glands.,Adrenal glands make stress hormones.,{},"{}",{root,anatomy}
+Oophor,Root,False,Ovary,oophor/o,Relating to ovaries.,Oophorectomy removes an ovary.,{},"{}",{root,anatomy}
+Salping,Root,False,Fallopian Tube,salping/o,Relating to fallopian tubes.,Salpingitis is tube inflammation.,{},"{}",{root,anatomy}
+Hyster,Root,False,Uterus,hyster/o,Relating to the uterus.,Hysterectomy removes the uterus.,{},"{}",{root,anatomy}
+Metr,Root,False,Uterus,metr/o,Relating to the uterus.,Endometrium is uterine lining.,{},"{}",{root,anatomy}
+Colp,Root,False,Vagina,colp/o,Relating to the vagina.,Colposcopy examines the vagina.,{},"{}",{root,anatomy}
+Orchi,Root,False,Testis,orchi/o,Relating to testes.,Orchitis is testis inflammation.,{},"{}",{root,anatomy}
+Prostat,Root,False,Prostate,prostat/o,Relating to the prostate gland.,Prostatitis is prostate inflammation.,{},"{}",{root,anatomy}
+Mamm,Root,False,Breast,mamm/o,Relating to breasts.,Mammogram images the breast.,{},"{}",{root,anatomy}
+Mast,Root,False,Breast,mast/o,Relating to breasts.,Mastectomy removes breast tissue.,{},"{}",{root,anatomy}
+Itis,Suffix,False,Inflammation,-itis,Inflammation of.,Appendicitis is appendix inflammation.,{},"{}",{suffix}
+Ectomy,Suffix,False,Surgical Removal,-ectomy,Surgical removal of.,Tonsillectomy removes tonsils.,{},"{}",{suffix}
+Ostomy,Suffix,False,Creating an Opening,-ostomy,Creating a surgical opening.,Colostomy creates colon opening.,{},"{}",{suffix}
+Otomy,Suffix,False,Cutting Into,-otomy,Cutting into.,Laparotomy cuts into abdomen.,{},"{}",{suffix}
+Plasty,Suffix,False,Surgical Repair,-plasty,Surgical repair or reconstruction.,Rhinoplasty reshapes the nose.,{},"{}",{suffix}
+Rrhaphy,Suffix,False,Suturing,-rrhaphy,Stitching or suturing.,Herniorrhaphy repairs hernia.,{},"{}",{suffix}
+Scopy,Suffix,False,Visual Examination,-scopy,Looking inside with a scope.,Colonoscopy looks inside colon.,{},"{}",{suffix}
+Centesis,Suffix,False,Puncture to Remove Fluid,-centesis,Puncturing to remove fluid.,Thoracentesis removes chest fluid.,{},"{}",{suffix}
+Gram,Suffix,False,Record,-gram,A picture or record.,Mammogram is breast X-ray.,{},"{}",{suffix}
+Graph,Suffix,False,Recording Instrument,-graph,An instrument that records.,Electrocardiograph records heart activity.,{},"{}",{suffix}
+Graphy,Suffix,False,Process of Recording,-graphy,The process of recording.,Radiography is taking X-rays.,{},"{}",{suffix}
+Lysis,Suffix,False,Breaking Down,-lysis,Breaking down or destruction.,Hemolysis is red blood cell breakdown.,{},"{}",{suffix}
+Pathy,Suffix,False,Disease,-pathy,Disease or disorder.,Neuropathy is nerve disease.,{},"{}",{suffix}
+Penia,Suffix,False,Deficiency,-penia,Too few or deficiency.,Leukopenia is low white blood cells.,{},"{}",{suffix}
+Phobia,Suffix,False,Fear,-phobia,Abnormal fear of.,Agoraphobia is fear of open spaces.,{},"{}",{suffix}
+Rrhea,Suffix,False,Flow or Discharge,-rrhea,Flow or discharge.,Diarrhea is loose stools.,{},"{}",{suffix}
+Osis,Suffix,False,Condition or Disease,-osis,Abnormal condition or disease.,Osteoporosis is bone thinning condition.,{},"{}",{suffix}
+Oma,Suffix,False,Tumor,-oma,A tumor or mass.,Lipoma is a fatty tumor.,{},"{}",{suffix}
+Megaly,Suffix,False,Enlargement,-megaly,Abnormal enlargement.,Cardiomegaly is enlarged heart.,{},"{}",{suffix}
+Malacia,Suffix,False,Softening,-malacia,Abnormal softening.,Osteomalacia is bone softening.,{},"{}",{suffix}
+Stenosis,Suffix,False,Narrowing,-stenosis,Abnormal narrowing.,Aortic stenosis is valve narrowing.,{},"{}",{suffix}
+Algia,Suffix,False,Pain,-algia,Pain.,Myalgia is muscle pain.,{},"{}",{suffix}
+Dynia,Suffix,False,Pain,-dynia,Pain.,Pleurodynia is chest wall pain.,{},"{}",{suffix}
+Emesis,Suffix,False,Vomiting,-emesis,Vomiting.,Hyperemesis is excessive vomiting.,{},"{}",{suffix}
+Phagia,Suffix,False,Eating or Swallowing,-phagia,Eating or swallowing.,Dysphagia is difficulty swallowing.,{},"{}",{suffix}
+Phasia,Suffix,False,Speech,-phasia,Speech.,Aphasia is loss of speech.,{},"{}",{suffix}
+Plegia,Suffix,False,Paralysis,-plegia,Paralysis.,Hemiplegia is one-sided paralysis.,{},"{}",{suffix}
+Ptosis,Suffix,False,Drooping,-ptosis,Drooping or sagging.,Blepharoptosis is drooping eyelid.,{},"{}",{suffix}
+Rrhage,Suffix,False,Excessive Bleeding,-rrhage,Bursting forth or excessive bleeding.,Hemorrhage is severe bleeding.,{},"{}",{suffix}
+Rrhagia,Suffix,False,Excessive Flow,-rrhagia,Excessive flow.,Menorrhagia is heavy periods.,{},"{}",{suffix}
+Trophy,Suffix,False,Development or Nourishment,-trophy,Development or nourishment.,Hypertrophy is increased size.,{},"{}",{suffix}
+Hyper,Prefix,False,Above or Excessive,hyper-,Too much or above normal.,Hypertension is high blood pressure.,{},"{}",{prefix}
+Hypo,Prefix,False,Below or Deficient,hypo-,Too little or below normal.,Hypotension is low blood pressure.,{},"{}",{prefix}
+Tachy,Prefix,False,Fast,tachy-,Fast or rapid.,Tachycardia is fast heart rate.,{},"{}",{prefix}
+Brady,Prefix,False,Slow,brady-,Slow.,Bradycardia is slow heart rate.,{},"{}",{prefix}
+A,Prefix,False,Without or Not,a-,Without or not.,Apnea is not breathing.,{},"{}",{prefix}
+An,Prefix,False,Without or Not,an-,Without or not.,Anemia is without enough red blood cells.,{},"{}",{prefix}
+Dys,Prefix,False,Difficult or Painful,dys-,Difficult painful or abnormal.,Dyspnea is difficulty breathing.,{},"{}",{prefix}
+Poly,Prefix,False,Many,poly-,Many or much.,Polydipsia is excessive thirst.,{},"{}",{prefix}
+Oligo,Prefix,False,Few or Scanty,oligo-,Few or scanty.,Oliguria is decreased urine output.,{},"{}",{prefix}
+Macro,Prefix,False,Large,macro-,Large or long.,Macrocephaly is large head.,{},"{}",{prefix}
+Micro,Prefix,False,Small,micro-,Small.,Microcephaly is small head.,{},"{}",{prefix}
+Mega,Prefix,False,Large,mega-,Abnormally large.,Megacolon is enlarged colon.,{},"{}",{prefix}
+Pre,Prefix,False,Before,pre-,Before.,Prenatal means before birth.,{},"{}",{prefix}
+Post,Prefix,False,After,post-,After.,Postoperative means after surgery.,{},"{}",{prefix}
+Peri,Prefix,False,Around,peri-,Around or surrounding.,Pericardium surrounds the heart.,{},"{}",{prefix}
+Para,Prefix,False,Beside or Near,para-,Beside near or abnormal.,Parathyroid glands are near thyroid.,{},"{}",{prefix}
+Sub,Prefix,False,Under or Below,sub-,Under or below.,Subcutaneous is under the skin.,{},"{}",{prefix}
+Supra,Prefix,False,Above,supra-,Above or over.,Suprapubic is above pubic bone.,{},"{}",{prefix}
+Infra,Prefix,False,Below,infra-,Below.,Infraorbital is below the eye socket.,{},"{}",{prefix}
+Inter,Prefix,False,Between,inter-,Between.,Intercostal is between ribs.,{},"{}",{prefix}
+Intra,Prefix,False,Within,intra-,Within or inside.,Intramuscular is within muscle.,{},"{}",{prefix}
+Extra,Prefix,False,Outside,extra-,Outside or beyond.,Extracellular is outside cells.,{},"{}",{prefix}
+Trans,Prefix,False,Across or Through,trans-,Across or through.,Transdermal is through skin.,{},"{}",{prefix}
+Endo,Prefix,False,Within,endo-,Within or inside.,Endoscopy looks inside.,{},"{}",{prefix}
+Exo,Prefix,False,Outside,exo-,Outside or outward.,Exocrine glands secrete outward.,{},"{}",{prefix}
+Epi,Prefix,False,Upon or Above,epi-,Upon over or above.,Epidermis is top skin layer.,{},"{}",{prefix}
+Bi,Prefix,False,Two,bi-,Two.,Bilateral means both sides.,{},"{}",{prefix}
+Uni,Prefix,False,One,uni-,One.,Unilateral means one side.,{},"{}",{prefix}
+Hemi,Prefix,False,Half,hemi-,Half or one side.,Hemiplegia is paralysis of one side.,{},"{}",{prefix}
+Anti,Prefix,False,Against,anti-,Against or opposed to.,Antibiotic fights bacteria.,{},"{}",{prefix}
+Contra,Prefix,False,Against or Opposite,contra-,Against or opposite.,Contraindication means should not use.,{},"{}",{prefix}
+Pro,Prefix,False,Before or Forward,pro-,Before or in front of.,Prognosis is disease outlook.,{},"{}",{prefix}
+Retro,Prefix,False,Behind or Backward,retro-,Behind or backward.,Retroperitoneal is behind peritoneum.,{},"{}",{prefix}
+Ante,Prefix,False,Before,ante-,Before.,Antenatal is before birth.,{},"{}",{prefix}
+Neo,Prefix,False,New,neo-,New.,Neonatal means newborn period.,{},"{}",{prefix}
+Paleo,Prefix,False,Old,paleo-,Old or ancient.,Paleontology studies ancient life.,{},"{}",{prefix}
+Pseudo,Prefix,False,False,pseudo-,False.,Pseudocyst is false cyst.,{},"{}",{prefix}
+Auto,Prefix,False,Self,auto-,Self.,Autoimmune is against own body.,{},"{}",{prefix}
+Homo,Prefix,False,Same,homo-,Same.,Homogeneous means same throughout.,{},"{}",{prefix}
+Hetero,Prefix,False,Different,hetero-,Different or other.,Heterogeneous means different types.,{},"{}",{prefix}
+Superior,Direction,False,Superior,,Toward the head or upper part of body.,The nose is superior to the mouth.,{},"{upper,{above},{anatomy,direction}
+Inferior,Direction,False,Inferior,,Toward the feet or lower part of body.,The stomach is inferior to the heart.,{},"{lower,{below},{anatomy,direction}
+Anterior,Direction,False,Anterior,,Toward the front of the body.,The sternum is anterior to the heart.,{},"{ventral,{front},{anatomy,direction}
+Posterior,Direction,False,Posterior,,Toward the back of the body.,The spine is posterior to the heart.,{},"{dorsal,{back},{anatomy,direction}
+Medial,Direction,False,Medial,,Toward the midline of the body.,The nose is medial to the eyes.,{},"{middle}",{anatomy,direction}
+Lateral,Direction,False,Lateral,,Away from the midline of the body.,The ears are lateral to the nose.,{},"{side}",{anatomy,direction}
+Proximal,Direction,False,Proximal,,Closer to the trunk or point of attachment.,The elbow is proximal to the wrist.,{},"{near}",{anatomy,direction}
+Distal,Direction,False,Distal,,Farther from the trunk or point of attachment.,The fingers are distal to the elbow.,{},"{far}",{anatomy,direction}
+Superficial,Direction,False,Superficial,,Closer to the surface of the body.,Skin is superficial to muscle.,{},"{surface}",{anatomy,direction}
+Deep,Direction,False,Deep,,Farther from the surface of the body.,Bone is deep to skin.,{},"{internal}",{anatomy,direction}
+Prone,Position,False,Prone Position,,Lying face down.,Patient positioned prone for back surgery.,{},"{face down}",{anatomy,position}
+Supine,Position,False,Supine Position,,Lying face up on the back.,Patient supine for abdominal exam.,{},"{face up}",{anatomy,position}
+Lateral Recumbent,Position,False,Lateral Recumbent Position,,Lying on the side.,Patient in left lateral position.,{},"{side-lying}",{anatomy,position}
+Fowler,Position,False,Fowler Position,,Sitting up at 45-60 degrees.,Patient in high Fowler's position.,{},"{semi-sitting}",{anatomy,position}
+Trendelenburg,Position,False,Trendelenburg Position,,Lying with head lower than feet.,Trendelenburg position for shock.,{},"{}",{anatomy,position}
+Lithotomy,Position,False,Lithotomy Position,,Lying on back with legs raised in stirrups.,Lithotomy position for pelvic exam.,{},"{}",{anatomy,position}
+Sagittal Plane,Anatomy,False,Sagittal Plane,,An imaginary line dividing body into left and right.,Midsagittal plane divides body in half.,{},"{}",{anatomy,plane}
+Coronal Plane,Anatomy,False,Coronal Plane,,An imaginary line dividing body into front and back.,Coronal plane separates anterior from posterior.,{},"{frontal plane}",{anatomy,plane}
+Transverse Plane,Anatomy,False,Transverse Plane,,An imaginary line dividing body into upper and lower.,Transverse plane separates superior from inferior.,{},"{horizontal plane,{axial plane},{anatomy,plane}
+Admit,Workflow,False,Hospital Admission,,When a patient enters the hospital to stay overnight or longer.,Patient admitted to medical floor.,{},"{admission}",{workflow,hospital}
+Discharge,Workflow,False,Hospital Discharge,,When a patient leaves the hospital to go home.,Patient discharged home with instructions.,{},"{}",{workflow,hospital}
+Transfer,Workflow,False,Patient Transfer,,Moving a patient from one unit or facility to another.,Patient transferred to ICU.,{},"{}",{workflow,hospital}
+Consult,Workflow,False,Consultation,,Asking another doctor or specialist for their opinion.,Cardiology consult requested.,{},"{referral}",{workflow}
+Referral,Workflow,False,Referral,,Sending a patient to see another doctor or specialist.,Referral to orthopedics for knee pain.,{},"{}",{workflow}
+Follow-up,Workflow,False,Follow-up Visit,,A return appointment to check on progress.,Follow-up in 2 weeks.,{},"{return visit}",{workflow}
+Appointment,Workflow,False,Appointment,,A scheduled time to see a healthcare provider.,Patient has appointment at 2pm.,{},"{visit}",{workflow}
+Walk-in,Workflow,False,Walk-in Visit,,Seeing a provider without an appointment.,Walk-in patient with sore throat.,{},"{}",{workflow}
+No-show,Workflow,False,No-show,,When a patient misses an appointment without canceling.,Patient no-showed for appointment.,{},"{}",{workflow}
+Cancellation,Workflow,False,Appointment Cancellation,,When a patient cancels an appointment.,Same-day cancellation.,{},"{}",{workflow}
+Rescheduling,Workflow,False,Rescheduling,,Changing an appointment to a different time.,Patient called to reschedule.,{},"{}",{workflow}
+Check-in,Workflow,False,Check-in,,The process of arriving and registering for an appointment.,Patient checked in at front desk.,{},"{}",{workflow}
+Check-out,Workflow,False,Check-out,,The process of leaving after an appointment.,Patient checked out and scheduled follow-up.,{},"{}",{workflow}
+Registration,Workflow,False,Patient Registration,,Collecting patient information and insurance details.,Complete registration before seeing doctor.,{},"{}",{workflow}
+Triage,Workflow,False,Triage,,Determining how urgent a patient's condition is.,ER nurse triaged patient as urgent.,{},"{}",{workflow,emergency}
+Intake,Workflow,False,Patient Intake,,The initial process of gathering patient information.,Intake includes medical history and vitals.,{},"{}",{workflow}
+Rooming,Workflow,False,Rooming,,Bringing a patient from waiting room to exam room.,MA roomed the patient.,{},"{}",{workflow}
+Waiting Room,Workflow,False,Waiting Room,,Area where patients wait before seeing provider.,Patient in waiting room for 15 minutes.,{},"{}",{workflow}
+Exam Room,Workflow,False,Examination Room,,Private room where provider sees patient.,Patient in exam room 3.,{},"{}",{workflow}
+Observation,Workflow,False,Observation Status,,Short-term hospital stay for monitoring.,Patient in observation for chest pain.,{},"{obs}",{workflow,hospital}
+Inpatient,Workflow,False,Inpatient,,A patient admitted to stay in the hospital.,Inpatient care on medical floor.,{},"{}",{workflow,hospital}
+Outpatient,Workflow,False,Outpatient,,A patient receiving care without staying overnight.,Outpatient surgery center.,{},"{}",{workflow}
+ER,Workflow,True,Emergency Room,,The hospital department treating urgent medical problems.,Patient presented to ER with chest pain.,{},"{ED,{emergency department},{workflow,emergency}
+Urgent Care,Workflow,False,Urgent Care,,A clinic for non-life-threatening problems that need quick attention.,Went to urgent care for sprained ankle.,{},"{}",{workflow}
+ICU,Workflow,True,Intensive Care Unit,,Hospital unit for critically ill patients.,Patient transferred to ICU.,{},"{critical care}",{workflow,hospital}
+Step-down Unit,Workflow,False,Step-down Unit,,Hospital unit for patients who need less care than ICU but more than regular floor.,Patient moved to step-down from ICU.,{},"{intermediate care,{progressive care},{workflow,hospital}
+Telemetry,Workflow,False,Telemetry Unit,,Hospital unit with continuous heart monitoring.,Patient on telemetry for arrhythmia.,{},"{tele}",{workflow,hospital}
+Med-Surg,Workflow,False,Medical-Surgical Unit,,General hospital floor for medical and surgical patients.,Patient on med-surg floor.,{},"{}",{workflow,hospital}
+Operating Room,Workflow,False,Operating Room,,Room where surgeries are performed.,Patient taken to OR for appendectomy.,{},"{OR,{surgery},{workflow,hospital}
+PACU,Workflow,True,Post-Anesthesia Care Unit,,Recovery area after surgery.,Patient in PACU recovering from anesthesia.,{},"{recovery room}",{workflow,hospital}
+Pre-op,Workflow,False,Pre-operative,,Before surgery.,Pre-op assessment completed.,{},"{}",{workflow,hospital}
+Post-op,Workflow,False,Post-operative,,After surgery.,Post-op day 2 doing well.,{},"{}",{workflow,hospital}
+Rounds,Workflow,False,Medical Rounds,,When doctors visit hospitalized patients to check progress.,Team rounds at 8am daily.,{},"{}",{workflow,hospital}
+Handoff,Workflow,False,Handoff,,Transferring patient care information between providers.,Nurse gave handoff at shift change.,{},"{sign-out}",{workflow,hospital}
+Code Blue,Workflow,False,Code Blue,,Emergency code for cardiac or respiratory arrest.,Code blue called in room 302.,{},"{}",{workflow,emergency,hospital}
+Rapid Response,Workflow,False,Rapid Response,,Emergency team for patients getting worse but not yet in arrest.,Rapid response called for low blood pressure.,{},"{rapid response team,{RRT},{workflow,hospital}
+DNR,Workflow,True,Do Not Resuscitate,,An order not to perform CPR if heart stops.,Patient has DNR order.,{},"{}",{workflow,hospital,advance-directive}
+DNI,Workflow,True,Do Not Intubate,,An order not to put in a breathing tube.,Patient is DNR/DNI.,{},"{}",{workflow,hospital,advance-directive}
+Advanced Directive,Workflow,False,Advanced Directive,,Legal document stating wishes for medical care if unable to communicate.,Patient has advanced directive on file.,{},"{living will}",{workflow,legal}
+Healthcare Proxy,Workflow,False,Healthcare Proxy,,Person authorized to make medical decisions for someone else.,Daughter is healthcare proxy.,{},"{medical power of attorney}",{workflow,legal}
+Informed Consent,Workflow,False,Informed Consent,,Agreement to treatment after understanding risks and benefits.,Obtained informed consent for procedure.,{},"{}",{workflow,legal}
+AMA,Workflow,True,Against Medical Advice,,When a patient leaves hospital against doctor's recommendation.,Patient left AMA.,{},"{}",{workflow,hospital}
+Elopement,Workflow,False,Patient Elopement,,When a patient leaves the hospital without permission.,Patient eloped from psychiatric unit.,{},"{}",{workflow,hospital}
+Worklist,Workflow,False,Worklist,,A list of tasks or patients to be seen.,Provider has 15 patients on worklist.,{},"{patient queue}",{workflow}
+Pool,Workflow,False,Patient Pool,,A group of patients assigned to staff.,Nurses split the patient pool.,{},"{}",{workflow}
+Inbox,Workflow,False,Inbox,,Electronic messages and tasks for a provider.,Provider has 20 messages in inbox.,{},"{}",{workflow,ehr}
+Results,Workflow,False,Test Results,,Lab or imaging findings sent to provider.,Lab results pending.,{},"{}",{workflow}
+Portal,Workflow,False,Patient Portal,,Online system where patients access their medical information.,Patient viewed labs on portal.,{},"{MyChart}",{workflow,technology}
+Portal Message,Workflow,False,Portal Message,,Electronic message from patient through patient portal.,Patient sent portal message about symptoms.,{},"{}",{workflow,technology}
+Secure Message,Workflow,False,Secure Message,,Encrypted electronic communication between patient and provider.,Replied to patient's secure message.,{},"{}",{workflow,technology}
+Telehealth,Workflow,False,Telehealth,,Healthcare provided through video or phone.,Telehealth visit for medication refill.,{},"{telemedicine,{virtual visit},{workflow,technology}
+Virtual Visit,Workflow,False,Virtual Visit,,Medical appointment by video.,Virtual visit completed from home.,{},"{}",{workflow,technology}
+E-visit,Workflow,False,Electronic Visit,,Online questionnaire for simple problems.,E-visit for UTI symptoms.,{},"{}",{workflow,technology}
+Downtime,Workflow,False,System Downtime,,When computer systems are not working.,EHR downtime use paper charts.,{},"{}",{workflow,technology}
+Backup,Workflow,False,System Backup,,Saving copies of electronic data.,Daily system backup at midnight.,{},"{}",{workflow,technology}
+Interface,Workflow,False,System Interface,,Connection between different computer systems.,Lab interface sends results to EHR.,{},"{}",{workflow,technology}
+Integration,Workflow,False,System Integration,,Making different computer systems work together.,Integration between scheduling and billing.,{},"{}",{workflow,technology}
+Interoperability,Workflow,False,Interoperability,,Ability of different systems to exchange information.,Health information exchange improves interoperability.,{},"{}",{workflow,technology}
+EHR,Workflow,True,Electronic Health Record,,Digital version of patient medical records.,Document visit in EHR.,{},"{EMR}",{workflow,technology}
+EMR,Workflow,True,Electronic Medical Record,,Digital medical record within one organization.,Clinic uses Epic EMR.,{},"{}",{workflow,technology}
+Chart,Workflow,False,Medical Chart,,A patient's complete medical record.,Review patient chart before visit.,{},"{medical record}",{workflow}
+Note,Workflow,False,Clinical Note,,Written documentation of patient encounter.,Provider completed progress note.,{},"{documentation}",{workflow}
+Addendum,Workflow,False,Chart Addendum,,Addition to a medical record after it's completed.,Provider added addendum to clarify.,{},"{}",{workflow}
+Amendment,Workflow,False,Chart Amendment,,Correction to a medical record.,Patient requested amendment to record.,{},"{}",{workflow}
+Attestation,Workflow,False,Attestation,,Confirming accuracy and signing a document.,Provider attestation required.,{},"{}",{workflow}
+Co-signature,Workflow,False,Co-signature,,A supervising provider signing a trainee's note.,Attending co-signed resident note.,{},"{}",{workflow}
+STAT,Workflow,True,Immediately,,"Urgent,do right away.",STAT labs ordered.,{},{urgent,emergency},{workflow}
+PRN,Medication,True,As Needed,,"Take medication only when needed,not on a schedule.",Take ibuprofen PRN for pain.,{},{},{medication}
+Rx,Medication,True,Prescription,,A written order for medication from a doctor.,Call in Rx to pharmacy.,{},"{prescription}",{medication}
+OTC,Medication,True,Over-the-Counter,,Medication that can be bought without a prescription.,Recommend OTC acetaminophen.,{},"{}",{medication}
+eRx,Medication,True,Electronic Prescription,,Sending prescriptions electronically to pharmacy.,eRx sent to patient's pharmacy.,{},"{}",{medication,technology}
+Refill,Medication,False,Prescription Refill,,Getting more of the same medication.,Patient called for refill.,{},"{}",{medication}
+DAW,Medication,True,Dispense as Written,,Pharmacy must give brand name not generic.,DAW on prescription.,{},"{}",{medication}
+Generic,Medication,False,Generic Medication,,Non-brand name version of a drug.,Prescribe generic when available.,{},"{}",{medication}
+Brand Name,Medication,False,Brand Name Medication,,Original drug made by company that discovered it.,Brand name is more expensive.,{},"{}",{medication}
+Formulary,Medication,False,Drug Formulary,,List of medications covered by insurance.,Check if drug is on formulary.,{},"{}",{medication,insurance}
+Prior Authorization,Medication,False,Medication Prior Authorization,,Insurance approval needed before getting certain medications.,Drug requires prior auth.,{},"{PA}",{medication,insurance}
+Step Therapy,Medication,False,Step Therapy,,Insurance requires trying cheaper drugs first.,Must fail step therapy before approval.,{},"{}",{medication,insurance}
+Quantity Limit,Medication,False,Quantity Limit,,Insurance limits how much medication can be filled.,Quantity limit of 30 tablets per month.,{},"{}",{medication,insurance}
+Medication Reconciliation,Medication,False,Medication Reconciliation,,Reviewing and updating complete medication list.,Med rec completed at admission.,{},"{med rec}",{medication,workflow}
+Medication List,Medication,False,Medication List,,Complete list of all drugs patient takes.,Updated medication list in chart.,{},"{med list}",{medication}
+Adherence,Medication,False,Medication Adherence,,Taking medications as prescribed.,Patient has poor medication adherence.,{},"{compliance}",{medication}
+Side Effect,Medication,False,Side Effect,,Unwanted effect from a medication.,Nausea is common side effect.,{},"{adverse effect}",{medication}
+Adverse Reaction,Medication,False,Adverse Drug Reaction,,Harmful or dangerous response to medication.,Report adverse reactions to FDA.,{},"{ADR}",{medication,safety}
+Drug Interaction,Medication,False,Drug Interaction,,When medications affect each other.,Check for drug interactions.,{},"{}",{medication,safety}
+Contraindication,Medication,False,Contraindication,,A reason not to use a medication or treatment.,Pregnancy is contraindication for this drug.,{},"{}",{medication,safety}
+Black Box Warning,Medication,False,Black Box Warning,,Strongest FDA warning on a drug label.,Black box warning for suicide risk.,{},"{}",{medication,safety}
+Dosage,Medication,False,Dosage,,Amount of medication to take.,Dosage is 500mg twice daily.,{},"{dose}",{medication}
+Route,Medication,False,Route of Administration,,How medication is given.,Route is by mouth.,{},"{}",{medication}
+Frequency,Medication,False,Dosing Frequency,,How often to take medication.,Frequency is three times daily.,{},"{}",{medication}
+Duration,Medication,False,Treatment Duration,,How long to take medication.,Duration is 10 days.,{},"{}",{medication}
+PO,Medication,True,By Mouth,,"Take medication by mouth,swallow.",Give medication PO.,{},{oral,orally},{medication,route}
+IV,Medication,True,Intravenous,,"Give medication through a vein,into bloodstream.",Antibiotic given IV.,{},{},{medication,route}
+IM,Medication,True,Intramuscular,,"Give medication as shot into muscle,not vein.",Vaccine given IM.,{},{},{medication,route}
+SubQ,Medication,True,Subcutaneous,,"Give medication under the skin,not in muscle or vein.",Insulin given SubQ.,{},{SQ,SC},{medication,route}
+Topical,Medication,False,Topical,,"Apply medication on the skin,not swallowed.",Apply cream topically.,{},{},{medication,route}
+Transdermal,Medication,False,Transdermal,,"Medication absorbed through skin,usually a patch.",Nicotine patch is transdermal.,{},{},{medication,route}
+Inhalation,Medication,False,Inhalation,,"Breathe medication into lungs,usually for asthma.",Albuterol by inhalation.,{},{},{medication,route}
+Rectal,Medication,False,Rectal,,"Give medication through rectum,suppository.",Acetaminophen suppository rectally.,{},{},{medication,route}
+Ophthalmic,Medication,False,Ophthalmic,,"Medication for eyes,usually drops.",Ophthalmic drops for glaucoma.,{},{eye drops},{medication,route}
+Otic,Medication,False,Otic,,"Medication for ears,usually drops.",Otic drops for ear infection.,{},{ear drops},{medication,route}
+Intranasal,Medication,False,Intranasal,,"Give medication through nose,nasal spray.",Flu vaccine intranasal.,{},{nasal},{medication,route}
+QD,Medication,True,Once Daily,,"Take medication once per day,every day.",Take medication QD.,{},{daily},{medication,frequency}
+BID,Medication,True,Twice Daily,,"Take medication two times per day,morning and night.",Take medication BID.,{},{twice daily},{medication,frequency}
+TID,Medication,True,Three Times Daily,,"Take medication three times per day,spread throughout day.",Take medication TID.,{},{three times daily},{medication,frequency}
+QID,Medication,True,Four Times Daily,,"Take medication four times per day,every 6 hours.",Take medication QID.,{},{four times daily},{medication,frequency}
+Q4H,Medication,True,Every 4 Hours,,"Take medication every 4 hours,around the clock.",Pain medication Q4H PRN.,{},{},{medication,frequency}
+Q6H,Medication,True,Every 6 Hours,,"Take medication every 6 hours,four times daily.",Antibiotic Q6H.,{},{},{medication,frequency}
+Q8H,Medication,True,Every 8 Hours,,"Take medication every 8 hours,three times daily.",IV medication Q8H.,{},{},{medication,frequency}
+Q12H,Medication,True,Every 12 Hours,,"Take medication every 12 hours,twice daily.",Medication Q12H.,{},{},{medication,frequency}
+QHS,Medication,True,At Bedtime,,"Take medication at night before sleep,once daily.",Take medication QHS.,{},{bedtime,at night},{medication,frequency}
+AC,Medication,True,Before Meals,,"Take medication before eating,on empty stomach.",Take medication AC.,{},{},{medication,timing}
+PC,Medication,True,After Meals,,"Take medication after eating,with food.",Take medication PC.,{},{},{medication,timing}
+NPO,Medication,True,Nothing By Mouth,,"No food or drink,usually before surgery or procedure.",Patient NPO after midnight.,{},{},{medication,diet}
+PPI,Medication,True,Proton Pump Inhibitor,,Medicine that reduces stomach acid for heartburn.,PPI for GERD.,{},"{omeprazole,{pantoprazole},{medication,drug-class}
+NSAID,Medication,True,Nonsteroidal Anti-Inflammatory Drug,,Medicine that reduces pain fever and inflammation.,NSAID for arthritis pain.,{},"{ibuprofen,{naproxen},{medication,drug-class}
+SSRI,Medication,True,Selective Serotonin Reuptake Inhibitor,,Antidepressant medication increasing serotonin.,SSRI for depression.,{},"{sertraline,{fluoxetine},{medication,drug-class}
+ACE Inhibitor,Medication,False,ACE Inhibitor,,Blood pressure medicine that relaxes blood vessels.,ACE inhibitor for hypertension.,{},"{lisinopril,{enalapril},{medication,drug-class}
+ARB,Medication,True,Angiotensin Receptor Blocker,,Blood pressure medicine similar to ACE inhibitor.,ARB alternative to ACE inhibitor.,{},"{losartan,{valsartan},{medication,drug-class}
+Beta Blocker,Medication,False,Beta Blocker,,Medicine that slows heart rate and lowers blood pressure.,Beta blocker for heart failure.,{},"{metoprolol,{carvedilol},{medication,drug-class}
+Calcium Channel Blocker,Medication,False,Calcium Channel Blocker,,Medicine that relaxes blood vessels and lowers blood pressure.,Calcium channel blocker for hypertension.,{},"{amlodipine,{diltiazem},{medication,drug-class}
+Diuretic,Medication,False,Diuretic,,Medicine that removes extra fluid by increasing urine.,Diuretic for swelling.,{},"{water pill,{furosemide,HCTZ},{medication,drug-class}
+Statin,Medication,False,Statin,,Medicine that lowers cholesterol.,Statin for high cholesterol.,{},"{atorvastatin,{simvastatin},{medication,drug-class}
+Anticoagulant,Medication,False,Anticoagulant,,Medicine that prevents blood clots.,Anticoagulant for atrial fibrillation.,{},"{blood thinner,{warfarin,apixaban},{medication,drug-class}
+Antiplatelet,Medication,False,Antiplatelet,,Medicine that prevents platelets from clumping.,Antiplatelet after stent.,{},"{aspirin,{clopidogrel},{medication,drug-class}
+Antibiotic,Medication,False,Antibiotic,,Medicine that kills bacteria.,Antibiotic for infection.,{},"{}",{medication,drug-class}
+Antiviral,Medication,False,Antiviral,,Medicine that fights viruses.,Antiviral for flu.,{},"{}",{medication,drug-class}
+Antifungal,Medication,False,Antifungal,,Medicine that treats fungal infections.,Antifungal for yeast infection.,{},"{}",{medication,drug-class}
+Bronchodilator,Medication,False,Bronchodilator,,Medicine that opens airways in lungs.,Bronchodilator for asthma.,{},"{albuterol}",{medication,drug-class}
+Corticosteroid,Medication,False,Corticosteroid,,Medicine that reduces inflammation.,Steroid for inflammation.,{},"{steroid,{prednisone},{medication,drug-class}
+Opioid,Medication,False,Opioid,,Strong pain medicine that can be addictive.,Opioid for severe pain.,{},"{narcotic,{morphine,oxycodone},{medication,drug-class}
+Insulin,Medication,False,Insulin,,Hormone medicine that lowers blood sugar.,Insulin for diabetes.,{},"{}",{medication,drug-class}
+Immunosuppressant,Medication,False,Immunosuppressant,,Medicine that weakens immune system to prevent rejection.,Immunosuppressant after transplant.,{},"{}",{medication,drug-class}
+Vaccine,Medication,False,Vaccine,,Medicine that helps body build immunity to disease.,Flu vaccine annually.,{},"{immunization}",{medication}
+HIPAA,Regulatory,True,Health Insurance Portability and Accountability Act,,Federal law protecting patient health information privacy.,HIPAA protects medical records.,{},"{}",{regulatory,compliance,privacy}
+PHI,Regulatory,True,Protected Health Information,,Any health information that can identify a patient.,Do not share PHI without permission.,{},"{}",{regulatory,compliance,privacy}
+Breach,Regulatory,False,Privacy Breach,,Unauthorized access or disclosure of patient information.,Report security breach immediately.,{},"{}",{regulatory,compliance,privacy}
+BAA,Regulatory,True,Business Associate Agreement,,Contract requiring vendors to protect patient information.,Sign BAA before sharing data.,{},"{}",{regulatory,compliance,privacy}
+Covered Entity,Regulatory,False,Covered Entity,,Healthcare providers and organizations that must follow HIPAA.,Hospitals are covered entities.,{},"{}",{regulatory,compliance}
+HITECH,Regulatory,True,Health Information Technology for Economic and Clinical Health,,Law strengthening HIPAA with stricter penalties.,HITECH increased HIPAA enforcement.,{},"{}",{regulatory,compliance}
+Meaningful Use,Regulatory,False,Meaningful Use,,Requirements for using electronic health records to improve care.,Achieve meaningful use measures.,{},"{}",{regulatory,compliance,ehr}
+CMS,Regulatory,True,Centers for Medicare and Medicaid Services,,Federal agency overseeing Medicare and Medicaid.,CMS sets reimbursement rates.,{},"{}",{regulatory,government}
+Medicare,Regulatory,False,Medicare,,Federal health insurance for people 65 and older.,Medicare Part A covers hospital.,{},"{}",{regulatory,insurance,government}
+Medicaid,Regulatory,False,Medicaid,,State and federal health insurance for low-income people.,Medicaid eligibility varies by state.,{},"{}",{regulatory,insurance,government}
+MIPS,Regulatory,True,Merit-based Incentive Payment System,,Medicare program tying provider payment to quality.,MIPS reporting deadline December 31.,{},"{}",{regulatory,compliance,quality}
+MACRA,Regulatory,True,Medicare Access and CHIP Reauthorization Act,,Law changing how Medicare pays doctors.,MACRA replaced fee-for-service.,{},"{}",{regulatory,compliance}
+QPP,Regulatory,True,Quality Payment Program,,Medicare program rewarding quality over quantity.,Participate in QPP.,{},"{}",{regulatory,compliance,quality}
+HEDIS,Regulatory,True,Healthcare Effectiveness Data and Information Set,,Quality measures for health plans.,HEDIS measures diabetes care.,{},"{}",{regulatory,compliance,quality}
+NCQA,Regulatory,True,National Committee for Quality Assurance,,Organization accrediting health plans and providers.,NCQA accreditation.,{},"{}",{regulatory,compliance,quality}
+Joint Commission,Regulatory,False,Joint Commission,,Organization accrediting hospitals and healthcare organizations.,Joint Commission survey next month.,{},"{TJC,{JCAHO},{regulatory,compliance,quality}
+EMTALA,Regulatory,True,Emergency Medical Treatment and Labor Act,,Law requiring emergency rooms to treat everyone.,EMTALA requires screening exam.,{},"{}",{regulatory,compliance,emergency}
+Stark Law,Regulatory,False,Stark Law,,Law prohibiting doctors from referring to facilities they own.,Stark Law prevents self-referral.,{},"{}",{regulatory,compliance}
+Anti-Kickback,Regulatory,False,Anti-Kickback Statute,,Law prohibiting paying for patient referrals.,Anti-kickback violation.,{},"{}",{regulatory,compliance}
+False Claims Act,Regulatory,False,False Claims Act,,Law penalizing fraudulent billing to government programs.,False claims penalties severe.,{},"{}",{regulatory,compliance}
+Compliance,Regulatory,False,Compliance,,Following laws rules and regulations.,Compliance training required.,{},"{}",{regulatory}
+Quality Measure,Regulatory,False,Quality Measure,,Standard used to evaluate healthcare quality.,Track quality measures.,{},"{quality metric}",{regulatory,quality}
+Core Measure,Regulatory,False,Core Measure,,Important quality standards required by regulators.,Hospital core measures.,{},"{}",{regulatory,quality}
+Readmission,Regulatory,False,Hospital Readmission,,When patient returns to hospital within 30 days.,Reduce readmission rates.,{},"{}",{regulatory,quality,hospital}
+ACO,Regulatory,True,Accountable Care Organization,,Group of providers working together to improve quality and reduce costs.,Join an ACO.,{},"{}",{regulatory,value-based-care}
+PCMH,Regulatory,True,Patient-Centered Medical Home,,Primary care practice meeting quality standards.,PCMH recognition.,{},"{}",{regulatory,primary-care,quality}
+Value-Based Care,Regulatory,False,Value-Based Care,,Payment model rewarding quality outcomes not volume.,Shift to value-based care.,{},"{}",{regulatory,payment}
+Fee-for-Service,Regulatory,False,Fee-for-Service,,Payment model paying for each service provided.,Traditional fee-for-service model.,{},"{FFS}",{regulatory,payment}
+Capitation,Regulatory,False,Capitation,,Payment model paying fixed amount per patient.,Capitated payment per member.,{},"{}",{regulatory,payment}
+Bundled Payment,Regulatory,False,Bundled Payment,,Single payment covering entire episode of care.,Bundled payment for joint replacement.,{},"{}",{regulatory,payment}
+Risk Adjustment,Regulatory,False,Risk Adjustment,,Adjusting payments based on patient health complexity.,Risk adjustment for sicker patients.,{},"{}",{regulatory,payment}
+Case Mix,Regulatory,False,Case Mix,,Measure of patient complexity in a facility.,High case mix index.,{},"{}",{regulatory,hospital}
+DRG,Regulatory,True,Diagnosis-Related Group,,System grouping hospital cases for payment.,DRG determines reimbursement.,{},"{}",{regulatory,payment,hospital}
+ICD,Regulatory,True,International Classification of Diseases,,Standard codes for diagnoses.,ICD-10 code for pneumonia.,{},"{ICD-10}",{regulatory,coding}
+CPT,Regulatory,True,Current Procedural Terminology,,Standard codes for procedures and services.,CPT code for office visit.,{},"{}",{regulatory,coding}
+E&M,Regulatory,True,Evaluation and Management,,Codes for office visits and consultations.,E&M code selection.,{},"{}",{regulatory,coding}
+Modifier,Regulatory,False,Billing Modifier,,Code added to show special circumstances.,Add modifier 25 to E&M.,{},"{}",{regulatory,coding}
+Upcoding,Regulatory,False,Upcoding,,Illegally billing for more complex service than provided.,Upcoding is fraud.,{},"{}",{regulatory,compliance,coding}
+Downcoding,Regulatory,False,Downcoding,,When insurance reduces payment by changing code.,Claim downcoded.,{},"{}",{regulatory,coding}
+Medical Coding,Regulatory,False,Medical Coding,,Converting diagnoses and procedures to numeric codes.,Medical coding for billing.,{},"{}",{regulatory,coding}
+Medical Billing,Regulatory,False,Medical Billing,,Submitting claims to insurance for payment.,Medical billing department.,{},"{}",{regulatory,billing}
+Charge Capture,Regulatory,False,Charge Capture,,Recording all services provided for billing.,Charge capture in EHR.,{},"{}",{regulatory,billing}
+Clean Claim,Regulatory,False,Clean Claim,,Insurance claim with no errors that processes quickly.,Submit clean claims.,{},"{}",{regulatory,billing}
+Rejected Claim,Regulatory,False,Rejected Claim,,Claim returned due to errors before processing.,Fix rejected claim.,{},"{}",{regulatory,billing}
+Denied Claim,Regulatory,False,Denied Claim,,Claim processed but not paid.,Appeal denied claim.,{},"{}",{regulatory,billing}
+Appeal,Regulatory,False,Insurance Appeal,,Requesting insurance to reconsider denied claim.,File appeal within 30 days.,{},"{}",{regulatory,billing,insurance}
+Remittance,Regulatory,False,Remittance Advice,,Statement showing what insurance paid.,Review remittance for payment.,{},"{ERA,{EOB},{regulatory,billing}
+PCP,Staff,True,Primary Care Physician,,Main doctor providing general healthcare.,Established with PCP.,{},"{primary care provider}",{staff,role}
+Attending,Staff,False,Attending Physician,,Supervising doctor responsible for patient care.,Attending made final decision.,{},"{}",{staff,role}
+Resident,Staff,False,Medical Resident,,Doctor in training after medical school.,Resident presented case.,{},"{}",{staff,role,trainee}
+Intern,Staff,False,Medical Intern,,First-year resident doctor.,Intern on overnight call.,{},"{}",{staff,role,trainee}
+Fellow,Staff,False,Medical Fellow,,Doctor in specialty training after residency.,Cardiology fellow.,{},"{}",{staff,role,trainee}
+Medical Student,Staff,False,Medical Student,,Student training to become a doctor.,Medical student shadowing.,{},"{}",{staff,role,trainee}
+APP,Staff,True,Advanced Practice Provider,,Nurse practitioner or physician assistant.,APP saw patient.,{},"{mid-level provider}",{staff,role}
+NP,Staff,True,Nurse Practitioner,,Advanced practice nurse who can diagnose and prescribe.,NP manages diabetes.,{},"{}",{staff,role}
+PA,Staff,True,Physician Assistant,,Licensed provider who works with physicians.,PA-C assisted in surgery.,{},"{PA-C}",{staff,role}
+RN,Staff,True,Registered Nurse,,Licensed nurse providing patient care.,RN administered medication.,{},"{}",{staff,role}
+LPN,Staff,True,Licensed Practical Nurse,,Nurse providing basic care under RN supervision.,LPN checked vitals.,{},"{LVN}",{staff,role}
+CNA,Staff,True,Certified Nursing Assistant,,Nursing assistant helping with basic patient care.,CNA helped patient to bathroom.,{},"{}",{staff,role}
+MA,Staff,True,Medical Assistant,,Assistant helping with clinical and clerical tasks.,MA roomed the patient.,{},"{}",{staff,role}
+Scribe,Staff,False,Medical Scribe,,Person who documents for provider during visits.,Scribe entered note in real-time.,{},"{}",{staff,role}
+Pharmacist,Staff,False,Pharmacist,,Licensed professional who prepares and dispenses medications.,Pharmacist reviewed medications.,{},"{PharmD,{RPh},{staff,role}
+Pharmacy Technician,Staff,False,Pharmacy Technician,,Assistant helping pharmacist.,Pharmacy tech filled prescription.,{},"{pharm tech}",{staff,role}
+Respiratory Therapist,Staff,False,Respiratory Therapist,,Professional treating breathing and lung problems.,RT gave breathing treatment.,{},"{RT}",{staff,role}
+Physical Therapist,Staff,False,Physical Therapist,,Professional helping patients regain movement and strength.,PT evaluated mobility.,{},"{}",{staff,role}
+Occupational Therapist,Staff,False,Occupational Therapist,,Professional helping patients with daily living activities.,OT assessed hand function.,{},"{OT}",{staff,role}
+Speech Therapist,Staff,False,Speech-Language Pathologist,,Professional treating speech and swallowing problems.,Speech therapist evaluated swallow.,{},"{SLP,{speech therapy},{staff,role}
+Dietitian,Staff,False,Registered Dietitian,,Professional providing nutrition counseling.,Dietitian created meal plan.,{},"{nutritionist,{RD},{staff,role}
+Social Worker,Staff,False,Social Worker,,Professional helping with social and emotional needs.,Social worker arranged home care.,{},"{SW,{LSW,LCSW},{staff,role}
+Case Manager,Staff,False,Case Manager,,Professional coordinating patient care and resources.,Case manager scheduled follow-up.,{},"{care coordinator}",{staff,role}
+Patient Navigator,Staff,False,Patient Navigator,,Staff helping patients navigate healthcare system.,Navigator helped schedule appointments.,{},"{}",{staff,role}
+Care Coordinator,Staff,False,Care Coordinator,,Staff organizing and managing patient care.,Care coordinator called patient.,{},"{}",{staff,role}
+Referral Coordinator,Staff,False,Referral Coordinator,,Staff managing specialist referrals.,Referral coordinator scheduled appointment.,{},"{}",{staff,role}
+Scheduler,Staff,False,Scheduler,,Staff scheduling patient appointments.,Scheduler called to confirm.,{},"{appointment coordinator}",{staff,role}
+Front Desk,Staff,False,Front Desk Staff,,Staff greeting patients and managing check-in.,Front desk collected copay.,{},"{receptionist}",{staff,role}
+Medical Records,Staff,False,Medical Records Staff,,Staff managing patient charts and documents.,Medical records released information.,{},"{health information management,{HIM},{staff,role}
+Billing Staff,Staff,False,Billing Staff,,Staff submitting insurance claims and collecting payment.,Billing department sent statement.,{},"{}",{staff,role}
+Coder,Staff,False,Medical Coder,,Staff assigning diagnostic and procedure codes.,Coder reviewed chart for accuracy.,{},"{}",{staff,role}
+Radiology Technician,Staff,False,Radiology Technician,,Technician performing X-rays and imaging.,Rad tech took chest X-ray.,{},"{rad tech,{radiologic technologist},{staff,role}
+Lab Technician,Staff,False,Laboratory Technician,,Technician performing lab tests.,Lab tech drew blood.,{},"{phlebotomist,{medical technologist},{staff,role}
+Surgical Tech,Staff,False,Surgical Technologist,,Technician assisting in surgery.,Surgical tech prepared instruments.,{},"{scrub tech}",{staff,role}
+Anesthesiologist,Staff,False,Anesthesiologist,,Doctor providing anesthesia for surgery.,Anesthesiologist intubated patient.,{},"{}",{staff,role}
+CRNA,Staff,True,Certified Registered Nurse Anesthetist,,Advanced practice nurse providing anesthesia.,CRNA gave spinal anesthesia.,{},"{}",{staff,role}
+Paramedic,Staff,False,Paramedic,,Emergency medical professional on ambulance.,Paramedic started IV.,{},"{EMT-P}",{staff,role}
+EMT,Staff,True,Emergency Medical Technician,,Emergency medical professional providing basic care.,EMT provided first aid.,{},"{}",{staff,role}
+ER Tech,Staff,False,Emergency Room Technician,,Technician assisting in emergency room.,ER tech splinted arm.,{},"{}",{staff,role}
+Unit Clerk,Staff,False,Unit Clerk,,Staff doing clerical work on hospital unit.,Unit clerk answered phone.,{},"{unit secretary}",{staff,role}
+Patient Advocate,Staff,False,Patient Advocate,,Staff helping resolve patient concerns.,Patient advocate addressed complaint.,{},"{}",{staff,role}
+Quality Coordinator,Staff,False,Quality Improvement Coordinator,,Staff working on quality improvement projects.,Quality coordinator tracked metrics.,{},"{}",{staff,role}
+Infection Preventionist,Staff,False,Infection Preventionist,,Staff preventing and controlling infections.,IP investigated outbreak.,{},"{infection control}",{staff,role}
+Risk Manager,Staff,False,Risk Manager,,Staff managing patient safety and liability.,Risk manager reviewed incident.,{},"{}",{staff,role}
+Compliance Officer,Staff,False,Compliance Officer,,Staff ensuring rules and regulations are followed.,Compliance officer conducted audit.,{},"{}",{staff,role}
+Connection Center,Workflow,False,Connection Center,,Centralized call center handling patient calls and scheduling.,Connection center scheduled appointment.,{},"{call center,{contact center},{workflow}
+Patient Experience,Workflow,False,Patient Experience,,How patients feel about their healthcare.,Improve patient experience scores.,{},"{}",{workflow,quality}
+Patient Satisfaction,Workflow,False,Patient Satisfaction,,How happy patients are with their care.,Patient satisfaction survey.,{},"{}",{workflow,quality}
+Press Ganey,Workflow,False,Press Ganey,,Company measuring patient satisfaction.,Press Ganey scores improved.,{},"{}",{workflow,quality}
+HCAHPS,Regulatory,True,Hospital Consumer Assessment of Healthcare Providers and Systems,,Survey measuring hospital patient experience.,HCAHPS scores affect reimbursement.,{},"{}",{regulatory,quality,hospital}
