@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\CATEGORY_ANALYSIS_REPORT.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\DATA_LOADING_GUIDE.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\DATA_LOADING_STATUS.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\DESIGN_REDESIGN_SUMMARY.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\DESIGN_SYSTEM.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\HOME_CONTEXT_BANNER.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\HOME_PAGE_REDESIGN.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\ICD10_CONTENT_ADDITION.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\MEDICAL_HUB_COMPLETE.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\NAVIGATION_GUIDE.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\SEARCH_DISPLAY_FIX_SUMMARY.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\SEARCH_FUNCTIONALITY_ANALYSIS.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\SEARCH_REDESIGN_DOCUMENTATION.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\TAB_DESCRIPTIONS_GUIDE.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\UI_IMPROVEMENTS_SUMMARY.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\UI_SYNC_FIX_SUMMARY.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\UNIFIED_SEARCH_REDESIGN.md\" \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\\\\docs/\")"
+    ]
+  }
+}

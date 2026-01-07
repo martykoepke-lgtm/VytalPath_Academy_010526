@@ -15,6 +15,7 @@ import { UnifiedSearch } from './components/UnifiedSearch';
 import { TermDetail } from './components/TermDetail';
 import Academy from './components/Academy';
 import { TerminologyView } from './components/TerminologyView';
+import { VideoTraining } from './components/VideoTraining';
 import { LandingPage } from './components/LandingPage';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
@@ -388,6 +389,8 @@ function App() {
           )}
 
           {currentView === 'academy' && <Academy />}
+
+          {currentView === 'training' && <VideoTraining />}
 
           {currentView === 'terminology' && (
             <TerminologyView onTermSelect={handleSelectTerm} />

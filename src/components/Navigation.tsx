@@ -1,7 +1,7 @@
-import { BookOpen, FileText, Search, GraduationCap, User, LogOut, MessageSquare } from 'lucide-react';
+import { BookOpen, FileText, Search, GraduationCap, User, LogOut, MessageSquare, Video } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-export type NavigationView = 'home' | 'terms' | 'sops' | 'search' | 'academy' | 'terminology';
+export type NavigationView = 'home' | 'terms' | 'sops' | 'search' | 'academy' | 'terminology' | 'training';
 
 interface NavigationProps {
   currentView: NavigationView;
@@ -13,11 +13,12 @@ interface NavigationProps {
 export function Navigation({ currentView, onNavigate, onAuthClick, onGoHome }: NavigationProps) {
   const { user, signOut } = useAuth();
   const navItems = [
+    { id: 'training' as const, label: 'Video Training', icon: Video },
     { id: 'academy' as const, label: 'Clinic Basics', icon: GraduationCap },
-    { id: 'terms' as const, label: 'Terms in Healthcare', icon: BookOpen },
-    { id: 'search' as const, label: 'Search', icon: Search },
     { id: 'sops' as const, label: 'Common Workflows', icon: FileText },
+    { id: 'terms' as const, label: 'Terms in Healthcare', icon: BookOpen },
     { id: 'terminology' as const, label: 'Medical Terminology', icon: MessageSquare },
+    { id: 'search' as const, label: 'Search', icon: Search },
   ];
 
   return (
