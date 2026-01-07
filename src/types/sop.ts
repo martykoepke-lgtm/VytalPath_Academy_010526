@@ -3,7 +3,7 @@ export interface SOPStep {
   details: string[];
 }
 
-export type SOPCategory = 'opening-closing' | 'scheduling' | 'checkin' | 'checkout' | 'during-day' | 'closing';
+export type SOPCategory = 'opening' | 'opening-closing' | 'scheduling' | 'insurance' | 'compliance' | 'checkin' | 'checkout' | 'during-day' | 'closing' | 'admin';
 export type PatientType = 'new' | 'existing' | 'both';
 
 export interface SOP {

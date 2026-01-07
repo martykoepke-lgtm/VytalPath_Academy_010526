@@ -18,10 +18,23 @@ import {
   DoorOpen,
   Target,
   Wallet,
-  FileSpreadsheet
+  FileSpreadsheet,
+  PhoneCall,
+  Search,
+  FileText,
+  Mail,
+  Bell,
+  Megaphone,
+  Package,
+  CheckSquare
 } from 'lucide-react';
 
 export const categoryMetadata: Record<SOPCategory, { title: string; icon: LucideIcon; description: string }> = {
+  'opening': {
+    title: 'Opening Procedures',
+    icon: Sunrise,
+    description: 'Morning setup and opening procedures'
+  },
   'opening-closing': {
     title: 'Opening Procedures',
     icon: Sunrise,
@@ -31,6 +44,16 @@ export const categoryMetadata: Record<SOPCategory, { title: string; icon: Lucide
     title: 'Scheduling & Registration',
     icon: Phone,
     description: 'Phone-based scheduling and patient registration'
+  },
+  'insurance': {
+    title: 'Insurance & Eligibility',
+    icon: Search,
+    description: 'Insurance verification and eligibility checks'
+  },
+  'compliance': {
+    title: 'Forms & Compliance',
+    icon: FileText,
+    description: 'ROI, consent forms, and compliance documentation'
   },
   'checkin': {
     title: 'Check-In Procedures',
@@ -51,31 +74,60 @@ export const categoryMetadata: Record<SOPCategory, { title: string; icon: Lucide
     title: 'Closing Procedures',
     icon: Moon,
     description: 'End-of-day reconciliation and closing'
+  },
+  'admin': {
+    title: 'Administrative Tasks',
+    icon: Package,
+    description: 'Administrative duties and compliance logs'
   }
 };
 
 export const sopIconMap: Record<string, LucideIcon> = {
+  // Opening procedures
+  'phonesystemlogin': PhoneCall,
+  'cashdraweropening': Wallet,
+  'prescrubbing': ClipboardCheck,
+  // Scheduling & Registration
   'newpatientreg': UserPlus,
   'existingpatientscheduling': Calendar,
+  'schedulingfollowups': RefreshCw,
+  'appointmentreminders': Bell,
+  'patientoutreach': Megaphone,
+  // Insurance & Compliance
+  'insuranceeligibility': Search,
+  'roiconsentnpp': FileText,
+  // Check-in
   'newpatientcheckin': UserCheck,
   'existingpatientcheckin': ClipboardList,
   'urgentcarecheckin': AlertCircle,
-  'schedulingfollowups': RefreshCw,
-  'noshow': Clock,
-  'waitlist': ClipboardPlus,
-  'checkout': DoorOpen,
+  // During day
   'multitasking': Target,
+  'messagemanagement': Mail,
+  'statresults': Bell,
+  'waitlist': ClipboardPlus,
+  'noshow': Clock,
+  // Check-out
+  'checkout': DoorOpen,
+  // Closing
   'cashdrawer': Wallet,
-  'eodreconciliation': FileSpreadsheet
+  'eodreconciliation': FileSpreadsheet,
+  // Admin
+  'noshowletters': Mail,
+  'orderingsupplies': Package,
+  'monthlycompliance': CheckSquare
 };
 
 export const categoryOrder: SOPCategory[] = [
+  'opening',
   'opening-closing',
   'scheduling',
+  'insurance',
+  'compliance',
   'checkin',
-  'checkout',
   'during-day',
-  'closing'
+  'checkout',
+  'closing',
+  'admin'
 ];
 
 export function organizeSOPsByCategory(sops: SOP[]): SOPCategoryGroup[] {
