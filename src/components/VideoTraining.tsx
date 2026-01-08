@@ -66,6 +66,13 @@ const trainingSections: TrainingSection[] = [
         duration: '~5 min',
         videoUrl: '/videos/HIPAA Essentials Explained.mp4',
       },
+      {
+        id: 'phi',
+        title: 'PHI Explained',
+        description: 'Learn what Protected Health Information (PHI) is and how to identify it in your daily work.',
+        duration: '~5 min',
+        videoUrl: '/videos/PHI Explained.mp4',
+      },
     ],
   },
 ];
@@ -138,7 +145,7 @@ export function VideoTraining() {
           </span>
           <span className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            ~15 min total
+            ~20 min total
           </span>
         </div>
       </div>
