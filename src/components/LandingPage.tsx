@@ -6,20 +6,16 @@ interface LandingPageProps {
 
 export function LandingPage({ onEnter }: LandingPageProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-slate-50">
       {/* Header/Nav */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <BookOpen className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">VytalPath Academy</h1>
-                <p className="text-xs text-gray-500">Reference & Training</p>
-              </div>
-            </div>
+            <img
+              src="/vytalpath-logo.png"
+              alt="VytalPath Academy"
+              className="h-12 w-auto"
+            />
             <button
               onClick={onEnter}
               className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all shadow-md hover:shadow-lg"
@@ -75,11 +71,11 @@ export function LandingPage({ onEnter }: LandingPageProps) {
             <div className="text-sm text-gray-600">Common Workflows</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-indigo-600 mb-1">20+</div>
+            <div className="text-3xl font-bold text-blue-700 mb-1">20+</div>
             <div className="text-sm text-gray-600">Learning Modules</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-1">Free</div>
+            <div className="text-3xl font-bold text-teal-600 mb-1">Free</div>
             <div className="text-sm text-gray-600">Forever</div>
           </div>
         </div>
@@ -119,7 +115,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <GraduationCap className="w-8 h-8 text-white" />
               </div>
               <h4 className="text-lg font-bold text-gray-900 mb-2">Clinic Basics</h4>
@@ -129,7 +125,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Search className="w-8 h-8 text-white" />
               </div>
               <h4 className="text-lg font-bold text-gray-900 mb-2">Quick Search</h4>
@@ -176,8 +172,8 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-indigo-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-indigo-600" />
+                <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+                  <CheckCircle className="w-4 h-4 text-blue-700" />
                 </div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Practical & Relevant</h5>
@@ -187,8 +183,8 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-purple-600" />
+                <div className="flex-shrink-0 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center mt-1">
+                  <CheckCircle className="w-4 h-4 text-teal-600" />
                 </div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Always Free</h5>
@@ -224,7 +220,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
               </div>
               <div className="bg-white rounded-xl p-6 shadow-md">
                 <div className="flex items-center gap-3 mb-3">
-                  <Zap className="w-8 h-8 text-indigo-600" />
+                  <Zap className="w-8 h-8 text-blue-700" />
                   <h5 className="font-bold text-gray-900">Start Immediately</h5>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -257,9 +253,12 @@ export function LandingPage({ onEnter }: LandingPageProps) {
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <BookOpen className="w-5 h-5 text-teal-400" />
-            <span className="text-white font-semibold">VytalPath Academy</span>
+          <div className="flex items-center justify-center mb-4">
+            <img
+              src="/vytalpath-logo.png"
+              alt="VytalPath Academy"
+              className="h-10 w-auto brightness-0 invert"
+            />
           </div>
           <p className="text-sm">
             Your comprehensive healthcare training and reference platform

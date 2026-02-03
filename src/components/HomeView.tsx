@@ -1,4 +1,4 @@
-import { BookOpen, FileText, Search, GraduationCap, MapPin, ArrowRight, Stethoscope, ClipboardCheck, Building2, Info, Lightbulb } from 'lucide-react';
+import { MapPin, ArrowRight, Building2, Info, Lightbulb } from 'lucide-react';
 import type { NavigationView } from './Navigation';
 import { FeatureCard } from './FeatureCard';
 
@@ -26,8 +26,8 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
 
       {/* Important Context Banner */}
       <div className="mb-12">
-        <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 rounded-2xl border-2 border-blue-200 shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-teal-600 px-6 py-3">
+        <div className="bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 rounded-2xl border-2 border-blue-200 shadow-lg overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3">
             <div className="flex items-center gap-2 text-white">
               <Info className="w-5 h-5" />
               <h2 className="text-lg font-bold">What This Resource Is (And Isn't)</h2>
@@ -37,8 +37,8 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mt-1">
-                    <Lightbulb className="w-5 h-5 text-teal-600" />
+                  <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mt-1">
+                    <Lightbulb className="w-5 h-5 text-blue-700" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-2 text-lg">This Is Your Foundation</h3>
@@ -49,9 +49,9 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
                     </p>
                   </div>
                 </div>
-                <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-                  <p className="text-sm text-teal-900 font-medium mb-2">✓ You'll learn:</p>
-                  <ul className="text-sm text-teal-800 space-y-1">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <p className="text-sm text-blue-900 font-medium mb-2">✓ You'll learn:</p>
+                  <ul className="text-sm text-blue-800 space-y-1">
                     <li>• What terms like "superbill" and "co-pay" mean</li>
                     <li>• How ICD-10 and CPT codes work</li>
                     <li>• Why HIPAA matters and what PHI is</li>
@@ -112,21 +112,21 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
           {/* Clinic Basics */}
           <button
             onClick={() => onNavigate('academy')}
-            className="group bg-white rounded-xl p-6 shadow-md border-2 border-teal-200 hover:border-teal-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left"
+            className="group bg-white rounded-xl p-6 shadow-md border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-lg flex items-center justify-center shadow-md">
-                <GraduationCap className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/icons/courses-icon.png" alt="Courses" className="w-10 h-10" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900">Clinic Basics</h3>
-                <p className="text-xs text-teal-600 font-medium">Start here if you're new!</p>
+                <p className="text-xs text-blue-700 font-medium">Start here if you're new!</p>
               </div>
             </div>
             <p className="text-sm text-gray-600 mb-4">
               Learn foundational clinic knowledge: HIPAA compliance, medical coding (ICD-10, CPT), EHR basics, and patient privacy essentials.
             </p>
-            <div className="flex items-center gap-2 text-teal-600 text-sm font-semibold">
+            <div className="flex items-center gap-2 text-blue-700 text-sm font-semibold">
               <span>Begin Learning</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -138,8 +138,8 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
             className="group bg-white rounded-xl p-6 shadow-md border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-md">
-                <BookOpen className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/icons/terms-icon.png" alt="Terms" className="w-10 h-10" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900">Terms in Healthcare</h3>
@@ -166,21 +166,21 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
           {/* Front Office Common Workflows */}
           <button
             onClick={() => onNavigate('sops')}
-            className="group bg-white rounded-xl p-6 shadow-md border-2 border-indigo-200 hover:border-indigo-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left"
+            className="group bg-white rounded-xl p-6 shadow-md border-2 border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-left"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-md">
-                <ClipboardCheck className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <img src="/icons/workflow-icon.png" alt="Workflows" className="w-10 h-10" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-gray-900">Front Office Common Workflows</h3>
-                <p className="text-xs text-indigo-600 font-medium">{sopCount} workflows</p>
+                <p className="text-xs text-blue-700 font-medium">{sopCount} workflows</p>
               </div>
             </div>
             <p className="text-sm text-gray-600 mb-4">
               Step-by-step guides for clinic tasks: patient check-in, insurance verification, appointment scheduling, and common front desk workflows.
             </p>
-            <div className="flex items-center gap-2 text-indigo-600 text-sm font-semibold">
+            <div className="flex items-center gap-2 text-blue-700 text-sm font-semibold">
               <span>View Workflows</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -195,11 +195,11 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
           {/* Quick Search */}
           <button
             onClick={() => onNavigate('search')}
-            className="group bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-6 shadow-md border border-emerald-200 hover:border-emerald-400 transition-all duration-300 hover:shadow-xl text-left"
+            className="group bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 shadow-md border border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl text-left"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center shadow-md">
-                <Search className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/icons/search-icon.png" alt="Search" className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-gray-900">Quick Search</h3>
             </div>
@@ -211,11 +211,11 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
           {/* Medical Terminology */}
           <button
             onClick={() => onNavigate('terminology')}
-            className="group bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-md border border-purple-200 hover:border-purple-400 transition-all duration-300 hover:shadow-xl text-left"
+            className="group bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 shadow-md border border-blue-200 hover:border-blue-400 transition-all duration-300 hover:shadow-xl text-left"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center shadow-md">
-                <Stethoscope className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/icons/terms-icon.png" alt="Terminology" className="w-8 h-8" />
               </div>
               <h3 className="text-lg font-bold text-gray-900">Medical Terminology</h3>
             </div>
@@ -234,7 +234,7 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg p-5 shadow-sm">
-            <div className="w-10 h-10 bg-teal-600 text-white rounded-full flex items-center justify-center mb-3 text-lg font-bold">1</div>
+            <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center mb-3 text-lg font-bold">1</div>
             <h3 className="font-bold text-gray-900 mb-2">Foundation First</h3>
             <p className="text-sm text-gray-600">
               Start with <strong>Clinic Basics</strong> to learn HIPAA, coding systems, and core compliance requirements.
@@ -248,7 +248,7 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
             </p>
           </div>
           <div className="bg-white rounded-lg p-5 shadow-sm">
-            <div className="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center mb-3 text-lg font-bold">3</div>
+            <div className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center mb-3 text-lg font-bold">3</div>
             <h3 className="font-bold text-gray-900 mb-2">Apply in Practice</h3>
             <p className="text-sm text-gray-600">
               Follow <strong>Common Workflows</strong> step-by-step as you perform actual clinic tasks and workflows.
@@ -258,12 +258,12 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
       </div>
 
       {/* Quick Tips */}
-      <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-teal-500">
+      <div className="bg-white rounded-xl shadow-md p-8 border-l-4 border-blue-600">
         <h3 className="text-2xl font-semibold text-gray-900 mb-6">Tips for Success</h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center">
-              <span className="text-teal-600 font-bold">✓</span>
+            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-blue-700 font-bold">✓</span>
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-1">Don't memorize everything</h4>
@@ -280,8 +280,8 @@ export function HomeView({ termCount, sopCount, onNavigate }: HomeViewProps) {
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
-              <span className="text-indigo-600 font-bold">✓</span>
+            <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-blue-700 font-bold">✓</span>
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 mb-1">Start with basics</h4>

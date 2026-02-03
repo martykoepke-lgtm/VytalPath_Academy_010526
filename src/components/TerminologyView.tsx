@@ -69,7 +69,7 @@ export function TerminologyView({ onTermSelect }: TerminologyViewProps) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading terminology...</p>
         </div>
       </div>
@@ -88,20 +88,20 @@ export function TerminologyView({ onTermSelect }: TerminologyViewProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
             <BookOpen className="w-4 h-4" />
             <span>Learning Hub</span>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-teal-600 font-medium">Medical Terminology</span>
+            <span className="text-blue-600 font-medium">Medical Terminology</span>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-8">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-teal-100 rounded-lg">
-                <BookOpen className="w-8 h-8 text-teal-600" />
+              <div className="p-2">
+                <img src="/icons/terms-icon.png" alt="Terminology" className="w-14 h-14" />
               </div>
               <div className="flex-1">
                 <h1 className="text-3xl font-bold text-gray-900 mb-3">
@@ -114,14 +114,14 @@ export function TerminologyView({ onTermSelect }: TerminologyViewProps) {
                   communicate more effectively in healthcare settings.
                 </p>
 
-                <div className="bg-teal-50 border border-teal-200 rounded-lg p-4 text-sm">
-                  <p className="text-teal-900 font-medium mb-2">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
+                  <p className="text-blue-900 font-medium mb-2">
                     <strong>Learn word-building components:</strong>
                   </p>
-                  <p className="text-teal-800 mb-3">
+                  <p className="text-blue-800 mb-3">
                     Prefixes (hyper-, hypo-, pre-, post-), suffixes (-ectomy, -itis, -algia, -ology), root words (cardi-, gastro-, pneumo-, nephr-), and directional terms (anterior, posterior, proximal, distal)
                   </p>
-                  <p className="text-teal-700 text-xs border-t border-teal-200 pt-2">
+                  <p className="text-blue-700 text-xs border-t border-blue-200 pt-2">
                     <strong>Looking for complete medical terms or workflows?</strong> Visit the <strong>Search Everything</strong> tab to find acronyms (HIPAA, CT, MRI), clinic procedures, imaging studies, and step-by-step workflows
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export function TerminologyView({ onTermSelect }: TerminologyViewProps) {
               onClick={() => setViewMode('learn')}
               className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                 viewMode === 'learn'
-                  ? 'bg-teal-600 text-white shadow-md'
+                  ? 'bg-blue-600 text-white shadow-md'
                   : 'bg-transparent text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -148,7 +148,7 @@ export function TerminologyView({ onTermSelect }: TerminologyViewProps) {
               onClick={() => setViewMode('study')}
               className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                 viewMode === 'study'
-                  ? 'bg-teal-600 text-white shadow-md'
+                  ? 'bg-blue-600 text-white shadow-md'
                   : 'bg-transparent text-gray-600 hover:bg-gray-50'
               }`}
             >

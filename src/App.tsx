@@ -16,6 +16,7 @@ import { TermDetail } from './components/TermDetail';
 import Academy from './components/Academy';
 import { TerminologyView } from './components/TerminologyView';
 import { VideoTraining } from './components/VideoTraining';
+import { InteractiveHub } from './components/interactive';
 import { LandingPage } from './components/LandingPage';
 import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
@@ -391,6 +392,8 @@ function App() {
           {currentView === 'academy' && <Academy />}
 
           {currentView === 'training' && <VideoTraining />}
+
+          {currentView === 'interactive' && <InteractiveHub />}
 
           {currentView === 'terminology' && (
             <TerminologyView onTermSelect={handleSelectTerm} />

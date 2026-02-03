@@ -13,7 +13,7 @@ export function FlashCard({ term, definition, category, examples }: FlashCardPro
 
   const getCategoryColor = (cat: string) => {
     const colors: Record<string, string> = {
-      'Root': 'border-teal-300 bg-teal-50',
+      'Root': 'border-blue-300 bg-blue-50',
       'Prefix': 'border-blue-300 bg-blue-50',
       'Suffix': 'border-purple-300 bg-purple-50',
       'Direction': 'border-orange-300 bg-orange-50',
@@ -24,7 +24,7 @@ export function FlashCard({ term, definition, category, examples }: FlashCardPro
 
   const getCategoryBadgeColor = (cat: string) => {
     const colors: Record<string, string> = {
-      'Root': 'bg-teal-100 text-teal-800',
+      'Root': 'bg-blue-100 text-blue-800',
       'Prefix': 'bg-blue-100 text-blue-800',
       'Suffix': 'bg-purple-100 text-purple-800',
       'Direction': 'bg-orange-100 text-orange-800',
@@ -81,7 +81,7 @@ export function FlashCard({ term, definition, category, examples }: FlashCardPro
               <div className="space-y-1">
                 {examples.slice(0, 2).map((example, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <CheckCircle className="w-3 h-3 text-teal-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-3 h-3 text-blue-600 mt-0.5 flex-shrink-0" />
                     <p className="text-xs text-gray-600">{example}</p>
                   </div>
                 ))}

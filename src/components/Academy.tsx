@@ -397,8 +397,8 @@ const Academy: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg mb-4">
-                <p className="font-semibold text-purple-800 mb-2">The ICD-10 ↔ CPT Connection:</p>
+              <div className="bg-teal-50 p-4 rounded-lg mb-4">
+                <p className="font-semibold text-teal-800 mb-2">The ICD-10 ↔ CPT Connection:</p>
                 <div className="text-sm space-y-2">
                   <div className="bg-white p-2 rounded">
                     <p className="font-mono text-xs">ICD-10: E11.9 (Type 2 Diabetes)</p>
@@ -431,7 +431,7 @@ const Academy: React.FC = () => {
       title: 'SNOMED CT',
       icon: Code,
       color: 'teal',
-      bgColor: 'bg-indigo-500',
+      bgColor: 'bg-blue-500',
       sections: {
         what: {
           title: 'What It Is',
@@ -439,7 +439,7 @@ const Academy: React.FC = () => {
             <>
               <p className="mb-4"><strong>SNOMED CT</strong> stands for <strong>Systematized Nomenclature of Medicine - Clinical Terms</strong>.</p>
               <p className="mb-4">It's a comprehensive medical terminology system that covers diseases, symptoms, procedures, anatomy, medications, and more - far more detailed than ICD-10 or CPT.</p>
-              <div className="bg-indigo-50 p-4 rounded-lg mb-4">
+              <div className="bg-blue-50 p-4 rounded-lg mb-4">
                 <p className="font-semibold mb-2">Think of it as:</p>
                 <p>The "behind-the-scenes" language that EHR systems use to understand and connect medical information. While ICD-10 and CPT are for billing, SNOMED is for clinical documentation and decision support.</p>
               </div>
@@ -462,35 +462,35 @@ const Academy: React.FC = () => {
               <p className="mb-4">SNOMED CT enables modern EHR capabilities:</p>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <span className="text-indigo-500 text-xl mr-3">🔍</span>
+                  <span className="text-blue-600 text-xl mr-3">🔍</span>
                   <div>
                     <p className="font-semibold">Clinical Decision Support</p>
                     <p className="text-sm text-gray-600">Drug interaction alerts, clinical guidelines, preventive care reminders - all powered by SNOMED</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-indigo-500 text-xl mr-3">🔄</span>
+                  <span className="text-blue-600 text-xl mr-3">🔄</span>
                   <div>
                     <p className="font-semibold">Interoperability</p>
                     <p className="text-sm text-gray-600">Helps different EHR systems understand and share patient information accurately</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-indigo-500 text-xl mr-3">🎯</span>
+                  <span className="text-blue-600 text-xl mr-3">🎯</span>
                   <div>
                     <p className="font-semibold">Precision in Documentation</p>
                     <p className="text-sm text-gray-600">Much more granular than ICD-10 - can specify laterality, severity, anatomical location in detail</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-indigo-500 text-xl mr-3">📊</span>
+                  <span className="text-blue-600 text-xl mr-3">📊</span>
                   <div>
                     <p className="font-semibold">Research & Quality Measurement</p>
                     <p className="text-sm text-gray-600">Enables detailed analysis of treatments, outcomes, and population health</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-indigo-500 text-xl mr-3">🗺️</span>
+                  <span className="text-blue-600 text-xl mr-3">🗺️</span>
                   <div>
                     <p className="font-semibold">Mapping to Other Systems</p>
                     <p className="text-sm text-gray-600">SNOMED can automatically convert to ICD-10 codes for billing</p>
@@ -509,7 +509,7 @@ const Academy: React.FC = () => {
                 <div className="bg-gray-50 p-3 rounded">
                   <p className="font-semibold mb-1">Problem Lists</p>
                   <p className="text-sm text-gray-700">When you search for a diagnosis to add, you're searching SNOMED concepts</p>
-                  <p className="text-xs text-indigo-600 mt-1">Type "chest pain" → EHR shows SNOMED options → Select one → EHR maps to ICD-10 for billing</p>
+                  <p className="text-xs text-blue-700 mt-1">Type "chest pain" → EHR shows SNOMED options → Select one → EHR maps to ICD-10 for billing</p>
                 </div>
                 <div className="bg-gray-50 p-3 rounded">
                   <p className="font-semibold mb-1">Order Entry</p>
@@ -535,8 +535,8 @@ const Academy: React.FC = () => {
           title: 'Key Things to Remember',
           content: (
             <>
-              <div className="bg-indigo-50 p-4 rounded-lg mb-4">
-                <p className="font-semibold text-indigo-800 mb-2">For Ambulatory Clinic Staff:</p>
+              <div className="bg-blue-50 p-4 rounded-lg mb-4">
+                <p className="font-semibold text-blue-800 mb-2">For Ambulatory Clinic Staff:</p>
                 <ul className="space-y-2 text-sm">
                   <li>• <strong>You won't manually enter SNOMED codes</strong> - the EHR handles this in the background</li>
                   <li>• <strong>Be specific when documenting:</strong> The more precise your term selection, the better the clinical data quality</li>
@@ -752,8 +752,8 @@ const Academy: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg mb-4">
-                <p className="font-semibold text-purple-800 mb-2">Special Code Categories:</p>
+              <div className="bg-teal-50 p-4 rounded-lg mb-4">
+                <p className="font-semibold text-teal-800 mb-2">Special Code Categories:</p>
                 <ul className="space-y-2 text-sm">
                   <li><strong>Z codes:</strong> Factors influencing health status (Z23 = vaccination, Z79.4 = long-term insulin use)</li>
                   <li><strong>External cause codes:</strong> V, W, X, Y codes describe how injury occurred (V29.9 = motorcycle accident)</li>
@@ -903,7 +903,7 @@ const Academy: React.FC = () => {
                   <p className="font-semibold mb-1">After the Visit</p>
                   <p className="text-sm text-gray-700">Checking encounter forms, ensuring codes match documentation, submitting clean claims</p>
                 </div>
-                <div className="bg-purple-50 p-3 rounded">
+                <div className="bg-teal-50 p-3 rounded">
                   <p className="font-semibold mb-1">Ongoing</p>
                   <p className="text-sm text-gray-700">Following up on denied claims, correcting coding errors, staying current on code updates</p>
                 </div>

@@ -29,6 +29,9 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
+          <img src="/icons/search-icon.png" alt="Search" className="w-14 h-14" />
+        </div>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Search Everything</h1>
         <p className="text-gray-600 mb-3">Search across complete terms, acronyms, and workflows</p>
         <div className="max-w-2xl mx-auto bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
@@ -69,9 +72,9 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
                 <li>• Usage examples</li>
               </ul>
             </div>
-            <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-100">
-              <h4 className="font-medium text-indigo-900 mb-2">Common Workflows</h4>
-              <ul className="text-sm text-indigo-700 space-y-1">
+            <div className="bg-blue-50 rounded-lg p-4 border border-blue-100">
+              <h4 className="font-medium text-blue-900 mb-2">Common Workflows</h4>
+              <ul className="text-sm text-blue-700 space-y-1">
                 <li>• Procedure titles</li>
                 <li>• Step descriptions</li>
                 <li>• Workflow details</li>
@@ -208,7 +211,7 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
       {groupedSOPs.highly_relevant.length > 0 && (
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="w-5 h-5 text-indigo-600" />
+            <FileText className="w-5 h-5 text-blue-700" />
             <h2 className="text-xl font-semibold text-gray-900">Matching Workflows</h2>
             <span className="text-sm text-gray-500">
               ({groupedSOPs.highly_relevant.length})
@@ -221,14 +224,14 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
                 <button
                   key={sop.id}
                   onClick={() => onSelectSOP(sop.slug)}
-                  className="w-full bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition-all text-left border-2 border-indigo-200 hover:border-indigo-300"
+                  className="w-full bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition-all text-left border-2 border-blue-200 hover:border-blue-300"
                 >
                   <div className="flex items-start gap-3">
                     <div className="text-3xl">{sop.icon}</div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-bold text-gray-900">{sop.title}</h3>
-                        <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded border border-indigo-300">
+                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded border border-blue-300">
                           {result.matchType === 'exact'
                             ? 'Exact Match'
                             : result.matchType === 'starts-with'
@@ -239,7 +242,7 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
                       {sop.description && (
                         <p className="text-sm text-gray-600 mb-2">{sop.description}</p>
                       )}
-                      <span className="text-xs text-indigo-600 font-medium">
+                      <span className="text-xs text-blue-700 font-medium">
                         {sop.steps.length} steps
                       </span>
                     </div>
@@ -265,7 +268,7 @@ export function UnifiedSearch({ allTerms, allSOPs, onSelectTerm, onSelectSOP }: 
                 <button
                   key={sop.id}
                   onClick={() => onSelectSOP(sop.slug)}
-                  className="w-full bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow text-left border border-gray-200 hover:border-indigo-200"
+                  className="w-full bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow text-left border border-gray-200 hover:border-blue-200"
                 >
                   <div className="flex items-start gap-3">
                     <div className="text-2xl">{sop.icon}</div>

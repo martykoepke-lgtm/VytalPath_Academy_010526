@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Play, BookOpen, Stethoscope, Scale, ChevronRight, CheckCircle2, Clock, Video } from 'lucide-react';
+import { Play, BookOpen, Stethoscope, Scale, ChevronRight, CheckCircle2, Clock, Video, CreditCard, Sparkles } from 'lucide-react';
+import { KnowledgeCheck } from './learning/KnowledgeCheck';
 
 interface VideoLesson {
   id: string;
@@ -21,17 +22,33 @@ interface TrainingSection {
 
 const trainingSections: TrainingSection[] = [
   {
+    id: 'welcome',
+    title: 'Welcome to VytalPath Academy',
+    description: 'Meet your AI instructor and learn what this training program is all about',
+    icon: Sparkles,
+    color: 'rose',
+    lessons: [
+      {
+        id: 'academy-intro',
+        title: 'VytalPath Academy Introduction',
+        description: 'Meet your AI instructor and discover how VytalPath Academy will prepare you for success in healthcare front office roles.',
+        duration: '3-5 min',
+        videoUrl: '/videos/VytalPath Academy Introduction.mp4',
+      },
+    ],
+  },
+  {
     id: 'intro',
     title: 'Course Introduction',
     description: 'Get started with the fundamentals of healthcare front office operations',
     icon: BookOpen,
-    color: 'teal',
+    color: 'blue',
     lessons: [
       {
         id: 'foundations',
         title: 'Healthcare Front Office Foundations',
         description: 'An introduction to the essential skills and knowledge needed for front office success in healthcare settings.',
-        duration: '~5 min',
+        duration: '3-5 min',
         videoUrl: '/videos/Healthcare Front Office Foundations.mp4',
       },
     ],
@@ -47,7 +64,7 @@ const trainingSections: TrainingSection[] = [
         id: 'acute-vs-ambulatory',
         title: 'Acute vs. Ambulatory Care',
         description: 'Learn the key differences between acute care (hospitals) and ambulatory care (outpatient clinics) settings.',
-        duration: '~5 min',
+        duration: '3-5 min',
         videoUrl: '/videos/Acute vs. Ambulatory Care.mp4',
       },
     ],
@@ -63,37 +80,154 @@ const trainingSections: TrainingSection[] = [
         id: 'hipaa',
         title: 'HIPAA Essentials Explained',
         description: 'Understanding HIPAA regulations, patient privacy rights, and your responsibilities in protecting health information.',
-        duration: '~5 min',
+        duration: '3-5 min',
         videoUrl: '/videos/HIPAA Essentials Explained.mp4',
       },
       {
         id: 'phi',
         title: 'PHI Explained',
         description: 'Learn what Protected Health Information (PHI) is and how to identify it in your daily work.',
-        duration: '~5 min',
-        videoUrl: '/videos/PHI Explained.mp4',
+        duration: '3-5 min',
+        videoUrl: '/videos/PHI Explained (1).mp4',
+      },
+      {
+        id: 'hipaa-access',
+        title: 'HIPAA Access Rules',
+        description: 'Learn about HIPAA access rules and who can access patient health information.',
+        duration: '3-5 min',
+        videoUrl: '/videos/HIPAA Access Rules.mp4',
+      },
+    ],
+  },
+  {
+    id: 'insurance',
+    title: 'Understanding Insurance',
+    description: 'Master the essentials of health insurance for front office operations',
+    icon: CreditCard,
+    color: 'amber',
+    lessons: [
+      {
+        id: 'intro-health-insurance',
+        title: 'Introduction to Health Insurance',
+        description: 'A broad overview of how health insurance works in the US healthcare system.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Introduction to Health Insurance.mp4',
+      },
+      {
+        id: 'payer-types',
+        title: 'Types of Payers & Plan Types',
+        description: 'Learn about different insurance payers (Medicare, Medicaid, commercial) and plan types (HMO, PPO, EPO).',
+        duration: '3-5 min',
+        videoUrl: '/videos/Types of Payers & Plan Types.mp4',
+      },
+      {
+        id: 'key-insurance-terms',
+        title: 'Key Insurance Terms',
+        description: 'Define essential insurance vocabulary: premium, deductible, copay, coinsurance, and out-of-pocket maximum.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Key Insurance Terms.mp4',
+      },
+      {
+        id: 'reading-insurance-card',
+        title: 'Reading an Insurance Card',
+        description: 'Learn to identify key information on insurance cards including Member ID, Group Number, copays, and more.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Reading an Insurance Card (Final Polish V2).mp4',
+      },
+      {
+        id: 'eligibility-verification',
+        title: 'Insurance Eligibility Verification',
+        description: 'Understand the process and workflow for verifying patient insurance eligibility before appointments.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Insurance Eligibility Verification_ Process & Workflow Guide (Final Polished).mp4',
+      },
+      {
+        id: 'understanding-copays',
+        title: 'Understanding Copays',
+        description: 'Learn what copays are, how to identify them on insurance cards, and best practices for collection.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Understanding Copays.mp4',
+      },
+      {
+        id: 'understanding-deductibles',
+        title: 'Deductibles and Out-of-Pocket Maximum',
+        description: 'Master deductibles, out-of-pocket maximums, and how to explain them to patients.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Deductibles and Out-of-Pocket Maximum.mp4',
+      },
+      {
+        id: 'coinsurance',
+        title: 'Coinsurance Calculations',
+        description: 'Learn how to calculate and explain coinsurance to patients.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Coinsurance Calculations.mp4',
+      },
+      {
+        id: 'collecting-payments',
+        title: 'Collecting Patient Payments',
+        description: 'Best practices for collecting copays, coinsurance, and outstanding balances from patients.',
+        duration: '3-5 min',
+        videoUrl: '/videos/Collecting Patient Payments (1).mp4',
       },
     ],
   },
 ];
 
 const colorClasses: Record<string, { bg: string; text: string; border: string; light: string }> = {
-  teal: { bg: 'bg-teal-600', text: 'text-teal-600', border: 'border-teal-600', light: 'bg-teal-50' },
+  rose: { bg: 'bg-rose-600', text: 'text-rose-600', border: 'border-rose-600', light: 'bg-rose-50' },
   blue: { bg: 'bg-blue-600', text: 'text-blue-600', border: 'border-blue-600', light: 'bg-blue-50' },
-  purple: { bg: 'bg-purple-600', text: 'text-purple-600', border: 'border-purple-600', light: 'bg-purple-50' },
+  blue: { bg: 'bg-blue-600', text: 'text-blue-600', border: 'border-blue-600', light: 'bg-blue-50' },
+  purple: { bg: 'bg-blue-700', text: 'text-blue-700', border: 'border-blue-700', light: 'bg-blue-50' },
+  amber: { bg: 'bg-amber-600', text: 'text-amber-600', border: 'border-amber-600', light: 'bg-amber-50' },
 };
 
 export function VideoTraining() {
   const [activeVideo, setActiveVideo] = useState<VideoLesson | null>(null);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [showKnowledgeCheck, setShowKnowledgeCheck] = useState(false);
 
   const totalLessons = trainingSections.reduce((sum, section) => sum + section.lessons.length, 0);
 
+  const handleBackToTraining = () => {
+    setActiveVideo(null);
+    setShowKnowledgeCheck(false);
+  };
+
+  const handleVideoEnded = () => {
+    setShowKnowledgeCheck(true);
+  };
+
+  const handleKnowledgeCheckComplete = () => {
+    setActiveVideo(null);
+    setShowKnowledgeCheck(false);
+  };
+
   if (activeVideo) {
+    // Show knowledge check after video ends
+    if (showKnowledgeCheck) {
+      return (
+        <div className="max-w-3xl mx-auto">
+          <button
+            onClick={handleBackToTraining}
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
+          >
+            <ChevronRight className="w-4 h-4 rotate-180" />
+            Back to Training
+          </button>
+          <KnowledgeCheck
+            lessonId={activeVideo.id}
+            lessonTitle={activeVideo.title}
+            onComplete={handleKnowledgeCheckComplete}
+          />
+        </div>
+      );
+    }
+
+    // Show video player
     return (
       <div className="max-w-5xl mx-auto">
         <button
-          onClick={() => setActiveVideo(null)}
+          onClick={handleBackToTraining}
           className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
         >
           <ChevronRight className="w-4 h-4 rotate-180" />
@@ -108,6 +242,7 @@ export function VideoTraining() {
               autoPlay
               className="w-full h-full"
               controlsList="nodownload"
+              onEnded={handleVideoEnded}
             >
               <source src={activeVideo.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
@@ -131,7 +266,7 @@ export function VideoTraining() {
     <div className="max-w-5xl mx-auto">
       {/* Header */}
       <div className="text-center mb-10">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-blue-600 rounded-2xl mb-4">
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mb-4">
           <Video className="w-8 h-8 text-white" />
         </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-3">Video Training</h1>
@@ -145,7 +280,7 @@ export function VideoTraining() {
           </span>
           <span className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            ~20 min total
+            ~60 min total
           </span>
         </div>
       </div>
@@ -217,10 +352,10 @@ export function VideoTraining() {
       </div>
 
       {/* Coming Soon Note */}
-      <div className="mt-8 p-6 bg-gradient-to-r from-teal-50 to-blue-50 rounded-xl border border-teal-100">
+      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-blue-50 rounded-xl border border-blue-100">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm">
-            <BookOpen className="w-5 h-5 text-teal-600" />
+            <BookOpen className="w-5 h-5 text-blue-600" />
           </div>
           <div>
             <h4 className="font-semibold text-gray-900">More Training Coming Soon</h4>

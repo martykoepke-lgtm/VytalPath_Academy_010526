@@ -52,8 +52,8 @@ export function SOPDetail({ sop, onBack }: SOPDetailProps) {
       <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-start gap-4 flex-1">
-            <div className="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
-              <SOPIcon className="w-8 h-8 text-indigo-600" />
+            <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+              <SOPIcon className="w-8 h-8 text-blue-700" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
@@ -153,7 +153,7 @@ export function SOPDetail({ sop, onBack }: SOPDetailProps) {
         </div>
       )}
 
-      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-teal-50 rounded-lg border border-blue-200">
         <p className="text-sm text-gray-800">
           <strong className="text-blue-900">Important Note:</strong> These workflows provide
           general guidance and should be adapted to your clinic's specific policies, EHR/PMS
