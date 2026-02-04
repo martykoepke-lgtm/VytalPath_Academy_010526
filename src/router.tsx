@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
-import { LandingPageRouter } from './components/LandingPageRouter';
+import { LandingPage } from './components/LandingPage';
 import { CourseCatalog } from './components/academy/CourseCatalog';
 import { CourseDetail } from './components/academy/CourseDetail';
 import { LessonPlayer } from './components/academy/LessonPlayer';
@@ -13,15 +13,19 @@ import { SearchPage } from './components/reference/SearchPage';
 import { InsuranceTermMatch } from './components/learning/InsuranceTermMatch';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminRoute } from './components/admin/AdminRoute';
+import { OrgAdminRoute } from './components/admin/OrgAdminRoute';
 import { SuperAdminDashboard } from './components/admin/SuperAdminDashboard';
 import { OrgAdminDashboard } from './components/admin/OrgAdminDashboard';
 import { CreateOrganization } from './components/admin/CreateOrganization';
+import { AdminRedirect } from './components/admin/AdminRedirect';
 import { JoinOrganization } from './components/join/JoinOrganization';
+import { ResetPassword } from './components/auth/ResetPassword';
 import { FoundationsSection } from './components/sections/FoundationsSection';
 import { InsuranceSection } from './components/sections/InsuranceSection';
 import { TerminologySection } from './components/sections/TerminologySection';
 import { WorkflowsSection } from './components/sections/WorkflowsSection';
 import { InteractiveHub } from './components/interactive';
+import { AuthRoute } from './components/auth/AuthRoute';
 
 export const router = createBrowserRouter([
   {
@@ -30,103 +34,107 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LandingPageRouter />,
+        element: <LandingPage onEnter={() => {}} />,
       },
-      // New Section-based Navigation
+      // Protected Learning Content - Requires Authentication
       {
         path: 'foundations',
-        element: <FoundationsSection />,
+        element: <AuthRoute><FoundationsSection /></AuthRoute>,
       },
       {
         path: 'foundations/:moduleSlug/:lessonSlug',
-        element: <LessonPlayer />,
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
       },
       {
         path: 'foundations/:moduleSlug/quiz',
-        element: <QuizPlayer />,
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
         path: 'insurance',
-        element: <InsuranceSection />,
+        element: <AuthRoute><InsuranceSection /></AuthRoute>,
       },
       {
         path: 'insurance/:moduleSlug/:lessonSlug',
-        element: <LessonPlayer />,
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
       },
       {
         path: 'insurance/:moduleSlug/quiz',
-        element: <QuizPlayer />,
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
         path: 'terminology',
-        element: <TerminologySection />,
+        element: <AuthRoute><TerminologySection /></AuthRoute>,
       },
       {
         path: 'terminology/:moduleSlug/:lessonSlug',
-        element: <LessonPlayer />,
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
       },
       {
         path: 'terminology/:moduleSlug/quiz',
-        element: <QuizPlayer />,
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
         path: 'workflows',
-        element: <WorkflowsSection />,
+        element: <AuthRoute><WorkflowsSection /></AuthRoute>,
       },
       {
         path: 'workflows/lessons/:moduleSlug/:lessonSlug',
-        element: <LessonPlayer />,
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
       },
       {
         path: 'workflows/lessons/:moduleSlug/quiz',
-        element: <QuizPlayer />,
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
         path: 'workflows/sops',
-        element: <SOPLibrary />,
+        element: <AuthRoute><SOPLibrary /></AuthRoute>,
       },
       {
         path: 'workflows/sops/:slug',
-        element: <SOPDetailPage />,
+        element: <AuthRoute><SOPDetailPage /></AuthRoute>,
       },
       // Interactive Practice
       {
         path: 'practice',
-        element: <InteractiveHub />,
+        element: <AuthRoute><InteractiveHub /></AuthRoute>,
       },
-      // Legacy routes (redirect to new structure)
+      // Legacy routes (protected)
       {
         path: 'courses',
-        element: <CourseCatalog />,
+        element: <AuthRoute><CourseCatalog /></AuthRoute>,
       },
       {
         path: 'courses/:courseSlug',
-        element: <CourseDetail />,
+        element: <AuthRoute><CourseDetail /></AuthRoute>,
       },
       {
         path: 'courses/:courseSlug/:moduleSlug/:lessonSlug',
-        element: <LessonPlayer />,
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
       },
       {
         path: 'courses/:courseSlug/:moduleSlug/quiz',
-        element: <QuizPlayer />,
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
         path: 'terms',
-        element: <TermsLibrary />,
+        element: <AuthRoute><TermsLibrary /></AuthRoute>,
       },
       {
         path: 'search',
-        element: <SearchPage />,
+        element: <AuthRoute><SearchPage /></AuthRoute>,
       },
       {
         path: 'exercises/insurance-matching',
-        element: <InsuranceTermMatch />,
+        element: <AuthRoute><InsuranceTermMatch /></AuthRoute>,
       },
       // Admin Routes
       {
         path: 'admin/login',
         element: <AdminLogin />,
+      },
+      {
+        path: 'admin/redirect',
+        element: <AdminRedirect />,
       },
       {
         path: 'admin',
@@ -138,12 +146,17 @@ export const router = createBrowserRouter([
       },
       {
         path: 'admin/orgs/:orgSlug',
-        element: <AdminRoute><OrgAdminDashboard /></AdminRoute>,
+        element: <OrgAdminRoute><OrgAdminDashboard /></OrgAdminRoute>,
       },
       // Student Join Route
       {
         path: 'join/:code',
         element: <JoinOrganization />,
+      },
+      // Password Reset Route
+      {
+        path: 'reset-password',
+        element: <ResetPassword />,
       },
     ],
   },

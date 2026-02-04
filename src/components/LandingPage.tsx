@@ -1,14 +1,65 @@
-import { BookOpen, Search, GraduationCap, FileText, ArrowRight, CheckCircle, Users, Clock, Zap } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  BookOpen, Search, GraduationCap, FileText, ArrowRight, CheckCircle,
+  Users, Clock, Zap, Building2, User, Shield, BarChart3, Award
+} from 'lucide-react';
+import { SignIn } from './SignIn';
+import { SignUp } from './SignUp';
+import { ForgotPassword } from './ForgotPassword';
+import { useAuth } from '../contexts/AuthContext';
 
 interface LandingPageProps {
   onEnter: () => void;
 }
 
+type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
+
+interface LocationState {
+  from?: { pathname: string };
+  showSignIn?: boolean;
+}
+
 export function LandingPage({ onEnter }: LandingPageProps) {
+  const [authModal, setAuthModal] = useState<AuthModal>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const state = location.state as LocationState | null;
+
+  // Auto-show sign-in modal when redirected from protected route
+  useEffect(() => {
+    if (state?.showSignIn && !user) {
+      setAuthModal('signIn');
+    }
+  }, [state, user]);
+
+  // Redirect to intended destination after sign-in
+  useEffect(() => {
+    if (user) {
+      if (state?.from) {
+        navigate(state.from.pathname, { replace: true });
+      } else {
+        // User just signed in from landing page - take them to content
+        navigate('/foundations', { replace: true });
+      }
+    }
+  }, [user, state, navigate]);
+
+  // Handle successful auth - navigate to content
+  const handleAuthSuccess = () => {
+    setAuthModal(null);
+    if (state?.from) {
+      navigate(state.from.pathname, { replace: true });
+    } else {
+      navigate('/foundations');
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-blue-50 to-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header/Nav */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <img
@@ -16,12 +67,20 @@ export function LandingPage({ onEnter }: LandingPageProps) {
               alt="VytalPath Academy"
               className="h-12 w-auto"
             />
-            <button
-              onClick={onEnter}
-              className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all shadow-md hover:shadow-lg"
-            >
-              Enter the App
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setAuthModal('signIn')}
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => setAuthModal('signUp')}
+                className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -30,241 +89,380 @@ export function LandingPage({ onEnter }: LandingPageProps) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-12">
           <div className="inline-block mb-6">
-            <div className="bg-gradient-to-r from-teal-600 to-blue-600 rounded-2xl p-1 shadow-xl mb-4">
-              <div className="bg-white rounded-xl px-6 py-3">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-6 h-6 text-teal-600" />
-                  <span className="text-lg font-bold text-gray-900">Powered by VytalPath Academy</span>
-                </div>
-              </div>
+            <div className="flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+              <Award className="w-4 h-4" />
+              <span>Professional Healthcare Training</span>
             </div>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Your First Day
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">
-              Starts Here
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Master Healthcare
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+              Front Office Skills
             </span>
-          </h2>
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Learn the terminology, workflows, and skills you need to thrive at the front desk.
-            Built specifically for new clinic staff like you.
+            Comprehensive training for medical receptionists, referral coordinators, and clinic staff.
+            Learn insurance, terminology, workflows, and EHR skills.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={onEnter}
-              className="group px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-xl hover:from-teal-700 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+              onClick={() => setAuthModal('signUp')}
+              className="group px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
             >
-              Enter the App
+              Start Learning Today
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
+            <a
+              href="#pricing"
+              className="px-8 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all"
+            >
+              View Pricing
+            </a>
           </div>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16">
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-teal-600 mb-1">1,000+</div>
-            <div className="text-sm text-gray-600">Healthcare Terms</div>
+          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
+            <div className="text-3xl font-bold text-blue-600 mb-1">40+</div>
+            <div className="text-sm text-gray-600">Video Lessons</div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-1">12</div>
-            <div className="text-sm text-gray-600">Common Workflows</div>
+          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
+            <div className="text-3xl font-bold text-indigo-600 mb-1">24</div>
+            <div className="text-sm text-gray-600">SOP Guides</div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-blue-700 mb-1">20+</div>
-            <div className="text-sm text-gray-600">Learning Modules</div>
+          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
+            <div className="text-3xl font-bold text-blue-700 mb-1">10</div>
+            <div className="text-sm text-gray-600">Training Modules</div>
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center">
-            <div className="text-3xl font-bold text-teal-600 mb-1">Free</div>
-            <div className="text-sm text-gray-600">Forever</div>
+          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
+            <div className="text-3xl font-bold text-indigo-700 mb-1">7+</div>
+            <div className="text-sm text-gray-600">Hours of Content</div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Who Is This For Section */}
       <section className="bg-white py-20 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 mb-4">
-              Everything You Need to Succeed
-            </h3>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Who Is This For?
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive resources designed specifically for new healthcare clinic staff
+              Whether you're just starting out or looking to upskill your team
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <BookOpen className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Individual Learners */}
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                  <User className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">Individual Learners</h3>
+                  <p className="text-gray-600">Self-paced professional development</p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Clinic Terminology</h4>
-              <p className="text-gray-600 text-sm">
-                Master essential healthcare terms, abbreviations, and operational definitions
-              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">New to healthcare administration</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Career changers entering healthcare</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Front office staff seeking advancement</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Pre-employment training seekers</span>
+                </li>
+              </ul>
+              <button
+                onClick={() => setAuthModal('signUp')}
+                className="w-full py-3 px-4 text-white font-medium bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all flex items-center justify-center gap-2"
+              >
+                <User className="w-5 h-5" />
+                Sign Up as Individual
+              </button>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <FileText className="w-8 h-8 text-white" />
+            {/* Organizations */}
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border-2 border-emerald-200">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center">
+                  <Building2 className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900">Organizations</h3>
+                  <p className="text-gray-600">Train your entire team</p>
+                </div>
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Common Workflows</h4>
-              <p className="text-gray-600 text-sm">
-                Step-by-step guides for patient check-in, scheduling, and front desk procedures
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <GraduationCap className="w-8 h-8 text-white" />
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Clinic Basics</h4>
-              <p className="text-gray-600 text-sm">
-                Learn HIPAA compliance, medical coding, billing fundamentals, and regulations
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Search className="w-8 h-8 text-white" />
-              </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-2">Quick Search</h4>
-              <p className="text-gray-600 text-sm">
-                Instantly find definitions, workflows, and procedures when you need them
-              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Medical clinics onboarding new staff</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Healthcare staffing agencies</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Hospital systems with multiple locations</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-700">Track progress across your team</span>
+                </li>
+              </ul>
+              <a
+                href="#org-pricing"
+                className="w-full py-3 px-4 text-white font-medium bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all flex items-center justify-center gap-2"
+              >
+                <Building2 className="w-5 h-5" />
+                View Team Pricing
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Curriculum Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-4xl font-bold text-gray-900 mb-6">
-              Why VytalPath Academy?
-            </h3>
-            <p className="text-lg text-gray-600 mb-8">
-              Starting a new healthcare job can be overwhelming. VytalPath Academy prepares you with the
-              foundational knowledge you need to understand your training and succeed from day one.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-teal-600" />
-                </div>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Foundation First</h5>
-                  <p className="text-gray-600 text-sm">
-                    Learn the language and concepts before your first day so you can understand what your trainer is teaching you
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-blue-600" />
-                </div>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Self-Paced Learning</h5>
-                  <p className="text-gray-600 text-sm">
-                    Access materials anytime, anywhere. Review concepts as many times as you need
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-blue-700" />
-                </div>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Practical & Relevant</h5>
-                  <p className="text-gray-600 text-sm">
-                    Real-world workflows and terminology you'll actually use in clinic operations
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-6 h-6 bg-teal-100 rounded-full flex items-center justify-center mt-1">
-                  <CheckCircle className="w-4 h-4 text-teal-600" />
-                </div>
-                <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Always Free</h5>
-                  <p className="text-gray-600 text-sm">
-                    Complete access to all resources at no cost. No hidden fees, ever
-                  </p>
-                </div>
-              </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Complete Training Curriculum
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            10 comprehensive modules covering everything from HIPAA to EHR systems
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+              <Shield className="w-6 h-6 text-blue-600" />
             </div>
+            <h4 className="text-lg font-bold text-gray-900 mb-2">Foundations</h4>
+            <p className="text-gray-600 text-sm mb-3">HIPAA, PHI, medical law & ethics fundamentals</p>
+            <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">7 lessons</span>
           </div>
 
-          <div className="bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-8 border-2 border-teal-200 shadow-xl">
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="flex items-center gap-3 mb-3">
-                  <Users className="w-8 h-8 text-teal-600" />
-                  <h5 className="font-bold text-gray-900">Perfect for New Staff</h5>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  Whether you're starting your first healthcare job or transitioning to clinic work,
-                  this platform gives you the foundation you need
-                </p>
+          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
+              <FileText className="w-6 h-6 text-indigo-600" />
+            </div>
+            <h4 className="text-lg font-bold text-gray-900 mb-2">Insurance</h4>
+            <p className="text-gray-600 text-sm mb-3">Payers, plans, eligibility, copays, deductibles</p>
+            <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded">9 lessons</span>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+              <BookOpen className="w-6 h-6 text-purple-600" />
+            </div>
+            <h4 className="text-lg font-bold text-gray-900 mb-2">Terminology</h4>
+            <p className="text-gray-600 text-sm mb-3">Medical prefixes, roots, suffixes, abbreviations</p>
+            <span className="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">5 lessons + flashcards</span>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+              <Zap className="w-6 h-6 text-emerald-600" />
+            </div>
+            <h4 className="text-lg font-bold text-gray-900 mb-2">Workflows</h4>
+            <p className="text-gray-600 text-sm mb-3">24 step-by-step SOPs for daily operations</p>
+            <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded">24 SOPs</span>
+          </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <p className="text-gray-500 mb-4">Plus: Medications, Referrals & Prior Auth, Coding Basics, EHR Practice Lab, Patient Communication, Telehealth</p>
+          <button
+            onClick={onEnter}
+            className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-2"
+          >
+            Preview Full Curriculum
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-gray-900 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Invest in your career or your team
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Individual Plan */}
+            <div className="bg-white rounded-2xl p-8 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <User className="w-8 h-8 text-blue-600" />
+                <h3 className="text-2xl font-bold text-gray-900">Individual</h3>
               </div>
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="flex items-center gap-3 mb-3">
-                  <Clock className="w-8 h-8 text-blue-600" />
-                  <h5 className="font-bold text-gray-900">Learn at Your Pace</h5>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  Study before you start, review during training, or reference while on the job.
-                  It's your personal healthcare knowledge base
-                </p>
+              <div className="mb-6">
+                <span className="text-5xl font-bold text-gray-900">$267</span>
+                <span className="text-gray-600">/year</span>
               </div>
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <div className="flex items-center gap-3 mb-3">
-                  <Zap className="w-8 h-8 text-blue-700" />
-                  <h5 className="font-bold text-gray-900">Start Immediately</h5>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  Create your free account and begin learning right away. No waiting, no approval process
-                </p>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  Full access to all 10 modules
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  40+ video lessons
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  24 SOP workflow guides
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  Interactive flashcards & quizzes
+                </li>
+                <li className="flex items-center gap-3 text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  Certificate of completion
+                </li>
+              </ul>
+              <button
+                onClick={() => setAuthModal('signUp')}
+                className="w-full py-4 px-6 text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all"
+              >
+                Get Started
+              </button>
+            </div>
+
+            {/* Organization Plan */}
+            <div id="org-pricing" className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 shadow-xl text-white">
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-8 h-8 text-white" />
+                <h3 className="text-2xl font-bold">Organizations</h3>
               </div>
+              <div className="mb-6">
+                <span className="text-3xl font-bold">Volume Pricing</span>
+                <p className="text-emerald-100 mt-1">Save up to 63% per seat</p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-4 mb-6 space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span>1-5 seats</span>
+                  <span className="font-semibold">$267/seat/year</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>6-15 seats</span>
+                  <span className="font-semibold">$199/seat/year</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>16-50 seats</span>
+                  <span className="font-semibold">$149/seat/year</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>51+ seats</span>
+                  <span className="font-semibold">$99/seat/year</span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-8 text-emerald-50">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5" />
+                  Admin dashboard with progress tracking
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5" />
+                  Personalized student invite links
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5" />
+                  Team completion reports
+                </li>
+              </ul>
+              <a
+                href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing"
+                className="w-full py-4 px-6 text-emerald-700 font-semibold bg-white rounded-xl hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
+              >
+                Contact for Team Access
+                <ArrowRight className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-teal-600 to-blue-600 py-16">
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-4xl font-bold text-white mb-4">
-            Ready to Start Learning?
+            Ready to Advance Your Career?
           </h3>
-          <p className="text-xl text-teal-50 mb-8">
-            Join VytalPath Academy today and build the foundation for your healthcare career
+          <p className="text-xl text-blue-100 mb-8">
+            Join thousands of healthcare professionals building their skills with VytalPath Academy
           </p>
           <button
-            onClick={onEnter}
-            className="px-8 py-4 text-lg font-semibold text-teal-700 bg-white rounded-xl hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
+            onClick={() => setAuthModal('signUp')}
+            className="px-8 py-4 text-lg font-semibold text-blue-700 bg-white rounded-xl hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
           >
-            Enter the App
+            Start Your Training Today
           </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex items-center justify-center mb-4">
-            <img
-              src="/vytalpath-logo.png"
-              alt="VytalPath Academy"
-              className="h-10 w-auto brightness-0 invert"
-            />
+      <footer className="bg-gray-900 text-gray-400 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center">
+              <img
+                src="/vytalpath-logo.png"
+                alt="VytalPath Academy"
+                className="h-10 w-auto brightness-0 invert"
+              />
+            </div>
+            <p className="text-sm text-center md:text-left">
+              Professional healthcare front office training
+            </p>
+            <div className="flex items-center gap-6 text-sm">
+              <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors">Contact</a>
+              <span className="text-gray-600">|</span>
+              <span>&copy; 2026 VytalPath</span>
+            </div>
           </div>
-          <p className="text-sm">
-            Your comprehensive healthcare training and reference platform
-          </p>
         </div>
       </footer>
+
+      {/* Auth Modals */}
+      {authModal === 'signIn' && (
+        <SignIn
+          onClose={() => setAuthModal(null)}
+          onSwitchToSignUp={() => setAuthModal('signUp')}
+          onSwitchToForgotPassword={() => setAuthModal('forgotPassword')}
+        />
+      )}
+      {authModal === 'signUp' && (
+        <SignUp
+          onClose={() => setAuthModal(null)}
+          onSwitchToSignIn={() => setAuthModal('signIn')}
+        />
+      )}
+      {authModal === 'forgotPassword' && (
+        <ForgotPassword
+          onClose={() => setAuthModal(null)}
+          onSwitchToSignIn={() => setAuthModal('signIn')}
+        />
+      )}
     </div>
   );
 }

@@ -1,19 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Shield, Mail, Lock, AlertCircle, Eye, EyeOff } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth, isSuperAdmin } from '../../contexts/AuthContext';
 
-// Super admin emails - add your email here
-const SUPER_ADMIN_EMAILS = [
-  'marty@vytalpath.com',
-  'admin@vytalpath.com',
-  'mkoepkeci@gmail.com',
-];
-
-export function isSuperAdmin(email: string | undefined): boolean {
-  if (!email) return false;
-  return SUPER_ADMIN_EMAILS.includes(email.toLowerCase());
-}
+// Re-export for backwards compatibility
+export { isSuperAdmin };
 
 export function AdminLogin() {
   const navigate = useNavigate();

@@ -14,10 +14,13 @@ export interface OrgInviteLink {
   org_id: string;
   code: string;
   label: string | null;
+  first_name: string | null;
+  last_name: string | null;
   expires_at: string | null;
   max_uses: number | null;
   use_count: number;
   is_active: boolean;
+  invite_role: 'admin' | 'student';
   created_at: string;
   created_by: string | null;
 }
@@ -68,8 +71,21 @@ export interface CreateOrgInput {
 export interface CreateInviteLinkInput {
   org_id: string;
   label?: string;
+  first_name?: string;
+  last_name?: string;
   expires_in_days?: number;  // null = never expires
   max_uses?: number;         // null = unlimited
+  invite_role?: 'admin' | 'student'; // Default is 'student'
+}
+
+export interface UserProfile {
+  id: string;
+  user_id: string;
+  first_name: string | null;
+  last_name: string | null;
+  display_name: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
 // Response types

@@ -1,34 +1,25 @@
 import { useState } from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
-import { User, LogOut, Home, MessageSquare, type LucideIcon } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import { User, LogOut, Shield } from 'lucide-react';
+import { useAuth, isSuperAdmin } from '../../contexts/AuthContext';
 import { StickyBanner } from '../StickyBanner';
 import { SignIn } from '../SignIn';
 import { SignUp } from '../SignUp';
 import { ForgotPassword } from '../ForgotPassword';
+import { RoleBasedSidebar, MobileBottomNav } from './RoleBasedSidebar';
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
 
-type NavItem = {
-  path: string;
-  label: string;
-  iconPath?: string;
-  icon?: LucideIcon;
-};
-
-const navItems: NavItem[] = [
-  { path: '/foundations', label: 'Foundations', iconPath: '/icons/courses-icon.png' },
-  { path: '/insurance', label: 'Insurance', iconPath: '/icons/courses-icon.png' },
-  { path: '/terminology', label: 'Terminology', iconPath: '/icons/terms-icon.png' },
-  { path: '/workflows', label: 'Workflows', iconPath: '/icons/workflow-icon.png' },
-  { path: '/practice', label: 'Practice', iconPath: '/icons/courses-icon.png' },
-  { path: '/search', label: 'Search', iconPath: '/icons/search-icon.png' },
-];
-
 export function AppLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, signOut } = useAuth();
   const [authModal, setAuthModal] = useState<AuthModal>(null);
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/', { replace: true });
+  };
 
   // Don't show navigation on landing page
   const isLandingPage = location.pathname === '/';
@@ -52,33 +43,7 @@ export function AppLayout() {
           />
         </Link>
 
-        <div className="flex-1 py-4">
-          {navItems.map((item) => {
-            const isActive = location.pathname.startsWith(item.path);
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`w-full flex items-center gap-3 px-6 py-3 transition-colors ${
-                  isActive
-                    ? 'bg-blue-50 text-blue-700 border-r-4 border-blue-600'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-              >
-                {item.iconPath ? (
-                  <img
-                    src={item.iconPath}
-                    alt={item.label}
-                    className={`w-6 h-6 ${isActive ? '' : 'opacity-60'}`}
-                  />
-                ) : item.icon ? (
-                  <item.icon className={`w-5 h-5 ${isActive ? 'text-blue-600' : 'text-gray-400'}`} />
-                ) : null}
-                <span className="font-medium">{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
+        <RoleBasedSidebar className="flex-1" />
 
         <div className="p-4 border-t border-gray-200">
           {user ? (
@@ -88,7 +53,7 @@ export function AppLayout() {
                 <span className="text-sm text-gray-700 truncate">{user.email}</span>
               </div>
               <button
-                onClick={() => signOut()}
+                onClick={handleSignOut}
                 className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
               >
                 <LogOut className="w-4 h-4" />
@@ -119,42 +84,7 @@ export function AppLayout() {
       </header>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
-        <div className="flex justify-around items-center h-16">
-          <Link
-            to="/"
-            className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-              location.pathname === '/' ? 'text-blue-600' : 'text-gray-400'
-            }`}
-          >
-            <Home className="w-6 h-6 mb-1" />
-            <span className="text-xs font-medium">Home</span>
-          </Link>
-          {navItems.slice(0, 4).map((item) => {
-            const isActive = location.pathname.startsWith(item.path);
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-                  isActive ? 'text-blue-600' : 'text-gray-400'
-                }`}
-              >
-                {item.iconPath ? (
-                  <img
-                    src={item.iconPath}
-                    alt={item.label}
-                    className={`w-6 h-6 mb-1 ${isActive ? '' : 'opacity-60'}`}
-                  />
-                ) : item.icon ? (
-                  <item.icon className="w-6 h-6 mb-1" />
-                ) : null}
-                <span className="text-xs font-medium">{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
-      </nav>
+      <MobileBottomNav />
 
       {/* Banner */}
       <div className="md:ml-64">

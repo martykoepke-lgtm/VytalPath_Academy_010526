@@ -118,8 +118,11 @@ export async function createInviteLink(input: CreateInviteLinkInput): Promise<Or
       org_id: input.org_id,
       code,
       label: input.label || null,
+      first_name: input.first_name || null,
+      last_name: input.last_name || null,
       expires_at,
-      max_uses: input.max_uses || null,
+      max_uses: input.max_uses ?? 1, // Default to single-use when tied to a student
+      invite_role: input.invite_role || 'student', // Default to student
       created_by: user.user.id,
     })
     .select()
@@ -228,87 +231,60 @@ export async function getOrgMembers(orgId: string): Promise<OrgMember[]> {
 }
 
 export async function getOrgMembersWithProgress(orgId: string): Promise<OrgMemberWithProgress[]> {
-  // First get all members with user info
+  // Use SECURITY DEFINER function to get members with all details
   const { data: members, error: membersError } = await supabase
-    .from('org_members')
-    .select(`
-      *,
-      user:auth.users(email, raw_user_meta_data)
-    `)
-    .eq('org_id', orgId)
-    .eq('role', 'student')
-    .order('joined_at', { ascending: false });
+    .rpc('get_org_members', { p_org_id: orgId });
 
-  if (membersError) throw membersError;
+  if (membersError) {
+    console.error('Error fetching members:', membersError);
+    // Fallback to direct query
+    const { data: fallbackMembers, error: fallbackError } = await supabase
+      .from('org_members')
+      .select('*')
+      .eq('org_id', orgId)
+      .eq('role', 'student')
+      .order('joined_at', { ascending: false });
+
+    if (fallbackError || !fallbackMembers) return [];
+
+    return fallbackMembers.map((member) => ({
+      ...member,
+      user: {
+        email: null,
+        full_name: null,
+      },
+      courses_progress: [],
+    }));
+  }
+
   if (!members) return [];
 
-  // Get all courses
-  const { data: courses, error: coursesError } = await supabase
-    .from('courses')
-    .select(`
-      id,
-      title,
-      modules(
-        id,
-        lessons(id),
-        quizzes(id)
-      )
-    `)
-    .eq('is_published', true);
+  // Filter to only students and map to expected format
+  const studentMembers = members.filter((m: any) => m.role === 'student');
 
-  if (coursesError) throw coursesError;
+  const membersWithProgress: OrgMemberWithProgress[] = studentMembers.map((member: any) => {
+    const firstName = member.first_name || member.invite_first_name || '';
+    const lastName = member.last_name || member.invite_last_name || '';
+    const displayName = member.display_name ||
+      (firstName && lastName ? `${firstName} ${lastName}` : member.invite_label) ||
+      null;
 
-  // For each member, calculate their progress
-  const membersWithProgress: OrgMemberWithProgress[] = await Promise.all(
-    members.map(async (member) => {
-      const coursesProgress = await Promise.all(
-        (courses || []).map(async (course) => {
-          // Count total lessons
-          const totalLessons = course.modules?.reduce(
-            (sum, m) => sum + (m.lessons?.length || 0),
-            0
-          ) || 0;
-
-          // Get completed lessons for this user
-          const lessonIds = course.modules?.flatMap(m => m.lessons?.map(l => l.id) || []) || [];
-          const { count: completedLessons } = await supabase
-            .from('lesson_progress')
-            .select('*', { count: 'exact', head: true })
-            .eq('user_id', member.user_id)
-            .in('lesson_id', lessonIds.length > 0 ? lessonIds : ['none']);
-
-          // Get quiz attempts for this course
-          const quizIds = course.modules?.map(m => m.quizzes?.id).filter(Boolean) || [];
-          const { data: quizAttempts } = await supabase
-            .from('quiz_attempts')
-            .select('score, passed')
-            .eq('user_id', member.user_id)
-            .in('quiz_id', quizIds.length > 0 ? quizIds : ['none'])
-            .order('score', { ascending: false });
-
-          const bestAttempt = quizAttempts?.[0];
-
-          return {
-            course_id: course.id,
-            course_title: course.title,
-            lessons_completed: completedLessons || 0,
-            lessons_total: totalLessons,
-            quiz_best_score: bestAttempt?.score || null,
-            quiz_passed: bestAttempt?.passed || false,
-          };
-        })
-      );
-
-      return {
-        ...member,
-        user: {
-          email: member.user?.email || 'Unknown',
-          full_name: member.user?.raw_user_meta_data?.full_name,
-        },
-        courses_progress: coursesProgress,
-      };
-    })
-  );
+    return {
+      id: member.id,
+      org_id: member.org_id,
+      user_id: member.user_id,
+      role: member.role,
+      status: member.status,
+      joined_at: member.joined_at,
+      joined_via: member.joined_via,
+      created_at: member.joined_at,
+      user: {
+        email: member.user_email || null,
+        full_name: displayName,
+      },
+      courses_progress: [],
+    };
+  });
 
   return membersWithProgress;
 }
@@ -339,6 +315,82 @@ export async function isUserOrgAdmin(orgId: string): Promise<boolean> {
 
   if (error) return false;
   return !!data;
+}
+
+// =============================================
+// ORG ADMIN MANAGEMENT
+// =============================================
+
+export async function getOrgAdmins(orgId: string): Promise<OrgMember[]> {
+  const { data, error } = await supabase
+    .from('org_members')
+    .select('*')
+    .eq('org_id', orgId)
+    .eq('role', 'admin')
+    .order('joined_at', { ascending: true });
+
+  if (error) throw error;
+  return data || [];
+}
+
+export async function addOrgAdmin(
+  orgId: string,
+  email: string
+): Promise<{ success: boolean; error?: string }> {
+  // First, find the user by email using the RPC function
+  const { data: userData, error: userError } = await supabase
+    .rpc('get_user_by_email', { user_email: email });
+
+  if (userError || !userData || userData.length === 0) {
+    return {
+      success: false,
+      error: 'User not found. They must create an account first.',
+    };
+  }
+
+  const userId = userData[0].id;
+
+  // Check if already a member
+  const { data: existing } = await supabase
+    .from('org_members')
+    .select('id, role')
+    .eq('org_id', orgId)
+    .eq('user_id', userId)
+    .single();
+
+  if (existing) {
+    if (existing.role === 'admin') {
+      return { success: false, error: 'User is already an admin of this organization.' };
+    }
+
+    // Upgrade from student to admin
+    const { error: updateError } = await supabase
+      .from('org_members')
+      .update({ role: 'admin' })
+      .eq('id', existing.id);
+
+    if (updateError) {
+      return { success: false, error: updateError.message };
+    }
+
+    return { success: true };
+  }
+
+  // Add as new admin
+  const { error: insertError } = await supabase
+    .from('org_members')
+    .insert({
+      org_id: orgId,
+      user_id: userId,
+      role: 'admin',
+      status: 'active',
+    });
+
+  if (insertError) {
+    return { success: false, error: insertError.message };
+  }
+
+  return { success: true };
 }
 
 // =============================================
