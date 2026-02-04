@@ -18,7 +18,8 @@
 - **Styling:** Tailwind CSS 3.4
 - **Icons:** Lucide React
 - **SEO:** react-helmet-async + JSON-LD structured data
-- **Backend:** Supabase (PostgreSQL + Auth)
+- **Backend:** Supabase (PostgreSQL + Auth + Storage)
+- **Video Hosting:** Supabase Storage
 - **Deployment:** Vercel
 
 ## Project Structure
@@ -44,6 +45,12 @@ src/
 │   │   └── MedicalTerminology.tsx
 │   ├── learning/              # Interactive exercises
 │   │   └── InsuranceTermMatch.tsx
+│   ├── admin/                 # Admin dashboards
+│   │   ├── SuperAdminDashboard.tsx   # Platform-wide management
+│   │   ├── OrgAdminDashboard.tsx     # Organization management
+│   │   └── OrgAdminRoute.tsx         # Route protection
+│   ├── join/                  # Organization joining
+│   │   └── JoinOrganization.tsx      # Invitation acceptance
 │   ├── layout/
 │   │   └── AppLayout.tsx      # Main layout with navigation
 │   ├── SEO.tsx                # Dynamic SEO component
@@ -225,6 +232,12 @@ Future-proofing for modern healthcare.
 - `sops` - Standard operating procedures (JSONB steps)
 - `user_sop_progress` - Session-based progress tracking
 
+### Organization Tables
+- `organizations` - Org details (id, name, slug, settings)
+- `org_members` - User-org relationships (user_id, org_id, role, status)
+- `invitations` - Unified invitation system (token, email, role, max_uses, expires_at)
+- `user_profiles` - User display info (first_name, last_name, display_name)
+
 ### Key Types
 ```typescript
 // Content Types
@@ -266,6 +279,18 @@ npm run lint         # Run ESLint
 
 ## Recent Changes (February 2026)
 
+### Video Storage Migration
+- Migrated all videos from local `public/videos/` to Supabase Storage
+- Updated all component video URLs to use `VIDEO_BASE_URL` constant
+- 15 videos now streaming from Supabase CDN
+
+### Organization Management System
+- Added Super Admin dashboard for platform-wide management
+- Added Org Admin dashboard for organization-specific management
+- Implemented unified invitation system (email or shareable link)
+- Role-based route protection with `OrgAdminRoute` component
+- Member removal functionality for admins
+
 ### 10-Module Curriculum Plan
 - Expanded roadmap from 4 to 10 comprehensive modules
 - Added planned modules: Medications, Referrals & Prior Auth, Coding Basics, EHR Practice Lab, Patient Communication, Telehealth Support
@@ -299,6 +324,9 @@ npm run lint         # Run ESLint
 ### Adding a New Lesson to a Section
 ```typescript
 // In the appropriate section file (e.g., FoundationsSection.tsx)
+// Videos use Supabase Storage URL:
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
+
 // Add to the module's lessons array:
 {
   id: 'unique-id',
@@ -306,7 +334,7 @@ npm run lint         # Run ESLint
   title: 'Lesson Title',
   description: 'Brief description.',
   content_type: 'video' as ContentType,
-  video_url: '/videos/Video Filename.mp4',
+  video_url: `${VIDEO_BASE_URL}/video-filename.mp4`,  // lowercase, hyphens
   duration_minutes: 4,
 }
 ```
@@ -372,8 +400,39 @@ import { SEO, seoConfigs } from '../SEO';
 
 ## Notes
 
-- Videos are stored in `public/videos/` (production) and `docs/*/videos/` (source/backup)
-- Large video files (50MB+) trigger GitHub warnings
+- Videos are hosted on Supabase Storage (URL: `https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos/`)
+- Local video backups in `docs/*/videos/` folders
 - Documentation follows the navigation structure
-- Progress is stored in localStorage (auth planned for paid subscriptions)
+- Progress tracking uses localStorage (per-user persistence planned)
 - EHR Practice Lab will use external web-based EHR (free access available)
+
+## Organization & Role System
+
+### Three Roles
+1. **Super Admin** - Hardcoded emails (platform owners)
+   - Full platform access at `/admin`
+   - Create/manage organizations
+   - Add Org Admins by email or invite link
+   - View all students and progress
+
+2. **Org Admin** - Stored in `org_members` with `role='admin'`
+   - Access their org at `/admin/orgs/:slug`
+   - Create student invite links
+   - Manage students, view progress
+   - Remove members
+
+3. **Student** - Default role
+   - Access learning content (`/foundations`, `/insurance`, `/terminology`, `/workflows`)
+   - Can be org-based or self-registered
+
+### Invitation System
+- Unified `invitations` table replaces old system
+- Two types: email-specific (single use) or shareable link (unlimited/limited uses)
+- Flow: Admin creates invite → User visits `/join/:token` → Signs up → Auto-assigned to org
+- RPC functions: `create_invitation()`, `get_invitation()`, `accept_invitation()`
+
+### Key Database Tables
+- `organizations` - Org details (name, slug, settings)
+- `org_members` - User-org relationships with roles
+- `invitations` - Unified invitation system
+- `user_profiles` - Display names, metadata

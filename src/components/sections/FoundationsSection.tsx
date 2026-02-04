@@ -9,6 +9,9 @@ import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
 
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
+
 // Foundations section includes: Intro, Healthcare Settings, Medical Law & Ethics
 const foundationsModules = [
   {
@@ -31,7 +34,7 @@ const foundationsModules = [
         title: 'Healthcare Front Office Foundations',
         description: 'An introduction to the essential skills and knowledge needed for front office success.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Healthcare Front Office Foundations.mp4',
+        video_url: `${VIDEO_BASE_URL}/healthcare-front-office-foundations.mp4`,
         duration_minutes: 4,
       },
       {
@@ -40,7 +43,7 @@ const foundationsModules = [
         title: 'Acute vs. Ambulatory Care',
         description: 'Learn the key differences between acute care (hospitals) and ambulatory care (outpatient clinics).',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Acute vs. Ambulatory Care.mp4',
+        video_url: `${VIDEO_BASE_URL}/acute-vs-ambulatory-care.mp4`,
         duration_minutes: 4,
       },
     ],
@@ -65,7 +68,7 @@ const foundationsModules = [
         title: 'HIPAA Essentials Explained',
         description: 'Understanding HIPAA regulations, patient privacy rights, and your responsibilities.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/HIPAA Essentials Explained.mp4',
+        video_url: `${VIDEO_BASE_URL}/hipaa-essentials-explained.mp4`,
         duration_minutes: 4,
       },
       {
@@ -74,7 +77,7 @@ const foundationsModules = [
         title: 'PHI Explained',
         description: 'Learn what Protected Health Information is and how to identify it.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/PHI Explained (1).mp4',
+        video_url: `${VIDEO_BASE_URL}/phi-explained.mp4`,
         duration_minutes: 4,
       },
       {
@@ -83,7 +86,7 @@ const foundationsModules = [
         title: 'HIPAA Access Rules',
         description: 'Learn about HIPAA access rules and who can access patient health information.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/HIPAA Access Rules.mp4',
+        video_url: `${VIDEO_BASE_URL}/hipaa-access-rules.mp4`,
         duration_minutes: 4,
       },
       {
@@ -213,7 +216,7 @@ export function FoundationsSection() {
               className="w-full h-full"
               controlsList="nodownload"
             >
-              <source src="/videos/VytalPath Academy Introduction.mp4" type="video/mp4" />
+              <source src={`${VIDEO_BASE_URL}/vytalpath-academy-introduction.mp4`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

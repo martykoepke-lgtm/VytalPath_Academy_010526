@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { GraduationCap, Clock, BookOpen, Lock, ChevronRight, CheckCircle, Play, Sparkles, X } from 'lucide-react';
 import type { Course } from '../../types/course';
 
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
+
 // Temporary hardcoded data - will be replaced with database fetch
 const courses: (Course & { modules_count: number; lessons_count: number; progress_percent?: number })[] = [
   {
@@ -105,7 +108,7 @@ export function CourseCatalog() {
               className="w-full h-full"
               controlsList="nodownload"
             >
-              <source src="/videos/VytalPath Academy Introduction.mp4" type="video/mp4" />
+              <source src={`${VIDEO_BASE_URL}/vytalpath-academy-introduction.mp4`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

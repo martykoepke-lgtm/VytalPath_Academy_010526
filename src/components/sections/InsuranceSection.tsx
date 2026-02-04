@@ -8,6 +8,9 @@ import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
 
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
+
 // Insurance section combines: Insurance Overview + Insurance Operations
 const insuranceModules = [
   {
@@ -30,7 +33,7 @@ const insuranceModules = [
         title: 'Introduction to Health Insurance',
         description: 'A broad overview of how health insurance works in the US healthcare system.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Introduction to Health Insurance.mp4',
+        video_url: `${VIDEO_BASE_URL}/introduction-to-health-insurance.mp4`,
         duration_minutes: 4,
       },
       {
@@ -39,7 +42,7 @@ const insuranceModules = [
         title: 'Types of Payers & Plan Types',
         description: 'Learn about different insurance payers (Medicare, Medicaid, commercial) and plan types (HMO, PPO, EPO).',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Types of Payers & Plan Types.mp4',
+        video_url: `${VIDEO_BASE_URL}/types-of-payers-and-plan-types.mp4`,
         duration_minutes: 4,
       },
       {
@@ -48,7 +51,7 @@ const insuranceModules = [
         title: 'Key Insurance Terms',
         description: 'Define essential insurance vocabulary: premium, deductible, copay, coinsurance, and out-of-pocket maximum.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Key Insurance Terms.mp4',
+        video_url: `${VIDEO_BASE_URL}/key-insurance-terms.mp4`,
         duration_minutes: 4,
       },
     ],
@@ -73,7 +76,7 @@ const insuranceModules = [
         title: 'Reading an Insurance Card',
         description: 'Learn to identify key information on insurance cards: member ID, group number, plan type, and contact numbers.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Reading an Insurance Card (Final Polish V2).mp4',
+        video_url: `${VIDEO_BASE_URL}/reading-an-insurance-card.mp4`,
         duration_minutes: 4,
       },
       {
@@ -82,7 +85,7 @@ const insuranceModules = [
         title: 'Real-Time Eligibility Verification',
         description: 'Step-by-step process for verifying patient eligibility before appointments.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Insurance Eligibility Verification_ Process & Workflow Guide (Final Polished).mp4',
+        video_url: `${VIDEO_BASE_URL}/insurance-eligibility-verification.mp4`,
         duration_minutes: 5,
       },
       {
@@ -91,7 +94,7 @@ const insuranceModules = [
         title: 'Understanding Copays',
         description: 'What copays are, how to identify them, when to collect, and how to handle discrepancies.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Understanding Copays.mp4',
+        video_url: `${VIDEO_BASE_URL}/understanding-copays.mp4`,
         duration_minutes: 4,
       },
       {
@@ -100,7 +103,7 @@ const insuranceModules = [
         title: 'Deductibles & Out-of-Pocket Maximum',
         description: 'Understanding deductibles, tracking patient progress, and out-of-pocket maximums.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Deductibles and Out-of-Pocket Maximum.mp4',
+        video_url: `${VIDEO_BASE_URL}/deductibles-and-out-of-pocket-maximum.mp4`,
         duration_minutes: 4,
       },
       {
@@ -109,7 +112,7 @@ const insuranceModules = [
         title: 'Coinsurance Calculations',
         description: 'How to calculate patient coinsurance responsibility and explain it to patients.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Coinsurance Calculations.mp4',
+        video_url: `${VIDEO_BASE_URL}/coinsurance-calculations.mp4`,
         duration_minutes: 4,
       },
       {
@@ -118,7 +121,7 @@ const insuranceModules = [
         title: 'Collecting Patient Payments',
         description: 'Best practices for collecting copays, coinsurance, and outstanding balances.',
         content_type: 'video' as ContentType,
-        video_url: '/videos/Collecting Patient Payments (1).mp4',
+        video_url: `${VIDEO_BASE_URL}/collecting-patient-payments.mp4`,
         duration_minutes: 4,
       },
     ],
