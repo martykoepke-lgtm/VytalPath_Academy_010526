@@ -36,6 +36,7 @@ interface WorkflowPhase {
 }
 
 // BEFORE THE VISIT - Video modules with written SOP companions
+// Note: Insurance eligibility verification is built into the New Patient Registration SOP
 const beforeVisitPhase: WorkflowPhase = {
   id: 'before-visit',
   slug: 'before-visit',
@@ -47,18 +48,18 @@ const beforeVisitPhase: WorkflowPhase = {
       id: 'wl1',
       slug: 'new-patient-registration',
       title: 'New Patient Registration & Scheduling',
-      description: 'Learn the complete process for registering new patients and scheduling their first appointments.',
+      description: 'Complete registration process including demographics, insurance collection, eligibility verification, and appointment booking.',
       content_type: 'video' as ContentType,
       video_url: `${VIDEO_BASE_URL}/new_pt_reg.mp4`,
       duration_minutes: 5,
       sop_slug: 'new-patient-registration-sop',
-      sop_title: 'Written SOP: New Patient Registration',
+      sop_title: 'Written SOP: New Patient Registration (includes eligibility)',
     },
     {
       id: 'wl2',
       slug: 'existing-patient-scheduling',
       title: 'Existing Patient Scheduling',
-      description: 'Master the workflow for scheduling appointments for established patients efficiently.',
+      description: 'Streamlined scheduling for established patients including info verification and insurance updates.',
       content_type: 'video' as ContentType,
       video_url: `${VIDEO_BASE_URL}/est-pt-scheduling.mp4`,
       duration_minutes: 4,
@@ -69,7 +70,7 @@ const beforeVisitPhase: WorkflowPhase = {
       id: 'wl3',
       slug: 'appointment-reminders',
       title: 'Appointment Reminder Calls',
-      description: 'Best practices for making appointment reminder calls, scheduling follow-ups, and reducing no-shows.',
+      description: 'Reminder workflows, pre-visit preparation, and reducing no-shows.',
       content_type: 'video' as ContentType,
       video_url: `${VIDEO_BASE_URL}/reminder-calls.mp4`,
       duration_minutes: 4,
@@ -79,24 +80,14 @@ const beforeVisitPhase: WorkflowPhase = {
   ],
 };
 
-// DURING THE VISIT - Written SOPs (videos coming later via HeyGen)
+// DURING THE VISIT - Check-in and Check-out procedures
 const duringVisitPhase: WorkflowPhase = {
   id: 'during-visit',
   slug: 'during-visit',
   title: 'During the Visit',
-  description: 'Check-in, insurance verification, and daily operations workflows.',
+  description: 'Check-in and check-out procedures for all patient types.',
   icon: 'clock',
   lessons: [
-    {
-      id: 'wl-a',
-      slug: 'insurance-eligibility-verification',
-      title: 'Insurance Eligibility Verification',
-      description: 'Step-by-step process for verifying patient eligibility and benefits before appointments.',
-      content_type: 'reading' as ContentType,
-      video_url: null,
-      duration_minutes: 10,
-      sop_slug: 'insurance-verification',
-    },
     {
       id: 'wl-b',
       slug: 'new-patient-check-in',
@@ -127,6 +118,27 @@ const duringVisitPhase: WorkflowPhase = {
       duration_minutes: 10,
       sop_slug: 'urgent-walk-in-check-in',
     },
+    {
+      id: 'wl-h',
+      slug: 'patient-check-out',
+      title: 'Patient Check-Out Procedures',
+      description: 'Complete checkout workflow including scheduling, payments, and follow-up.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 8,
+      sop_slug: 'patient-check-out',
+    },
+  ],
+};
+
+// THROUGHOUT THE DAY - Daily operations and schedule management
+const throughoutDayPhase: WorkflowPhase = {
+  id: 'throughout-day',
+  slug: 'throughout-day',
+  title: 'Throughout the Day',
+  description: 'Managing schedule changes, prioritizing tasks, and handling daily operations.',
+  icon: 'clock',
+  lessons: [
     {
       id: 'wl-e',
       slug: 'no-shows-late-arrivals',
@@ -160,7 +172,7 @@ const duringVisitPhase: WorkflowPhase = {
   ],
 };
 
-const workflowPhases = [beforeVisitPhase, duringVisitPhase];
+const workflowPhases = [beforeVisitPhase, duringVisitPhase, throughoutDayPhase];
 
 const contentTypeIcons: Record<ContentType, React.ElementType> = {
   video: Play,
