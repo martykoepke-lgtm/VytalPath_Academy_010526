@@ -2,10 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
-  CheckCircle, Clock, ClipboardCheck, Trophy, DollarSign
+  CheckCircle, Clock, ClipboardCheck, Trophy, DollarSign, X,
+  CreditCard, FileSearch, MousePointerClick
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
+import { InsuranceCardExplorer } from '../learning/InsuranceCardExplorer';
+import { EligibilityReportExplorer } from '../learning/EligibilityReportExplorer';
 import type { ContentType } from '../../types/course';
 
 // Supabase Storage base URL for videos
@@ -29,11 +32,11 @@ const insuranceModules = [
     lessons: [
       {
         id: 'l6',
-        slug: 'introduction-health-insurance',
-        title: 'Introduction to Health Insurance',
-        description: 'A broad overview of how health insurance works in the US healthcare system.',
+        slug: 'why-insurance-exists',
+        title: 'Why Insurance Exists',
+        description: 'Understand the fundamental purpose of health insurance and how it protects patients and providers.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/introduction-to-health-insurance.mp4`,
+        video_url: `${VIDEO_BASE_URL}/whyinsexists.mp4`,
         duration_minutes: 4,
       },
       {
@@ -42,7 +45,7 @@ const insuranceModules = [
         title: 'Types of Payers & Plan Types',
         description: 'Learn about different insurance payers (Medicare, Medicaid, commercial) and plan types (HMO, PPO, EPO).',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/types-of-payers-and-plan-types.mp4`,
+        video_url: `${VIDEO_BASE_URL}/payers_plans.mp4`,
         duration_minutes: 4,
       },
       {
@@ -51,8 +54,17 @@ const insuranceModules = [
         title: 'Key Insurance Terms',
         description: 'Define essential insurance vocabulary: premium, deductible, copay, coinsurance, and out-of-pocket maximum.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/key-insurance-terms.mp4`,
+        video_url: `${VIDEO_BASE_URL}/ins_terms.mp4`,
         duration_minutes: 4,
+      },
+      {
+        id: 'l9',
+        slug: 'eligibility-and-payments',
+        title: 'Eligibility & Payments Overview',
+        description: 'An introduction to verifying eligibility and understanding patient payment responsibility.',
+        content_type: 'video' as ContentType,
+        video_url: `${VIDEO_BASE_URL}/elig-and-payments.mp4`,
+        duration_minutes: 5,
       },
     ],
   },
@@ -76,7 +88,7 @@ const insuranceModules = [
         title: 'Reading an Insurance Card',
         description: 'Learn to identify key information on insurance cards: member ID, group number, plan type, and contact numbers.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/reading-an-insurance-card.mp4`,
+        video_url: `${VIDEO_BASE_URL}/Read_ins_card.mp4`,
         duration_minutes: 4,
       },
       {
@@ -85,7 +97,7 @@ const insuranceModules = [
         title: 'Real-Time Eligibility Verification',
         description: 'Step-by-step process for verifying patient eligibility before appointments.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/insurance-eligibility-verification.mp4`,
+        video_url: `${VIDEO_BASE_URL}/Realtime_eligibility.mp4`,
         duration_minutes: 5,
       },
       {
@@ -94,7 +106,7 @@ const insuranceModules = [
         title: 'Understanding Copays',
         description: 'What copays are, how to identify them, when to collect, and how to handle discrepancies.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/understanding-copays.mp4`,
+        video_url: `${VIDEO_BASE_URL}/Understand_copay.mp4`,
         duration_minutes: 4,
       },
       {
@@ -103,7 +115,7 @@ const insuranceModules = [
         title: 'Deductibles & Out-of-Pocket Maximum',
         description: 'Understanding deductibles, tracking patient progress, and out-of-pocket maximums.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/deductibles-and-out-of-pocket-maximum.mp4`,
+        video_url: `${VIDEO_BASE_URL}/Deduct_OOPmax.mp4`,
         duration_minutes: 4,
       },
       {
@@ -112,7 +124,7 @@ const insuranceModules = [
         title: 'Coinsurance Calculations',
         description: 'How to calculate patient coinsurance responsibility and explain it to patients.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/coinsurance-calculations.mp4`,
+        video_url: `${VIDEO_BASE_URL}/coinsurance_operations.mp4`,
         duration_minutes: 4,
       },
       {
@@ -121,7 +133,7 @@ const insuranceModules = [
         title: 'Collecting Patient Payments',
         description: 'Best practices for collecting copays, coinsurance, and outstanding balances.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/collecting-patient-payments.mp4`,
+        video_url: `${VIDEO_BASE_URL}/Collect_copay.mp4`,
         duration_minutes: 4,
       },
     ],
@@ -133,8 +145,12 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
   reading: FileText,
 };
 
+type ExplorerView = 'card' | 'eligibility';
+
 export function InsuranceSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m3', 'm5']));
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
+  const [explorerView, setExplorerView] = useState<ExplorerView>('card');
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -173,6 +189,49 @@ export function InsuranceSection() {
             Master health insurance from basics to daily operations. Learn payer types, eligibility verification, copays, deductibles, and payment collection.
           </p>
         </header>
+
+        {/* Section Introduction Video */}
+        {showSectionIntro ? (
+          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <DollarSign className="w-4 h-4 text-blue-600" />
+                <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+              </div>
+              <button
+                onClick={() => setShowSectionIntro(false)}
+                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                <X className="w-4 h-4 text-gray-500" />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                controlsList="nodownload"
+              >
+                <source src={`${VIDEO_BASE_URL}/insuranceintro.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowSectionIntro(true)}
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-blue-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Insurance Training</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </button>
+        )}
 
       {/* Progress Summary */}
       {completedLessons > 0 && (
@@ -328,6 +387,52 @@ export function InsuranceSection() {
             </div>
           );
         })}
+        </section>
+
+        {/* Interactive Practice: Visual Explorers */}
+        <section className="mt-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
+              <MousePointerClick className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">Interactive Practice</h2>
+              <p className="text-sm text-gray-600">Click on different areas to learn what each field means</p>
+            </div>
+          </div>
+
+          {/* Explorer Toggle */}
+          <div className="flex gap-2 mb-4">
+            <button
+              onClick={() => setExplorerView('card')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                explorerView === 'card'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <CreditCard className="w-4 h-4" />
+              Insurance Card
+            </button>
+            <button
+              onClick={() => setExplorerView('eligibility')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                explorerView === 'eligibility'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <FileSearch className="w-4 h-4" />
+              Eligibility Report
+            </button>
+          </div>
+
+          {/* Explorer Component */}
+          {explorerView === 'card' ? (
+            <InsuranceCardExplorer />
+          ) : (
+            <EligibilityReportExplorer />
+          )}
         </section>
 
         {/* Interactive Exercise Link */}
