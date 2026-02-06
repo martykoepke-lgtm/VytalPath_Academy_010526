@@ -47,14 +47,6 @@ const terminologyModule = {
       duration_minutes: 5,
     },
     {
-      id: 'l9',
-      slug: 'intro-medical-terminology',
-      title: 'Introduction to Medical Terminology',
-      description: 'Learn how medical terms are constructed from prefixes, roots, and suffixes - the building blocks of medical language.',
-      content_type: 'reading' as ContentType,
-      duration_minutes: 8,
-    },
-    {
       id: 'l10',
       slug: 'common-prefixes',
       title: 'Common Prefixes',
@@ -270,38 +262,87 @@ export function TerminologySection() {
             {/* Lessons */}
             {expandedModule && (
               <div className="border-t border-gray-100 bg-gray-50">
-                {terminologyModule.lessons.map((lesson) => {
-                  const LessonIcon = contentTypeIcons[lesson.content_type];
+                {/* Video Lessons */}
+                {terminologyModule.lessons
+                  .filter((lesson) => lesson.content_type === 'video')
+                  .map((lesson) => {
+                    const LessonIcon = contentTypeIcons[lesson.content_type];
 
-                  return (
-                    <Link
-                      key={lesson.id}
-                      to={`/terminology/${terminologyModule.slug}/${lesson.slug}`}
-                      className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
-                    >
-                      <div
-                        className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                          isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
-                        }`}
+                    return (
+                      <Link
+                        key={lesson.id}
+                        to={`/terminology/${terminologyModule.slug}/${lesson.slug}`}
+                        className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
                       >
-                        {isLessonDone(lesson.slug) ? (
-                          <CheckCircle className="w-4 h-4 text-green-600" />
-                        ) : (
-                          <LessonIcon className="w-4 h-4 text-white" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-medium text-gray-900">{lesson.title}</h4>
-                        <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
-                      </div>
-                      <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                        <span className="capitalize">{lesson.content_type}</span>
-                        <span>{lesson.duration_minutes} min</span>
-                        <ChevronRight className="w-4 h-4" />
-                      </div>
-                    </Link>
-                  );
-                })}
+                        <div
+                          className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
+                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
+                          }`}
+                        >
+                          {isLessonDone(lesson.slug) ? (
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          ) : (
+                            <LessonIcon className="w-4 h-4 text-white" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-medium text-gray-900">{lesson.title}</h4>
+                          <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
+                        </div>
+                        <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
+                          <span className="capitalize">{lesson.content_type}</span>
+                          <span>{lesson.duration_minutes} min</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      </Link>
+                    );
+                  })}
+
+                {/* Separator between Video and Reading Lessons */}
+                <div className="mx-4 my-3 flex items-center gap-3">
+                  <div className="flex-1 h-px bg-gray-300"></div>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full">
+                    <FileText className="w-3.5 h-3.5 text-gray-500" />
+                    <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Reading Materials</span>
+                  </div>
+                  <div className="flex-1 h-px bg-gray-300"></div>
+                </div>
+
+                {/* Reading Lessons */}
+                {terminologyModule.lessons
+                  .filter((lesson) => lesson.content_type === 'reading')
+                  .map((lesson) => {
+                    const LessonIcon = contentTypeIcons[lesson.content_type];
+
+                    return (
+                      <Link
+                        key={lesson.id}
+                        to={`/terminology/${terminologyModule.slug}/${lesson.slug}`}
+                        className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
+                      >
+                        <div
+                          className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
+                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-gray-500'
+                          }`}
+                        >
+                          {isLessonDone(lesson.slug) ? (
+                            <CheckCircle className="w-4 h-4 text-green-600" />
+                          ) : (
+                            <LessonIcon className="w-4 h-4 text-white" />
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-medium text-gray-900">{lesson.title}</h4>
+                          <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
+                        </div>
+                        <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
+                          <span className="capitalize">{lesson.content_type}</span>
+                          <span>{lesson.duration_minutes} min</span>
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      </Link>
+                    );
+                  })}
 
                 {/* Quiz */}
                 {terminologyModule.quiz && (
