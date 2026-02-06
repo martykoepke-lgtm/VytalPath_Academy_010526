@@ -184,7 +184,7 @@ export function InsuranceSection() {
           <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl">
             <DollarSign className="w-10 h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Insurance Training</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">Insurance & Billing</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Master health insurance from basics to daily operations. Learn payer types, eligibility verification, copays, deductibles, and payment collection.
           </p>
@@ -227,7 +227,7 @@ export function InsuranceSection() {
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
-              <p className="text-sm text-gray-500">Watch a brief introduction to Insurance Training</p>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Insurance & Billing</p>
             </div>
             <ChevronRight className="w-5 h-5 text-gray-400" />
           </button>

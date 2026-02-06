@@ -145,7 +145,7 @@ export function MedicalLawEthicsSection() {
           <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-blue-100 rounded-2xl">
             <Scale className="w-10 h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Medical Law & Ethics</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">Medical Law & Compliance</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Master HIPAA compliance, patient rights, and healthcare regulations. Essential knowledge for protecting patient privacy and avoiding legal pitfalls.
           </p>
@@ -188,7 +188,7 @@ export function MedicalLawEthicsSection() {
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
-              <p className="text-sm text-gray-500">Watch a brief introduction to Medical Law & Ethics</p>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Medical Law & Compliance</p>
             </div>
             <ChevronRight className="w-5 h-5 text-gray-400" />
           </button>

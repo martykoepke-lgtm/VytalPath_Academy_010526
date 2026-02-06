@@ -14,13 +14,16 @@ type NavItem = {
   icon?: LucideIcon;
 };
 
-// Student navigation items
+// Student navigation items - ordered for optimal learning progression
+// 1. Orientation (Foundations, Compliance)
+// 2. Core Competencies (Insurance & Billing, Workflows)
+// 3. Reference (Terminology at end as study tool)
 const studentNavItems: NavItem[] = [
   { path: '/foundations', label: 'Foundations', iconPath: '/icons/courses-icon.png' },
-  { path: '/medical-law-ethics', label: 'Medical Law', iconPath: '/icons/courses-icon.png' },
-  { path: '/terminology', label: 'Terminology', iconPath: '/icons/terms-icon.png' },
-  { path: '/insurance', label: 'Insurance', iconPath: '/icons/courses-icon.png' },
+  { path: '/medical-law-ethics', label: 'Compliance', iconPath: '/icons/courses-icon.png' },
+  { path: '/insurance', label: 'Insurance & Billing', iconPath: '/icons/courses-icon.png' },
   { path: '/workflows', label: 'Workflows', iconPath: '/icons/workflow-icon.png' },
+  { path: '/terminology', label: 'Terminology', iconPath: '/icons/terms-icon.png' },
   { path: '/practice', label: 'Practice', iconPath: '/icons/courses-icon.png' },
   { path: '/search', label: 'Search', iconPath: '/icons/search-icon.png' },
 ];
