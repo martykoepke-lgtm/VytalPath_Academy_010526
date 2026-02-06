@@ -145,7 +145,7 @@ export function LandingPage() {
               </button>
               <button
                 onClick={() => setAuthModal('signUp')}
-                className="px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg"
+                className="px-6 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900 transition-all shadow-md hover:shadow-lg"
               >
                 Get Started
               </button>
@@ -155,50 +155,49 @@ export function LandingPage() {
       </header>
 
       {/* Hero Section - Brand Forward */}
-      <section className="relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+        {/* Subtle pattern overlay */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMwMDAwMDAiIGZpbGwtb3BhY2l0eT0iMC4wMiI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center">
             {/* Prominent Logo */}
-            <div className="mb-8">
+            <div className="mb-6">
               <img
                 src="/vytalpath-logo.png"
                 alt="VytalPath Academy"
-                className="h-20 md:h-24 w-auto mx-auto brightness-0 invert drop-shadow-lg"
+                className="h-28 md:h-36 lg:h-44 w-auto mx-auto"
               />
             </div>
 
             <div className="inline-block mb-6">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <div className="flex items-center gap-2 bg-teal-50 text-teal-700 px-4 py-2 rounded-full text-sm font-medium border border-teal-200">
+                <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
                 <span>Professional Healthcare Training</span>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Master Front Office Skills
-              <span className="block text-blue-200 mt-2">
+              <span className="block text-teal-600 mt-2">
                 for Healthcare
               </span>
             </h1>
 
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
               Comprehensive training for medical receptionists, referral coordinators, and clinic staff. Learn insurance, terminology, workflows, and more.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setAuthModal('signUp')}
-                className="group px-8 py-4 text-lg font-semibold text-blue-700 bg-white rounded-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                className="group px-8 py-4 text-lg font-semibold text-white bg-gray-800 rounded-xl hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
               >
                 Start Learning Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <a
                 href="#pricing"
-                className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl hover:bg-white/10 transition-all"
+                className="px-8 py-4 text-lg font-semibold text-gray-800 border-2 border-gray-800 rounded-xl hover:bg-gray-100 transition-all"
               >
                 View Pricing
               </a>
@@ -206,21 +205,21 @@ export function LandingPage() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-16">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-                <div className="text-3xl font-bold text-white mb-1">20+</div>
-                <div className="text-sm text-blue-200">Video Lessons</div>
+              <div className="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                <div className="text-3xl font-bold text-blue-800 mb-1">20+</div>
+                <div className="text-sm text-gray-600">Video Lessons</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-                <div className="text-3xl font-bold text-white mb-1">24</div>
-                <div className="text-sm text-blue-200">SOP Guides</div>
+              <div className="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                <div className="text-3xl font-bold text-blue-800 mb-1">24</div>
+                <div className="text-sm text-gray-600">SOP Guides</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-                <div className="text-3xl font-bold text-white mb-1">5</div>
-                <div className="text-sm text-blue-200">Training Modules</div>
+              <div className="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                <div className="text-3xl font-bold text-blue-800 mb-1">5</div>
+                <div className="text-sm text-gray-600">Training Modules</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
-                <div className="text-3xl font-bold text-white mb-1">7+</div>
-                <div className="text-sm text-blue-200">Hours of Content</div>
+              <div className="bg-white rounded-xl p-4 text-center border border-gray-200 shadow-sm">
+                <div className="text-3xl font-bold text-blue-800 mb-1">7+</div>
+                <div className="text-sm text-gray-600">Hours of Content</div>
               </div>
             </div>
           </div>
@@ -241,9 +240,9 @@ export function LandingPage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Individual Plan */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:border-blue-200 transition-colors">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:border-teal-200 transition-colors">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white p-2.5">
+                <div className="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center text-white p-2.5">
                   <IconUser />
                 </div>
                 <div>
@@ -263,26 +262,26 @@ export function LandingPage() {
 
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                   5 modules now + new content weekly
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                   20+ video lessons & 24 SOPs
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                   Interactive quizzes & flashcards
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                   Certificate of completion
                 </li>
               </ul>
 
               <button
                 onClick={() => setAuthModal('signUp')}
-                className="w-full py-3 px-4 text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all"
+                className="w-full py-3 px-4 text-white font-semibold bg-gray-800 rounded-xl hover:bg-gray-900 transition-all"
               >
                 Get Started
               </button>
@@ -473,7 +472,7 @@ export function LandingPage() {
           <div className="text-center mt-12">
             <Link
               to="/curriculum"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+              className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium"
             >
               View Full Curriculum Details
               <ArrowRight className="w-4 h-4" />
@@ -483,17 +482,17 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-600 py-16">
+      <section className="bg-gray-800 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-4xl font-bold text-white mb-4">
             Ready to Advance Your Career?
           </h3>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-gray-300 mb-8">
             Join thousands of healthcare professionals building their skills with VytalPath Academy
           </p>
           <button
             onClick={() => setAuthModal('signUp')}
-            className="px-8 py-4 text-lg font-semibold text-blue-700 bg-white rounded-xl hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl"
+            className="px-8 py-4 text-lg font-semibold text-gray-800 bg-white rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
           >
             Start Your Training Today
           </button>
