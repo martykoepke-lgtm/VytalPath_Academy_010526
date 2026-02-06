@@ -17,8 +17,9 @@ type NavItem = {
 // Student navigation items
 const studentNavItems: NavItem[] = [
   { path: '/foundations', label: 'Foundations', iconPath: '/icons/courses-icon.png' },
-  { path: '/insurance', label: 'Insurance', iconPath: '/icons/courses-icon.png' },
+  { path: '/medical-law-ethics', label: 'Medical Law', iconPath: '/icons/courses-icon.png' },
   { path: '/terminology', label: 'Terminology', iconPath: '/icons/terms-icon.png' },
+  { path: '/insurance', label: 'Insurance', iconPath: '/icons/courses-icon.png' },
   { path: '/workflows', label: 'Workflows', iconPath: '/icons/workflow-icon.png' },
   { path: '/practice', label: 'Practice', iconPath: '/icons/courses-icon.png' },
   { path: '/search', label: 'Search', iconPath: '/icons/search-icon.png' },
@@ -180,8 +181,8 @@ export function MobileBottomNav() {
     );
   }
 
-  // Student mobile navigation
-  const mobileItems = studentNavItems.slice(0, 4);
+  // Student mobile navigation (5 learning sections)
+  const mobileItems = studentNavItems.slice(0, 5);
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
       <div className="flex justify-around items-center h-16">
