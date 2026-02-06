@@ -315,7 +315,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
                 <h3 className="text-2xl font-bold text-gray-900">Individual</h3>
               </div>
               <div className="mb-6">
-                <span className="text-5xl font-bold text-gray-900">$267</span>
+                <span className="text-5xl font-bold text-gray-900">$327</span>
                 <span className="text-gray-600">/year</span>
               </div>
               <ul className="space-y-3 mb-8">
@@ -361,7 +361,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
               <div className="bg-white/10 rounded-xl p-4 mb-6 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span>1-5 seats</span>
-                  <span className="font-semibold">$267/seat/year</span>
+                  <span className="font-semibold">$327/seat/year</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span>6-15 seats</span>

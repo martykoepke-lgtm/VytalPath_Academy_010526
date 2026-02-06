@@ -21,11 +21,13 @@ import { AdminRedirect } from './components/admin/AdminRedirect';
 import { JoinOrganization } from './components/join/JoinOrganization';
 import { ResetPassword } from './components/auth/ResetPassword';
 import { FoundationsSection } from './components/sections/FoundationsSection';
+import { MedicalLawEthicsSection } from './components/sections/MedicalLawEthicsSection';
 import { InsuranceSection } from './components/sections/InsuranceSection';
 import { TerminologySection } from './components/sections/TerminologySection';
 import { WorkflowsSection } from './components/sections/WorkflowsSection';
 import { InteractiveHub } from './components/interactive';
 import { AuthRoute } from './components/auth/AuthRoute';
+import { PricingPage } from './components/billing/PricingPage';
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,11 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <LandingPage onEnter={() => {}} />,
+      },
+      // Pricing Page (public, but shows different content based on auth)
+      {
+        path: 'pricing',
+        element: <PricingPage />,
       },
       // Protected Learning Content - Requires Authentication
       {
@@ -47,6 +54,18 @@ export const router = createBrowserRouter([
       },
       {
         path: 'foundations/:moduleSlug/quiz',
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
+      },
+      {
+        path: 'medical-law-ethics',
+        element: <AuthRoute><MedicalLawEthicsSection /></AuthRoute>,
+      },
+      {
+        path: 'medical-law-ethics/:moduleSlug/:lessonSlug',
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
+      },
+      {
+        path: 'medical-law-ethics/:moduleSlug/quiz',
         element: <AuthRoute><QuizPlayer /></AuthRoute>,
       },
       {
