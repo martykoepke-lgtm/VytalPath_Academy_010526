@@ -28,6 +28,7 @@ import { WorkflowsSection } from './components/sections/WorkflowsSection';
 import { InteractiveHub } from './components/interactive';
 import { AuthRoute } from './components/auth/AuthRoute';
 import { PricingPage } from './components/billing/PricingPage';
+import { CurriculumPage } from './pages/CurriculumPage';
 
 export const router = createBrowserRouter([
   {
@@ -36,12 +37,16 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LandingPage onEnter={() => {}} />,
+        element: <LandingPage />,
       },
-      // Pricing Page (public, but shows different content based on auth)
+      // Public Pages
       {
         path: 'pricing',
         element: <PricingPage />,
+      },
+      {
+        path: 'curriculum',
+        element: <CurriculumPage />,
       },
       // Protected Learning Content - Requires Authentication
       {

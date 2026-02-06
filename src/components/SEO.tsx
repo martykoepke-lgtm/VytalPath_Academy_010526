@@ -52,9 +52,15 @@ export function SEO({
 export const seoConfigs = {
   foundations: {
     title: 'Foundations of Healthcare Training',
-    description: 'Learn healthcare administration fundamentals. Covers healthcare settings, HIPAA compliance, medical law, ethics, and patient privacy. Free video lessons and quizzes.',
-    keywords: 'healthcare foundations, HIPAA training, medical law, healthcare ethics, patient privacy, healthcare settings, ambulatory care',
+    description: 'Learn healthcare administration fundamentals. Understand different healthcare settings, acute vs ambulatory care, and your essential role in front office operations.',
+    keywords: 'healthcare foundations, healthcare settings, ambulatory care, acute care, front office training, healthcare administration',
     canonical: '/foundations',
+  },
+  medicalLawEthics: {
+    title: 'Medical Law & Ethics Training',
+    description: 'Master HIPAA compliance, patient rights, authorization requirements, and healthcare fraud prevention. Essential legal and ethical training for healthcare professionals.',
+    keywords: 'HIPAA training, medical law, healthcare ethics, patient rights, PHI, healthcare compliance, EMTALA, Stark Law, healthcare fraud',
+    canonical: '/medical-law-ethics',
   },
   insurance: {
     title: 'Health Insurance Training for Front Office',
@@ -73,5 +79,17 @@ export const seoConfigs = {
     description: 'Master front office workflows. Learn patient registration, scheduling, check-in, check-out, and appointment management procedures.',
     keywords: 'front office workflows, patient registration, appointment scheduling, check-in procedures, healthcare SOPs, clinic workflows',
     canonical: '/workflows',
+  },
+  curriculum: {
+    title: 'Healthcare Front Office Training Curriculum',
+    description: 'Complete healthcare front office training curriculum: HIPAA compliance, insurance verification, medical terminology, and workflow procedures. 10 modules, 40+ lessons, 24 SOPs.',
+    keywords: 'healthcare training curriculum, front office training, medical receptionist course, HIPAA training online, insurance verification training, medical terminology course',
+    canonical: '/curriculum',
+  },
+  pricing: {
+    title: 'Pricing - Healthcare Training Plans',
+    description: 'Affordable healthcare front office training. Individual plans starting at $327/year. Team discounts up to 70% for organizations. No free trial - full access from day one.',
+    keywords: 'healthcare training cost, medical receptionist training price, front office training pricing, healthcare education pricing',
+    canonical: '/pricing',
   },
 };

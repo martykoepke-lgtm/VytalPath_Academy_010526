@@ -9,9 +9,6 @@ import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
 import { useAuth } from '../contexts/AuthContext';
 
-interface LandingPageProps {
-  onEnter: () => void;
-}
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
 
@@ -20,7 +17,7 @@ interface LocationState {
   showSignIn?: boolean;
 }
 
-export function LandingPage({ onEnter }: LandingPageProps) {
+export function LandingPage() {
   const [authModal, setAuthModal] = useState<AuthModal>(null);
   const location = useLocation();
   const navigate = useNavigate();
@@ -132,7 +129,7 @@ export function LandingPage({ onEnter }: LandingPageProps) {
             <div className="text-sm text-gray-600">SOP Guides</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
-            <div className="text-3xl font-bold text-blue-700 mb-1">10</div>
+            <div className="text-3xl font-bold text-blue-700 mb-1">5+</div>
             <div className="text-sm text-gray-600">Training Modules</div>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
@@ -179,11 +176,11 @@ export function LandingPage({ onEnter }: LandingPageProps) {
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center gap-2 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  Full access to all 10 modules
+                  5 modules now + new content weekly
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
-                  40+ video lessons & 24 SOPs
+                  20+ video lessons & 24 SOPs
                 </li>
                 <li className="flex items-center gap-2 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
@@ -271,63 +268,129 @@ export function LandingPage({ onEnter }: LandingPageProps) {
       </section>
 
       {/* Curriculum Preview */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Complete Training Curriculum
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            10 comprehensive modules covering everything from HIPAA to EHR systems
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-              <Shield className="w-6 h-6 text-blue-600" />
-            </div>
-            <h4 className="text-lg font-bold text-gray-900 mb-2">Foundations</h4>
-            <p className="text-gray-600 text-sm mb-3">HIPAA, PHI, medical law & ethics fundamentals</p>
-            <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">7 lessons</span>
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              What You'll Learn
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              5 modules available now, with new content added weekly
+            </p>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mb-4">
-              <FileText className="w-6 h-6 text-indigo-600" />
+          {/* Available Now */}
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold text-green-700 uppercase tracking-wide">Available Now</span>
             </div>
-            <h4 className="text-lg font-bold text-gray-900 mb-2">Insurance</h4>
-            <p className="text-gray-600 text-sm mb-3">Payers, plans, eligibility, copays, deductibles</p>
-            <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded">9 lessons</span>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Module 1: Foundations */}
+              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">3 lessons</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Healthcare Foundations</h4>
+                <p className="text-gray-600 text-sm">Understand acute vs. ambulatory care, the front office role, and how healthcare delivery works.</p>
+              </div>
+
+              {/* Module 2: Medical Law & Ethics */}
+              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-red-600" />
+                  </div>
+                  <span className="text-xs font-medium text-red-600 bg-red-50 px-2 py-1 rounded">4 lessons</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Medical Law & Ethics</h4>
+                <p className="text-gray-600 text-sm">Master HIPAA essentials, PHI protection, patient authorization, and consent requirements.</p>
+              </div>
+
+              {/* Module 3: Insurance */}
+              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                    <FileText className="w-5 h-5 text-indigo-600" />
+                  </div>
+                  <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded">9 lessons</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Insurance Training</h4>
+                <p className="text-gray-600 text-sm">Learn payers, plan types, reading insurance cards, eligibility verification, and payment collection.</p>
+              </div>
+
+              {/* Module 4: Terminology */}
+              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <span className="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">5 lessons + flashcards</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Medical Terminology</h4>
+                <p className="text-gray-600 text-sm">Decode medical terms using prefixes, roots, and suffixes. Interactive flashcards for practice.</p>
+              </div>
+
+              {/* Module 5: Workflows */}
+              <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded">24 SOPs</span>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Front Office Workflows</h4>
+                <p className="text-gray-600 text-sm">Step-by-step procedures for check-in, scheduling, registration, and daily operations.</p>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-              <BookOpen className="w-6 h-6 text-purple-600" />
+          {/* Coming Soon */}
+          <div>
+            <div className="flex items-center gap-2 mb-6">
+              <Clock className="w-4 h-4 text-amber-600" />
+              <span className="text-sm font-semibold text-amber-700 uppercase tracking-wide">Coming Soon</span>
             </div>
-            <h4 className="text-lg font-bold text-gray-900 mb-2">Terminology</h4>
-            <p className="text-gray-600 text-sm mb-3">Medical prefixes, roots, suffixes, abbreviations</p>
-            <span className="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">5 lessons + flashcards</span>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="bg-white/60 rounded-lg p-4 border border-dashed border-gray-300">
+                <h5 className="font-semibold text-gray-700 text-sm mb-1">Medications</h5>
+                <p className="text-xs text-gray-500">Prescription handling, drug classes, controlled substances</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-4 border border-dashed border-gray-300">
+                <h5 className="font-semibold text-gray-700 text-sm mb-1">Referrals & Prior Auth</h5>
+                <p className="text-xs text-gray-500">Authorization workflows, tracking, appeals</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-4 border border-dashed border-gray-300">
+                <h5 className="font-semibold text-gray-700 text-sm mb-1">Coding Basics</h5>
+                <p className="text-xs text-gray-500">ICD-10, CPT codes, reading EOBs</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-4 border border-dashed border-gray-300 relative">
+                <div className="absolute -top-2 -right-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">NEW</div>
+                <h5 className="font-semibold text-gray-700 text-sm mb-1">EHR Practice Lab</h5>
+                <p className="text-xs text-gray-500">Hands-on simulation with real EHR system</p>
+              </div>
+              <div className="bg-white/60 rounded-lg p-4 border border-dashed border-gray-300">
+                <h5 className="font-semibold text-gray-700 text-sm mb-1">Patient Communication</h5>
+                <p className="text-xs text-gray-500">Phone etiquette, difficult conversations</p>
+              </div>
+            </div>
           </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
-            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
-              <Zap className="w-6 h-6 text-emerald-600" />
-            </div>
-            <h4 className="text-lg font-bold text-gray-900 mb-2">Workflows</h4>
-            <p className="text-gray-600 text-sm mb-3">24 step-by-step SOPs for daily operations</p>
-            <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded">24 SOPs</span>
+          {/* View Full Curriculum Link */}
+          <div className="text-center mt-12">
+            <Link
+              to="/curriculum"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+            >
+              View Full Curriculum Details
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-        </div>
-
-        <div className="text-center mt-10">
-          <p className="text-gray-500 mb-4">Plus: Medications, Referrals & Prior Auth, Coding Basics, EHR Practice Lab, Patient Communication, Telehealth</p>
-          <button
-            onClick={onEnter}
-            className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-2"
-          >
-            Preview Full Curriculum
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
       </section>
 
