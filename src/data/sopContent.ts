@@ -869,20 +869,625 @@ export const balancingTasksSOP: SOPContent = {
 };
 
 // ============================================
+// OFFICE ADMINISTRATION SOPs - OPENING
+// ============================================
+
+export const phoneSystemLoginSOP: SOPContent = {
+  id: 'sop-phone-system-login',
+  slug: 'phone-system-login',
+  title: 'Phone System Login & Setup',
+  description: 'Morning phone system setup enables call tracking, routing, and message retrieval.',
+  steps: [
+    {
+      number: 1,
+      title: 'Access Phone System',
+      details: [
+        'Arrive at designated time before clinic opens',
+        'Power on phone/computer system if needed',
+        'Log in with your unique credentials',
+        'Verify your extension is active',
+      ],
+      callout: {
+        type: 'tip',
+        text: 'Arrive 10-15 minutes before opening to complete setup without rushing.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Check Voicemail & After-Hours Messages',
+      details: [
+        'Access voicemail system',
+        'Listen to all messages from after-hours/call center',
+        'Document urgent messages for immediate follow-up',
+        'Note patient callbacks needed',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'Urgent messages about symptoms, medications, or test results should be flagged for immediate clinical team review.',
+      },
+    },
+    {
+      number: 3,
+      title: 'Verify Phone Routing',
+      details: [
+        'Confirm calls are routing to front desk correctly',
+        'Test internal extension transfers',
+        'Verify after-hours routing is disabled (if applicable)',
+        'Check that hold music/messages are working',
+      ],
+    },
+    {
+      number: 4,
+      title: 'Prepare for Incoming Calls',
+      details: [
+        'Have scheduling system open and ready',
+        'Keep patient lookup screen accessible',
+        'Have notepad ready for messages',
+        'Review any special instructions for the day',
+      ],
+    },
+  ],
+  quickReference: [
+    'Log in with unique credentials before clinic opens',
+    'Check all voicemails and after-hours messages',
+    'Flag urgent messages for clinical team',
+    'Verify call routing is working correctly',
+    'Have scheduling and patient lookup ready',
+  ],
+};
+
+export const cashDrawerOpeningSOP: SOPContent = {
+  id: 'sop-cash-drawer-opening',
+  slug: 'cash-drawer-opening',
+  title: 'Cash Drawer Opening',
+  description: 'Proper cash drawer setup ensures accurate financial tracking throughout the day.',
+  steps: [
+    {
+      number: 1,
+      title: 'Retrieve Cash Drawer',
+      details: [
+        'Retrieve drawer from safe/secure location',
+        'Use two-person verification if required by policy',
+        'Sign out drawer on custody log',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Chain of custody documentation protects you and the practice. Always sign the log.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Count Starting Cash',
+      details: [
+        'Count all bills by denomination (largest to smallest)',
+        'Count all coins',
+        'Verify starting amount matches expected float (typically $100-200)',
+        'Document any discrepancies immediately',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'If starting amount doesn\'t match, report to supervisor BEFORE opening. Do not adjust without documentation.',
+      },
+    },
+    {
+      number: 3,
+      title: 'Document Opening',
+      details: [
+        'Record starting amount on daily cash log',
+        'Note date, time, and your initials',
+        'Have witness sign if required',
+        'Secure log in designated location',
+      ],
+    },
+    {
+      number: 4,
+      title: 'Organize Drawer',
+      details: [
+        'Arrange bills by denomination (largest in back)',
+        'Ensure adequate change (ones, fives, quarters)',
+        'Place checks/credit card receipts section ready',
+        'Position drawer securely at workstation',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'Never leave drawer unattended when unlocked. Lock it every time you step away.',
+      },
+    },
+  ],
+  quickReference: [
+    'Retrieve drawer from secure location with witness',
+    'Sign custody log before opening',
+    'Count all bills and coins by denomination',
+    'Verify starting amount matches float',
+    'Document any discrepancies immediately',
+    'Organize bills largest to smallest',
+    'Never leave drawer unlocked unattended',
+  ],
+};
+
+export const preScrubbingScheduleSOP: SOPContent = {
+  id: 'sop-pre-scrubbing',
+  slug: 'pre-scrubbing-schedule',
+  title: 'Pre-Scrubbing the Schedule',
+  description: 'Pre-scrubbing reduces day-of surprises and ensures smooth patient flow.',
+  steps: [
+    {
+      number: 1,
+      title: 'Pull Tomorrow\'s (or Today\'s) Schedule',
+      details: [
+        'Print or open electronic schedule',
+        'Review all appointments for the session',
+        'Note appointment types and durations',
+        'Identify new patients vs. established patients',
+      ],
+      callout: {
+        type: 'tip',
+        text: 'Best practice: Pre-scrub 48-72 hours ahead when possible to allow time to resolve issues.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Verify Insurance Eligibility',
+      details: [
+        'Check eligibility status for each patient',
+        'Flag any patients not yet verified',
+        'Run eligibility for flagged patients',
+        'Document verification results',
+      ],
+    },
+    {
+      number: 3,
+      title: 'Check for Missing Information',
+      details: [
+        'Demographics complete? (address, phone, email)',
+        'Insurance cards on file?',
+        'Required forms signed/current?',
+        'Outstanding balances noted?',
+      ],
+    },
+    {
+      number: 4,
+      title: 'Identify Special Needs',
+      details: [
+        'Interpreter needed?',
+        'Wheelchair/accessibility requirements?',
+        'Complex medical history to alert provider?',
+        'Behavioral flags or special instructions?',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Communicating special needs to clinical staff in advance improves patient experience and safety.',
+      },
+    },
+    {
+      number: 5,
+      title: 'Prepare Patient Materials',
+      details: [
+        'Pull any paper charts if used',
+        'Queue electronic forms for completion',
+        'Prepare new patient packets',
+        'Print any needed requisitions',
+      ],
+    },
+    {
+      number: 6,
+      title: 'Document & Communicate',
+      details: [
+        'Create checklist of issues to address',
+        'Flag problem appointments in system',
+        'Communicate concerns to clinical team',
+        'Note patients who may need extra time',
+      ],
+    },
+  ],
+  quickReference: [
+    'Review all appointments 48-72 hours ahead',
+    'Verify insurance eligibility for each patient',
+    'Check for missing demographics or forms',
+    'Identify interpreter or accessibility needs',
+    'Prepare new patient packets and requisitions',
+    'Flag issues and communicate to clinical team',
+  ],
+};
+
+// ============================================
+// OFFICE ADMINISTRATION SOPs - CLOSING
+// ============================================
+
+export const cashDrawerClosingSOP: SOPContent = {
+  id: 'sop-cash-drawer-closing',
+  slug: 'cash-drawer-closing',
+  title: 'Cash Drawer Closing & Reconciliation',
+  description: 'Accurate closing ensures financial integrity and protects you and the practice.',
+  steps: [
+    {
+      number: 1,
+      title: 'Count Cash',
+      details: [
+        'Count all cash by denomination',
+        'Separate starting cash from daily collections',
+        'Count twice to verify accuracy',
+      ],
+    },
+    {
+      number: 2,
+      title: 'Calculate Daily Cash Collections',
+      details: [
+        'Total cash in drawer',
+        'Minus starting cash amount',
+        'Equals daily cash collections',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Example: $350 total - $100 starting cash = $250 daily collections',
+      },
+    },
+    {
+      number: 3,
+      title: 'Reconcile with System',
+      details: [
+        'Run end-of-day cash payment report',
+        'Compare physical cash to system total',
+        'Document any discrepancies',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'Investigate discrepancies immediately. Common causes: missed receipt entry, voided transaction, incorrect change.',
+      },
+    },
+    {
+      number: 4,
+      title: 'Reconcile Checks',
+      details: [
+        'Count all checks received',
+        'Match each check to system entries',
+        'Verify amounts match',
+        'Ensure all checks are endorsed',
+        'List checks on deposit log',
+      ],
+    },
+    {
+      number: 5,
+      title: 'Reconcile Card Payments',
+      details: [
+        'Review credit/debit payment report',
+        'Match to card terminal batch',
+        'Close/settle batch for the day',
+        'Verify totals match between systems',
+        'Note any declined or failed transactions',
+      ],
+    },
+    {
+      number: 6,
+      title: 'Document & Secure',
+      details: [
+        'Complete cash closing log with totals',
+        'Note date, time, your name',
+        'Have supervisor review and sign',
+        'Return starting cash to drawer',
+        'Lock drawer in safe/secure location',
+        'Store logs per policy',
+      ],
+    },
+  ],
+  quickReference: [
+    'Count all cash by denomination twice',
+    'Separate starting cash from daily collections',
+    'Match physical cash to system report',
+    'Reconcile checks and card payments separately',
+    'Close/settle card terminal batch',
+    'Document discrepancies and investigate',
+    'Get supervisor signature on closing log',
+    'Secure drawer in safe',
+  ],
+};
+
+export const eodReconciliationSOP: SOPContent = {
+  id: 'sop-eod-reconciliation',
+  slug: 'eod-reconciliation',
+  title: 'End-of-Day Reconciliation & Deposit',
+  description: 'Daily financial reconciliation ensures accurate records and prepares deposits.',
+  steps: [
+    {
+      number: 1,
+      title: 'Run Daily Reports',
+      details: [
+        'Generate end-of-day payment report from system',
+        'Print or export report showing all payment types',
+        'Review total collections by payment method (cash, check, card)',
+        'Note number of transactions per payment type',
+        'Check for any voided or refunded transactions',
+      ],
+    },
+    {
+      number: 2,
+      title: 'Reconcile Cash',
+      details: [
+        'Count physical cash in drawer',
+        'Compare to cash payment total in system',
+        'Document any overages or shortages',
+        'Investigate discrepancies immediately',
+        'Complete cash reconciliation form',
+      ],
+    },
+    {
+      number: 3,
+      title: 'Reconcile Checks',
+      details: [
+        'Count all physical checks received',
+        'Match each check to system entries',
+        'Verify check amounts match system records',
+        'Ensure all checks are properly endorsed',
+        'List checks individually on deposit slip or log',
+      ],
+      callout: {
+        type: 'tip',
+        text: 'Endorse checks immediately when received: "For Deposit Only" + account number.',
+      },
+    },
+    {
+      number: 4,
+      title: 'Reconcile Card Payments',
+      details: [
+        'Review credit/debit card payment report',
+        'Match to card terminal batch report',
+        'Ensure batch was closed/settled for the day',
+        'Verify totals match between systems',
+        'Note any declined or failed transactions',
+      ],
+    },
+    {
+      number: 5,
+      title: 'Prepare Bank Deposit',
+      details: [
+        'Complete deposit slip with cash and check totals',
+        'Organize checks with deposit slip',
+        'Use tamper-evident deposit bag if available',
+        'Record deposit amount and date on tracking log',
+        'Obtain supervisor signature on deposit documentation',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Keep a copy of the deposit slip for your records before sending to bank.',
+      },
+    },
+    {
+      number: 6,
+      title: 'Final Documentation',
+      details: [
+        'File all daily reconciliation reports together',
+        'Make copies of deposit documentation',
+        'Store original reports per clinic policy',
+        'Note any follow-up items needed for next day',
+        'Communicate any issues to supervisor',
+      ],
+    },
+  ],
+  quickReference: [
+    'Run end-of-day payment reports',
+    'Reconcile cash, checks, and cards separately',
+    'Match physical amounts to system totals',
+    'Investigate any discrepancies',
+    'Prepare deposit with cash and checks',
+    'Close card terminal batch',
+    'Get supervisor signature',
+    'File all reconciliation documentation',
+  ],
+};
+
+// ============================================
+// OFFICE ADMINISTRATION SOPs - ADMIN TASKS
+// ============================================
+
+export const noShowLettersSOP: SOPContent = {
+  id: 'sop-no-show-letters',
+  slug: 'no-show-letters',
+  title: 'No-Show Letters',
+  description: 'Formal documentation of no-show occurrences per clinic policy.',
+  steps: [
+    {
+      number: 1,
+      title: 'Determine When to Send',
+      details: [
+        'Per clinic policy (example):',
+        'First no-show: Phone call only (documented)',
+        'Second no-show: Warning letter',
+        'Third no-show: Final warning / potential dismissal letter',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Every clinic has different policies. Know your clinic\'s specific no-show policy and follow it consistently.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Generate Letter',
+      details: [
+        'Use clinic-approved template including:',
+        'Patient name and address',
+        'Date of missed appointment(s)',
+        'Clinic no-show policy',
+        'Consequences of future no-shows',
+        'Instructions for rescheduling',
+        'Contact information',
+      ],
+    },
+    {
+      number: 3,
+      title: 'Send Letter',
+      details: [
+        'Print on clinic letterhead',
+        'First class mail for warnings',
+        'Certified mail for dismissal letters (per policy)',
+        'Keep copy for chart',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'Dismissal letters should always go certified mail with return receipt to document delivery.',
+      },
+    },
+    {
+      number: 4,
+      title: 'Document',
+      details: [
+        'Note in patient chart: Date letter sent, type of letter',
+        'Scan copy of letter to chart',
+        'Update no-show count',
+        'Flag for follow-up if needed',
+      ],
+    },
+  ],
+  quickReference: [
+    'Check clinic policy for when letters are required',
+    'Use approved letter templates',
+    'Include missed dates, policy, and rescheduling info',
+    'Print on clinic letterhead',
+    'Use certified mail for dismissal letters',
+    'Scan copy to patient chart',
+    'Update no-show count in record',
+  ],
+};
+
+export const orderingSuppliesSOP: SOPContent = {
+  id: 'sop-ordering-supplies',
+  slug: 'ordering-supplies',
+  title: 'Ordering Front Office Supplies',
+  description: 'Maintaining adequate supplies ensures uninterrupted office operations.',
+  steps: [
+    {
+      number: 1,
+      title: 'Monitor Inventory',
+      details: [
+        'Check supply levels weekly',
+        'Note items running low',
+        'Maintain par levels for essential items',
+        'Common supplies: Paper, pens, highlighters, staplers, patient forms, appointment cards, clipboards, receipt paper, toner/ink, envelopes, stamps',
+      ],
+      callout: {
+        type: 'tip',
+        text: 'Set a recurring calendar reminder to check supplies every Monday or Friday.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Submit Order Request',
+      details: [
+        'Complete supply order form',
+        'Get supervisor approval if required',
+        'Submit to appropriate person/vendor',
+        'Note expected delivery date',
+      ],
+    },
+    {
+      number: 3,
+      title: 'Receive & Stock',
+      details: [
+        'Check delivery against order',
+        'Report discrepancies immediately',
+        'Stock supplies in designated locations',
+        'Rotate stock (first in, first out)',
+        'Update inventory log if used',
+      ],
+      callout: {
+        type: 'info',
+        text: 'FIFO (First In, First Out) prevents supplies from expiring or becoming outdated.',
+      },
+    },
+  ],
+  quickReference: [
+    'Check supply levels weekly',
+    'Maintain par levels for essentials',
+    'Complete order form with supervisor approval',
+    'Verify deliveries against order',
+    'Stock using FIFO (first in, first out)',
+    'Report discrepancies immediately',
+  ],
+};
+
+export const monthlyComplianceLogsSOP: SOPContent = {
+  id: 'sop-monthly-compliance',
+  slug: 'monthly-compliance-logs',
+  title: 'Monthly Compliance Logs',
+  description: 'Required monthly documentation for regulatory compliance.',
+  steps: [
+    {
+      number: 1,
+      title: 'Credit Card Terminal Tampering Log',
+      details: [
+        'PURPOSE: PCI compliance requires monthly inspection of card terminals for tampering or skimming devices',
+        'WHAT TO CHECK: Physical damage, loose or extra components, unusual attachments near card slot, cables normal/unaltered, serial number matches records',
+      ],
+      callout: {
+        type: 'warning',
+        text: 'If tampering is suspected: Do NOT use terminal, report to supervisor immediately, contact terminal provider, document incident.',
+      },
+    },
+    {
+      number: 2,
+      title: 'Document Terminal Inspection',
+      details: [
+        'Date of inspection',
+        'Terminal location/ID',
+        'Inspector name',
+        'Findings (normal or concerns)',
+        'Action taken if concerns found',
+      ],
+    },
+    {
+      number: 3,
+      title: 'Other Monthly Logs',
+      details: [
+        'Refrigerator temperature logs (if vaccines stored)',
+        'Emergency equipment checks',
+        'Fire extinguisher inspections',
+        'Safety checklist reviews',
+        'Document all inspections per clinic policy',
+      ],
+      callout: {
+        type: 'info',
+        text: 'Keep compliance logs in a designated binder or electronic folder for easy access during audits.',
+      },
+    },
+  ],
+  quickReference: [
+    'Inspect card terminals monthly for tampering',
+    'Check for physical damage, loose parts, unusual attachments',
+    'Verify serial numbers match records',
+    'Complete temperature logs if applicable',
+    'Document fire extinguisher inspections',
+    'Store logs in compliance binder for audits',
+  ],
+};
+
+// ============================================
 // EXPORT ALL SOPs
 // ============================================
 
 export const allSOPs: Record<string, SOPContent> = {
+  // Workflow SOPs (Before Visit)
   'new-patient-registration-sop': newPatientRegistrationSOP,
   'existing-patient-scheduling-sop': existingPatientSchedulingSOP,
   'reminder-calls-sop': reminderCallsSOP,
+  // Workflow SOPs (During Visit)
   'patient-check-in': newPatientCheckInSOP,
   'existing-patient-check-in': existingPatientCheckInSOP,
   'urgent-walk-in-check-in': urgentWalkInCheckInSOP,
   'patient-check-out': patientCheckOutSOP,
+  // Workflow SOPs (Throughout Day)
   'no-shows-late-arrivals': noShowsLateArrivalsSOP,
   'waitlists-same-day': waitlistsSameDaySOP,
   'balancing-tasks': balancingTasksSOP,
+  // Administration SOPs (Opening)
+  'phone-system-login': phoneSystemLoginSOP,
+  'cash-drawer-opening': cashDrawerOpeningSOP,
+  'pre-scrubbing-schedule': preScrubbingScheduleSOP,
+  // Administration SOPs (Closing)
+  'cash-drawer-closing': cashDrawerClosingSOP,
+  'eod-reconciliation': eodReconciliationSOP,
+  // Administration SOPs (Admin Tasks)
+  'no-show-letters': noShowLettersSOP,
+  'ordering-supplies': orderingSuppliesSOP,
+  'monthly-compliance-logs': monthlyComplianceLogsSOP,
 };
 
 export function getSOPBySlug(slug: string): SOPContent | undefined {
