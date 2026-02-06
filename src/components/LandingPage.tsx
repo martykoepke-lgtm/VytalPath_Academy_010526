@@ -1,13 +1,85 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import {
-  BookOpen, Search, GraduationCap, FileText, ArrowRight, CheckCircle,
-  Users, Clock, Zap, Building2, User, Shield, BarChart3, Award
-} from 'lucide-react';
+import { ArrowRight, CheckCircle, Clock } from 'lucide-react';
+// Note: Custom icons defined below replace Shield, FileText, BookOpen, Zap, User, Building2
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
 import { useAuth } from '../contexts/AuthContext';
+
+// Custom stylized icons as SVG components
+const IconFoundations = () => (
+  <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+    <rect x="4" y="20" width="40" height="24" rx="2" className="fill-blue-500"/>
+    <rect x="8" y="8" width="32" height="16" rx="2" className="fill-blue-400"/>
+    <rect x="14" y="4" width="20" height="8" rx="2" className="fill-blue-300"/>
+    <circle cx="24" cy="32" r="6" className="fill-white/30"/>
+    <path d="M21 32L23 34L27 30" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconLaw = () => (
+  <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+    <circle cx="24" cy="24" r="20" className="fill-rose-500"/>
+    <path d="M24 12V24L32 28" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+    <circle cx="24" cy="24" r="3" className="fill-white"/>
+    <path d="M16 36L24 28L32 36" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconInsurance = () => (
+  <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+    <rect x="6" y="10" width="36" height="28" rx="4" className="fill-indigo-500"/>
+    <rect x="10" y="16" width="16" height="10" rx="2" className="fill-indigo-300"/>
+    <rect x="10" y="30" width="28" height="4" rx="1" className="fill-white/30"/>
+    <circle cx="36" cy="21" r="6" className="fill-indigo-400"/>
+    <path d="M33 21L35 23L39 19" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconTerminology = () => (
+  <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+    <rect x="8" y="6" width="32" height="36" rx="3" className="fill-purple-500"/>
+    <rect x="12" y="12" width="24" height="4" rx="1" className="fill-purple-300"/>
+    <rect x="12" y="20" width="18" height="3" rx="1" className="fill-white/40"/>
+    <rect x="12" y="26" width="22" height="3" rx="1" className="fill-white/40"/>
+    <rect x="12" y="32" width="14" height="3" rx="1" className="fill-white/40"/>
+    <circle cx="34" cy="34" r="8" className="fill-purple-400"/>
+    <text x="34" y="38" textAnchor="middle" className="fill-white text-[10px] font-bold">Rx</text>
+  </svg>
+);
+
+const IconWorkflows = () => (
+  <svg viewBox="0 0 48 48" fill="none" className="w-full h-full">
+    <rect x="4" y="8" width="18" height="14" rx="3" className="fill-emerald-400"/>
+    <rect x="26" y="8" width="18" height="14" rx="3" className="fill-emerald-500"/>
+    <rect x="4" y="26" width="18" height="14" rx="3" className="fill-emerald-500"/>
+    <rect x="26" y="26" width="18" height="14" rx="3" className="fill-emerald-600"/>
+    <path d="M22 15H26M22 33H26M13 22V26M35 22V26" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="13" cy="15" r="3" className="fill-white/50"/>
+    <circle cx="35" cy="15" r="3" className="fill-white/50"/>
+    <circle cx="13" cy="33" r="3" className="fill-white/50"/>
+    <circle cx="35" cy="33" r="3" className="fill-white/50"/>
+  </svg>
+);
+
+const IconUser = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+    <circle cx="12" cy="8" r="4" className="fill-current"/>
+    <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconBuilding = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+    <rect x="3" y="6" width="18" height="15" rx="2" className="fill-current"/>
+    <rect x="7" y="10" width="3" height="3" rx="0.5" className="fill-white/30"/>
+    <rect x="14" y="10" width="3" height="3" rx="0.5" className="fill-white/30"/>
+    <rect x="7" y="15" width="3" height="3" rx="0.5" className="fill-white/30"/>
+    <rect x="14" y="15" width="3" height="3" rx="0.5" className="fill-white/30"/>
+    <path d="M12 6V3M9 3H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
 
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
@@ -56,13 +128,13 @@ export function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header/Nav */}
-      <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/50 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
             <img
               src="/vytalpath-logo.png"
               alt="VytalPath Academy"
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
             <div className="flex items-center gap-3">
               <button
@@ -82,59 +154,75 @@ export function LandingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <div className="inline-block mb-6">
-            <div className="flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
-              <Award className="w-4 h-4" />
-              <span>Professional Healthcare Training</span>
-            </div>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Master Healthcare
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-              Front Office Skills
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Comprehensive training for medical receptionists, referral coordinators, and clinic staff.
-            Learn insurance, terminology, workflows, and EHR skills.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => setAuthModal('signUp')}
-              className="group px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
-            >
-              Start Learning Today
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="#pricing"
-              className="px-8 py-4 text-lg font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all"
-            >
-              View Pricing
-            </a>
-          </div>
-        </div>
+      {/* Hero Section - Brand Forward */}
+      <section className="relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-50"></div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-16">
-          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
-            <div className="text-3xl font-bold text-blue-600 mb-1">40+</div>
-            <div className="text-sm text-gray-600">Video Lessons</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
-            <div className="text-3xl font-bold text-indigo-600 mb-1">24</div>
-            <div className="text-sm text-gray-600">SOP Guides</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
-            <div className="text-3xl font-bold text-blue-700 mb-1">5+</div>
-            <div className="text-sm text-gray-600">Training Modules</div>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow-md text-center border border-gray-100">
-            <div className="text-3xl font-bold text-indigo-700 mb-1">7+</div>
-            <div className="text-sm text-gray-600">Hours of Content</div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <div className="text-center">
+            {/* Prominent Logo */}
+            <div className="mb-8">
+              <img
+                src="/vytalpath-logo.png"
+                alt="VytalPath Academy"
+                className="h-20 md:h-24 w-auto mx-auto brightness-0 invert drop-shadow-lg"
+              />
+            </div>
+
+            <div className="inline-block mb-6">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span>Professional Healthcare Training</span>
+              </div>
+            </div>
+
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              Master Front Office Skills
+              <span className="block text-blue-200 mt-2">
+                for Healthcare
+              </span>
+            </h1>
+
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+              Comprehensive training for medical receptionists, referral coordinators, and clinic staff. Learn insurance, terminology, workflows, and more.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button
+                onClick={() => setAuthModal('signUp')}
+                className="group px-8 py-4 text-lg font-semibold text-blue-700 bg-white rounded-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+              >
+                Start Learning Today
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <a
+                href="#pricing"
+                className="px-8 py-4 text-lg font-semibold text-white border-2 border-white/30 rounded-xl hover:bg-white/10 transition-all"
+              >
+                View Pricing
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-16">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <div className="text-3xl font-bold text-white mb-1">20+</div>
+                <div className="text-sm text-blue-200">Video Lessons</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <div className="text-3xl font-bold text-white mb-1">24</div>
+                <div className="text-sm text-blue-200">SOP Guides</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <div className="text-3xl font-bold text-white mb-1">5</div>
+                <div className="text-sm text-blue-200">Training Modules</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/10">
+                <div className="text-3xl font-bold text-white mb-1">7+</div>
+                <div className="text-sm text-blue-200">Hours of Content</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -155,8 +243,8 @@ export function LandingPage() {
             {/* Individual Plan */}
             <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:border-blue-200 transition-colors">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
-                  <User className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white p-2.5">
+                  <IconUser />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">Individual</h3>
@@ -207,8 +295,8 @@ export function LandingPage() {
               </div>
 
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white p-2.5">
+                  <IconBuilding />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold">Organizations</h3>
@@ -290,8 +378,8 @@ export function LandingPage() {
               {/* Module 1: Foundations */}
               <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg">
+                    <IconFoundations />
                   </div>
                   <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">3 lessons</span>
                 </div>
@@ -302,10 +390,10 @@ export function LandingPage() {
               {/* Module 2: Medical Law & Ethics */}
               <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-red-600" />
+                  <div className="w-12 h-12 rounded-lg">
+                    <IconLaw />
                   </div>
-                  <span className="text-xs font-medium text-red-600 bg-red-50 px-2 py-1 rounded">4 lessons</span>
+                  <span className="text-xs font-medium text-rose-600 bg-rose-50 px-2 py-1 rounded">4 lessons</span>
                 </div>
                 <h4 className="text-lg font-bold text-gray-900 mb-2">Medical Law & Ethics</h4>
                 <p className="text-gray-600 text-sm">Master HIPAA essentials, PHI protection, patient authorization, and consent requirements.</p>
@@ -314,8 +402,8 @@ export function LandingPage() {
               {/* Module 3: Insurance */}
               <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                    <FileText className="w-5 h-5 text-indigo-600" />
+                  <div className="w-12 h-12 rounded-lg">
+                    <IconInsurance />
                   </div>
                   <span className="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-1 rounded">9 lessons</span>
                 </div>
@@ -326,8 +414,8 @@ export function LandingPage() {
               {/* Module 4: Terminology */}
               <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <BookOpen className="w-5 h-5 text-purple-600" />
+                  <div className="w-12 h-12 rounded-lg">
+                    <IconTerminology />
                   </div>
                   <span className="text-xs font-medium text-purple-600 bg-purple-50 px-2 py-1 rounded">5 lessons + flashcards</span>
                 </div>
@@ -338,8 +426,8 @@ export function LandingPage() {
               {/* Module 5: Workflows */}
               <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-3">
-                  <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-emerald-600" />
+                  <div className="w-12 h-12 rounded-lg">
+                    <IconWorkflows />
                   </div>
                   <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded">24 SOPs</span>
                 </div>
