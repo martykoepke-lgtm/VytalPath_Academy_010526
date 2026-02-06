@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ChevronRight, ChevronDown, BookOpen, Play, FileText,
-  CheckCircle, ClipboardCheck, Trophy, Workflow, ListChecks, X, Calendar, Clock
+  ChevronRight, ChevronDown, Play, FileText,
+  CheckCircle, Workflow, ListChecks, X, Calendar, Clock
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
+import { SOPModal, type SOPContent } from '../workflows/SOPModal';
+import { getSOPBySlug } from '../../data/sopContent';
 
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
@@ -182,7 +184,19 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 export function WorkflowsSection() {
   const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set(['before-visit', 'during-visit']));
   const [showSectionIntro, setShowSectionIntro] = useState(false);
+  const [selectedSOP, setSelectedSOP] = useState<SOPContent | null>(null);
   const progress = useProgress();
+
+  const openSOP = (slug: string) => {
+    const sop = getSOPBySlug(slug);
+    if (sop) {
+      setSelectedSOP(sop);
+    }
+  };
+
+  const closeSOP = () => {
+    setSelectedSOP(null);
+  };
 
   const togglePhase = (phaseId: string) => {
     setExpandedPhases((prev) => {
@@ -363,9 +377,9 @@ export function WorkflowsSection() {
 
                         {/* Companion Written SOP */}
                         {lesson.sop_slug && (
-                          <Link
-                            to={`/workflows/sops/${lesson.sop_slug}`}
-                            className="flex items-center gap-4 p-3 pl-16 bg-gray-100/50 hover:bg-gray-100 transition-colors border-t border-gray-100"
+                          <button
+                            onClick={() => openSOP(lesson.sop_slug!)}
+                            className="w-full flex items-center gap-4 p-3 pl-16 bg-gray-100/50 hover:bg-gray-100 transition-colors border-t border-gray-100 text-left"
                           >
                             <div className="flex-shrink-0 w-6 h-6 rounded flex items-center justify-center bg-gray-200">
                               <FileText className="w-3.5 h-3.5 text-gray-600" />
@@ -377,7 +391,7 @@ export function WorkflowsSection() {
                               <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded font-medium">SOP</span>
                               <ChevronRight className="w-3 h-3" />
                             </div>
-                          </Link>
+                          </button>
                         )}
                       </div>
                     ))}
@@ -396,10 +410,10 @@ export function WorkflowsSection() {
 
                     {/* Reading/SOP-only Lessons */}
                     {readingLessons.map((lesson) => (
-                      <Link
+                      <button
                         key={lesson.id}
-                        to={`/workflows/sops/${lesson.sop_slug}`}
-                        className="flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-colors"
+                        onClick={() => lesson.sop_slug && openSOP(lesson.sop_slug)}
+                        className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-colors text-left"
                       >
                         <div
                           className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
@@ -421,7 +435,7 @@ export function WorkflowsSection() {
                           <span>{lesson.duration_minutes} min</span>
                           <ChevronRight className="w-4 h-4" />
                         </div>
-                      </Link>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -452,6 +466,11 @@ export function WorkflowsSection() {
           </div>
         </div>
       </article>
+
+      {/* SOP Modal */}
+      {selectedSOP && (
+        <SOPModal sop={selectedSOP} onClose={closeSOP} />
+      )}
     </>
   );
 }
