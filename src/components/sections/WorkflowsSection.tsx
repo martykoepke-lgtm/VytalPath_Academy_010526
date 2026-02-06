@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
-  CheckCircle, ClipboardCheck, Trophy, Workflow, ListChecks
+  CheckCircle, ClipboardCheck, Trophy, Workflow, ListChecks, X
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
+
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 // Workflow lessons from Registration & Scheduling scripts
 const workflowModules = [
@@ -30,7 +33,7 @@ const workflowModules = [
         title: 'New Patient Registration & Scheduling',
         description: 'Learn the complete process for registering new patients and scheduling their first appointments.',
         content_type: 'video' as ContentType,
-        video_url: null, // Video pending
+        video_url: `${VIDEO_BASE_URL}/new_pt_reg.mp4`,
         duration_minutes: 5,
       },
       {
@@ -39,25 +42,16 @@ const workflowModules = [
         title: 'Existing Patient Scheduling',
         description: 'Master the workflow for scheduling appointments for established patients efficiently.',
         content_type: 'video' as ContentType,
-        video_url: null, // Video pending
+        video_url: `${VIDEO_BASE_URL}/est-pt-scheduling.mp4`,
         duration_minutes: 4,
       },
       {
         id: 'wl3',
-        slug: 'follow-ups-recalls',
-        title: 'Scheduling Follow-Ups & Recalls',
-        description: 'Learn to schedule follow-up appointments and manage patient recall lists.',
-        content_type: 'video' as ContentType,
-        video_url: null, // Video pending
-        duration_minutes: 4,
-      },
-      {
-        id: 'wl4',
         slug: 'appointment-reminders',
-        title: 'Appointment Reminder Calls',
-        description: 'Best practices for making appointment reminder calls and reducing no-shows.',
+        title: 'Appointment Reminder Calls: Preventing No-Shows',
+        description: 'Best practices for making appointment reminder calls, scheduling follow-ups, and reducing no-shows.',
         content_type: 'video' as ContentType,
-        video_url: null, // Video pending
+        video_url: `${VIDEO_BASE_URL}/reminder-calls.mp4`,
         duration_minutes: 4,
       },
     ],
@@ -74,6 +68,7 @@ type ViewMode = 'lessons' | 'sops';
 export function WorkflowsSection() {
   const [viewMode, setViewMode] = useState<ViewMode>('lessons');
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m-reg-sched']));
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -112,6 +107,49 @@ export function WorkflowsSection() {
             Learn the standard procedures for front office operations. Watch video lessons and reference step-by-step workflow guides.
           </p>
         </header>
+
+        {/* Section Introduction Video */}
+        {showSectionIntro ? (
+          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <Workflow className="w-4 h-4 text-blue-600" />
+                <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+              </div>
+              <button
+                onClick={() => setShowSectionIntro(false)}
+                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                <X className="w-4 h-4 text-gray-500" />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                controlsList="nodownload"
+              >
+                <source src={`${VIDEO_BASE_URL}/wfintro.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowSectionIntro(true)}
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-blue-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Navigating Workflows</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </button>
+        )}
 
       {/* View Mode Toggle */}
       <div className="flex justify-center mb-8">
@@ -164,16 +202,6 @@ export function WorkflowsSection() {
               </div>
             </div>
           )}
-
-          {/* Coming Soon Notice */}
-          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl">
-            <div className="flex items-center gap-3">
-              <Play className="w-5 h-5 text-amber-600" />
-              <p className="text-sm text-amber-800">
-                <strong>Videos Coming Soon:</strong> Lesson videos are currently in production. Check back soon!
-              </p>
-            </div>
-          </div>
 
           {/* Modules */}
           <div className="space-y-4">
