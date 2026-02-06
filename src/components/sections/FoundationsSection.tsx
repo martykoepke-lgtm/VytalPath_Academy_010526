@@ -12,136 +12,48 @@ import type { ContentType } from '../../types/course';
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
-// Foundations section includes: Intro, Healthcare Settings, Medical Law & Ethics
+// Foundations section: Healthcare Delivery
 const foundationsModules = [
   {
     id: 'm1',
-    slug: 'healthcare-settings',
-    title: 'Healthcare Settings',
-    description: 'Understand the different types of healthcare environments and your role within them.',
+    slug: 'healthcare-delivery',
+    title: 'Healthcare Delivery',
+    description: 'Understand how healthcare is delivered and your essential role in both inpatient and ambulatory care settings.',
     sort_order: 1,
     quiz: {
       id: 'q1',
-      title: 'Healthcare Settings Quiz',
-      description: 'Test your knowledge of healthcare settings',
+      title: 'Healthcare Delivery Quiz',
+      description: 'Test your knowledge of healthcare delivery models',
       passing_score: 80,
       max_attempts: 3,
     },
     lessons: [
       {
         id: 'l1',
-        slug: 'healthcare-front-office-foundations',
-        title: 'Healthcare Front Office Foundations',
-        description: 'An introduction to the essential skills and knowledge needed for front office success.',
+        slug: 'understanding-healthcare-delivery',
+        title: 'Understanding How Healthcare is Delivered',
+        description: 'Explore the two main healthcare delivery models and why understanding them matters for your career.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/healthcare-front-office-foundations.mp4`,
-        duration_minutes: 4,
+        video_url: `${VIDEO_BASE_URL}/healthdelivery_overview.mp4`,
+        duration_minutes: 3,
       },
       {
         id: 'l2',
-        slug: 'acute-vs-ambulatory-care',
-        title: 'Acute vs. Ambulatory Care',
-        description: 'Learn the key differences between acute care (hospitals) and ambulatory care (outpatient clinics).',
+        slug: 'the-inpatient-encounter',
+        title: 'The Inpatient Encounter',
+        description: 'Learn what makes inpatient care unique - the continuous episode, contained services, and administrative touchpoints.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/acute-vs-ambulatory-care.mp4`,
-        duration_minutes: 4,
+        video_url: `${VIDEO_BASE_URL}/ip-encounter.mp4`,
+        duration_minutes: 5,
       },
-    ],
-  },
-  {
-    id: 'm2',
-    slug: 'medical-law-ethics',
-    title: 'Medical Law & Ethics',
-    description: 'Essential legal and ethical guidelines for healthcare professionals.',
-    sort_order: 2,
-    quiz: {
-      id: 'q2',
-      title: 'Medical Law & Ethics Quiz',
-      description: 'Test your knowledge of HIPAA, patient rights, and healthcare compliance',
-      passing_score: 80,
-      max_attempts: 3,
-    },
-    lessons: [
       {
         id: 'l3',
-        slug: 'hipaa-essentials',
-        title: 'HIPAA Essentials Explained',
-        description: 'Understanding HIPAA regulations, patient privacy rights, and your responsibilities.',
+        slug: 'the-ambulatory-care-journey',
+        title: 'The Ambulatory Care Journey',
+        description: 'Discover how ambulatory care works through multiple discrete encounters and why the front office is the essential communication hub.',
         content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/hipaa-essentials-explained.mp4`,
-        duration_minutes: 4,
-      },
-      {
-        id: 'l4',
-        slug: 'phi-explained',
-        title: 'PHI Explained',
-        description: 'Learn what Protected Health Information is and how to identify it.',
-        content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/phi-explained.mp4`,
-        duration_minutes: 4,
-      },
-      {
-        id: 'l4b',
-        slug: 'hipaa-access-rules',
-        title: 'HIPAA Access Rules',
-        description: 'Learn about HIPAA access rules and who can access patient health information.',
-        content_type: 'video' as ContentType,
-        video_url: `${VIDEO_BASE_URL}/hipaa-access-rules.mp4`,
-        duration_minutes: 4,
-      },
-      {
-        id: 'l4c',
-        slug: 'hipaa-violations-fines-penalties',
-        title: 'HIPAA Violations, Fines & Penalties',
-        description: 'Learn about the consequences of HIPAA violations and real enforcement cases.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 12,
-      },
-      {
-        id: 'l4d',
-        slug: 'minimum-necessary-standard',
-        title: 'The Minimum Necessary Standard',
-        description: 'Only access and share the minimum PHI needed for the task.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 10,
-      },
-      {
-        id: 'l4e',
-        slug: 'patient-rights-under-hipaa',
-        title: 'Patient Rights Under HIPAA',
-        description: 'Learn the six core patient rights over their health information.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 12,
-      },
-      {
-        id: 'l5',
-        slug: 'authorization-consent',
-        title: 'Authorization & Consent',
-        description: 'Understanding patient authorization and consent requirements.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 15,
-      },
-      {
-        id: 'l5b',
-        slug: 'emtala-patient-anti-dumping',
-        title: 'EMTALA: The Anti-Dumping Law',
-        description: 'Federal law requiring emergency screening and stabilization for all patients.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 12,
-      },
-      {
-        id: 'l5c',
-        slug: 'fraud-abuse-stark-law',
-        title: 'Healthcare Fraud, Abuse & Stark Law',
-        description: 'Learn about fraud, kickbacks, and self-referral rules that protect patients.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 15,
+        video_url: `${VIDEO_BASE_URL}/ambjourney.mp4`,
+        duration_minutes: 5,
       },
     ],
   },
@@ -153,8 +65,9 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 };
 
 export function FoundationsSection() {
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m1', 'm2']));
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m1']));
   const [showIntroVideo, setShowIntroVideo] = useState(false);
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -190,7 +103,7 @@ export function FoundationsSection() {
         </div>
         <h1 className="text-3xl font-bold text-gray-900 mb-3">Foundations of Healthcare</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Build your foundation in healthcare administration. Learn about healthcare settings, medical law, ethics, and HIPAA compliance.
+          Build your foundation in healthcare administration. Learn about different healthcare environments and your essential role within them.
         </p>
       </header>
 
@@ -216,7 +129,7 @@ export function FoundationsSection() {
               className="w-full h-full"
               controlsList="nodownload"
             >
-              <source src={`${VIDEO_BASE_URL}/vytalpath-academy-introduction.mp4`} type="video/mp4" />
+              <source src={`${VIDEO_BASE_URL}/myintro.mp4`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -249,6 +162,49 @@ export function FoundationsSection() {
             </button>
           </div>
         </div>
+      )}
+
+      {/* Section Introduction Video */}
+      {showSectionIntro ? (
+        <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+            <div className="flex items-center gap-2">
+              <GraduationCap className="w-4 h-4 text-blue-600" />
+              <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+            </div>
+            <button
+              onClick={() => setShowSectionIntro(false)}
+              className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+            >
+              <X className="w-4 h-4 text-gray-500" />
+            </button>
+          </div>
+          <div className="aspect-video bg-black">
+            <video
+              controls
+              autoPlay
+              className="w-full h-full"
+              controlsList="nodownload"
+            >
+              <source src={`${VIDEO_BASE_URL}/foundationsintro.mp4`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      ) : (
+        <button
+          onClick={() => setShowSectionIntro(true)}
+          className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+        >
+          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <Play className="w-5 h-5 text-blue-600" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-gray-900">Section Overview</h3>
+            <p className="text-sm text-gray-500">Watch a brief introduction to this section</p>
+          </div>
+          <ChevronRight className="w-5 h-5 text-gray-400" />
+        </button>
       )}
 
       {/* Progress Summary */}

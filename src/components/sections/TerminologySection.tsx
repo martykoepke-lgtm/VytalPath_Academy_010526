@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ChevronRight, ChevronDown, BookOpen, FileText,
-  CheckCircle, GraduationCap, ClipboardCheck, Trophy, BookA
+  ChevronRight, ChevronDown, BookOpen, FileText, Play,
+  CheckCircle, GraduationCap, ClipboardCheck, Trophy, BookA, X
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -10,6 +10,9 @@ import { TerminologyView } from '../TerminologyView';
 import { TermDetail } from '../TermDetail';
 import type { MedicalTerm } from '../../types/medical';
 import type { ContentType } from '../../types/course';
+
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 // Medical Terminology module lessons
 const terminologyModule = {
@@ -25,6 +28,24 @@ const terminologyModule = {
     max_attempts: 3,
   },
   lessons: [
+    {
+      id: 'lv1',
+      slug: 'common-abbreviations-video',
+      title: 'Common Abbreviations in Healthcare',
+      description: 'Master the abbreviations you will encounter daily in clinical settings.',
+      content_type: 'video' as ContentType,
+      video_url: `${VIDEO_BASE_URL}/term-abbrev.mp4`,
+      duration_minutes: 5,
+    },
+    {
+      id: 'lv2',
+      slug: 'word-building-decoding-terms',
+      title: 'Word Building: Decoding Medical Terms',
+      description: 'Learn how to break down and understand medical terms using prefixes, roots, and suffixes.',
+      content_type: 'video' as ContentType,
+      video_url: `${VIDEO_BASE_URL}/termbuilding.mp4`,
+      duration_minutes: 5,
+    },
     {
       id: 'l9',
       slug: 'intro-medical-terminology',
@@ -69,7 +90,7 @@ const terminologyModule = {
 };
 
 const contentTypeIcons: Record<ContentType, React.ElementType> = {
-  video: FileText,
+  video: Play,
   reading: FileText,
 };
 
@@ -79,6 +100,7 @@ export function TerminologySection() {
   const [viewMode, setViewMode] = useState<ViewMode>('lessons');
   const [expandedModule, setExpandedModule] = useState(true);
   const [selectedTerm, setSelectedTerm] = useState<MedicalTerm | null>(null);
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const isModuleQuizPassed = progress.hasPassedQuiz(terminologyModule.slug);
@@ -103,6 +125,49 @@ export function TerminologySection() {
             Master the language of healthcare. Learn prefixes, roots, suffixes, and common abbreviations used in clinical settings.
           </p>
         </header>
+
+        {/* Section Introduction Video */}
+        {showSectionIntro ? (
+          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <BookA className="w-4 h-4 text-blue-600" />
+                <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+              </div>
+              <button
+                onClick={() => setShowSectionIntro(false)}
+                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                <X className="w-4 h-4 text-gray-500" />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                controlsList="nodownload"
+              >
+                <source src={`${VIDEO_BASE_URL}/termintro.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowSectionIntro(true)}
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-blue-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Medical Terminology</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </button>
+        )}
 
       {/* View Mode Toggle */}
       <div className="flex justify-center mb-8">
