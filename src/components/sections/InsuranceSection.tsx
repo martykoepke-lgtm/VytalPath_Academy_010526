@@ -148,7 +148,7 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 type ExplorerView = 'card' | 'eligibility';
 
 export function InsuranceSection() {
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m3', 'm5']));
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
   const [showSectionIntro, setShowSectionIntro] = useState(false);
   const [explorerView, setExplorerView] = useState<ExplorerView>('card');
   const progress = useProgress();
@@ -181,8 +181,8 @@ export function InsuranceSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl">
-            <DollarSign className="w-10 h-10 text-blue-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-2xl">
+            <DollarSign className="w-10 h-10 text-emerald-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Insurance & Billing</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -195,7 +195,7 @@ export function InsuranceSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <DollarSign className="w-4 h-4 text-blue-600" />
+                <DollarSign className="w-4 h-4 text-emerald-600" />
                 <span className="font-medium text-gray-900 text-sm">Section Overview</span>
               </div>
               <button
@@ -220,10 +220,10 @@ export function InsuranceSection() {
         ) : (
           <button
             onClick={() => setShowSectionIntro(true)}
-            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/50 transition-all flex items-center gap-4 text-left"
           >
-            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Play className="w-5 h-5 text-blue-600" />
+            <div className="flex-shrink-0 w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-emerald-600" />
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
@@ -238,13 +238,13 @@ export function InsuranceSection() {
         <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
           <div className="flex items-center justify-between text-sm mb-2">
             <span className="text-gray-600">Your Progress</span>
-            <span className="font-medium text-blue-600">
+            <span className="font-medium text-emerald-600">
               {completedLessons} of {totalLessons} lessons completed
             </span>
           </div>
           <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all"
+              className="h-full bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full transition-all"
               style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
             />
           </div>
@@ -261,25 +261,35 @@ export function InsuranceSection() {
           const moduleComplete = allLessonsComplete && quizPassed;
           const ModuleIcon = moduleComplete ? CheckCircle : BookOpen;
 
+          // Color accent: blue for basics, green for operations
+          const isOperations = module.id === 'm5';
+          const accentColor = isOperations
+            ? { bar: 'from-green-400 to-green-600', bg: 'bg-green-100', text: 'text-green-600' }
+            : { bar: 'from-emerald-400 to-emerald-600', bg: 'bg-emerald-100', text: 'text-emerald-600' };
+
           return (
             <div
               key={module.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
             >
-              {/* Module Header */}
-              <button
-                onClick={() => toggleModule(module.id)}
-                className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
-              >
-                <div
-                  className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
-                    moduleComplete ? 'bg-green-100' : 'bg-blue-100'
-                  }`}
+              {/* Color bar */}
+              <div className={`w-1.5 bg-gradient-to-b ${accentColor.bar}`} />
+
+              <div className="flex-1">
+                {/* Module Header */}
+                <button
+                  onClick={() => toggleModule(module.id)}
+                  className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
                 >
-                  <ModuleIcon
-                    className={`w-5 h-5 ${moduleComplete ? 'text-green-600' : 'text-blue-600'}`}
-                  />
-                </div>
+                  <div
+                    className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
+                      moduleComplete ? 'bg-green-100' : accentColor.bg
+                    }`}
+                  >
+                    <ModuleIcon
+                      className={`w-5 h-5 ${moduleComplete ? 'text-green-600' : accentColor.text}`}
+                    />
+                  </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
@@ -290,7 +300,7 @@ export function InsuranceSection() {
                       </span>
                     )}
                     {quizPassed && !moduleComplete && (
-                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+                      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
                         Quiz Passed ({getModuleBestScore(module.slug)}%)
                       </span>
                     )}
@@ -323,7 +333,7 @@ export function InsuranceSection() {
                       >
                         <div
                           className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
+                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-emerald-600'
                           }`}
                         >
                           {isLessonDone(lesson.slug) ? (
@@ -354,7 +364,7 @@ export function InsuranceSection() {
                       >
                         <div
                           className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                            quizPassed ? 'bg-green-100' : 'bg-blue-600'
+                            quizPassed ? 'bg-green-100' : 'bg-emerald-600'
                           }`}
                         >
                           {quizPassed ? (
@@ -384,6 +394,7 @@ export function InsuranceSection() {
                   )}
                 </div>
               )}
+              </div>
             </div>
           );
         })}
@@ -392,7 +403,7 @@ export function InsuranceSection() {
         {/* Interactive Practice: Visual Explorers */}
         <section className="mt-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
               <MousePointerClick className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -407,7 +418,7 @@ export function InsuranceSection() {
               onClick={() => setExplorerView('card')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                 explorerView === 'card'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-emerald-600 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -436,9 +447,9 @@ export function InsuranceSection() {
         </section>
 
         {/* Interactive Exercise Link */}
-        <aside className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+        <aside className="mt-8 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-200">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
               <ClipboardCheck className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
@@ -448,7 +459,7 @@ export function InsuranceSection() {
               </p>
               <Link
                 to="/exercises/insurance-matching"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors"
               >
                 Start Exercise
                 <ChevronRight className="w-4 h-4" />

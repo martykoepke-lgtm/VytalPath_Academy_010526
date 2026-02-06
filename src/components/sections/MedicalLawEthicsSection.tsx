@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
-  CheckCircle, Clock, GraduationCap, ClipboardCheck, Trophy,
-  Scale, X
+  CheckCircle, ClipboardCheck, Trophy,
+  Scale, X, Shield, UserCheck, AlertTriangle, Building2, Lock
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -12,18 +12,64 @@ import type { ContentType } from '../../types/course';
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
-// Medical Law & Ethics section modules
-const medicalLawModules = [
+interface Lesson {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  content_type: ContentType;
+  video_url: string | null;
+  duration_minutes: number;
+  coming_soon?: boolean;
+}
+
+interface Module {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  icon: 'shield' | 'user-check' | 'alert-triangle' | 'building';
+  color: 'slate' | 'blue' | 'amber' | 'teal';
+  coming_soon?: boolean;
+  quiz?: {
+    id: string;
+    title: string;
+    description: string;
+    passing_score: number;
+    max_attempts: number;
+  };
+  lessons: Lesson[];
+}
+
+// Module icons mapping
+const moduleIcons = {
+  'shield': Shield,
+  'user-check': UserCheck,
+  'alert-triangle': AlertTriangle,
+  'building': Building2,
+};
+
+// Color mapping for modules
+const colorClasses = {
+  slate: { bar: 'from-slate-400 to-slate-600', bg: 'bg-slate-100', text: 'text-slate-600', light: 'bg-slate-50' },
+  blue: { bar: 'from-blue-400 to-blue-600', bg: 'bg-blue-100', text: 'text-blue-600', light: 'bg-blue-50' },
+  amber: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600', light: 'bg-amber-50' },
+  teal: { bar: 'from-teal-400 to-teal-600', bg: 'bg-teal-100', text: 'text-teal-600', light: 'bg-teal-50' },
+};
+
+// Medical Law & Ethics section modules - restructured into 4 modules
+const medicalLawModules: Module[] = [
   {
     id: 'm1',
-    slug: 'medical-law-ethics',
-    title: 'Medical Law & Ethics',
-    description: 'Essential legal and ethical guidelines for healthcare professionals.',
-    sort_order: 1,
+    slug: 'hipaa-foundations',
+    title: 'HIPAA Foundations',
+    description: 'Core HIPAA knowledge every healthcare worker needs to protect patient privacy.',
+    icon: 'shield',
+    color: 'slate',
     quiz: {
       id: 'q1',
-      title: 'Medical Law & Ethics Quiz',
-      description: 'Test your knowledge of HIPAA, patient rights, and healthcare compliance',
+      title: 'HIPAA Foundations Quiz',
+      description: 'Test your understanding of HIPAA basics and PHI',
       passing_score: 80,
       max_attempts: 3,
     },
@@ -47,15 +93,6 @@ const medicalLawModules = [
         duration_minutes: 4,
       },
       {
-        id: 'l3',
-        slug: 'hipaa-violations-fines-penalties',
-        title: 'HIPAA Violations, Fines & Penalties',
-        description: 'Learn about the consequences of HIPAA violations and real enforcement cases.',
-        content_type: 'reading' as ContentType,
-        video_url: null,
-        duration_minutes: 12,
-      },
-      {
         id: 'l4',
         slug: 'minimum-necessary-standard',
         title: 'The Minimum Necessary Standard',
@@ -64,6 +101,23 @@ const medicalLawModules = [
         video_url: null,
         duration_minutes: 10,
       },
+    ],
+  },
+  {
+    id: 'm2',
+    slug: 'patient-privacy-rights',
+    title: 'Patient Privacy & Rights',
+    description: 'Understanding patient protections, consent requirements, and violation consequences.',
+    icon: 'user-check',
+    color: 'blue',
+    quiz: {
+      id: 'q2',
+      title: 'Patient Rights Quiz',
+      description: 'Test your knowledge of patient rights and authorization',
+      passing_score: 80,
+      max_attempts: 3,
+    },
+    lessons: [
       {
         id: 'l5',
         slug: 'patient-rights-under-hipaa',
@@ -83,6 +137,32 @@ const medicalLawModules = [
         duration_minutes: 5,
       },
       {
+        id: 'l3',
+        slug: 'hipaa-violations-fines-penalties',
+        title: 'HIPAA Violations, Fines & Penalties',
+        description: 'Learn about the consequences of HIPAA violations and real enforcement cases.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 12,
+      },
+    ],
+  },
+  {
+    id: 'm3',
+    slug: 'healthcare-laws',
+    title: 'Emergency & Access Laws',
+    description: 'Critical healthcare laws beyond HIPAA that protect patients and ensure ethical practices.',
+    icon: 'alert-triangle',
+    color: 'amber',
+    quiz: {
+      id: 'q3',
+      title: 'Healthcare Laws Quiz',
+      description: 'Test your knowledge of EMTALA and fraud prevention laws',
+      passing_score: 80,
+      max_attempts: 3,
+    },
+    lessons: [
+      {
         id: 'l7',
         slug: 'emtala-patient-anti-dumping',
         title: 'EMTALA: The Anti-Dumping Law',
@@ -100,6 +180,77 @@ const medicalLawModules = [
         video_url: null,
         duration_minutes: 15,
       },
+      {
+        id: 'l9',
+        slug: 'anti-kickback-statute',
+        title: 'Anti-Kickback Statute',
+        description: 'Understanding prohibited referral payments and their impact on patient care.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 10,
+        coming_soon: true,
+      },
+      {
+        id: 'l10',
+        slug: 'false-claims-act',
+        title: 'False Claims Act',
+        description: 'How the FCA protects healthcare programs from fraud and your role in prevention.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 10,
+        coming_soon: true,
+      },
+    ],
+  },
+  {
+    id: 'm4',
+    slug: 'workplace-compliance',
+    title: 'Workplace Compliance',
+    description: 'Day-to-day compliance practices, documentation, and incident handling in your role.',
+    icon: 'building',
+    color: 'teal',
+    coming_soon: true,
+    lessons: [
+      {
+        id: 'l11',
+        slug: 'compliance-culture',
+        title: 'Building a Compliance Culture',
+        description: 'Creating and maintaining a culture of compliance in healthcare settings.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 12,
+        coming_soon: true,
+      },
+      {
+        id: 'l12',
+        slug: 'documentation-best-practices',
+        title: 'Documentation Best Practices',
+        description: 'Proper documentation techniques to ensure compliance and protect patients.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 15,
+        coming_soon: true,
+      },
+      {
+        id: 'l13',
+        slug: 'incident-reporting',
+        title: 'Incident Reporting & Response',
+        description: 'How to properly report and respond to compliance incidents and breaches.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 12,
+        coming_soon: true,
+      },
+      {
+        id: 'l14',
+        slug: 'security-awareness',
+        title: 'Security Awareness',
+        description: 'Protecting electronic PHI and maintaining security in daily operations.',
+        content_type: 'reading' as ContentType,
+        video_url: null,
+        duration_minutes: 10,
+        coming_soon: true,
+      },
     ],
   },
 ];
@@ -110,7 +261,7 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 };
 
 export function MedicalLawEthicsSection() {
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m1']));
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
   const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
@@ -126,9 +277,13 @@ export function MedicalLawEthicsSection() {
     });
   };
 
-  const totalLessons = medicalLawModules.reduce((sum, m) => sum + m.lessons.length, 0);
+  // Only count available lessons (not coming soon)
+  const availableLessons = medicalLawModules.reduce(
+    (sum, m) => sum + m.lessons.filter((l) => !l.coming_soon).length,
+    0
+  );
   const completedLessons = medicalLawModules.reduce(
-    (sum, m) => sum + m.lessons.filter((l) => progress.isLessonCompleted(l.slug)).length,
+    (sum, m) => sum + m.lessons.filter((l) => !l.coming_soon && progress.isLessonCompleted(l.slug)).length,
     0
   );
 
@@ -142,8 +297,8 @@ export function MedicalLawEthicsSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-blue-100 rounded-2xl">
-            <Scale className="w-10 h-10 text-blue-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-slate-100 to-slate-200 rounded-2xl">
+            <Scale className="w-10 h-10 text-slate-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Medical Law & Compliance</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -156,7 +311,7 @@ export function MedicalLawEthicsSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <Scale className="w-4 h-4 text-blue-600" />
+                <Scale className="w-4 h-4 text-slate-600" />
                 <span className="font-medium text-gray-900 text-sm">Section Overview</span>
               </div>
               <button
@@ -181,10 +336,10 @@ export function MedicalLawEthicsSection() {
         ) : (
           <button
             onClick={() => setShowSectionIntro(true)}
-            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-slate-300 hover:bg-slate-50/50 transition-all flex items-center gap-4 text-left"
           >
-            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Play className="w-5 h-5 text-blue-600" />
+            <div className="flex-shrink-0 w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-slate-600" />
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
@@ -199,14 +354,14 @@ export function MedicalLawEthicsSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-gray-600">Your Progress</span>
-              <span className="font-medium text-blue-600">
-                {completedLessons} of {totalLessons} lessons completed
+              <span className="font-medium text-slate-600">
+                {completedLessons} of {availableLessons} lessons completed
               </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all"
-                style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
+                className="h-full bg-gradient-to-r from-slate-500 to-slate-600 rounded-full transition-all"
+                style={{ width: `${(completedLessons / availableLessons) * 100}%` }}
               />
             </div>
           </div>
@@ -216,68 +371,106 @@ export function MedicalLawEthicsSection() {
         <section className="space-y-4" aria-label="Training Modules">
           {medicalLawModules.map((module, moduleIndex) => {
             const isExpanded = expandedModules.has(module.id);
-            const quizPassed = isModuleQuizPassed(module.slug);
-            const lessonsCompleted = module.lessons.filter((l) => isLessonDone(l.slug)).length;
-            const allLessonsComplete = lessonsCompleted === module.lessons.length;
-            const moduleComplete = allLessonsComplete && quizPassed;
-            const ModuleIcon = moduleComplete ? CheckCircle : BookOpen;
+            const quizPassed = module.quiz ? isModuleQuizPassed(module.slug) : false;
+            const availableModuleLessons = module.lessons.filter((l) => !l.coming_soon);
+            const lessonsCompleted = availableModuleLessons.filter((l) => isLessonDone(l.slug)).length;
+            const allLessonsComplete = availableModuleLessons.length > 0 && lessonsCompleted === availableModuleLessons.length;
+            const moduleComplete = allLessonsComplete && (module.quiz ? quizPassed : true);
+            const ModuleIcon = moduleIcons[module.icon];
+            const colors = colorClasses[module.color];
+            const isModuleComingSoon = module.coming_soon;
 
             return (
               <div
                 key={module.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                className={`bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex ${isModuleComingSoon ? 'opacity-75' : ''}`}
               >
-                {/* Module Header */}
-                <button
-                  onClick={() => toggleModule(module.id)}
-                  className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
-                >
-                  <div
-                    className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
-                      moduleComplete ? 'bg-green-100' : 'bg-blue-100'
-                    }`}
+                {/* Color bar */}
+                <div className={`w-1.5 bg-gradient-to-b ${colors.bar}`} />
+
+                <div className="flex-1">
+                  {/* Module Header */}
+                  <button
+                    onClick={() => !isModuleComingSoon && toggleModule(module.id)}
+                    className={`w-full p-5 flex items-center gap-4 text-left transition-colors ${isModuleComingSoon ? 'cursor-default' : 'hover:bg-gray-50'}`}
                   >
-                    <ModuleIcon
-                      className={`w-5 h-5 ${moduleComplete ? 'text-green-600' : 'text-blue-600'}`}
-                    />
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-gray-500">Module {moduleIndex + 1}</span>
-                      {moduleComplete && (
-                        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-700">
-                          Completed
-                        </span>
-                      )}
-                      {quizPassed && !moduleComplete && (
-                        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
-                          Quiz Passed ({getModuleBestScore(module.slug)}%)
-                        </span>
+                    <div
+                      className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
+                        moduleComplete ? 'bg-green-100' : colors.bg
+                      }`}
+                    >
+                      {isModuleComingSoon ? (
+                        <Lock className="w-5 h-5 text-gray-400" />
+                      ) : moduleComplete ? (
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                      ) : (
+                        <ModuleIcon className={`w-5 h-5 ${colors.text}`} />
                       )}
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900">{module.title}</h3>
-                    <p className="text-sm mt-1 text-gray-600">{module.description}</p>
-                  </div>
 
-                  <div className="flex-shrink-0 flex items-center gap-3">
-                    <span className="text-sm text-gray-500">
-                      {lessonsCompleted}/{module.lessons.length} lessons
-                    </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                    />
-                  </div>
-                </button>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-gray-500">Module {moduleIndex + 1}</span>
+                        {isModuleComingSoon && (
+                          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                            Coming Soon
+                          </span>
+                        )}
+                        {moduleComplete && (
+                          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                            Completed
+                          </span>
+                        )}
+                        {quizPassed && !moduleComplete && !isModuleComingSoon && (
+                          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${colors.light} ${colors.text}`}>
+                            Quiz Passed ({getModuleBestScore(module.slug)}%)
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900">{module.title}</h3>
+                      <p className="text-sm mt-1 text-gray-600">{module.description}</p>
+                    </div>
 
-                {/* Lessons */}
-                {isExpanded && (
-                  <div className="border-t border-gray-100 bg-gray-50">
-                    {/* Video Lessons */}
-                    {module.lessons
-                      .filter((lesson) => lesson.content_type === 'video')
-                      .map((lesson) => {
+                    <div className="flex-shrink-0 flex items-center gap-3">
+                      {!isModuleComingSoon && (
+                        <>
+                          <span className="text-sm text-gray-500">
+                            {lessonsCompleted}/{availableModuleLessons.length} lessons
+                          </span>
+                          <ChevronDown
+                            className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                          />
+                        </>
+                      )}
+                    </div>
+                  </button>
+
+                  {/* Lessons */}
+                  {isExpanded && !isModuleComingSoon && (
+                    <div className="border-t border-gray-100 bg-gray-50">
+                      {module.lessons.map((lesson) => {
                         const LessonIcon = contentTypeIcons[lesson.content_type];
+                        const isComingSoon = lesson.coming_soon;
+
+                        if (isComingSoon) {
+                          return (
+                            <div
+                              key={lesson.id}
+                              className="flex items-center gap-4 p-4 pl-16 opacity-60"
+                            >
+                              <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center bg-gray-200">
+                                <Lock className="w-4 h-4 text-gray-400" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-medium text-gray-700">{lesson.title}</h4>
+                                <p className="text-sm text-gray-400 line-clamp-1">{lesson.description}</p>
+                              </div>
+                              <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-400">
+                                <span className="px-2 py-0.5 bg-gray-100 rounded text-xs font-medium">Coming Soon</span>
+                              </div>
+                            </div>
+                          );
+                        }
 
                         return (
                           <Link
@@ -287,13 +480,13 @@ export function MedicalLawEthicsSection() {
                           >
                             <div
                               className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
+                                isLessonDone(lesson.slug) ? 'bg-green-100' : colors.bg
                               }`}
                             >
                               {isLessonDone(lesson.slug) ? (
                                 <CheckCircle className="w-4 h-4 text-green-600" />
                               ) : (
-                                <LessonIcon className="w-4 h-4 text-white" />
+                                <LessonIcon className={`w-4 h-4 ${colors.text}`} />
                               )}
                             </div>
                             <div className="flex-1 min-w-0">
@@ -309,91 +502,46 @@ export function MedicalLawEthicsSection() {
                         );
                       })}
 
-                    {/* Separator between Video and Reading Lessons */}
-                    <div className="mx-4 my-3 flex items-center gap-3">
-                      <div className="flex-1 h-px bg-gray-300"></div>
-                      <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full">
-                        <FileText className="w-3.5 h-3.5 text-gray-500" />
-                        <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Reading Materials</span>
-                      </div>
-                      <div className="flex-1 h-px bg-gray-300"></div>
-                    </div>
-
-                    {/* Reading Lessons */}
-                    {module.lessons
-                      .filter((lesson) => lesson.content_type === 'reading')
-                      .map((lesson) => {
-                        const LessonIcon = contentTypeIcons[lesson.content_type];
-
-                        return (
+                      {/* Quiz */}
+                      {module.quiz && (
+                        <div className="border-t border-gray-200">
                           <Link
-                            key={lesson.id}
-                            to={`/medical-law-ethics/${module.slug}/${lesson.slug}`}
+                            to={`/medical-law-ethics/${module.slug}/quiz`}
                             className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
                           >
                             <div
                               className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                                isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-gray-500'
+                                quizPassed ? 'bg-green-100' : colors.bg
                               }`}
                             >
-                              {isLessonDone(lesson.slug) ? (
-                                <CheckCircle className="w-4 h-4 text-green-600" />
+                              {quizPassed ? (
+                                <Trophy className="w-4 h-4 text-green-600" />
                               ) : (
-                                <LessonIcon className="w-4 h-4 text-white" />
+                                <ClipboardCheck className={`w-4 h-4 ${colors.text}`} />
                               )}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h4 className="font-medium text-gray-900">{lesson.title}</h4>
-                              <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
+                              <h4 className="font-medium text-gray-900">{module.quiz.title}</h4>
+                              <p className="text-sm text-gray-500">
+                                {quizPassed
+                                  ? `Passed with ${getModuleBestScore(module.slug)}%`
+                                  : `Pass with ${module.quiz.passing_score}% to complete module`}
+                              </p>
                             </div>
-                            <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                              <span className="capitalize">{lesson.content_type}</span>
-                              <span>{lesson.duration_minutes} min</span>
-                              <ChevronRight className="w-4 h-4" />
+                            <div className="flex-shrink-0 flex items-center gap-2">
+                              {quizPassed ? (
+                                <span className="text-sm text-green-600 font-medium">Completed</span>
+                              ) : (
+                                <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                              )}
+                              <ChevronRight className="w-4 h-4 text-gray-400" />
                             </div>
                           </Link>
-                        );
-                      })}
-
-                    {/* Quiz */}
-                    {module.quiz && (
-                      <div className="border-t border-gray-200">
-                        <Link
-                          to={`/medical-law-ethics/${module.slug}/quiz`}
-                          className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
-                        >
-                          <div
-                            className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                              quizPassed ? 'bg-green-100' : 'bg-blue-600'
-                            }`}
-                          >
-                            {quizPassed ? (
-                              <Trophy className="w-4 h-4 text-green-600" />
-                            ) : (
-                              <ClipboardCheck className="w-4 h-4 text-white" />
-                            )}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-medium text-gray-900">{module.quiz.title}</h4>
-                            <p className="text-sm text-gray-500">
-                              {quizPassed
-                                ? `Passed with ${getModuleBestScore(module.slug)}%`
-                                : `Pass with ${module.quiz.passing_score}% to complete module`}
-                            </p>
-                          </div>
-                          <div className="flex-shrink-0 flex items-center gap-2">
-                            {quizPassed ? (
-                              <span className="text-sm text-green-600 font-medium">Completed</span>
-                            ) : (
-                              <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
-                            )}
-                            <ChevronRight className="w-4 h-4 text-gray-400" />
-                          </div>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}

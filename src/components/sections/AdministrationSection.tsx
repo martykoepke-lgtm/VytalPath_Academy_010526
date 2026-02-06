@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import {
-  ChevronRight, ChevronDown, FileText,
-  CheckCircle, Sunrise, Moon, ClipboardList, Building2
+  ChevronRight, ChevronDown, FileText, Play,
+  CheckCircle, Sunrise, Moon, ClipboardList, Building2, X
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
 import { SOPModal, type SOPContent } from '../workflows/SOPModal';
 import { getSOPBySlug } from '../../data/sopContent';
+
+// Supabase Storage base URL for videos
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 // Administration modules organized by phase
 
@@ -27,6 +30,7 @@ interface AdminPhase {
   title: string;
   description: string;
   icon: 'sunrise' | 'moon' | 'clipboard';
+  color: 'amber' | 'indigo' | 'blue';
   lessons: AdminLesson[];
 }
 
@@ -37,6 +41,7 @@ const openingPhase: AdminPhase = {
   title: 'Opening the Office',
   description: 'Morning setup procedures to start the day smoothly.',
   icon: 'sunrise',
+  color: 'amber',
   lessons: [
     {
       id: 'admin-1',
@@ -75,6 +80,7 @@ const closingPhase: AdminPhase = {
   title: 'Closing the Office',
   description: 'End-of-day reconciliation and closing procedures.',
   icon: 'moon',
+  color: 'indigo',
   lessons: [
     {
       id: 'admin-4',
@@ -104,6 +110,7 @@ const adminTasksPhase: AdminPhase = {
   title: 'Administrative Tasks',
   description: 'Ongoing administrative duties and compliance requirements.',
   icon: 'clipboard',
+  color: 'blue',
   lessons: [
     {
       id: 'admin-6',
@@ -144,8 +151,9 @@ const phaseIcons = {
 };
 
 export function AdministrationSection() {
-  const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set(['opening', 'closing']));
+  const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
   const [selectedSOP, setSelectedSOP] = useState<SOPContent | null>(null);
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const openSOP = (slug: string) => {
@@ -188,8 +196,8 @@ export function AdministrationSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl">
-            <Building2 className="w-10 h-10 text-amber-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
+            <Building2 className="w-10 h-10 text-teal-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Office Administration</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -197,19 +205,57 @@ export function AdministrationSection() {
           </p>
         </header>
 
-        {/* CMAA Domain Badge */}
-        <div className="mb-6 p-4 bg-amber-50 rounded-xl border border-amber-200">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
-              <ClipboardList className="w-4 h-4 text-amber-700" />
+        {/* Section Introduction Video */}
+        {showSectionIntro ? (
+          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <Building2 className="w-4 h-4 text-teal-600" />
+                <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+              </div>
+              <button
+                onClick={() => setShowSectionIntro(false)}
+                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                <X className="w-4 h-4 text-gray-500" />
+              </button>
             </div>
-            <div>
-              <h3 className="font-semibold text-amber-900">CMAA Domain 7: Administrative Procedures</h3>
-              <p className="text-sm text-amber-800 mt-1">
-                These procedures align with the Medical Practice Administrative Procedures domain, covering 16% of the certification exam.
-              </p>
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                controlsList="nodownload"
+              >
+                <source src={`${VIDEO_BASE_URL}/adminintro.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
+        ) : (
+          <button
+            onClick={() => setShowSectionIntro(true)}
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-teal-300 hover:bg-teal-50/50 transition-all flex items-center gap-4 text-left"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-teal-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Office Administration</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </button>
+        )}
+
+        {/* How to Use This Section Guide */}
+        <div className="mb-8 p-4 bg-teal-50 rounded-xl border border-teal-200">
+          <h3 className="font-semibold text-teal-900 mb-2">How to Use This Section</h3>
+          <ol className="text-sm text-teal-800 space-y-1 list-decimal list-inside">
+            <li><strong>Read the SOP</strong> for detailed step-by-step procedures</li>
+            <li><strong>Create your own checklists</strong> based on your office's specific needs</li>
+            <li><strong>Use as a desk reference</strong> during live work until the process becomes second nature</li>
+          </ol>
         </div>
 
         {/* Progress Summary */}
@@ -217,13 +263,13 @@ export function AdministrationSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-gray-600">Your Progress</span>
-              <span className="font-medium text-amber-600">
+              <span className="font-medium text-teal-600">
                 {completedLessons} of {totalLessons} procedures completed
               </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all"
+                className="h-full bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all"
                 style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
               />
             </div>
@@ -237,19 +283,31 @@ export function AdministrationSection() {
             const phaseCompleted = phase.lessons.filter((l) => isLessonDone(l.slug)).length;
             const PhaseIcon = phaseIcons[phase.icon];
 
+            // Color mapping for phases
+            const colorClasses = {
+              amber: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
+              indigo: { bar: 'from-indigo-400 to-indigo-600', bg: 'bg-indigo-100', text: 'text-indigo-600' },
+              blue: { bar: 'from-teal-400 to-teal-600', bg: 'bg-teal-100', text: 'text-teal-600' },
+            };
+            const colors = colorClasses[phase.color];
+
             return (
               <div
                 key={phase.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
               >
-                {/* Phase Header */}
-                <button
-                  onClick={() => togglePhase(phase.id)}
-                  className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-amber-100">
-                    <PhaseIcon className="w-5 h-5 text-amber-600" />
-                  </div>
+                {/* Color bar */}
+                <div className={`w-1.5 bg-gradient-to-b ${colors.bar}`} />
+
+                <div className="flex-1">
+                  {/* Phase Header */}
+                  <button
+                    onClick={() => togglePhase(phase.id)}
+                    className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
+                  >
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${colors.bg}`}>
+                      <PhaseIcon className={`w-5 h-5 ${colors.text}`} />
+                    </div>
 
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg font-semibold text-gray-900">{phase.title}</h3>
@@ -277,7 +335,7 @@ export function AdministrationSection() {
                       >
                         <div
                           className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-amber-500'
+                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-teal-600'
                           }`}
                         >
                           {isLessonDone(lesson.slug) ? (
@@ -291,7 +349,7 @@ export function AdministrationSection() {
                           <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                         </div>
                         <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                          <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded text-xs font-medium">SOP</span>
+                          <span className="px-2 py-0.5 bg-teal-100 text-teal-700 rounded text-xs font-medium">SOP</span>
                           <span>{lesson.duration_minutes} min</span>
                           <ChevronRight className="w-4 h-4" />
                         </div>
@@ -299,15 +357,16 @@ export function AdministrationSection() {
                     ))}
                   </div>
                 )}
+                </div>
               </div>
             );
           })}
         </div>
 
         {/* Tips Card */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200">
+        <div className="mt-8 p-6 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl border border-teal-200">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
               <Building2 className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">

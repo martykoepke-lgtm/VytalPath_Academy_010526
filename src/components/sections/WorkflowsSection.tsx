@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, Play, FileText,
-  CheckCircle, Workflow, ListChecks, X, Calendar, Clock
+  CheckCircle, ClipboardList, ListChecks, X, Calendar, Clock
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -34,6 +34,7 @@ interface WorkflowPhase {
   title: string;
   description: string;
   icon: 'calendar' | 'clock';
+  color: 'blue' | 'green' | 'amber';
   lessons: WorkflowLesson[];
 }
 
@@ -45,6 +46,7 @@ const beforeVisitPhase: WorkflowPhase = {
   title: 'Before the Visit',
   description: 'Registration, scheduling, and pre-visit preparation workflows.',
   icon: 'calendar',
+  color: 'blue',
   lessons: [
     {
       id: 'wl1',
@@ -89,6 +91,7 @@ const duringVisitPhase: WorkflowPhase = {
   title: 'During the Visit',
   description: 'Check-in and check-out procedures for all patient types.',
   icon: 'clock',
+  color: 'green',
   lessons: [
     {
       id: 'wl-b',
@@ -140,6 +143,7 @@ const throughoutDayPhase: WorkflowPhase = {
   title: 'Throughout the Day',
   description: 'Managing schedule changes, prioritizing tasks, and handling daily operations.',
   icon: 'clock',
+  color: 'amber',
   lessons: [
     {
       id: 'wl-e',
@@ -182,7 +186,7 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 };
 
 export function WorkflowsSection() {
-  const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set(['before-visit', 'during-visit']));
+  const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
   const [showSectionIntro, setShowSectionIntro] = useState(false);
   const [selectedSOP, setSelectedSOP] = useState<SOPContent | null>(null);
   const progress = useProgress();
@@ -224,8 +228,8 @@ export function WorkflowsSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl">
-            <Workflow className="w-10 h-10 text-blue-600" />
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl">
+            <ClipboardList className="w-10 h-10 text-amber-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Navigating Workflows</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -238,7 +242,7 @@ export function WorkflowsSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <Workflow className="w-4 h-4 text-blue-600" />
+                <ClipboardList className="w-4 h-4 text-amber-600" />
                 <span className="font-medium text-gray-900 text-sm">Section Overview</span>
               </div>
               <button
@@ -263,10 +267,10 @@ export function WorkflowsSection() {
         ) : (
           <button
             onClick={() => setShowSectionIntro(true)}
-            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-amber-300 hover:bg-amber-50/50 transition-all flex items-center gap-4 text-left"
           >
-            <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Play className="w-5 h-5 text-blue-600" />
+            <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-amber-600" />
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
@@ -277,9 +281,9 @@ export function WorkflowsSection() {
         )}
 
         {/* Learning Sequence Guide */}
-        <div className="mb-8 p-4 bg-blue-50 rounded-xl border border-blue-200">
-          <h3 className="font-semibold text-blue-900 mb-2">How to Use This Section</h3>
-          <ol className="text-sm text-blue-800 space-y-1 list-decimal list-inside">
+        <div className="mb-8 p-4 bg-amber-50 rounded-xl border border-amber-200">
+          <h3 className="font-semibold text-amber-900 mb-2">How to Use This Section</h3>
+          <ol className="text-sm text-amber-800 space-y-1 list-decimal list-inside">
             <li><strong>Watch the video</strong> first for an overview of the workflow</li>
             <li><strong>Read the written SOP</strong> for detailed step-by-step guidance</li>
             <li><strong>Use the SOP as a desk reference</strong> during live work until the process becomes second nature</li>
@@ -291,13 +295,13 @@ export function WorkflowsSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-gray-600">Your Progress</span>
-              <span className="font-medium text-blue-600">
+              <span className="font-medium text-amber-600">
                 {completedLessons} of {totalLessons} lessons completed
               </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all"
+                className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full transition-all"
                 style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
               />
             </div>
@@ -313,19 +317,31 @@ export function WorkflowsSection() {
             const videoLessons = phase.lessons.filter((l) => l.content_type === 'video');
             const readingLessons = phase.lessons.filter((l) => l.content_type === 'reading');
 
+            // Color mapping for phases
+            const colorClasses = {
+              blue: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
+              green: { bar: 'from-green-400 to-green-600', bg: 'bg-green-100', text: 'text-green-600' },
+              amber: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
+            };
+            const colors = colorClasses[phase.color];
+
             return (
               <div
                 key={phase.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
               >
-                {/* Phase Header */}
-                <button
-                  onClick={() => togglePhase(phase.id)}
-                  className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-blue-100">
-                    <PhaseIcon className="w-5 h-5 text-blue-600" />
-                  </div>
+                {/* Color bar */}
+                <div className={`w-1.5 bg-gradient-to-b ${colors.bar}`} />
+
+                <div className="flex-1">
+                  {/* Phase Header */}
+                  <button
+                    onClick={() => togglePhase(phase.id)}
+                    className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
+                  >
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${colors.bg}`}>
+                      <PhaseIcon className={`w-5 h-5 ${colors.text}`} />
+                    </div>
 
                   <div className="flex-1 min-w-0">
                     <h3 className="text-lg font-semibold text-gray-900">{phase.title}</h3>
@@ -355,7 +371,7 @@ export function WorkflowsSection() {
                         >
                           <div
                             className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                              isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
+                              isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-amber-600'
                             }`}
                           >
                             {isLessonDone(lesson.slug) ? (
@@ -369,7 +385,7 @@ export function WorkflowsSection() {
                             <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                           </div>
                           <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                            <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs font-medium">Video</span>
+                            <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded text-xs font-medium">Video</span>
                             <span>{lesson.duration_minutes} min</span>
                             <ChevronRight className="w-4 h-4" />
                           </div>
@@ -439,15 +455,16 @@ export function WorkflowsSection() {
                     ))}
                   </div>
                 )}
+                </div>
               </div>
             );
           })}
         </div>
 
         {/* Browse All SOPs Link */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+        <div className="mt-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
               <ListChecks className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
@@ -457,7 +474,7 @@ export function WorkflowsSection() {
               </p>
               <Link
                 to="/workflows/sops"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 transition-colors"
               >
                 Browse All SOPs
                 <ChevronRight className="w-4 h-4" />

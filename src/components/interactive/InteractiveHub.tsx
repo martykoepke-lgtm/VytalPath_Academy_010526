@@ -158,11 +158,11 @@ export function InteractiveHub() {
             <p className="text-2xl font-semibold text-gray-900 mb-2">Healthcare Professional</p>
             <p className="text-gray-600 mb-6">has successfully completed</p>
 
-            <div className="bg-blue-50 rounded-lg p-6 mb-6">
-              <h2 className="text-xl font-bold text-blue-900 mb-2">
+            <div className="bg-rose-50 rounded-lg p-6 mb-6">
+              <h2 className="text-xl font-bold text-rose-900 mb-2">
                 Medical Law & Ethics Foundations
               </h2>
-              <p className="text-blue-700">Interactive Learning Experiences</p>
+              <p className="text-rose-700">Interactive Learning Experiences</p>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
@@ -186,7 +186,7 @@ export function InteractiveHub() {
 
             <button
               onClick={() => setShowCertificate(false)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-6 py-3 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-colors"
             >
               Back to Hub
             </button>
@@ -204,8 +204,8 @@ export function InteractiveHub() {
       description: 'Navigate real workplace scenarios through choose-your-path decision making.',
       icon: Users,
       color: 'blue',
-      bgGradient: 'from-blue-500 to-blue-600',
-      lightBg: 'bg-blue-50',
+      bgGradient: 'from-rose-500 to-rose-600',
+      lightBg: 'bg-rose-50',
       completed: progress.simulationCompleted,
       score: progress.simulationTotal > 0 ? `${progress.simulationScore}/${progress.simulationTotal}` : null,
       required: true,
@@ -348,7 +348,7 @@ export function InteractiveHub() {
                         <div className="flex items-center gap-2">
                           <h3 className="text-xl font-semibold text-gray-900">{experience.title}</h3>
                           {experience.required && (
-                            <span className="px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-700 rounded">
+                            <span className="px-2 py-0.5 text-xs font-medium bg-rose-100 text-rose-700 rounded">
                               Required
                             </span>
                           )}

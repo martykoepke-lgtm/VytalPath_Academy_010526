@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
-  CheckCircle, Clock, GraduationCap, ClipboardCheck, Trophy,
-  Sparkles, X
+  CheckCircle, ClipboardCheck, Trophy,
+  Sparkles, X, Heart
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -67,7 +67,6 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 export function FoundationsSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m1']));
   const [showIntroVideo, setShowIntroVideo] = useState(false);
-  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -98,10 +97,10 @@ export function FoundationsSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 mb-4">
-          <img src="/icons/courses-icon.png" alt="Foundations" className="w-14 h-14" />
-        </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">Foundations of Healthcare</h1>
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl">
+            <Heart className="w-10 h-10 text-blue-600" />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">Foundations of Healthcare</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Build your foundation in healthcare administration. Learn about different healthcare environments and your essential role within them.
         </p>
@@ -164,49 +163,6 @@ export function FoundationsSection() {
         </div>
       )}
 
-      {/* Section Introduction Video */}
-      {showSectionIntro ? (
-        <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-          <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-blue-600" />
-              <span className="font-medium text-gray-900 text-sm">Section Overview</span>
-            </div>
-            <button
-              onClick={() => setShowSectionIntro(false)}
-              className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
-            >
-              <X className="w-4 h-4 text-gray-500" />
-            </button>
-          </div>
-          <div className="aspect-video bg-black">
-            <video
-              controls
-              autoPlay
-              className="w-full h-full"
-              controlsList="nodownload"
-            >
-              <source src={`${VIDEO_BASE_URL}/foundationsintro.mp4`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      ) : (
-        <button
-          onClick={() => setShowSectionIntro(true)}
-          className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
-        >
-          <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Play className="w-5 h-5 text-blue-600" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-gray-900">Section Overview</h3>
-            <p className="text-sm text-gray-500">Watch a brief introduction to this section</p>
-          </div>
-          <ChevronRight className="w-5 h-5 text-gray-400" />
-        </button>
-      )}
-
       {/* Progress Summary */}
       {completedLessons > 0 && (
         <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
@@ -238,8 +194,12 @@ export function FoundationsSection() {
           return (
             <div
               key={module.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
             >
+              {/* Color bar */}
+              <div className="w-1.5 bg-gradient-to-b from-blue-400 to-blue-600" />
+
+              <div className="flex-1">
               {/* Module Header */}
               <button
                 onClick={() => toggleModule(module.id)}
@@ -358,6 +318,7 @@ export function FoundationsSection() {
                   )}
                 </div>
               )}
+              </div>
             </div>
           );
         })}
