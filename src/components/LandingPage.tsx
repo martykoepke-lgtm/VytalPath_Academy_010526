@@ -142,92 +142,128 @@ export function LandingPage({ onEnter }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Who Is This For Section */}
-      <section className="bg-white py-20 border-y border-gray-200">
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-white py-20 border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Who Is This For?
+              Choose Your Path
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Whether you're just starting out or looking to upskill your team
+              Invest in your career or train your entire team
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Individual Learners */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
-                  <User className="w-7 h-7 text-white" />
+            {/* Individual Plan */}
+            <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-gray-100 hover:border-blue-200 transition-colors">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                  <User className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Individual Learners</h3>
-                  <p className="text-gray-600">Self-paced professional development</p>
+                  <h3 className="text-xl font-bold text-gray-900">Individual</h3>
+                  <p className="text-sm text-gray-500">Self-paced learning</p>
                 </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">New to healthcare administration</span>
+
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-gray-900">$327</span>
+                <span className="text-gray-600">/year</span>
+              </div>
+
+              <p className="text-sm text-gray-600 mb-4">
+                Perfect for career changers, new hires, or anyone seeking professional development in healthcare administration.
+              </p>
+
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  Full access to all 10 modules
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Career changers entering healthcare</span>
+                <li className="flex items-center gap-2 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  40+ video lessons & 24 SOPs
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Front office staff seeking advancement</span>
+                <li className="flex items-center gap-2 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  Interactive quizzes & flashcards
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Pre-employment training seekers</span>
+                <li className="flex items-center gap-2 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  Certificate of completion
                 </li>
               </ul>
+
               <button
                 onClick={() => setAuthModal('signUp')}
-                className="w-full py-3 px-4 text-white font-medium bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all"
               >
-                <User className="w-5 h-5" />
-                Sign Up as Individual
+                Get Started
               </button>
             </div>
 
-            {/* Organizations */}
-            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 border-2 border-emerald-200">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center">
-                  <Building2 className="w-7 h-7 text-white" />
+            {/* Organization Plan */}
+            <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 shadow-xl text-white relative overflow-hidden">
+              <div className="absolute top-4 right-4 bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                Save up to 70%
+              </div>
+
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Building2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900">Organizations</h3>
-                  <p className="text-gray-600">Train your entire team</p>
+                  <h3 className="text-xl font-bold">Organizations</h3>
+                  <p className="text-sm text-emerald-100">Train your team</p>
                 </div>
               </div>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Medical clinics onboarding new staff</span>
+
+              <div className="mb-6">
+                <span className="text-3xl font-bold">Volume Pricing</span>
+                <p className="text-emerald-100 text-sm mt-1">As low as $99/seat/year</p>
+              </div>
+
+              <div className="bg-white/10 rounded-xl p-4 mb-6 space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span>1-5 seats</span>
+                  <span className="font-semibold">$327/seat</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>6-15 seats</span>
+                  <span className="font-semibold">$199/seat</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>16-50 seats</span>
+                  <span className="font-semibold">$149/seat</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>51+ seats</span>
+                  <span className="font-semibold">$99/seat</span>
+                </div>
+              </div>
+
+              <ul className="space-y-2 mb-6 text-sm text-emerald-50">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                  Admin dashboard with progress tracking
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Healthcare staffing agencies</span>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                  Personalized student invite links
                 </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Hospital systems with multiple locations</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">Track progress across your team</span>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                  Team completion reports
                 </li>
               </ul>
+
               <a
-                href="#org-pricing"
-                className="w-full py-3 px-4 text-white font-medium bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg hover:from-emerald-700 hover:to-teal-700 transition-all flex items-center justify-center gap-2"
+                href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing"
+                className="w-full py-3 px-4 text-emerald-700 font-semibold bg-white rounded-xl hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
               >
-                <Building2 className="w-5 h-5" />
-                View Team Pricing
+                Contact for Team Access
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -292,113 +328,6 @@ export function LandingPage({ onEnter }: LandingPageProps) {
             Preview Full Curriculum
             <ArrowRight className="w-4 h-4" />
           </button>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-gray-900 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Simple, Transparent Pricing
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Invest in your career or your team
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Individual Plan */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <User className="w-8 h-8 text-blue-600" />
-                <h3 className="text-2xl font-bold text-gray-900">Individual</h3>
-              </div>
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-gray-900">$327</span>
-                <span className="text-gray-600">/year</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                  Full access to all 10 modules
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                  40+ video lessons
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                  24 SOP workflow guides
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                  Interactive flashcards & quizzes
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle className="w-5 h-5 text-blue-600" />
-                  Certificate of completion
-                </li>
-              </ul>
-              <button
-                onClick={() => setAuthModal('signUp')}
-                className="w-full py-4 px-6 text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all"
-              >
-                Get Started
-              </button>
-            </div>
-
-            {/* Organization Plan */}
-            <div id="org-pricing" className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 shadow-xl text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <Building2 className="w-8 h-8 text-white" />
-                <h3 className="text-2xl font-bold">Organizations</h3>
-              </div>
-              <div className="mb-6">
-                <span className="text-3xl font-bold">Volume Pricing</span>
-                <p className="text-emerald-100 mt-1">Save up to 63% per seat</p>
-              </div>
-              <div className="bg-white/10 rounded-xl p-4 mb-6 space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span>1-5 seats</span>
-                  <span className="font-semibold">$327/seat/year</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>6-15 seats</span>
-                  <span className="font-semibold">$199/seat/year</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>16-50 seats</span>
-                  <span className="font-semibold">$149/seat/year</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span>51+ seats</span>
-                  <span className="font-semibold">$99/seat/year</span>
-                </div>
-              </div>
-              <ul className="space-y-3 mb-8 text-emerald-50">
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5" />
-                  Admin dashboard with progress tracking
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5" />
-                  Personalized student invite links
-                </li>
-                <li className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5" />
-                  Team completion reports
-                </li>
-              </ul>
-              <a
-                href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing"
-                className="w-full py-4 px-6 text-emerald-700 font-semibold bg-white rounded-xl hover:bg-emerald-50 transition-all flex items-center justify-center gap-2"
-              >
-                Contact for Team Access
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 
