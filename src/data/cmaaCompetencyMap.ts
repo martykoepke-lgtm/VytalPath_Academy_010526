@@ -51,7 +51,7 @@ export const cmaaDomains: CMAAdomain[] = [
           { type: 'lesson', slug: 'the-ambulatory-care-journey', label: 'The Ambulatory Care Journey', section: 'Foundations', link: '/foundations/healthcare-delivery/the-ambulatory-care-journey' },
           { type: 'quiz', slug: 'healthcare-delivery', label: 'Healthcare Delivery Quiz', section: 'Foundations', link: '/foundations/healthcare-delivery/quiz' },
           { type: 'exercise', slug: 'vytalpath_foundations_sorter', label: 'Healthcare Setting Sorter', section: 'Foundations', link: '/foundations' },
-          { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'Foundations', link: '/foundations/healthcare-delivery/encounters-and-identifiers' },
+          { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/encounters-and-identifiers' },
         ],
       },
       {
@@ -66,20 +66,22 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k3',
         text: 'Types of health records (paper, electronic, app-based, cloud-based) and implications for use',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'Foundations', link: '/foundations/healthcare-delivery/encounters-and-identifiers' },
+          { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/encounters-and-identifiers' },
+          { type: 'lesson', slug: 'pm-vs-ehr', label: 'Practice Management vs EHR', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/pm-vs-ehr' },
+          { type: 'lesson', slug: 'ehr-navigation', label: 'Navigating the EHR', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/ehr-navigation' },
         ],
-        plannedContent: 'EHR Practice Lab module (deeper coverage)',
       },
       {
         id: 'k4',
         text: 'EHR and EMR components (demographics, clinical records, medication administration record, diagnoses, lab reports, orders, billing)',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'Foundations', link: '/foundations/healthcare-delivery/encounters-and-identifiers' },
+          { type: 'lesson', slug: 'ehr-navigation', label: 'Navigating the EHR', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/ehr-navigation' },
+          { type: 'lesson', slug: 'encounter-lifecycle', label: 'The Encounter Lifecycle', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/encounter-lifecycle' },
+          { type: 'quiz', slug: 'ehr-basics', label: 'EHR Basics Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/quiz' },
         ],
-        plannedContent: 'EHR Practice Lab module (deeper coverage)',
       },
       {
         id: 'k5',
@@ -481,23 +483,29 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k49',
         text: 'EHR scheduling including templates and techniques',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'EHR Practice Lab module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'scheduling-types-templates', label: 'Scheduling Types & Templates', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/scheduling-types-templates' },
+          { type: 'quiz', slug: 'clinic-encounters', label: 'Clinic Encounters Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/quiz' },
+        ],
       },
       {
         id: 'k50',
         text: 'Manual scheduling procedures',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Scheduling Expansion',
+        coverageStatus: 'partial',
+        activities: [
+          { type: 'lesson', slug: 'scheduling-types-templates', label: 'Scheduling Types & Templates', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/scheduling-types-templates' },
+        ],
+        plannedContent: 'Needs deeper manual/paper-based scheduling coverage',
       },
       {
         id: 'k51',
         text: 'Types of appointment scheduling (time-specified, wave, modified wave, double booking, open booking, block)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Scheduling Expansion',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'scheduling-types-templates', label: 'Scheduling Types & Templates', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/scheduling-types-templates' },
+          { type: 'quiz', slug: 'clinic-encounters', label: 'Clinic Encounters Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/quiz' },
+        ],
       },
       {
         id: 'k52',
@@ -514,12 +522,12 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k53',
         text: 'Provider preferences, needs, and schedule',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'pre-scrubbing-schedule', label: 'Pre-Scrubbing the Schedule', section: 'Workflows', link: '/workflows/lessons/opening/pre-scrubbing-schedule' },
           { type: 'sop', slug: 'pre-scrubbing-schedule', label: 'Pre-Scrubbing Schedule SOP', section: 'Workflows', link: '/workflows/sops/pre-scrubbing-schedule' },
+          { type: 'lesson', slug: 'scheduling-types-templates', label: 'Scheduling Types & Templates', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/scheduling-types-templates' },
         ],
-        plannedContent: 'Needs scheduling matrix and provider template detail',
       },
       {
         id: 'k54',
@@ -545,9 +553,11 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k57',
         text: 'Procedures to avoid duplicate EHR creation during scheduling (two identifiers, maiden/married name)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'EHR Practice Lab module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'duplicate-records', label: 'Duplicate Records: Prevention & Resolution', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/duplicate-records' },
+          { type: 'quiz', slug: 'non-clinic-encounters', label: 'Non-Clinic Encounters Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/quiz' },
+        ],
       },
       {
         id: 'k58',
@@ -633,6 +643,7 @@ export const cmaaDomains: CMAAdomain[] = [
         coverageStatus: 'partial',
         activities: [
           { type: 'lesson', slug: 'new-patient-check-in', label: 'New Patient Check-In', section: 'Workflows', link: '/workflows/lessons/during-visit/new-patient-check-in' },
+          { type: 'lesson', slug: 'encounter-lifecycle', label: 'The Encounter Lifecycle', section: 'EHR & PM', link: '/ehr-fundamentals/clinic-encounters/encounter-lifecycle' },
         ],
         plannedContent: 'Needs dedicated AOB, NPP, advance directive content',
       },
@@ -678,16 +689,20 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k70',
         text: 'Procedures to identify and avoid creation of duplicate electronic health records',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'EHR Practice Lab module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'duplicate-records', label: 'Duplicate Records: Prevention & Resolution', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/duplicate-records' },
+          { type: 'quiz', slug: 'non-clinic-encounters', label: 'Non-Clinic Encounters Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/quiz' },
+        ],
       },
       {
         id: 'k71',
         text: 'Procedures to follow if duplicate health record is identified (notify staff, merging)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'EHR Practice Lab module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'duplicate-records', label: 'Duplicate Records: Prevention & Resolution', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/duplicate-records' },
+          { type: 'quiz', slug: 'non-clinic-encounters', label: 'Non-Clinic Encounters Quiz', section: 'EHR & PM', link: '/ehr-fundamentals/non-clinic-encounters/quiz' },
+        ],
       },
       {
         id: 'k72',

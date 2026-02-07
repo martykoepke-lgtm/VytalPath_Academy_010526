@@ -74,6 +74,12 @@ export const seoConfigs = {
     keywords: 'medical terminology, medical prefixes, medical suffixes, root words, medical abbreviations, healthcare vocabulary, anatomy terms',
     canonical: '/terminology',
   },
+  ehrFundamentals: {
+    title: 'EHR & Practice Management Training',
+    description: 'Learn how Practice Management and EHR systems work together. Master encounter types, scheduling methods, phone encounters, and duplicate record prevention.',
+    keywords: 'EHR training, practice management, encounter types, patient scheduling, MRN, FIN, phone encounters, duplicate records, healthcare systems',
+    canonical: '/ehr-fundamentals',
+  },
   workflows: {
     title: 'Healthcare Front Office Workflows & SOPs',
     description: 'Master front office workflows. Learn patient registration, scheduling, check-in, check-out, and appointment management procedures.',

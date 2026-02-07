@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Play, FileText, Sparkles, MessageCircle, ChevronRight,
   Heart, Scale, DollarSign, ClipboardList, BookA,
-  ArrowRight
+  ArrowRight, X
 } from 'lucide-react';
+
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 const learningModes = [
   {
@@ -62,10 +65,12 @@ const programSections = [
 ];
 
 export function ProgramIntro() {
+  const [showIntroVideo, setShowIntroVideo] = useState(false);
+
   return (
     <article className="max-w-3xl mx-auto">
       {/* Welcome Header */}
-      <header className="text-center mb-16">
+      <header className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-blue-100 rounded-3xl shadow-apple-sm">
           <img
             src="/vp-checkmark.png"
@@ -80,6 +85,63 @@ export function ProgramIntro() {
           A comprehensive training program designed to prepare you for success in healthcare front office administration.
         </p>
       </header>
+
+      {/* Welcome Video */}
+      {showIntroVideo ? (
+        <div className="mb-12 bg-white rounded-2xl shadow-apple border-gray-200/50 overflow-hidden">
+          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-blue-600" />
+              <span className="font-semibold text-gray-900">Welcome to VytalPath Academy</span>
+            </div>
+            <button
+              onClick={() => setShowIntroVideo(false)}
+              className="p-1 hover:bg-blue-100 rounded-lg transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-500" />
+            </button>
+          </div>
+          <div className="aspect-video bg-black">
+            <video
+              controls
+              autoPlay
+              className="w-full h-full"
+              controlsList="nodownload"
+            >
+              <source src={`${VIDEO_BASE_URL}/myintro.mp4`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      ) : (
+        <div className="mb-12 bg-blue-50/50 rounded-2xl border border-blue-100 overflow-hidden">
+          <div className="p-6 flex items-center gap-6">
+            <button
+              onClick={() => setShowIntroVideo(true)}
+              className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 transition-all cursor-pointer"
+            >
+              <Play className="w-8 h-8 text-white ml-1" />
+            </button>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-medium text-blue-600">Start Here</span>
+              </div>
+              <h2 className="text-lg font-bold text-gray-900 mb-1">Meet Your Instructor</h2>
+              <p className="text-gray-600 text-sm">
+                A quick introduction to the program and how it will prepare you for success.
+              </p>
+            </div>
+            <button
+              onClick={() => setShowIntroVideo(true)}
+              className="flex-shrink-0 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-2xl shadow-apple-sm transition-colors flex items-center gap-2"
+            >
+              <Play className="w-4 h-4" />
+              Watch Intro
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* How You'll Learn */}
       <section className="mb-16">

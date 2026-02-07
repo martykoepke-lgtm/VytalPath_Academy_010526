@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
   CheckCircle, ClipboardCheck, Trophy,
-  Sparkles, X, Heart
+  Heart
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -56,14 +56,6 @@ const foundationsModules = [
         video_url: `${VIDEO_BASE_URL}/ambjourney.mp4`,
         duration_minutes: 5,
       },
-      {
-        id: 'l4',
-        slug: 'encounters-and-identifiers',
-        title: 'Encounter Types & Patient Identifiers',
-        description: 'Learn the different encounter types in an EHR and the critical difference between MRN and FIN.',
-        content_type: 'reading' as ContentType,
-        duration_minutes: 8,
-      },
     ],
   },
 ];
@@ -75,7 +67,6 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
 
 export function FoundationsSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['m1']));
-  const [showIntroVideo, setShowIntroVideo] = useState(false);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -114,63 +105,6 @@ export function FoundationsSection() {
           Build your foundation in healthcare administration. Learn about different healthcare environments and your essential role within them.
         </p>
       </header>
-
-      {/* Welcome Video Section */}
-      {showIntroVideo ? (
-        <div className="mb-8 bg-white rounded-2xl shadow-apple border-gray-200/50 overflow-hidden">
-          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
-            <div className="flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold text-gray-900">Welcome to VytalPath Academy</span>
-            </div>
-            <button
-              onClick={() => setShowIntroVideo(false)}
-              className="p-1 hover:bg-blue-100 rounded-lg transition-colors"
-            >
-              <X className="w-5 h-5 text-gray-500" />
-            </button>
-          </div>
-          <div className="aspect-video bg-black">
-            <video
-              controls
-              autoPlay
-              className="w-full h-full"
-              controlsList="nodownload"
-            >
-              <source src={`${VIDEO_BASE_URL}/myintro.mp4`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      ) : (
-        <div className="mb-8 bg-blue-50/50 rounded-2xl border border-blue-100 overflow-hidden">
-          <div className="p-6 flex items-center gap-6">
-            <button
-              onClick={() => setShowIntroVideo(true)}
-              className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 transition-all cursor-pointer"
-            >
-              <Play className="w-8 h-8 text-white ml-1" />
-            </button>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-600">Start Here</span>
-              </div>
-              <h2 className="text-lg font-bold text-gray-900 mb-1">Welcome to VytalPath Academy</h2>
-              <p className="text-gray-600 text-sm">
-                Meet your AI instructor and discover how this program will prepare you for success.
-              </p>
-            </div>
-            <button
-              onClick={() => setShowIntroVideo(true)}
-              className="flex-shrink-0 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-2xl shadow-apple-sm transition-colors flex items-center gap-2"
-            >
-              <Play className="w-4 h-4" />
-              Watch Intro
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Progress Summary */}
       {completedLessons > 0 && (

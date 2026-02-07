@@ -2988,11 +2988,12 @@ How medication is given:
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
     module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-inpatient-encounter', nextLesson: 'encounters-and-identifiers', nextIsQuiz: false,
+    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-inpatient-encounter', nextLesson: null, nextIsQuiz: true,
   },
+  // ─── EHR & Practice Management Section ───
   'encounters-and-identifiers': {
     lesson: {
-      id: 'fs-l4', module_id: 'fs-m1', slug: 'encounters-and-identifiers',
+      id: 'ehr-l1', module_id: 'ehr-m1', slug: 'encounters-and-identifiers',
       title: 'Encounter Types & Patient Identifiers',
       description: 'Learn the different encounter types you\'ll work with in an EHR system and understand the critical difference between MRN and FIN.',
       content_type: 'reading', video_url: null,
@@ -3156,8 +3157,1270 @@ One of the biggest problems in healthcare data is **duplicate MRNs** — when th
       duration_minutes: 8, sort_order: 4,
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
-    module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-ambulatory-care-journey', nextLesson: null, nextIsQuiz: true,
+    module: { id: 'ehr-m1', course_id: 'ehr-fundamentals', slug: 'ehr-basics', title: 'Understanding Your Systems', description: 'PM and EHR fundamentals.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: null, nextLesson: 'pm-vs-ehr', nextIsQuiz: false,
+  },
+  'pm-vs-ehr': {
+    lesson: {
+      id: 'ehr-l2', module_id: 'ehr-m1', slug: 'pm-vs-ehr',
+      title: 'Practice Management vs EHR',
+      description: 'Understand what PM and EHR systems do, which screens you work in, and how they connect.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Practice Management vs EHR
+
+## What is a Practice Management System?
+
+A **Practice Management (PM) system** handles the **business side** of running a healthcare practice. Think of it as the administrative backbone — it's where the money, scheduling, and patient demographics live.
+
+**What the PM system manages:**
+
+- **Scheduling** — Appointment booking, provider schedule templates, room assignments
+- **Patient demographics** — Name, address, phone, DOB, emergency contacts, employer
+- **Insurance information** — Payer, plan type, policy/group numbers, subscriber info
+- **Billing & claims** — Charge entry, claim submission, payment posting, aging reports
+- **Eligibility verification** — Real-time insurance benefit checks
+- **Reporting** — Financial reports, productivity dashboards, no-show rates
+
+**As front office staff, you live in the PM system** for most of your day: scheduling appointments, registering patients, verifying insurance, and collecting payments.
+
+> **Key insight:** The PM system doesn't contain clinical notes, lab results, or medication lists. It's purely administrative and financial.
+
+---
+
+## What is an EHR?
+
+An **Electronic Health Record (EHR)** handles the **clinical side** — it's the patient's medical chart in digital form. This is where providers, nurses, and clinical staff document what happens during a patient encounter.
+
+**What the EHR manages:**
+
+- **Clinical documentation** — Progress notes, exam findings, assessments, plans
+- **Orders** — Lab orders, imaging orders, referral orders, procedure orders
+- **Results** — Lab values, radiology reports, pathology reports
+- **Medications** — Current medications, allergies, prescription history, eRx
+- **Problem list** — Active diagnoses, past medical history
+- **Clinical messaging** — Provider-to-provider messages, patient portal messages, nurse task lists
+
+**Providers and nurses live in the EHR** during patient encounters. Front office staff have **limited access** — you can view demographics, the encounter list, and some summary information, but you typically cannot see full clinical notes.
+
+> **EHR vs EMR:** These terms are often used interchangeably. Technically, an EMR (Electronic Medical Record) is a single practice's digital chart, while an EHR is designed to share data across organizations. In daily conversation, most people say "EHR."
+
+---
+
+## PM vs EHR: Side by Side
+
+| Task | System | Who Does It |
+|---|---|---|
+| Schedule an appointment | **PM** | Front desk |
+| Register a new patient | **PM** | Front desk |
+| Verify insurance eligibility | **PM** | Front desk |
+| Document vitals (blood pressure, weight) | **EHR** | Medical assistant |
+| Write a progress note | **EHR** | Provider |
+| Place a lab order | **EHR** | Provider/nurse |
+| Submit an insurance claim | **PM** | Billing staff |
+| Send an electronic prescription | **EHR** | Provider |
+| Post a payment | **PM** | Front desk/billing |
+| View lab results | **EHR** | Provider/nurse |
+| Check a patient's balance | **PM** | Front desk |
+| Route a phone message to a nurse | **EHR** | Front desk |
+
+**Notice the pattern:** PM = business/administrative tasks. EHR = clinical/medical tasks. Front desk primarily works in PM but dips into EHR for messaging and encounter management.
+
+---
+
+## How PM and EHR Connect
+
+In many organizations, PM and EHR are two separate systems that talk to each other through **interfaces** (automated data feeds). In others, they're **integrated** into a single platform.
+
+### Integrated Systems (One Platform)
+
+- **Examples:** Epic, athenahealth, eClinicalWorks
+- PM and EHR share the same database
+- When you register a patient in PM, the demographic data is instantly available in the EHR
+- When a provider enters charges in the EHR, they flow directly to PM billing
+- **Advantage:** No data duplication, seamless workflow
+
+### Interfaced Systems (Separate But Connected)
+
+- **Examples:** A practice using one vendor's PM and another's EHR
+- Data passes between systems via **HL7 messages** (a healthcare data standard) or **ADT feeds** (Admit-Discharge-Transfer notifications)
+- When you update a patient's address in PM, the interface sends the change to the EHR (but there may be a delay)
+- **Risk:** Data can get out of sync if interfaces fail
+
+### The Encounter Bridges Both Systems
+
+The **encounter** is the connection point:
+1. **PM creates the scheduling container** — date, time, provider, encounter type, expected charges
+2. **EHR holds the clinical documentation** — notes, orders, results for that visit
+3. **After the visit**, charges flow from EHR back to PM for billing
+
+---
+
+## Your Daily Workflow: PM vs EHR
+
+Here's how a typical front desk day moves between systems:
+
+**Morning (PM focus):**
+- Review today's schedule in PM
+- Check for pre-registration tasks (new patient forms, insurance updates)
+- Run eligibility checks for today's patients
+
+**Patient Check-In (PM → EHR):**
+- Verify demographics and insurance in PM
+- Collect copay (PM)
+- Open/activate the encounter (may trigger in both systems)
+- Patient status changes to "Arrived" (visible in both)
+
+**During the Day (EHR for messaging):**
+- Route phone messages to clinical pools in EHR
+- Check encounter statuses (who's been roomed, who's checking out)
+- Handle patient portal messages or route them to the right team
+
+**Patient Check-Out (PM):**
+- Schedule follow-up appointments in PM
+- Collect any remaining balance in PM
+- Provide visit summary (generated from EHR, printed from PM or EHR)
+
+**End of Day (PM):**
+- Reconcile payments in PM
+- Review tomorrow's schedule
+- Flag any missing insurance or incomplete registrations
+
+---
+
+## Common PM/EHR Systems You'll Encounter
+
+| System | Type | Common In |
+|---|---|---|
+| **Epic** | Integrated PM + EHR | Large health systems, hospitals |
+| **Cerner (Oracle Health)** | Integrated PM + EHR | Hospitals, large groups |
+| **athenahealth** | Integrated PM + EHR (cloud) | Mid-size practices |
+| **eClinicalWorks** | Integrated PM + EHR | Primary care, multi-specialty |
+| **NextGen** | Integrated PM + EHR | Specialty practices |
+| **Allscripts/Veradigm** | PM + EHR (modular) | Various practice sizes |
+
+**The good news:** While every system looks different, the **workflows are fundamentally the same**. Once you understand PM vs EHR concepts, you can adapt to any system. That's why this foundational knowledge matters more than memorizing one system's buttons.
+
+---
+
+## Quick Reference
+
+**Practice Management (PM):** Business side — scheduling, demographics, insurance, billing, payments. Front desk's primary workspace.
+
+**Electronic Health Record (EHR):** Clinical side — notes, orders, results, medications, messaging. Provider's primary workspace. Front desk has limited access.
+
+**How they connect:** Through interfaces (HL7/ADT) or as an integrated platform. The encounter bridges both systems.
+
+**Your role spans both:** PM for administrative tasks, EHR for encounter management and clinical messaging.`,
+      duration_minutes: 7, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m1', course_id: 'ehr-fundamentals', slug: 'ehr-basics', title: 'Understanding Your Systems', description: 'PM and EHR fundamentals.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'encounters-and-identifiers', nextLesson: 'ehr-navigation', nextIsQuiz: false,
+  },
+  'ehr-navigation': {
+    lesson: {
+      id: 'ehr-l3', module_id: 'ehr-m1', slug: 'ehr-navigation',
+      title: 'Navigating the EHR',
+      description: 'Tour the key EHR sections: patient banner, demographics, encounters, orders, results, and security.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Navigating the EHR
+
+## The Patient Banner
+
+Every EHR has a **patient banner** — a strip of critical information displayed at the top of the screen whenever you have a patient's chart open. It's always visible, no matter which tab or section you're viewing.
+
+**What's on the banner:**
+- **Patient name** (legal name, preferred name)
+- **Date of birth** and **age**
+- **MRN** (Medical Record Number)
+- **Allergies** (often highlighted in red if present)
+- **Preferred pharmacy**
+- **Primary care provider**
+- **Insurance** (may show plan name)
+
+**Why it matters:** The banner is your safety check. Before doing anything in a patient's chart — scheduling, messaging, updating information — glance at the banner to confirm you're in the **right patient's record**. Wrong-patient errors are serious safety events.
+
+> **Rule of thumb:** If someone walks up to your window, never assume the chart on your screen is theirs. Always verify by asking for their name and DOB, then check the banner.
+
+---
+
+## Demographics & Insurance
+
+This is where front office staff spend most of their EHR time. The demographics section contains all the patient's personal and insurance information.
+
+**What you'll update here:**
+- Legal name, preferred name, pronouns
+- Home address, mailing address
+- Phone numbers (home, cell, work)
+- Email address
+- Emergency contact
+- Employer information
+- Insurance cards (primary, secondary)
+- Subscriber information
+- Guarantor (the person financially responsible)
+
+**Important:** When you update demographics, the changes often flow directly to billing. An incorrect address means mailed statements go to the wrong place. Incorrect insurance means claims get denied. Accuracy here prevents downstream problems.
+
+### Tips for Demographic Updates
+- Always ask "Has anything changed since your last visit?" at check-in
+- Scan both sides of insurance cards — the back has claims addresses and phone numbers
+- If the patient has new insurance, collect old AND new cards (coordination of benefits)
+- Verify spelling of names against the photo ID
+
+---
+
+## The Encounter List
+
+The encounter list is a historical record of every interaction the patient has had with your organization. Think of it as a timeline of visits.
+
+**What you'll see:**
+- **Date** of each encounter
+- **Encounter type** (Office Visit, Phone, Lab Only, etc.)
+- **Provider** who was responsible
+- **Status** (Open, Closed, Cancelled)
+- **Department/location**
+
+**How front desk uses it:**
+- "When was the patient last seen?" — Check encounter list
+- "Who did they see last time?" — Check the provider column
+- "Is there an open encounter from today?" — Check status
+- "Were they seen within the last 3 years?" — Determines new vs established
+
+**Open vs Closed encounters:**
+- **Open** — Still in progress or awaiting final documentation
+- **Closed** — Provider has signed off, charges captured, documentation complete
+- Front desk should generally not close encounters (that's the provider's or billing's responsibility)
+
+---
+
+## Clinical Summary
+
+The clinical summary gives an overview of the patient's medical profile. While front desk staff typically don't modify this section, you should know what's here because **patients will ask about it**.
+
+**Key sections:**
+- **Problem list** — Active diagnoses (e.g., "Type 2 Diabetes," "Hypertension")
+- **Medications** — Current prescriptions with doses
+- **Allergies** — Drug allergies, food allergies, environmental allergies
+- **Immunizations** — Vaccination history
+- **Vitals history** — Blood pressure, weight, height trends
+- **Past surgical history**
+
+**What you CAN say to patients:**
+- "I can see you have an allergy listed — let me confirm that's still accurate"
+- "Your medications are listed in your chart — I'll make sure the nurse reviews them with you"
+
+**What you should NEVER do:**
+- Interpret lab results ("Your blood sugar looks high")
+- Diagnose or suggest treatments
+- Share clinical information with anyone other than the patient (without authorization)
+
+---
+
+## Orders, Results & Documents
+
+### Orders
+When a provider decides the patient needs a test, referral, or procedure, they create an **order** in the EHR:
+- **Lab orders** — Blood work, urinalysis, cultures
+- **Imaging orders** — X-ray, MRI, CT, ultrasound
+- **Referral orders** — Send patient to a specialist
+- **Procedure orders** — Schedule a minor procedure
+
+**Front desk role with orders:**
+- "The doctor ordered labs for you — here's where you can go to get them drawn"
+- Schedule imaging or procedure appointments
+- Fax or electronically send referral orders to specialists
+- Print order sheets if the patient needs a paper copy
+
+### Results
+Results flow back into the EHR when tests are completed:
+- Lab results appear in the results inbox
+- Imaging reports are attached to the order
+- Outside records may need to be scanned and uploaded
+
+**Critical rule:** Front desk staff should **NEVER interpret results** for patients. If a patient asks "What did my labs show?", the correct response is: "Your results are in the system. The provider will review them and reach out to you, or you can send a message through the patient portal."
+
+### Documents
+The documents section holds:
+- Scanned insurance cards, IDs, consent forms
+- Uploaded external records
+- Letters, referral documents, prior auth approvals
+- Visit summaries (After Visit Summary / AVS)
+
+---
+
+## Security & Access Controls
+
+EHR access is governed by **role-based permissions**. Not everyone can see everything.
+
+**What front desk typically CAN access:**
+- Patient demographics and insurance
+- Scheduling and encounter list
+- Message routing and task lists
+- Document scanning/uploading
+- Basic clinical summary (allergies, problem list)
+
+**What front desk typically CANNOT access:**
+- Full clinical notes (progress notes, psychiatry notes)
+- Detailed lab result values
+- Prescription details beyond what's on the medication list
+- Restricted records (VIP patients, employees, behavioral health)
+
+### Audit Trails
+
+**Every action in the EHR is logged.** Every chart you open, every field you view, every change you make creates an audit trail entry with your username, timestamp, and what you did.
+
+**Why this matters:**
+- If you access a chart without a business reason (curiosity about a celebrity, looking up a family member, checking a coworker's records), it will be discovered
+- HIPAA violations from unauthorized access result in termination and potential fines
+- Annual audits review access patterns — random charts are checked against your assigned patients
+
+### Break-the-Glass
+
+Some records have extra protection (employees, VIPs, behavioral health). Accessing them triggers a **"break-the-glass"** alert — you must provide a reason before proceeding. This is logged and reviewed.
+
+**When to break-the-glass:**
+- A protected patient checks in at your front desk and you need their demographics
+- An emergency where you need to verify allergies
+
+**When NOT to:**
+- Curiosity
+- A coworker asks you to look something up for them
+- You want to check your own records (request your own records through the proper channel)
+
+---
+
+## Quick Reference
+
+| EHR Section | What's There | Front Desk Role |
+|---|---|---|
+| **Patient Banner** | Name, DOB, MRN, allergies | Verify you're in the right chart |
+| **Demographics** | Address, phone, insurance, contacts | Update at every check-in |
+| **Encounter List** | All past visits with dates and providers | Look up visit history |
+| **Clinical Summary** | Problems, meds, allergies, vitals | Know what's there but don't modify |
+| **Orders & Results** | Labs, imaging, referrals, test results | Schedule/print orders, NEVER interpret results |
+| **Documents** | Scanned cards, consent forms, letters | Scan and upload documents |
+| **Security** | Role-based access, audit trails | Only access charts you have a reason to view |`,
+      duration_minutes: 8, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m1', course_id: 'ehr-fundamentals', slug: 'ehr-basics', title: 'Understanding Your Systems', description: 'PM and EHR fundamentals.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'pm-vs-ehr', nextLesson: null, nextIsQuiz: true,
+  },
+  // ─── Module 2: Clinic Encounters ───
+  'clinic-encounter-types': {
+    lesson: {
+      id: 'ehr-l4', module_id: 'ehr-m2', slug: 'clinic-encounter-types',
+      title: 'Clinic Encounter Types',
+      description: 'Deep dive into NP, EST, MAWV, TCM, Preventive, Procedure, and Consult encounters.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Clinic Encounter Types
+
+## New Patient (NP) Encounters
+
+A patient is considered **"new"** when they have not been seen by this specific provider (or any provider of the same specialty within the same practice) within the past **3 years**.
+
+**What makes NP encounters unique:**
+- **Longer appointment slots** — typically 30-60 minutes vs 15-20 for established
+- **Full registration required** — demographics, insurance, medical history questionnaire, consent forms
+- **Comprehensive intake forms** — Assignment of Benefits (AOB), Notice of Privacy Practices (NPP), financial responsibility agreement, release of information
+- **Higher reimbursement** — NP visit codes (99201-99205) pay more than established visit codes
+- **More front desk work** — You're building the patient's record from scratch
+
+**Front desk responsibilities for NP visits:**
+1. Verify the patient truly is "new" (search by DOB first, then name)
+2. Complete full demographic registration
+3. Scan photo ID and insurance cards
+4. Collect and process all intake forms
+5. Verify insurance eligibility and benefits
+6. Collect any applicable copay or deposit
+
+> **Common mistake:** A patient says "I'm new here" but was actually seen 2 years ago by a different provider in the same group. Always search before creating a new record.
+
+---
+
+## Established Patient (EST) Encounters
+
+A patient is **"established"** when they have been seen by the same provider (or same specialty in the group) within the past **3 years**.
+
+**What's different from NP:**
+- **Shorter appointment slots** — typically 15-20 minutes
+- **Abbreviated check-in** — verify demographics, confirm insurance, collect copay
+- **Record already exists** — MRN assigned, history on file, forms previously signed
+- **Lower reimbursement** — EST visit codes (99211-99215) pay less than NP codes
+
+**Front desk responsibilities for EST visits:**
+1. Verify patient identity (name + DOB)
+2. Confirm demographics — "Has your address or phone changed?"
+3. Confirm insurance — "Are you still with [payer name]?"
+4. Collect copay
+5. Check for outstanding balance from prior visits
+
+**Important:** Even though the record exists, you should **verify demographics at every visit**. People move, change phone numbers, get married, and switch insurance. A 30-second verification prevents billing problems later.
+
+---
+
+## Medicare Annual Wellness Visit (MAWV / AWV)
+
+The **Annual Wellness Visit** is a unique Medicare encounter type that is frequently misunderstood — both by patients and by staff.
+
+**What it IS:**
+- A **preventive health planning visit** covered by Medicare at no cost to the patient
+- Includes: health risk assessment questionnaire, review of medical/family history, list of current providers, advance care planning discussion, personalized prevention plan
+- Billed under specific codes: G0438 (initial AWV) or G0439 (subsequent AWV)
+
+**What it is NOT:**
+- It is NOT an annual physical exam
+- The provider does NOT perform a head-to-toe examination
+- It does NOT include labs or diagnostic testing (those are billed separately)
+
+**Why this matters for front desk:**
+- Patients often call asking for their "annual physical" or "yearly checkup" — you need to clarify whether they want an AWV or a preventive exam
+- **Wrong encounter type = wrong billing = denied claim or patient gets billed**
+- If the patient has Medicare, the AWV is $0 copay. If they want a physical exam, different rules apply.
+- Some practices schedule both an AWV and a preventive exam on the same day (with proper documentation)
+
+**Front desk tips:**
+- When scheduling, confirm: "Are you looking for your Medicare Annual Wellness Visit?"
+- Ensure the appointment is built as an AWV encounter type
+- Remind the patient: "This is your wellness visit — if you have other concerns, we may need to address those separately"
+
+---
+
+## Transitional Care Management (TCM)
+
+**TCM** encounters occur when a patient is **discharged from a hospital, skilled nursing facility (SNF), or rehab facility** and needs follow-up care.
+
+**Why TCM exists:** Patients are most vulnerable in the days after discharge. Medication errors, missed follow-ups, and readmissions are common. CMS created TCM codes to incentivize timely follow-up.
+
+**Time requirements:**
+- **TCM (moderate complexity)** — Face-to-face visit within **14 days** of discharge
+- **TCM (high complexity)** — Face-to-face visit within **7 days** of discharge
+
+**Additional requirements:**
+- An interactive contact (phone call or face-to-face) within **2 business days** of discharge
+- Medication reconciliation within 30 days
+
+**Front desk role in TCM:**
+1. Receive discharge notification (fax, electronic feed, or patient call)
+2. Schedule follow-up within the required timeframe (7 or 14 days)
+3. Attempt phone contact within 2 business days — document all attempts
+4. If you can't reach the patient, document: date, time, method, "no answer/voicemail left"
+5. Confirm discharge date (this determines the deadline)
+
+> **Revenue impact:** TCM visits reimburse significantly higher than regular office visits. Missing the scheduling window means the practice loses that revenue and the patient loses coordinated care.
+
+---
+
+## Other Common Encounter Types
+
+### Preventive / Well Visit
+- Annual physical exam (not the same as AWV)
+- Often covered at 100% by commercial insurance
+- Includes comprehensive exam, may include routine labs
+- Becomes a "problem visit" if the patient raises new complaints (affects billing)
+
+### Procedure
+- Minor outpatient procedures: injection, biopsy, skin lesion removal, joint aspiration
+- Requires specific encounter setup: procedure consent, supplies, appropriate time block
+- Front desk: verify prior authorization if required, ensure procedure slot is long enough
+
+### Consult
+- A **specialist evaluation** requested by a referring provider
+- Requires: referral on file, referring provider name, reason for consultation
+- Front desk: verify referral is active, ensure it matches the consulting provider/specialty
+
+### Pre-Op (Pre-Operative Clearance)
+- Medical evaluation before a scheduled surgery
+- Must be completed within a specific window (often 30 days before surgery)
+- Front desk: confirm surgery date, ensure appointment is timed correctly
+
+### Urgent / Same-Day
+- Unscheduled visits worked into the provider's schedule
+- Patient calls with acute concern: "I woke up with chest pain" or "My child has a fever of 103"
+- Front desk: follow triage protocol — some symptoms require immediate action, not scheduling
+
+---
+
+## Why Encounter Type Matters
+
+Selecting the **correct encounter type** at scheduling isn't just administrative housekeeping — it directly impacts:
+
+| What's Affected | Impact of Wrong Type |
+|---|---|
+| **Billing codes** | Wrong encounter type → wrong CPT codes → claim denial |
+| **Time allocation** | NP booked as EST → not enough time → provider runs behind |
+| **Forms & workflow** | NP without intake forms → incomplete record |
+| **Reimbursement** | AWV billed as office visit → lost revenue or patient billed incorrectly |
+| **Compliance** | TCM outside time window → can't bill TCM codes |
+| **Patient experience** | Patient expects one thing, gets another → confusion and complaints |
+
+**Front desk sets the stage.** When you select "New Patient" vs "Established" vs "AWV" vs "Procedure" at the time of scheduling, you're determining the entire downstream workflow. Get it right, and everything flows smoothly.`,
+      duration_minutes: 10, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m2', course_id: 'ehr-fundamentals', slug: 'clinic-encounters', title: 'Clinic Encounters', description: 'Encounter types and lifecycle.', sort_order: 2, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: null, nextLesson: 'encounter-lifecycle', nextIsQuiz: false,
+  },
+  'encounter-lifecycle': {
+    lesson: {
+      id: 'ehr-l5', module_id: 'ehr-m2', slug: 'encounter-lifecycle',
+      title: 'The Encounter Lifecycle',
+      description: 'Follow an encounter from scheduling through check-in, clinical workflow, charge capture, and billing.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# The Encounter Lifecycle
+
+## Stage 1: Scheduling (PM System)
+
+Every encounter begins when an appointment is created in the Practice Management system.
+
+**What happens:**
+- Appointment time slot is reserved on the provider's schedule
+- **Encounter type is selected** (NP, EST, AWV, Procedure, etc.)
+- Patient demographics are confirmed or entered
+- A **pending encounter** is generated in the system
+
+**Pre-visit tasks (before the patient arrives):**
+- **Eligibility verification** — Is their insurance active? What's their copay?
+- **Referral check** — If specialist visit, is there a valid referral on file?
+- **Pre-scrubbing** — Review tomorrow's schedule for missing info, expired insurance, unsigned forms
+- **Appointment reminders** — Automated calls, texts, or portal messages sent 24-48 hours before
+
+> **Think of scheduling as building the container.** The encounter type determines the shape of the container — how long it is, what forms are needed, what codes will be used.
+
+---
+
+## Stage 2: Check-In (PM → EHR)
+
+When the patient arrives, the encounter transitions from "Scheduled" to "Active."
+
+**Front desk check-in workflow:**
+1. **Greet the patient** — "Hi, can I have your name and date of birth?"
+2. **Verify identity** — Check photo ID against the record. Does the name and DOB match the patient banner?
+3. **Confirm demographics** — "Has your address, phone, or insurance changed since your last visit?"
+4. **Verify insurance** — Scan updated cards if applicable. Run real-time eligibility if not done pre-visit.
+5. **Collect copay** — Know the amount from eligibility check. Collect before or after the visit per office policy.
+6. **Update encounter status** — Mark patient as "Arrived" or "Checked In" in the system.
+7. **Activate the encounter** — In some systems, checking the patient in automatically opens the encounter in the EHR. In others, you manually open it.
+
+**Status flow:**
+Scheduled → **Arrived** → Ready for Provider → In Exam → Check-Out → Complete
+
+Each status change is visible on the schedule board, letting the clinical team know where each patient is in the process.
+
+---
+
+## Stage 3: Clinical Workflow (EHR)
+
+Once the patient is roomed, the clinical team takes over in the EHR.
+
+**What happens (not your responsibility, but good to know):**
+1. **Medical Assistant rooms the patient** — Takes vitals (BP, weight, temp, pulse), documents chief complaint
+2. **Provider enters the room** — Reviews history, performs exam, makes clinical decisions
+3. **Orders are placed** — Labs, imaging, referrals, prescriptions
+4. **Diagnosis is documented** — ICD-10 codes entered
+5. **Treatment plan is created** — Follow-up instructions, medication changes
+
+**What front desk sees during this stage:**
+- Patient status changes on the schedule: "In Exam" or "With Provider"
+- New orders may appear that require front desk action (scheduling referral, printing lab order)
+- The provider may send you a task: "Schedule this patient for follow-up in 2 weeks"
+
+---
+
+## Stage 4: Charge Capture (EHR → PM)
+
+After the visit, the provider documents the charges for the services rendered.
+
+**How charges flow:**
+1. Provider selects the **visit level** (E&M code: 99211-99215 for established, 99201-99205 for new)
+2. Provider enters **diagnosis codes** (ICD-10) that justify the visit
+3. Provider adds any **procedure codes** (CPT) for additional services performed
+4. These charges flow from the EHR to the PM system's billing module
+
+**In some practices, front desk is involved:**
+- The provider may hand you a **superbill** (encounter form) — a paper or digital checklist of services and diagnoses
+- You enter the charges into the PM system
+- You verify: Does the encounter type match the charges? Are the diagnosis codes present?
+
+**In other practices, charges are handled entirely by billing staff.** Know your office's workflow.
+
+> **Why this matters:** If charges don't get captured, the practice doesn't get paid. A missed superbill = lost revenue. A wrong diagnosis code = denied claim.
+
+---
+
+## Stage 5: Check-Out & Follow-Up (PM)
+
+When the clinical portion is complete, the patient returns to the front desk.
+
+**Check-out workflow:**
+1. **Schedule follow-up** — "The doctor would like to see you in 3 months." Book the next appointment in PM.
+2. **Provide visit summary** — Print or electronically send the **After Visit Summary (AVS)**, which includes: visit date, diagnoses discussed, medications, follow-up instructions, scheduled appointments
+3. **Process referrals** — If the provider ordered a referral, initiate it: fax to specialist, enter in referral tracking system
+4. **Collect remaining balance** — If there's a coinsurance amount or outstanding balance, collect per office policy
+5. **Print any orders** — Lab orders, imaging orders, or prescription printouts the patient needs
+
+**Not every practice does formal check-out.** In high-volume clinics, patients may leave without checking out, and follow-up scheduling happens by phone later. Know your office's policy.
+
+---
+
+## Stage 6: Billing & Closure (PM)
+
+The final stage happens after the patient leaves — sometimes days or weeks later.
+
+**The billing cycle:**
+1. **Claim scrubbing** — The PM system (or a clearinghouse) checks the claim for errors: missing diagnosis, invalid code combinations, demographic mismatches
+2. **Claim submission** — Clean claims are submitted electronically to the insurance payer
+3. **Payer processing** — The insurance company adjudicates the claim (typically 14-30 days)
+4. **ERA/EOB received** — The payer sends back an **Electronic Remittance Advice (ERA)** showing what they paid and what the patient owes
+5. **Payment posting** — Payments are applied to the patient's account in PM
+6. **Patient statement** — If there's a remaining balance, a statement is mailed or sent electronically
+7. **Encounter closed** — Once all charges are paid and posted, the encounter is marked as closed
+
+**The full cycle — from scheduling to final payment — typically takes 30-90 days.**
+
+---
+
+## The Complete Lifecycle at a Glance
+
+| Stage | System | Owner | Key Action |
+|---|---|---|---|
+| 1. Scheduling | PM | Front desk | Create appointment, select encounter type |
+| 2. Check-In | PM → EHR | Front desk | Verify ID/insurance, collect copay, activate encounter |
+| 3. Clinical | EHR | Provider/MA | Document visit, place orders, prescribe |
+| 4. Charges | EHR → PM | Provider/billing | Capture E&M codes, diagnoses, procedures |
+| 5. Check-Out | PM | Front desk | Schedule follow-up, print AVS, process referrals |
+| 6. Billing | PM | Billing staff | Submit claim, post payments, send statements |
+
+**Your touchpoints:** Stages 1, 2, 5, and sometimes 4. You bookend the clinical encounter — what happens before and after the patient sees the provider is primarily your responsibility.`,
+      duration_minutes: 8, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m2', course_id: 'ehr-fundamentals', slug: 'clinic-encounters', title: 'Clinic Encounters', description: 'Encounter types and lifecycle.', sort_order: 2, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'clinic-encounter-types', nextLesson: 'scheduling-types-templates', nextIsQuiz: false,
+  },
+  'scheduling-types-templates': {
+    lesson: {
+      id: 'ehr-l6', module_id: 'ehr-m2', slug: 'scheduling-types-templates',
+      title: 'Scheduling Types & Templates',
+      description: 'Learn time-specified, wave, modified wave, block, and open scheduling methods.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Scheduling Types & Templates
+
+## Time-Specified Scheduling
+
+**Time-specified scheduling** (also called **stream scheduling**) assigns each patient a specific appointment time with a defined duration.
+
+**How it works:**
+- 9:00 AM — Patient A (15 min follow-up)
+- 9:15 AM — Patient B (30 min new patient)
+- 9:45 AM — Patient C (15 min follow-up)
+
+**Best for:** Specialty practices, procedures, longer consultations
+
+**Pros:**
+- Predictable schedule for providers and patients
+- Clear expectations for wait times
+- Easy to manage appointment length by type
+
+**Cons:**
+- One late patient or complex case creates a cascade delay
+- No-shows leave empty slots that can't easily be filled
+- Less flexibility for same-day requests
+
+---
+
+## Wave Scheduling
+
+**Wave scheduling** books multiple patients at the top of each hour (the "wave"), and they're seen in the order they arrive.
+
+**How it works:**
+- 9:00 AM — 3-4 patients all scheduled for 9:00
+- Patients are seen in arrival order
+- 10:00 AM — Next wave of 3-4 patients
+
+**Best for:** High-volume primary care, clinics with high no-show rates
+
+**Pros:**
+- Absorbs no-shows naturally (if one of four doesn't show, three still fill the hour)
+- Provider stays busy even if patients arrive late
+- Simple to schedule — fewer precise time calculations
+
+**Cons:**
+- Longer wait times for patients (especially those who arrive on time)
+- Can feel chaotic in the waiting room
+- Patient satisfaction may suffer
+
+---
+
+## Modified Wave Scheduling
+
+**Modified wave** is a hybrid — it takes the flexibility of wave scheduling and adds some structure.
+
+**How it works:**
+- 9:00 AM — 2 patients scheduled
+- 9:20 AM — 1 patient scheduled
+- 9:40 AM — open (buffer/catch-up time)
+- 10:00 AM — 2 patients scheduled
+
+**Best for:** Practices balancing volume with patient experience
+
+**Pros:**
+- Builds in catch-up time
+- Reduces wait times compared to pure wave
+- Still absorbs some no-show impact
+- Balances provider efficiency with patient satisfaction
+
+**Cons:**
+- More complex to set up in the PM system
+- Requires careful template design
+- Staff need to understand the pattern
+
+> **This is the most common scheduling method** in modern ambulatory practices because it balances efficiency with patient experience.
+
+---
+
+## Double-Booking
+
+**Double-booking** places two patients in the same time slot intentionally.
+
+**When it's used:**
+- One patient is seeing the **provider** while the other sees the **MA or nurse** for a quick task (injection, blood draw, vitals check)
+- A **same-day urgent request** needs to be worked in
+- A provider agrees to see an extra patient during a slot
+
+**How it's managed:**
+- The PM system shows two appointments stacked in the same slot
+- One is tagged as the "primary" appointment, the other may have a flag like "work-in" or "double-book"
+- The clinical team is aware and has planned the workflow
+
+**Risks:**
+- Extended wait times if both patients need the provider simultaneously
+- Provider burnout if double-booking is overused
+- Patient complaints about delays
+
+**Front desk rule:** Never double-book without the provider's or office manager's approval. Each provider has their own tolerance for double-booking.
+
+---
+
+## Open Access / Same-Day Scheduling
+
+**Open access** (also called **advanced access** or **same-day scheduling**) reserves a portion of the schedule for same-day appointment requests.
+
+**How it works:**
+- Provider has 20 appointment slots per day
+- 14 slots are pre-booked (follow-ups, physicals, etc.)
+- 6 slots are held open for same-day calls
+- When patients call that morning, they're offered one of the open slots
+
+**Best for:** Primary care practices wanting to reduce wait times for acute visits
+
+**Pros:**
+- Patients with urgent needs are seen the same day
+- Reduces ER visits for non-emergencies
+- Improves patient satisfaction and access scores
+
+**Cons:**
+- Requires accurate demand forecasting (too many open slots = wasted time; too few = patients still wait)
+- Follow-up scheduling competes with same-day demand
+- Providers may have unpredictable days
+
+---
+
+## Block Scheduling
+
+**Block scheduling** reserves specific time blocks for specific encounter types or purposes.
+
+**Example daily template:**
+| Time | Block Type |
+|---|---|
+| 8:00 - 9:00 AM | New Patients only |
+| 9:00 - 11:00 AM | Established Patients |
+| 11:00 - 12:00 PM | Procedures |
+| 1:00 - 2:00 PM | Same-Day/Urgent |
+| 2:00 - 4:00 PM | Established Patients |
+| 4:00 - 4:30 PM | Phone Encounters / Admin |
+
+**Best for:** Multi-specialty practices, procedure-heavy schedules, teaching environments
+
+**Pros:**
+- Ensures protected time for specific visit types
+- Prevents new patients from being squeezed into quick slots
+- Allows resource planning (procedure rooms, equipment, staff)
+
+**Cons:**
+- Less flexible — a follow-up patient can't book into a procedure block
+- May create access gaps if blocks don't match actual demand
+- Requires regular template review and adjustment
+
+---
+
+## Provider Schedule Templates
+
+A **schedule template** is the recurring weekly pattern that defines when a provider is available and what type of visits they accept during each time block.
+
+**Template components:**
+- **Days of the week** the provider works
+- **Start and end times** for each day
+- **Block definitions** — which hours are for which encounter types
+- **Appointment durations** — 15 min, 20 min, 30 min, 45 min, 60 min by type
+- **Location** — Which office or exam room (for multi-location practices)
+
+**Common template variations:**
+| Template | Description |
+|---|---|
+| Regular Clinic Day | Full day of patient appointments |
+| Half-Day | Morning or afternoon only (other half: OR, admin, teaching) |
+| Procedure Day | Blocks reserved for procedures, fewer standard visits |
+| Telehealth Day | Virtual visits only, no in-person appointments |
+| Admin Day | No patients — paperwork, meetings, chart review |
+
+**Front desk must know each provider's template** to schedule correctly. Booking a 30-minute new patient into a 15-minute established slot causes cascading delays.
+
+**Templates change:** Providers may modify their templates for vacation, conferences, holidays, or seasonal demand. Front desk should be notified of template changes in advance.
+
+---
+
+## Quick Reference: Which Method When?
+
+| Method | Best For | Key Advantage |
+|---|---|---|
+| **Time-Specified** | Specialty, procedures | Predictable timing |
+| **Wave** | High-volume primary care | Absorbs no-shows |
+| **Modified Wave** | Most ambulatory practices | Balance of efficiency and experience |
+| **Double-Booking** | Work-ins, dual workflows | Maximizes provider time |
+| **Open Access** | Primary care, urgent needs | Same-day availability |
+| **Block** | Multi-specialty, procedures | Protected time for specific types |`,
+      duration_minutes: 7, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m2', course_id: 'ehr-fundamentals', slug: 'clinic-encounters', title: 'Clinic Encounters', description: 'Encounter types and lifecycle.', sort_order: 2, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'encounter-lifecycle', nextLesson: null, nextIsQuiz: true,
+  },
+  // ─── Module 3: Non-Clinic Encounters ───
+  'phone-encounters': {
+    lesson: {
+      id: 'ehr-l7', module_id: 'ehr-m3', slug: 'phone-encounters',
+      title: 'Phone Encounters',
+      description: 'When and why phone encounters are created, documentation standards, and message routing.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Phone Encounters
+
+## When Is a Phone Encounter Created?
+
+Not every phone call creates a documented encounter. A phone encounter is created when the call involves a **clinical decision, medical advice, or action that needs to be part of the patient's permanent medical record**.
+
+**Creates a phone encounter:**
+- Nurse provides triage advice for symptoms
+- Provider authorizes a medication refill
+- Clinical staff calls patient with test results
+- Provider gives medical advice or changes a treatment plan
+- Referral coordinator discusses referral status with clinical implications
+
+**Does NOT create a phone encounter:**
+- Patient calls to schedule or reschedule an appointment (scheduling task, not clinical)
+- Patient asks about their bill or account balance (billing inquiry)
+- Patient calls to update their address or phone number (demographic update)
+- General office questions ("What are your hours?", "Do you accept my insurance?")
+
+> **Rule of thumb:** If the call involves a clinical decision or medical information that should be documented in the chart, it's a phone encounter. If it's purely administrative, it's not.
+
+---
+
+## Anatomy of a Phone Encounter
+
+When a phone encounter is created in the EHR, it contains specific fields:
+
+| Field | What Goes Here |
+|---|---|
+| **Patient** | Linked by MRN — ensures documentation goes to the right chart |
+| **Date/Time** | When the call occurred |
+| **Caller** | Who called — patient, spouse, pharmacy, other provider |
+| **Reason** | Brief description — "Requesting refill of lisinopril" or "Reporting fever x 3 days" |
+| **Conversation notes** | What was discussed, symptoms described, questions asked |
+| **Action taken** | What the clinical team did — "Advised to go to ER", "Refill sent to Walgreens", "Scheduled follow-up" |
+| **Follow-up needed** | Next steps — "Call back in 48 hours if no improvement", "Lab order placed" |
+| **Documented by** | Your name (or whoever documented the encounter) |
+
+**Front desk typically doesn't create the full phone encounter** — but you often create the initial **message** that gets routed to clinical staff, who then complete the encounter documentation.
+
+---
+
+## Routing & Message Pools
+
+When a patient calls with a clinical question, front desk serves as the **triage point** — you determine where the message should go.
+
+**Common message pools (team inboxes) in the EHR:**
+
+| Pool | Routes To | Example Calls |
+|---|---|---|
+| **Nurse Triage** | RN/LPN team | "I have a rash that's getting worse" |
+| **Refill Line** | Pharmacy tech / provider | "I need a refill on my blood pressure medication" |
+| **Lab Results** | Nurse / provider | "I had blood work done last week, any results?" |
+| **Referrals** | Referral coordinator | "Has my referral to the cardiologist been approved?" |
+| **Billing** | Billing department | "I got a bill I don't understand" |
+| **Medical Records** | HIM staff | "I need a copy of my records for a new doctor" |
+| **Provider Direct** | Specific provider's inbox | Provider requests patient call them directly |
+
+**Your role as front desk:**
+1. Answer the call with proper greeting
+2. Verify the patient's identity (name + DOB)
+3. Determine the nature of the call
+4. Create a message in the EHR with: patient link, caller info, reason, urgency level
+5. Route to the appropriate pool
+6. Let the patient know what to expect: "A nurse will call you back within [timeframe]"
+
+---
+
+## Documenting Patient Messages
+
+Here's a typical phone message workflow:
+
+**Patient calls:** "Hi, I'm a patient of Dr. Smith. I've had a headache for 3 days and it's getting worse. Should I be worried?"
+
+**Front desk creates a message:**
+- Patient: Jane Doe (MRN 00384712)
+- Caller: Patient
+- Reason: Headache x 3 days, worsening
+- Urgency: Routine (unless symptoms suggest emergency — then follow triage protocol)
+- Routed to: Nurse Triage pool
+
+**Nurse receives the message, calls patient back:**
+- Asks screening questions (fever? vision changes? worst headache of life?)
+- Provides advice based on protocol
+- Documents the full conversation in a **phone encounter**
+- If needed, schedules a same-day appointment or directs to ER
+
+**Your accuracy matters.** If you document "headache" but the patient actually said "worst headache of my life with vision changes," the nurse might not prioritize the call appropriately. Write down what the patient tells you — their words, not your interpretation.
+
+---
+
+## Refill Requests & Callbacks
+
+Prescription refill requests are one of the most common phone encounters.
+
+**Refill request workflow:**
+1. Patient calls: "I need a refill on my medication"
+2. Front desk documents:
+   - Medication name (or "the blue pill for blood pressure" — do your best)
+   - Pharmacy name and phone number
+   - Last fill date (if the patient knows)
+   - Number of refills remaining (if known)
+3. Route message to refill pool or provider's inbox
+4. Provider reviews and either:
+   - **Approves** — eRx sent to pharmacy
+   - **Denies** — Needs office visit first, or medication change needed
+   - **Needs info** — "Which pharmacy? What dose?"
+5. Patient is notified of outcome (by phone or portal message)
+
+**Callback encounters:**
+When clinical staff calls the patient back about results, refills, or clinical questions, that callback is documented as a phone encounter. The encounter records what was communicated and any actions taken.
+
+**Common refill red flags (route urgently):**
+- Insulin, blood thinners, seizure medications — missing doses can be dangerous
+- Patient says they've been out of medication for several days
+- Controlled substance refill requests — follow your office's specific protocol
+
+---
+
+## Quick Reference
+
+**Phone encounter = clinical call that should be documented in the medical record**
+
+**Your role:**
+1. Verify patient identity
+2. Document the message accurately (their words, not your interpretation)
+3. Route to the correct pool
+4. Set expectations for callback timing
+
+**Not every call is a phone encounter** — scheduling, billing, and general questions are handled separately.`,
+      duration_minutes: 6, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m3', course_id: 'ehr-fundamentals', slug: 'non-clinic-encounters', title: 'Non-Clinic Encounters', description: 'Phone and non-visit encounters.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: null, nextLesson: 'non-visit-encounters', nextIsQuiz: false,
+  },
+  'non-visit-encounters': {
+    lesson: {
+      id: 'ehr-l8', module_id: 'ehr-m3', slug: 'non-visit-encounters',
+      title: 'Non-Visit Encounters',
+      description: 'eRx, lab-only orders, imaging orders, prior auth encounters, and letter encounters.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Non-Visit Encounters
+
+## What Are Non-Visit Encounters?
+
+Not every encounter requires the patient to walk through your doors. **Non-visit encounters** are documented interactions that happen without a face-to-face clinic appointment. They exist because healthcare activity happens between visits — prescriptions need refilling, lab results need reviewing, and paperwork needs processing.
+
+As front office staff, you'll see these encounter types in the patient's encounter list and may be involved in initiating or tracking some of them.
+
+---
+
+## eRx (Electronic Prescription) Encounters
+
+An **eRx encounter** is created when a provider sends a prescription electronically **without an associated office visit**.
+
+**Common scenarios:**
+- Provider reviews lab results and adjusts a medication dose — sends new eRx
+- Patient calls requesting a refill — provider authorizes and sends eRx
+- After a hospital discharge, the PCP reviews discharge meds and sends maintenance prescriptions
+- Provider wants to start a new medication based on a phone consultation
+
+**How it works:**
+1. Provider opens the patient's chart
+2. Creates or opens an eRx encounter
+3. Prescribes the medication electronically (sent directly to pharmacy via Surescripts network)
+4. Encounter is documented and closed
+
+**Front desk role:** Minimal. You might take the initial refill request (phone encounter), but the eRx itself is handled by the provider. When patients call asking "Did my doctor send in my prescription?", you can check the encounter list or medication history to confirm.
+
+---
+
+## Lab-Only & Imaging-Only Orders
+
+Sometimes a provider orders tests **outside of a regular visit**. This creates a non-visit encounter specifically for the order.
+
+### Lab-Only Encounters
+- **Example:** Provider orders annual bloodwork (CBC, metabolic panel, A1C) without an office visit
+- **Workflow:** Order placed in EHR → lab order printed or sent electronically → patient goes to lab draw station or outside lab → results return to EHR → provider reviews
+- **Front desk role:** May hand the patient a printed lab order, direct them to the lab, or schedule a lab appointment
+
+### Imaging-Only Encounters
+- **Example:** Provider orders a follow-up X-ray or MRI based on prior visit findings
+- **Workflow:** Order placed → imaging scheduled (you may do this) → patient goes to imaging center → report returns to EHR → provider reviews
+- **Front desk role:** Schedule the imaging appointment, provide the order to the patient, verify prior authorization if required
+
+**Key point:** These encounters generate charges even though no office visit occurred. The lab or imaging facility bills separately for performing the test, and the provider may bill for ordering and interpreting the results.
+
+---
+
+## Results Entry Encounters
+
+A **results entry encounter** is created when external results or records need to be manually entered into the patient's chart.
+
+**When this happens:**
+- Patient brings lab results from an outside facility
+- Records arrive from a referring provider or hospital
+- Pathology reports come from an external lab
+- Patient provides records from a specialist not connected to your EHR
+
+**Who creates them:** Usually HIM (Health Information Management) or clinical support staff
+
+**Front desk role:**
+- Accept documents from the patient at the front window
+- Scan and upload to the patient's chart (or place in the scanning queue)
+- Note the document type and source for the staff who will file it
+- If urgent (e.g., ER records, critical lab values), flag for immediate clinical review
+
+---
+
+## Prior Authorization Encounters
+
+Some practices create a dedicated encounter to **track the prior authorization process** from request to resolution.
+
+**What prior authorization is:** Certain services, medications, or procedures require insurance company approval before they'll be covered. The practice must submit clinical documentation proving medical necessity.
+
+**Prior auth encounter workflow:**
+1. Provider orders a service requiring prior auth (e.g., MRI, specialty medication, surgery)
+2. A prior auth encounter is created to track the request
+3. Clinical documentation is gathered and submitted to the payer
+4. Payer reviews and responds: **Approved**, **Denied**, or **Pending additional info**
+5. If denied, an appeal may be filed
+6. The encounter tracks all dates, communications, and outcomes
+
+**Front desk / referral coordinator role:**
+- Identify when a service requires prior auth (the PM system or EHR may flag this)
+- Initiate the auth request or hand off to the auth team
+- Track status and follow up with the payer
+- Notify the patient and scheduling team when approved
+- Document denial reasons if applicable
+
+> **Revenue impact:** A service performed without required prior auth may not be covered — the patient or practice absorbs the cost. This is one of the highest-stakes administrative processes.
+
+---
+
+## Letter & Correspondence Encounters
+
+Healthcare practices handle many types of written correspondence, and each may generate a non-visit encounter for documentation and tracking.
+
+**Common types:**
+
+| Letter Type | Description | Front Desk Role |
+|---|---|---|
+| **Medical records request** | Patient or attorney requests copies of the medical record | Intake the request, verify authorization, route to HIM |
+| **FMLA forms** | Employer-required forms for medical leave | Accept from patient, route to provider for completion |
+| **Disability forms** | Short or long-term disability documentation | Accept, create encounter or task for provider |
+| **School/camp physicals** | Forms requiring physician signature | Schedule visit or route form to provider |
+| **Referral letters** | Summary letters to specialists or other providers | Generated by provider, may need to be faxed by front desk |
+| **No-show letters** | Formal notice to patients who missed appointments | Generated per office policy |
+
+**Why these are encounters:** Each generates documentation that should be part of the patient's record. Some are billable (provider time completing forms). The encounter tracks: who requested what, when it was completed, and how it was delivered.
+
+---
+
+## Quick Reference
+
+| Encounter Type | Created When | Front Desk Role |
+|---|---|---|
+| **eRx** | Provider sends prescription without visit | Take refill request, confirm prescription was sent |
+| **Lab-Only** | Provider orders labs without visit | Provide lab order to patient, direct to lab |
+| **Imaging-Only** | Provider orders imaging without visit | Schedule imaging, provide order, verify prior auth |
+| **Results Entry** | External records need to be added to chart | Scan/upload documents, flag urgent items |
+| **Prior Auth** | Service requires insurance pre-approval | Initiate request, track status, notify when approved |
+| **Letter/Correspondence** | Written documentation requested | Intake request, route to appropriate staff |`,
+      duration_minutes: 6, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m3', course_id: 'ehr-fundamentals', slug: 'non-clinic-encounters', title: 'Non-Clinic Encounters', description: 'Phone and non-visit encounters.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'phone-encounters', nextLesson: 'duplicate-records', nextIsQuiz: false,
+  },
+  'duplicate-records': {
+    lesson: {
+      id: 'ehr-l9', module_id: 'ehr-m3', slug: 'duplicate-records',
+      title: 'Duplicate Records: Prevention & Resolution',
+      description: 'How duplicates happen, the two-identifier rule, MPI, and what to do when you find one.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Duplicate Records: Prevention & Resolution
+
+## How Duplicate Records Happen
+
+A **duplicate record** occurs when the same patient has two (or more) separate Medical Record Numbers (MRNs) in your system. Each MRN contains only a portion of the patient's history, creating dangerous gaps.
+
+**Common causes:**
+
+| Cause | Example |
+|---|---|
+| **Nickname vs legal name** | "Liz" registered as new, but "Elizabeth" already exists |
+| **Maiden vs married name** | "Maria Garcia" came back as "Maria Rodriguez" after marriage |
+| **Spelling errors** | "Johanson" vs "Johansson" vs "Johnson" |
+| **Patient says "I'm new"** | Patient forgets they were seen 4 years ago (or at a different location in the same system) |
+| **Skipping the search** | Busy front desk creates a new record without searching first |
+| **Transposed DOB** | 03/15/1985 entered as 05/13/1985 — search doesn't find the original |
+| **Hyphenated names** | "Smith-Jones" registered once as "Smith" and once as "Smith-Jones" |
+| **Multiple family members** | Mother and daughter with same name, different DOB — wrong one selected |
+
+> **The #1 cause of duplicate records is rushing.** When the front desk is busy and a patient says "I'm new," the temptation is to skip the search and create a record immediately. Those 30 seconds saved can create hours of cleanup work.
+
+---
+
+## The Two-Identifier Rule
+
+Before creating any new patient record, always verify with **at least two patient identifiers**.
+
+**Acceptable identifier combinations:**
+- Full legal name + date of birth (most common)
+- Full legal name + last 4 digits of SSN
+- Date of birth + phone number
+- Full legal name + address
+
+**Best search strategy:**
+1. **Start with DOB** — It's the most unique identifier. Search by date of birth first.
+2. **Then verify name** — Look at all results with that DOB. Check for similar names, maiden names, nicknames.
+3. **Still not found? Try phone number** — If DOB search returns nothing, try the phone number on file.
+4. **Ask the patient** — "Have you ever been seen at any of our locations? Even several years ago?"
+
+**Only create a new record after you've exhausted your search.**
+
+---
+
+## The Master Patient Index (MPI)
+
+The **Master Patient Index** is the master database of every patient ever registered in your healthcare system. It's the single source of truth for patient identity.
+
+**What the MPI contains:**
+- Every MRN ever assigned
+- Patient demographics associated with each MRN
+- Links to encounters, orders, and documents
+- Cross-references for enterprise systems (connecting MRNs across facilities)
+
+**Enterprise MPI:** Large health systems with multiple hospitals and clinics may have an **Enterprise MPI (EMPI)** that links patient records across all facilities. If a patient was seen at Hospital A and now visits Clinic B (same health system), the EMPI connects both records.
+
+**How MPI helps prevent duplicates:**
+- When you search for a patient, you're searching the MPI
+- Good MPI systems flag **potential matches** — "This patient may already exist: [similar name, same DOB]"
+- Some systems score match probability: "95% likely match" or "Possible duplicate"
+
+---
+
+## The Dangers of Duplicate Records
+
+Duplicate records aren't just an administrative inconvenience — they're a **patient safety risk**.
+
+### Clinical Safety Risks
+- **Split medication list** — Allergies listed under one MRN but not the other. Provider prescribes a drug the patient is allergic to because they're looking at the wrong record.
+- **Incomplete medical history** — Prior diagnoses, surgeries, or test results only appear under one MRN. Provider makes decisions without full information.
+- **Missed results** — Lab results post to MRN-A, but the provider is looking at MRN-B. Critical abnormal results go unreviewed.
+
+### Financial Risks
+- **Claim denials** — Insurance info on one MRN, visit on another. Claim submitted with mismatched data.
+- **Duplicate billing** — Same service accidentally billed under both MRNs.
+- **Lost revenue** — Time spent identifying and merging duplicates is time not spent on productive work.
+
+### Compliance Risks
+- **Joint Commission standards** require accurate patient identification
+- **CMS Conditions of Participation** mandate accurate medical records
+- **HIPAA implications** — Inaccurate records could lead to wrong-patient disclosures
+
+---
+
+## What To Do When You Find a Duplicate
+
+**Critical rule: NEVER merge records yourself.** Merging MRNs is a specialized process that requires careful review of both records to ensure no data is lost.
+
+**When you suspect a duplicate:**
+
+1. **Document both MRNs** — Write down or screenshot both record numbers
+2. **Note how you discovered it** — "Patient checked in, found existing record under different name"
+3. **Identify which record is more complete** — Which has more encounters? More recent activity? Which has the correct insurance?
+4. **Report to HIM (Health Information Management) or your supervisor** — Follow your office's specific duplicate reporting process
+5. **Use the correct record for today's visit** — If one record clearly has more history, use that one (ask your supervisor if unsure)
+6. **Flag the record** — Most EHRs have a "potential duplicate" flag or alert feature. Use it.
+
+**What the merge team does:**
+- Reviews both records side by side
+- Determines which MRN will be the "surviving" record
+- Moves all encounters, orders, results, and documents to the surviving MRN
+- Deactivates the duplicate MRN (but keeps it linkable for audit purposes)
+- Verifies that no data was lost in the merge
+
+---
+
+## Prevention Best Practices
+
+### At Registration
+- **Always search before creating.** No exceptions. Even if the patient insists they're new.
+- **Search by DOB first** — It's the most reliable search field
+- **Try multiple search variations** — If "Johnson" returns nothing, try "Johanson" or "Johnsen"
+- **Ask explicitly:** "Have you ever been seen at any of our locations? Even for an ER visit or lab work?"
+- **Check for similar names** — If you find "Robert Smith" with the same DOB, ask: "Do you also go by Robert? Bobby? Bob?"
+
+### At Check-In
+- **Verify photo ID** against the record — does the name and photo match?
+- **Confirm DOB verbally** — "Can you confirm your date of birth for me?"
+- **Watch for alerts** — If the system shows a "potential duplicate" warning, investigate before proceeding
+
+### Ongoing Vigilance
+- If you notice two patients with very similar demographics during your workday, flag it
+- If a patient mentions being seen at another location in your system, verify the records are linked
+- If you spot a record that looks like it hasn't been used in years but a similar active record exists, report it
+
+---
+
+## Quick Reference
+
+| Situation | Action |
+|---|---|
+| Patient says "I'm new" | Search by DOB first. Then verify name. Ask about prior visits. |
+| Search returns a possible match | Verify with patient: name, DOB, address. Confirm it's the same person. |
+| You find a definite duplicate | Document both MRNs. Report to HIM. Do NOT merge yourself. |
+| System shows "potential duplicate" alert | Investigate before proceeding. Do not dismiss the alert. |
+| Not sure if it's a duplicate | Ask your supervisor. It's better to check than to create another duplicate. |
+
+**Prevention is always better than cleanup.** The 30 seconds you spend searching thoroughly saves hours of merge work and prevents potential safety risks.`,
+      duration_minutes: 6, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m3', course_id: 'ehr-fundamentals', slug: 'non-clinic-encounters', title: 'Non-Clinic Encounters', description: 'Phone and non-visit encounters.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'non-visit-encounters', nextLesson: null, nextIsQuiz: true,
   },
   // Medical Law & Ethics Section
   'hipaa-basics': {
@@ -3270,6 +4533,7 @@ function getSectionPrefix(): { prefix: string; backPath: string; backLabel: stri
     { match: '/insurance/', prefix: '/insurance', backPath: '/insurance', backLabel: 'Back to Insurance' },
     { match: '/terminology/', prefix: '/terminology', backPath: '/terminology', backLabel: 'Back to Terminology' },
     { match: '/workflows/lessons/', prefix: '/workflows/lessons', backPath: '/workflows', backLabel: 'Back to Workflows' },
+    { match: '/ehr-fundamentals/', prefix: '/ehr-fundamentals', backPath: '/ehr-fundamentals', backLabel: 'Back to EHR & PM' },
   ];
   for (const s of sectionPrefixes) {
     if (path.startsWith(s.match)) return s;

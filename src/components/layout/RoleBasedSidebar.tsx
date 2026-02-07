@@ -12,6 +12,7 @@ import {
   BarChart3,
   Search,
   Compass,
+  Monitor,
   type LucideIcon
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -32,7 +33,9 @@ const studentNavItems: NavItem[] = [
   { path: '/medical-law-ethics', label: 'Compliance', icon: Scale },
   { path: '/insurance', label: 'Insurance & Billing', icon: DollarSign },
   { path: '/workflows', label: 'Front Office Workflows', icon: ClipboardList },
+  { path: '/ehr-fundamentals', label: 'EHR & PM', icon: Monitor },
   { path: '/terminology', label: 'Terminology', icon: BookA },
+  { path: '/ehr-lab', label: 'EHR Practice Lab', icon: Monitor },
   { path: '/practice', label: 'Job Readiness', icon: Briefcase },
   { path: '/progress', label: 'CMAA Progress', icon: BarChart3 },
   { path: '/search', label: 'Search', icon: Search },

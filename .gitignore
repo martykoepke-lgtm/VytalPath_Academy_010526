@@ -21,3 +21,11 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Video files (hosted on Supabase Storage)
+*.mp4
+
+# Temp files
+nul
+tmpclaude-*
+supabase/.temp/
