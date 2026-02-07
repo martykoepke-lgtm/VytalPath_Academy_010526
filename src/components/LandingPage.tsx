@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Clock } from 'lucide-react';
-// Note: Custom icons defined below replace Shield, FileText, BookOpen, Zap, User, Building2
+import {
+  ArrowRight, CheckCircle, Clock,
+  Play, FileText, Sparkles, MessageCircle, Award, Brain
+} from 'lucide-react';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
@@ -64,23 +66,6 @@ const IconWorkflows = () => (
   </svg>
 );
 
-const IconUser = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-    <circle cx="12" cy="8" r="4" className="fill-current"/>
-    <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-
-const IconBuilding = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-    <rect x="3" y="6" width="18" height="15" rx="2" className="fill-current"/>
-    <rect x="7" y="10" width="3" height="3" rx="0.5" className="fill-white/30"/>
-    <rect x="14" y="10" width="3" height="3" rx="0.5" className="fill-white/30"/>
-    <rect x="7" y="15" width="3" height="3" rx="0.5" className="fill-white/30"/>
-    <rect x="14" y="15" width="3" height="3" rx="0.5" className="fill-white/30"/>
-    <path d="M12 6V3M9 3H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
 
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
@@ -158,62 +143,55 @@ export function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 pb-10 md:pt-8 md:pb-14">
           <div className="text-center">
-            {/* Prominent Logo */}
-            <div className="mb-8">
+            <div className="mb-6">
               <img
                 src="/vytalpath-logo.png"
                 alt="VytalPath Academy"
-                className="h-28 md:h-36 lg:h-44 w-auto mx-auto"
+                className="h-36 md:h-48 w-auto mx-auto"
               />
             </div>
 
-            <div className="inline-block mb-8">
-              <div className="flex items-center gap-2 bg-blue-50 text-blue-600 px-5 py-2.5 rounded-full text-sm font-medium border border-blue-100">
-                <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                <span>Professional Healthcare Training</span>
-              </div>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-6 leading-tight">
-              Master Front Office Skills
-              <span className="block text-blue-600 mt-2">
-                for Healthcare
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-4 leading-tight">
+              How do you get a healthcare job
+              <span className="block text-blue-600 mt-1">
+                with no experience?
               </span>
             </h1>
 
-            <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Comprehensive training for medical receptionists, referral coordinators, and clinic staff. Learn insurance, terminology, workflows, and more.
+            <p className="text-lg md:text-xl font-light text-gray-500 max-w-2xl mx-auto mb-8 leading-relaxed">
+              You get trained. VytalPath Academy is the only platform purpose-built for healthcare front office roles — insurance, HIPAA, workflows, terminology, and more. Job-ready in weeks, not months.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
               <button
                 onClick={() => setAuthModal('signUp')}
-                className="group px-8 py-4 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg flex items-center gap-2"
+                className="group px-8 py-3.5 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg flex items-center gap-2"
               >
                 Start Learning Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
               <a
                 href="#pricing"
-                className="px-8 py-4 text-lg font-medium text-gray-700 border-2 border-gray-200 rounded-2xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
+                className="px-8 py-3.5 text-lg font-medium text-gray-700 border-2 border-gray-200 rounded-2xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
               >
                 View Pricing
               </a>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-20">
+            <div className="grid grid-cols-5 gap-3 max-w-3xl mx-auto">
               {[
-                { value: '20+', label: 'Video Lessons' },
+                { value: '5', label: 'Training Domains' },
+                { value: '30', label: 'Lessons' },
+                { value: '21', label: 'Videos' },
                 { value: '24', label: 'SOP Guides' },
-                { value: '5', label: 'Training Modules' },
-                { value: '7+', label: 'Hours of Content' },
+                { value: '24/7', label: 'AI Tutor' },
               ].map((stat) => (
-                <div key={stat.label} className="bg-white rounded-2xl p-5 text-center border border-gray-200/50 shadow-apple">
-                  <div className="text-3xl font-semibold text-gray-900 mb-1">{stat.value}</div>
-                  <div className="text-sm font-light text-gray-500">{stat.label}</div>
+                <div key={stat.label} className="bg-white rounded-2xl p-4 text-center border border-gray-200/50 shadow-apple-sm">
+                  <div className="text-2xl font-semibold text-gray-900 mb-0.5">{stat.value}</div>
+                  <div className="text-xs font-light text-gray-500">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -221,137 +199,101 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-gray-50/50 py-20 md:py-32">
+      {/* How You'll Learn */}
+      <section className="bg-gray-50/50 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-semibold tracking-tight text-gray-900 mb-4">
-              Choose Your Path
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-3">
+              How You'll Learn
             </h2>
-            <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto">
-              Invest in your career or train your entire team
+            <p className="text-lg font-light text-gray-500 max-w-xl mx-auto">
+              Every topic combines multiple formats to help you understand, practice, and retain
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Individual Plan */}
-            <div className="bg-white rounded-2xl p-8 shadow-apple border border-gray-200/50 hover-lift transition-all duration-300">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center text-white p-2.5">
-                  <IconUser />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+            {[
+              { icon: Play, label: 'Video Lessons', desc: 'Expert-led walkthroughs' },
+              { icon: FileText, label: 'Written SOPs', desc: 'Step-by-step desk references' },
+              { icon: Brain, label: 'Quizzes', desc: 'Test your knowledge' },
+              { icon: Sparkles, label: 'Flashcards', desc: 'Interactive practice' },
+              { icon: MessageCircle, label: 'AI Tutor', desc: 'Ask anything, anytime' },
+              { icon: Award, label: 'Certificate', desc: 'Proof of completion' },
+            ].map((mode) => (
+              <div key={mode.label} className="bg-white rounded-2xl p-5 text-center border border-gray-200/50 shadow-apple-sm hover-lift transition-all duration-300">
+                <div className="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                  <mode.icon className="w-5 h-5 text-blue-600" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-medium text-gray-900">Individual</h3>
-                  <p className="text-sm text-gray-500">Self-paced learning</p>
-                </div>
+                <h4 className="text-sm font-medium text-gray-900 mb-0.5">{mode.label}</h4>
+                <p className="text-xs text-gray-400">{mode.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <div className="mb-6">
-                <span className="text-4xl font-semibold text-gray-900">$327</span>
-                <span className="text-gray-500 font-light">/year</span>
-              </div>
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-white py-16 md:py-20">
+        <div className="max-w-xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-white rounded-2xl p-8 shadow-apple border border-gray-200/50 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-1">
+              Full Access
+            </h2>
+            <p className="text-sm text-gray-500 mb-6">Everything you need to become job-ready</p>
 
-              <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                Perfect for career changers, new hires, or anyone seeking professional development in healthcare administration.
-              </p>
-
-              <ul className="space-y-3 mb-8">
-                {[
-                  '5 modules now + new content weekly',
-                  '20+ video lessons & 24 SOPs',
-                  'Interactive quizzes & flashcards',
-                  'Certificate of completion',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">
-                    <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                onClick={() => setAuthModal('signUp')}
-                className="w-full py-3.5 px-4 text-white font-medium bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
-              >
-                Get Started
-              </button>
+            <div className="mb-6">
+              <span className="text-5xl font-semibold text-gray-900">$327</span>
+              <span className="text-gray-400 font-light text-lg">/year</span>
             </div>
 
-            {/* Organization Plan */}
-            <div className="bg-gray-900 rounded-2xl p-8 shadow-apple-lg text-white relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-white/15 text-white text-xs font-medium px-3 py-1 rounded-full">
-                Save up to 70%
-              </div>
+            <ul className="space-y-2.5 mb-8 text-left max-w-xs mx-auto">
+              {[
+                'All 5 training domains',
+                '20+ video lessons & 24 SOPs',
+                'Interactive quizzes & flashcards',
+                'AI study assistant on every page',
+                'Certificate of completion',
+                'New content added weekly',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
 
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white/15 rounded-2xl flex items-center justify-center text-white p-2.5">
-                  <IconBuilding />
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium">Organizations</h3>
-                  <p className="text-sm text-gray-400">Train your team</p>
-                </div>
-              </div>
+            <button
+              onClick={() => setAuthModal('signUp')}
+              className="w-full py-3.5 px-4 text-white font-medium bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
+            >
+              Get Started
+            </button>
 
-              <div className="mb-6">
-                <span className="text-3xl font-semibold">Volume Pricing</span>
-                <p className="text-gray-400 text-sm mt-1">As low as $99/seat/year</p>
-              </div>
-
-              <div className="bg-white/10 rounded-2xl p-5 mb-6 space-y-2.5 text-sm">
-                {[
-                  { seats: '1-5 seats', price: '$327/seat' },
-                  { seats: '6-15 seats', price: '$199/seat' },
-                  { seats: '16-50 seats', price: '$149/seat' },
-                  { seats: '51+ seats', price: '$99/seat' },
-                ].map((tier) => (
-                  <div key={tier.seats} className="flex justify-between">
-                    <span className="text-gray-300">{tier.seats}</span>
-                    <span className="font-medium">{tier.price}</span>
-                  </div>
-                ))}
-              </div>
-
-              <ul className="space-y-3 mb-8 text-sm text-gray-300">
-                {[
-                  'Admin dashboard with progress tracking',
-                  'Personalized student invite links',
-                  'Team completion reports',
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5">
-                    <CheckCircle className="w-4 h-4 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing"
-                className="w-full py-3.5 px-4 text-gray-900 font-medium bg-white rounded-2xl hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 shadow-apple-sm"
-              >
-                Contact for Team Access
-                <ArrowRight className="w-4 h-4" />
+            <p className="text-xs text-gray-400 mt-4">
+              Training a team?{' '}
+              <a href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing" className="text-blue-600 hover:text-blue-700 transition-colors">
+                Contact us for volume pricing
               </a>
-            </div>
+            </p>
           </div>
         </div>
       </section>
 
       {/* Curriculum Preview */}
-      <section className="bg-white py-20 md:py-32">
+      <section className="bg-white py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl font-semibold tracking-tight text-gray-900 mb-4">
               What You'll Learn
             </h2>
             <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto">
-              5 modules available now, with new content added weekly
+              5 training domains covering every skill your front desk needs
             </p>
           </div>
 
           {/* Available Now */}
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-8">
+          <div className="mb-12">
+            <div className="flex items-center gap-2 mb-6">
               <div className="w-2.5 h-2.5 bg-blue-500 rounded-full animate-pulse"></div>
               <span className="text-sm font-medium text-blue-600 uppercase tracking-wider">Available Now</span>
             </div>
@@ -380,7 +322,7 @@ export function LandingPage() {
 
           {/* Coming Soon */}
           <div>
-            <div className="flex items-center gap-2 mb-8">
+            <div className="flex items-center gap-2 mb-6">
               <Clock className="w-4 h-4 text-gray-400" />
               <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">Coming Soon</span>
             </div>
@@ -405,7 +347,7 @@ export function LandingPage() {
           </div>
 
           {/* View Full Curriculum Link */}
-          <div className="text-center mt-16">
+          <div className="text-center mt-10">
             <button
               onClick={() => setShowCurriculum(true)}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300"
@@ -418,13 +360,13 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-900 py-20 md:py-28">
+      <section className="bg-gray-900 py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h3 className="text-4xl font-semibold tracking-tight text-white mb-4">
+          <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3">
             Ready to Advance Your Career?
           </h3>
-          <p className="text-xl font-light text-gray-400 mb-10 leading-relaxed">
-            Join thousands of healthcare professionals building their skills with VytalPath Academy
+          <p className="text-lg font-light text-gray-400 mb-8 leading-relaxed">
+            Join healthcare professionals building their skills with VytalPath Academy
           </p>
           <button
             onClick={() => setAuthModal('signUp')}
