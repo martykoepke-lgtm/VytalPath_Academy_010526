@@ -196,11 +196,11 @@ export function AdministrationSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-teal-100 to-teal-200 rounded-2xl">
-            <Building2 className="w-10 h-10 text-teal-600" />
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-4 bg-blue-100 rounded-3xl shadow-apple-sm">
+            <Building2 className="w-10 h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Office Administration</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Office Administration</h1>
+          <p className="text-xl font-light text-gray-500 leading-relaxed max-w-2xl mx-auto">
             Master the operational procedures that keep the office running smoothly. From opening to closing, these administrative tasks are essential for every front office professional.
           </p>
         </header>
@@ -210,7 +210,7 @@ export function AdministrationSection() {
           <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-teal-600" />
+                <Building2 className="w-4 h-4 text-blue-600" />
                 <span className="font-medium text-gray-900 text-sm">Section Overview</span>
               </div>
               <button
@@ -235,10 +235,10 @@ export function AdministrationSection() {
         ) : (
           <button
             onClick={() => setShowSectionIntro(true)}
-            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-teal-300 hover:bg-teal-50/50 transition-all flex items-center gap-4 text-left"
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-200 hover:bg-blue-50/50 transition-all flex items-center gap-4 text-left"
           >
-            <div className="flex-shrink-0 w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
-              <Play className="w-5 h-5 text-teal-600" />
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-blue-600" />
             </div>
             <div className="flex-1">
               <h3 className="font-semibold text-gray-900">Section Overview</h3>
@@ -249,9 +249,9 @@ export function AdministrationSection() {
         )}
 
         {/* How to Use This Section Guide */}
-        <div className="mb-8 p-4 bg-teal-50 rounded-xl border border-teal-200">
-          <h3 className="font-semibold text-teal-900 mb-2">How to Use This Section</h3>
-          <ol className="text-sm text-teal-800 space-y-1 list-decimal list-inside">
+        <div className="mb-8 p-4 bg-blue-50/50 rounded-2xl border border-blue-100">
+          <h3 className="font-semibold text-blue-900 mb-2">How to Use This Section</h3>
+          <ol className="text-sm text-blue-800 space-y-1 list-decimal list-inside">
             <li><strong>Read the SOP</strong> for detailed step-by-step procedures</li>
             <li><strong>Create your own checklists</strong> based on your office's specific needs</li>
             <li><strong>Use as a desk reference</strong> during live work until the process becomes second nature</li>
@@ -260,16 +260,16 @@ export function AdministrationSection() {
 
         {/* Progress Summary */}
         {completedLessons > 0 && (
-          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+          <div className="mb-6 bg-white rounded-2xl shadow-apple border-gray-200/50 p-4">
             <div className="flex items-center justify-between text-sm mb-2">
               <span className="text-gray-600">Your Progress</span>
-              <span className="font-medium text-teal-600">
+              <span className="font-medium text-blue-600">
                 {completedLessons} of {totalLessons} procedures completed
               </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all"
+                className="h-full bg-blue-500 rounded-full transition-all"
                 style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
               />
             </div>
@@ -283,34 +283,23 @@ export function AdministrationSection() {
             const phaseCompleted = phase.lessons.filter((l) => isLessonDone(l.slug)).length;
             const PhaseIcon = phaseIcons[phase.icon];
 
-            // Color mapping for phases
-            const colorClasses = {
-              amber: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
-              indigo: { bar: 'from-indigo-400 to-indigo-600', bg: 'bg-indigo-100', text: 'text-indigo-600' },
-              blue: { bar: 'from-teal-400 to-teal-600', bg: 'bg-teal-100', text: 'text-teal-600' },
-            };
-            const colors = colorClasses[phase.color];
 
             return (
               <div
                 key={phase.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
+                className="bg-white rounded-2xl shadow-apple border-gray-200/50 overflow-hidden hover-lift"
               >
-                {/* Color bar */}
-                <div className={`w-1.5 bg-gradient-to-b ${colors.bar}`} />
-
-                <div className="flex-1">
                   {/* Phase Header */}
                   <button
                     onClick={() => togglePhase(phase.id)}
                     className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
                   >
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${colors.bg}`}>
-                      <PhaseIcon className={`w-5 h-5 ${colors.text}`} />
+                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center bg-blue-50">
+                      <PhaseIcon className="w-5 h-5 text-blue-600" />
                     </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900">{phase.title}</h3>
+                    <h3 className="text-lg font-medium text-gray-900">{phase.title}</h3>
                     <p className="text-sm mt-1 text-gray-600">{phase.description}</p>
                   </div>
 
@@ -319,7 +308,7 @@ export function AdministrationSection() {
                       {phaseCompleted}/{phase.lessons.length} complete
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
                     />
                   </div>
                 </button>
@@ -334,8 +323,8 @@ export function AdministrationSection() {
                         className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-colors text-left border-b border-gray-100 last:border-b-0"
                       >
                         <div
-                          className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-teal-600'
+                          className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
+                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
                           }`}
                         >
                           {isLessonDone(lesson.slug) ? (
@@ -349,7 +338,7 @@ export function AdministrationSection() {
                           <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                         </div>
                         <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                          <span className="px-2 py-0.5 bg-teal-100 text-teal-700 rounded text-xs font-medium">SOP</span>
+                          <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full text-xs font-medium">SOP</span>
                           <span>{lesson.duration_minutes} min</span>
                           <ChevronRight className="w-4 h-4" />
                         </div>
@@ -357,20 +346,19 @@ export function AdministrationSection() {
                     ))}
                   </div>
                 )}
-                </div>
               </div>
             );
           })}
         </div>
 
         {/* Tips Card */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl border border-teal-200">
+        <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
               <Building2 className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-gray-900 mb-1">Office Administration Tips</h3>
+              <h3 className="font-medium text-gray-900 mb-1">Office Administration Tips</h3>
               <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
                 <li>Create checklists for opening and closing procedures</li>
                 <li>Document everything—it protects you and the practice</li>

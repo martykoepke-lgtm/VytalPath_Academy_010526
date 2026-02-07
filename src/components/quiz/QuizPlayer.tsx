@@ -899,11 +899,11 @@ export function QuizPlayer() {
   if (!quizData) {
     return (
       <div className="max-w-4xl mx-auto text-center py-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Quiz Not Found</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Quiz Not Found</h2>
         <p className="text-gray-600 mb-6">This quiz is not yet available.</p>
         <Link
           to={`/courses/${courseSlug}`}
-          className="inline-flex items-center gap-2 text-teal-600 hover:text-teal-700"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Course
@@ -993,20 +993,20 @@ export function QuizPlayer() {
           <span className="text-gray-700">{moduleTitle}</span>
         </nav>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+        <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-8 text-center">
           <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-green-100">
             <Trophy className="w-10 h-10 text-green-600" />
           </div>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Quiz Completed!</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Quiz Completed!</h1>
           <p className="text-gray-600 mb-4">You've already passed this quiz.</p>
 
-          <div className="text-5xl font-bold text-green-600 mb-2">
+          <div className="text-5xl font-semibold text-green-600 mb-2">
             {savedScore}%
           </div>
           <p className="text-sm text-gray-500 mb-6">Best Score</p>
 
-          <div className="bg-gray-50 rounded-lg p-4 mb-6">
+          <div className="bg-gray-50 rounded-2xl p-4 mb-6">
             <p className="text-sm text-gray-600">
               <span className="font-medium">Attempts used:</span> {previousAttempts.length} of {quiz.max_attempts}
             </p>
@@ -1018,7 +1018,7 @@ export function QuizPlayer() {
                 setQuizState('intro');
                 setSavedScore(null);
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all duration-300"
             >
               <RotateCcw className="w-4 h-4" />
               Retake Quiz
@@ -1026,7 +1026,7 @@ export function QuizPlayer() {
             {nextModuleSlug && nextModuleFirstLesson ? (
               <button
                 onClick={() => navigate(`/courses/${courseSlug}/${nextModuleSlug}/${nextModuleFirstLesson}`)}
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
               >
                 Continue to Next Module
                 <ArrowRight className="w-4 h-4" />
@@ -1034,7 +1034,7 @@ export function QuizPlayer() {
             ) : (
               <Link
                 to={`/courses/${courseSlug}`}
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
               >
                 Back to Course
                 <ArrowRight className="w-4 h-4" />
@@ -1059,12 +1059,12 @@ export function QuizPlayer() {
           <span className="text-gray-700">{moduleTitle}</span>
         </nav>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <ClipboardCheck className="w-8 h-8 text-white" />
+        <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-8 text-center">
+          <div className="w-20 h-20 bg-blue-100 rounded-3xl shadow-apple-sm flex items-center justify-center mx-auto mb-6">
+            <ClipboardCheck className="w-8 h-8 text-blue-600" />
           </div>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">{quiz.title}</h1>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">{quiz.title}</h1>
           <p className="text-gray-600 mb-6">{quiz.description}</p>
 
           <div className="flex items-center justify-center gap-6 text-sm text-gray-500 mb-6">
@@ -1077,7 +1077,7 @@ export function QuizPlayer() {
 
           {/* Previous Attempts Info */}
           {previousAttempts.length > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left">
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-6 text-left">
               <div className="flex gap-3">
                 <RotateCcw className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div>
@@ -1097,7 +1097,7 @@ export function QuizPlayer() {
             </div>
           )}
 
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-left">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8 text-left">
             <div className="flex gap-3">
               <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
@@ -1115,10 +1115,10 @@ export function QuizPlayer() {
           <button
             onClick={handleStartQuiz}
             disabled={remainingAttempts === 0}
-            className={`inline-flex items-center gap-2 px-8 py-3 text-lg font-medium text-white rounded-xl transition-all shadow-lg ${
+            className={`inline-flex items-center gap-2 px-8 py-3 text-lg font-medium text-white rounded-2xl transition-all duration-300 shadow-apple-sm ${
               remainingAttempts === 0
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700'
+                : 'bg-blue-600 hover:bg-blue-700'
             }`}
           >
             {previousAttempts.length > 0 ? 'Retake Quiz' : 'Start Quiz'}
@@ -1139,7 +1139,7 @@ export function QuizPlayer() {
   if (quizState === 'results') {
     return (
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 text-center">
+        <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-8 text-center">
           <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${
             passed ? 'bg-green-100' : 'bg-red-100'
           }`}>
@@ -1150,7 +1150,7 @@ export function QuizPlayer() {
             )}
           </div>
 
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-semibold text-gray-900 mb-2">
             {passed ? 'Congratulations!' : 'Not Quite'}
           </h1>
 
@@ -1160,7 +1160,7 @@ export function QuizPlayer() {
               : `You need ${quiz.passing_score}% to pass. Review the material and try again.`}
           </p>
 
-          <div className={`text-6xl font-bold mb-2 ${passed ? 'text-green-600' : 'text-red-600'}`}>
+          <div className={`text-6xl font-semibold mb-2 ${passed ? 'text-green-600' : 'text-red-600'}`}>
             {score}%
           </div>
           <p className="text-gray-500 mb-8">
@@ -1172,7 +1172,7 @@ export function QuizPlayer() {
 
           {/* Answer Review with Full Explanations */}
           <div className="text-left mb-8">
-            <h3 className="font-semibold text-gray-900 mb-4">Quiz Review</h3>
+            <h3 className="font-medium text-gray-900 mb-4">Quiz Review</h3>
             <div className="space-y-4">
               {questions.map((q, index) => {
                 const userAnswer = answers[q.id];
@@ -1181,7 +1181,7 @@ export function QuizPlayer() {
                 return (
                   <div
                     key={q.id}
-                    className={`p-4 rounded-lg border ${
+                    className={`p-4 rounded-2xl border ${
                       isCorrect ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
                     }`}
                   >
@@ -1205,7 +1205,7 @@ export function QuizPlayer() {
                             </p>
                           )}
                         </div>
-                        <div className="mt-3 p-3 bg-white/60 rounded-md border border-gray-200">
+                        <div className="mt-3 p-3 bg-white/60 rounded-md border border-gray-200/50">
                           <p className="text-sm text-gray-700">
                             <span className="font-medium text-gray-900">Explanation:</span> {q.explanation}
                           </p>
@@ -1222,7 +1222,7 @@ export function QuizPlayer() {
             {!passed && (
               <button
                 onClick={handleRetry}
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all duration-300"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Try Again
@@ -1230,7 +1230,7 @@ export function QuizPlayer() {
             )}
             <button
               onClick={handleContinue}
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg hover:from-teal-700 hover:to-blue-700 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
             >
               {passed ? 'Continue to Next Module' : 'Back to Course'}
               <ArrowRight className="w-4 h-4" />
@@ -1252,17 +1252,17 @@ export function QuizPlayer() {
           <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
           <span>{quiz.title}</span>
         </div>
-        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-blue-600 to-teal-500 rounded-full transition-all"
+            className="h-full bg-blue-500 rounded-full transition-all duration-300"
             style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
           />
         </div>
       </div>
 
       {/* Question Card */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">
+      <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-6 mb-6">
+        <h2 className="text-xl font-medium text-gray-900 mb-6">
           {currentQuestion.question_text}
         </h2>
 
@@ -1274,18 +1274,18 @@ export function QuizPlayer() {
               : selectedAnswer === optionLetter;
 
             const optionStyle = isSelected
-              ? 'border-teal-500 bg-teal-50'
-              : 'border-gray-200 hover:border-teal-300 hover:bg-teal-50';
+              ? 'border-blue-500 bg-blue-50'
+              : 'border-gray-200 hover:border-blue-300 hover:bg-blue-50';
 
             return (
               <button
                 key={option}
                 onClick={() => handleSelectAnswer(option)}
-                className={`w-full p-4 text-left rounded-lg border-2 transition-all ${optionStyle}`}
+                className={`w-full p-4 text-left rounded-2xl border-2 transition-all duration-300 ${optionStyle}`}
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-5 h-5 rounded-full border-2 flex-shrink-0 ${
-                    isSelected ? 'border-teal-500 bg-teal-500' : 'border-gray-300'
+                    isSelected ? 'border-blue-500 bg-blue-500' : 'border-gray-300'
                   }`}>
                     {isSelected && <div className="w-full h-full rounded-full bg-white scale-50" />}
                   </div>
@@ -1305,7 +1305,7 @@ export function QuizPlayer() {
         {selectedAnswer && (
           <button
             onClick={handleNextQuestion}
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-blue-700 to-teal-600 rounded-lg hover:from-blue-800 hover:to-teal-700 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
           >
             {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Submit Quiz'}
             <ArrowRight className="w-4 h-4" />

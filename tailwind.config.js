@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      borderRadius: {
+        '2xl': '18px',
+        '3xl': '24px',
+      },
     },
   },
   plugins: [],

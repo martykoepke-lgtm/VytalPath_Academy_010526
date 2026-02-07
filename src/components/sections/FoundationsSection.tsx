@@ -97,18 +97,18 @@ export function FoundationsSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-4 bg-blue-100 rounded-3xl shadow-apple-sm">
             <Heart className="w-10 h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Foundations of Healthcare</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Foundations of Healthcare</h1>
+        <p className="text-xl font-light text-gray-500 leading-relaxed max-w-2xl mx-auto">
           Build your foundation in healthcare administration. Learn about different healthcare environments and your essential role within them.
         </p>
       </header>
 
       {/* Welcome Video Section */}
       {showIntroVideo ? (
-        <div className="mb-8 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+        <div className="mb-8 bg-white rounded-2xl shadow-apple border-gray-200/50 overflow-hidden">
           <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100">
             <div className="flex items-center gap-3">
               <Sparkles className="w-5 h-5 text-blue-600" />
@@ -134,7 +134,7 @@ export function FoundationsSection() {
           </div>
         </div>
       ) : (
-        <div className="mb-8 bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 rounded-xl border border-blue-200 overflow-hidden">
+        <div className="mb-8 bg-blue-50/50 rounded-2xl border border-blue-100 overflow-hidden">
           <div className="p-6 flex items-center gap-6">
             <button
               onClick={() => setShowIntroVideo(true)}
@@ -154,7 +154,7 @@ export function FoundationsSection() {
             </div>
             <button
               onClick={() => setShowIntroVideo(true)}
-              className="flex-shrink-0 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
+              className="flex-shrink-0 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-2xl shadow-apple-sm transition-colors flex items-center gap-2"
             >
               <Play className="w-4 h-4" />
               Watch Intro
@@ -165,7 +165,7 @@ export function FoundationsSection() {
 
       {/* Progress Summary */}
       {completedLessons > 0 && (
-        <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+        <div className="mb-6 bg-white rounded-2xl shadow-apple border-gray-200/50 p-4">
           <div className="flex items-center justify-between text-sm mb-2">
             <span className="text-gray-600">Your Progress</span>
             <span className="font-medium text-blue-600">
@@ -174,7 +174,7 @@ export function FoundationsSection() {
           </div>
           <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all"
+              className="h-full bg-blue-500 rounded-full transition-all"
               style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
             />
           </div>
@@ -194,20 +194,16 @@ export function FoundationsSection() {
           return (
             <div
               key={module.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
+              className="bg-white rounded-2xl shadow-apple border-gray-200/50 overflow-hidden hover-lift"
             >
-              {/* Color bar */}
-              <div className="w-1.5 bg-gradient-to-b from-blue-400 to-blue-600" />
-
-              <div className="flex-1">
               {/* Module Header */}
               <button
                 onClick={() => toggleModule(module.id)}
                 className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
               >
                 <div
-                  className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${
-                    moduleComplete ? 'bg-green-100' : 'bg-blue-100'
+                  className={`flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${
+                    moduleComplete ? 'bg-green-100' : 'bg-blue-50'
                   }`}
                 >
                   <ModuleIcon
@@ -229,7 +225,7 @@ export function FoundationsSection() {
                       </span>
                     )}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900">{module.title}</h3>
+                  <h3 className="text-lg font-medium text-gray-900">{module.title}</h3>
                   <p className="text-sm mt-1 text-gray-600">{module.description}</p>
                 </div>
 
@@ -238,7 +234,7 @@ export function FoundationsSection() {
                     {lessonsCompleted}/{module.lessons.length} lessons
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
                   />
                 </div>
               </button>
@@ -256,7 +252,7 @@ export function FoundationsSection() {
                         className="flex items-center gap-4 p-4 pl-16 hover:bg-gray-100 transition-colors"
                       >
                         <div
-                          className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
+                          className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
                             isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
                           }`}
                         >
@@ -267,7 +263,7 @@ export function FoundationsSection() {
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-gray-900">{lesson.title}</h4>
+                          <h4 className="font-normal text-gray-900">{lesson.title}</h4>
                           <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                         </div>
                         <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
@@ -318,7 +314,6 @@ export function FoundationsSection() {
                   )}
                 </div>
               )}
-              </div>
             </div>
           );
         })}

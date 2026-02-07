@@ -61,10 +61,10 @@ function WelcomeMessage({ sectionName, sectionId, theme, onQuestionClick }: {
 
   return (
     <div className="flex-1 flex flex-col items-center justify-center px-6 py-8 text-center">
-      <div className={`w-12 h-12 rounded-full ${theme.lightBg} flex items-center justify-center mb-4`}>
+      <div className={`w-12 h-12 rounded-2xl ${theme.lightBg} flex items-center justify-center mb-4`}>
         <MessageCircle className={`w-6 h-6 ${theme.iconColor}`} />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-1">AI Study Assistant</h3>
+      <h3 className="text-lg font-medium text-gray-900 mb-1">AI Study Assistant</h3>
       <p className="text-sm text-gray-500 mb-6">
         Ask me anything about {sectionName.toLowerCase()}. I'm here to help you learn!
       </p>
@@ -74,7 +74,7 @@ function WelcomeMessage({ sectionName, sectionId, theme, onQuestionClick }: {
           <button
             key={i}
             onClick={() => onQuestionClick(q)}
-            className={`w-full text-left text-sm px-4 py-2.5 rounded-xl border ${theme.borderColor} hover:${theme.lightBg.replace('bg-', 'bg-')} transition-colors text-gray-700`}
+            className={`w-full text-left text-sm px-4 py-2.5 rounded-xl border ${theme.borderColor} hover:${theme.lightBg.replace('bg-', 'bg-')} transition-all duration-300 text-gray-700`}
           >
             {q}
           </button>
@@ -137,7 +137,7 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
 
       {/* Panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] z-50 bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-[420px] z-50 bg-white shadow-apple-lg rounded-l-2xl flex flex-col transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -145,13 +145,13 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
         <div className={`${theme.headerBg} text-white px-4 py-3 flex items-center justify-between flex-shrink-0`}>
           <div className="flex items-center gap-2">
             <MessageCircle className="w-5 h-5" />
-            <span className="font-semibold text-sm">AI Study Assistant</span>
+            <span className="font-medium text-sm">AI Study Assistant</span>
           </div>
           <div className="flex items-center gap-1">
             {messages.length > 0 && (
               <button
                 onClick={clearMessages}
-                className="p-1.5 rounded-lg hover:bg-white/20 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-white/20 transition-all duration-300"
                 title="Clear conversation"
               >
                 <Trash2 className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
             )}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg hover:bg-white/20 transition-colors"
+              className="p-1.5 rounded-lg hover:bg-white/20 transition-all duration-300"
               title="Close (Esc)"
             >
               <X className="w-4 h-4" />
@@ -211,13 +211,13 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
               onKeyDown={handleKeyDown}
               placeholder="Ask a question..."
               rows={1}
-              className={`flex-1 resize-none rounded-xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 ${theme.focusRing} focus:border-transparent max-h-24`}
+              className={`flex-1 resize-none rounded-2xl border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 ${theme.focusRing} focus:border-transparent max-h-24`}
               disabled={isLoading}
             />
             {isLoading ? (
               <button
                 onClick={cancelRequest}
-                className="p-2 rounded-xl bg-gray-200 text-gray-600 hover:bg-gray-300 transition-colors flex-shrink-0"
+                className="p-2 rounded-2xl bg-gray-200 text-gray-600 hover:bg-gray-300 transition-all duration-300 flex-shrink-0"
                 title="Cancel"
               >
                 <X className="w-5 h-5" />
@@ -226,7 +226,7 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
               <button
                 onClick={handleSend}
                 disabled={!input.trim()}
-                className={`p-2 rounded-xl ${theme.buttonBg} ${theme.buttonHoverBg} text-white transition-colors flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed`}
+                className={`p-2 rounded-2xl ${theme.buttonBg} ${theme.buttonHoverBg} text-white transition-all duration-300 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed`}
                 title="Send (Enter)"
               >
                 <Send className="w-5 h-5" />

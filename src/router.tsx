@@ -25,11 +25,11 @@ import { MedicalLawEthicsSection } from './components/sections/MedicalLawEthicsS
 import { InsuranceSection } from './components/sections/InsuranceSection';
 import { TerminologySection } from './components/sections/TerminologySection';
 import { WorkflowsSection } from './components/sections/WorkflowsSection';
-import { AdministrationSection } from './components/sections/AdministrationSection';
 import { InteractiveHub } from './components/interactive';
 import { AuthRoute } from './components/auth/AuthRoute';
 import { PricingPage } from './components/billing/PricingPage';
 import { CurriculumPage } from './pages/CurriculumPage';
+import { ProgramIntro } from './components/ProgramIntro';
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +48,11 @@ export const router = createBrowserRouter([
       {
         path: 'curriculum',
         element: <CurriculumPage />,
+      },
+      // Program Introduction - Entry point for new users
+      {
+        path: 'welcome',
+        element: <AuthRoute><ProgramIntro /></AuthRoute>,
       },
       // Protected Learning Content - Requires Authentication
       {
@@ -117,10 +122,6 @@ export const router = createBrowserRouter([
       {
         path: 'workflows/sops/:slug',
         element: <AuthRoute><SOPDetailPage /></AuthRoute>,
-      },
-      {
-        path: 'administration',
-        element: <AuthRoute><AdministrationSection /></AuthRoute>,
       },
       // Interactive Practice
       {

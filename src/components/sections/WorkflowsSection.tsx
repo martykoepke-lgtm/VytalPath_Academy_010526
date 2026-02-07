@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, Play, FileText,
-  CheckCircle, ClipboardList, ListChecks, X, Calendar, Clock
+  CheckCircle, ClipboardList, ListChecks, X, Calendar, Clock,
+  Sunrise, Moon
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -13,9 +14,6 @@ import { getSOPBySlug } from '../../data/sopContent';
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
-// Workflow modules organized by phase
-// Each video lesson has a companion written SOP
-
 interface WorkflowLesson {
   id: string;
   slug: string;
@@ -24,7 +22,7 @@ interface WorkflowLesson {
   content_type: ContentType;
   video_url: string | null;
   duration_minutes: number;
-  sop_slug?: string; // Link to companion written SOP
+  sop_slug?: string;
   sop_title?: string;
 }
 
@@ -33,20 +31,58 @@ interface WorkflowPhase {
   slug: string;
   title: string;
   description: string;
-  icon: 'calendar' | 'clock';
-  color: 'blue' | 'green' | 'amber';
+  icon: React.ElementType;
   lessons: WorkflowLesson[];
 }
 
-// BEFORE THE VISIT - Video modules with written SOP companions
-// Note: Insurance eligibility verification is built into the New Patient Registration SOP
+// ─── PHASE 1: OPENING THE OFFICE ───
+const openingPhase: WorkflowPhase = {
+  id: 'opening',
+  slug: 'opening',
+  title: 'Opening the Office',
+  description: 'Morning setup procedures to start the day smoothly.',
+  icon: Sunrise,
+  lessons: [
+    {
+      id: 'admin-1',
+      slug: 'phone-system-login',
+      title: 'Phone System Login & Setup',
+      description: 'Morning phone system setup enables call tracking, routing, and message retrieval.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 8,
+      sop_slug: 'phone-system-login',
+    },
+    {
+      id: 'admin-2',
+      slug: 'cash-drawer-opening',
+      title: 'Cash Drawer Opening',
+      description: 'Proper cash drawer setup ensures accurate financial tracking throughout the day.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 10,
+      sop_slug: 'cash-drawer-opening',
+    },
+    {
+      id: 'admin-3',
+      slug: 'pre-scrubbing-schedule',
+      title: 'Pre-Scrubbing the Schedule',
+      description: 'Pre-scrubbing reduces day-of surprises and ensures smooth patient flow.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 12,
+      sop_slug: 'pre-scrubbing-schedule',
+    },
+  ],
+};
+
+// ─── PHASE 2: BEFORE THE VISIT ───
 const beforeVisitPhase: WorkflowPhase = {
   id: 'before-visit',
   slug: 'before-visit',
   title: 'Before the Visit',
   description: 'Registration, scheduling, and pre-visit preparation workflows.',
-  icon: 'calendar',
-  color: 'blue',
+  icon: Calendar,
   lessons: [
     {
       id: 'wl1',
@@ -84,14 +120,13 @@ const beforeVisitPhase: WorkflowPhase = {
   ],
 };
 
-// DURING THE VISIT - Check-in and Check-out procedures
+// ─── PHASE 3: DURING THE VISIT ───
 const duringVisitPhase: WorkflowPhase = {
   id: 'during-visit',
   slug: 'during-visit',
   title: 'During the Visit',
   description: 'Check-in and check-out procedures for all patient types.',
-  icon: 'clock',
-  color: 'green',
+  icon: Clock,
   lessons: [
     {
       id: 'wl-b',
@@ -136,14 +171,13 @@ const duringVisitPhase: WorkflowPhase = {
   ],
 };
 
-// THROUGHOUT THE DAY - Daily operations and schedule management
+// ─── PHASE 4: THROUGHOUT THE DAY ───
 const throughoutDayPhase: WorkflowPhase = {
   id: 'throughout-day',
   slug: 'throughout-day',
   title: 'Throughout the Day',
   description: 'Managing schedule changes, prioritizing tasks, and handling daily operations.',
-  icon: 'clock',
-  color: 'amber',
+  icon: Clock,
   lessons: [
     {
       id: 'wl-e',
@@ -178,12 +212,87 @@ const throughoutDayPhase: WorkflowPhase = {
   ],
 };
 
-const workflowPhases = [beforeVisitPhase, duringVisitPhase, throughoutDayPhase];
-
-const contentTypeIcons: Record<ContentType, React.ElementType> = {
-  video: Play,
-  reading: FileText,
+// ─── PHASE 5: CLOSING THE OFFICE ───
+const closingPhase: WorkflowPhase = {
+  id: 'closing',
+  slug: 'closing',
+  title: 'Closing the Office',
+  description: 'End-of-day reconciliation and closing procedures.',
+  icon: Moon,
+  lessons: [
+    {
+      id: 'admin-4',
+      slug: 'cash-drawer-closing',
+      title: 'Cash Drawer Closing & Reconciliation',
+      description: 'Accurate closing ensures financial integrity and protects you and the practice.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 12,
+      sop_slug: 'cash-drawer-closing',
+    },
+    {
+      id: 'admin-5',
+      slug: 'eod-reconciliation',
+      title: 'End-of-Day Reconciliation & Deposit',
+      description: 'Daily financial reconciliation ensures accurate records and prepares deposits.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 15,
+      sop_slug: 'eod-reconciliation',
+    },
+  ],
 };
+
+// ─── PHASE 6: ADMINISTRATIVE TASKS ───
+const adminTasksPhase: WorkflowPhase = {
+  id: 'admin-tasks',
+  slug: 'admin-tasks',
+  title: 'Administrative Tasks',
+  description: 'Ongoing administrative duties and compliance requirements.',
+  icon: ClipboardList,
+  lessons: [
+    {
+      id: 'admin-6',
+      slug: 'no-show-letters',
+      title: 'No-Show Letters',
+      description: 'Formal documentation of no-show occurrences per clinic policy.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 8,
+      sop_slug: 'no-show-letters',
+    },
+    {
+      id: 'admin-7',
+      slug: 'ordering-supplies',
+      title: 'Ordering Front Office Supplies',
+      description: 'Maintaining adequate supplies ensures uninterrupted office operations.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 8,
+      sop_slug: 'ordering-supplies',
+    },
+    {
+      id: 'admin-8',
+      slug: 'monthly-compliance-logs',
+      title: 'Monthly Compliance Logs',
+      description: 'Required monthly documentation for regulatory compliance.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 10,
+      sop_slug: 'monthly-compliance-logs',
+    },
+  ],
+};
+
+// All phases in natural daily flow order
+const allPhases = [
+  openingPhase,
+  beforeVisitPhase,
+  duringVisitPhase,
+  throughoutDayPhase,
+  closingPhase,
+  adminTasksPhase,
+];
 
 export function WorkflowsSection() {
   const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
@@ -214,8 +323,8 @@ export function WorkflowsSection() {
     });
   };
 
-  const totalLessons = workflowPhases.reduce((sum, p) => sum + p.lessons.length, 0);
-  const completedLessons = workflowPhases.reduce(
+  const totalLessons = allPhases.reduce((sum, p) => sum + p.lessons.length, 0);
+  const completedLessons = allPhases.reduce(
     (sum, p) => sum + p.lessons.filter((l) => progress.isLessonCompleted(l.slug)).length,
     0
   );
@@ -228,26 +337,26 @@ export function WorkflowsSection() {
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-4 bg-gradient-to-br from-amber-100 to-amber-200 rounded-2xl">
-            <ClipboardList className="w-10 h-10 text-amber-600" />
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-4 bg-blue-100 rounded-3xl shadow-apple-sm">
+            <ClipboardList className="w-10 h-10 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Navigating Workflows</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Learn the standard procedures for front office operations. Watch video lessons and reference step-by-step workflow guides.
+          <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Front Office Workflows</h1>
+          <p className="text-xl font-light text-gray-500 leading-relaxed max-w-2xl mx-auto">
+            Master every procedure in your day — from opening the office to closing it down. Organized in the order you'll actually use them.
           </p>
         </header>
 
         {/* Section Introduction Video */}
         {showSectionIntro ? (
-          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="mb-6 bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-hidden">
             <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <ClipboardList className="w-4 h-4 text-amber-600" />
+                <ClipboardList className="w-4 h-4 text-blue-600" />
                 <span className="font-medium text-gray-900 text-sm">Section Overview</span>
               </div>
               <button
                 onClick={() => setShowSectionIntro(false)}
-                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+                className="p-1 hover:bg-gray-200 rounded-2xl transition-all duration-300"
               >
                 <X className="w-4 h-4 text-gray-500" />
               </button>
@@ -267,24 +376,24 @@ export function WorkflowsSection() {
         ) : (
           <button
             onClick={() => setShowSectionIntro(true)}
-            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-amber-300 hover:bg-amber-50/50 transition-all flex items-center gap-4 text-left"
+            className="w-full mb-6 p-4 bg-white rounded-2xl border border-gray-200/50 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-300 flex items-center gap-4 text-left shadow-apple-sm"
           >
-            <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-              <Play className="w-5 h-5 text-amber-600" />
+            <div className="flex-shrink-0 w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center">
+              <Play className="w-5 h-5 text-blue-600" />
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Section Overview</h3>
-              <p className="text-sm text-gray-500">Watch a brief introduction to Navigating Workflows</p>
+              <h3 className="font-medium text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to Front Office Workflows</p>
             </div>
             <ChevronRight className="w-5 h-5 text-gray-400" />
           </button>
         )}
 
         {/* Learning Sequence Guide */}
-        <div className="mb-8 p-4 bg-amber-50 rounded-xl border border-amber-200">
-          <h3 className="font-semibold text-amber-900 mb-2">How to Use This Section</h3>
-          <ol className="text-sm text-amber-800 space-y-1 list-decimal list-inside">
-            <li><strong>Watch the video</strong> first for an overview of the workflow</li>
+        <div className="mb-8 p-5 bg-blue-50/50 rounded-2xl border border-blue-100">
+          <h3 className="font-medium text-gray-900 mb-2">How to Use This Section</h3>
+          <ol className="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+            <li><strong>Watch the video</strong> first for an overview of the workflow (where available)</li>
             <li><strong>Read the written SOP</strong> for detailed step-by-step guidance</li>
             <li><strong>Use the SOP as a desk reference</strong> during live work until the process becomes second nature</li>
           </ol>
@@ -292,16 +401,16 @@ export function WorkflowsSection() {
 
         {/* Progress Summary */}
         {completedLessons > 0 && (
-          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+          <div className="mb-6 bg-white rounded-2xl shadow-apple border border-gray-200/50 p-4">
             <div className="flex items-center justify-between text-sm mb-2">
-              <span className="text-gray-600">Your Progress</span>
-              <span className="font-medium text-amber-600">
-                {completedLessons} of {totalLessons} lessons completed
+              <span className="text-gray-500">Your Progress</span>
+              <span className="font-medium text-blue-600">
+                {completedLessons} of {totalLessons} procedures completed
               </span>
             </div>
-            <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full transition-all"
+                className="h-full bg-blue-500 rounded-full transition-all duration-500"
                 style={{ width: `${(completedLessons / totalLessons) * 100}%` }}
               />
             </div>
@@ -309,69 +418,57 @@ export function WorkflowsSection() {
         )}
 
         {/* Workflow Phases */}
-        <div className="space-y-6">
-          {workflowPhases.map((phase) => {
+        <div className="space-y-4">
+          {allPhases.map((phase) => {
             const isExpanded = expandedPhases.has(phase.id);
             const phaseCompleted = phase.lessons.filter((l) => isLessonDone(l.slug)).length;
-            const PhaseIcon = phase.icon === 'calendar' ? Calendar : Clock;
+            const PhaseIcon = phase.icon;
             const videoLessons = phase.lessons.filter((l) => l.content_type === 'video');
             const readingLessons = phase.lessons.filter((l) => l.content_type === 'reading');
-
-            // Color mapping for phases
-            const colorClasses = {
-              blue: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
-              green: { bar: 'from-green-400 to-green-600', bg: 'bg-green-100', text: 'text-green-600' },
-              amber: { bar: 'from-amber-400 to-amber-600', bg: 'bg-amber-100', text: 'text-amber-600' },
-            };
-            const colors = colorClasses[phase.color];
 
             return (
               <div
                 key={phase.id}
-                className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex"
+                className="bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-hidden hover-lift transition-all duration-300"
               >
-                {/* Color bar */}
-                <div className={`w-1.5 bg-gradient-to-b ${colors.bar}`} />
-
-                <div className="flex-1">
-                  {/* Phase Header */}
-                  <button
-                    onClick={() => togglePhase(phase.id)}
-                    className="w-full p-5 flex items-center gap-4 text-left transition-colors hover:bg-gray-50"
-                  >
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${colors.bg}`}>
-                      <PhaseIcon className={`w-5 h-5 ${colors.text}`} />
-                    </div>
+                {/* Phase Header */}
+                <button
+                  onClick={() => togglePhase(phase.id)}
+                  className="w-full p-5 flex items-center gap-4 text-left transition-all duration-300 hover:bg-gray-50"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center bg-blue-50">
+                    <PhaseIcon className="w-5 h-5 text-blue-600" />
+                  </div>
 
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900">{phase.title}</h3>
-                    <p className="text-sm mt-1 text-gray-600">{phase.description}</p>
+                    <h3 className="text-lg font-medium text-gray-900">{phase.title}</h3>
+                    <p className="text-sm mt-0.5 text-gray-500">{phase.description}</p>
                   </div>
 
                   <div className="flex-shrink-0 flex items-center gap-3">
-                    <span className="text-sm text-gray-500">
-                      {phaseCompleted}/{phase.lessons.length} complete
+                    <span className="text-sm text-gray-400">
+                      {phaseCompleted}/{phase.lessons.length}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                      className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
                     />
                   </div>
                 </button>
 
                 {/* Lessons */}
                 {isExpanded && (
-                  <div className="border-t border-gray-100 bg-gray-50">
+                  <div className="border-t border-gray-100 bg-gray-50/50">
                     {/* Video Lessons with SOP Companions */}
-                    {videoLessons.length > 0 && videoLessons.map((lesson) => (
+                    {videoLessons.map((lesson) => (
                       <div key={lesson.id} className="border-b border-gray-100 last:border-b-0">
                         {/* Video Lesson */}
                         <Link
                           to={`/workflows/lessons/registration-scheduling/${lesson.slug}`}
-                          className="flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-colors"
+                          className="flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300"
                         >
                           <div
-                            className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
-                              isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-amber-600'
+                            className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
+                              isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
                             }`}
                           >
                             {isLessonDone(lesson.slug) ? (
@@ -381,11 +478,11 @@ export function WorkflowsSection() {
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-medium text-gray-900">{lesson.title}</h4>
+                            <h4 className="font-normal text-gray-900">{lesson.title}</h4>
                             <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                           </div>
                           <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                            <span className="px-2 py-0.5 bg-amber-100 text-amber-700 rounded text-xs font-medium">Video</span>
+                            <span className="px-2.5 py-0.5 bg-blue-50 text-blue-600 rounded-full text-xs font-medium">Video</span>
                             <span>{lesson.duration_minutes} min</span>
                             <ChevronRight className="w-4 h-4" />
                           </div>
@@ -395,16 +492,16 @@ export function WorkflowsSection() {
                         {lesson.sop_slug && (
                           <button
                             onClick={() => openSOP(lesson.sop_slug!)}
-                            className="w-full flex items-center gap-4 p-3 pl-16 bg-gray-100/50 hover:bg-gray-100 transition-colors border-t border-gray-100 text-left"
+                            className="w-full flex items-center gap-4 p-3 pl-16 bg-gray-100/50 hover:bg-gray-100 transition-all duration-300 border-t border-gray-100 text-left"
                           >
-                            <div className="flex-shrink-0 w-6 h-6 rounded flex items-center justify-center bg-gray-200">
+                            <div className="flex-shrink-0 w-6 h-6 rounded-lg flex items-center justify-center bg-gray-200">
                               <FileText className="w-3.5 h-3.5 text-gray-600" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <span className="text-sm text-gray-700">{lesson.sop_title || 'Written SOP Companion'}</span>
+                              <span className="text-sm text-gray-600">{lesson.sop_title || 'Written SOP Companion'}</span>
                             </div>
-                            <div className="flex-shrink-0 flex items-center gap-2 text-xs text-gray-500">
-                              <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded font-medium">SOP</span>
+                            <div className="flex-shrink-0 flex items-center gap-2 text-xs text-gray-400">
+                              <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded-full font-medium">SOP</span>
                               <ChevronRight className="w-3 h-3" />
                             </div>
                           </button>
@@ -415,12 +512,12 @@ export function WorkflowsSection() {
                     {/* Separator if both video and reading lessons exist */}
                     {videoLessons.length > 0 && readingLessons.length > 0 && (
                       <div className="mx-4 my-3 flex items-center gap-3">
-                        <div className="flex-1 h-px bg-gray-300"></div>
+                        <div className="flex-1 h-px bg-gray-200"></div>
                         <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full">
-                          <FileText className="w-3.5 h-3.5 text-gray-500" />
-                          <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">Written SOPs</span>
+                          <FileText className="w-3.5 h-3.5 text-gray-400" />
+                          <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Written SOPs</span>
                         </div>
-                        <div className="flex-1 h-px bg-gray-300"></div>
+                        <div className="flex-1 h-px bg-gray-200"></div>
                       </div>
                     )}
 
@@ -429,10 +526,10 @@ export function WorkflowsSection() {
                       <button
                         key={lesson.id}
                         onClick={() => lesson.sop_slug && openSOP(lesson.sop_slug)}
-                        className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-colors text-left"
+                        className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300 text-left border-b border-gray-100 last:border-b-0"
                       >
                         <div
-                          className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${
+                          className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
                             isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-gray-500'
                           }`}
                         >
@@ -443,11 +540,11 @@ export function WorkflowsSection() {
                           )}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-gray-900">{lesson.title}</h4>
+                          <h4 className="font-normal text-gray-900">{lesson.title}</h4>
                           <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
                         </div>
                         <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                          <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded text-xs font-medium">SOP</span>
+                          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-600 rounded-full text-xs font-medium">SOP</span>
                           <span>{lesson.duration_minutes} min</span>
                           <ChevronRight className="w-4 h-4" />
                         </div>
@@ -455,26 +552,25 @@ export function WorkflowsSection() {
                     ))}
                   </div>
                 )}
-                </div>
               </div>
             );
           })}
         </div>
 
         {/* Browse All SOPs Link */}
-        <div className="mt-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200">
+        <div className="mt-8 p-6 bg-blue-50/50 rounded-2xl border border-blue-100">
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center">
+            <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center">
               <ListChecks className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-gray-900 mb-1">All Workflow SOPs</h3>
-              <p className="text-sm text-gray-600 mb-3">
+              <h3 className="font-medium text-gray-900 mb-1">All Workflow SOPs</h3>
+              <p className="text-sm text-gray-500 mb-3">
                 Browse the complete collection of step-by-step workflow guides for front office procedures.
               </p>
               <Link
                 to="/workflows/sops"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white font-medium rounded-lg hover:bg-amber-700 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white font-medium rounded-2xl hover:bg-blue-700 shadow-apple-sm transition-all duration-300"
               >
                 Browse All SOPs
                 <ChevronRight className="w-4 h-4" />

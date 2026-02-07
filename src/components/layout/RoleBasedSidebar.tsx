@@ -10,6 +10,7 @@ import {
   BookA,
   Gamepad2,
   Search,
+  Compass,
   type LucideIcon
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -18,24 +19,6 @@ type NavItem = {
   path: string;
   label: string;
   icon: LucideIcon;
-  color: {
-    bg: string;
-    text: string;
-    border: string;
-    icon: string;
-  };
-};
-
-// Color themes for each section
-const sectionColors = {
-  foundations: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-600', icon: 'text-blue-600' },
-  compliance: { bg: 'bg-slate-50', text: 'text-slate-700', border: 'border-slate-600', icon: 'text-slate-600' },
-  insurance: { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-600', icon: 'text-emerald-600' },
-  workflows: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-600', icon: 'text-amber-600' },
-  administration: { bg: 'bg-teal-50', text: 'text-teal-700', border: 'border-teal-600', icon: 'text-teal-600' },
-  terminology: { bg: 'bg-indigo-50', text: 'text-indigo-700', border: 'border-indigo-600', icon: 'text-indigo-600' },
-  practice: { bg: 'bg-rose-50', text: 'text-rose-700', border: 'border-rose-600', icon: 'text-rose-600' },
-  search: { bg: 'bg-gray-50', text: 'text-gray-700', border: 'border-gray-600', icon: 'text-gray-600' },
 };
 
 // Student navigation items - ordered for optimal learning progression
@@ -43,29 +26,24 @@ const sectionColors = {
 // 2. Core Competencies (Insurance & Billing, Workflows, Administration)
 // 3. Reference (Terminology at end as study tool)
 const studentNavItems: NavItem[] = [
-  { path: '/foundations', label: 'Foundations', icon: Heart, color: sectionColors.foundations },
-  { path: '/medical-law-ethics', label: 'Compliance', icon: Scale, color: sectionColors.compliance },
-  { path: '/insurance', label: 'Insurance & Billing', icon: DollarSign, color: sectionColors.insurance },
-  { path: '/workflows', label: 'Workflows', icon: ClipboardList, color: sectionColors.workflows },
-  { path: '/administration', label: 'Administration', icon: Building2, color: sectionColors.administration },
-  { path: '/terminology', label: 'Terminology', icon: BookA, color: sectionColors.terminology },
-  { path: '/practice', label: 'Practice', icon: Gamepad2, color: sectionColors.practice },
-  { path: '/search', label: 'Search', icon: Search, color: sectionColors.search },
+  { path: '/welcome', label: 'Welcome', icon: Compass },
+  { path: '/foundations', label: 'Foundations', icon: Heart },
+  { path: '/medical-law-ethics', label: 'Compliance', icon: Scale },
+  { path: '/insurance', label: 'Insurance & Billing', icon: DollarSign },
+  { path: '/workflows', label: 'Front Office Workflows', icon: ClipboardList },
+  { path: '/terminology', label: 'Terminology', icon: BookA },
+  { path: '/practice', label: 'Practice', icon: Gamepad2 },
+  { path: '/search', label: 'Search', icon: Search },
 ];
 
-// Admin color
-const adminColor = { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-600', icon: 'text-blue-600' };
-
 // Super Admin navigation items
-// Note: Organizations, Self-Registered, and Pending Admins are tabs within /admin dashboard
 const superAdminNavItems: NavItem[] = [
-  { path: '/admin', label: 'Dashboard', icon: LayoutDashboard, color: adminColor },
+  { path: '/admin', label: 'Dashboard', icon: LayoutDashboard },
 ];
 
 // Org Admin navigation items (dynamic based on org slug)
-// Note: Students and Invite Links are displayed within the org dashboard
 const getOrgAdminNavItems = (orgSlug: string): NavItem[] => [
-  { path: `/admin/orgs/${orgSlug}`, label: 'My Organization', icon: Building2, color: adminColor },
+  { path: `/admin/orgs/${orgSlug}`, label: 'My Organization', icon: Building2 },
 ];
 
 interface RoleBasedSidebarProps {
@@ -136,21 +114,21 @@ export function RoleBasedSidebar({ className = '' }: RoleBasedSidebarProps) {
           <Link
             key={item.path}
             to={item.path}
-            className={`w-full flex items-center gap-3 px-6 py-3 transition-colors ${
+            className={`flex items-center gap-3 mx-3 px-4 py-2.5 rounded-xl transition-all duration-300 ${
               isActive
-                ? `${item.color.bg} ${item.color.text} border-r-4 ${item.color.border}`
-                : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                ? 'bg-blue-50 text-blue-600'
+                : 'text-gray-700 hover:bg-gray-100/60 hover:text-gray-900'
             }`}
           >
-            <item.icon className={`w-5 h-5 ${isActive ? item.color.icon : 'text-gray-400'}`} />
-            <span className="font-medium">{item.label}</span>
+            <item.icon className={`w-5 h-5 ${isActive ? 'text-blue-600' : 'text-gray-500'}`} />
+            <span className="font-normal">{item.label}</span>
           </Link>
         );
       })}
 
       {/* Show switch to admin/learning link for admins */}
       {(roleInfo.role === 'super_admin' || roleInfo.role === 'org_admin') && (
-        <div className="px-6 pt-4 mt-4 border-t border-gray-200">
+        <div className="px-6 pt-4 mt-4 border-t border-gray-200/50">
           {isInAdminDashboard ? (
             <Link
               to="/foundations"
@@ -185,24 +163,24 @@ export function MobileBottomNav() {
   // For admins in admin section, show different mobile nav
   if ((roleInfo.role === 'super_admin' || roleInfo.role === 'org_admin') && isInAdminDashboard) {
     return (
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 glass border-t border-gray-200/50 shadow-apple z-50">
         <div className="flex justify-around items-center h-16">
           <Link
             to={roleInfo.role === 'super_admin' ? '/admin' : `/admin/orgs/${roleInfo.orgSlug}`}
-            className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+            className={`flex flex-col items-center justify-center flex-1 h-full transition-all duration-300 ${
               location.pathname === '/admin' || location.pathname === `/admin/orgs/${roleInfo.orgSlug}`
                 ? 'text-blue-600' : 'text-gray-400'
             }`}
           >
             <LayoutDashboard className="w-6 h-6 mb-1" />
-            <span className="text-xs font-medium">Dashboard</span>
+            <span className="text-xs font-normal">Dashboard</span>
           </Link>
           <Link
             to="/foundations"
-            className="flex flex-col items-center justify-center flex-1 h-full text-gray-400"
+            className="flex flex-col items-center justify-center flex-1 h-full text-gray-400 transition-all duration-300"
           >
             <BookOpen className="w-6 h-6 mb-1" />
-            <span className="text-xs font-medium">Learning</span>
+            <span className="text-xs font-normal">Learning</span>
           </Link>
         </div>
       </nav>
@@ -212,7 +190,7 @@ export function MobileBottomNav() {
   // Student mobile navigation (5 learning sections)
   const mobileItems = studentNavItems.slice(0, 5);
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 glass border-t border-gray-200/50 shadow-apple z-50">
       <div className="flex justify-around items-center h-16">
         {mobileItems.map((item) => {
           const isActive = location.pathname.startsWith(item.path);
@@ -220,12 +198,12 @@ export function MobileBottomNav() {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-                isActive ? item.color.text : 'text-gray-400'
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-all duration-300 ${
+                isActive ? 'text-blue-600' : 'text-gray-400'
               }`}
             >
               <item.icon className="w-6 h-6 mb-1" />
-              <span className="text-xs font-medium">{item.label}</span>
+              <span className="text-xs font-normal">{item.label}</span>
             </Link>
           );
         })}
