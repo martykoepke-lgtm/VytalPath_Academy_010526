@@ -161,7 +161,7 @@ export function LandingPage() {
             </h1>
 
             <p className="text-lg md:text-xl font-light text-gray-500 max-w-2xl mx-auto mb-8 leading-relaxed">
-              You get trained. VytalPath Academy is the only platform purpose-built for healthcare front office roles — insurance, HIPAA, workflows, terminology, and more. Job-ready in weeks, not months.
+              You get trained. VytalPath Academy is the only platform purpose-built for healthcare front office roles — insurance, HIPAA, workflows, EHR simulation, and more. Job-ready in weeks, not months.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
@@ -183,9 +183,9 @@ export function LandingPage() {
             {/* Stats */}
             <div className="grid grid-cols-5 gap-3 max-w-3xl mx-auto">
               {[
-                { value: '5', label: 'Training Domains' },
-                { value: '30', label: 'Lessons' },
-                { value: '21', label: 'Videos' },
+                { value: '8', label: 'Training Sections' },
+                { value: '40+', label: 'Lessons' },
+                { value: '8', label: 'Quizzes' },
                 { value: '24', label: 'SOP Guides' },
                 { value: '24/7', label: 'AI Tutor' },
               ].map((stat) => (
@@ -214,11 +214,11 @@ export function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
             {[
               { icon: Play, label: 'Video Lessons', desc: 'Expert-led walkthroughs' },
-              { icon: FileText, label: 'Written SOPs', desc: 'Step-by-step desk references' },
-              { icon: Brain, label: 'Quizzes', desc: 'Test your knowledge' },
-              { icon: Sparkles, label: 'Flashcards', desc: 'Interactive practice' },
+              { icon: FileText, label: 'SOPs & Guides', desc: '24 step-by-step references' },
+              { icon: Brain, label: 'EHR Simulation', desc: 'Hands-on PM practice' },
+              { icon: Sparkles, label: 'Exercises', desc: 'Quizzes, flashcards & more' },
               { icon: MessageCircle, label: 'AI Tutor', desc: 'Ask anything, anytime' },
-              { icon: Award, label: 'Certificate', desc: 'Proof of completion' },
+              { icon: Award, label: 'Job Readiness', desc: 'Interview & resume prep' },
             ].map((mode) => (
               <div key={mode.label} className="bg-white rounded-2xl p-5 text-center border border-gray-200/50 shadow-apple-sm hover-lift transition-all duration-300">
                 <div className="w-10 h-10 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-3">
@@ -248,12 +248,12 @@ export function LandingPage() {
 
             <ul className="space-y-2.5 mb-8 text-left max-w-xs mx-auto">
               {[
-                'All 5 training domains',
-                '20+ video lessons & 24 SOPs',
-                'Interactive quizzes & flashcards',
+                'All 8 training sections',
+                '40+ lessons, 8 quizzes & 24 SOPs',
+                'Hands-on EHR Practice Lab',
+                'Job readiness tools & mock interviews',
                 'AI study assistant on every page',
-                'Certificate of completion',
-                'New content added weekly',
+                'New content added regularly',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">
                   <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
@@ -287,7 +287,7 @@ export function LandingPage() {
               What You'll Learn
             </h2>
             <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto">
-              5 training domains covering every skill your front desk needs
+              8 training sections covering every skill your front desk needs
             </p>
           </div>
 
@@ -301,12 +301,18 @@ export function LandingPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: <IconFoundations />, title: 'Healthcare Foundations', badge: '3 lessons', desc: 'Understand acute vs. ambulatory care, the front office role, and how healthcare delivery works.' },
-                { icon: <IconLaw />, title: 'Medical Law & Ethics', badge: '4 lessons', desc: 'Master HIPAA essentials, PHI protection, patient authorization, and consent requirements.' },
-                { icon: <IconInsurance />, title: 'Insurance Training', badge: '9 lessons', desc: 'Learn payers, plan types, reading insurance cards, eligibility verification, and payment collection.' },
+                { icon: <IconLaw />, title: 'Medical Law & Compliance', badge: '9 lessons', desc: 'HIPAA essentials, PHI protection, patient rights, authorization, consent, EMTALA, and fraud prevention.' },
+                { icon: <IconInsurance />, title: 'Insurance & Billing', badge: '7 lessons', desc: 'Payer types, plan types, reading insurance cards, eligibility verification, copays, and payment collection.' },
+                { icon: <IconWorkflows />, title: 'Front Office Workflows', badge: '4 lessons + 24 SOPs', desc: 'Registration, scheduling, check-in, check-out, and step-by-step guides for daily operations.' },
+                { icon: <IconTerminology />, title: 'EHR & Practice Management', badge: '9 lessons', desc: 'PM vs EHR systems, encounter types, scheduling methods, phone encounters, and duplicate prevention.', isNew: true },
                 { icon: <IconTerminology />, title: 'Medical Terminology', badge: '5 lessons + flashcards', desc: 'Decode medical terms using prefixes, roots, and suffixes. Interactive flashcards for practice.' },
-                { icon: <IconWorkflows />, title: 'Front Office Workflows', badge: '24 SOPs', desc: 'Step-by-step procedures for check-in, scheduling, registration, and daily operations.' },
+                { icon: <IconWorkflows />, title: 'EHR Practice Lab', badge: 'Simulation', desc: 'Hands-on practice in a simulated PM system — schedule, register, check-in, and manage a clinic day.', isNew: true },
+                { icon: <IconFoundations />, title: 'Job Readiness', badge: '6 tools', desc: 'Phone simulations, mock interviews, resume builder, insurance hotline practice, and readiness assessments.' },
               ].map((module) => (
-                <div key={module.title} className="bg-white rounded-2xl p-6 shadow-apple border border-gray-200/50 hover-lift transition-all duration-300">
+                <div key={module.title} className="bg-white rounded-2xl p-6 shadow-apple border border-gray-200/50 hover-lift transition-all duration-300 relative">
+                  {'isNew' in module && module.isNew && (
+                    <div className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-medium px-2.5 py-0.5 rounded-full">NEW</div>
+                  )}
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 rounded-2xl">
                       {module.icon}
@@ -327,18 +333,14 @@ export function LandingPage() {
               <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">Coming Soon</span>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { title: 'Medications', desc: 'Prescription handling, drug classes, controlled substances' },
                 { title: 'Referrals & Prior Auth', desc: 'Authorization workflows, tracking, appeals' },
                 { title: 'Coding Basics', desc: 'ICD-10, CPT codes, reading EOBs' },
-                { title: 'EHR Practice Lab', desc: 'Hands-on simulation with real EHR system', isNew: true },
                 { title: 'Patient Communication', desc: 'Phone etiquette, difficult conversations' },
               ].map((item) => (
-                <div key={item.title} className="bg-gray-50/50 rounded-2xl p-5 border border-dashed border-gray-200 relative">
-                  {item.isNew && (
-                    <div className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-medium px-2.5 py-0.5 rounded-full">NEW</div>
-                  )}
+                <div key={item.title} className="bg-gray-50/50 rounded-2xl p-5 border border-dashed border-gray-200">
                   <h5 className="font-medium text-gray-700 text-sm mb-1">{item.title}</h5>
                   <p className="text-xs text-gray-400 leading-relaxed">{item.desc}</p>
                 </div>

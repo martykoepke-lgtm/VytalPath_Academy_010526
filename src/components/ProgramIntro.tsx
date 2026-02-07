@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Play, FileText, Sparkles, MessageCircle, ChevronRight,
-  Heart, Scale, DollarSign, ClipboardList, BookA,
+  Heart, Scale, DollarSign, ClipboardList, BookA, Monitor, Briefcase,
   ArrowRight, X
 } from 'lucide-react';
 
@@ -17,17 +17,17 @@ const learningModes = [
   {
     icon: FileText,
     title: 'Reading & SOPs',
-    description: 'Detailed written guides and step-by-step standard operating procedures you can reference on the job.',
+    description: 'Detailed written guides and 24 step-by-step standard operating procedures you can reference on the job.',
+  },
+  {
+    icon: Monitor,
+    title: 'EHR Simulation',
+    description: 'Practice scheduling, registration, check-in, and chart navigation in a simulated practice management system.',
   },
   {
     icon: Sparkles,
-    title: 'Interactive Practice',
-    description: 'Flashcards, term matching, and hands-on exercises that reinforce what you learn.',
-  },
-  {
-    icon: MessageCircle,
-    title: 'AI Study Assistant',
-    description: 'Ask questions anytime. Your AI tutor explains concepts, quizzes you, and walks you through scenarios.',
+    title: 'Interactive Exercises',
+    description: 'Flashcards, term matching, phone simulations, mock interviews, and hands-on practice scenarios.',
   },
 ];
 
@@ -35,32 +35,50 @@ const programSections = [
   {
     icon: Heart,
     title: 'Foundations of Healthcare',
-    description: 'Understand the healthcare system and your essential role within it.',
+    description: 'Understand acute vs. ambulatory care and your essential role in healthcare delivery.',
     path: '/foundations',
   },
   {
     icon: Scale,
     title: 'Medical Law & Compliance',
-    description: 'HIPAA, patient rights, and the regulations that protect everyone.',
+    description: 'HIPAA essentials, PHI protection, patient rights, consent, EMTALA, and fraud prevention.',
     path: '/medical-law-ethics',
   },
   {
     icon: DollarSign,
     title: 'Insurance & Billing',
-    description: 'Payer types, eligibility, copays, deductibles, and payment collection.',
+    description: 'Payer types, eligibility verification, reading insurance cards, copays, deductibles, and payment collection.',
     path: '/insurance',
   },
   {
     icon: ClipboardList,
     title: 'Front Office Workflows',
-    description: 'From opening to closing — registration, check-in, scheduling, and daily operations.',
+    description: 'Registration, scheduling, check-in, check-out, and 24 step-by-step SOP guides for daily operations.',
     path: '/workflows',
+  },
+  {
+    icon: Monitor,
+    title: 'EHR & Practice Management',
+    description: 'PM vs EHR systems, encounter types, scheduling methods, phone encounters, and duplicate record prevention.',
+    path: '/ehr-fundamentals',
   },
   {
     icon: BookA,
     title: 'Medical Terminology',
-    description: 'Prefixes, roots, suffixes, abbreviations, and interactive flashcards.',
+    description: 'Prefixes, roots, suffixes, abbreviations, and interactive flashcards for practice.',
     path: '/terminology',
+  },
+  {
+    icon: Monitor,
+    title: 'EHR Practice Lab',
+    description: 'Hands-on simulation — schedule appointments, register patients, and manage a clinic day.',
+    path: '/ehr-lab',
+  },
+  {
+    icon: Briefcase,
+    title: 'Job Readiness',
+    description: 'Phone simulations, mock interviews, resume building, and readiness assessments.',
+    path: '/practice',
   },
 ];
 
@@ -174,7 +192,7 @@ export function ProgramIntro() {
           Your Learning Path
         </h2>
         <p className="text-gray-500 text-center mb-8 max-w-xl mx-auto">
-          Five sections, each building on the last. Work through them in order or jump to what you need most.
+          Eight sections covering everything from HIPAA to hands-on EHR practice. Work through them in order or jump to what you need most.
         </p>
 
         <div className="space-y-3">

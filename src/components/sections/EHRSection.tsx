@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ChevronRight, ChevronDown, BookOpen, FileText,
-  CheckCircle, ClipboardCheck, Trophy, Monitor
+  ChevronRight, ChevronDown, BookOpen, FileText, Play,
+  CheckCircle, ClipboardCheck, Trophy, Monitor, X
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
+
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 const ehrModules = [
   {
@@ -70,6 +72,7 @@ const ehrModules = [
 
 export function EHRSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
+  const [showSectionIntro, setShowSectionIntro] = useState(true);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -108,6 +111,49 @@ export function EHRSection() {
             Master the systems you'll work in every day. Learn how Practice Management and EHR systems work together, and how to create and manage different encounter types.
           </p>
         </header>
+
+        {/* Section Introduction Video */}
+        {showSectionIntro ? (
+          <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="flex items-center justify-between p-3 bg-gray-50 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <Monitor className="w-4 h-4 text-cyan-600" />
+                <span className="font-medium text-gray-900 text-sm">Section Overview</span>
+              </div>
+              <button
+                onClick={() => setShowSectionIntro(false)}
+                className="p-1 hover:bg-gray-200 rounded-lg transition-colors"
+              >
+                <X className="w-4 h-4 text-gray-500" />
+              </button>
+            </div>
+            <div className="aspect-video bg-black">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                controlsList="nodownload"
+              >
+                <source src={`${VIDEO_BASE_URL}/ehrintro.mp4`} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowSectionIntro(true)}
+            className="w-full mb-6 p-4 bg-white rounded-xl border border-gray-200 hover:border-cyan-200 hover:bg-cyan-50/50 transition-all flex items-center gap-4 text-left"
+          >
+            <div className="flex-shrink-0 w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center">
+              <Play className="w-5 h-5 text-cyan-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Section Overview</h3>
+              <p className="text-sm text-gray-500">Watch a brief introduction to EHR & Practice Management</p>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </button>
+        )}
 
         {/* Progress Summary */}
         {completedLessons > 0 && (
