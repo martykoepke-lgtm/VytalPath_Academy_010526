@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, Play, FileText,
   CheckCircle, ClipboardList, ListChecks, X, Calendar, Clock,
-  Sunrise, Moon
+  Sunrise, Moon, ListOrdered
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
 import { SOPModal, type SOPContent } from '../workflows/SOPModal';
 import { getSOPBySlug } from '../../data/sopContent';
+import { WorkflowSequencer } from '../learning/WorkflowSequencer';
 
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
@@ -555,6 +556,20 @@ export function WorkflowsSection() {
               </div>
             );
           })}
+        </div>
+
+        {/* Interactive Practice */}
+        <div className="mt-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+              <ListOrdered className="w-5 h-5 text-blue-600" />
+            </div>
+            <div>
+              <h2 className="text-lg font-medium text-gray-900">Interactive Practice</h2>
+              <p className="text-sm text-gray-500">Test your knowledge by ordering workflow steps correctly</p>
+            </div>
+          </div>
+          <WorkflowSequencer />
         </div>
 
         {/* Browse All SOPs Link */}

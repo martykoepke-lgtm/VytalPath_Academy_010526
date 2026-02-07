@@ -11,6 +11,9 @@ export interface SectionContext {
   currentPhase?: string;
   currentLesson?: string;
   currentSOP?: string;
+  practiceMode?: string;
+  scenarioType?: string;
+  scenarioInstructions?: string;
 }
 
 export interface AiTutorTheme {

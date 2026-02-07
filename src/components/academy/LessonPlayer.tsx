@@ -2988,7 +2988,176 @@ How medication is given:
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
     module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
-    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-inpatient-encounter', nextLesson: null, nextIsQuiz: true,
+    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-inpatient-encounter', nextLesson: 'encounters-and-identifiers', nextIsQuiz: false,
+  },
+  'encounters-and-identifiers': {
+    lesson: {
+      id: 'fs-l4', module_id: 'fs-m1', slug: 'encounters-and-identifiers',
+      title: 'Encounter Types & Patient Identifiers',
+      description: 'Learn the different encounter types you\'ll work with in an EHR system and understand the critical difference between MRN and FIN.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Encounter Types & Patient Identifiers
+
+## Why This Matters
+
+Every time a patient interacts with a healthcare organization — whether they walk into the clinic, call on the phone, or have lab results entered — the EHR system creates an **encounter**. As front office staff, you'll create, open, and work within encounters every single day.
+
+You also need to understand the two key identifiers that tie everything together: the **MRN** (Medical Record Number) and the **FIN** (Financial Identification Number). Confusing these is one of the most common new-hire mistakes, and it can cause billing errors, misfiled records, and compliance problems.
+
+---
+
+## What Is an Encounter?
+
+An **encounter** is any documented interaction between a patient and the healthcare organization. Think of it as a container — it holds all the notes, orders, charges, and documentation from that specific interaction.
+
+**Key concept:** One patient can have hundreds of encounters over time. Each encounter is a separate event with its own documentation.
+
+### The Four Main Encounter Types
+
+In most EHR systems, you'll work with these encounter types:
+
+| Encounter Type | What It Is | Who Creates It | Front Desk Role |
+|---|---|---|---|
+| **Appointment** | A scheduled in-person visit (office visit, procedure, follow-up) | Created when the appointment is scheduled | You schedule it, check the patient in, and verify demographics/insurance |
+| **Phone** | A documented telephone interaction (nurse triage call, prescription refill request, test result callback) | Created by clinical staff or routed from the phone system | You may transfer the call or create a message; the encounter documents what was discussed |
+| **Results Entry** | Lab work, imaging, or other test results entered into the chart | Created by the lab interface or manually by staff | You may notify the patient that results are available or schedule a follow-up |
+| **Transcription** | A dictated note converted to text and attached to the patient's record | Created when a provider dictates notes after a visit | Rarely a front desk task, but you should know it exists when you see it in the chart |
+
+---
+
+## Appointment Encounters: Your Primary Focus
+
+As front office staff, **appointment encounters** are where you'll spend most of your time. Here's the lifecycle:
+
+**1. Scheduling** — You create the appointment in the EHR. This reserves a time slot and generates a pending encounter.
+
+**2. Pre-visit** — Before the patient arrives, you (or a colleague) may verify insurance, confirm demographics, and check for outstanding balances. This is called **pre-scrubbing** the schedule.
+
+**3. Check-in** — When the patient arrives, you open the encounter, verify their identity, collect copays, and update any changed information.
+
+**4. During the visit** — The clinical team documents in the encounter: vitals, exam notes, orders, diagnoses.
+
+**5. Check-out** — You may schedule follow-ups, provide visit summaries, or collect remaining balances.
+
+**6. After the visit** — Charges are captured, claims are generated, and the encounter is eventually closed.
+
+> **Remember:** Every appointment encounter generates charges that flow into billing. Accurate check-in information is critical because it determines where the bill goes.
+
+---
+
+## Phone Encounters: More Than Just Answering Calls
+
+Not every phone call becomes a documented encounter, but many do. Phone encounters are created when the call involves:
+
+- A clinical decision (nurse advising a patient about symptoms)
+- A prescription refill request
+- A callback with test results
+- A referral coordination call
+- Any interaction that needs to be part of the medical record
+
+**Your role:** You may not create the phone encounter yourself, but you'll route calls to the right person and sometimes document messages that get attached to a phone encounter.
+
+---
+
+## MRN: The Medical Record Number
+
+The **MRN (Medical Record Number)** is the patient's **permanent, unique identifier** within your healthcare organization.
+
+**Key facts about the MRN:**
+
+- **One patient = one MRN** — it never changes, no matter how many times the patient visits
+- Assigned at the patient's **very first visit** (or when they are first registered in the system)
+- Used to **find the patient** in the EHR — it's like a library card number
+- Stays the same whether the patient comes for a routine checkup, an ER visit, or a surgery
+- If a patient hasn't visited in 10 years and comes back, their MRN is still the same
+
+**Think of it this way:** The MRN is the patient's "forever ID" at your organization. It links to their entire medical history.
+
+> **Front desk tip:** When a patient calls and says "I'm a patient there," you'll search by name and date of birth, and the system returns their MRN. Always verify you have the right patient — never assume.
+
+---
+
+## FIN: The Financial Identification Number
+
+The **FIN (Financial Identification Number)**, also called an **Account Number** or **Visit Number**, is tied to a **single encounter or visit**.
+
+**Key facts about the FIN:**
+
+- **One visit = one FIN** — every encounter gets its own unique FIN
+- A patient who visits 5 times in a year will have 5 different FINs (but the same MRN)
+- The FIN links to all the **charges, payments, and insurance claims** for that specific visit
+- Insurance companies use the FIN to process claims for that particular encounter
+- When billing questions come up about a specific visit, you'll reference the FIN
+
+**Think of it this way:** If the MRN is the patient's "forever ID," the FIN is the "receipt number" for one specific visit.
+
+---
+
+## MRN vs FIN: Side by Side
+
+| | MRN (Medical Record Number) | FIN (Financial Identification Number) |
+|---|---|---|
+| **Scope** | Entire patient record | One specific encounter/visit |
+| **How many per patient?** | One (permanent) | One per visit (many over time) |
+| **Created when?** | First-ever registration | Each time an encounter is created |
+| **Used for** | Finding the patient, accessing medical history | Billing, insurance claims, visit-specific lookups |
+| **Changes?** | Never | New one every visit |
+| **Example** | MRN: 00412385 | FIN: 9230017854 |
+
+### Real-World Example
+
+**Maria Garcia** has been a patient at Valley Medical Group for 3 years.
+
+- Her **MRN** is **00412385** — assigned when she first registered. It has never changed.
+- Last Tuesday she had a **routine physical**. That visit was assigned **FIN 9230017854**.
+- Today she calls about a **prescription refill**. A phone encounter is created with **FIN 9230018201**.
+- Next week she has a **follow-up lab draw**. That will get yet another new FIN.
+
+All three FINs link back to MRN 00412385 — the same Maria Garcia.
+
+---
+
+## Why Duplicate Records Are Dangerous
+
+One of the biggest problems in healthcare data is **duplicate MRNs** — when the same patient accidentally gets registered twice with two different MRNs.
+
+**How it happens:**
+- Patient gives a nickname ("Liz" instead of "Elizabeth")
+- Misspelled name at registration
+- Patient doesn't mention they've been seen before
+- Staff skips the search step and creates a new record
+
+**Why it's dangerous:**
+- **Split medical history** — allergies, medications, and past diagnoses may only appear under one MRN
+- **Billing errors** — insurance may deny claims if patient info doesn't match
+- **Safety risks** — a provider might not see a critical drug allergy listed under the other MRN
+
+**Your role in prevention:** Always search thoroughly before creating a new patient record. Search by date of birth, last name, phone number, and SSN (last 4). If you find a possible match, verify with the patient before creating a new record.
+
+---
+
+## Quick Reference Summary
+
+**Encounter types you'll see:**
+- **Appointment** — scheduled in-person visit (your primary workflow)
+- **Phone** — documented phone interaction
+- **Results Entry** — lab/imaging results added to chart
+- **Transcription** — dictated provider notes
+
+**The two identifiers:**
+- **MRN** = patient's permanent ID (one per patient, never changes)
+- **FIN** = visit-specific ID (one per encounter, links to billing)
+
+**Your daily responsibilities:**
+- Search for existing patients before creating new records
+- Verify patient identity at every check-in
+- Understand which encounter you're working in
+- Know that every encounter generates billing activity tied to its FIN`,
+      duration_minutes: 8, sort_order: 4,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Foundations of Healthcare', prevLesson: 'the-ambulatory-care-journey', nextLesson: null, nextIsQuiz: true,
   },
   // Medical Law & Ethics Section
   'hipaa-basics': {
@@ -3092,6 +3261,23 @@ How medication is given:
   },
 };
 
+// Detect the section prefix from current URL for navigation
+function getSectionPrefix(): { prefix: string; backPath: string; backLabel: string } {
+  const path = window.location.pathname;
+  const sectionPrefixes = [
+    { match: '/foundations/', prefix: '/foundations', backPath: '/foundations', backLabel: 'Back to Foundations' },
+    { match: '/medical-law-ethics/', prefix: '/medical-law-ethics', backPath: '/medical-law-ethics', backLabel: 'Back to Medical Law & Ethics' },
+    { match: '/insurance/', prefix: '/insurance', backPath: '/insurance', backLabel: 'Back to Insurance' },
+    { match: '/terminology/', prefix: '/terminology', backPath: '/terminology', backLabel: 'Back to Terminology' },
+    { match: '/workflows/lessons/', prefix: '/workflows/lessons', backPath: '/workflows', backLabel: 'Back to Workflows' },
+  ];
+  for (const s of sectionPrefixes) {
+    if (path.startsWith(s.match)) return s;
+  }
+  // Fallback to legacy courses route
+  return { prefix: '', backPath: '/courses', backLabel: 'Back to Course' };
+}
+
 export function LessonPlayer() {
   const { courseSlug, moduleSlug, lessonSlug } = useParams<{
     courseSlug: string;
@@ -3111,17 +3297,20 @@ export function LessonPlayer() {
   const slides = useSlides(lessonData?.lesson.reading_content || null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Detect section for correct navigation
+  const sectionInfo = useMemo(() => getSectionPrefix(), []);
+
   if (!lessonData) {
     return (
       <div className="max-w-4xl mx-auto text-center py-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">Lesson Not Found</h2>
         <p className="text-gray-600 mb-6">This lesson is not yet available or doesn't exist.</p>
         <Link
-          to={`/courses/${courseSlug}`}
+          to={sectionInfo.backPath}
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Course
+          {sectionInfo.backLabel}
         </Link>
       </div>
     );
@@ -3135,13 +3324,34 @@ export function LessonPlayer() {
     }
   };
 
+  // Video progress handler — mark complete at 90% watched
+  const handleVideoTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    if (isCompleted) return;
+    const video = e.currentTarget;
+    if (video.duration > 0 && video.currentTime / video.duration >= 0.9) {
+      handleMarkComplete();
+    }
+  };
+
   const handleContinue = () => {
-    if (nextIsQuiz) {
-      navigate(`/courses/${courseSlug}/${moduleSlug}/quiz`);
-    } else if (nextLesson) {
-      navigate(`/courses/${courseSlug}/${moduleSlug}/${nextLesson}`);
+    // Use section-aware navigation instead of legacy /courses/ path
+    if (sectionInfo.prefix) {
+      if (nextIsQuiz) {
+        navigate(`${sectionInfo.prefix}/${moduleSlug}/quiz`);
+      } else if (nextLesson) {
+        navigate(`${sectionInfo.prefix}/${moduleSlug}/${nextLesson}`);
+      } else {
+        navigate(sectionInfo.backPath);
+      }
     } else {
-      navigate(`/courses/${courseSlug}`);
+      // Legacy courses route fallback
+      if (nextIsQuiz) {
+        navigate(`/courses/${courseSlug}/${moduleSlug}/quiz`);
+      } else if (nextLesson) {
+        navigate(`/courses/${courseSlug}/${moduleSlug}/${nextLesson}`);
+      } else {
+        navigate(`/courses/${courseSlug}`);
+      }
     }
   };
 
@@ -3149,12 +3359,8 @@ export function LessonPlayer() {
     <div className="max-w-4xl mx-auto">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-        <Link to="/courses" className="hover:text-gray-700">
-          Courses
-        </Link>
-        <ChevronRight className="w-4 h-4" />
-        <Link to={`/courses/${courseSlug}`} className="hover:text-gray-700">
-          {courseTitle}
+        <Link to={sectionInfo.prefix ? sectionInfo.backPath : '/courses'} className="hover:text-gray-700">
+          {sectionInfo.prefix ? sectionInfo.backLabel.replace('Back to ', '') : 'Courses'}
         </Link>
         <ChevronRight className="w-4 h-4" />
         <span className="text-gray-700">{module.title}</span>
@@ -3191,6 +3397,7 @@ export function LessonPlayer() {
               className="w-full h-full"
               controlsList="nodownload"
               onEnded={handleMarkComplete}
+              onTimeUpdate={handleVideoTimeUpdate}
             >
               <source src={lesson.video_url} type="video/mp4" />
               Your browser does not support the video tag.
@@ -3234,7 +3441,7 @@ export function LessonPlayer() {
           <div>
             {prevLesson ? (
               <Link
-                to={`/courses/${courseSlug}/${moduleSlug}/${prevLesson}`}
+                to={sectionInfo.prefix ? `${sectionInfo.prefix}/${moduleSlug}/${prevLesson}` : `/courses/${courseSlug}/${moduleSlug}/${prevLesson}`}
                 className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -3242,11 +3449,11 @@ export function LessonPlayer() {
               </Link>
             ) : (
               <Link
-                to={`/courses/${courseSlug}`}
+                to={sectionInfo.prefix ? sectionInfo.backPath : `/courses/${courseSlug}`}
                 className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
-                Back to Course
+                {sectionInfo.backLabel}
               </Link>
             )}
           </div>
@@ -3271,13 +3478,21 @@ export function LessonPlayer() {
               </span>
             )}
 
-            <button
-              onClick={handleContinue}
-              className="inline-flex items-center gap-2 px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg hover:from-blue-700 hover:to-blue-700 transition-all"
-            >
-              {nextIsQuiz ? 'Take Quiz' : nextLesson ? 'Next Lesson' : 'Back to Course'}
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {/* Gate next/quiz behind completion; always allow "Back to Course" */}
+            {(nextLesson || nextIsQuiz) && !isCompleted ? (
+              <span className="inline-flex items-center gap-2 px-6 py-2 text-sm font-medium text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed">
+                Complete this lesson to continue
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            ) : (
+              <button
+                onClick={handleContinue}
+                className="inline-flex items-center gap-2 px-6 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-600 rounded-lg hover:from-blue-700 hover:to-blue-700 transition-all"
+              >
+                {nextIsQuiz ? 'Take Quiz' : nextLesson ? 'Next Lesson' : sectionInfo.backLabel}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
           </div>
         </div>
       </div>

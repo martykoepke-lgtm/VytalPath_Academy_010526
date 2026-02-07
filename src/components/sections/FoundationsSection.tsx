@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
+import { HealthcareSettingSorter } from '../learning/HealthcareSettingSorter';
 import type { ContentType } from '../../types/course';
 
 // Supabase Storage base URL for videos
@@ -54,6 +55,14 @@ const foundationsModules = [
         content_type: 'video' as ContentType,
         video_url: `${VIDEO_BASE_URL}/ambjourney.mp4`,
         duration_minutes: 5,
+      },
+      {
+        id: 'l4',
+        slug: 'encounters-and-identifiers',
+        title: 'Encounter Types & Patient Identifiers',
+        description: 'Learn the different encounter types in an EHR and the critical difference between MRN and FIN.',
+        content_type: 'reading' as ContentType,
+        duration_minutes: 8,
       },
     ],
   },
@@ -317,6 +326,11 @@ export function FoundationsSection() {
             </div>
           );
         })}
+      </section>
+
+      {/* Interactive Practice */}
+      <section className="mt-8">
+        <HealthcareSettingSorter />
       </section>
     </article>
     </>

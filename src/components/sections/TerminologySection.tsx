@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, FileText, Play,
-  CheckCircle, GraduationCap, ClipboardCheck, Trophy, BookA, X
+  CheckCircle, GraduationCap, ClipboardCheck, Trophy, BookA, X, Puzzle
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import { TerminologyView } from '../TerminologyView';
 import { TermDetail } from '../TermDetail';
+import { TermBuilderWorkshop } from '../learning/TermBuilderWorkshop';
 import type { MedicalTerm } from '../../types/medical';
 import type { ContentType } from '../../types/course';
 
@@ -110,7 +111,7 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
   reading: FileText,
 };
 
-type ViewMode = 'lessons' | 'study';
+type ViewMode = 'lessons' | 'study' | 'builder';
 
 export function TerminologySection() {
   const [viewMode, setViewMode] = useState<ViewMode>('lessons');
@@ -214,10 +215,25 @@ export function TerminologySection() {
               Study Mode
             </span>
           </button>
+          <button
+            onClick={() => setViewMode('builder')}
+            className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
+              viewMode === 'builder'
+                ? 'bg-blue-600 text-white shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <Puzzle className="w-4 h-4" />
+              Term Builder
+            </span>
+          </button>
         </div>
       </div>
 
-      {viewMode === 'lessons' ? (
+      {viewMode === 'builder' ? (
+        <TermBuilderWorkshop />
+      ) : viewMode === 'lessons' ? (
         <>
           {/* Progress Summary */}
           {lessonsCompleted > 0 && (

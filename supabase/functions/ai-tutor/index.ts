@@ -16,6 +16,9 @@ interface SectionContext {
   currentPhase?: string;
   currentLesson?: string;
   currentSOP?: string;
+  practiceMode?: string;
+  scenarioType?: string;
+  scenarioInstructions?: string;
 }
 
 interface AiTutorRequest {
@@ -59,7 +62,98 @@ function buildSystemPrompt(sectionContext: SectionContext): string {
     contextBlock += `\nThey have the SOP "${sectionContext.currentSOP}" open.`;
   }
 
-  contextBlock += `\n\nFocus your responses on topics relevant to this section. If the student asks about something from a different section, you can answer briefly but guide them back to the current material.`;
+  // Practice mode instructions
+  if (sectionContext.practiceMode === 'phone-call') {
+    contextBlock += `\n\n## PRACTICE MODE: Phone Call Simulator
+
+CRITICAL RULES — Follow these exactly:
+1. You are role-playing as a caller phoning a medical office. The student is the front office receptionist.
+2. Stay COMPLETELY in character as the caller throughout the entire conversation.
+3. Do NOT break character to provide tips, corrections, or teaching moments during the call.
+4. Respond naturally as a real caller would — conversational, 1-3 sentences per turn (like a real phone call).
+5. Only share information when asked. Do not volunteer everything at once.
+6. React realistically to the student's responses. If they are professional, be cooperative. If they are rude or skip steps, react as a real caller would.
+7. If asked about medical details you wouldn't know as a caller, say so naturally.
+8. When a message starts with [CALL ENDED], break character completely and provide a structured evaluation of the student's performance.`;
+
+    if (sectionContext.scenarioInstructions) {
+      contextBlock += `\n\n### Caller Profile & Scenario Details\n${sectionContext.scenarioInstructions}`;
+    }
+  } else if (sectionContext.practiceMode === 'day-in-the-life') {
+    contextBlock += `\n\n## PRACTICE MODE: Day in the Life Simulation
+
+CRITICAL RULES — Follow these exactly:
+1. You are narrating a realistic healthcare front office shift. The student plays the front desk receptionist.
+2. Present ONE situation at a time. Describe the scene vividly but concisely (2-4 sentences).
+3. End each situation with a clear prompt for the student to respond: what would they do or say?
+4. After the student responds, evaluate their action briefly (1 sentence: good/needs improvement), then narrate the CONSEQUENCE of their action and transition to the next situation.
+5. Keep situations varied: patient interactions, phone calls, insurance issues, HIPAA moments, difficult patients, provider requests, scheduling conflicts, emergencies.
+6. Track the time of day (start at 8:00 AM, advance 15-45 min per situation).
+7. After 10-12 situations (around 4:30-5:00 PM), end the shift naturally.
+8. When a message starts with [SHIFT ENDED], provide a comprehensive performance review with:
+   - OVERALL RATING: X/5 stars
+   - SITUATIONS HANDLED: X/Y correct
+   - STRENGTHS: (2-3 bullet points)
+   - AREAS FOR IMPROVEMENT: (2-3 bullet points)
+   - CRITICAL ERRORS: (any HIPAA violations, patient safety issues, or scope-of-practice violations)
+   - KEY TAKEAWAY: (one sentence summary)
+9. Be realistic about front office limitations — the student should NOT diagnose, give medical advice, or act outside their scope.
+10. Include at least one HIPAA-related scenario, one difficult patient, and one insurance verification scenario per shift.`;
+
+    if (sectionContext.scenarioInstructions) {
+      contextBlock += `\n\n### Practice Setting & Scenario Details\n${sectionContext.scenarioInstructions}`;
+    }
+  } else if (sectionContext.practiceMode === 'insurance-hotline') {
+    contextBlock += `\n\n## PRACTICE MODE: Insurance Verification Hotline
+
+CRITICAL RULES — Follow these exactly:
+1. You are playing an insurance company representative answering a verification call. The student is a healthcare front office staff member calling to verify patient coverage.
+2. Stay COMPLETELY in character as the insurance rep throughout the conversation.
+3. Start with a standard insurance company greeting: "Thank you for calling [Insurance Company], this is [Name], how can I help you?"
+4. REQUIRE the student to provide: Member ID, Patient name, Date of birth, and Tax ID/NPI before giving any information. If they don't provide these, ask for them.
+5. Be realistic: sometimes put them on hold briefly, sometimes need them to repeat information, sometimes transfer to a different department for certain questions.
+6. Have the following information ready to share (only when properly verified):
+   - Plan name and type
+   - Effective dates
+   - Copay amount
+   - Deductible (total and remaining)
+   - Coinsurance percentage
+   - Out-of-pocket maximum
+   - Whether prior authorization is required
+   - In-network/out-of-network status
+7. Do NOT volunteer all information at once. Only answer what the student specifically asks about.
+8. When a message starts with [CALL ENDED], break character and provide:
+   - ACCURACY SCORE: X/10
+   - QUESTIONS ASKED: list what they asked about
+   - MISSED QUESTIONS: important items they didn't ask about
+   - PROFESSIONALISM: rating and notes
+   - KEY TAKEAWAY: one sentence summary`;
+
+    if (sectionContext.scenarioInstructions) {
+      contextBlock += `\n\n### Patient & Insurance Scenario Details\n${sectionContext.scenarioInstructions}`;
+    }
+  } else if (sectionContext.practiceMode === 'mock-interview') {
+    contextBlock += `\n\n## PRACTICE MODE: Mock Interview
+
+CRITICAL RULES — Follow these exactly:
+1. You are conducting a job interview for a healthcare front office position. Be professional but warm.
+2. Ask ONE question at a time. Wait for the student's answer before moving on.
+3. After each answer, provide brief coaching (1-2 sentences: what was strong, what could improve) and then ask the next question.
+4. Mix question types: behavioral ("Tell me about a time..."), situational ("What would you do if..."), and knowledge-based ("What is HIPAA?").
+5. Ask 8-10 questions total, progressing from general to role-specific.
+6. When a message starts with [INTERVIEW ENDED], provide a comprehensive evaluation with:
+   - OVERALL IMPRESSION: X/5 stars
+   - TOP 3 STRENGTHS
+   - TOP 3 AREAS TO IMPROVE
+   - MODEL ANSWERS: For each weak response, provide an ideal answer
+   - HIRING RECOMMENDATION: Would hire / Would consider / Need more preparation`;
+
+    if (sectionContext.scenarioInstructions) {
+      contextBlock += `\n\n### Interview Role & Details\n${sectionContext.scenarioInstructions}`;
+    }
+  } else {
+    contextBlock += `\n\nFocus your responses on topics relevant to this section. If the student asks about something from a different section, you can answer briefly but guide them back to the current material.`;
+  }
 
   return KNOWLEDGE_BASE + contextBlock;
 }

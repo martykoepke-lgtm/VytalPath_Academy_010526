@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-  Gamepad2,
-  Users,
-  Eye,
-  Gauge,
-  Trophy,
-  CheckCircle2,
-  ChevronRight,
-  Sparkles,
-  Lock,
-  Award
+  Briefcase, Users, Eye, Gauge, Trophy,
+  CheckCircle2, ChevronRight, Sparkles,
+  Award, Phone, Clock, HeadphonesIcon, ClipboardCheck,
+  MessageSquare, FileText
 } from 'lucide-react';
 import { SimulationExperience } from './SimulationExperience';
 import { SpotTheViolation } from './SpotTheViolation';
@@ -33,117 +28,150 @@ const defaultProgress: ExperienceProgress = {
   allCompleted: false,
 };
 
+interface ReadinessData {
+  buildSkills: number; // 0-3 completed
+  practiceScenarios: number; // 0-3 completed
+  proveReady: boolean;
+  careerPrep: number; // 0-2 completed
+  overall: number; // 0-100
+}
+
+function computeReadiness(): ReadinessData {
+  let buildSkills = 0;
+  let practiceScenarios = 0;
+  let proveReady = false;
+  let careerPrep = 0;
+
+  // Stage 1: Build Skills (existing 3 experiences)
+  try {
+    const interactive = localStorage.getItem(STORAGE_KEY);
+    if (interactive) {
+      const data = JSON.parse(interactive);
+      if (data.simulationCompleted) buildSkills++;
+      if (data.spotViolationCompleted) buildSkills++;
+      if (data.riskMeterCompleted) buildSkills++;
+    }
+  } catch { /* ignore */ }
+
+  // Stage 2: Practice Scenarios
+  try {
+    const phone = localStorage.getItem('vytalpath_phone_sim');
+    if (phone) {
+      const data = JSON.parse(phone);
+      if (data.completedCalls?.length > 0) practiceScenarios++;
+    }
+  } catch { /* ignore */ }
+
+  try {
+    const day = localStorage.getItem('vytalpath_day_sim');
+    if (day) {
+      const data = JSON.parse(day);
+      if (data.completedShifts?.length > 0) practiceScenarios++;
+    }
+  } catch { /* ignore */ }
+
+  try {
+    const hotline = localStorage.getItem('vytalpath_ins_hotline');
+    if (hotline) {
+      const data = JSON.parse(hotline);
+      if (data.completedCalls?.length > 0) practiceScenarios++;
+    }
+  } catch { /* ignore */ }
+
+  // Stage 3: Readiness Assessment
+  try {
+    const readiness = localStorage.getItem('vytalpath_readiness');
+    if (readiness) {
+      const data = JSON.parse(readiness);
+      if (data.passed) proveReady = true;
+    }
+  } catch { /* ignore */ }
+
+  // Stage 4: Career Prep
+  try {
+    const interview = localStorage.getItem('vytalpath_interview');
+    if (interview) {
+      const data = JSON.parse(interview);
+      if (data.completedInterviews?.length > 0) careerPrep++;
+    }
+  } catch { /* ignore */ }
+
+  try {
+    const resume = localStorage.getItem('vytalpath_resume');
+    if (resume) {
+      const data = JSON.parse(resume);
+      if (data.bulletPoints?.length > 0) careerPrep++;
+    }
+  } catch { /* ignore */ }
+
+  // Overall: weighted score
+  const totalPossible = 3 + 3 + 1 + 2; // 9 total
+  const totalCompleted = buildSkills + practiceScenarios + (proveReady ? 1 : 0) + careerPrep;
+  const overall = Math.round((totalCompleted / totalPossible) * 100);
+
+  return { buildSkills, practiceScenarios, proveReady, careerPrep, overall };
+}
+
 export function InteractiveHub() {
+  const navigate = useNavigate();
   const [activeExperience, setActiveExperience] = useState<ActiveExperience>('hub');
   const [progress, setProgress] = useState<ExperienceProgress>(defaultProgress);
+  const [readiness, setReadiness] = useState<ReadinessData>(computeReadiness);
   const [showCertificate, setShowCertificate] = useState(false);
 
-  // Load progress from localStorage
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
         setProgress(JSON.parse(saved));
-      } catch {
-        // Invalid data, use default
-      }
+      } catch { /* ignore */ }
     }
+    setReadiness(computeReadiness());
   }, []);
 
-  // Save progress to localStorage
   const saveProgress = (newProgress: ExperienceProgress) => {
     setProgress(newProgress);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(newProgress));
+    setReadiness(computeReadiness());
   };
 
   const handleSimulationComplete = (score: number, total: number) => {
     const passed = (score / total) >= 0.7;
-    const newProgress = {
-      ...progress,
-      simulationScore: score,
-      simulationTotal: total,
-      simulationCompleted: passed,
-    };
-    newProgress.allCompleted = newProgress.simulationCompleted &&
-                               newProgress.spotViolationCompleted &&
-                               newProgress.riskMeterCompleted;
-    if (newProgress.allCompleted && !progress.allCompleted) {
-      newProgress.completedAt = new Date().toISOString();
-    }
+    const newProgress = { ...progress, simulationScore: score, simulationTotal: total, simulationCompleted: passed };
+    newProgress.allCompleted = newProgress.simulationCompleted && newProgress.spotViolationCompleted && newProgress.riskMeterCompleted;
+    if (newProgress.allCompleted && !progress.allCompleted) newProgress.completedAt = new Date().toISOString();
     saveProgress(newProgress);
     setActiveExperience('hub');
   };
 
   const handleSpotViolationComplete = (score: number, total: number) => {
-    const newProgress = {
-      ...progress,
-      spotViolationScore: score,
-      spotViolationTotal: total,
-      spotViolationCompleted: true,
-    };
-    newProgress.allCompleted = newProgress.simulationCompleted &&
-                               newProgress.spotViolationCompleted &&
-                               newProgress.riskMeterCompleted;
-    if (newProgress.allCompleted && !progress.allCompleted) {
-      newProgress.completedAt = new Date().toISOString();
-    }
+    const newProgress = { ...progress, spotViolationScore: score, spotViolationTotal: total, spotViolationCompleted: true };
+    newProgress.allCompleted = newProgress.simulationCompleted && newProgress.spotViolationCompleted && newProgress.riskMeterCompleted;
+    if (newProgress.allCompleted && !progress.allCompleted) newProgress.completedAt = new Date().toISOString();
     saveProgress(newProgress);
     setActiveExperience('hub');
   };
 
   const handleRiskMeterComplete = (score: number, total: number) => {
-    const newProgress = {
-      ...progress,
-      riskMeterScore: score,
-      riskMeterTotal: total,
-      riskMeterCompleted: true,
-    };
-    newProgress.allCompleted = newProgress.simulationCompleted &&
-                               newProgress.spotViolationCompleted &&
-                               newProgress.riskMeterCompleted;
-    if (newProgress.allCompleted && !progress.allCompleted) {
-      newProgress.completedAt = new Date().toISOString();
-    }
+    const newProgress = { ...progress, riskMeterScore: score, riskMeterTotal: total, riskMeterCompleted: true };
+    newProgress.allCompleted = newProgress.simulationCompleted && newProgress.spotViolationCompleted && newProgress.riskMeterCompleted;
+    if (newProgress.allCompleted && !progress.allCompleted) newProgress.completedAt = new Date().toISOString();
     saveProgress(newProgress);
     setActiveExperience('hub');
   };
 
-  const handleResetProgress = () => {
-    if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
-      saveProgress(defaultProgress);
-      setShowCertificate(false);
-    }
-  };
-
   // Render active experience
   if (activeExperience === 'simulation') {
-    return (
-      <SimulationExperience
-        onComplete={handleSimulationComplete}
-        onBack={() => setActiveExperience('hub')}
-      />
-    );
+    return <SimulationExperience onComplete={handleSimulationComplete} onBack={() => setActiveExperience('hub')} />;
   }
-
   if (activeExperience === 'spot-violation') {
-    return (
-      <SpotTheViolation
-        onComplete={handleSpotViolationComplete}
-        onBack={() => setActiveExperience('hub')}
-      />
-    );
+    return <SpotTheViolation onComplete={handleSpotViolationComplete} onBack={() => setActiveExperience('hub')} />;
   }
-
   if (activeExperience === 'risk-meter') {
-    return (
-      <RiskMeter
-        onComplete={handleRiskMeterComplete}
-        onBack={() => setActiveExperience('hub')}
-      />
-    );
+    return <RiskMeter onComplete={handleRiskMeterComplete} onBack={() => setActiveExperience('hub')} />;
   }
 
-  // Certificate Modal
+  // Certificate
   if (showCertificate && progress.allCompleted) {
     return (
       <div className="max-w-2xl mx-auto">
@@ -152,19 +180,14 @@ export function InteractiveHub() {
             <Award className="w-16 h-16 mx-auto mb-4" />
             <h1 className="text-3xl font-semibold tracking-tight">Certificate of Completion</h1>
           </div>
-
           <div className="p-8 text-center">
             <p className="text-gray-500 mb-2">This certifies that</p>
             <p className="text-2xl font-medium text-gray-900 mb-2">Healthcare Professional</p>
             <p className="text-gray-500 mb-6">has successfully completed</p>
-
             <div className="bg-blue-50/50 rounded-2xl p-6 mb-6 border border-blue-100">
-              <h2 className="text-xl font-medium text-gray-900 mb-2">
-                Medical Law & Ethics Foundations
-              </h2>
+              <h2 className="text-xl font-medium text-gray-900 mb-2">Build Your Skills</h2>
               <p className="text-blue-600">Interactive Learning Experiences</p>
             </div>
-
             <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
               <div className="bg-gray-50 rounded-2xl p-4">
                 <p className="font-medium text-gray-900">Simulation</p>
@@ -179,11 +202,9 @@ export function InteractiveHub() {
                 <p className="text-gray-500">{progress.riskMeterScore}/{progress.riskMeterTotal}</p>
               </div>
             </div>
-
             <p className="text-sm text-gray-400 mb-6">
               Completed on {new Date(progress.completedAt || '').toLocaleDateString()}
             </p>
-
             <button
               onClick={() => setShowCertificate(false)}
               className="px-6 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
@@ -196,211 +217,281 @@ export function InteractiveHub() {
     );
   }
 
-  // Hub View
-  const experiences = [
+  // Stages
+  const stages = [
     {
-      id: 'simulation',
-      title: 'Your First Day',
-      description: 'Navigate real workplace scenarios through choose-your-path decision making.',
-      icon: Users,
-      completed: progress.simulationCompleted,
-      score: progress.simulationTotal > 0 ? `${progress.simulationScore}/${progress.simulationTotal}` : null,
-      required: true,
-      locked: false,
+      number: 1,
+      title: 'Build Your Skills',
+      subtitle: 'Practice compliance and decision-making fundamentals',
+      color: 'blue',
+      progress: `${readiness.buildSkills}/3`,
+      items: [
+        {
+          id: 'simulation',
+          title: 'Your First Day',
+          description: 'Navigate real workplace scenarios through choose-your-path decision making.',
+          icon: Users,
+          completed: progress.simulationCompleted,
+          score: progress.simulationTotal > 0 ? `${progress.simulationScore}/${progress.simulationTotal}` : null,
+          action: () => setActiveExperience('simulation'),
+        },
+        {
+          id: 'spot-violation',
+          title: 'Spot the Violation',
+          description: 'Find privacy and compliance issues hiding in everyday workplace scenes.',
+          icon: Eye,
+          completed: progress.spotViolationCompleted,
+          score: progress.spotViolationTotal > 0 ? `${progress.spotViolationScore}/${progress.spotViolationTotal}` : null,
+          action: () => setActiveExperience('spot-violation'),
+        },
+        {
+          id: 'risk-meter',
+          title: 'Risk Meter',
+          description: 'Categorize scenarios by risk level — from safe practices to clear violations.',
+          icon: Gauge,
+          completed: progress.riskMeterCompleted,
+          score: progress.riskMeterTotal > 0 ? `${progress.riskMeterScore}/${progress.riskMeterTotal}` : null,
+          action: () => setActiveExperience('risk-meter'),
+        },
+      ],
     },
     {
-      id: 'spot-violation',
-      title: 'Spot the Violation',
-      description: 'Find privacy and compliance issues hiding in everyday workplace scenes.',
-      icon: Eye,
-      completed: progress.spotViolationCompleted,
-      score: progress.spotViolationTotal > 0 ? `${progress.spotViolationScore}/${progress.spotViolationTotal}` : null,
-      required: false,
-      locked: false,
+      number: 2,
+      title: 'Practice Real Scenarios',
+      subtitle: 'AI-powered simulations of real front office situations',
+      color: 'purple',
+      progress: `${readiness.practiceScenarios}/3`,
+      aiPowered: true,
+      items: [
+        {
+          id: 'phone-simulator',
+          title: 'Phone Call Simulator',
+          description: 'Handle incoming calls from patients, insurance reps, and pharmacies.',
+          icon: Phone,
+          completed: readiness.practiceScenarios > 0,
+          action: () => navigate('/practice/phone-simulator'),
+        },
+        {
+          id: 'day-in-the-life',
+          title: 'Day in the Life',
+          description: 'Experience a full shift at different practice settings with dynamic scenarios.',
+          icon: Clock,
+          completed: readiness.practiceScenarios > 1,
+          action: () => navigate('/practice/day-in-the-life'),
+        },
+        {
+          id: 'insurance-hotline',
+          title: 'Insurance Verification Hotline',
+          description: 'Call insurance companies, ask the right questions, and fill out verification forms.',
+          icon: HeadphonesIcon,
+          completed: readiness.practiceScenarios > 2,
+          action: () => navigate('/practice/insurance-hotline'),
+        },
+      ],
     },
     {
-      id: 'risk-meter',
-      title: 'Risk Meter',
-      description: 'Categorize scenarios by risk level - from safe practices to clear violations.',
-      icon: Gauge,
-      completed: progress.riskMeterCompleted,
-      score: progress.riskMeterTotal > 0 ? `${progress.riskMeterScore}/${progress.riskMeterTotal}` : null,
-      required: false,
-      locked: false,
+      number: 3,
+      title: 'Prove You\'re Ready',
+      subtitle: 'Comprehensive scenario-based evaluation across all domains',
+      color: 'emerald',
+      progress: readiness.proveReady ? '1/1' : '0/1',
+      aiPowered: true,
+      items: [
+        {
+          id: 'readiness-assessment',
+          title: 'Readiness Assessment',
+          description: 'Five practical tasks covering every domain — score 80%+ to earn your "Job Ready" badge.',
+          icon: ClipboardCheck,
+          completed: readiness.proveReady,
+          action: () => navigate('/practice/readiness'),
+        },
+      ],
+    },
+    {
+      number: 4,
+      title: 'Get the Job',
+      subtitle: 'Career tools to help you land your healthcare front office role',
+      color: 'amber',
+      progress: `${readiness.careerPrep}/2`,
+      aiPowered: true,
+      items: [
+        {
+          id: 'mock-interview',
+          title: 'Mock Interview',
+          description: 'Practice answering real interview questions with AI coaching after each response.',
+          icon: MessageSquare,
+          completed: readiness.careerPrep > 0,
+          action: () => navigate('/practice/interview'),
+        },
+        {
+          id: 'resume-builder',
+          title: 'Resume Bullet Builder',
+          description: 'Generate resume bullet points based on the skills you\'ve demonstrated.',
+          icon: FileText,
+          completed: readiness.careerPrep > 1,
+          action: () => navigate('/practice/resume'),
+        },
+      ],
     },
   ];
 
-  const completedCount = experiences.filter(e => e.completed).length;
+  const colorMap: Record<string, { bg: string; text: string; lightBg: string; border: string; fill: string }> = {
+    blue: { bg: 'bg-blue-600', text: 'text-blue-600', lightBg: 'bg-blue-50', border: 'border-blue-200', fill: 'bg-blue-500' },
+    purple: { bg: 'bg-purple-600', text: 'text-purple-600', lightBg: 'bg-purple-50', border: 'border-purple-200', fill: 'bg-purple-500' },
+    emerald: { bg: 'bg-emerald-600', text: 'text-emerald-600', lightBg: 'bg-emerald-50', border: 'border-emerald-200', fill: 'bg-emerald-500' },
+    amber: { bg: 'bg-amber-600', text: 'text-amber-600', lightBg: 'bg-amber-50', border: 'border-amber-200', fill: 'bg-amber-500' },
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-10">
         <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-3xl shadow-apple-sm mb-6">
-          <Gamepad2 className="w-9 h-9 text-blue-600" />
+          <Briefcase className="w-9 h-9 text-blue-600" />
         </div>
-        <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Interactive Learning</h1>
+        <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Job Readiness Center</h1>
         <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          Put your knowledge to the test with hands-on experiences. Practice making decisions, spotting problems, and assessing risks.
+          Build skills, practice real scenarios, prove you're ready, and land the job.
         </p>
       </div>
 
-      {/* Progress Summary */}
-      <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-6 mb-8">
-        <div className="flex items-center justify-between">
+      {/* Overall Readiness */}
+      <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-6 mb-10">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
               <Trophy className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <h3 className="font-medium text-gray-900">Your Progress</h3>
-              <p className="text-sm text-gray-500">
-                {completedCount} of {experiences.length} experiences completed
-              </p>
+              <h3 className="font-medium text-gray-900">Overall Readiness</h3>
+              <p className="text-sm text-gray-500">Complete activities across all stages to reach 100%</p>
             </div>
           </div>
-
-          <div className="flex items-center gap-4">
-            {/* Progress circles */}
-            <div className="flex gap-2">
-              {experiences.map((exp) => (
-                <div
-                  key={exp.id}
-                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    exp.completed ? 'bg-blue-500' : 'bg-gray-200'
-                  }`}
-                  title={exp.title}
-                />
-              ))}
-            </div>
-
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-semibold text-gray-900">{readiness.overall}%</span>
             {progress.allCompleted && (
               <button
                 onClick={() => setShowCertificate(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-100 transition-all duration-300"
+                className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition-all text-sm font-medium"
               >
                 <Award className="w-4 h-4" />
-                View Certificate
+                Certificate
               </button>
             )}
           </div>
         </div>
-
-        {/* Progress bar */}
-        <div className="mt-4 w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+        <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
           <div
-            className="h-full bg-blue-500 transition-all duration-500"
-            style={{ width: `${(completedCount / experiences.length) * 100}%` }}
+            className="h-full bg-blue-500 rounded-full transition-all duration-500"
+            style={{ width: `${readiness.overall}%` }}
           />
+        </div>
+        {/* Stage progress dots */}
+        <div className="flex items-center justify-between mt-4">
+          {stages.map((stage) => {
+            const colors = colorMap[stage.color];
+            return (
+              <div key={stage.number} className="flex items-center gap-2">
+                <div className={`w-6 h-6 rounded-full ${colors.bg} text-white text-xs font-bold flex items-center justify-center`}>
+                  {stage.number}
+                </div>
+                <span className="text-xs text-gray-500 hidden sm:inline">{stage.title}</span>
+                <span className={`text-xs font-medium ${colors.text}`}>{stage.progress}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* All Complete Banner */}
-      {progress.allCompleted && (
-        <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mb-8">
-          <div className="flex items-center gap-4">
-            <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
-              <Sparkles className="w-6 h-6 text-blue-600" />
-            </div>
-            <div>
-              <h3 className="font-medium text-gray-900">Congratulations!</h3>
-              <p className="text-gray-500">
-                You've completed all interactive experiences. You've built a strong foundation in healthcare compliance!
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Experience Cards */}
-      <div className="grid gap-6">
-        {experiences.map((experience) => {
-          const Icon = experience.icon;
-
+      {/* Stages */}
+      <div className="space-y-8">
+        {stages.map((stage) => {
+          const colors = colorMap[stage.color];
           return (
-            <div
-              key={experience.id}
-              className={`bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-hidden hover-lift transition-all duration-300 ${
-                experience.locked ? 'opacity-60' : ''
-              }`}
-            >
-              <div className="p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-medium text-gray-900">{experience.title}</h3>
-                        {experience.required && (
-                          <span className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full">
-                            Required
+            <div key={stage.number}>
+              {/* Stage Header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`w-8 h-8 rounded-xl ${colors.bg} text-white text-sm font-bold flex items-center justify-center`}>
+                  {stage.number}
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-lg font-medium text-gray-900">{stage.title}</h2>
+                    {stage.aiPowered && (
+                      <span className="flex items-center gap-1 px-2 py-0.5 bg-purple-50 text-purple-600 text-xs font-medium rounded-full">
+                        <Sparkles className="w-3 h-3" />
+                        AI-Powered
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-500">{stage.subtitle}</p>
+                </div>
+                <span className={`text-sm font-medium ${colors.text}`}>{stage.progress}</span>
+              </div>
+
+              {/* Stage Items */}
+              <div className="grid gap-3">
+                {stage.items.map((item) => {
+                  const Icon = item.icon;
+                  const isComing = 'coming' in item && item.coming;
+
+                  return (
+                    <div
+                      key={item.id}
+                      className={`bg-white rounded-2xl shadow-apple-sm border border-gray-200/50 p-5 transition-all duration-300 ${
+                        isComing ? 'opacity-70' : 'hover-lift'
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`flex-shrink-0 w-11 h-11 ${colors.lightBg} rounded-xl flex items-center justify-center`}>
+                          <Icon className={`w-5 h-5 ${colors.text}`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2">
+                            <h3 className="font-medium text-gray-900">{item.title}</h3>
+                            {'completed' in item && item.completed && (
+                              <CheckCircle2 className="w-4 h-4 text-green-500" />
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-500 mt-0.5">{item.description}</p>
+                          {'score' in item && item.score && (
+                            <p className="text-xs text-gray-400 mt-1">Last score: {item.score}</p>
+                          )}
+                        </div>
+                        {'action' in item && item.action ? (
+                          <button
+                            onClick={item.action}
+                            className={`flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                              'completed' in item && item.completed
+                                ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                : `${colors.bg} text-white hover:opacity-90 shadow-apple-sm`
+                            }`}
+                          >
+                            {'completed' in item && item.completed ? 'Replay' : 'Start'}
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        ) : (
+                          <span className="flex-shrink-0 px-3 py-1.5 bg-gray-100 text-gray-400 rounded-xl text-xs font-medium">
+                            Coming Soon
                           </span>
                         )}
-                        {experience.completed && (
-                          <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                        )}
                       </div>
-                      <p className="text-gray-500 mt-1">{experience.description}</p>
-                      {experience.score && (
-                        <p className="text-sm text-gray-400 mt-2">
-                          Last score: {experience.score}
-                        </p>
-                      )}
                     </div>
-                  </div>
-
-                  <button
-                    onClick={() => setActiveExperience(experience.id as ActiveExperience)}
-                    disabled={experience.locked}
-                    className={`flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-2xl font-medium transition-all duration-300 ${
-                      experience.locked
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : experience.completed
-                        ? 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        : 'bg-blue-600 text-white hover:bg-blue-700 shadow-apple-sm'
-                    }`}
-                  >
-                    {experience.locked ? (
-                      <>
-                        <Lock className="w-4 h-4" />
-                        Locked
-                      </>
-                    ) : experience.completed ? (
-                      <>
-                        Replay
-                        <ChevronRight className="w-4 h-4" />
-                      </>
-                    ) : (
-                      <>
-                        Start
-                        <ChevronRight className="w-4 h-4" />
-                      </>
-                    )}
-                  </button>
-                </div>
+                  );
+                })}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Footer Note */}
-      <div className="mt-10 text-center text-sm text-gray-400">
+      {/* Footer */}
+      <div className="mt-12 text-center text-sm text-gray-400">
         <p>
-          Complete "Your First Day" with 70% or higher to pass the Foundations module.
+          Complete activities across all stages to build your readiness score.
           <br />
-          Other experiences are for practice and reinforcement.
+          AI-powered experiences use Claude to simulate real workplace interactions.
         </p>
-        {(progress.simulationCompleted || progress.spotViolationCompleted || progress.riskMeterCompleted) && (
-          <button
-            onClick={handleResetProgress}
-            className="mt-4 text-gray-400 hover:text-gray-600 underline transition-colors duration-300"
-          >
-            Reset all progress
-          </button>
-        )}
       </div>
     </div>
   );

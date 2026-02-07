@@ -8,7 +8,8 @@ import {
   DollarSign,
   ClipboardList,
   BookA,
-  Gamepad2,
+  Briefcase,
+  BarChart3,
   Search,
   Compass,
   type LucideIcon
@@ -32,7 +33,8 @@ const studentNavItems: NavItem[] = [
   { path: '/insurance', label: 'Insurance & Billing', icon: DollarSign },
   { path: '/workflows', label: 'Front Office Workflows', icon: ClipboardList },
   { path: '/terminology', label: 'Terminology', icon: BookA },
-  { path: '/practice', label: 'Practice', icon: Gamepad2 },
+  { path: '/practice', label: 'Job Readiness', icon: Briefcase },
+  { path: '/progress', label: 'CMAA Progress', icon: BarChart3 },
   { path: '/search', label: 'Search', icon: Search },
 ];
 

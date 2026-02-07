@@ -155,6 +155,18 @@ Front office does NOT prescribe or authorize. Collects info, checks if controlle
 
 Verify coverage before each visit. Confirm payer/plan. Check copay, deductible, coinsurance. Verify referral/auth requirements. Identify COB. Collect copay. Document.
 
+### EHR Messaging and PHI Communications
+
+CRITICAL RULE: All communications that contain PHI — patient names, medical details, scheduling with patient info, lab results, referral notes — MUST stay inside the EHR's built-in messaging system. Every modern EHR (Epic, eClinicalWorks, Athena, NextGen, etc.) has a secure internal messaging function designed for this exact purpose.
+
+**What goes in EHR messaging:** Patient scheduling coordination with names, clinical questions about specific patients, lab/test result notifications, referral status updates, prior authorization communications, prescription refill requests.
+
+**What NEVER goes in regular email/text:** Patient names + medical information, DOBs, account numbers, insurance details linked to patients, lab results, medication information tied to a patient.
+
+**If your office uses a HIPAA-compliant messaging platform** (like TigerConnect, Imprivata Cortext, or similar) — that is also acceptable for PHI communications. But standard email (Gmail, Outlook without encryption), text messages, Slack, Teams (without HIPAA BAA), and personal phones are NOT compliant.
+
+**Patient tracking boards** (used in EDs, surgery centers, and some clinics): Industry standard is to use ONLY first initial of first name + first 3 letters of last name (e.g., "KOE, M." for Mary Koepke). Some facilities use only the first 3 letters of the last name for maximum privacy. Never put full names, diagnoses, or procedures on visible tracking boards.
+
 ---
 
 ## Key Workflow Sequences (Correct Order)
@@ -184,10 +196,11 @@ Eligibility was already verified during registration. Check-in is about verifyin
 1. Greet the patient, verify identity (name, DOB, photo ID)
 2. Collect insurance card and photo ID (scan/copy for the record)
 3. Collect copay at time of service
-4. Have patient complete required forms (consent to treat, NPP acknowledgment, financial policy, health history)
-5. Collect visit-specific screening forms (based on visit type and payer - see Forms by Visit Type)
-6. Update chart and notify clinical staff the patient is ready
-7. Direct patient to waiting area
+4. Provide new patient forms (demographics, medical history, HIPAA Notice of Privacy Practices, consent for treatment, financial policy)
+5. Collect completed forms and review for completeness (all fields filled, all signatures in place)
+6. Mark patient as "Checked In" in the EHR/scheduling system (back office staff monitor this status to know who is ready to be roomed)
+7. Notify clinical staff the patient is ready to be roomed
+8. Direct patient to waiting area
 
 ### Existing Patient Check-In (Day of Visit)
 1. Greet and identify (name, DOB)

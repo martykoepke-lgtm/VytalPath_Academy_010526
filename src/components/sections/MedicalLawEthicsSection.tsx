@@ -8,6 +8,7 @@ import {
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import type { ContentType } from '../../types/course';
+import { PHIIdentifierChallenge } from '../learning/PHIIdentifierChallenge';
 
 // Supabase Storage base URL for videos
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
@@ -533,6 +534,11 @@ export function MedicalLawEthicsSection() {
             );
           })}
         </section>
+
+        {/* Interactive Practice */}
+        <div className="mt-8">
+          <PHIIdentifierChallenge />
+        </div>
       </article>
     </>
   );

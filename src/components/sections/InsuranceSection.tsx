@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, BookOpen, Play, FileText,
   CheckCircle, Clock, ClipboardCheck, Trophy, DollarSign, X,
-  CreditCard, FileSearch, MousePointerClick
+  CreditCard, FileSearch, MousePointerClick, Calculator
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
 import { InsuranceCardExplorer } from '../learning/InsuranceCardExplorer';
 import { EligibilityReportExplorer } from '../learning/EligibilityReportExplorer';
+import { PatientPaymentCalculator } from '../learning/PatientPaymentCalculator';
 import type { ContentType } from '../../types/course';
 
 // Supabase Storage base URL for videos
@@ -145,7 +146,7 @@ const contentTypeIcons: Record<ContentType, React.ElementType> = {
   reading: FileText,
 };
 
-type ExplorerView = 'card' | 'eligibility';
+type ExplorerView = 'card' | 'eligibility' | 'calculator';
 
 export function InsuranceSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
@@ -425,14 +426,23 @@ export function InsuranceSection() {
               <FileSearch className="w-4 h-4" />
               Eligibility Report
             </button>
+            <button
+              onClick={() => setExplorerView('calculator')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
+                explorerView === 'calculator'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              <Calculator className="w-4 h-4" />
+              Payment Calculator
+            </button>
           </div>
 
           {/* Explorer Component */}
-          {explorerView === 'card' ? (
-            <InsuranceCardExplorer />
-          ) : (
-            <EligibilityReportExplorer />
-          )}
+          {explorerView === 'card' && <InsuranceCardExplorer />}
+          {explorerView === 'eligibility' && <EligibilityReportExplorer />}
+          {explorerView === 'calculator' && <PatientPaymentCalculator />}
         </section>
 
         {/* Interactive Exercise Link */}

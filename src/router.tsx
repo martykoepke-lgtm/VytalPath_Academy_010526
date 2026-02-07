@@ -26,10 +26,17 @@ import { InsuranceSection } from './components/sections/InsuranceSection';
 import { TerminologySection } from './components/sections/TerminologySection';
 import { WorkflowsSection } from './components/sections/WorkflowsSection';
 import { InteractiveHub } from './components/interactive';
+import { PhoneCallSimulator } from './components/practice/PhoneCallSimulator';
+import { DayInTheLife } from './components/practice/DayInTheLife';
+import { InsuranceHotline } from './components/practice/InsuranceHotline';
+import { MockInterview } from './components/practice/MockInterview';
+import { ResumeBulletBuilder } from './components/practice/ResumeBulletBuilder';
+import { ReadinessAssessment } from './components/practice/ReadinessAssessment';
 import { AuthRoute } from './components/auth/AuthRoute';
 import { PricingPage } from './components/billing/PricingPage';
 import { CurriculumPage } from './pages/CurriculumPage';
 import { ProgramIntro } from './components/ProgramIntro';
+import { CMAADashboard } from './components/progress/CMAADashboard';
 
 export const router = createBrowserRouter([
   {
@@ -123,10 +130,39 @@ export const router = createBrowserRouter([
         path: 'workflows/sops/:slug',
         element: <AuthRoute><SOPDetailPage /></AuthRoute>,
       },
+      // CMAA Progress Dashboard
+      {
+        path: 'progress',
+        element: <AuthRoute><CMAADashboard /></AuthRoute>,
+      },
       // Interactive Practice
       {
         path: 'practice',
         element: <AuthRoute><InteractiveHub /></AuthRoute>,
+      },
+      {
+        path: 'practice/phone-simulator',
+        element: <AuthRoute><PhoneCallSimulator /></AuthRoute>,
+      },
+      {
+        path: 'practice/day-in-the-life',
+        element: <AuthRoute><DayInTheLife /></AuthRoute>,
+      },
+      {
+        path: 'practice/insurance-hotline',
+        element: <AuthRoute><InsuranceHotline /></AuthRoute>,
+      },
+      {
+        path: 'practice/interview',
+        element: <AuthRoute><MockInterview /></AuthRoute>,
+      },
+      {
+        path: 'practice/resume',
+        element: <AuthRoute><ResumeBulletBuilder /></AuthRoute>,
+      },
+      {
+        path: 'practice/readiness',
+        element: <AuthRoute><ReadinessAssessment /></AuthRoute>,
       },
       // Legacy routes (protected)
       {
