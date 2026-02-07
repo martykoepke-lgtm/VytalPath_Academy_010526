@@ -134,7 +134,7 @@ export function EHRSection() {
                 className="w-full h-full"
                 controlsList="nodownload"
               >
-                <source src={`${VIDEO_BASE_URL}/ehrintro.mp4`} type="video/mp4" />
+                <source src={`${VIDEO_BASE_URL}/EHR%20%26%20Practice%20Management%20Section%20Intro_1080p_caption.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
