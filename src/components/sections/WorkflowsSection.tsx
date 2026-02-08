@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   ChevronRight, ChevronDown, Play, FileText,
   CheckCircle, ClipboardList, ListChecks, X, Calendar, Clock,
-  Sunrise, Moon, ListOrdered
+  Sunrise, Moon, ListOrdered, FolderOpen, Trophy, ClipboardCheck
 } from 'lucide-react';
 import { useProgress } from '../../contexts/ProgressContext';
 import { SEO, seoConfigs } from '../SEO';
@@ -285,6 +285,71 @@ const adminTasksPhase: WorkflowPhase = {
   ],
 };
 
+// ─── PHASE 7: ADMINISTRATIVE SKILLS ───
+const adminSkillsPhase: WorkflowPhase = {
+  id: 'admin-skills',
+  slug: 'admin-skills',
+  title: 'Administrative Skills',
+  description: 'Filing, correspondence, computer skills, ADA compliance, and system management.',
+  icon: FolderOpen,
+  lessons: [
+    {
+      id: 'ap-1',
+      slug: 'filing-systems',
+      title: 'Filing Systems in Healthcare',
+      description: 'Alphabetical, color-coded, and terminal digit filing systems used in medical offices.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 10,
+    },
+    {
+      id: 'ap-2',
+      slug: 'business-correspondence',
+      title: 'Business Correspondence & Templates',
+      description: 'Professional letters, greetings, salutations, and common templates in medical offices.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 10,
+    },
+    {
+      id: 'ap-3',
+      slug: 'computer-skills-medical-office',
+      title: 'Computer Skills for Medical Offices',
+      description: 'Essential email, word processing, spreadsheet, and hardware skills for healthcare admin.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 12,
+    },
+    {
+      id: 'ap-4',
+      slug: 'ada-compliance',
+      title: 'ADA Compliance in Healthcare',
+      description: 'ADA requirements for medical offices — accessibility, accommodations, and service animals.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 12,
+    },
+    {
+      id: 'ap-5',
+      slug: 'data-storage-backup',
+      title: 'Data Storage & Backup',
+      description: 'Data storage requirements, backup procedures, and protecting health information systems.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 10,
+    },
+    {
+      id: 'ap-6',
+      slug: 'system-downtime-procedures',
+      title: 'System Downtime Procedures',
+      description: 'What to do when the EHR, internet, phones, or other systems go down.',
+      content_type: 'reading' as ContentType,
+      video_url: null,
+      duration_minutes: 12,
+    },
+  ],
+};
+
 // All phases in natural daily flow order
 const allPhases = [
   openingPhase,
@@ -293,6 +358,7 @@ const allPhases = [
   throughoutDayPhase,
   closingPhase,
   adminTasksPhase,
+  adminSkillsPhase,
 ];
 
 export function WorkflowsSection() {
@@ -523,34 +589,106 @@ export function WorkflowsSection() {
                     )}
 
                     {/* Reading/SOP-only Lessons */}
-                    {readingLessons.map((lesson) => (
-                      <button
-                        key={lesson.id}
-                        onClick={() => lesson.sop_slug && openSOP(lesson.sop_slug)}
-                        className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300 text-left border-b border-gray-100 last:border-b-0"
-                      >
-                        <div
-                          className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
-                            isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-gray-500'
-                          }`}
+                    {readingLessons.map((lesson) => {
+                      // Reading lessons with sop_slug open the SOP modal; without sop_slug, link to LessonPlayer
+                      if (lesson.sop_slug) {
+                        return (
+                          <button
+                            key={lesson.id}
+                            onClick={() => openSOP(lesson.sop_slug!)}
+                            className="w-full flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300 text-left border-b border-gray-100 last:border-b-0"
+                          >
+                            <div
+                              className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
+                                isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-gray-500'
+                              }`}
+                            >
+                              {isLessonDone(lesson.slug) ? (
+                                <CheckCircle className="w-4 h-4 text-green-600" />
+                              ) : (
+                                <FileText className="w-4 h-4 text-white" />
+                              )}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-normal text-gray-900">{lesson.title}</h4>
+                              <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
+                            </div>
+                            <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
+                              <span className="px-2.5 py-0.5 bg-gray-200 text-gray-600 rounded-full text-xs font-medium">SOP</span>
+                              <span>{lesson.duration_minutes} min</span>
+                              <ChevronRight className="w-4 h-4" />
+                            </div>
+                          </button>
+                        );
+                      }
+                      // Reading lesson without SOP — link to LessonPlayer
+                      return (
+                        <Link
+                          key={lesson.id}
+                          to={`/workflows/lessons/admin-procedures/${lesson.slug}`}
+                          className="flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300 border-b border-gray-100 last:border-b-0"
                         >
-                          {isLessonDone(lesson.slug) ? (
-                            <CheckCircle className="w-4 h-4 text-green-600" />
-                          ) : (
-                            <FileText className="w-4 h-4 text-white" />
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-normal text-gray-900">{lesson.title}</h4>
-                          <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
-                        </div>
-                        <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
-                          <span className="px-2.5 py-0.5 bg-gray-200 text-gray-600 rounded-full text-xs font-medium">SOP</span>
-                          <span>{lesson.duration_minutes} min</span>
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      </button>
-                    ))}
+                          <div
+                            className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
+                              isLessonDone(lesson.slug) ? 'bg-green-100' : 'bg-blue-600'
+                            }`}
+                          >
+                            {isLessonDone(lesson.slug) ? (
+                              <CheckCircle className="w-4 h-4 text-green-600" />
+                            ) : (
+                              <FileText className="w-4 h-4 text-white" />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-normal text-gray-900">{lesson.title}</h4>
+                            <p className="text-sm text-gray-500 line-clamp-1">{lesson.description}</p>
+                          </div>
+                          <div className="flex-shrink-0 flex items-center gap-3 text-sm text-gray-500">
+                            <span className="px-2.5 py-0.5 bg-blue-50 text-blue-600 rounded-full text-xs font-medium">Reading</span>
+                            <span>{lesson.duration_minutes} min</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </div>
+                        </Link>
+                      );
+                    })}
+
+                    {/* Quiz link for phases with quizzes */}
+                    {phase.id === 'admin-skills' && (
+                      <div className="border-t border-gray-200">
+                        <Link
+                          to="/workflows/lessons/admin-procedures/quiz"
+                          className="flex items-center gap-4 p-4 pl-8 hover:bg-gray-100 transition-all duration-300"
+                        >
+                          <div
+                            className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${
+                              progress.hasPassedQuiz('admin-procedures') ? 'bg-green-100' : 'bg-blue-600'
+                            }`}
+                          >
+                            {progress.hasPassedQuiz('admin-procedures') ? (
+                              <Trophy className="w-4 h-4 text-green-600" />
+                            ) : (
+                              <ClipboardCheck className="w-4 h-4 text-white" />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-medium text-gray-900">Administrative Skills Quiz</h4>
+                            <p className="text-sm text-gray-500">
+                              {progress.hasPassedQuiz('admin-procedures')
+                                ? `Passed with ${progress.getBestQuizScore('admin-procedures')}%`
+                                : 'Pass with 80% to complete this section'}
+                            </p>
+                          </div>
+                          <div className="flex-shrink-0 flex items-center gap-2">
+                            {progress.hasPassedQuiz('admin-procedures') ? (
+                              <span className="text-sm text-green-600 font-medium">Completed</span>
+                            ) : (
+                              <span className="text-sm text-gray-500">3 attempts</span>
+                            )}
+                            <ChevronRight className="w-4 h-4 text-gray-400" />
+                          </div>
+                        </Link>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

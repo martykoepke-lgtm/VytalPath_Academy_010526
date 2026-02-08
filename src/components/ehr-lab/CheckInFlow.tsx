@@ -238,10 +238,16 @@ export function CheckInFlow({ appointmentId, onComplete, onCancel }: CheckInFlow
             <p className="text-sm text-gray-500">Confirm the following information is still current.</p>
             <div className="bg-gray-50 rounded-xl p-4 space-y-2 text-sm">
               <p><span className="text-gray-500">Name:</span> {patient.demographics.firstName} {patient.demographics.lastName}</p>
-              <p><span className="text-gray-500">DOB:</span> {patient.demographics.dateOfBirth}</p>
+              <p><span className="text-gray-500">DOB:</span> {new Date(patient.demographics.dateOfBirth + 'T12:00:00').toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}</p>
               <p><span className="text-gray-500">Address:</span> {patient.contact.homeAddress.street}, {patient.contact.homeAddress.city}, {patient.contact.homeAddress.state} {patient.contact.homeAddress.zip}</p>
               <p><span className="text-gray-500">Cell:</span> {patient.contact.cellPhone}</p>
               <p><span className="text-gray-500">Email:</span> {patient.contact.email || 'Not on file'}</p>
+            </div>
+            <div className="bg-blue-50 border border-blue-100 rounded-xl p-3 flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-blue-700">
+                <span className="font-medium">Note:</span> In a real PM/EHR system, you would have the ability to edit all demographics fields directly from this screen. This simulation allows editing of insurance information but not demographics.
+              </p>
             </div>
             <label className="flex items-center gap-2 text-sm text-gray-700">
               <input type="checkbox" className={checkboxCls} checked={demoConfirmed} onChange={(e) => setDemoConfirmed(e.target.checked)} />

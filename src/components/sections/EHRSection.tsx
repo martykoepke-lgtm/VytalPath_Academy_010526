@@ -68,6 +68,26 @@ const ehrModules = [
       { id: 'ehr-l9', slug: 'duplicate-records', title: 'Duplicate Records: Prevention & Resolution', description: 'How duplicates happen, the two-identifier rule, MPI, and what to do when you find one.', content_type: 'reading' as ContentType, duration_minutes: 6 },
     ],
   },
+  {
+    id: 'ehr-m4',
+    slug: 'telehealth-portals',
+    title: 'Telehealth & Patient Portals',
+    description: 'Understand telehealth visit types, technology platforms, patient portal features, and front office support for virtual care.',
+    sort_order: 4,
+    quiz: {
+      id: 'ehr-q4',
+      title: 'Telehealth & Portals Quiz',
+      description: 'Test your knowledge of telehealth workflows, platforms, and patient portal management',
+      passing_score: 80,
+      max_attempts: 3,
+    },
+    lessons: [
+      { id: 'ehr-l10', slug: 'telehealth-appointment-types', title: 'Telehealth Appointment Types', description: 'Which visits work for telehealth, scheduling considerations, and common encounter types for virtual care.', content_type: 'reading' as ContentType, duration_minutes: 7 },
+      { id: 'ehr-l11', slug: 'telehealth-platforms-technology', title: 'Telehealth Platforms & Technology', description: 'Major telehealth platforms, hardware/software requirements, HIPAA-compliant video tools, and integration with PM/EHR.', content_type: 'reading' as ContentType, duration_minutes: 7 },
+      { id: 'ehr-l12', slug: 'patient-portals', title: 'Patient Portals', description: 'Portal features, self-scheduling, messaging, notifications, and front desk support for portal issues.', content_type: 'reading' as ContentType, duration_minutes: 7 },
+      { id: 'ehr-l13', slug: 'telehealth-procedures-troubleshooting', title: 'Telehealth Procedures & Troubleshooting', description: 'Pre-visit preparation, day-of workflows, common technical issues, and front office troubleshooting scripts.', content_type: 'reading' as ContentType, duration_minutes: 8 },
+    ],
+  },
 ];
 
 export function EHRSection() {

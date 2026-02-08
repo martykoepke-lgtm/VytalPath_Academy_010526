@@ -18,12 +18,22 @@ export function PatientSearchModal({ onSelectPatient, onAddPatient, onClose }: P
   const [results, setResults] = useState<ReturnType<typeof searchPatients>>([]);
 
   const handleSearch = () => {
-    const query = [lastName, firstName, dob, mrn].filter(Boolean).join(' ').trim();
-    if (!query) {
+    // If no fields filled, show all patients
+    if (!lastName && !firstName && !dob && !mrn) {
       setResults(searchPatients(''));
-    } else {
-      setResults(searchPatients(query));
+      setHasSearched(true);
+      return;
     }
+    // Per-field matching: each filled field must match its corresponding patient field
+    const allPatients = searchPatients('');
+    const filtered = allPatients.filter((p) => {
+      if (lastName && !p.demographics.lastName.toLowerCase().includes(lastName.toLowerCase())) return false;
+      if (firstName && !p.demographics.firstName.toLowerCase().includes(firstName.toLowerCase())) return false;
+      if (dob && p.demographics.dateOfBirth !== dob) return false;
+      if (mrn && !p.mrn.toLowerCase().includes(mrn.toLowerCase())) return false;
+      return true;
+    });
+    setResults(filtered);
     setHasSearched(true);
   };
 
@@ -106,6 +116,9 @@ export function PatientSearchModal({ onSelectPatient, onAddPatient, onClose }: P
               Add Patient
             </button>
           </div>
+          <p className="mt-2 text-[11px] text-gray-400">
+            Leave all fields empty and click Search to see all patients. Test patients: Santos, Thompson, Patel, Washington, Torres.
+          </p>
         </div>
 
         {/* Results */}

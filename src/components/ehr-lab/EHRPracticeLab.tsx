@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Calendar,
+  CalendarPlus,
   ClipboardList,
   FileText,
   Mail,
@@ -9,6 +10,10 @@ import {
   AlertTriangle,
   ArrowLeft,
   HelpCircle,
+  User,
+  UserSearch,
+  Info,
+  X,
 } from 'lucide-react';
 import { EHRSessionProvider, useEHRSession } from './EHRSessionContext';
 import { ProviderScheduleView } from './ProviderScheduleView';
@@ -74,6 +79,15 @@ const headerTitles: Record<string, string> = {
 // Main content
 // ========================================
 
+function getAge(dob: string): number {
+  const birth = new Date(dob + 'T12:00:00');
+  const now = new Date();
+  let age = now.getFullYear() - birth.getFullYear();
+  const m = now.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+  return age;
+}
+
 function EHRLabContent() {
   const {
     sessionTimeRemaining,
@@ -83,6 +97,9 @@ function EHRLabContent() {
     provider,
     getUnreadMessageCount,
     addEncounter,
+    getPatient,
+    getAppointment,
+    getEncounter,
   } = useEHRSession();
 
   const [view, setView] = useState<EHRView>({ type: 'schedule' });
@@ -107,6 +124,11 @@ function EHRLabContent() {
   const navigate = (next: EHRView) => {
     setViewHistory((prev) => [...prev, view]);
     setView(next);
+    // Track patient context for appointment sub-flows
+    if (next.type === 'appointment-detail' || next.type === 'check-in' || next.type === 'check-out') {
+      const appt = getAppointment(next.appointmentId);
+      if (appt) setChartPatientId(appt.patientId);
+    }
   };
 
   const goBack = () => {
@@ -126,9 +148,15 @@ function EHRLabContent() {
       return;
     }
     setViewHistory([]);
-    if (tab === 'schedule') setView({ type: 'schedule' });
-    else if (tab === 'appointments') setView({ type: 'appointments' });
-    else if (tab === 'messages') setView({ type: 'messages' });
+    if (tab === 'schedule') {
+      setChartPatientId(null);
+      setView({ type: 'schedule' });
+    } else if (tab === 'appointments') {
+      setView({ type: 'appointments', patientId: chartPatientId || undefined });
+    } else if (tab === 'messages') {
+      setChartPatientId(null);
+      setView({ type: 'messages' });
+    }
   };
 
   // Determine active toolbar tab from current view
@@ -178,6 +206,20 @@ function EHRLabContent() {
     setViewHistory([]);
     setView({ type: 'chart', patientId: chartPatientId!, encounterId: enc.id });
   };
+
+  // Patient context banner — derive active patient from current view
+  const bannerPatientId: string | null = (() => {
+    if (view.type === 'chart') return view.patientId;
+    if (view.type === 'appointments' && view.patientId) return view.patientId;
+    if (view.type === 'appointment-detail' || view.type === 'check-in' || view.type === 'check-out') {
+      const appt = getAppointment(view.appointmentId);
+      return appt?.patientId ?? null;
+    }
+    return null;
+  })();
+  const bannerPatient = bannerPatientId ? getPatient(bannerPatientId) : null;
+  const bannerEncounter = view.type === 'chart' && view.encounterId ? getEncounter(view.encounterId) : null;
+  const encounterTypeLabels: Record<string, string> = { clinic: 'Clinic', 'non-clinic': 'Non-Clinic', phone: 'Phone', abstraction: 'Abstraction' };
 
   // Expired session
   if (isSessionExpired) {
@@ -265,20 +307,147 @@ function EHRLabContent() {
         </div>
       </nav>
 
-      {/* Quick-start strip */}
+      {/* Patient context banner — full-width, between toolbar and content */}
+      {bannerPatient && (
+        <div className="bg-white border-b border-gray-200 px-6 py-2">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                <User className="w-5 h-5 text-teal-600" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="font-semibold text-gray-900">
+                    {bannerPatient.demographics.lastName}, {bannerPatient.demographics.firstName}
+                  </span>
+                  <span className="text-gray-300">|</span>
+                  <span className="text-gray-500">
+                    {getAge(bannerPatient.demographics.dateOfBirth)} yr {bannerPatient.demographics.sexAssignedAtBirth === 'F' ? 'Female' : 'Male'}
+                  </span>
+                  <span className="text-gray-300">|</span>
+                  <span className="text-gray-500">
+                    DOB: {new Date(bannerPatient.demographics.dateOfBirth + 'T12:00:00').toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
+                  </span>
+                  <span className="text-gray-300">|</span>
+                  <span className="text-gray-500">{bannerPatient.mrn}</span>
+                </div>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${
+                    bannerPatient.medicalSummary.allergies.length > 0 ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'
+                  }`}>
+                    {bannerPatient.medicalSummary.allergies.length > 0
+                      ? `${bannerPatient.medicalSummary.allergies.length} Allergies`
+                      : 'NKDA'}
+                  </span>
+                  <span className="text-xs px-1.5 py-0.5 rounded bg-blue-50 text-blue-600">
+                    {bannerPatient.medicalSummary.medications.length} Meds
+                  </span>
+                  {bannerEncounter && (
+                    <span className="text-xs px-1.5 py-0.5 rounded bg-teal-50 text-teal-600">
+                      {encounterTypeLabels[bannerEncounter.type] || bannerEncounter.type} · {new Date(bannerEncounter.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              {/* Appointments view: Schedule, Change Patient, Close */}
+              {view.type === 'appointments' && bannerPatientId && (
+                <>
+                  <button
+                    onClick={() => navigate({ type: 'book-appointment', patientId: bannerPatientId })}
+                    className="px-3 py-1.5 rounded-lg bg-teal-600 text-white text-sm font-medium hover:bg-teal-700 transition-colors flex items-center gap-1.5"
+                  >
+                    <CalendarPlus className="w-4 h-4" />
+                    Schedule Appointment
+                  </button>
+                  <button
+                    onClick={() => {
+                      setChartPatientId(null);
+                      setView({ type: 'appointments' });
+                    }}
+                    className="px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 border border-gray-300 hover:bg-gray-50 transition-colors flex items-center gap-1.5"
+                  >
+                    <UserSearch className="w-4 h-4" />
+                    Change Patient
+                  </button>
+                  <button
+                    onClick={() => {
+                      setChartPatientId(null);
+                      setView({ type: 'appointments' });
+                    }}
+                    className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+                    title="Close patient context"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </>
+              )}
+              {/* Chart view: Select Encounter + Close */}
+              {view.type === 'chart' && (
+                <>
+                  <button
+                    onClick={() => {
+                      setChartPatientId(view.patientId);
+                      setEncounterSelectOpen(true);
+                    }}
+                    className="px-3 py-1.5 rounded-lg text-sm font-medium text-teal-700 border border-teal-300 hover:bg-teal-50 transition-colors flex items-center gap-1.5"
+                  >
+                    <Calendar className="w-4 h-4" />
+                    Select Encounter
+                  </button>
+                  <button
+                    onClick={() => {
+                      setChartPatientId(null);
+                      setViewHistory([]);
+                      setView({ type: 'schedule' });
+                    }}
+                    className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+                    title="Close patient context"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </>
+              )}
+              {/* Sub-flow views (check-in, check-out, appointment-detail): Close */}
+              {(view.type === 'appointment-detail' || view.type === 'check-in' || view.type === 'check-out') && (
+                <button
+                  onClick={() => {
+                    setChartPatientId(null);
+                    setViewHistory([]);
+                    setView({ type: 'schedule' });
+                  }}
+                  className="p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+                  title="Close patient context"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Quick-start strip + disclaimer */}
       <div className="bg-gray-100 border-b border-gray-200 px-6 py-1.5">
-        <div className="max-w-7xl mx-auto flex items-center gap-3 text-xs text-gray-500">
-          <button onClick={() => openQuickRef('patients')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
-            View test patients
-          </button>
-          <span className="text-gray-300">|</span>
-          <button onClick={() => openQuickRef('schedule')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
-            Today's schedule
-          </button>
-          <span className="text-gray-300">|</span>
-          <button onClick={() => openQuickRef('workflows')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
-            Workflow guides
-          </button>
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-3 text-xs text-gray-500">
+            <button onClick={() => openQuickRef('patients')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+              View test patients
+            </button>
+            <span className="text-gray-300">|</span>
+            <button onClick={() => openQuickRef('schedule')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+              Today's schedule
+            </button>
+            <span className="text-gray-300">|</span>
+            <button onClick={() => openQuickRef('workflows')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+              Workflow guides
+            </button>
+          </div>
+          <div className="flex items-center gap-1 text-[10px] text-gray-400 italic">
+            <Info className="w-3 h-3 flex-shrink-0" />
+            <span>Simplified simulation — real systems have more views, keyboard shortcuts, and navigation</span>
+          </div>
         </div>
       </div>
 
@@ -300,6 +469,10 @@ function EHRLabContent() {
           {view.type === 'schedule' && (
             <ProviderScheduleView
               onSelectAppointment={(id) => navigate({ type: 'appointment-detail', appointmentId: id })}
+              onViewChart={(patientId) => {
+                setChartPatientId(patientId);
+                setEncounterSelectOpen(true);
+              }}
               onCheckIn={(id) => navigate({ type: 'check-in', appointmentId: id })}
               onCheckOut={(id) => navigate({ type: 'check-out', appointmentId: id })}
               onReschedule={(patientId, date, time) => navigate({ type: 'book-appointment', patientId, date, time })}
@@ -312,8 +485,16 @@ function EHRLabContent() {
             <AppointmentsView
               initialPatientId={view.patientId}
               onSelectAppointment={(id) => navigate({ type: 'appointment-detail', appointmentId: id })}
-              onScheduleAppointment={(patientId) => navigate({ type: 'book-appointment', patientId })}
               onAddPatient={() => navigate({ type: 'register-patient', returnTo: 'appointments' })}
+              onPatientContext={(id) => {
+                if (id) {
+                  setChartPatientId(id);
+                  setView({ type: 'appointments', patientId: id });
+                } else {
+                  setChartPatientId(null);
+                  setView({ type: 'appointments' });
+                }
+              }}
             />
           )}
 
@@ -322,10 +503,6 @@ function EHRLabContent() {
             <PatientChartView
               patientId={view.patientId}
               encounterId={view.encounterId}
-              onChangeEncounter={() => {
-                setChartPatientId(view.patientId);
-                setEncounterSelectOpen(true);
-              }}
             />
           )}
 

@@ -1897,6 +1897,1293 @@ All of these can also ban you from Medicare and Medicaid.
     nextLesson: null,
     nextIsQuiz: true,
   },
+  // Medical Law & Ethics - Module 4: Workplace Safety & Compliance
+  'basic-medical-law-concepts': {
+    lesson: {
+      id: 'ml-l11',
+      module_id: 'ml-m4',
+      slug: 'basic-medical-law-concepts',
+      title: 'Basic Medical Law Concepts',
+      description: 'Scope of practice, liability, negligence, respondeat superior, and standard of care.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Basic Medical Law Concepts
+
+Healthcare is one of the most heavily regulated industries. Understanding foundational legal concepts protects you, your patients, and your employer.
+
+This lesson covers the legal terms and principles that every front office professional must know — not to practice law, but to recognize risk and act appropriately.
+
+---
+
+## Scope of Practice
+
+**Scope of practice** defines what a healthcare professional is legally allowed to do based on their credentials, training, and state regulations.
+
+**Why it matters for front office staff:**
+- You are **not** licensed to give medical advice, interpret test results, or diagnose
+- You **can** schedule appointments, collect payments, verify insurance, and relay messages exactly as documented
+- Crossing scope of practice boundaries creates **legal liability** for you and your employer
+
+**Example:** A patient asks, "Do you think this meds dose is too high?" You should say: *"I'm not able to advise on medications, but I can have the nurse call you back today."*
+
+> **Rule of thumb:** If it requires clinical judgment, it's outside your scope. When in doubt, route to clinical staff.
+
+---
+
+## Standard of Care
+
+The **standard of care** is the level of treatment a reasonably competent healthcare provider would deliver under similar circumstances.
+
+**Key points:**
+- It's not about perfection — it's about what a **reasonable professional** in the same role would do
+- The standard varies by **role** (what's expected of a front desk coordinator differs from a physician)
+- Falling below the standard of care can result in a **malpractice** claim
+
+**For front office staff, standard of care includes:**
+- Following established check-in/check-out procedures
+- Accurately recording patient information
+- Relaying urgent messages promptly
+- Following HIPAA protocols consistently
+
+---
+
+## Negligence
+
+**Negligence** occurs when someone fails to exercise the level of care that a reasonable person would in the same situation, and that failure causes harm.
+
+**Four elements must be proven (the "4 D's"):**
+
+| Element | Meaning | Example |
+| --- | --- | --- |
+| **Duty** | You had a responsibility to the patient | You were the person checking in patients |
+| **Dereliction** | You failed that duty | You didn't verify the patient's allergy list |
+| **Direct Cause** | Your failure directly caused harm | The unverified allergy led to a reaction |
+| **Damages** | The patient suffered measurable harm | The patient was hospitalized |
+
+> All four elements must be present for a negligence claim. Missing one means the claim fails.
+
+---
+
+## Respondeat Superior
+
+**Respondeat superior** (Latin for "let the master answer") means an **employer is legally responsible** for the actions of employees performed within the scope of their job.
+
+**What this means:**
+- If you make an error while performing your normal job duties, your **employer can be held liable**
+- This does NOT protect you if you act **outside your scope** or with intentional misconduct
+- Employers carry **malpractice insurance** partly because of this doctrine
+
+**Example:** If you accidentally give a patient the wrong paperwork containing another patient's PHI, your employer shares liability. But if you intentionally access celebrity patient records out of curiosity, that's outside your scope — and you're personally liable.
+
+---
+
+## Liability and Risk Management
+
+**Liability** is the legal responsibility for one's actions or omissions.
+
+**Types of liability in healthcare:**
+- **Personal liability** — You are responsible for your own actions
+- **Vicarious liability** — Your employer is responsible through respondeat superior
+- **Corporate liability** — The organization is responsible for maintaining safe systems
+
+**How front office staff reduce liability:**
+- Follow written policies and procedures consistently
+- Document actions accurately and contemporaneously
+- Never practice outside your scope
+- Report errors immediately — don't try to hide or fix them alone
+- Complete required training and compliance modules
+
+> **Key takeaway:** Doing the right thing consistently — following procedures, documenting properly, staying in scope — is your best legal protection.
+
+---
+
+## Key Takeaways
+
+- **Scope of practice** defines what you're legally permitted to do — never cross it
+- **Standard of care** is what a reasonable professional in your role would do
+- **Negligence** requires four elements: duty, dereliction, direct cause, and damages
+- **Respondeat superior** makes employers liable for employee actions within scope
+- Following procedures, documenting properly, and staying in scope protects everyone
+- When uncertain about a legal boundary, ask your supervisor`,
+      duration_minutes: 12,
+      sort_order: 1,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: null,
+    nextLesson: 'osha-workplace-safety',
+    nextIsQuiz: false,
+  },
+  'osha-workplace-safety': {
+    lesson: {
+      id: 'ml-l12',
+      module_id: 'ml-m4',
+      slug: 'osha-workplace-safety',
+      title: 'OSHA & Workplace Safety',
+      description: 'OSHA standards, bloodborne pathogens, PPE, and hazard communication in healthcare.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## OSHA & Workplace Safety
+
+The **Occupational Safety and Health Administration (OSHA)** is the federal agency responsible for ensuring safe and healthy working conditions. In healthcare, OSHA regulations protect both employees and patients from workplace hazards.
+
+As a front office professional, you may not handle blood daily — but you need to understand OSHA requirements because they affect your entire workplace.
+
+---
+
+## What OSHA Does
+
+OSHA sets and enforces **workplace safety standards**. Key responsibilities:
+
+- Establishes regulations for safe work environments
+- Conducts **inspections** (announced and unannounced)
+- Issues **citations and fines** for violations
+- Requires employers to maintain **injury and illness logs** (OSHA 300 Log)
+- Protects workers who **report safety concerns** (whistleblower protection)
+
+**Important:** Employees have the right to report unsafe conditions to OSHA without retaliation. This is federal law.
+
+---
+
+## Bloodborne Pathogens Standard
+
+OSHA's **Bloodborne Pathogens (BBP) Standard** protects workers from exposure to blood and other potentially infectious materials (OPIM).
+
+**Key requirements:**
+- Employers must have a written **Exposure Control Plan** updated annually
+- Workers with potential exposure must receive **Hepatitis B vaccination** (free)
+- **Universal Precautions** — treat all blood and body fluids as potentially infectious
+- **Engineering controls** — sharps containers, self-sheathing needles, splash guards
+- Workers must receive **annual BBP training**
+
+**Front office relevance:**
+- You may encounter blood if a patient has a nosebleed, cut, or wound in the waiting room
+- You should know where the **spill kit** is located
+- You should know the **post-exposure protocol** (wash area, report to supervisor, seek medical evaluation)
+
+---
+
+## Personal Protective Equipment (PPE)
+
+PPE is equipment worn to minimize exposure to hazards. In healthcare settings:
+
+| PPE Type | When Used | Front Office Relevance |
+| --- | --- | --- |
+| **Gloves** | Contact with blood/body fluids | Cleaning spills, handling soiled items |
+| **Face mask** | Respiratory precautions | During outbreaks, patient isolation |
+| **Eye protection** | Splash risk | Rarely needed at front desk |
+| **Gown** | Body fluid exposure risk | Rarely needed at front desk |
+
+**Key rules:**
+- Employers must **provide PPE at no cost** to employees
+- Employees must be **trained** on proper use, removal, and disposal
+- PPE must be **readily accessible** — not locked in a back closet
+- Never reuse disposable PPE
+
+---
+
+## Hazard Communication (HazCom)
+
+OSHA's **Hazard Communication Standard** (HazCom) requires employers to inform workers about hazardous chemicals in the workplace.
+
+**Key components:**
+- **Safety Data Sheets (SDS)** — detailed information about every hazardous chemical on site
+- SDS must be **readily accessible** to all employees
+- **Container labeling** — all chemical containers must have GHS-compliant labels
+- **Training** — employees must know what chemicals are present and how to handle spills
+
+**Front office connection:** Cleaning products, hand sanitizers, and disinfectants used in your area are covered by HazCom. You should know where the SDS binder (or digital file) is located.
+
+---
+
+## Common OSHA Violations in Healthcare
+
+| Violation | What It Means |
+| --- | --- |
+| No Exposure Control Plan | No written plan for bloodborne pathogen protection |
+| Missing SDS access | Employees can't find Safety Data Sheets |
+| No annual BBP training | Staff haven't completed required annual training |
+| Lack of PPE | Appropriate equipment not provided or accessible |
+| No sharps injury log | Needlestick incidents not being tracked |
+| Blocked exits | Emergency exits obstructed |
+
+**Penalties:** OSHA can fine up to **$16,131 per serious violation** and up to **$161,323 per willful violation** (2024 figures, adjusted annually).
+
+---
+
+## Key Takeaways
+
+- OSHA enforces workplace safety standards — healthcare is no exception
+- The **Bloodborne Pathogens Standard** requires exposure control plans, free Hep B vaccination, and annual training
+- **Universal Precautions** means treating all blood/body fluids as infectious
+- Employers must provide **PPE at no cost** and keep it accessible
+- **Hazard Communication** requires SDS access, container labels, and chemical safety training
+- You have the legal right to report safety concerns without retaliation`,
+      duration_minutes: 12,
+      sort_order: 2,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'basic-medical-law-concepts',
+    nextLesson: 'regulatory-agencies',
+    nextIsQuiz: false,
+  },
+  'regulatory-agencies': {
+    lesson: {
+      id: 'ml-l13',
+      module_id: 'ml-m4',
+      slug: 'regulatory-agencies',
+      title: 'Regulatory Agencies',
+      description: 'The Joint Commission, CMS, OIG, and state medical boards — who regulates healthcare.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Regulatory Agencies in Healthcare
+
+Healthcare organizations don't operate in a vacuum. Multiple federal, state, and private agencies oversee quality, safety, and compliance. Understanding who these agencies are — and what they do — helps you understand why your workplace has the policies it does.
+
+---
+
+## The Joint Commission (TJC)
+
+The **Joint Commission** is an independent, nonprofit organization that **accredits and certifies** healthcare organizations in the United States.
+
+**Key facts:**
+- Accreditation is **voluntary**, but most hospitals and large clinics seek it
+- Why? Because **Medicare and Medicaid require accreditation** (or equivalent) for reimbursement
+- TJC conducts **unannounced surveys** every 3 years
+- Surveyors evaluate patient safety, infection control, medication management, staff credentials, and more
+
+**What front office staff should know:**
+- Keep your workspace **clean, organized, and compliant** at all times — not just before a survey
+- Know where your clinic's **policies and procedures manual** is located
+- Be prepared to answer surveyor questions about your role and safety procedures
+- Follow **National Patient Safety Goals** (e.g., using two patient identifiers)
+
+> **Two patient identifiers:** Always verify patients using two identifiers (e.g., full name + date of birth). This is a Joint Commission requirement to prevent patient mix-ups.
+
+---
+
+## Centers for Medicare & Medicaid Services (CMS)
+
+**CMS** is the federal agency that administers Medicare, Medicaid, and the Children's Health Insurance Program (CHIP).
+
+**CMS's regulatory role:**
+- Sets **Conditions of Participation (CoPs)** — minimum standards facilities must meet to receive Medicare/Medicaid payments
+- Oversees **quality reporting** programs
+- Enforces compliance through **surveys and audits**
+- Can **terminate** a provider's ability to bill Medicare/Medicaid for non-compliance
+
+**Front office impact:**
+- Your clinic likely accepts Medicare and Medicaid patients
+- Billing errors or non-compliance can result in **loss of participation** — devastating for any practice
+- CMS requirements influence everything from documentation to patient rights notices
+
+---
+
+## Office of Inspector General (OIG)
+
+The **OIG** within the Department of Health and Human Services investigates **fraud, waste, and abuse** in federal healthcare programs.
+
+**What OIG does:**
+- Investigates healthcare **fraud** (false claims, upcoding, kickbacks)
+- Maintains the **OIG Exclusion List** — individuals and entities banned from federal healthcare programs
+- Publishes **compliance guidance** for healthcare organizations
+- Issues **advisory opinions** on fraud and abuse questions
+
+**Front office relevance:**
+- Your employer should check the **OIG Exclusion List** before hiring
+- You should never participate in or overlook suspected billing fraud
+- OIG investigations can result in **criminal charges, civil penalties, and program exclusion**
+
+---
+
+## State Medical Boards & Licensing
+
+Each state has agencies that regulate healthcare at the state level:
+
+| Agency | Function |
+| --- | --- |
+| **State Medical Board** | Licenses physicians, investigates complaints, disciplines doctors |
+| **State Health Department** | Inspects facilities, tracks reportable diseases, enforces health codes |
+| **State Board of Pharmacy** | Regulates pharmacies and controlled substances |
+| **State Nursing Board** | Licenses nurses, sets scope of practice |
+
+**Key points:**
+- Healthcare licenses are **state-specific** — a doctor licensed in Texas can't automatically practice in California
+- Patients can **file complaints** with state boards about healthcare providers
+- State agencies can **revoke or suspend** professional licenses
+
+---
+
+## How These Agencies Work Together
+
+| Agency | Focus | Enforcement Tool |
+| --- | --- | --- |
+| **Joint Commission** | Quality & safety accreditation | Accreditation loss |
+| **CMS** | Medicare/Medicaid compliance | Payment suspension/termination |
+| **OIG** | Fraud, waste, abuse | Criminal/civil penalties, exclusion |
+| **OSHA** | Workplace safety | Fines, citations |
+| **State Boards** | Professional licensing | License revocation |
+
+These agencies often **collaborate**. A CMS audit finding may trigger an OIG investigation. An OSHA complaint may lead to a Joint Commission review.
+
+---
+
+## Key Takeaways
+
+- **The Joint Commission** accredits healthcare organizations through unannounced surveys
+- **CMS** sets conditions for Medicare/Medicaid participation and can terminate non-compliant providers
+- **OIG** investigates fraud, maintains the exclusion list, and can impose criminal penalties
+- **State boards** license individual providers and can revoke licenses
+- Front office staff should follow policies consistently — you may interact with surveyors or auditors
+- Always use **two patient identifiers** (Joint Commission National Patient Safety Goal)`,
+      duration_minutes: 10,
+      sort_order: 3,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'osha-workplace-safety',
+    nextLesson: 'mandatory-reporting',
+    nextIsQuiz: false,
+  },
+  'mandatory-reporting': {
+    lesson: {
+      id: 'ml-l14',
+      module_id: 'ml-m4',
+      slug: 'mandatory-reporting',
+      title: 'Mandatory Reporting',
+      description: 'Recognizing and reporting child abuse, elder abuse, domestic violence, and reportable diseases.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Mandatory Reporting
+
+Healthcare professionals are **mandatory reporters** — people legally required to report suspected abuse, neglect, and certain conditions to authorities. This isn't optional. Failure to report can result in criminal charges, fines, and loss of employment.
+
+As a front office professional, you're often the first person patients interact with. You may notice signs that clinical staff don't see.
+
+---
+
+## Who Is a Mandatory Reporter?
+
+In most states, the following are mandatory reporters:
+
+- Physicians, nurses, and other clinical staff
+- **Medical office and administrative staff** (yes — this includes you)
+- Teachers, counselors, social workers
+- Law enforcement
+
+**Key principle:** You don't need to **prove** abuse occurred. You only need a **reasonable suspicion**. The investigation is someone else's job — your job is to report.
+
+> Mandatory reporters who fail to report can face **criminal misdemeanor charges** and **civil liability** in most states.
+
+---
+
+## Child Abuse & Neglect
+
+**Signs to watch for at the front desk:**
+
+| Category | Warning Signs |
+| --- | --- |
+| **Physical** | Unexplained bruises, burns, fractures; injuries inconsistent with the explanation given |
+| **Behavioral** | Child is fearful, flinches at touch, avoids eye contact with caregiver |
+| **Neglect** | Poor hygiene, malnutrition, inappropriate clothing for weather, untreated medical conditions |
+| **Caregiver red flags** | Delays seeking treatment, gives inconsistent explanations, is overly controlling or dismissive |
+
+**How to report:**
+1. Do **not** confront the suspected abuser
+2. Document what you observed factually (don't interpret or diagnose)
+3. Report to your **supervisor** immediately
+4. The clinic reports to **Child Protective Services (CPS)** and/or local law enforcement
+5. Most states require reporting within **24-72 hours**
+
+---
+
+## Elder Abuse
+
+Elder abuse includes physical, emotional, sexual, and financial abuse, as well as neglect and abandonment of adults aged 65+.
+
+**Signs to watch for:**
+
+- Unexplained injuries, especially in various stages of healing
+- Sudden changes in financial situation (caregiver managing finances)
+- Caregiver won't let the patient speak privately with staff
+- Poor hygiene, dehydration, or medication mismanagement
+- Patient expresses fear of their caregiver
+
+**How to report:**
+- Report to **Adult Protective Services (APS)** in your state
+- Follow your clinic's internal reporting policy
+- Document observations objectively
+
+---
+
+## Domestic Violence / Intimate Partner Violence
+
+Domestic violence affects patients of all genders, ages, and socioeconomic backgrounds.
+
+**Signs at the front desk:**
+- Patient is accompanied by a controlling partner who answers questions for them
+- Frequent visits for injuries with inconsistent explanations
+- Patient seems anxious, withdrawn, or fearful
+- Partner insists on being present during all interactions
+
+**Important guidelines:**
+- **Never confront the suspected abuser**
+- If a patient discloses abuse, listen without judgment
+- Ensure the patient has **privacy** — don't discuss in front of companions
+- Follow clinic protocol for connecting patients with resources (National DV Hotline: 1-800-799-7233)
+- **Do not** put DV-related notes where a companion might see them (e.g., after-visit summaries)
+
+---
+
+## Reportable Diseases & Conditions
+
+Healthcare providers are required to report certain **communicable diseases** to public health authorities.
+
+**Common reportable conditions include:**
+- Tuberculosis (TB)
+- HIV/AIDS (reporting rules vary by state)
+- Hepatitis A, B, and C
+- Measles, mumps, whooping cough
+- Sexually transmitted infections (gonorrhea, chlamydia, syphilis)
+- Foodborne illness outbreaks
+
+**How it works:**
+- The **provider** identifies the condition
+- The clinic reports to the **local or state health department**
+- Some conditions require reporting within **24 hours**; others within **5 business days**
+- HIPAA allows disclosure for public health reporting — no patient authorization needed
+
+---
+
+## Your Role as Front Office Staff
+
+| Situation | Your Action |
+| --- | --- |
+| You notice a child with unexplained injuries | Report to supervisor immediately; document observations |
+| An elderly patient seems afraid of their caregiver | Report to supervisor; follow clinic abuse protocol |
+| A patient whispers that their partner hurts them | Listen, ensure privacy, follow DV protocol, don't confront partner |
+| A provider diagnoses a reportable disease | Assist with required paperwork if asked; maintain confidentiality |
+| You're unsure if something is reportable | Ask your supervisor — it's always better to report than to ignore |
+
+> **Remember:** You report what you **observe**. You don't investigate, diagnose, or confront. Let the trained professionals handle the investigation.
+
+---
+
+## Key Takeaways
+
+- Front office staff are **mandatory reporters** in most states
+- You need **reasonable suspicion**, not proof, to trigger a report
+- Watch for signs of **child abuse, elder abuse, and domestic violence** at check-in
+- **Never confront** a suspected abuser — report through proper channels
+- Certain **communicable diseases** must be reported to public health authorities
+- HIPAA permits disclosures for mandatory reporting — no patient authorization needed
+- When in doubt, report. Failure to report can result in criminal and civil penalties`,
+      duration_minutes: 12,
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'regulatory-agencies',
+    nextLesson: 'incident-reporting-response',
+    nextIsQuiz: false,
+  },
+  'incident-reporting-response': {
+    lesson: {
+      id: 'ml-l15',
+      module_id: 'ml-m4',
+      slug: 'incident-reporting-response',
+      title: 'Incident Reporting & Response',
+      description: 'Incident reports, near misses, sentinel events, and root cause analysis.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Incident Reporting & Response
+
+When something goes wrong in a healthcare setting — or almost goes wrong — it must be documented and reported. **Incident reporting** is how organizations identify problems, prevent recurrence, and protect patients and staff.
+
+This isn't about blame. It's about learning and improving.
+
+---
+
+## What Is an Incident Report?
+
+An **incident report** (also called an occurrence report or event report) is a formal document describing an unexpected event that caused or could have caused harm.
+
+**What triggers an incident report:**
+- Patient injury (fall, medication error, wrong procedure)
+- Staff injury (needlestick, slip, workplace violence)
+- Property damage or theft
+- Security breaches (unauthorized access, missing records)
+- HIPAA violations (misdirected fax, wrong patient chart)
+- Any event that deviates from standard procedures
+
+**Important:** Incident reports are **internal quality documents**. They are typically NOT part of the patient's medical record.
+
+---
+
+## Types of Events
+
+| Type | Definition | Example |
+| --- | --- | --- |
+| **Adverse event** | An event that causes harm to a patient | Patient falls in the waiting room and fractures their wrist |
+| **Near miss** | An event that could have caused harm but didn't | You catch a wrong patient chart before handing it to the provider |
+| **Sentinel event** | A serious, unexpected event resulting in death or major harm | Wrong-site surgery, patient death from medication error |
+| **No-harm event** | An error that reached the patient but didn't cause harm | Wrong appointment time given but patient arrived correctly anyway |
+
+> **Near misses are just as important to report as actual incidents.** They reveal system weaknesses before someone gets hurt.
+
+---
+
+## How to Write an Incident Report
+
+**Include these elements:**
+
+1. **Date, time, and location** of the event
+2. **Who was involved** (patient, staff, visitor)
+3. **What happened** — factual, objective description
+4. **What action was taken** immediately
+5. **Witnesses** — names and contact information
+6. **Your name, title, and signature**
+
+**Rules for good incident reports:**
+- Be **factual and objective** — describe what you saw, not what you think happened
+- **Don't assign blame** — write "patient found on floor" not "patient fell because nurse wasn't watching"
+- **Don't use the word 'accident'** — use "incident" or "event"
+- Complete the report **as soon as possible** while details are fresh
+- **Never alter** an incident report after submission
+
+---
+
+## The Reporting Process
+
+| Step | Action |
+| --- | --- |
+| 1. Respond | Ensure immediate safety (call for help, apply first aid) |
+| 2. Notify | Alert your supervisor and charge nurse/provider |
+| 3. Document | Complete the incident report form |
+| 4. Preserve | Don't discard or alter any evidence (equipment, documents) |
+| 5. Follow up | Cooperate with investigation; attend debrief if requested |
+
+**Never:**
+- Hide or delay reporting an incident
+- Document the incident report in the patient's medical chart
+- Discuss the incident with people who don't need to know
+- Post about it on social media (even without names)
+
+---
+
+## Root Cause Analysis (RCA)
+
+For serious events, organizations conduct a **Root Cause Analysis** — a structured investigation to find the underlying causes.
+
+**RCA process:**
+1. **Assemble a team** — include people involved and quality/risk management
+2. **Gather facts** — what happened, timeline, contributing factors
+3. **Identify root causes** — look beyond individual error to system failures
+4. **Develop action plan** — changes to prevent recurrence
+5. **Implement and monitor** — track whether changes are effective
+
+**Example:** A patient received another patient's lab results by mail.
+- Surface cause: Staff put the wrong label on the envelope
+- Root cause: The printer queued two patients' results simultaneously, and no double-check process existed
+- Fix: Implement a two-person verification step for mailed results
+
+---
+
+## Front Office Incidents to Watch For
+
+| Scenario | What to Do |
+| --- | --- |
+| Patient falls in waiting room | Help patient, call clinical staff, complete incident report |
+| You accidentally fax records to wrong number | Report to supervisor immediately, complete incident report, follow HIPAA breach protocol |
+| A visitor becomes threatening | Follow workplace violence protocol, call security, complete incident report |
+| Patient reports receiving another patient's bill | Report to billing and compliance, complete incident report |
+| You notice a co-worker accessing charts without a work reason | Report to supervisor or compliance officer |
+
+---
+
+## Key Takeaways
+
+- Report **all** incidents — including near misses — through your organization's reporting system
+- Incident reports are **internal quality documents**, not part of the patient's medical chart
+- Be **factual and objective** — never assign blame or use subjective language
+- Complete reports **promptly** while details are fresh
+- **Root cause analysis** looks for system failures, not individual blame
+- Reporting is about **prevention**, not punishment — it makes healthcare safer for everyone`,
+      duration_minutes: 10,
+      sort_order: 5,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'mandatory-reporting',
+    nextLesson: 'emergency-preparedness',
+    nextIsQuiz: false,
+  },
+  'emergency-preparedness': {
+    lesson: {
+      id: 'ml-l16',
+      module_id: 'ml-m4',
+      slug: 'emergency-preparedness',
+      title: 'Emergency Preparedness',
+      description: 'Emergency action plans, fire safety, evacuation procedures, and disaster response.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Emergency Preparedness
+
+Every healthcare facility must be prepared for emergencies — from fires and severe weather to active threats and medical emergencies in the waiting room. As a front office professional, you are often the first point of contact and the person closest to the entrance.
+
+Knowing what to do before an emergency happens can save lives.
+
+---
+
+## Emergency Action Plans (EAPs)
+
+OSHA requires every workplace to have a written **Emergency Action Plan**. In healthcare, these plans cover:
+
+- **Fire** — evacuation routes, fire extinguisher locations, alarm procedures
+- **Severe weather** — tornado, hurricane, or flood shelter-in-place procedures
+- **Active threat** — lockdown procedures, Run/Hide/Fight protocol
+- **Medical emergency** — cardiac arrest, choking, or severe allergic reaction in the facility
+- **Utility failure** — power outage, water loss, gas leak
+- **Bomb threat** — phone procedures, evacuation protocols
+
+**Your responsibility:**
+- **Know where your facility's EAP is located** (physical binder and/or digital copy)
+- **Know your role** in each type of emergency
+- **Participate in drills** — most facilities conduct fire drills quarterly and other drills annually
+- Know the locations of **exits, fire extinguishers, AED, and first aid kits**
+
+---
+
+## Fire Safety: RACE and PASS
+
+Two acronyms every healthcare worker must know:
+
+**RACE — What to Do When You Discover a Fire:**
+
+| Letter | Action |
+| --- | --- |
+| **R** — Rescue | Remove anyone in immediate danger |
+| **A** — Alarm | Pull the fire alarm and call 911 |
+| **C** — Contain | Close doors and windows to contain the fire |
+| **E** — Extinguish/Evacuate | Use a fire extinguisher if safe, or evacuate |
+
+**PASS — How to Use a Fire Extinguisher:**
+
+| Letter | Action |
+| --- | --- |
+| **P** — Pull | Pull the pin |
+| **A** — Aim | Aim the nozzle at the base of the fire |
+| **S** — Squeeze | Squeeze the handle |
+| **S** — Sweep | Sweep side to side at the base |
+
+> Only attempt to extinguish a fire if it's **small and contained**. If the fire is large, spreading, or producing heavy smoke — **evacuate immediately**.
+
+---
+
+## Evacuation Procedures
+
+**Before an evacuation:**
+- Know your **primary and secondary evacuation routes**
+- Know the **assembly point** (where staff and patients gather after evacuating)
+- Identify patients who need **assistance** (wheelchair, walker, oxygen)
+
+**During an evacuation:**
+- Stay calm and give clear, simple instructions
+- Help patients exit — **do not use elevators** during a fire
+- Close doors behind you as you leave
+- Take the **patient sign-in sheet** if possible (to account for everyone)
+- Go to the assembly point and **report to your supervisor**
+- Do **not** re-enter the building until cleared by emergency services
+
+---
+
+## Active Threat / Active Shooter
+
+The standard protocol is **Run, Hide, Fight:**
+
+| Priority | Action |
+| --- | --- |
+| **Run** | If there's a safe escape path, take it. Leave belongings. Help others if possible. |
+| **Hide** | If you can't run, hide in a room. Lock and barricade the door. Silence your phone. |
+| **Fight** | As a last resort only. Use whatever is available to defend yourself. |
+
+**Front office considerations:**
+- You are near the main entrance — you may see the threat first
+- If you can safely alert others (hit a panic button, call 911), do so
+- Your safety comes first — don't try to be a hero
+- After the event, follow your facility's **post-incident protocol** (lock down, account for staff/patients, cooperate with law enforcement)
+
+---
+
+## Medical Emergencies in the Facility
+
+A patient, visitor, or staff member may experience a medical emergency in your area.
+
+**Cardiac arrest or unresponsive person:**
+1. Call 911 immediately
+2. Notify clinical staff (overhead page or direct alert)
+3. Retrieve the **AED** (Automated External Defibrillator) if available
+4. Begin **CPR** if you're trained and no clinical staff is immediately available
+5. Clear the area to give responders room to work
+
+**Choking, fainting, or allergic reaction:**
+1. Call for clinical staff immediately
+2. Call 911 if the situation is severe
+3. Stay with the person and keep them comfortable
+4. Don't administer medications unless you're trained and authorized
+
+> **Know where your AED is located.** Know how to activate your facility's emergency response. These are things to learn on your first day, not during an emergency.
+
+---
+
+## Drills and Preparedness
+
+| Drill Type | Typical Frequency | Your Role |
+| --- | --- | --- |
+| Fire drill | Quarterly | Practice RACE, know your exit route |
+| Tornado/weather drill | Annually | Know shelter-in-place locations |
+| Active threat drill | Annually | Practice Run/Hide/Fight |
+| Mass casualty/disaster | Annually | Know your facility's disaster role |
+
+**Take drills seriously.** They feel routine, but muscle memory from drills is what kicks in during a real emergency. After each drill, note anything confusing and ask your supervisor.
+
+---
+
+## Key Takeaways
+
+- Know your facility's **Emergency Action Plan** and your specific role in it
+- Memorize **RACE** (fire response) and **PASS** (fire extinguisher use)
+- Know **evacuation routes**, assembly points, and which patients need assistance
+- For active threats: **Run, Hide, Fight** — in that priority order
+- Know the locations of **AED, fire extinguishers, first aid kits, and emergency exits**
+- **Participate in drills** and take them seriously — they build the muscle memory you'll need
+- In any emergency: stay calm, follow procedures, and report to your supervisor`,
+      duration_minutes: 10,
+      sort_order: 6,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m4',
+      course_id: 'ml',
+      slug: 'workplace-safety',
+      title: 'Workplace Safety & Compliance',
+      description: 'OSHA standards, regulatory agencies, mandatory reporting, incident management, and emergency preparedness.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'incident-reporting-response',
+    nextLesson: null,
+    nextIsQuiz: true,
+  },
+  // Medical Law & Ethics - Module 5: Ethics & Data Security
+  'professional-ethics-boundaries': {
+    lesson: {
+      id: 'ml-l17',
+      module_id: 'ml-m5',
+      slug: 'professional-ethics-boundaries',
+      title: 'Professional Ethics & Boundaries',
+      description: 'Medical ethics principles, professional boundaries, and scope of practice for front office staff.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Professional Ethics & Boundaries
+
+Ethics in healthcare goes beyond following rules — it's about doing the right thing for patients even when no one is watching. As a front office professional, you face ethical decisions daily: protecting privacy, maintaining boundaries, and staying within your scope of practice.
+
+---
+
+## Core Ethical Principles
+
+Four foundational principles guide ethical decision-making in healthcare:
+
+| Principle | Meaning | Front Office Example |
+| --- | --- | --- |
+| **Autonomy** | Patients have the right to make their own decisions | Respecting a patient's choice to decline treatment |
+| **Beneficence** | Act in the patient's best interest | Helping a confused patient navigate the clinic |
+| **Non-maleficence** | "First, do no harm" | Not giving medical advice outside your scope |
+| **Justice** | Treat all patients fairly and equitably | Not prioritizing patients based on insurance type |
+
+> These principles sometimes conflict. A patient may refuse treatment (autonomy) that would help them (beneficence). In these cases, **autonomy generally wins** — competent adults have the right to refuse care.
+
+---
+
+## Scope of Practice for Front Office Staff
+
+Your **scope of practice** defines what you are qualified and authorized to do. Staying within scope protects patients, your employer, and your career.
+
+**Within your scope:**
+- Scheduling appointments and managing the calendar
+- Collecting copays, deductibles, and outstanding balances
+- Verifying insurance eligibility and benefits
+- Checking patients in and out
+- Relaying messages exactly as documented by clinical staff
+- Filing, scanning, and organizing medical records
+- Providing general clinic information (hours, directions, parking)
+
+**Outside your scope — NEVER do these:**
+- Give medical advice ("I think you should take ibuprofen")
+- Interpret test results ("Your blood sugar looks high")
+- Recommend whether to take or stop medications
+- Diagnose conditions ("That sounds like strep throat")
+- Override clinical decisions ("The doctor is being too cautious")
+- Share your personal opinion about treatments
+
+**The safe response:** *"That's a great question for your provider. Let me get a message to the nurse for you."*
+
+---
+
+## Professional Boundaries
+
+**Professional boundaries** are the limits that define a safe, appropriate relationship between healthcare workers and patients.
+
+**Maintaining boundaries means:**
+- Treating all patients with respect, regardless of personal feelings
+- Not sharing your personal problems with patients
+- Not accepting expensive gifts from patients
+- Not entering personal relationships (dating, business) with current patients
+- Not looking up patients on social media
+- Not accessing patient records unless required for your job
+
+**Boundary violations — real scenarios:**
+
+| Scenario | Why It's a Problem |
+| --- | --- |
+| You look up your neighbor's chart to see their diagnosis | HIPAA violation + boundary violation |
+| You accept a $100 gift card from a grateful patient | Could create expectation of preferential treatment |
+| You vent about your divorce to a patient during check-in | Unprofessional, shifts focus from patient to you |
+| You text a patient using your personal phone number | Crosses professional communication boundaries |
+| You share a patient's embarrassing diagnosis with a coworker for entertainment | HIPAA violation + ethical violation |
+
+---
+
+## Conflicts of Interest
+
+A **conflict of interest** occurs when personal interests could influence your professional judgment.
+
+**Examples:**
+- Your family member is a patient — you should not handle their records or billing
+- A vendor offers you gifts in exchange for referrals — this violates anti-kickback rules
+- A coworker asks you to alter a document — this is fraud, regardless of the reason
+
+**How to handle conflicts:**
+1. Disclose the conflict to your supervisor
+2. Recuse yourself from the situation
+3. Follow your organization's conflict of interest policy
+
+---
+
+## Ethical Decision-Making
+
+When you face an ethical dilemma, use this framework:
+
+1. **Identify the issue** — What's the ethical conflict?
+2. **Gather facts** — What do you know? What information is missing?
+3. **Consider stakeholders** — Who is affected? (patient, clinic, you)
+4. **Review policies** — What do clinic policies, laws, and professional standards say?
+5. **Choose an action** — Pick the option that best serves the patient while following rules
+6. **Document and report** — Record your actions and notify your supervisor if needed
+
+> **When in doubt, ask.** It's never wrong to escalate an ethical concern to your supervisor or compliance officer.
+
+---
+
+## Key Takeaways
+
+- Four core principles guide healthcare ethics: **autonomy, beneficence, non-maleficence, justice**
+- Stay within your **scope of practice** — never give medical advice or interpret results
+- Maintain **professional boundaries** — don't access records without a work reason, don't enter personal relationships with patients
+- Disclose **conflicts of interest** to your supervisor
+- When facing an ethical dilemma, gather facts, review policies, and ask for guidance
+- The safe default: *"Let me get that question to your provider"*`,
+      duration_minutes: 12,
+      sort_order: 1,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m5',
+      course_id: 'ml',
+      slug: 'ethics-data-security',
+      title: 'Ethics & Data Security',
+      description: 'Professional ethics, scope of practice, data safeguards, and medical records retention.',
+      sort_order: 5,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: null,
+    nextLesson: 'data-safeguards-security',
+    nextIsQuiz: false,
+  },
+  'data-safeguards-security': {
+    lesson: {
+      id: 'ml-l18',
+      module_id: 'ml-m5',
+      slug: 'data-safeguards-security',
+      title: 'Data Safeguards & Security',
+      description: 'Electronic, physical, and administrative safeguards for protecting patient information.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Data Safeguards & Security
+
+HIPAA requires healthcare organizations to protect patient information through three categories of safeguards: **administrative, physical, and technical**. These safeguards work together to prevent unauthorized access, ensure data integrity, and maintain availability of health information.
+
+Every front office worker plays a role in maintaining these safeguards daily.
+
+---
+
+## The Three Categories of Safeguards
+
+HIPAA's Security Rule establishes three types of safeguards:
+
+| Category | Purpose | Focus |
+| --- | --- | --- |
+| **Administrative** | Policies and procedures | People and processes |
+| **Physical** | Protecting physical access | Facilities and equipment |
+| **Technical** | Protecting electronic data | Systems and technology |
+
+All three are equally important. A strong password (technical) means nothing if the computer is visible to patients (physical) and staff aren't trained on privacy (administrative).
+
+---
+
+## Administrative Safeguards
+
+Administrative safeguards are the **policies, procedures, and training** that govern how an organization protects patient information.
+
+**Key administrative safeguards:**
+
+- **Security Officer** — Every covered entity must designate a person responsible for HIPAA security
+- **Risk analysis** — Regular assessments to identify vulnerabilities
+- **Workforce training** — All staff must complete HIPAA training at hire and annually
+- **Access management** — Role-based access so staff only see what they need
+- **Sanction policy** — Clear consequences for HIPAA violations
+- **Incident response plan** — Procedures for handling security breaches
+
+**Your role:**
+- Complete all required HIPAA training on time
+- Follow access policies — don't share login credentials
+- Report suspected violations or security concerns immediately
+- Follow the "need to know" principle — only access records you need for your work
+
+---
+
+## Physical Safeguards
+
+Physical safeguards protect the **physical environment** where patient information is stored, accessed, or transmitted.
+
+**Key physical safeguards:**
+
+| Safeguard | Implementation |
+| --- | --- |
+| **Facility access controls** | Badge access, locked doors, visitor logs |
+| **Workstation security** | Screen position away from patient view, privacy screens |
+| **Device controls** | Locked cabinets for laptops, encrypted USB drives |
+| **Media disposal** | Shredding paper records, wiping hard drives before disposal |
+| **Server room security** | Restricted access, environmental controls (temperature, fire suppression) |
+
+**Front office physical security checklist:**
+- Position monitors so patients **cannot see other patients' information**
+- Lock your workstation when you step away (Windows: **Win + L**, Mac: **Ctrl + Cmd + Q**)
+- Never leave patient charts, printouts, or sign-in sheets unattended
+- Shred all paper with PHI — never put it in regular trash or recycling
+- Secure fax machines in areas not accessible to patients
+
+---
+
+## Technical Safeguards
+
+Technical safeguards protect **electronic PHI (ePHI)** through technology controls.
+
+**Key technical safeguards:**
+
+- **Access controls** — Unique user IDs, automatic logoff, encryption
+- **Audit controls** — System logs that track who accessed what and when
+- **Integrity controls** — Mechanisms to ensure data hasn't been altered
+- **Transmission security** — Encryption for data sent over networks (email, fax-to-email)
+- **Authentication** — Verifying that users are who they claim to be
+
+**What this means for you:**
+- Use your **own login** — never share credentials or use someone else's
+- Create **strong passwords** and change them per policy (typically every 90 days)
+- Lock your screen **every time** you step away, even briefly
+- Never send PHI via **unencrypted email** or personal messaging apps
+- Don't install unauthorized software or plug in personal USB drives
+- Report any **suspicious emails** (phishing attempts) to IT immediately
+
+---
+
+## Common Security Threats in Healthcare
+
+| Threat | Description | Prevention |
+| --- | --- | --- |
+| **Phishing** | Fake emails designed to steal credentials | Never click suspicious links; verify sender |
+| **Ransomware** | Malware that encrypts data and demands payment | Don't open unexpected attachments; report suspicious emails |
+| **Social engineering** | Someone impersonates IT or management to get access | Verify identity before giving information |
+| **Unauthorized access** | Staff accessing records without a work reason | Follow "need to know" principle |
+| **Lost/stolen devices** | Laptops, phones, or USB drives with PHI | Encrypt all devices; report losses immediately |
+
+> **Phishing is the #1 cause of healthcare data breaches.** If an email seems suspicious — unexpected sender, urgent language, unfamiliar links — don't click. Report it to IT.
+
+---
+
+## Breach Notification Requirements
+
+When a breach of unsecured PHI occurs, HIPAA requires notification:
+
+- **Individuals affected** — Written notification within **60 days**
+- **HHS (Department of Health and Human Services)** — Report to the breach portal
+- **Media** — If the breach affects 500+ individuals in a state, media notification is required
+- **Breaches of 500+** — Must be reported to HHS within **60 days**
+- **Breaches under 500** — Can be reported annually
+
+**Your role in breach response:**
+1. Report any suspected breach to your supervisor **immediately**
+2. Don't try to investigate or fix it yourself
+3. Document what happened and when you discovered it
+4. Cooperate with the investigation
+5. Don't discuss the breach with unauthorized individuals
+
+---
+
+## Key Takeaways
+
+- HIPAA requires **three categories** of safeguards: administrative, physical, and technical
+- **Lock your screen** every time you leave your workstation — no exceptions
+- **Never share login credentials** or access records without a work reason
+- **Shred all paper** containing PHI — regular trash is never acceptable
+- **Phishing** is the top threat — when in doubt, don't click
+- Report suspected breaches **immediately** — timely reporting limits damage
+- Security is everyone's responsibility, not just IT's`,
+      duration_minutes: 12,
+      sort_order: 2,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m5',
+      course_id: 'ml',
+      slug: 'ethics-data-security',
+      title: 'Ethics & Data Security',
+      description: 'Professional ethics, scope of practice, data safeguards, and medical records retention.',
+      sort_order: 5,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'professional-ethics-boundaries',
+    nextLesson: 'medical-records-retention',
+    nextIsQuiz: false,
+  },
+  'medical-records-retention': {
+    lesson: {
+      id: 'ml-l19',
+      module_id: 'ml-m5',
+      slug: 'medical-records-retention',
+      title: 'Medical Records Retention',
+      description: 'Retention schedules, proper destruction, legal holds, and records management.',
+      content_type: 'reading',
+      video_url: null,
+      reading_content: `## Medical Records Retention
+
+Medical records are legal documents. How long you keep them, how you store them, and how you destroy them are all governed by federal and state laws. Getting this wrong can result in legal liability, regulatory penalties, and compromised patient care.
+
+---
+
+## Why Retention Matters
+
+Medical records serve multiple purposes:
+
+- **Continuity of care** — Providers need historical records to make informed decisions
+- **Legal protection** — Records are evidence in malpractice claims, audits, and disputes
+- **Billing and insurance** — Payers may audit claims years after service
+- **Research and public health** — De-identified records support medical research
+- **Regulatory compliance** — Accreditation bodies and CMS require documented care
+
+> If a record is destroyed too early, you lose legal protection. If kept too long without proper security, you increase breach risk. Retention policies balance these concerns.
+
+---
+
+## Federal Retention Requirements
+
+There is **no single federal law** mandating how long all medical records must be kept. Instead, multiple laws and programs set minimum requirements:
+
+| Requirement | Retention Period |
+| --- | --- |
+| **Medicare/CMS** | Minimum **6 years** from date of service (for billing records) |
+| **HIPAA** | Policies and procedures documentation: **6 years** from creation or last effective date |
+| **OSHA** | Employee medical records: **30 years** after termination |
+| **ERISA** (employee benefits) | Plan records: **6 years** |
+
+**Important:** HIPAA does not specify a retention period for medical records themselves — that's governed by **state law**.
+
+---
+
+## State Retention Requirements
+
+Each state sets its own medical records retention requirements. These vary significantly:
+
+| State Example | Adult Records | Minor Records |
+| --- | --- | --- |
+| **Texas** | 7 years from last treatment | Until age 21 (or 7 years, whichever is longer) |
+| **California** | 7 years from last treatment | Until age 19 (or 7 years from last treatment) |
+| **New York** | 6 years from last treatment | Until age 21 (or 6 years, whichever is longer) |
+| **Florida** | 5 years from last contact | Until age 25 (or 5 years, whichever is longer) |
+
+**Key rules:**
+- **Always follow the longer** retention period when federal and state requirements conflict
+- **Minor records** have extended retention because the statute of limitations for malpractice doesn't begin until the child reaches the age of majority
+- Your organization's **retention policy** should specify exact timeframes — know where to find it
+
+---
+
+## Storage Requirements
+
+Medical records must be stored securely whether they're paper or electronic:
+
+**Paper records:**
+- Store in **locked, fire-resistant** cabinets or rooms
+- Limit access to authorized personnel only
+- Maintain a **sign-out system** for physical charts
+- Protect from water damage, pests, and environmental hazards
+- Off-site storage must meet the same security standards
+
+**Electronic records:**
+- Store on **encrypted, access-controlled** systems
+- Maintain **regular backups** (daily or more frequent)
+- Test backup restoration periodically
+- Use **redundant storage** (on-site and off-site/cloud)
+- Implement audit trails for all access
+
+---
+
+## Proper Destruction of Records
+
+When retention periods expire, records must be destroyed in a way that prevents reconstruction or unauthorized access.
+
+**Acceptable destruction methods:**
+
+| Record Type | Acceptable Method |
+| --- | --- |
+| **Paper** | Cross-cut shredding, pulping, or incineration |
+| **Electronic media** | Degaussing, overwriting, physical destruction of drives |
+| **Microfilm/microfiche** | Pulverizing or incineration |
+| **CDs/DVDs** | Industrial shredding |
+
+**Destruction requirements:**
+- Maintain a **destruction log** — document what was destroyed, when, by whom, and the method
+- Use a **HIPAA-compliant destruction vendor** if outsourcing (require a Business Associate Agreement)
+- Never put PHI-containing materials in regular trash, recycling, or dumpsters
+- Witnesses or certificates of destruction provide additional legal protection
+
+---
+
+## Legal Holds
+
+A **legal hold** (also called litigation hold) suspends normal retention and destruction schedules when records may be relevant to pending or anticipated litigation.
+
+**When a legal hold applies:**
+- A lawsuit has been filed or is anticipated
+- A regulatory investigation is underway
+- An audit or compliance review requires specific records
+
+**What you must do:**
+- **Stop all destruction** of records covered by the hold — immediately
+- Notify your **compliance officer or legal department**
+- Preserve records in their current state — do not alter, move, or delete
+- The hold remains in effect until **legal counsel releases it**
+
+> **Destroying records under a legal hold is called "spoliation"** and can result in severe legal penalties, including adverse inference (the court assumes the destroyed records would have been harmful to your case).
+
+---
+
+## Key Takeaways
+
+- Medical records are **legal documents** with specific retention requirements
+- Follow the **longer period** when federal and state laws conflict
+- **Minor records** are retained longer due to extended statutes of limitations
+- Store records securely — locked cabinets for paper, encrypted systems for electronic
+- Destroy records properly — **cross-cut shredding** for paper, **degaussing or physical destruction** for electronic media
+- Maintain a **destruction log** documenting what was destroyed, when, and how
+- **Legal holds override** retention schedules — never destroy records under a legal hold
+- Know your organization's retention policy and where to find it`,
+      duration_minutes: 10,
+      sort_order: 3,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'ml-m5',
+      course_id: 'ml',
+      slug: 'ethics-data-security',
+      title: 'Ethics & Data Security',
+      description: 'Professional ethics, scope of practice, data safeguards, and medical records retention.',
+      sort_order: 5,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Law & Compliance',
+    prevLesson: 'data-safeguards-security',
+    nextLesson: null,
+    nextIsQuiz: true,
+  },
   // Healthcare Foundations - Insurance Overview Module
   'introduction-health-insurance': {
     lesson: {
@@ -4545,6 +5832,545 @@ Duplicate records aren't just an administrative inconvenience — they're a **pa
     module: { id: 'ehr-m3', course_id: 'ehr-fundamentals', slug: 'non-clinic-encounters', title: 'Non-Clinic Encounters', description: 'Phone and non-visit encounters.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'EHR & Practice Management', prevLesson: 'non-visit-encounters', nextLesson: null, nextIsQuiz: true,
   },
+  // EHR & PM — Telehealth & Patient Portals Module
+  'telehealth-appointment-types': {
+    lesson: {
+      id: 'ehr-l10', module_id: 'ehr-m4', slug: 'telehealth-appointment-types',
+      title: 'Telehealth Appointment Types',
+      description: 'Which visits work for telehealth, scheduling considerations, and common encounter types for virtual care.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Telehealth Appointment Types
+
+## What Is Telehealth?
+
+**Telehealth** is the delivery of healthcare services using audio, video, or digital technology when the patient and provider are in different locations.
+
+For front office staff, telehealth changes HOW you schedule, check in, and support visits — but the administrative steps still exist.
+
+**Key terms:**
+| Term | Meaning |
+|---|---|
+| **Telehealth** | Broad term for any healthcare delivered remotely |
+| **Telemedicine** | Specifically clinical care delivered remotely (diagnosis, treatment) |
+| **Synchronous** | Real-time video/audio visit (live interaction) |
+| **Asynchronous** | Store-and-forward — patient submits info, provider reviews later |
+| **Remote Patient Monitoring (RPM)** | Devices send data (blood pressure, glucose) to the clinic continuously |
+
+---
+
+## Visit Types Appropriate for Telehealth
+
+Not every visit can be virtual. Here's what typically works and what doesn't:
+
+### Good for Telehealth
+- **Follow-up visits** — Medication checks, chronic disease management (diabetes, hypertension, thyroid)
+- **Mental/behavioral health** — Therapy sessions, medication management for anxiety/depression
+- **Minor acute complaints** — Rashes, cold symptoms, UTI symptoms, pink eye
+- **Post-surgical follow-ups** — If no wound inspection or suture removal is needed
+- **Medication refill consultations** — When the provider needs to see the patient before renewing
+- **Care coordination calls** — Reviewing test results, discussing referral plans
+- **Pre-operative evaluations** — Initial screening (physical exam still needed separately)
+
+### NOT Appropriate for Telehealth
+- **Procedures** — Anything requiring physical intervention
+- **Vital signs needed** — When accurate BP, weight, or temperature measurements are required
+- **Physical examination required** — Auscultation, palpation, musculoskeletal assessment
+- **Imaging/lab collection** — X-rays, blood draws, specimen collection
+- **Emergency situations** — Chest pain, stroke symptoms, severe allergic reactions
+
+---
+
+## Scheduling Telehealth Visits
+
+When scheduling a telehealth visit, front office staff need to consider several factors beyond a standard appointment:
+
+**Key scheduling differences:**
+
+| Factor | In-Person | Telehealth |
+|---|---|---|
+| **Room assignment** | Physical exam room | Virtual room (link/login) |
+| **Check-in** | Walk-in at front desk | Digital check-in (portal, link, app) |
+| **Insurance verification** | Same process | Same process — BUT check telehealth coverage |
+| **Copay collection** | At window | Collect by phone or portal before visit |
+| **Time slots** | Standard duration | Often shorter (15 vs 20 min for follow-ups) |
+
+**Insurance considerations for scheduling:**
+- Verify the patient's plan covers telehealth visits (most do post-2020, but confirm)
+- Some payers require the patient to be in-state during the visit
+- Medicare has specific telehealth eligible service codes — not all visits qualify
+- Check if the copay is the same as in-person or if the plan has a separate telehealth copay
+
+---
+
+## Common Telehealth Encounter Types
+
+In your PM/EHR system, telehealth appointments typically use specific encounter types:
+
+| Encounter Type | Description | Typical Duration |
+|---|---|---|
+| **Telehealth Follow-up (EST)** | Established patient virtual check-in | 15 min |
+| **Telehealth New Patient** | First visit with new patient, virtual | 30 min |
+| **Telehealth Mental Health** | Behavioral health therapy/med management | 30–45 min |
+| **Telephone Visit** | Audio-only (no video) — separate billing codes | 10–15 min |
+| **E-Visit** | Asynchronous patient portal message evaluated by provider | N/A (async) |
+
+**Important distinction:** A **telephone visit** (audio only) and a **video telehealth visit** use different CPT codes. When scheduling, make sure the appointment type matches the planned modality.
+
+---
+
+## Front Office Workflow Impact
+
+Telehealth changes your daily workflow in specific ways:
+
+**Day before the visit:**
+- Send appointment reminder with telehealth link
+- Confirm patient has the technology to connect (smartphone, tablet, computer with camera)
+- Pre-register: collect/verify insurance, update demographics
+
+**Day of the visit:**
+- Send final reminder 30–60 minutes before the appointment
+- Verify insurance eligibility (same as in-person)
+- Collect copay via phone or portal
+- Monitor the virtual waiting room — be ready to help if the patient can't connect
+
+**After the visit:**
+- Process any orders placed by the provider (labs, imaging, referrals)
+- Schedule follow-up (in-person or telehealth as appropriate)
+- Send visit summary through the patient portal
+
+**The front office role doesn't shrink with telehealth — it shifts.** You're doing the same verification, collection, and coordination work, just through different channels.`,
+      duration_minutes: 7, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m4', course_id: 'ehr-fundamentals', slug: 'telehealth-portals', title: 'Telehealth & Patient Portals', description: 'Virtual care workflows and patient portal management.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: null, nextLesson: 'telehealth-platforms-technology', nextIsQuiz: false,
+  },
+  'telehealth-platforms-technology': {
+    lesson: {
+      id: 'ehr-l11', module_id: 'ehr-m4', slug: 'telehealth-platforms-technology',
+      title: 'Telehealth Platforms & Technology',
+      description: 'Major telehealth platforms, hardware/software requirements, HIPAA-compliant video tools, and integration with PM/EHR.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Telehealth Platforms & Technology
+
+## The Technology Landscape
+
+Telehealth requires technology that connects patients and providers securely. As front office staff, you won't configure these systems, but you need to understand what your clinic uses so you can help patients and troubleshoot basic issues.
+
+**Three categories of telehealth technology:**
+
+| Category | What It Does | Examples |
+|---|---|---|
+| **Video platforms** | Live audio/video connection | Zoom for Healthcare, Doxy.me, Microsoft Teams, Webex |
+| **EHR-integrated telehealth** | Video built into your EHR | Epic MyChart Video, athenahealth telehealth, eClinicalWorks TeleVisit |
+| **Remote monitoring devices** | Send patient data to clinic | Blood pressure cuffs, glucose monitors, pulse oximeters |
+
+---
+
+## HIPAA and Telehealth Platforms
+
+**Critical rule:** Regular consumer video tools (standard Zoom, FaceTime, Google Meet) are NOT HIPAA compliant for routine telehealth.
+
+**What makes a platform HIPAA compliant:**
+- **Business Associate Agreement (BAA)** — The vendor signs a BAA with the clinic, taking responsibility for protecting PHI
+- **End-to-end encryption** — Video and audio are encrypted so no one can intercept the call
+- **Access controls** — Only authorized users can join the visit
+- **Audit trails** — The system logs who connected, when, and for how long
+- **No recording by default** — Visits are not stored unless explicitly configured
+
+**Common HIPAA-compliant platforms:**
+| Platform | Key Feature |
+|---|---|
+| **Doxy.me** | Browser-based, no download required for patients. Free tier available. |
+| **Zoom for Healthcare** | BAA-covered version of Zoom. Familiar interface for patients. |
+| **Epic MyChart Video** | Built into Epic. Patients join through MyChart app. |
+| **Doximity Video** | Provider-focused. Calls patient's phone — no app needed for patient. |
+| **Microsoft Teams (Healthcare)** | Integrated with Microsoft 365. BAA available. |
+
+> **What if a provider uses FaceTime in an emergency?** During the COVID-19 public health emergency, HHS temporarily waived HIPAA enforcement for telehealth. Outside emergencies, your clinic should use only approved, BAA-covered platforms.
+
+---
+
+## EHR-Integrated vs. Standalone Platforms
+
+### EHR-Integrated Telehealth
+The video visit is built into your PM/EHR system.
+
+**Advantages:**
+- Provider launches the visit from the patient's chart — no switching between systems
+- Visit notes document directly in the encounter
+- Patient connects through their existing patient portal (MyChart, athenahealth portal)
+- Scheduling, check-in, and the visit happen in one workflow
+
+**Front office impact:** This is easier for you. The telehealth appointment looks like any other appointment in your schedule. The patient clicks "Join Visit" in their portal.
+
+### Standalone Platforms
+A separate video tool (Doxy.me, Zoom for Healthcare) is used alongside the EHR.
+
+**Advantages:**
+- Often simpler technology for patients (browser-based, no app download)
+- Clinic can choose the best video tool regardless of EHR vendor
+- Usually lower cost
+
+**Front office impact:** You may need to send the meeting link separately from the appointment confirmation. The provider has to toggle between the video tool and the EHR for documentation.
+
+---
+
+## Hardware and Software Requirements
+
+### Clinic Side
+| Item | Minimum Requirement |
+|---|---|
+| **Computer** | Desktop or laptop with webcam, microphone, speaker |
+| **Internet** | Wired connection preferred. Minimum 10 Mbps upload/download |
+| **Camera** | HD webcam (720p minimum) |
+| **Microphone** | Built-in laptop mic or headset (headset preferred to reduce echo) |
+| **Private space** | Provider needs a quiet, private room — HIPAA applies to what's visible/audible |
+
+### Patient Side
+| Item | Minimum Requirement |
+|---|---|
+| **Device** | Smartphone, tablet, or computer with camera |
+| **Internet** | Stable Wi-Fi or cellular data (4G/5G) |
+| **Browser/App** | Depends on platform — Chrome usually works for browser-based tools |
+| **Location** | Private, quiet space (recommended but can't be enforced) |
+
+**Common patient barriers you'll encounter:**
+- "I don't have Wi-Fi" — Audio-only telephone visits are an alternative
+- "I can't download the app" — Use browser-based platforms (Doxy.me)
+- "I don't have a smartphone" — Telephone visit or help arrange an in-person visit
+- "I'm not comfortable with technology" — Walk them through it step by step, or offer in-person
+
+---
+
+## Integration with PM/EHR Workflow
+
+Regardless of platform, the telehealth visit still follows the PM/EHR encounter lifecycle:
+
+**1. Scheduling (PM system)**
+- Create the appointment with the correct telehealth encounter type
+- System generates the video link (if EHR-integrated) or you attach the link manually
+
+**2. Pre-Visit (Portal/Phone)**
+- Patient receives reminder with join instructions
+- Insurance verification and copay collection happen through the portal or by phone
+
+**3. Check-In (Digital)**
+- Patient clicks the link/joins the waiting room
+- Provider is notified the patient is ready
+
+**4. Visit (Video/Audio)**
+- Provider documents in the EHR during or after the visit
+- E&M coding uses telehealth-specific CPT codes (99211-99215 with modifier -95, or 99441-99443 for telephone)
+
+**5. Post-Visit (PM/EHR)**
+- Encounter closed, charges captured
+- Follow-up scheduled
+- Visit summary sent via portal
+
+The technology is the delivery mechanism. The administrative workflow stays the same.`,
+      duration_minutes: 7, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m4', course_id: 'ehr-fundamentals', slug: 'telehealth-portals', title: 'Telehealth & Patient Portals', description: 'Virtual care workflows and patient portal management.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'telehealth-appointment-types', nextLesson: 'patient-portals', nextIsQuiz: false,
+  },
+  'patient-portals': {
+    lesson: {
+      id: 'ehr-l12', module_id: 'ehr-m4', slug: 'patient-portals',
+      title: 'Patient Portals',
+      description: 'Portal features, self-scheduling, messaging, notifications, and front desk support for portal issues.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Patient Portals
+
+## What Is a Patient Portal?
+
+A **patient portal** is a secure, web-based (or app-based) platform that gives patients 24/7 access to their health information and certain clinic services online.
+
+**Common patient portals:**
+| EHR Vendor | Portal Name |
+|---|---|
+| **Epic** | MyChart |
+| **athenahealth** | athenahealth Patient Portal |
+| **eClinicalWorks** | healow |
+| **Cerner (Oracle Health)** | HealtheLife |
+| **Allscripts** | FollowMyHealth |
+
+Patient portals are required under the **21st Century Cures Act** — clinics must provide patients electronic access to their health information.
+
+---
+
+## Core Portal Features
+
+### Information Access
+Patients can view:
+- **Test results** — Lab work, imaging reports (with provider-configured release timing)
+- **Visit summaries** — After-visit summaries for each encounter
+- **Medication list** — Current medications, dosages, prescribing provider
+- **Immunization records** — Vaccination history
+- **Problem list** — Active diagnoses
+- **Billing statements** — Outstanding balances, payment history
+
+### Communication
+- **Secure messaging** — Patients send messages to the care team (routed to nursing, front desk, or provider pool)
+- **Message notifications** — Email or text alerts when a new message or result is available
+- **Proxy access** — Parents access children's portal; caregivers access elderly patients' portal (with proper authorization)
+
+### Self-Service
+- **Online scheduling** — Patients book, reschedule, or cancel appointments
+- **Prescription refill requests** — Patient requests a medication refill through the portal
+- **Referral status** — Patient can check if a referral has been submitted/approved
+- **Form completion** — Fill out intake forms, consent forms, and questionnaires before the visit
+
+### Payments
+- **Online bill pay** — Patients pay copays, balances, and outstanding invoices
+- **Payment plans** — Some portals support setting up installment plans
+- **Insurance card upload** — Patients can photograph and upload new insurance cards
+
+---
+
+## Front Office Role with Patient Portals
+
+As front desk staff, you are the **primary support contact** for portal issues. You won't troubleshoot the technology itself, but you need to:
+
+### Help Patients Enroll
+- **At check-in:** "Do you have a portal account? Would you like to set one up?"
+- Provide enrollment instructions (printed handout or walk them through on a tablet)
+- Verify the email address on file — this is where activation links go
+- Some clinics require portal enrollment as part of new patient registration
+
+### Handle Common Questions
+
+| Patient Says | Your Response |
+|---|---|
+| "How do I sign up?" | "I can help. We'll verify your email, and you'll receive an activation link. Do you have a smartphone or computer at home?" |
+| "I forgot my password" | "You can reset it from the login page. Click 'Forgot Password' and check your email. If that doesn't work, I can request a password reset from our IT team." |
+| "I can't see my test results" | "Results are released after your provider reviews them. If it's been more than [X] business days, I'll send a message to the care team." |
+| "I want my spouse to access my portal" | "We can set up proxy access. I'll need [your spouse's info and a signed authorization form]." |
+| "I don't want a portal" | "That's completely fine. You're not required to use it. We can continue communicating by phone." |
+
+### Manage Portal Messages
+Many clinics route portal messages to the front desk first:
+- **Appointment requests** — You schedule the appointment and reply to the patient
+- **Referral questions** — Check referral status in the PM system and reply
+- **Billing questions** — Forward to billing or answer basic balance questions
+- **Clinical questions** — Route to nursing or the provider pool (do NOT answer clinical questions)
+
+---
+
+## Self-Scheduling Through the Portal
+
+Portal self-scheduling lets patients book their own appointments online. This reduces phone volume but requires proper configuration.
+
+**How self-scheduling works:**
+1. Patient logs into the portal
+2. Selects visit type (follow-up, wellness, sick visit, etc.)
+3. System shows available time slots (based on scheduling templates)
+4. Patient selects a time and confirms
+5. Appointment appears on the provider's schedule immediately
+
+**Front office impact:**
+- **Monitor the schedule** — Self-scheduled appointments appear without your input. Check for issues (wrong visit type, wrong provider, too many patients in one slot).
+- **Confirm insurance** — Self-scheduled patients may not verify insurance during booking. Run eligibility before the visit.
+- **Watch for duplicates** — A patient may self-schedule AND call to schedule, creating a double booking.
+
+**Configurable limits:**
+- Which visit types patients can self-schedule (usually limited to follow-ups and wellness)
+- How far in advance patients can book (e.g., 1 week to 3 months)
+- Whether new patients can self-schedule (usually no — they need a new patient slot)
+- Provider preferences (some providers opt out of self-scheduling)
+
+---
+
+## Notifications and Alerts
+
+Patient portals generate automated notifications:
+
+| Notification | Trigger | Channel |
+|---|---|---|
+| **Appointment reminder** | 48 hours and 24 hours before visit | Email, text, app push |
+| **New test result** | Provider releases lab/imaging results | Email, text, app push |
+| **New message** | Care team sends a portal message | Email, text |
+| **Prescription ready** | Pharmacy notifies portal (if integrated) | App push |
+| **Form due** | Pre-visit questionnaire needs completion | Email |
+| **Balance due** | New statement generated | Email |
+
+**Front office consideration:** If a patient says "I never got a reminder" — check that their notification preferences are turned on and their email/phone on file is correct.
+
+---
+
+## Privacy and Security Considerations
+
+Patient portals handle PHI, so HIPAA rules apply:
+
+- **Unique login required** — Each patient (or authorized proxy) has their own credentials
+- **Session timeout** — Portal automatically logs out after inactivity (typically 15-20 minutes)
+- **Proxy access must be documented** — Written authorization required for someone to access another person's portal
+- **Minor access rules** — Depending on state law, parents may lose portal access to a child's record at a certain age (often 12-18) for sensitive information (reproductive health, mental health, substance abuse)
+- **Right to access** — Under the 21st Century Cures Act, clinics cannot block patients from accessing their own health information (with limited exceptions for safety)
+
+> **Information blocking:** Intentionally preventing patients from accessing their electronic health information is a violation of the Cures Act. If a patient requests access and the clinic delays without cause, this may be considered information blocking.`,
+      duration_minutes: 7, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m4', course_id: 'ehr-fundamentals', slug: 'telehealth-portals', title: 'Telehealth & Patient Portals', description: 'Virtual care workflows and patient portal management.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'telehealth-platforms-technology', nextLesson: 'telehealth-procedures-troubleshooting', nextIsQuiz: false,
+  },
+  'telehealth-procedures-troubleshooting': {
+    lesson: {
+      id: 'ehr-l13', module_id: 'ehr-m4', slug: 'telehealth-procedures-troubleshooting',
+      title: 'Telehealth Procedures & Troubleshooting',
+      description: 'Pre-visit preparation, day-of workflows, common technical issues, and front office troubleshooting scripts.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Telehealth Procedures & Troubleshooting
+
+## The Front Office Telehealth Workflow
+
+Telehealth visits require the same administrative steps as in-person visits, executed through different channels. Here's the complete front office workflow:
+
+### Day Before the Visit
+| Step | Action | How |
+|---|---|---|
+| 1 | **Verify insurance** | Same eligibility check as in-person. Confirm telehealth coverage. |
+| 2 | **Confirm appointment** | Send reminder with telehealth link and instructions. |
+| 3 | **Check demographics** | Verify phone, email, and address on file (state matters for telehealth). |
+| 4 | **Send intake forms** | Push pre-visit questionnaire through portal if not completed. |
+| 5 | **Technology check** | For first-time telehealth patients, ask: "Have you used [platform] before? Would you like to do a test connection?" |
+
+### Day of the Visit
+
+**30–60 minutes before:**
+- Send final text/email reminder: "Your telehealth appointment is at [time]. Click here to join: [link]"
+- Verify the patient has completed intake forms
+- Collect copay by phone or confirm portal payment
+
+**At appointment time:**
+- Monitor the virtual waiting room
+- If the patient hasn't joined within 5 minutes, call them
+- Once connected, verify identity (full name, DOB) — same as an in-person check-in
+
+**During the visit:**
+- Be available for technical support calls
+- Monitor for connection drops — if the provider reports the patient disconnected, call the patient
+
+**After the visit:**
+- Process any orders (labs, imaging, referrals, prescriptions)
+- Schedule follow-up
+- Ensure visit summary is available in the portal
+
+---
+
+## Pre-Visit Technology Screening
+
+For patients new to telehealth, a pre-visit technology check prevents day-of problems.
+
+**Technology screening checklist:**
+- [ ] Does the patient have a device with a camera? (smartphone, tablet, or computer)
+- [ ] Does the patient have reliable internet? (Wi-Fi or cellular data)
+- [ ] Can the patient access the portal/app? (logged in successfully before)
+- [ ] Has the patient tested audio and video? (microphone, speaker, camera working)
+- [ ] Is the patient in a state where the provider is licensed? (some payers enforce this)
+
+**Script for pre-visit call:**
+> "Hi [patient name], this is [your name] from [clinic]. You have a telehealth appointment on [date] at [time] with [provider]. I want to make sure you're all set with the technology. Do you have a smartphone, tablet, or computer with a camera? ... Great. Have you used [platform name] before? ... I'm going to send you a link right now. Can you try clicking it to make sure it opens?"
+
+---
+
+## Common Technical Issues and Troubleshooting
+
+### Issue: Patient Can't Connect
+
+| Problem | Likely Cause | Fix |
+|---|---|---|
+| "The link doesn't work" | Expired or incorrect link | Resend the current appointment link. Check the link in the EHR. |
+| "It says I need to download an app" | Platform requires an app install | Walk them through the download, or switch to a browser-based option. |
+| "I'm getting an error message" | Browser compatibility | Try a different browser (Chrome works for most platforms). Clear cache. |
+| "Nothing happens when I click" | Popup blocker or security settings | Ask them to try a different browser or disable popup blockers. |
+
+### Issue: Audio/Video Problems
+
+| Problem | Likely Cause | Fix |
+|---|---|---|
+| "They can't hear me" | Microphone not enabled or muted | Check if the mic is muted in the app. Ask them to check phone/computer sound settings. |
+| "I can't hear them" | Speaker volume or wrong output device | Turn up volume. Check if headphones are connected. |
+| "No video — just a black screen" | Camera not enabled or covered | Check if camera permission was granted. Some laptops have a physical camera shutter. |
+| "The video is freezing" | Poor internet connection | Turn off other devices using Wi-Fi. Move closer to the router. Switch to audio-only. |
+
+### Issue: Connection Drops
+
+| Scenario | Action |
+|---|---|
+| Patient drops mid-visit | Call the patient immediately. Help them reconnect. |
+| Provider drops mid-visit | Patient sees "waiting" — reassure them if they call the front desk. Notify the provider. |
+| Both drop | Call the patient. Restart the visit. If technology fails completely, convert to a telephone visit (audio-only). |
+
+**Escalation rule:** If you can't resolve the issue within 5 minutes, offer to:
+1. Convert to a telephone (audio-only) visit
+2. Reschedule as an in-person visit
+3. Have IT call the patient back
+
+---
+
+## Telephone Visit Procedures
+
+When video isn't possible, a **telephone visit** (audio-only) is the fallback:
+
+**Key differences from video telehealth:**
+- Uses different CPT codes: 99441 (5-10 min), 99442 (11-20 min), 99443 (21-30 min)
+- Some payers reimburse telephone visits at a lower rate than video
+- Provider documents the reason video wasn't used
+- All other administrative steps (insurance verification, copay, scheduling) remain the same
+
+**When to suggest telephone visits:**
+- Patient doesn't have a camera-enabled device
+- Internet connection is too poor for video
+- Elderly patient uncomfortable with video technology
+- Brief follow-up that doesn't require visual assessment
+
+---
+
+## Documentation and Compliance
+
+### Required Documentation for Telehealth Visits
+The provider documents these, but front office staff should be aware:
+- **Patient location** — State where the patient is physically located during the visit
+- **Provider location** — Where the provider is conducting the visit from
+- **Modality** — Video, telephone, or asynchronous
+- **Technology used** — Platform name
+- **Consent** — Patient verbal or written consent for telehealth (first visit, or annually per your state)
+- **Who was present** — Anyone else on the call (interpreter, caregiver, parent)
+
+### State Licensing Requirements
+- Providers must be licensed in the state where the **patient** is located during the visit
+- If a patient travels to another state and calls for a visit, the provider may not be able to see them
+- **Front office action:** Verify the patient's current location at check-in: "Can you confirm you're in [state] today?"
+
+### Consent Requirements
+Most states require documented consent for telehealth:
+- Some accept verbal consent documented in the chart
+- Others require a signed telehealth consent form
+- Usually needed only for the first telehealth visit, then annually
+- **Front office action:** Check if the patient has a telehealth consent on file before their first virtual visit
+
+---
+
+## Quick Reference: Telehealth Troubleshooting Script
+
+**When a patient calls with issues:**
+
+1. **Stay calm and reassuring** — "No problem, let's get this figured out together."
+2. **Identify the problem** — "Can you tell me exactly what you see on your screen?"
+3. **Try the simple fix first** — "Let's try closing the app completely and clicking the link again."
+4. **Escalate if needed** — "If this isn't working, we have two options: I can connect you by phone for today's visit, or we can reschedule as an in-person appointment. Which would you prefer?"
+5. **Document the issue** — Note the technical problem in the appointment comments so the care team is aware.
+
+**Never leave the patient hanging.** If you can't solve the tech issue, always offer an alternative (phone visit or in-person reschedule).`,
+      duration_minutes: 8, sort_order: 4,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ehr-m4', course_id: 'ehr-fundamentals', slug: 'telehealth-portals', title: 'Telehealth & Patient Portals', description: 'Virtual care workflows and patient portal management.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'EHR & Practice Management', prevLesson: 'patient-portals', nextLesson: null, nextIsQuiz: true,
+  },
   // Medical Law & Ethics Section
   'hipaa-basics': {
     lesson: {
@@ -6007,6 +7833,1281 @@ Here's how these concepts connect in your daily work:
     module: { id: 'ins-m5', course_id: 'insurance', slug: 'revenue-cycle', title: 'The Revenue Cycle & Payment Models', description: 'Revenue cycle phases and payment models.', sort_order: 5, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Insurance & Billing', prevLesson: 'payment-models', nextLesson: null, nextIsQuiz: true,
   },
+  // ─── Insurance Module 6: Coding Basics ──────────────────
+  'icd-10-diagnosis-coding': {
+    lesson: {
+      id: 'ins-l19', module_id: 'ins-m6', slug: 'icd-10-diagnosis-coding',
+      title: 'ICD-10: Diagnosis Coding',
+      description: 'How diagnosis codes work, why they matter for billing, and what front office staff need to know.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## ICD-10: Diagnosis Coding
+
+Every time a patient sees a provider, the visit must include a **diagnosis code** — a standardized code that tells the insurance company *why* the patient was seen. Without it, the claim won't be paid. The coding system used for diagnoses in the United States is **ICD-10-CM**.
+
+You won't assign these codes (that's the provider's or coder's job), but understanding how they work helps you handle billing questions, prior authorizations, and claim issues.
+
+---
+
+## What Is ICD-10?
+
+**ICD-10-CM** stands for the **International Classification of Diseases, 10th Revision, Clinical Modification**.
+
+- Developed by the **World Health Organization (WHO)** and modified by the **CDC** for U.S. clinical use
+- Contains over **70,000 diagnosis codes**
+- Replaced the older ICD-9 system in 2015
+- Used by every healthcare provider, hospital, and insurance company in the U.S.
+
+**Key point:** ICD-10 codes answer the question **"What is wrong with the patient?"**
+
+---
+
+## How ICD-10 Codes Are Structured
+
+ICD-10 codes are **3 to 7 characters** long and follow a specific pattern:
+
+**Example: E11.65 — Type 2 diabetes with hyperglycemia**
+
+| Position | Characters | Meaning |
+| --- | --- | --- |
+| 1 | E | **Category** — letter indicating the body system or condition type |
+| 2-3 | 11 | **Subcategory** — narrows the diagnosis |
+| 4 (after decimal) | 6 | **Detail** — adds specificity |
+| 5+ | 5 | **Extension** — further detail |
+
+**Common first-letter categories:**
+- **E** — Endocrine/metabolic (diabetes, thyroid)
+- **I** — Circulatory (hypertension, heart failure)
+- **J** — Respiratory (asthma, pneumonia)
+- **M** — Musculoskeletal (back pain, arthritis)
+- **Z** — Factors influencing health (wellness visits, screening)
+
+---
+
+## Why ICD-10 Matters at the Front Desk
+
+| Situation | How ICD-10 Is Involved |
+| --- | --- |
+| **Prior authorization** | The insurance company needs the diagnosis code to approve the procedure |
+| **Claim denial** | A mismatch between diagnosis and procedure codes causes denials |
+| **Patient billing questions** | "Why wasn't my visit covered?" — often a coding issue |
+| **Referral requests** | Specialists need the referring diagnosis code |
+| **ABN** | Given when Medicare may not cover a service for the stated diagnosis |
+
+---
+
+## Common ICD-10 Codes You'll See
+
+| Code | Diagnosis |
+| --- | --- |
+| Z00.00 | General adult wellness exam |
+| I10 | Essential hypertension |
+| E11.9 | Type 2 diabetes without complications |
+| J06.9 | Acute upper respiratory infection |
+| M54.5 | Low back pain |
+| Z23 | Encounter for immunization |
+| F41.1 | Generalized anxiety disorder |
+
+> You don't need to memorize codes — but recognizing common ones helps you spot issues on claims, authorizations, and referrals.
+
+---
+
+## Key Takeaways
+
+- **ICD-10-CM** is the diagnosis coding system — it answers "What is wrong with the patient?"
+- Codes are **3-7 characters** starting with a letter, followed by numbers
+- Every claim needs at least one diagnosis code to be paid
+- Front office staff encounter ICD-10 in **prior auths, referrals, claim denials, and patient questions**
+- You don't assign codes, but understanding them helps you troubleshoot billing issues`,
+      duration_minutes: 8, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m6', course_id: 'insurance', slug: 'coding-basics', title: 'Coding Basics for Front Office', description: 'ICD-10, CPT, HCPCS, SNOMED CT, and medical necessity.', sort_order: 6, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'cpt-procedure-coding', nextIsQuiz: false,
+  },
+  'cpt-procedure-coding': {
+    lesson: {
+      id: 'ins-l20', module_id: 'ins-m6', slug: 'cpt-procedure-coding',
+      title: 'CPT: Procedure Coding',
+      description: 'How procedure codes work, E&M levels, and the front desk connection to CPT coding.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## CPT: Procedure Coding
+
+While ICD-10 tells the insurance company *what's wrong* with the patient, **CPT codes** tell them *what was done*. Every service, procedure, and evaluation performed during a patient visit is represented by a CPT code.
+
+---
+
+## What Is CPT?
+
+**CPT** stands for **Current Procedural Terminology**.
+
+- Developed and maintained by the **American Medical Association (AMA)**
+- Contains approximately **10,000 codes**
+- Updated annually
+- Required on every insurance claim alongside diagnosis codes
+
+**Key point:** CPT codes answer the question **"What did the provider do?"**
+
+---
+
+## CPT Code Structure
+
+CPT codes are **5-digit numeric codes** organized into sections:
+
+| Range | Section | Examples |
+| --- | --- | --- |
+| **99202-99499** | Evaluation & Management (E&M) | Office visits, consultations |
+| **10000-69999** | Surgery | Minor procedures, biopsies |
+| **70000-79999** | Radiology | X-rays, MRIs, CT scans |
+| **80000-89999** | Pathology/Lab | Blood tests, urinalysis |
+| **90000-99199** | Medicine | Immunizations, injections |
+
+---
+
+## E&M Codes: The Most Common CPT Codes
+
+**Evaluation and Management (E&M) codes** represent office visits — the most frequent service in ambulatory care.
+
+**New patient visits:** 99202, 99203, 99204, 99205
+**Established patient visits:** 99211, 99212, 99213, 99214, 99215
+
+| Level | Complexity | Typical Scenario |
+| --- | --- | --- |
+| **99211** | Minimal (nurse only) | Blood pressure check, suture removal |
+| **99212** | Straightforward | Simple follow-up, medication refill |
+| **99213** | Low complexity | Most common — routine follow-up |
+| **99214** | Moderate complexity | Multiple problems, new diagnosis |
+| **99215** | High complexity | Complex, multi-system evaluation |
+
+> **99213** is the most frequently billed E&M code in primary care.
+
+---
+
+## Why CPT Matters at the Front Desk
+
+| Situation | CPT Connection |
+| --- | --- |
+| **Scheduling** | Visit type determines the CPT level (and time slot) |
+| **Copay collection** | Some plans have different copays for different visit types |
+| **Prior authorization** | Procedures need pre-approval using CPT codes |
+| **Superbills** | List common CPT codes for the provider to select |
+| **Patient cost estimates** | CPT codes determine the charge amount |
+
+---
+
+## CPT Modifiers
+
+**Modifiers** are 2-digit add-ons that provide additional information:
+
+| Modifier | Meaning |
+| --- | --- |
+| **-25** | Significant, separately identifiable E&M service |
+| **-59** | Distinct procedural service |
+| **-76** | Repeat procedure, same physician |
+| **-LT / -RT** | Left side / Right side |
+
+---
+
+## Key Takeaways
+
+- **CPT codes** tell the insurance company what service was performed — always 5 digits
+- **E&M codes** (99211-99215) represent office visits and are the most common
+- Higher E&M numbers = more complex visits = higher charges
+- CPT codes are used in **scheduling, prior auth, superbills, and cost estimates**
+- You don't assign CPT codes, but understanding them helps with scheduling, auths, and billing questions`,
+      duration_minutes: 8, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m6', course_id: 'insurance', slug: 'coding-basics', title: 'Coding Basics for Front Office', description: 'ICD-10, CPT, HCPCS, SNOMED CT, and medical necessity.', sort_order: 6, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'icd-10-diagnosis-coding', nextLesson: 'hcpcs-supply-coding', nextIsQuiz: false,
+  },
+  'hcpcs-supply-coding': {
+    lesson: {
+      id: 'ins-l21', module_id: 'ins-m6', slug: 'hcpcs-supply-coding',
+      title: 'HCPCS: Supplies & Equipment',
+      description: 'Level II codes for supplies, equipment, and services not covered by CPT.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## HCPCS: Supplies & Equipment
+
+Some healthcare services and items don't have CPT codes — things like durable medical equipment, ambulance services, prosthetics, and certain drugs administered in the office. These are coded using **HCPCS Level II codes**.
+
+---
+
+## What Is HCPCS?
+
+**HCPCS** stands for **Healthcare Common Procedure Coding System** (pronounced "hick-picks").
+
+- **Level I** = CPT codes (covered in the previous lesson)
+- **Level II** = Alphanumeric codes for items and services not in CPT
+
+Level II codes are maintained by **CMS** and are especially important for Medicare and Medicaid billing.
+
+---
+
+## HCPCS Level II Code Structure
+
+Level II codes are **5 characters**: one letter followed by four numbers.
+
+| Letter Range | Category | Examples |
+| --- | --- | --- |
+| **A0000-A0999** | Ambulance & transport | A0427 — ALS ambulance |
+| **E0100-E9999** | Durable medical equipment | E0110 — Crutches |
+| **J0000-J9999** | Drugs administered by provider | J1100 — Dexamethasone injection |
+| **K0000-K9999** | DME (temporary codes) | K0001 — Standard wheelchair |
+| **L0000-L9999** | Orthotics & prosthetics | L3000 — Foot insert |
+
+---
+
+## When Front Office Staff Encounter HCPCS
+
+| Situation | HCPCS Connection |
+| --- | --- |
+| **DME orders** | Patient needs wheelchair, CPAP, or walker — HCPCS codes needed for billing |
+| **Prior authorization** | DME and some injections require pre-approval using HCPCS codes |
+| **Medicare billing** | Medicare uses HCPCS extensively for non-physician services |
+| **Injection billing** | Drugs given in-office (flu shots, cortisone, B12) use J-codes |
+| **Supply charges** | Splints, casts, and surgical supplies have HCPCS codes |
+
+---
+
+## HCPCS vs. CPT
+
+| Feature | CPT (Level I) | HCPCS Level II |
+| --- | --- | --- |
+| **Maintained by** | AMA | CMS |
+| **Format** | 5 digits (numeric) | 1 letter + 4 digits |
+| **Covers** | Procedures and services | Supplies, equipment, drugs, transport |
+| **Updated** | Annually | Quarterly |
+
+---
+
+## Key Takeaways
+
+- **HCPCS Level II** codes cover items and services not in CPT — equipment, supplies, drugs, and transport
+- Format: **one letter + four numbers** (e.g., E0110 for crutches)
+- **J-codes** are the most common in primary care — they cover drugs administered in the office
+- Front office staff encounter HCPCS in **DME orders, prior auths, and injection billing**
+- HCPCS is maintained by **CMS** and is especially important for **Medicare billing**`,
+      duration_minutes: 6, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m6', course_id: 'insurance', slug: 'coding-basics', title: 'Coding Basics for Front Office', description: 'ICD-10, CPT, HCPCS, SNOMED CT, and medical necessity.', sort_order: 6, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'cpt-procedure-coding', nextLesson: 'snomed-ct-overview', nextIsQuiz: false,
+  },
+  'snomed-ct-overview': {
+    lesson: {
+      id: 'ins-l22', module_id: 'ins-m6', slug: 'snomed-ct-overview',
+      title: 'SNOMED CT: Clinical Terminology',
+      description: 'How SNOMED CT standardizes clinical language in EHR systems.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## SNOMED CT: Clinical Terminology
+
+You've learned about ICD-10 (diagnosis codes for billing) and CPT (procedure codes for billing). **SNOMED CT** serves a different purpose — it's a clinical terminology system used *inside* the EHR to standardize how providers document patient care.
+
+---
+
+## What Is SNOMED CT?
+
+**SNOMED CT** stands for **Systematized Nomenclature of Medicine — Clinical Terms**.
+
+- The most comprehensive clinical terminology system in the world
+- Contains over **350,000 concepts**
+- Maintained by **SNOMED International**
+- Used in EHR systems to ensure clinical data is recorded consistently
+
+**Key difference from ICD-10 and CPT:**
+- ICD-10 and CPT are **billing codes** — they tell insurance companies what happened
+- SNOMED CT is a **clinical vocabulary** — it helps EHR systems record and share clinical information accurately
+
+---
+
+## How SNOMED CT Works in the EHR
+
+When a provider documents in the EHR, they search for terms like "sore throat" or "chest pain." The EHR maps these to SNOMED CT codes behind the scenes.
+
+| What the Provider Types | SNOMED CT Concept | SNOMED CT ID |
+| --- | --- | --- |
+| "Sore throat" | Sore throat (finding) | 267102003 |
+| "Type 2 diabetes" | Diabetes mellitus type 2 | 44054006 |
+| "Flu shot" | Influenza vaccination | 86198006 |
+
+Different providers might describe the same condition differently — "sore throat," "pharyngitis," "throat pain." SNOMED CT maps these to the **same standardized concept**.
+
+---
+
+## SNOMED CT vs. ICD-10 vs. CPT
+
+| System | Purpose | Example |
+| --- | --- | --- |
+| **SNOMED CT** | Clinical documentation in the EHR | "Type 2 diabetes" → 44054006 |
+| **ICD-10-CM** | Diagnosis coding for billing | E11.9 |
+| **CPT** | Procedure coding for billing | 99213 |
+
+**These systems work together:** The provider documents using SNOMED CT in the EHR. The system then maps clinical terms to ICD-10 and CPT for billing.
+
+---
+
+## Why Front Office Staff Should Know About SNOMED CT
+
+- **Understand EHR search results** — patient problem lists use SNOMED-coded entries
+- **Answer patient questions** — "What does this mean on my chart?"
+- **Support interoperability** — SNOMED CT enables different EHR systems to share data accurately
+- **Recognize the difference** — billing codes (ICD-10/CPT) vs. clinical terminology (SNOMED CT)
+
+---
+
+## Key Takeaways
+
+- **SNOMED CT** is a clinical terminology system used inside EHRs — not for billing
+- It standardizes clinical documentation with over **350,000 concepts**
+- **ICD-10 and CPT are for billing; SNOMED CT is for clinical documentation**
+- The EHR maps SNOMED concepts to ICD-10/CPT for claims submission
+- Understanding SNOMED CT helps you navigate EHR data and support interoperability`,
+      duration_minutes: 6, sort_order: 4,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m6', course_id: 'insurance', slug: 'coding-basics', title: 'Coding Basics for Front Office', description: 'ICD-10, CPT, HCPCS, SNOMED CT, and medical necessity.', sort_order: 6, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'hcpcs-supply-coding', nextLesson: 'medical-necessity', nextIsQuiz: false,
+  },
+  'medical-necessity': {
+    lesson: {
+      id: 'ins-l23', module_id: 'ins-m6', slug: 'medical-necessity',
+      title: 'Medical Necessity',
+      description: 'What medical necessity means, how it affects coverage, and the front desk role in supporting it.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Medical Necessity
+
+Insurance companies don't pay for every healthcare service — they pay for services that are **medically necessary**. Understanding medical necessity helps you handle prior authorizations, explain denials to patients, and support providers in getting services approved.
+
+---
+
+## What Is Medical Necessity?
+
+**Medical necessity** means a healthcare service is:
+
+- **Clinically appropriate** for the patient's condition
+- **Required for diagnosis or treatment** (not just convenient or desired)
+- **Consistent with accepted medical standards**
+- **Not primarily for the convenience** of the patient or provider
+- **The most cost-effective** option that meets the patient's needs
+
+> **In simple terms:** The service must be needed to diagnose or treat the patient's condition, and it must be the right level of care.
+
+---
+
+## Who Determines Medical Necessity?
+
+| Entity | Role |
+| --- | --- |
+| **The provider** | Determines what the patient needs clinically |
+| **The insurance company** | Decides whether the service meets their coverage criteria |
+| **CMS (for Medicare)** | Publishes National and Local Coverage Determinations |
+
+The provider may believe a service is necessary, but the insurer may disagree. This is where **prior authorization** and **appeals** come in.
+
+---
+
+## How Medical Necessity Affects Daily Operations
+
+| Situation | Medical Necessity Connection |
+| --- | --- |
+| **Prior authorization** | Insurance requires proof that the service is medically necessary |
+| **Claim denial** | "Not medically necessary" is one of the most common denial reasons |
+| **ABN (Medicare)** | If Medicare may not cover a service, the patient must be notified |
+| **Diagnosis-procedure match** | The ICD-10 must support the CPT — a mismatch triggers denial |
+| **Frequency limits** | Insurance may cover a service only at certain intervals |
+
+---
+
+## The Diagnosis-Procedure Link
+
+Medical necessity depends on the **relationship between diagnosis and procedure:**
+
+| Diagnosis (ICD-10) | Procedure (CPT) | Covered? |
+| --- | --- | --- |
+| I10 (Hypertension) | 99214 (Office visit) | Yes — monitoring chronic condition |
+| Z00.00 (Wellness exam) | 93000 (EKG) | Maybe — depends on risk factors |
+| M54.5 (Low back pain) | 72148 (Lumbar MRI) | Likely requires prior auth |
+
+**Key rule:** The diagnosis code must **justify** the procedure code.
+
+---
+
+## The Front Desk Role
+
+1. **Accurate scheduling** — Schedule the right visit type to match the patient's needs
+2. **Prior authorization** — Submit auth requests with correct diagnosis and procedure codes
+3. **ABN completion** — Present ABNs to Medicare patients when coverage is uncertain
+4. **Patient education** — Explain why insurance denied a service and what options exist
+5. **Documentation support** — Ensure referral letters include the clinical reason
+
+**Common patient question:** *"Why didn't my insurance cover this?"*
+**Your response:** *"Insurance requires that services be medically necessary based on your diagnosis. I can help you understand the denial, and your provider can submit additional documentation or an appeal."*
+
+---
+
+## Key Takeaways
+
+- **Medical necessity** means a service is clinically appropriate, required, and consistent with medical standards
+- The **diagnosis must support the procedure** — a mismatch causes denials
+- "Not medically necessary" is one of the **most common claim denial reasons**
+- Front office staff support medical necessity through **accurate scheduling, prior auth, ABNs, and patient communication**
+- When denied, the provider can submit **additional documentation or an appeal**`,
+      duration_minutes: 8, sort_order: 5,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m6', course_id: 'insurance', slug: 'coding-basics', title: 'Coding Basics for Front Office', description: 'ICD-10, CPT, HCPCS, SNOMED CT, and medical necessity.', sort_order: 6, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'snomed-ct-overview', nextLesson: null, nextIsQuiz: true,
+  },
+  // Insurance — Referrals & Prior Authorization Module
+  'referral-fundamentals': {
+    lesson: {
+      id: 'ins-l24', module_id: 'ins-m7', slug: 'referral-fundamentals',
+      title: 'Referral Fundamentals',
+      description: 'What referrals are, why they matter, and the difference between inbound, outbound, internal, and external referrals.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Referral Fundamentals
+
+## What Is a Referral?
+
+A **referral** is a formal request from one healthcare provider to another to evaluate, treat, or consult on a patient. In practical terms, it's the process that connects a patient with the right specialist or service.
+
+**Why referrals matter:**
+- **Clinical:** Ensures the patient sees the right provider for their condition
+- **Insurance:** Many plans (HMO, Medicaid) require a referral from the PCP before seeing a specialist — without it, the visit may not be covered
+- **Documentation:** Creates a paper trail showing medical necessity for the specialist visit
+- **Continuity of care:** Keeps the referring provider informed about what happens at the specialist visit
+
+---
+
+## Referral Directions
+
+### Outbound Referrals (You Are Sending)
+Your clinic's provider orders the referral. Your job is to process it, get authorization if needed, and ensure the patient gets to the specialist.
+
+**Example:** Dr. Chen sees a patient with persistent knee pain. She refers the patient to an orthopedic surgeon.
+
+### Inbound Referrals (You Are Receiving)
+Another clinic sends a patient to your provider. Your job is to schedule the patient, obtain records, and after the visit, send consult notes back.
+
+**Example:** A PCP office calls your orthopedic clinic to schedule a new patient referral.
+
+---
+
+## Internal vs. External Referrals
+
+### Internal Referral
+The specialist is within your same health system or practice group.
+
+**Characteristics:**
+- Shared EHR — specialist can see the patient's full chart
+- Referral is often electronic (placed within the EHR as an order)
+- Insurance may not require formal authorization (same group)
+- Scheduling may be handled internally
+
+**Example:** A family medicine clinic refers to the dermatologist in the same medical group. Both use Epic. The referral is an EHR order and the specialist can see all records.
+
+### External Referral
+The specialist is outside your health system.
+
+**Characteristics:**
+- Different EHR systems — records must be sent manually (fax, portal, mail)
+- Insurance almost always requires formal authorization
+- Scheduling is coordinated between two separate offices
+- Consult notes must be sent back to complete the loop
+
+**Example:** A PCP refers a patient to a surgeon at a different hospital system. Records must be faxed, auth must be obtained, and the PCP needs the surgeon's notes back.
+
+---
+
+## Key Players in the Referral Process
+
+| Role | Responsibility |
+|---|---|
+| **Referring Provider** | Orders the referral, provides clinical justification |
+| **Receiving Provider** | Evaluates the patient, sends consult notes back |
+| **Front Office (Referring)** | Processes the referral, obtains auth, sends records, follows up |
+| **Front Office (Receiving)** | Schedules the patient, obtains records, closes the loop |
+| **Insurance/Payer** | Approves or denies the referral/auth based on medical necessity |
+| **Patient** | Schedules and attends the appointment, provides information |
+
+---
+
+## Referral vs. Prior Authorization
+
+These are related but distinct:
+
+| | Referral | Prior Authorization |
+|---|---|---|
+| **What** | Provider-to-provider request to see the patient | Insurance approval BEFORE a service is performed |
+| **Who requires it** | HMO and some Medicaid plans require PCP referral | Payer requires auth for specific procedures, imaging, or meds |
+| **What happens without it** | Specialist visit may not be covered | Service may be denied for payment after the fact |
+| **Who processes it** | Front office or referral coordinator | Front office, referral coordinator, or auth team |
+
+**Key point:** A referral and a prior authorization are often needed TOGETHER. The provider orders the referral AND the front office obtains the auth from the payer.
+
+---
+
+## The Referral Lifecycle
+
+Every referral — regardless of direction — follows this lifecycle:
+
+1. **Ordered** — Provider places the referral order
+2. **Processed** — Front office verifies insurance requirements, obtains auth if needed
+3. **Sent/Received** — Records and referral information transmitted between offices
+4. **Scheduled** — Patient appointment booked with the specialist
+5. **Completed** — Patient attends the visit
+6. **Closed** — Consult notes received by referring provider, referral marked complete
+
+**The referral is not complete until the loop is closed.** This is the step most often missed — and it's the one that matters most for patient care.`,
+      duration_minutes: 7, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'outbound-referrals', nextIsQuiz: false,
+  },
+  'outbound-referrals': {
+    lesson: {
+      id: 'ins-l25', module_id: 'ins-m7', slug: 'outbound-referrals',
+      title: 'Outbound Referrals',
+      description: 'Sending referrals to internal locations and external specialists — documentation, submission, and follow-up.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Outbound Referrals
+
+## Your Role in Outbound Referrals
+
+When your provider orders a referral to a specialist, the front office or referral coordinator handles the administrative work. Your goal: get the patient to the right specialist, with the right documentation, with insurance approval.
+
+---
+
+## Step 1: Review the Referral Order
+
+When a provider places a referral, check:
+- **Specialist type** — Orthopedics, dermatology, cardiology, etc.
+- **Reason for referral** — Diagnosis or clinical question (this drives medical necessity)
+- **Urgency** — Routine (weeks), urgent (days), or stat (same day/next day)
+- **Specific provider requested?** — The patient or provider may request a specific specialist
+- **Number of visits authorized** — Some referrals are for 1 visit, others for a course of treatment
+
+---
+
+## Step 2: Check Insurance Requirements
+
+Before doing anything else, verify:
+
+| Question | Where to Find the Answer |
+|---|---|
+| Does this plan require a referral? | Check the insurance card (HMO = usually yes, PPO = usually no) or call the payer |
+| Does this plan require prior authorization? | Check the payer's auth requirements list (online portal or phone) |
+| Is the specialist in-network? | Check the payer's provider directory or call the payer |
+| Are there visit limits? | Some plans cap specialist visits per year |
+
+**If the plan is PPO:** Most PPO plans do not require a formal referral from the PCP. The patient can self-refer. But prior auth may still be needed for certain procedures.
+
+**If the plan is HMO:** The PCP must issue a formal referral. Without it, the specialist visit will not be covered.
+
+---
+
+## Step 3: Gather Documentation
+
+The specialist needs information to see the patient effectively. Compile:
+
+**Standard referral packet:**
+- [ ] Referral order with reason for referral and diagnosis codes
+- [ ] Relevant office visit notes (most recent related visit)
+- [ ] Lab results (if relevant to the referral reason)
+- [ ] Imaging reports (if relevant)
+- [ ] Medication list
+- [ ] Insurance face sheet (demographics + insurance info)
+- [ ] Prior authorization number (if obtained)
+
+**Pro tip:** Don't send the entire chart. Send what's relevant to the referral reason. A cardiologist doesn't need the patient's dermatology notes.
+
+---
+
+## Step 4: Obtain Prior Authorization (If Required)
+
+If the payer requires auth:
+
+1. **Identify the auth requirements** — What CPT codes need auth? What clinical documentation is needed?
+2. **Submit the auth request** — Via the payer's online portal (preferred) or by phone/fax
+3. **Include clinical justification** — Diagnosis codes, relevant notes, and why the service is needed
+4. **Document the auth number** — When approved, record the auth number, effective dates, and approved number of visits
+5. **Share the auth number** — Provide it to the specialist's office and document it in the patient's chart
+
+*See the Prior Authorization Workflows lesson for detailed auth procedures.*
+
+---
+
+## Step 5: Send the Referral
+
+### Internal Referral (Same Health System)
+- Place the referral order in the EHR — the specialist's office can see it in the shared system
+- Some systems auto-notify the specialist's scheduling team
+- Attach relevant documents to the referral order in the EHR
+- The patient may self-schedule through the patient portal
+
+### External Referral (Different System)
+- **Fax** the referral packet to the specialist office (still the most common method)
+- **Electronic referral** — Some systems support electronic referral networks (e.g., Epic CareLink)
+- **Patient portal** — Upload documents for the patient to share
+- **Include a cover sheet** with: referring provider name/NPI, patient demographics, referral reason, insurance info, auth number, urgency, and your office callback number
+
+---
+
+## Step 6: Communicate with the Patient
+
+After processing the referral:
+
+**Call or message the patient with:**
+- Specialist name and office location
+- Phone number to schedule (if they need to call themselves)
+- What to bring: insurance card, ID, referral paperwork, copay
+- Any prep instructions (fasting for lab work, imaging prep, etc.)
+- Auth number and reference number (some specialist offices ask the patient for this)
+- Timeframe: "Please schedule within the next 2 weeks" (per provider urgency)
+
+**Document** that you contacted the patient and what you told them.
+
+---
+
+## Step 7: Follow Up and Close the Loop
+
+The referral is NOT done when the patient walks out the specialist's door. You need:
+
+- [ ] **Confirmation the patient scheduled** — If you don't hear back, call the patient after 1 week
+- [ ] **Confirmation the patient attended** — Some clinics track this
+- [ ] **Consult notes from the specialist** — The specialist sends notes back to your provider
+- [ ] **Provider reviews consult notes** — Your provider reads the specialist's findings and recommendations
+- [ ] **Referral marked complete** — Close the referral in the EHR/tracking system
+
+**If consult notes haven't arrived within 2 weeks of the specialist visit:** Call the specialist office and request them. Don't let referrals stay open indefinitely.
+
+---
+
+## Common Outbound Referral Issues
+
+| Problem | Solution |
+|---|---|
+| Specialist is out of network | Check with the patient's insurance for in-network alternatives. If no in-network option exists, request a gap exception/single-case agreement. |
+| Auth denied | Request the denial reason. Gather additional documentation. Consider peer-to-peer review or appeal. |
+| Patient doesn't schedule | Call the patient. Document attempted contacts. Notify the provider if the patient doesn't respond. |
+| Specialist office says they never received the referral | Resend. Get a fax confirmation. Consider electronic transmission. |
+| Wrong specialist type | Verify with the provider. A "general surgery" referral when the patient needs "orthopedic surgery" will delay care. |`,
+      duration_minutes: 8, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'referral-fundamentals', nextLesson: 'inbound-referrals', nextIsQuiz: false,
+  },
+  'inbound-referrals': {
+    lesson: {
+      id: 'ins-l26', module_id: 'ins-m7', slug: 'inbound-referrals',
+      title: 'Inbound Referrals',
+      description: 'Receiving referrals, scheduling the patient, sending consult notes back, and closing the loop.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Inbound Referrals
+
+## Your Role in Inbound Referrals
+
+When another provider sends a patient to your clinic, the front office receives, processes, and schedules the referral. Your goals: verify the referral is complete, schedule the patient appropriately, and ensure consult notes go back to the referring provider.
+
+---
+
+## Receiving the Referral
+
+Referrals arrive by:
+- **EHR referral order** (internal, same system)
+- **Fax** (most common for external referrals)
+- **Electronic referral network** (e.g., Epic CareLink, Surescripts)
+- **Phone call** from the referring office
+- **Patient walks in** with a paper referral
+
+**Regardless of how it arrives, you need the same information:**
+
+| Required Information | Why You Need It |
+|---|---|
+| Referring provider name, NPI, phone, fax | To send consult notes back |
+| Patient demographics | To register or verify the patient |
+| Insurance information | To verify coverage and auth |
+| Reason for referral / diagnosis | To schedule the correct appointment type |
+| Relevant clinical notes / labs / imaging | For the specialist to review before the visit |
+| Prior authorization number | To bill correctly and avoid denials |
+| Urgency level | To prioritize scheduling |
+
+**If any information is missing:** Call the referring office before scheduling. An incomplete referral causes delays and potential billing issues.
+
+---
+
+## Processing the Inbound Referral
+
+### Step 1: Verify the Referral Is Valid
+- Is the referral from a recognized provider/clinic?
+- Is there a clinical reason documented?
+- Is the patient's insurance active?
+- If the plan requires auth — has it been obtained? (If not, who is responsible — the referring office or yours?)
+
+### Step 2: Check if the Patient Exists in Your System
+- **Existing patient:** Pull up their chart. Verify demographics and insurance are current.
+- **New patient:** Register them. Create a new patient record with the demographics from the referral.
+- **Use the two-identifier rule** — Search by DOB + name before creating a new record.
+
+### Step 3: Verify Insurance and Authorization
+- Confirm the patient's plan covers services at your clinic
+- Verify your provider is in-network for the patient's plan
+- If auth is required and not already obtained:
+  - **Some clinics expect the referring office to get the auth** — call them and request it
+  - **Some clinics obtain auth themselves** — submit through the payer portal
+  - **Document who is responsible** to avoid finger-pointing
+
+### Step 4: Schedule the Appointment
+- Match the appointment type to the referral reason
+- Consider urgency: routine (2-4 weeks), urgent (within 1 week), stat (within 24-48 hours)
+- New patient referrals usually need longer appointment slots
+- Inform the patient what to bring: insurance card, ID, referral paperwork, imaging CDs, medication list
+
+---
+
+## Communicating with the Patient
+
+When you contact the patient to schedule:
+
+> "Hi [patient name], this is [your name] from [specialist office]. We received a referral from [referring provider] for [reason/specialty]. I'd like to schedule your appointment. Are you available [date options]?"
+
+**Key information to provide:**
+- Appointment date, time, and location
+- What to bring (insurance card, ID, any imaging CDs, medication list)
+- Prep instructions if applicable (fasting, arriving early for paperwork)
+- Copay/cost estimate if available
+- Your office phone number for questions
+- Parking/directions if it's their first visit to your location
+
+---
+
+## During and After the Visit
+
+### During the Visit
+- Check the patient in as normal (verify demographics, insurance, collect copay)
+- Ensure the provider has the referral documentation and clinical records
+- The provider evaluates the patient and documents findings
+
+### After the Visit: Closing the Loop
+
+This is the most critical step for inbound referrals. The referring provider needs to know what happened.
+
+**Send consult notes back to the referring provider:**
+1. The specialist documents their findings, assessment, and plan
+2. The front office (or medical records team) sends the consult note to the referring office
+3. Methods: EHR message (internal), fax (external), electronic health information exchange (HIE)
+
+**What to include in the consult report:**
+- [ ] Visit date and provider who saw the patient
+- [ ] History and physical findings
+- [ ] Assessment/diagnosis
+- [ ] Treatment plan and recommendations
+- [ ] Any procedures performed
+- [ ] Follow-up recommendations (including whether the patient needs to return)
+- [ ] Any orders placed (labs, imaging, prescriptions)
+
+**Timing:** Consult notes should go back within **3-5 business days** of the visit. Sooner for urgent referrals.
+
+---
+
+## Closing the Referral
+
+A referral is closed when:
+- [x] Patient has been seen
+- [x] Consult notes sent to referring provider
+- [x] Referring provider has acknowledged receipt (or reasonable follow-up attempted)
+- [x] Any follow-up appointments scheduled (if recommended)
+- [x] Referral marked as "completed" in the tracking system
+
+**If the patient no-shows:**
+- Attempt to reschedule (call the patient)
+- After 2-3 failed attempts, notify the referring office: "Patient did not schedule/attend"
+- Document all contact attempts
+- Close the referral as "patient non-compliant" (per your office policy)
+
+---
+
+## Inbound Referral Troubleshooting
+
+| Problem | Solution |
+|---|---|
+| Referral received with no auth | Contact the referring office. Clarify who is responsible for obtaining auth. Don't schedule until auth is resolved. |
+| Patient's insurance is not accepted | Notify the referring office and the patient immediately. Suggest they contact their insurance for an in-network alternative. |
+| Clinical records are incomplete | Call the referring office and request specific documents before the visit. |
+| Patient says "I don't know why I'm here" | Review the referral reason with them. Contact the referring office if needed for clarification. |
+| Multiple referral requests for the same patient | Verify with the referring office — is it a duplicate or a separate referral for a different reason? |
+| Specialist recommends follow-up visits | Check if the original auth covers multiple visits. If not, request additional auth. |`,
+      duration_minutes: 8, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'outbound-referrals', nextLesson: 'prior-authorization-workflows', nextIsQuiz: false,
+  },
+  'prior-authorization-workflows': {
+    lesson: {
+      id: 'ins-l27', module_id: 'ins-m7', slug: 'prior-authorization-workflows',
+      title: 'Prior Authorization Workflows',
+      description: 'When prior auth is required, the general process, and how to navigate payer requirements.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Prior Authorization Workflows
+
+## What Is Prior Authorization?
+
+**Prior authorization (PA)** — also called precertification, preauthorization, or pre-cert — is the process of getting approval from a patient's insurance company BEFORE a service is performed.
+
+The payer reviews whether the requested service is:
+- **Medically necessary** for the patient's condition
+- **Covered** under the patient's specific plan
+- **Appropriate** based on clinical guidelines (right service, right setting, right time)
+
+**Without prior auth (when required), the payer may:**
+- Deny the claim entirely — the clinic absorbs the cost or the patient is billed
+- Pay at a reduced rate
+- Require retroactive review (slower and less likely to be approved)
+
+---
+
+## When Is Prior Authorization Required?
+
+Every payer has its own list, but common services requiring auth include:
+
+| Category | Examples |
+|---|---|
+| **Advanced imaging** | MRI, CT scan, PET scan (X-rays usually exempt) |
+| **Surgical procedures** | Joint replacement, hernia repair, bariatric surgery |
+| **Specialty medications** | Biologics, specialty injectables, high-cost drugs |
+| **Inpatient admissions** | Planned hospital stays, inpatient rehab |
+| **Out-of-network services** | Any service at a non-contracted provider (if requesting coverage) |
+| **DME (Durable Medical Equipment)** | CPAP machines, wheelchairs, orthotics |
+| **Specialist referrals** | Some HMO/Medicaid plans require auth for specialist visits |
+| **Physical/occupational therapy** | After initial evaluation, ongoing sessions may need auth |
+| **Genetic testing** | Most payers require auth for genetic/genomic tests |
+
+**How to check if auth is required:**
+1. **Payer's online portal** — Most payers have an auth requirements lookup by CPT code
+2. **Call the payer** — Use the provider services number on the insurance card
+3. **Payer's provider manual** — Lists services requiring auth
+4. **Auth team/reference sheet** — Many clinics maintain an internal reference of common auths by payer
+
+---
+
+## The Prior Authorization Process
+
+### Step 1: Identify the Need
+- Provider orders a service (imaging, procedure, medication, referral)
+- Front office checks: does this service require auth for this patient's insurance?
+- If yes → begin the auth process. If no → proceed with scheduling.
+
+### Step 2: Gather Clinical Documentation
+The payer needs to see medical necessity. Collect:
+
+| Document | Purpose |
+|---|---|
+| **Diagnosis codes (ICD-10)** | Shows the condition being treated |
+| **Procedure codes (CPT/HCPCS)** | Shows the service being requested |
+| **Clinical notes** | Provider's documentation of symptoms, exam findings, and clinical reasoning |
+| **Prior treatments tried** | Many payers require "step therapy" — showing that simpler/cheaper options were tried first |
+| **Lab/imaging results** | Supporting evidence for the diagnosis |
+| **Treatment plan** | What the provider plans to do and why |
+
+### Step 3: Submit the Authorization Request
+
+**Online portal (preferred):**
+- Log into the payer's provider portal
+- Enter patient info, provider info, diagnosis codes, procedure codes
+- Upload or enter clinical documentation
+- Submit and receive a tracking/reference number
+
+**Phone:**
+- Call the payer's prior auth department (number on the insurance card or provider manual)
+- Provide all required information verbally
+- Document the reference number, name of the representative, date, and time of call
+
+**Fax:**
+- Complete the payer's prior auth request form
+- Attach clinical documentation
+- Fax to the auth department number
+- Keep the fax confirmation page
+
+### Step 4: Track the Request
+
+| Status | Meaning | Action |
+|---|---|---|
+| **Pending** | Payer is reviewing | Wait. Check back if no response within the payer's stated turnaround (usually 5-15 business days for routine) |
+| **Approved** | Auth granted | Record the auth number, effective dates, approved units/visits, and expiration date |
+| **Denied** | Auth rejected | Review the denial reason. Determine if appeal or peer-to-peer review is appropriate. |
+| **Pended for info** | Payer needs additional documentation | Submit the requested information ASAP. The clock restarts. |
+
+### Step 5: Document and Communicate
+
+Once approved:
+- **Record the auth number** in the patient's chart (PM and EHR)
+- **Note the effective dates** — the service must be performed within this window
+- **Note the approved quantity** — e.g., "3 PT visits" or "1 MRI lumbar spine"
+- **Notify the ordering provider** — "Auth approved for [service]"
+- **Notify the patient** — "Your insurance approved [service]. Let's get it scheduled."
+- **Notify the facility/specialist** if the service is performed elsewhere
+
+---
+
+## Turnaround Times
+
+Payers have regulatory requirements for auth decisions:
+
+| Request Type | Standard Turnaround |
+|---|---|
+| **Routine/non-urgent** | 5-15 business days (varies by payer and state) |
+| **Urgent** | 24-72 hours |
+| **Retrospective (after service)** | 30 days (but much harder to get approved) |
+
+**State laws may set shorter deadlines.** Some states require payers to respond within 2 business days for urgent requests.
+
+---
+
+## Prior Authorization vs. Predetermination
+
+| | Prior Authorization | Predetermination |
+|---|---|---|
+| **What** | Approval before a service | Estimate of coverage before a service |
+| **Binding?** | Yes — payer commits to covering if performed as approved | No — not a guarantee of payment |
+| **Common for** | Procedures, imaging, specialty meds | Dental procedures, elective surgeries, complex treatments |
+| **Result** | Auth number with effective dates | Benefit estimate letter |
+
+**Key difference:** Prior auth is a commitment. Predetermination is an estimate. Know which one you're requesting.
+
+---
+
+## Tips for Efficient Auth Processing
+
+1. **Submit electronically when possible** — Faster turnaround, instant tracking number
+2. **Include all documentation upfront** — Pended requests delay everything
+3. **Know your high-volume auths** — If you do 20 MRI auths a week, streamline that workflow
+4. **Use the right diagnosis codes** — The ICD-10 code must support medical necessity for the procedure
+5. **Check auth status proactively** — Don't wait for the payer to call you. Check the portal or call.
+6. **Keep an auth tracking log** — Spreadsheet or EHR worklist with: patient, service, date submitted, payer, status, auth number, expiration
+7. **Start early** — Don't wait until the day before the scheduled procedure to request auth`,
+      duration_minutes: 8, sort_order: 4,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'inbound-referrals', nextLesson: 'auth-imaging-procedures-rx', nextIsQuiz: false,
+  },
+  'auth-imaging-procedures-rx': {
+    lesson: {
+      id: 'ins-l28', module_id: 'ins-m7', slug: 'auth-imaging-procedures-rx',
+      title: 'Auths for Imaging, Procedures & Prescriptions',
+      description: 'Specific authorization workflows for imaging studies, surgical/in-office procedures, and specialty medications.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Auths for Imaging, Procedures & Prescriptions
+
+## Why Separate Workflows?
+
+While the general prior authorization process is the same, imaging, procedures, and prescriptions each have specific requirements, common pitfalls, and payer quirks. This lesson covers what's unique about each.
+
+---
+
+## Imaging Authorizations
+
+### What Requires Auth
+- **MRI** — Almost always requires auth
+- **CT scan** — Usually requires auth
+- **PET scan** — Always requires auth
+- **Nuclear medicine studies** — Usually requires auth
+- **X-ray** — Rarely requires auth (but some payers require auth for series/specific body parts)
+- **Ultrasound** — Varies by payer
+
+### Common Clinical Criteria
+Payers typically require evidence that:
+1. **Conservative treatment was tried first** — For musculoskeletal imaging, payers often require 4-6 weeks of conservative treatment (physical therapy, medication, rest) before approving MRI
+2. **Appropriate clinical indication** — The diagnosis must support the imaging type requested
+3. **Correct body part** — "MRI left knee" must match the documented symptoms (left knee pain, not right knee)
+
+### Imaging Auth Workflow
+1. Provider orders imaging with diagnosis code and clinical reason
+2. Check payer's imaging auth requirements — many payers use third-party imaging management companies (eviCore, Carelon, National Imaging Associates)
+3. Submit auth request to the correct entity (payer OR their imaging management vendor)
+4. Include: diagnosis code, CPT code for the imaging type, clinical notes showing symptoms and prior treatment
+5. Receive auth number → provide to the imaging facility
+6. Schedule the imaging
+
+### Common Imaging Auth Pitfalls
+| Pitfall | Fix |
+|---|---|
+| Auth submitted to the wrong entity | Check if the payer uses a radiology benefits manager (RBM) — submit to them, not the payer directly |
+| Wrong CPT code | MRI with contrast vs. without contrast are different codes. Verify with the provider. |
+| No documentation of conservative treatment | Ask the provider if conservative treatment was tried and documented in the notes |
+| Auth expires before the study is scheduled | Monitor auth expiration dates. Most auths are valid 60-90 days. |
+
+---
+
+## Procedure Authorizations
+
+### What Requires Auth
+- **Surgical procedures** — Joint replacement, hernia repair, spine surgery, etc.
+- **In-office procedures** — Some injections, biopsies, minor surgeries
+- **Endoscopy/colonoscopy** — Varies (screening colonoscopy often exempt, diagnostic may need auth)
+- **Cardiac procedures** — Catheterization, stent placement, pacemaker
+- **Infusions** — IV medication administration in the office or infusion center
+
+### Procedure Auth Workflow
+1. Provider documents the clinical need for the procedure
+2. Identify the CPT code(s) for the procedure — may include primary procedure + add-on codes
+3. Identify the place of service — office, ambulatory surgery center (ASC), hospital outpatient, inpatient
+4. Submit auth with: diagnosis codes, procedure codes, place of service, operative/procedure notes (if revision or repeat), clinical documentation
+5. Payer may request: peer-to-peer review, additional documentation, or imaging studies
+6. Receive auth → schedule the procedure
+
+### Place of Service Matters
+The same procedure may require different auth depending on where it's performed:
+- **Office** — May not need auth (lower cost setting)
+- **ASC** — May need auth
+- **Hospital outpatient** — Usually needs auth (higher cost setting)
+- **Inpatient** — Always needs auth
+
+**Some payers prefer lower-cost settings.** If a procedure can be done in the office but is scheduled at the hospital, the payer may deny or require clinical justification for the higher-cost setting.
+
+### Surgical Auth Timeline
+| Step | Timeline |
+|---|---|
+| Submit auth | As soon as surgery is decided |
+| Payer review | 5-15 business days (routine) |
+| Schedule surgery | After auth received |
+| Pre-op clearance | 2-4 weeks before surgery |
+| Auth valid until | Typically 60-90 days (check the auth) |
+
+**Start the auth process immediately** when a procedure is ordered. Surgical scheduling depends on it.
+
+---
+
+## Prescription/Medication Authorizations
+
+### What Requires Auth
+- **Specialty medications** — Biologics (Humira, Enbrel), injectable drugs, oral oncology
+- **Non-formulary medications** — Drugs not on the payer's preferred drug list
+- **High-cost medications** — Any medication above a certain cost threshold
+- **Step therapy exceptions** — When the provider wants to skip to a more expensive drug without trying cheaper alternatives first
+
+### Who Handles Medication Auths?
+| Type | Handler |
+|---|---|
+| **In-office administered drugs** (injections, infusions) | Front office / auth team — treated like a procedure auth |
+| **Pharmacy dispensed drugs** (oral, self-injected) | Provider's office submits to the payer's **pharmacy benefit manager (PBM)** |
+
+**Important distinction:** Medical benefit vs. pharmacy benefit. Drugs given IN the office are usually under the medical benefit. Drugs the patient picks up at the pharmacy are under the pharmacy benefit. Different auth processes.
+
+### Medication Auth Workflow
+1. Provider prescribes a medication that requires auth
+2. Pharmacy notifies the clinic (if patient tried to fill and was denied) — OR — the clinic proactively checks
+3. Determine which benefit the drug falls under (medical vs. pharmacy)
+4. Submit auth to the correct entity:
+   - **Medical benefit:** Submit to the medical insurance payer
+   - **Pharmacy benefit:** Submit to the PBM (Express Scripts, CVS Caremark, OptumRx)
+5. Include: diagnosis codes, medication name/dose/frequency, clinical justification, prior medications tried and failed (step therapy documentation)
+6. Receive approval → notify the pharmacy or schedule the in-office administration
+
+### Step Therapy and Formulary Tiers
+Many payers require **step therapy** — the patient must try (and fail) cheaper medications before the payer will approve the more expensive one.
+
+**Example:** Before approving a biologic for rheumatoid arthritis, the payer may require documentation that the patient tried and failed:
+1. NSAIDs (step 1)
+2. Methotrexate (step 2)
+3. Then biologics are approved (step 3)
+
+**Front office role:** Ensure the provider's notes document what was tried, how long, and why it didn't work. Without this documentation, the auth will be denied.
+
+---
+
+## Quick Reference: Auth by Type
+
+| Type | Common Entity | Key Documents | Typical Turnaround |
+|---|---|---|---|
+| **Imaging** | Payer or RBM (eviCore, Carelon) | Diagnosis, CPT, clinical notes, prior treatment documentation | 3-5 business days |
+| **Procedures** | Payer | Diagnosis, CPT, place of service, operative notes | 5-15 business days |
+| **Medications (medical)** | Payer | Diagnosis, drug name/dose, clinical justification, step therapy docs | 5-15 business days |
+| **Medications (pharmacy)** | PBM | Diagnosis, drug name/dose, step therapy docs, formulary exception request | 3-7 business days |`,
+      duration_minutes: 8, sort_order: 5,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'prior-authorization-workflows', nextLesson: 'auth-tracking-appeals', nextIsQuiz: false,
+  },
+  'auth-tracking-appeals': {
+    lesson: {
+      id: 'ins-l29', module_id: 'ins-m7', slug: 'auth-tracking-appeals',
+      title: 'Tracking, Appeals & Denials',
+      description: 'Managing the auth tracking log, handling denials, peer-to-peer reviews, and the appeals process.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Tracking, Appeals & Denials
+
+## The Authorization Tracking Log
+
+Every clinic that processes prior authorizations needs a system to track them. Whether it's an EHR worklist, a spreadsheet, or dedicated software — you need to know the status of every open auth at all times.
+
+### What to Track
+
+| Field | Why |
+|---|---|
+| **Patient name and MRN** | Identify the patient |
+| **Service requested** | What are we getting auth for? |
+| **CPT and ICD-10 codes** | The codes submitted on the auth request |
+| **Payer name** | Which insurance company |
+| **Date submitted** | When did we start the clock? |
+| **Submission method** | Portal, phone, fax |
+| **Reference/tracking number** | The payer's tracking ID for this request |
+| **Status** | Pending, approved, denied, pended for info |
+| **Auth number** | If approved — the number to use on claims |
+| **Effective dates** | When does the auth start and expire? |
+| **Approved units/visits** | How many visits or procedures are authorized? |
+| **Scheduled date** | When is the service scheduled? |
+| **Notes** | Any special instructions, denial reasons, follow-up actions |
+
+### Daily Auth Workflow
+1. **Morning:** Check your tracking log. Any auths pending more than 5 business days? Follow up.
+2. **During the day:** Process new auth requests as they come in. Update statuses.
+3. **End of day:** Review any auths expiring within 30 days. Ensure services are scheduled before expiration.
+
+---
+
+## Handling Denials
+
+When an authorization request is denied, don't panic. Denials are common and many can be overturned.
+
+### Step 1: Read the Denial Letter
+
+Every denial includes:
+- **Denial reason** — Why was it denied? Common reasons:
+  - Medical necessity not established
+  - Documentation insufficient
+  - Step therapy not completed
+  - Service not covered under the plan
+  - Out-of-network provider
+  - Missing information
+- **Appeal instructions** — How to appeal, where to send it, and the deadline
+- **Peer-to-peer option** — Whether the provider can speak directly with the payer's medical director
+
+### Step 2: Determine the Right Response
+
+| Denial Reason | Best Response |
+|---|---|
+| **Insufficient documentation** | Gather additional records and resubmit |
+| **Medical necessity not met** | Request peer-to-peer review (provider speaks to payer's doctor) |
+| **Step therapy not completed** | Document prior treatments tried, or request an exception |
+| **Service not covered** | Verify the patient's benefit — is it truly excluded, or was the wrong code used? |
+| **Missing information** | Submit the missing information with a corrected request |
+| **Out-of-network** | Request a single-case agreement or gap exception |
+
+### Step 3: Notify the Provider
+Bring the denial to the provider's attention immediately. They need to:
+- Review the denial reason
+- Decide whether to appeal
+- Provide additional clinical documentation if needed
+- Participate in peer-to-peer review if appropriate
+
+---
+
+## Peer-to-Peer Review
+
+A **peer-to-peer review** is a phone call between your clinic's provider and the payer's medical director (or reviewing physician). It's an opportunity for your provider to explain the clinical reasoning directly.
+
+**When to request peer-to-peer:**
+- Denial based on "medical necessity not established"
+- The clinical situation is complex and documentation alone may not tell the full story
+- The provider feels strongly that the service is appropriate
+
+**How it works:**
+1. Front office calls the payer and requests a peer-to-peer review
+2. The payer schedules a phone call (usually within 3-5 business days)
+3. Your provider speaks directly with the payer's reviewing physician
+4. The payer issues a decision (often immediately after the call, sometimes within 24-48 hours)
+
+**Front office role:**
+- Schedule the peer-to-peer call on the provider's calendar
+- Ensure the provider has the denial letter, the auth request, and the patient's clinical records ready
+- Follow up after the call for the payer's decision
+
+---
+
+## The Appeals Process
+
+If peer-to-peer doesn't resolve the denial (or isn't an option), the formal appeal process begins.
+
+### Levels of Appeal
+
+| Level | What | Typical Deadline |
+|---|---|---|
+| **Internal Appeal (Level 1)** | Written appeal to the payer with additional documentation | 60-180 days from denial (check the letter) |
+| **Internal Appeal (Level 2)** | Second review by a different payer reviewer | Varies by payer |
+| **External Review** | Independent third-party reviewer (not the payer) | After internal appeals exhausted |
+| **State Insurance Commissioner** | File a complaint with the state regulatory body | Anytime |
+
+### Writing an Appeal Letter
+
+The provider writes the clinical justification. The front office compiles and submits the package.
+
+**Appeal package contents:**
+- [ ] Cover letter with: patient name, member ID, auth reference number, service requested, denial date, and reason for appeal
+- [ ] Provider's letter explaining clinical necessity (why this service is needed for THIS patient)
+- [ ] Supporting clinical documentation (office notes, lab results, imaging, prior treatment records)
+- [ ] Peer-reviewed medical literature (if applicable — e.g., clinical guidelines supporting the treatment)
+- [ ] Copy of the denial letter
+
+**Submit to:** The address listed in the denial letter for appeals. Keep proof of submission (fax confirmation, certified mail tracking, portal submission confirmation).
+
+---
+
+## Preventing Denials
+
+The best denial is one that never happens. Reduce denials by:
+
+1. **Submit complete documentation the first time** — Most denials are for missing or insufficient documentation
+2. **Use the correct codes** — Wrong ICD-10 or CPT code = automatic denial
+3. **Check auth requirements BEFORE scheduling** — Don't schedule a procedure without verifying auth requirements
+4. **Document step therapy** — If the payer requires trying cheaper options first, make sure the chart reflects this
+5. **Match the diagnosis to the service** — MRI of the knee with a diagnosis of headache will be denied
+6. **Start early** — Rush auth requests are more likely to be denied or delayed
+7. **Know your high-denial payers** — Some payers deny more than others. Learn their patterns and submit stronger documentation upfront.
+
+---
+
+## Patient Communication About Denials
+
+Patients get frustrated when services are denied. Handle these conversations carefully:
+
+**What to say:**
+- "Your insurance has requested additional information before approving [service]. Our office is working on getting this resolved."
+- "The authorization was not approved initially, but we are filing an appeal with additional documentation from your provider."
+- "We're doing everything we can to get this approved. I'll keep you updated."
+
+**What NOT to say:**
+- "Your insurance denied you." (Sounds final — it may be overturned)
+- "There's nothing we can do." (There are always next steps)
+- "That's a terrible insurance company." (Stay neutral about payers)
+
+**If the appeal is ultimately denied:**
+- Explain the patient's options: pay out of pocket, choose an alternative treatment, use a different provider/facility
+- Offer to provide a cost estimate for the self-pay price
+- Let the patient know they have the right to file their own appeal or contact their state insurance commissioner
+
+---
+
+## Quick Reference: Denial Response Timeline
+
+| Action | Deadline |
+|---|---|
+| Review denial letter | Same day received |
+| Notify provider | Same day |
+| Request peer-to-peer (if applicable) | Within 3 business days |
+| Submit formal appeal | Before the deadline stated in the denial letter (typically 60-180 days) |
+| Follow up on appeal status | Every 7-10 business days |
+| Notify patient of outcome | Same day as decision |`,
+      duration_minutes: 7, sort_order: 6,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m7', course_id: 'insurance', slug: 'referrals-prior-auth', title: 'Referrals & Prior Authorization', description: 'Referral workflows and authorization processes.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'auth-imaging-procedures-rx', nextLesson: null, nextIsQuiz: true,
+  },
   // Terminology Section
   'common-abbreviations-video': {
     lesson: {
@@ -6098,6 +9199,756 @@ Here's how these concepts connect in your daily work:
       'Ask if insurance or demographics have changed since their last visit',
       'Document the call outcome: confirmed, rescheduled, cancelled, left voicemail, or no answer',
     ],
+  },
+  // ─── Workflows: Admin Procedures Module ──────────────────
+  'filing-systems': {
+    lesson: {
+      id: 'ap-l1', module_id: 'ap-m1', slug: 'filing-systems',
+      title: 'Filing Systems in Healthcare',
+      description: 'Alphabetical, color-coded, and terminal digit filing systems used in medical offices.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Filing Systems in Healthcare
+
+Even in the age of electronic health records, medical offices still manage paper documents: insurance cards, signed consent forms, referral letters, lab reports, and legal correspondence. Understanding filing systems ensures you can locate and organize these documents quickly and accurately.
+
+---
+
+## Why Filing Systems Still Matter
+
+- **Not everything is digital** — some documents arrive on paper and must be scanned or stored physically
+- **Legal requirements** — original signed documents may need to be retained in paper form
+- **Backup** — paper copies serve as backup when EHR systems go down
+- **Transition period** — many practices are still converting legacy paper charts to electronic records
+
+**The consequences of misfiling:**
+- Delayed patient care (can't find a referral or prior auth)
+- Billing errors (lost insurance documentation)
+- HIPAA violations (documents placed in wrong patient's chart)
+- Legal liability (missing consent forms)
+
+---
+
+## Alphabetical Filing
+
+The most common filing method for small to mid-size practices.
+
+**Rules for alphabetical filing:**
+
+| Rule | Example |
+| --- | --- |
+| Last name first, then first name | Smith, John before Smith, Mary |
+| Nothing comes before something | Smith before Smithson |
+| Initials come before full names | Smith, J. before Smith, James |
+| Hyphenated names: use first part | Garcia-Lopez filed under G |
+| Prefixes (Mc, Mac, De, Van): treat as part of name | McDonald filed under M |
+| Abbreviations: file as if spelled out | St. Claire filed as Saint Claire |
+
+**Common mistakes:**
+- Mixing up similar names (Johnson vs Johnston)
+- Mishandling titles (Dr., Jr., III) — these are not used for filing order
+- Inconsistent rules across staff members
+
+---
+
+## Color-Coded Filing
+
+Color coding adds a visual layer to alphabetical filing, making misfiles easier to spot.
+
+**How it works:**
+- Each letter of the alphabet is assigned a **specific color**
+- Color tabs are placed on the folder edge, corresponding to the first two or three letters of the patient's last name
+- When a file is misfiled, the **wrong color stands out** visually in the shelf
+
+**Benefits:**
+- Reduces misfiling by up to **40%**
+- Makes retrieval faster — scan for color, then find the name
+- Misfiles are immediately visible (wrong color in the row)
+
+**Example:** If A = Red, B = Blue, and the Bs are all filed together, a red folder (A) accidentally placed in the B section is immediately noticeable.
+
+---
+
+## Numeric Filing Systems
+
+Larger practices and hospitals often use numeric systems because they provide more privacy and handle higher volumes.
+
+**Terminal digit filing** is the most common numeric system:
+
+The medical record number (MRN) is divided into three pairs of digits, read **right to left:**
+
+MRN: **12-34-56**
+
+| Position | Digits | Purpose |
+| --- | --- | --- |
+| **Primary** (terminal) | 56 | Determines the file section (100 sections: 00-99) |
+| **Secondary** | 34 | Determines the shelf within the section |
+| **Tertiary** | 12 | Determines the position on the shelf |
+
+**Why terminal digit filing is preferred for large volumes:**
+- **Even distribution** — records spread evenly across all sections
+- **Faster filing** — staff only work in their assigned sections
+- **More secure** — numbers don't reveal patient identity at a glance
+- **Scalable** — handles millions of records
+
+**Straight numeric filing** (filing by full number in sequential order) is simpler but causes congestion — new files all cluster at the end.
+
+---
+
+## Digital Filing and Document Management
+
+Modern practices use **document management systems** alongside the EHR:
+
+- **Scanning** — paper documents are scanned and attached to the patient's electronic chart
+- **Naming conventions** — consistent file names (e.g., LastName_FirstName_DocType_Date)
+- **Folder structure** — organized by year, document type, or department
+- **Indexing** — tagging documents with metadata for easy search
+
+**Best practices for digital filing:**
+- Scan documents the **same day** they are received
+- Verify the scan is **legible and complete** before shredding the original (per policy)
+- File to the **correct patient chart** — verify name and DOB before attaching
+- Follow your organization's naming and folder conventions exactly
+
+---
+
+## Key Takeaways
+
+- Medical offices use **alphabetical, color-coded, and numeric filing systems**
+- **Color coding** adds a visual check that reduces misfiling by up to 40%
+- **Terminal digit filing** reads the MRN right to left and distributes records evenly across sections
+- Digital filing requires consistent **naming conventions and same-day scanning**
+- Misfiled documents can cause delayed care, billing errors, and HIPAA violations
+- Always verify the **patient name and DOB** before filing or scanning any document`,
+      duration_minutes: 10,
+      sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: null, nextLesson: 'business-correspondence', nextIsQuiz: false,
+  },
+  'business-correspondence': {
+    lesson: {
+      id: 'ap-l2', module_id: 'ap-m1', slug: 'business-correspondence',
+      title: 'Business Correspondence & Templates',
+      description: 'Professional letters, greetings, salutations, signatories, and common templates in medical offices.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Business Correspondence in Healthcare
+
+Medical offices produce and receive a variety of written communications daily — referral letters, appointment confirmations, collection notices, and inter-office memos. Every piece of correspondence represents your organization's professionalism.
+
+---
+
+## Types of Medical Office Correspondence
+
+| Type | Purpose | Example |
+| --- | --- | --- |
+| **Referral letters** | Request specialist evaluation | "Dear Dr. Martinez, I am referring Mrs. Thompson for cardiology consultation..." |
+| **Appointment letters** | Confirm or schedule appointments | New patient welcome letters, appointment confirmations |
+| **Collection letters** | Request payment for outstanding balances | 30-day, 60-day, 90-day notices |
+| **No-show letters** | Document missed appointments | Per clinic policy, often required after 2-3 no-shows |
+| **Medical records requests** | Request or send patient records | Between providers, with patient authorization |
+| **HIPAA-related** | Breach notifications, authorization forms | Patient notification of privacy practices |
+| **Inter-office memos** | Internal communication | Policy changes, meeting announcements, schedule updates |
+
+---
+
+## Professional Letter Format
+
+Standard medical office letters follow **modified block format:**
+
+**Essential components:**
+1. **Letterhead** — Clinic name, address, phone, fax, logo (pre-printed or template)
+2. **Date** — Full date (February 7, 2026 — not 2/7/26)
+3. **Inside address** — Recipient's full name, title, organization, address
+4. **Salutation** — Formal greeting
+5. **Body** — Clear, concise message in 1-3 paragraphs
+6. **Closing** — Professional sign-off
+7. **Signature block** — Sender's name, title, credentials
+8. **Enclosure notation** — "Enclosure" or "Enc." if documents are attached
+9. **CC notation** — List anyone receiving copies
+
+---
+
+## Greetings and Salutations
+
+**Formal salutations (use in most medical correspondence):**
+- "Dear Dr. Chen:" — use colon for formal business letters
+- "Dear Ms. Thompson:" — use Ms. unless the recipient specifies Mrs. or Miss
+- "Dear Patient:" or "Dear Valued Patient:" — when name is unknown or for mass mailings
+- "To Whom It May Concern:" — only when you cannot determine the recipient
+
+**Rules:**
+- Use **title + last name** (Dear Dr. Patel, Dear Mr. Washington)
+- **Never** use first names in formal correspondence unless specifically instructed
+- Use **"Re:"** (regarding) line to state the purpose clearly
+
+**Professional closings:**
+- "Sincerely," — standard for most business letters
+- "Respectfully," — when writing to someone senior or in a formal context
+- "Thank you," — appropriate for request letters
+- "Regards," or "Best regards," — slightly less formal but still professional
+
+---
+
+## Signature Blocks
+
+The signature block identifies who sent the letter and their authority.
+
+**Standard format:**
+
+Sincerely,
+
+[Handwritten signature]
+
+Sarah Chen, MD
+Family Medicine
+Mountain View Family Practice
+Phone: (512) 555-0100 | Fax: (512) 555-0101
+
+**For front office staff signing letters on behalf of the practice:**
+
+Sincerely,
+
+[Your signature]
+
+[Your Name]
+Front Office Coordinator
+Mountain View Family Practice
+
+> **Important:** Only sign letters you are authorized to sign. Clinical letters, prescriptions, and medical orders require the provider's signature. When in doubt, ask your supervisor.
+
+---
+
+## Common Templates
+
+Medical offices maintain templates for frequently used letters:
+
+- **New patient welcome letter** — introduction to the practice, what to bring, office policies
+- **Appointment confirmation** — date, time, provider, preparation instructions
+- **No-show notification** — documentation of missed appointment, reschedule instructions, policy reminder
+- **Balance due notice** — outstanding amount, payment options, deadline
+- **Records release cover letter** — accompany released medical records
+- **Referral letter template** — reason for referral, relevant history, urgency level
+
+**Template best practices:**
+- Always **proofread** before sending — check patient name, dates, and details
+- Update templates when **policies or contact information** change
+- Store templates in a **shared, accessible location** (not just one person's computer)
+- Use **merge fields** where available (patient name, date, provider) to reduce manual errors
+
+---
+
+## Key Takeaways
+
+- Medical offices use many letter types: referral, appointment, collection, no-show, records requests
+- Use **modified block format** with letterhead, date, inside address, salutation, body, closing, and signature
+- Salutations should be formal: **"Dear Dr. [Last Name]:"** with a colon
+- Sign only letters **you are authorized** to sign — clinical letters need provider signatures
+- Maintain **proofread templates** for common correspondence
+- Always double-check **patient names, dates, and details** before sending`,
+      duration_minutes: 10,
+      sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: 'filing-systems', nextLesson: 'computer-skills-medical-office', nextIsQuiz: false,
+  },
+  'computer-skills-medical-office': {
+    lesson: {
+      id: 'ap-l3', module_id: 'ap-m1', slug: 'computer-skills-medical-office',
+      title: 'Computer Skills for Medical Offices',
+      description: 'Essential email, word processing, spreadsheet, internet, and hardware skills for healthcare administration.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Computer Skills for Medical Offices
+
+Technology is central to modern healthcare administration. From the EHR system to email, spreadsheets, and printers, front office staff need practical technology skills. You don't need to be an IT expert — but you need to be confident and efficient with the tools you use daily.
+
+---
+
+## Email in Healthcare
+
+Email is used for internal communication, vendor correspondence, and sometimes patient communication. It comes with unique requirements in healthcare.
+
+**Professional email etiquette:**
+- **Subject line** — Clear and specific: "Patient Referral — Thompson, James — Cardiology" not "Question"
+- **Greeting** — "Good morning, Dr. Chen" or "Hi Maria" (internal) or "Dear Dr. Patel" (external)
+- **Body** — Brief and organized. Use bullet points for multiple items.
+- **Signature** — Include your name, title, clinic name, and phone number
+- **Response time** — Reply within 24 hours, even if just to acknowledge receipt
+
+**HIPAA and email:**
+- **Never send PHI via unencrypted email** — use your organization's secure messaging system
+- If you must email about a patient, use the **MRN only** — never include name + diagnosis in the same email
+- **Verify the recipient** before hitting send — email misdirections are a common HIPAA breach
+
+---
+
+## Word Processing
+
+Medical offices use word processing (Microsoft Word, Google Docs) for:
+
+- Letters and correspondence
+- Policy and procedure documents
+- Meeting agendas and minutes
+- Patient education handouts
+
+**Essential skills:**
+- Creating documents from **templates** (letterhead, form letters)
+- **Formatting** — headings, bold, italics, bullet points, tables
+- **Mail merge** — generating personalized letters for multiple patients (appointment reminders, balance notices)
+- **Track changes** — reviewing and editing policies collaboratively
+- **Saving and file management** — consistent naming conventions and folder structure
+
+---
+
+## Spreadsheets
+
+Spreadsheets (Microsoft Excel, Google Sheets) are used for:
+
+- Tracking **inventory** and office supplies
+- **Call logs** and daily activity reports
+- **Financial reconciliation** worksheets
+- **Scheduling matrices** and coverage calendars
+- **Data tracking** — no-show rates, patient volume, collection rates
+
+**Essential skills:**
+
+| Skill | What It Does | Example Use |
+| --- | --- | --- |
+| **Data entry** | Entering information into cells | Logging daily patient volume |
+| **Sorting** | Organizing data by column | Sort supplies by quantity to find low stock |
+| **Filtering** | Showing only relevant rows | Filter appointments by provider |
+| **SUM / COUNT** | Basic formulas | Total daily collections, count no-shows |
+| **Charts** | Visual representation of data | Monthly patient volume trend |
+
+---
+
+## Internet and Research
+
+Front office staff use the internet daily for:
+
+- **Insurance verification** — payer portals for eligibility and benefits
+- **Pharmacy lookups** — finding pharmacy contact information for prescriptions
+- **Regulatory resources** — CMS, OSHA, state health department websites
+- **Provider directories** — finding specialists for referrals
+- **Maps and directions** — helping patients find referred locations
+
+**Safe internet practices:**
+- Only use **bookmarked or known URLs** for insurance portals — don't search and click random links
+- **Never enter clinic credentials** on a website you reached via email link (phishing risk)
+- Keep your **browser updated** for security patches
+- Don't use work computers for **personal browsing** — it increases security risk
+
+---
+
+## Hardware Basics
+
+Front office staff interact with multiple hardware devices daily:
+
+| Device | Common Issues | What to Do |
+| --- | --- | --- |
+| **Desktop/laptop** | Frozen screen, slow performance | Restart; if persistent, contact IT |
+| **Printer** | Paper jam, toner low, offline | Check paper tray, replace toner, check connection |
+| **Scanner** | Won't scan, poor quality | Check cable connection, clean glass, restart |
+| **Fax machine** | Won't send, paper jam | Verify fax number, check paper, try resending |
+| **Phone system** | No dial tone, can't transfer | Check cables, try different handset, contact IT |
+| **Card reader** | Card not reading | Clean the reader, try manual entry, restart terminal |
+
+**General troubleshooting steps (try in this order):**
+1. Check all connections (power, network, USB)
+2. Restart the device
+3. Check for error messages and follow on-screen prompts
+4. Try a different device if available
+5. Contact IT with a clear description of the problem
+
+> **Always document IT issues** — when it started, what you tried, the error message. This helps IT resolve it faster.
+
+---
+
+## Key Takeaways
+
+- **Email** must follow HIPAA rules — never send PHI via unencrypted email
+- **Word processing** skills include templates, mail merge, and track changes
+- **Spreadsheet** basics (sorting, filtering, SUM) support daily office tasks
+- Use **bookmarked URLs** for insurance portals — don't click email links to verify insurance
+- Learn basic **hardware troubleshooting** — restart first, document the issue, then call IT
+- Follow your organization's **technology use policies** at all times`,
+      duration_minutes: 12,
+      sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: 'business-correspondence', nextLesson: 'ada-compliance', nextIsQuiz: false,
+  },
+  'ada-compliance': {
+    lesson: {
+      id: 'ap-l4', module_id: 'ap-m1', slug: 'ada-compliance',
+      title: 'ADA Compliance in Healthcare',
+      description: 'Americans with Disabilities Act requirements for medical offices — accessibility, accommodations, and service animals.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## ADA Compliance in Healthcare
+
+The **Americans with Disabilities Act (ADA)**, as updated by the **ADA Amendments Act (ADAAA) of 2008**, prohibits discrimination against individuals with disabilities. Medical offices must comply with both the spirit and the letter of the law — from physical accessibility to communication accommodations.
+
+As front office staff, you are often the first to interact with patients who need accommodations.
+
+---
+
+## What the ADA Requires
+
+The ADA applies to healthcare facilities as **places of public accommodation**. Key requirements:
+
+- **Physical accessibility** — entrances, hallways, restrooms, and exam rooms must be accessible
+- **Communication accessibility** — provide alternative communication methods when needed
+- **Service animals** — must be allowed in all areas where patients are permitted
+- **No discrimination** — patients cannot be refused treatment based on disability
+- **Reasonable modifications** — adjust policies, practices, and procedures when necessary
+
+> The ADAAA of 2008 **broadened** the definition of disability, making more conditions eligible for protection. The focus shifted from proving a disability to ensuring accommodations are provided.
+
+---
+
+## Physical Accessibility
+
+Medical offices must meet ADA accessibility standards:
+
+| Area | Requirements |
+| --- | --- |
+| **Entrance** | At least one accessible entrance (ramp, automatic door, level entry) |
+| **Parking** | Designated accessible parking spaces near the entrance |
+| **Hallways** | Minimum 36 inches wide, clear of obstructions |
+| **Restrooms** | At least one ADA-compliant restroom (grab bars, turning radius, accessible sink) |
+| **Check-in counter** | Lowered section or alternative (clipboard brought to patient) |
+| **Exam rooms** | Accessible exam tables, adequate space for wheelchair transfer |
+| **Signage** | Braille and raised-letter signs for permanent rooms |
+
+**Front office role:**
+- Keep hallways and the waiting room **clear of obstructions** (boxes, cords, extra chairs)
+- Offer to **bring the clipboard** to patients who cannot reach the counter
+- Ensure the **accessible restroom** is not used for storage
+- Report any **accessibility issues** to your supervisor (burned-out parking lot lights, broken ramp railing)
+
+---
+
+## Communication Accommodations
+
+Healthcare providers must ensure **effective communication** with patients who have hearing, vision, or speech disabilities.
+
+**Examples of reasonable accommodations:**
+
+| Disability | Accommodation Options |
+| --- | --- |
+| **Deaf / Hard of hearing** | Sign language interpreter (in-person or video remote), written communication, hearing loop |
+| **Blind / Low vision** | Large print forms, verbal instructions, screen readers, assistance completing paperwork |
+| **Speech disability** | Extra time for communication, written communication, communication boards |
+| **Cognitive disability** | Simple language, visual aids, allow a support person to assist |
+
+**Key rules:**
+- The **patient** gets to choose the accommodation type (within reason)
+- **Family members should not serve as interpreters** for medical conversations — use qualified interpreters
+- Accommodation costs are the **provider's responsibility**, not the patient's
+- Document what accommodations were provided and requested
+
+---
+
+## Service Animals
+
+Under the ADA, a **service animal** is a dog (or in some cases, a miniature horse) individually trained to perform tasks for a person with a disability.
+
+**What you need to know:**
+
+| Allowed | Not Allowed |
+| --- | --- |
+| Dogs trained to perform specific tasks | Emotional support animals (no ADA access rights) |
+| Guide dogs, hearing dogs, seizure alert dogs | Pets, therapy animals, comfort animals |
+| Service animals in all patient areas | Asking about the person's disability |
+
+**You may ask TWO questions:**
+1. "Is this a service animal required because of a disability?"
+2. "What task has the animal been trained to perform?"
+
+**You may NOT:**
+- Ask about the person's disability
+- Request documentation or certification for the animal
+- Require the animal to wear a vest or ID
+- Charge extra fees for the service animal
+
+**When a service animal can be removed:**
+- The animal is out of control and the handler cannot control it
+- The animal is not housebroken
+
+---
+
+## Reasonable Modifications
+
+Beyond physical and communication access, the ADA requires **reasonable modifications** to policies and procedures:
+
+- **Scheduling** — Allow longer appointment times for patients who need communication accommodations
+- **Paperwork** — Provide assistance completing forms for patients with vision or motor impairments
+- **Waiting** — Allow patients to wait in their car and be called when the provider is ready (if the waiting room is not accessible or causes anxiety)
+- **Companions** — Allow a support person to accompany the patient throughout the visit
+
+**"Reasonable" means:**
+- It doesn't fundamentally change the nature of the service
+- It doesn't create an undue financial or administrative burden
+- It doesn't pose a direct threat to the health or safety of others
+
+---
+
+## Key Takeaways
+
+- The ADA and ADAAA require healthcare facilities to provide **accessible physical spaces, effective communication, and reasonable modifications**
+- Keep waiting areas and hallways **clear of obstructions** at all times
+- Offer **communication accommodations** based on the patient's preference — don't use family members as medical interpreters
+- Service animals (trained dogs) must be allowed — you can ask **only two questions**
+- **Reasonable modifications** include longer appointments, assistance with paperwork, and flexible waiting arrangements
+- ADA compliance is not optional — violations can result in federal complaints and lawsuits`,
+      duration_minutes: 12,
+      sort_order: 4,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: 'computer-skills-medical-office', nextLesson: 'data-storage-backup', nextIsQuiz: false,
+  },
+  'data-storage-backup': {
+    lesson: {
+      id: 'ap-l5', module_id: 'ap-m1', slug: 'data-storage-backup',
+      title: 'Data Storage & Backup',
+      description: 'Data storage requirements, backup procedures, and protecting health information systems.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Data Storage & Backup
+
+Healthcare data is critical — patient records, billing data, scheduling systems, and administrative documents must be available when needed. Data loss can disrupt patient care, create legal liability, and result in HIPAA violations. Understanding storage and backup requirements is essential for every front office professional.
+
+---
+
+## Types of Data in Healthcare
+
+| Data Category | Examples | Sensitivity |
+| --- | --- | --- |
+| **Patient health records** | Demographics, diagnoses, medications, lab results | Highest — PHI protected by HIPAA |
+| **Billing and insurance** | Claims, EOBs, payment records | High — financial + PHI |
+| **Scheduling** | Appointments, provider calendars | Moderate — contains patient names |
+| **Administrative** | Policies, procedures, templates, vendor contracts | Low to moderate |
+| **Employee records** | HR files, payroll, credentials | High — protected by employment law |
+
+---
+
+## Storage Methods
+
+Modern healthcare organizations use a combination of storage methods:
+
+**On-premise servers:**
+- Physical servers located in the clinic or a nearby data center
+- Provide fast access and full control
+- Require IT staff for maintenance, security, and updates
+- Vulnerable to physical threats (fire, flood, theft)
+
+**Cloud storage:**
+- Data stored remotely by a third-party provider (AWS, Azure, Google Cloud)
+- Accessible from any location with internet
+- Provider handles maintenance and security patches
+- Must use a **HIPAA-compliant cloud provider** with a signed **Business Associate Agreement (BAA)**
+
+**Hybrid approach (most common):**
+- Critical systems (EHR, billing) on managed servers or HIPAA-compliant cloud
+- Day-to-day files on local workstations with cloud backup
+- Archives on secure cloud or off-site storage
+
+---
+
+## Backup Requirements
+
+HIPAA's Security Rule requires **recoverable backups** of electronic PHI. Your organization should have:
+
+**Backup frequency:**
+- **Daily backups** — at minimum, critical data backed up every 24 hours
+- **Real-time replication** — some EHR systems continuously replicate data
+- **Weekly full backups** — complete system backup in addition to daily incrementals
+
+**Backup locations:**
+- At least **one off-site copy** (cloud or remote data center)
+- **Geographic separation** — backup location should be far enough from primary to survive a regional disaster
+- **Encrypted** — all backup media must be encrypted, whether stored on-site or off-site
+
+**Testing:**
+- Backups must be **tested regularly** to confirm they can be restored
+- Run a **restoration test** at least quarterly
+- Document test results and any issues found
+
+---
+
+## Your Role in Data Protection
+
+Front office staff don't manage servers, but you play an important role:
+
+- **Save work frequently** — don't rely on autosave alone for critical documents
+- **Use approved storage locations** — save files to network drives or approved cloud folders, NOT your desktop or personal USB drives
+- **Don't store PHI on personal devices** — no patient info on your phone, personal email, or home computer
+- **Report data loss immediately** — if you accidentally delete a file, can't access the system, or notice missing data, tell your supervisor and IT right away
+- **Follow the naming convention** — consistent file names make backup and retrieval easier
+
+---
+
+## Data Archival
+
+Archived data is information that's no longer needed for daily operations but must be retained per legal/regulatory requirements.
+
+**Archival best practices:**
+- Archive data according to your organization's **retention schedule**
+- Archived data must remain **accessible** — you should be able to retrieve it within a reasonable timeframe
+- Archived data must be **secure** — same HIPAA protections as active data
+- **Index archived records** — maintain a catalog of what's archived and where
+
+---
+
+## Key Takeaways
+
+- Healthcare uses **on-premise, cloud, and hybrid** storage — all must be HIPAA-compliant
+- Backups should be **daily at minimum**, with at least one **off-site encrypted copy**
+- Backup restoration must be **tested regularly** (quarterly minimum)
+- Save files to **approved network locations** — never to personal devices or desktops
+- Report data loss or access issues to IT **immediately**
+- Archived data must remain **accessible and secure** for the full retention period`,
+      duration_minutes: 10,
+      sort_order: 5,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: 'ada-compliance', nextLesson: 'system-downtime-procedures', nextIsQuiz: false,
+  },
+  'system-downtime-procedures': {
+    lesson: {
+      id: 'ap-l6', module_id: 'ap-m1', slug: 'system-downtime-procedures',
+      title: 'System Downtime Procedures',
+      description: 'What to do when the EHR, internet, phones, or other systems go down.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## System Downtime Procedures
+
+Technology fails. Servers crash, internet goes down, EHR systems need emergency maintenance, and phone lines go dead. When it happens, the front office doesn't stop — patients still arrive, calls still come in, and care still needs to happen. Knowing your downtime procedures keeps the office functioning until systems are restored.
+
+---
+
+## Types of Downtime
+
+| Type | Cause | Typical Duration |
+| --- | --- | --- |
+| **Planned downtime** | Scheduled maintenance, system upgrades | Hours (usually overnight or weekend) |
+| **Unplanned downtime** | Server crash, power outage, cyberattack | Minutes to days |
+| **Partial downtime** | One system down, others functional | Variable |
+| **Total downtime** | All systems offline | Emergency — activate full downtime plan |
+
+**Your organization should notify staff in advance of planned downtime.** For unplanned downtime, you need to recognize it quickly and switch to downtime procedures immediately.
+
+---
+
+## EHR System Down
+
+When the EHR is unavailable, switch to **paper-based workflows:**
+
+**Patient check-in:**
+- Use **pre-printed downtime registration forms** (keep a supply at the front desk)
+- Collect: patient name, DOB, address, phone, insurance info, reason for visit
+- Write clearly and legibly — this information will be entered into the EHR later
+
+**Scheduling:**
+- Use a **paper appointment log** to track today's schedule
+- Note any new appointments on paper with patient contact info
+- Don't cancel appointments unless the outage prevents clinical care
+
+**Provider access:**
+- Providers may need **printed patient summaries** from the most recent backup
+- Some organizations maintain **downtime read-only access** to a recent data snapshot
+
+**After the EHR is restored:**
+1. Enter all paper documentation into the EHR
+2. Verify that no duplicate records were created
+3. Reconcile the paper schedule with the electronic schedule
+4. File paper forms per your retention policy
+
+---
+
+## Internet Outage
+
+Internet outages affect more than just web browsing:
+
+| Affected System | Impact | Workaround |
+| --- | --- | --- |
+| **Cloud-based EHR** | Complete loss of EHR access | Switch to downtime paper forms |
+| **Insurance verification** | Can't verify eligibility online | Call the insurance company directly by phone |
+| **Email** | No incoming or outgoing email | Use the phone for urgent communication |
+| **Card payments** | Credit card terminals may not process | Collect payment later or accept cash/check |
+| **Fax-to-email** | Can't receive electronic faxes | Check if physical fax line still works |
+
+**Steps to take:**
+1. Report the outage to **IT or your internet provider** immediately
+2. Switch to **downtime procedures** for affected systems
+3. Inform patients of any delays and offer alternatives (reschedule, wait, paper forms)
+4. Keep a **log of everything done on paper** for later data entry
+
+---
+
+## Phone System Down
+
+When phones are down, communication becomes the top priority:
+
+- **Post a notice** at the entrance about the phone outage
+- Use **personal cell phones** (with supervisor approval) for critical outbound calls
+- **Don't give out personal numbers** to patients — use the clinic's main number even if it's down
+- Check if the phone system has a **failover** (calls forward to a backup number)
+- Document all messages received through alternative channels
+
+---
+
+## Power Outage
+
+A power outage affects everything. Healthcare facilities should have:
+
+- **Uninterruptible Power Supply (UPS)** — provides minutes of power for safe shutdown
+- **Emergency generator** — powers critical systems (lights, refrigeration for medications, security)
+- **Battery backup for phones** — many VoIP phone systems need power
+
+**Your role during a power outage:**
+1. Stay calm and ensure **patient safety** (check waiting room, assist elderly/disabled patients)
+2. If you have a UPS, **save all open work** and shut down computers properly
+3. Follow your facility's **emergency procedures** (may include partial evacuation)
+4. Do NOT open **medication refrigerators** unnecessarily (maintains cold chain)
+5. Document the outage start time and any actions taken
+
+---
+
+## Downtime Supplies Checklist
+
+Every front office should have a **downtime kit** ready at all times:
+
+- Pre-printed **patient registration forms** (minimum 50 copies)
+- **Paper appointment log** templates
+- **Patient sign-in sheets**
+- **Encounter forms** (superbills) for paper billing
+- **Pens** (multiple — they always disappear)
+- **Calculator** for payment processing
+- **Phone numbers** for IT, internet provider, insurance companies (printed, not just bookmarked)
+- **Flashlight** for power outages
+- **Battery-powered phone charger**
+
+> **Check your downtime kit monthly.** Restock forms, test the flashlight, and verify phone numbers are current.
+
+---
+
+## Key Takeaways
+
+- Every office needs **documented downtime procedures** for EHR, internet, phone, and power outages
+- Keep a **stocked downtime kit** at the front desk with paper forms, pens, phone numbers, and a flashlight
+- When the EHR goes down, switch to **paper-based workflows** immediately — don't wait
+- **Document everything** done on paper for later data entry when systems are restored
+- Report outages to IT **immediately** and keep a log of the outage timeline
+- After systems are restored, **reconcile paper records** with electronic systems to prevent duplicates or gaps`,
+      duration_minutes: 12,
+      sort_order: 6,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ap-m1', course_id: 'workflows', slug: 'admin-procedures', title: 'Administrative Procedures', description: 'Filing, correspondence, technology, ADA, and system management.', sort_order: 7, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Front Office Workflows', prevLesson: 'data-storage-backup', nextLesson: null, nextIsQuiz: true,
   },
   // ─── Patient Communication Section ───────────────────────
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-  User,
   FileText,
   Pill,
   AlertTriangle,
@@ -11,15 +10,13 @@ import {
   FolderOpen,
   CreditCard,
   ChevronRight,
-  Calendar,
 } from 'lucide-react';
 import { useEHRSession } from './EHRSessionContext';
-import type { EHRPatient, EHREncounter } from '../../types/ehr';
+import type { EHRPatient } from '../../types/ehr';
 
 interface PatientChartViewProps {
   patientId: string;
   encounterId: string | null;
-  onChangeEncounter: () => void;
 }
 
 type ChartTab = 'summary' | 'problems' | 'medications' | 'allergies' | 'history' | 'immunizations' | 'lab-results' | 'documents' | 'billing';
@@ -46,64 +43,6 @@ const methodLabels: Record<string, string> = {
   paper: 'Paper',
   electronic: 'Electronic',
 };
-
-function getAge(dob: string): number {
-  const birth = new Date(dob + 'T12:00:00');
-  const now = new Date();
-  let age = now.getFullYear() - birth.getFullYear();
-  const m = now.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
-  return age;
-}
-
-function PatientBanner({ patient, encounter, onChangeEncounter }: { patient: EHRPatient; encounter: EHREncounter | null; onChangeEncounter: () => void }) {
-  const age = getAge(patient.demographics.dateOfBirth);
-  const encDate = encounter ? new Date(encounter.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null;
-  const typeLabels: Record<string, string> = { clinic: 'Clinic', 'non-clinic': 'Non-Clinic', phone: 'Phone', abstraction: 'Abstraction' };
-
-  return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4 mb-4 flex items-center justify-between">
-      <div className="flex items-center gap-4">
-        <div className="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-          <User className="w-7 h-7 text-gray-400" />
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900">
-            {patient.demographics.lastName}, {patient.demographics.firstName}
-            {patient.demographics.preferredName && patient.demographics.preferredName !== patient.demographics.firstName && (
-              <span className="text-sm font-normal text-gray-400 ml-1">"{patient.demographics.preferredName}"</span>
-            )}
-          </h2>
-          <div className="flex items-center gap-3 text-sm text-gray-500">
-            <span>{age} yr {patient.demographics.sexAssignedAtBirth === 'F' ? 'Female' : 'Male'}</span>
-            <span>DOB: {new Date(patient.demographics.dateOfBirth + 'T12:00:00').toLocaleDateString('en-US')}</span>
-            <span>{patient.mrn}</span>
-          </div>
-          <div className="flex items-center gap-3 mt-1 text-xs">
-            <span className={`px-1.5 py-0.5 rounded ${patient.medicalSummary.allergies.length > 0 ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
-              {patient.medicalSummary.allergies.length} Allergies
-            </span>
-            <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-600">
-              {patient.medicalSummary.medications.length} Medications
-            </span>
-            {encounter && (
-              <span className="px-1.5 py-0.5 rounded bg-teal-50 text-teal-600">
-                {typeLabels[encounter.type]} · {encDate}
-              </span>
-            )}
-          </div>
-        </div>
-      </div>
-      <button
-        onClick={onChangeEncounter}
-        className="px-3 py-1.5 rounded-lg text-sm font-medium text-teal-700 border border-teal-300 hover:bg-teal-50 transition-colors flex items-center gap-1.5"
-      >
-        <Calendar className="w-4 h-4" />
-        Select Encounter
-      </button>
-    </div>
-  );
-}
 
 function SummaryTab({ patient }: { patient: EHRPatient }) {
   const { getPatientAppointments } = useEHRSession();
@@ -398,12 +337,13 @@ function BillingTab({ patient }: { patient: EHRPatient }) {
   );
 }
 
-export function PatientChartView({ patientId, encounterId, onChangeEncounter }: PatientChartViewProps) {
+export function PatientChartView({ patientId, encounterId }: PatientChartViewProps) {
   const { getPatient, getEncounter } = useEHRSession();
   const [activeTab, setActiveTab] = useState<ChartTab>('summary');
 
   const patient = getPatient(patientId);
-  const encounter = encounterId ? getEncounter(encounterId) || null : null;
+  // Keep encounter reference available for future use
+  encounterId && getEncounter(encounterId);
 
   if (!patient) {
     return <div className="p-8 text-center text-gray-400">Patient not found</div>;
@@ -425,8 +365,6 @@ export function PatientChartView({ patientId, encounterId, onChangeEncounter }: 
 
   return (
     <div>
-      <PatientBanner patient={patient} encounter={encounter} onChangeEncounter={onChangeEncounter} />
-
       <div className="flex gap-4">
         {/* Left sidebar */}
         <div className="w-52 flex-shrink-0">

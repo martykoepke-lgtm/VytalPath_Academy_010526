@@ -127,6 +127,7 @@ Welcome                          (/welcome)
   Front Office Workflows         (/workflows)
   EHR & PM                       (/ehr-fundamentals)
   Terminology                    (/terminology)
+  Communication                  (/communication)
 ─── Practice ───
   EHR Practice Lab               (/ehr-lab)
   Job Readiness                  (/practice)
@@ -147,31 +148,44 @@ Healthcare administration fundamentals.
 
 ### Section 2: Medical Law & Compliance (`/medical-law-ethics`) ✅
 Essential legal and ethical guidelines.
-- **Module: Understanding HIPAA** (3 video lessons)
+- **Module 1: HIPAA Foundations** (3 video lessons)
   - HIPAA Essentials, PHI Explained, Access Rules
-- **Module: Legal Essentials** (6 reading lessons)
-  - Violations & Penalties, Minimum Necessary, Patient Rights, Authorization & Consent, EMTALA, Fraud & Stark Law
+- **Module 2: Patient Privacy & Rights** (3 reading lessons)
+  - Violations & Penalties, Minimum Necessary, Patient Rights, Authorization & Consent
+- **Module 3: Healthcare Laws** (3 reading lessons)
+  - EMTALA, Fraud & Stark Law
+- **Module 4: Workplace Safety** (6 reading lessons)
+  - Basic Medical Law Concepts, OSHA & Workplace Safety, Regulatory Agencies, Mandatory Reporting, Incident Reporting, Emergency Preparedness
+- **Module 5: Ethics & Data Security** (3 reading lessons)
+  - Professional Ethics & Boundaries, Data Safeguards & Security, Medical Records Retention
 - Interactive: HIPAA Scenario Sorter exercise
-- 2 Quizzes
-- ~90 min total
+- 4 Quizzes
+- ~130 min total
 
 ### Section 3: Insurance & Billing (`/insurance`) ✅
 Health insurance from basics to daily operations.
-- **Module: Insurance Basics** (3 video lessons)
+- **Module 1: Insurance Basics** (3 video lessons)
   - Intro to Health Insurance, Payers & Plan Types, Key Terms
-- **Module: Insurance Operations** (4 video lessons)
+- **Module 2: Insurance Operations** (4 video lessons)
   - Reading Insurance Cards, Eligibility Verification, Copays/Deductibles/Coinsurance, Payment Collection
+- **Module 3-5: Coverage Rules, Financial Documents, Revenue Cycle** (reading lessons)
+- **Module 6: Coding Basics** (5 reading lessons)
+  - ICD-10: Diagnosis Coding, CPT: Procedure Coding, HCPCS: Supplies & Equipment, SNOMED CT Overview, Medical Necessity
+- **Module 7: Referrals & Prior Authorization** (6 reading lessons)
+  - Referral Fundamentals, Outbound Referrals, Inbound Referrals, Prior Auth Workflows, Auth for Imaging/Procedures/Rx, Tracking/Appeals/Denials
 - Interactive: Insurance Term Matching exercise
-- 2 Quizzes
-- ~60 min total
+- 4 Quizzes (original 2 + coding + referrals)
+- ~120 min total
 
 ### Section 4: Front Office Workflows (`/workflows`) ✅
 Front office procedures with SOPs.
 - **Module: Registration & Scheduling** (4 video lessons)
   - Section Intro, New Patient Registration, Existing Patient Scheduling, Appointment Reminder Calls
+- **Administrative Skills** (6 reading lessons)
+  - Filing Systems, Business Correspondence, Computer Skills for Medical Office, ADA Compliance, Data Storage & Backup, System Downtime Procedures
 - Quick Reference: 24 step-by-step SOP guides
-- Quiz: Registration & Scheduling
-- ~40 min total
+- 2 Quizzes (Registration + Admin Skills)
+- ~70 min total
 
 ### Section 5: EHR & Practice Management (`/ehr-fundamentals`) ✅ NEW
 PM/EHR systems and encounter management. Covers 43% of CMAA exam content (Domains 1, 4, 5).
@@ -181,9 +195,11 @@ PM/EHR systems and encounter management. Covers 43% of CMAA exam content (Domain
   - Clinic Encounter Types, The Encounter Lifecycle, Scheduling Types & Templates
 - **Module 3: Non-Clinic Encounters** (3 reading lessons)
   - Phone Encounters, Non-Visit Encounters, Duplicate Records: Prevention & Resolution
+- **Module 4: Telehealth & Patient Portals** (4 reading lessons)
+  - Telehealth Appointment Types, Telehealth Platforms & Technology, Patient Portals, Telehealth Procedures & Troubleshooting
 - Section intro video
-- 3 Quizzes (28 questions total)
-- ~66 min total
+- 4 Quizzes (35 questions total)
+- ~95 min total
 
 ### Section 6: Medical Terminology (`/terminology`) ✅
 Medical terminology with dual-mode view.
@@ -213,29 +229,39 @@ Career preparation tools.
 
 ---
 
+### Section 9: Patient Communication (`/communication`) ✅ NEW
+Professional communication skills for healthcare front office.
+- **Module 1: Communication Foundations** (4 reading lessons)
+  - Communication Styles, Nonverbal Communication, Active Listening, Communication Barriers
+- **Module 2: Difficult Conversations** (4 reading lessons)
+  - Difficult Situations, De-Escalation & Conflict Resolution, Empathy in Healthcare, Inclusive Communication
+- **Module 3: Professional Communication** (3 reading lessons)
+  - Telephone & Email Etiquette, Intraoffice Communication, Documentation & Communication Records
+- 3 Quizzes
+- ~80 min total
+
+---
+
 ### Planned Sections (Roadmap)
 
 | Section | Description | Status |
 |---------|-------------|--------|
 | Medications for Front Office | Prescriptions, drug classes, DEA schedules, prior auth | 📋 Planned |
-| Referrals & Prior Auth | Authorization workflows, tracking, appeals | 📋 Planned |
-| Coding Basics | ICD-10, CPT, E&M levels, reading EOBs | 📋 Planned |
-| Patient Communication | Phone etiquette, difficult conversations, empathy | 📋 Planned |
-| Telehealth Support | Virtual visit prep, troubleshooting, documentation | 📋 Planned |
 
 ### Section Summary
 
 | # | Section | Route | Lessons | Quizzes | Time |
 |---|---------|-------|---------|---------|------|
 | 1 | Foundations of Healthcare | `/foundations` | 3 video | 1 | 13 min |
-| 2 | Medical Law & Compliance | `/medical-law-ethics` | 9 (3 video + 6 reading) | 2 | 90 min |
-| 3 | Insurance & Billing | `/insurance` | 7 video | 2 | 60 min |
-| 4 | Front Office Workflows | `/workflows` | 4 video + 24 SOPs | 1 | 40 min |
-| 5 | EHR & Practice Management | `/ehr-fundamentals` | 9 reading | 3 | 66 min |
+| 2 | Medical Law & Compliance | `/medical-law-ethics` | 18 (3 video + 15 reading) | 4 | 130 min |
+| 3 | Insurance & Billing | `/insurance` | 18 (7 video + 11 reading) | 4 | 120 min |
+| 4 | Front Office Workflows | `/workflows` | 10 (4 video + 6 reading) + 24 SOPs | 2 | 70 min |
+| 5 | EHR & Practice Management | `/ehr-fundamentals` | 13 reading | 4 | 95 min |
 | 6 | Medical Terminology | `/terminology` | 5 + flashcards | 0 | 50 min |
 | 7 | EHR Practice Lab | `/ehr-lab` | Simulation | 0 | Unlimited |
 | 8 | Job Readiness | `/practice` | 6 tools | 0 | Varies |
-| **Total** | | | **40+ lessons** | **8 quizzes** | **~5+ hours** |
+| 9 | Patient Communication | `/communication` | 11 reading | 3 | 80 min |
+| **Total** | | | **80+ lessons** | **18 quizzes** | **~10+ hours** |
 
 ## Key Features
 

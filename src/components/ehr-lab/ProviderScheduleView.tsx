@@ -6,6 +6,7 @@ import type { ScheduleType, AppointmentStatus } from '../../types/ehr';
 
 interface ProviderScheduleViewProps {
   onSelectAppointment: (appointmentId: string) => void;
+  onViewChart: (patientId: string) => void;
   onCheckIn: (appointmentId: string) => void;
   onCheckOut: (appointmentId: string) => void;
   onReschedule: (patientId: string, date: string, time: string) => void;
@@ -33,6 +34,7 @@ const statusBadgeColors: Record<string, string> = {
 
 export function ProviderScheduleView({
   onSelectAppointment,
+  onViewChart,
   onCheckIn,
   onCheckOut,
   onReschedule,
@@ -110,7 +112,7 @@ export function ProviderScheduleView({
         </td>
         <td className="px-4 py-3">
           <button
-            onClick={() => onSelectAppointment(appt.id)}
+            onClick={() => onViewChart(appt.patientId)}
             className="text-sm font-medium text-gray-900 hover:text-teal-700 transition-colors"
           >
             {patientName}
