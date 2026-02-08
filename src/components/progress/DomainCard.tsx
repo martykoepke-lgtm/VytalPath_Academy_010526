@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronRight, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import type { CMAAdomain, KnowledgeStatement } from '../../data/cmaaCompetencyMap';
 import { type DomainCompetency, type KSCompetency, type CompetencyLevel, competencyLevelConfig } from '../../utils/cmaaCompetencyEngine';
 
@@ -52,6 +52,7 @@ function CompetencyBadge({ level }: { level: CompetencyLevel }) {
 
 function KSRow({ ks, competency }: { ks: KnowledgeStatement; competency: KSCompetency }) {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
   const hasActivities = ks.activities.length > 0;
 
   return (
@@ -80,11 +81,18 @@ function KSRow({ ks, competency }: { ks: KnowledgeStatement; competency: KSCompe
               <div key={`${activity.type}-${activity.slug}`} className="flex items-center gap-2 text-[11px]">
                 <span className={done ? 'text-green-500' : 'text-gray-300'}>{done ? '✓' : '○'}</span>
                 {activity.link ? (
-                  <Link to={activity.link} className="text-gray-600 hover:text-blue-600 flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(activity.link!);
+                    }}
+                    className="text-blue-600 hover:text-blue-800 hover:underline flex items-center gap-1 text-left"
+                  >
                     {activity.label}
                     {done?.score !== undefined && <span className="text-gray-400">({done.score}%)</span>}
-                    <ExternalLink className="w-2.5 h-2.5 text-gray-300" />
-                  </Link>
+                    <ExternalLink className="w-2.5 h-2.5 text-blue-400" />
+                  </button>
                 ) : (
                   <span className="text-gray-600">
                     {activity.label}

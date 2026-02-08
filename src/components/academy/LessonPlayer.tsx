@@ -471,7 +471,7 @@ function useSlides(content: string | null): string[] {
 }
 
 // Temporary hardcoded data - matches CourseDetail structure
-const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle: string; prevLesson: string | null; nextLesson: string | null; nextIsQuiz: boolean }> = {
+const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle: string; prevLesson: string | null; nextLesson: string | null; nextIsQuiz: boolean; keyTakeaways?: string[] }> = {
   'healthcare-front-office-foundations': {
     lesson: {
       id: 'l1',
@@ -501,6 +501,13 @@ const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle:
     prevLesson: null,
     nextLesson: 'acute-vs-ambulatory-care',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Front office staff are the first and last point of contact for every patient visit',
+      'Core responsibilities include registration, scheduling, insurance verification, check-in/check-out, and phone management',
+      'You must understand scope of practice — administrative tasks only, never clinical decisions',
+      'Strong communication, organization, and attention to detail are essential daily skills',
+      'HIPAA compliance is part of every task you perform',
+    ],
   },
   'acute-vs-ambulatory-care': {
     lesson: {
@@ -531,6 +538,13 @@ const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle:
     prevLesson: 'healthcare-front-office-foundations',
     nextLesson: null,
     nextIsQuiz: true,
+    keyTakeaways: [
+      'Acute care (hospitals) handles emergencies, surgeries, and inpatient stays — patients are admitted',
+      'Ambulatory care (outpatient) covers clinic visits, follow-ups, and preventive care — patients go home the same day',
+      'Most front office jobs are in ambulatory/outpatient settings',
+      'The front office manages the administrative side of each encounter from arrival to departure',
+      'Understanding both settings helps you communicate with patients about referrals and care transitions',
+    ],
   },
   'hipaa-essentials': {
     lesson: {
@@ -561,6 +575,13 @@ const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle:
     prevLesson: null,
     nextLesson: 'phi-explained',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'HIPAA protects patient privacy and sets rules for how health information is used and shared',
+      'The Privacy Rule governs who can access PHI; the Security Rule protects electronic PHI',
+      'Front office staff must follow the Minimum Necessary Standard — only access what you need for the task',
+      'Patients have rights: access their records, request corrections, and know who has seen their information',
+      'Every office must provide a Notice of Privacy Practices (NPP) at the first visit',
+    ],
   },
   'phi-explained': {
     lesson: {
@@ -591,6 +612,13 @@ const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle:
     prevLesson: 'hipaa-essentials',
     nextLesson: 'hipaa-access-rules',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'PHI is any individually identifiable health information — names, DOB, SSN, MRN, diagnoses, insurance info',
+      'There are 18 HIPAA identifiers that make health information "identifiable"',
+      'PHI exists in every form: paper charts, computer screens, verbal conversations, faxes, and emails',
+      'De-identified data (all 18 identifiers removed) is no longer PHI and is not subject to HIPAA rules',
+      'When in doubt about whether something is PHI, treat it as PHI',
+    ],
   },
   'hipaa-access-rules': {
     lesson: {
@@ -621,6 +649,13 @@ const lessonsData: Record<string, { lesson: Lesson; module: Module; courseTitle:
     prevLesson: 'phi-explained',
     nextLesson: 'hipaa-violations-fines-penalties',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Access to PHI is based on role — you should only view records for patients you are actively helping',
+      'Treatment, Payment, and Healthcare Operations (TPO) are the main reasons PHI can be shared without patient authorization',
+      'Authorization is required for uses outside TPO — marketing, research, or sharing with non-covered entities',
+      'The Minimum Necessary Rule applies to every disclosure: share only what is needed for the specific purpose',
+      'Verbal, physical, and electronic safeguards all matter — lower your voice, lock screens, position monitors away from public view',
+    ],
   },
   'hipaa-violations-fines-penalties': {
     lesson: {
@@ -1312,6 +1347,13 @@ Your job is to help patients exercise their rights, not to be a gatekeeper. When
     prevLesson: 'patient-rights-under-hipaa',
     nextLesson: 'emtala-patient-anti-dumping',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Consent for treatment is general permission to receive care — obtained at check-in for every visit',
+      'Authorization is specific written permission to share PHI outside of normal treatment, payment, or operations',
+      'TPO (Treatment, Payment, Operations) does not require patient authorization',
+      'Authorizations must include: who, what information, purpose, expiration date, and right to revoke',
+      'Front office collects consent forms and authorization forms — know the difference and when each is needed',
+    ],
   },
   'emtala-patient-anti-dumping': {
     lesson: {
@@ -1885,6 +1927,13 @@ All of these can also ban you from Medicare and Medicaid.
     prevLesson: null,
     nextLesson: 'payer-types-plan-types',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Health insurance spreads financial risk — members pay premiums, and the insurer covers medical costs',
+      'The front office verifies insurance, collects payments, and ensures claims can be processed correctly',
+      'Key players: patient (member), provider (doctor/clinic), payer (insurance company), and employer (often sponsors the plan)',
+      'Insurance does not cover everything — patients have out-of-pocket costs like copays, deductibles, and coinsurance',
+      'Verifying coverage before the visit prevents billing problems and surprise costs for patients',
+    ],
   },
   'payer-types-plan-types': {
     lesson: {
@@ -1915,6 +1964,13 @@ All of these can also ban you from Medicare and Medicaid.
     prevLesson: 'introduction-health-insurance',
     nextLesson: 'key-insurance-terms',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Commercial payers (private insurance) include employer-sponsored plans, individual marketplace plans, and COBRA',
+      'Government payers include Medicare (65+ or disabled), Medicaid (low-income), TRICARE (military), and VA',
+      'HMO plans require a PCP and referrals for specialists; PPO plans allow out-of-network care at higher cost',
+      'EPO plans are like PPOs but with no out-of-network coverage; POS plans blend HMO and PPO features',
+      'Always check the plan type — it determines referral requirements, prior auth needs, and network restrictions',
+    ],
   },
   'key-insurance-terms': {
     lesson: {
@@ -1945,6 +2001,13 @@ All of these can also ban you from Medicare and Medicaid.
     prevLesson: 'payer-types-plan-types',
     nextLesson: null,
     nextIsQuiz: true,
+    keyTakeaways: [
+      'Premium is the monthly cost to have insurance; deductible is what the patient pays before insurance kicks in',
+      'Copay is a fixed amount per visit; coinsurance is a percentage the patient pays after the deductible is met',
+      'Out-of-pocket maximum is the most a patient pays in a year — after that, insurance covers 100%',
+      'In-network providers have contracted rates with the insurer; out-of-network usually costs the patient more',
+      'Understanding these terms helps you explain costs to patients and collect the right amount at check-in',
+    ],
   },
   // Healthcare Foundations - Medical Terminology Module
   'intro-medical-terminology': {
@@ -2801,6 +2864,13 @@ How medication is given:
     prevLesson: null,
     nextLesson: 'real-time-eligibility',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Every insurance card has key fields: member ID, group number, plan type, payer name, and contact numbers',
+      'Always scan or copy both the front and back of the card — the back has claims address and provider services number',
+      'The plan type (HMO, PPO, etc.) tells you about referral requirements and network rules',
+      'Copay amounts are often printed on the card — check for office visit, specialist, urgent care, and ER copays',
+      'If anything on the card doesn\'t match what\'s in the system, update it and reverify eligibility',
+    ],
   },
   'real-time-eligibility': {
     lesson: {
@@ -2831,6 +2901,13 @@ How medication is given:
     prevLesson: 'reading-insurance-card',
     nextLesson: 'understanding-copays',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Eligibility verification confirms the patient has active coverage before their visit',
+      'Check eligibility during scheduling (not at check-in) to catch issues early',
+      'Verify: active status, effective dates, copay amount, deductible remaining, referral/auth requirements',
+      'Use the payer portal or call the provider services number on the back of the insurance card',
+      'Document the verification in the system — include the reference number, date, and who you spoke with',
+    ],
   },
   'understanding-copays': {
     lesson: {
@@ -2861,6 +2938,13 @@ How medication is given:
     prevLesson: 'real-time-eligibility',
     nextLesson: 'deductibles-oop-max',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'A copay is a fixed dollar amount the patient pays at the time of service (e.g., $25 for office visit)',
+      'Different visit types may have different copay amounts — office visit, specialist, urgent care, ER',
+      'Collect copays at check-in, before the patient is seen',
+      'If the copay on the card doesn\'t match what the system shows, go with the eligibility verification result',
+      'Document the payment method and amount collected in the system',
+    ],
   },
   'deductibles-oop-max': {
     lesson: {
@@ -2891,6 +2975,13 @@ How medication is given:
     prevLesson: 'understanding-copays',
     nextLesson: 'coinsurance-calculations',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'A deductible is the amount a patient must pay out-of-pocket before insurance starts covering costs',
+      'Track how much of the deductible the patient has met — this changes what they owe at each visit',
+      'The out-of-pocket maximum (OOP max) is the most a patient pays in a plan year; after that, insurance covers 100%',
+      'Deductibles reset annually (usually January 1 for calendar-year plans)',
+      'Patients early in the year may owe more because their deductible hasn\'t been met yet',
+    ],
   },
   'coinsurance-calculations': {
     lesson: {
@@ -2921,6 +3012,13 @@ How medication is given:
     prevLesson: 'deductibles-oop-max',
     nextLesson: 'collecting-patient-payments',
     nextIsQuiz: false,
+    keyTakeaways: [
+      'Coinsurance is the percentage of costs the patient pays after meeting their deductible (e.g., 20%)',
+      'If the plan is 80/20, insurance pays 80% and the patient pays 20% of the allowed amount',
+      'Coinsurance applies until the patient hits their out-of-pocket maximum',
+      'The allowed amount (not the billed amount) is the basis for coinsurance calculations',
+      'Be prepared to explain coinsurance simply: "After your deductible, you pay 20% and insurance pays 80%"',
+    ],
   },
   'collecting-patient-payments': {
     lesson: {
@@ -2951,6 +3049,13 @@ How medication is given:
     prevLesson: 'coinsurance-calculations',
     nextLesson: null,
     nextIsQuiz: true,
+    keyTakeaways: [
+      'Collect copays at check-in — this is the standard for most practices',
+      'At check-out, collect any additional amounts: outstanding balances, procedure fees, or co-insurance estimates',
+      'Always provide a receipt and explain what the payment covers',
+      'If a patient cannot pay, follow your office\'s financial policy — never turn them away without checking with a supervisor',
+      'Document every payment in the system immediately — amount, method (cash/card/check), and what it covers',
+    ],
   },
   // ─── SECTION PAGE LESSON ENTRIES ───
   // Foundations Section
@@ -2965,6 +3070,12 @@ How medication is given:
     },
     module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Foundations of Healthcare', prevLesson: null, nextLesson: 'the-inpatient-encounter', nextIsQuiz: false,
+    keyTakeaways: [
+      'Healthcare is delivered through two main models: inpatient (hospital) and ambulatory (outpatient/clinic)',
+      'Most front office roles are in ambulatory settings — clinics, urgent care, specialty practices',
+      'Understanding both models helps you communicate effectively about referrals and care transitions',
+      'The front office is the administrative hub that keeps patient flow and documentation running smoothly',
+    ],
   },
   'the-inpatient-encounter': {
     lesson: {
@@ -2977,6 +3088,12 @@ How medication is given:
     },
     module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Foundations of Healthcare', prevLesson: 'understanding-healthcare-delivery', nextLesson: 'the-ambulatory-care-journey', nextIsQuiz: false,
+    keyTakeaways: [
+      'Inpatient care is a continuous episode — the patient is admitted and stays until discharge',
+      'All services (labs, imaging, pharmacy, meals) happen under one roof during the stay',
+      'Front office touchpoints include admission registration, insurance verification, and discharge paperwork',
+      'Inpatient billing uses DRGs (Diagnosis Related Groups) — different from outpatient visit-based billing',
+    ],
   },
   'the-ambulatory-care-journey': {
     lesson: {
@@ -2989,6 +3106,12 @@ How medication is given:
     },
     module: { id: 'fs-m1', course_id: 'foundations', slug: 'healthcare-delivery', title: 'Healthcare Delivery', description: 'Healthcare delivery models.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Foundations of Healthcare', prevLesson: 'the-inpatient-encounter', nextLesson: null, nextIsQuiz: true,
+    keyTakeaways: [
+      'Ambulatory care consists of multiple discrete encounters — each visit is a separate event',
+      'The front office manages the full cycle: scheduling, check-in, during-visit coordination, check-out',
+      'Communication is key — you connect patients, providers, labs, referrals, and insurance',
+      'Most of your career will involve ambulatory care workflows and outpatient documentation',
+    ],
   },
   // ─── EHR & Practice Management Section ───
   'encounters-and-identifiers': {
@@ -4434,6 +4557,12 @@ Duplicate records aren't just an administrative inconvenience — they're a **pa
     },
     module: { id: 'mle-m1', course_id: 'medical-law-ethics', slug: 'hipaa-foundations', title: 'HIPAA Foundations', description: 'Core HIPAA concepts.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Medical Law & Ethics', prevLesson: null, nextLesson: 'phi-explained', nextIsQuiz: false,
+    keyTakeaways: [
+      'HIPAA protects patient privacy and sets national standards for health information security',
+      'The Privacy Rule controls who can see PHI; the Security Rule protects electronic PHI',
+      'Front office must follow the Minimum Necessary Standard — only access what you need for your task',
+      'Patients have the right to access their records, request corrections, and know who has viewed their information',
+    ],
   },
   // Insurance Section
   'why-insurance-exists': {
@@ -4447,6 +4576,12 @@ Duplicate records aren't just an administrative inconvenience — they're a **pa
     },
     module: { id: 'ins-m1', course_id: 'insurance', slug: 'insurance-fundamentals', title: 'Insurance Fundamentals', description: 'Health insurance basics.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'payer-types-plan-types', nextIsQuiz: false,
+    keyTakeaways: [
+      'Health insurance exists to spread financial risk — members pay premiums, and the insurer covers medical costs',
+      'The front office is responsible for verifying coverage, collecting payments, and supporting clean claims',
+      'Key roles: patient (member), provider (clinic), payer (insurance company), employer (plan sponsor)',
+      'Verifying insurance before the visit prevents billing problems and surprise costs for patients',
+    ],
   },
   'eligibility-and-payments': {
     lesson: {
@@ -4459,6 +4594,12 @@ Duplicate records aren't just an administrative inconvenience — they're a **pa
     },
     module: { id: 'ins-m1', course_id: 'insurance', slug: 'insurance-fundamentals', title: 'Insurance Fundamentals', description: 'Health insurance basics.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Insurance & Billing', prevLesson: 'key-insurance-terms', nextLesson: null, nextIsQuiz: true,
+    keyTakeaways: [
+      'Eligibility verification should happen at scheduling, not at check-in — catch problems early',
+      'Confirm: active coverage, effective dates, copay amounts, deductible status, and referral/auth requirements',
+      'Collect copays at check-in and remaining balances at check-out',
+      'Document every verification and payment in the system with date, reference number, and details',
+    ],
   },
   // ─── Insurance Module 3: Government Plans & Coverage Rules ───
   'government-plans-deep-dive': {
@@ -5878,6 +6019,12 @@ Here's how these concepts connect in your daily work:
     },
     module: { id: 'term-m1', course_id: 'terminology', slug: 'medical-terminology-basics', title: 'Medical Terminology Basics', description: 'Foundation terminology concepts.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Medical Terminology', prevLesson: null, nextLesson: 'word-building-decoding-terms', nextIsQuiz: false,
+    keyTakeaways: [
+      'Healthcare abbreviations save time but can be dangerous if misunderstood — always verify when unsure',
+      'Common timing abbreviations: QD (daily), BID (twice daily), TID (three times daily), PRN (as needed)',
+      'Common route abbreviations: PO (by mouth), IV (intravenous), IM (intramuscular), SQ (subcutaneous)',
+      'The Joint Commission maintains a "Do Not Use" list of abbreviations that are too easily confused',
+    ],
   },
   'word-building-decoding-terms': {
     lesson: {
@@ -5890,6 +6037,12 @@ Here's how these concepts connect in your daily work:
     },
     module: { id: 'term-m1', course_id: 'terminology', slug: 'medical-terminology-basics', title: 'Medical Terminology Basics', description: 'Foundation terminology concepts.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Medical Terminology', prevLesson: 'common-abbreviations-video', nextLesson: 'common-prefixes', nextIsQuiz: false,
+    keyTakeaways: [
+      'Medical terms are built from three parts: prefix (beginning), root (body part), and suffix (condition/procedure)',
+      'The root word identifies the body part or system (e.g., cardi = heart, gastr = stomach)',
+      'A combining vowel (usually "o") connects the root to the suffix when the suffix starts with a consonant',
+      'Once you learn the building blocks, you can decode unfamiliar medical terms on the spot',
+    ],
   },
   // Workflows Section
   'new-patient-registration': {
@@ -5903,6 +6056,12 @@ Here's how these concepts connect in your daily work:
     },
     module: { id: 'wf-m1', course_id: 'workflows', slug: 'registration-scheduling', title: 'Registration & Scheduling', description: 'Patient registration and scheduling workflows.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Front Office Workflows', prevLesson: null, nextLesson: 'existing-patient-scheduling', nextIsQuiz: false,
+    keyTakeaways: [
+      'Always search the system first to confirm the patient is truly new before creating a record',
+      'Collect full demographics, emergency contacts, employer info, and insurance cards (front and back)',
+      'Run eligibility verification at the time of registration — not at check-in',
+      'Explain financial responsibility upfront: copay amount, deductible status, and what to bring to the visit',
+    ],
   },
   'existing-patient-scheduling': {
     lesson: {
@@ -5915,6 +6074,12 @@ Here's how these concepts connect in your daily work:
     },
     module: { id: 'wf-m1', course_id: 'workflows', slug: 'registration-scheduling', title: 'Registration & Scheduling', description: 'Patient registration and scheduling workflows.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Front Office Workflows', prevLesson: 'new-patient-registration', nextLesson: 'appointment-reminders', nextIsQuiz: false,
+    keyTakeaways: [
+      'Start by searching the patient record and verifying their identity (name + DOB)',
+      'Ask about changes: "Any updates to your address, phone number, or insurance?"',
+      'If insurance changed, collect the new card and re-run eligibility before scheduling',
+      'Confirm appointment type, provider preference, and any referral/authorization requirements',
+    ],
   },
   'appointment-reminders': {
     lesson: {
@@ -5927,6 +6092,12 @@ Here's how these concepts connect in your daily work:
     },
     module: { id: 'wf-m1', course_id: 'workflows', slug: 'registration-scheduling', title: 'Registration & Scheduling', description: 'Patient registration and scheduling workflows.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Front Office Workflows', prevLesson: 'existing-patient-scheduling', nextLesson: null, nextIsQuiz: false,
+    keyTakeaways: [
+      'Reminder calls reduce no-shows — call patients the day before their appointment',
+      'Verify identity (name + DOB), confirm date/time/provider, and remind them what to bring',
+      'Ask if insurance or demographics have changed since their last visit',
+      'Document the call outcome: confirmed, rescheduled, cancelled, left voicemail, or no answer',
+    ],
   },
 };
 
@@ -6168,15 +6339,22 @@ export function LessonPlayer() {
       </div>
 
       {/* Key Takeaways (for video lessons) */}
-      {lesson.content_type === 'video' && (
+      {lesson.content_type === 'video' && lessonData?.keyTakeaways && lessonData.keyTakeaways.length > 0 && (
         <div className="mt-6 p-6 bg-gradient-to-r from-blue-50 to-blue-50 rounded-xl border border-blue-100">
           <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-blue-600" />
             Key Takeaways
           </h3>
-          <p className="text-sm text-gray-600">
-            Key points and study notes will appear here after the lesson content is finalized.
-          </p>
+          <ul className="space-y-2">
+            {lessonData.keyTakeaways.map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                <span className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-medium text-xs mt-0.5">
+                  {i + 1}
+                </span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

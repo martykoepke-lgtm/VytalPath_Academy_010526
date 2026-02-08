@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
-  ArrowRight, CheckCircle, Clock,
-  Play, FileText, Sparkles, MessageCircle, Award, Brain
+  ArrowRight, CheckCircle, Clock, Shield,
+  Play, FileText, Sparkles, MessageCircle, Award, Brain,
+  ChevronLeft, ChevronRight, Monitor, GraduationCap
 } from 'lucide-react';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
 import { CurriculumModal } from './CurriculumModal';
 import { useAuth } from '../contexts/AuthContext';
+
+const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
 // Custom stylized icons as SVG components - unified blue palette
 const IconFoundations = () => (
@@ -66,7 +69,33 @@ const IconWorkflows = () => (
   </svg>
 );
 
-
+// Platform screenshots for showcase
+const platformScreenshots = [
+  {
+    src: '/images/landing/ehr-lab.png',
+    alt: 'EHR Practice Lab — Provider Schedule',
+    label: 'EHR Practice Lab',
+    desc: 'Manage a clinic schedule, check in patients, and navigate encounters in a hands-on simulation.',
+  },
+  {
+    src: '/images/landing/phone-sim.png',
+    alt: 'Phone Call Simulator',
+    label: 'Phone Call Simulator',
+    desc: 'Practice handling real patient calls with AI-powered scenarios that react to your responses.',
+  },
+  {
+    src: '/images/landing/cmaa-dashboard.png',
+    alt: 'CMAA Exam Readiness Dashboard',
+    label: 'CMAA Exam Readiness',
+    desc: 'Track your progress against all 101 NHA CMAA knowledge statements across 7 exam domains.',
+  },
+  {
+    src: '/images/landing/cmaa-detail.png',
+    alt: 'CMAA Knowledge Statements with Lesson Links',
+    label: 'Competency Mapping',
+    desc: 'Every knowledge statement links directly to the lesson that covers it — so you know exactly where to study.',
+  },
+];
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
 
@@ -78,10 +107,12 @@ interface LocationState {
 export function LandingPage() {
   const [authModal, setAuthModal] = useState<AuthModal>(null);
   const [showCurriculum, setShowCurriculum] = useState(false);
+  const [activeScreenshot, setActiveScreenshot] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
   const state = location.state as LocationState | null;
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Auto-show sign-in modal when redirected from protected route
   useEffect(() => {
@@ -96,13 +127,11 @@ export function LandingPage() {
       if (state?.from) {
         navigate(state.from.pathname, { replace: true });
       } else {
-        // User just signed in from landing page - take them to welcome
         navigate('/welcome', { replace: true });
       }
     }
   }, [user, state, navigate]);
 
-  // Handle successful auth - navigate to content
   const handleAuthSuccess = () => {
     setAuthModal(null);
     if (state?.from) {
@@ -141,15 +170,16 @@ export function LandingPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section — Video + Headline */}
       <section className="relative overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 pb-10 md:pt-8 md:pb-14">
-          <div className="text-center">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-6 md:pt-16 md:pb-10">
+          {/* Headline */}
+          <div className="text-center mb-10">
             <div className="mb-6">
               <img
                 src="/vytalpath-logo.png"
                 alt="VytalPath Academy"
-                className="h-36 md:h-48 w-auto mx-auto"
+                className="h-28 md:h-36 w-auto mx-auto"
               />
             </div>
 
@@ -164,7 +194,7 @@ export function LandingPage() {
               You get trained. VytalPath Academy is the only platform purpose-built for healthcare front office roles — insurance, HIPAA, workflows, EHR simulation, and more. Job-ready in weeks, not months.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
               <button
                 onClick={() => setAuthModal('signUp')}
                 className="group px-8 py-3.5 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg flex items-center gap-2"
@@ -179,20 +209,146 @@ export function LandingPage() {
                 View Pricing
               </a>
             </div>
+          </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-5 gap-3 max-w-3xl mx-auto">
-              {[
-                { value: '8', label: 'Training Sections' },
-                { value: '40+', label: 'Lessons' },
-                { value: '8', label: 'Quizzes' },
-                { value: '24', label: 'SOP Guides' },
-                { value: '24/7', label: 'AI Tutor' },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-white rounded-2xl p-4 text-center border border-gray-200/50 shadow-apple-sm">
-                  <div className="text-2xl font-semibold text-gray-900 mb-0.5">{stat.value}</div>
-                  <div className="text-xs font-light text-gray-500">{stat.label}</div>
+          {/* Welcome Video — Prominent */}
+          <div className="max-w-4xl mx-auto mb-10">
+            <div className="relative rounded-2xl overflow-hidden shadow-apple-lg border border-gray-200/50 bg-gray-900">
+              <video
+                ref={videoRef}
+                controls
+                poster="/vytalpath-logo.png"
+                className="w-full aspect-video"
+                preload="metadata"
+              >
+                <source src={`${VIDEO_BASE_URL}/welcome_landing_page.mp4`} type="video/mp4" />
+              </video>
+            </div>
+            <p className="text-center text-sm text-gray-400 mt-3 font-light">
+              Meet your instructor — 20 years of healthcare experience, built into every lesson.
+            </p>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-5 gap-3 max-w-3xl mx-auto">
+            {[
+              { value: '8', label: 'Training Sections' },
+              { value: '40+', label: 'Lessons' },
+              { value: '8', label: 'Quizzes' },
+              { value: '24', label: 'SOP Guides' },
+              { value: '24/7', label: 'AI Tutor' },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-white rounded-2xl p-4 text-center border border-gray-200/50 shadow-apple-sm">
+                <div className="text-2xl font-semibold text-gray-900 mb-0.5">{stat.value}</div>
+                <div className="text-xs font-light text-gray-500">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CMAA Alignment Section */}
+      <section className="bg-gradient-to-r from-indigo-50 via-blue-50 to-indigo-50 py-10 md:py-14 border-y border-indigo-100">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Badge */}
+            <div className="flex-shrink-0">
+              <div className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl shadow-apple border border-indigo-100 flex items-center justify-center">
+                <div className="text-center">
+                  <GraduationCap className="w-10 h-10 text-indigo-600 mx-auto mb-1" />
+                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider leading-tight block">CMAA<br/>Aligned</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 mb-3">
+                Built to CMAA Certification Standards
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Every lesson, quiz, and exercise in VytalPath Academy is designed to align with the <span className="font-medium text-gray-900">NHA Certified Medical Administrative Assistant (CMAA)</span> exam content outline. While this platform is not a certified training program, the curriculum is purpose-built to cover all 101 knowledge statements across all 7 exam domains — giving you the strongest possible foundation for certification success.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start">
+                <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                  <Shield className="w-4 h-4" />
+                  <span>101 Knowledge Statements Mapped</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                  <CheckCircle className="w-4 h-4" />
+                  <span>7 Exam Domains Covered</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
+                  <Monitor className="w-4 h-4" />
+                  <span>Real-Time Readiness Tracking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Experience Showcase */}
+      <section className="bg-white py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-3">
+              See the Platform in Action
+            </h2>
+            <p className="text-lg font-light text-gray-500 max-w-2xl mx-auto">
+              Real tools you'll use every day — from EHR simulation to AI-powered practice scenarios
+            </p>
+          </div>
+
+          {/* Screenshot Carousel */}
+          <div className="max-w-5xl mx-auto">
+            {/* Main Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-apple-lg border border-gray-200/50 bg-gray-50 mb-4">
+              <img
+                src={platformScreenshots[activeScreenshot].src}
+                alt={platformScreenshots[activeScreenshot].alt}
+                className="w-full object-cover"
+              />
+              {/* Nav arrows */}
+              <button
+                onClick={() => setActiveScreenshot((prev) => (prev - 1 + platformScreenshots.length) % platformScreenshots.length)}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700" />
+              </button>
+              <button
+                onClick={() => setActiveScreenshot((prev) => (prev + 1) % platformScreenshots.length)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700" />
+              </button>
+            </div>
+
+            {/* Caption */}
+            <div className="text-center mb-6">
+              <h3 className="text-lg font-semibold text-gray-900">{platformScreenshots[activeScreenshot].label}</h3>
+              <p className="text-sm text-gray-500 max-w-lg mx-auto">{platformScreenshots[activeScreenshot].desc}</p>
+            </div>
+
+            {/* Thumbnails */}
+            <div className="grid grid-cols-4 gap-3">
+              {platformScreenshots.map((shot, i) => (
+                <button
+                  key={shot.label}
+                  onClick={() => setActiveScreenshot(i)}
+                  className={`rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                    i === activeScreenshot
+                      ? 'border-blue-500 shadow-apple ring-2 ring-blue-200'
+                      : 'border-gray-200 hover:border-gray-300 opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img src={shot.src} alt={shot.alt} className="w-full aspect-video object-cover" />
+                  <div className="px-2 py-1.5 bg-white">
+                    <span className={`text-[11px] font-medium ${i === activeScreenshot ? 'text-blue-600' : 'text-gray-500'}`}>
+                      {shot.label}
+                    </span>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
@@ -200,7 +356,7 @@ export function LandingPage() {
       </section>
 
       {/* How You'll Learn */}
-      <section className="bg-gray-50/50 py-10 md:py-14">
+      <section className="bg-gray-50/50 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-3">
@@ -232,54 +388,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-white py-16 md:py-20">
-        <div className="max-w-xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-white rounded-2xl p-8 shadow-apple border border-gray-200/50 text-center">
-            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-1">
-              Full Access
-            </h2>
-            <p className="text-sm text-gray-500 mb-6">Everything you need to become job-ready</p>
-
-            <div className="mb-6">
-              <span className="text-5xl font-semibold text-gray-900">$327</span>
-              <span className="text-gray-400 font-light text-lg">/year</span>
-            </div>
-
-            <ul className="space-y-2.5 mb-8 text-left max-w-xs mx-auto">
-              {[
-                'All 8 training sections',
-                '40+ lessons, 8 quizzes & 24 SOPs',
-                'Hands-on EHR Practice Lab',
-                'Job readiness tools & mock interviews',
-                'AI study assistant on every page',
-                'New content added regularly',
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <button
-              onClick={() => setAuthModal('signUp')}
-              className="w-full py-3.5 px-4 text-white font-medium bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
-            >
-              Get Started
-            </button>
-
-            <p className="text-xs text-gray-400 mt-4">
-              Training a team?{' '}
-              <a href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing" className="text-blue-600 hover:text-blue-700 transition-colors">
-                Contact us for volume pricing
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Curriculum Preview */}
+      {/* What You'll Learn — Curriculum */}
       <section className="bg-white py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
@@ -361,14 +470,89 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="bg-gray-50/50 py-16 md:py-20">
+        <div className="max-w-xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-white rounded-2xl p-8 shadow-apple border border-gray-200/50 text-center">
+            <h2 className="text-2xl font-semibold tracking-tight text-gray-900 mb-1">
+              Full Access
+            </h2>
+            <p className="text-sm text-gray-500 mb-6">Everything you need to become job-ready</p>
+
+            <div className="mb-6">
+              <span className="text-5xl font-semibold text-gray-900">$327</span>
+              <span className="text-gray-400 font-light text-lg">/year</span>
+            </div>
+
+            <ul className="space-y-2.5 mb-8 text-left max-w-xs mx-auto">
+              {[
+                'All 8 training sections',
+                '40+ lessons, 8 quizzes & 24 SOPs',
+                'Hands-on EHR Practice Lab',
+                'CMAA exam readiness tracking',
+                'Job readiness tools & mock interviews',
+                'AI study assistant on every page',
+                'New content added regularly',
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">
+                  <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <button
+              onClick={() => setAuthModal('signUp')}
+              className="w-full py-3.5 px-4 text-white font-medium bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
+            >
+              Get Started
+            </button>
+
+            <p className="text-xs text-gray-400 mt-4">
+              Training a team?{' '}
+              <a href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing" className="text-blue-600 hover:text-blue-700 transition-colors">
+                Contact us for volume pricing
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder Credibility Bar */}
+      <section className="bg-white py-12 md:py-16 border-t border-gray-100">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <p className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4">Created by</p>
+          <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3">
+            20 Years of Healthcare Experience,<br className="hidden sm:block" /> Built Into Every Lesson
+          </h3>
+          <p className="text-gray-500 leading-relaxed max-w-2xl mx-auto mb-6">
+            VytalPath Academy was built by a Clinical Informatics professional with two decades of hands-on healthcare experience — from ICU unit clerk to EHR analyst to ambulatory workflow optimization. This curriculum reflects real-world knowledge from someone who has configured EHR systems, trained clinic staff, and helped health systems improve every day.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500">
+            <span className="flex items-center gap-1.5 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+              <GraduationCap className="w-4 h-4 text-gray-400" />
+              Master's in Healthcare Administration
+            </span>
+            <span className="flex items-center gap-1.5 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+              <Monitor className="w-4 h-4 text-gray-400" />
+              14 Years in Clinical Informatics
+            </span>
+            <span className="flex items-center gap-1.5 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
+              <Award className="w-4 h-4 text-gray-400" />
+              EHR Analyst & Workflow Expert
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-gray-900 py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3">
-            Ready to Advance Your Career?
+            Ready to Start Your Healthcare Career?
           </h3>
           <p className="text-lg font-light text-gray-400 mb-8 leading-relaxed">
-            Join healthcare professionals building their skills with VytalPath Academy
+            Get the foundation that opens doors — the same knowledge that launched a 20-year career
           </p>
           <button
             onClick={() => setAuthModal('signUp')}
@@ -391,7 +575,7 @@ export function LandingPage() {
               />
             </div>
             <p className="text-sm text-center md:text-left font-light">
-              Professional healthcare front office training
+              Professional healthcare front office training — aligned with CMAA certification standards
             </p>
             <div className="flex items-center gap-6 text-sm">
               <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors duration-300">Contact</a>
