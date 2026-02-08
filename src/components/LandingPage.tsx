@@ -121,14 +121,10 @@ export function LandingPage() {
     }
   }, [state, user]);
 
-  // Redirect to intended destination after sign-in
+  // Redirect to intended destination after sign-in (only when redirected from a protected route)
   useEffect(() => {
-    if (user) {
-      if (state?.from) {
-        navigate(state.from.pathname, { replace: true });
-      } else {
-        navigate('/welcome', { replace: true });
-      }
+    if (user && state?.from) {
+      navigate(state.from.pathname, { replace: true });
     }
   }, [user, state, navigate]);
 
@@ -153,18 +149,31 @@ export function LandingPage() {
               className="h-10 w-auto"
             />
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setAuthModal('signIn')}
-                className="px-5 py-2.5 text-sm font-normal text-gray-700 hover:text-gray-900 transition-colors duration-300"
-              >
-                Sign In
-              </button>
-              <button
-                onClick={() => setAuthModal('signUp')}
-                className="px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
-              >
-                Get Started
-              </button>
+              {user ? (
+                <>
+                  <Link
+                    to="/welcome"
+                    className="px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
+                  >
+                    Go to Dashboard
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setAuthModal('signIn')}
+                    className="px-5 py-2.5 text-sm font-normal text-gray-700 hover:text-gray-900 transition-colors duration-300"
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    onClick={() => setAuthModal('signUp')}
+                    className="px-6 py-2.5 text-sm font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
+                  >
+                    Get Started
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
