@@ -41,25 +41,31 @@ const programSections = [
   {
     icon: Scale,
     title: 'Medical Law & Compliance',
-    description: 'HIPAA essentials, PHI protection, patient rights, consent, EMTALA, and fraud prevention.',
+    description: 'HIPAA essentials, PHI, patient rights, consent, EMTALA, fraud prevention, workplace safety, infection control, and administrative procedures.',
     path: '/medical-law-ethics',
   },
   {
     icon: DollarSign,
     title: 'Insurance & Billing',
-    description: 'Payer types, eligibility verification, reading insurance cards, copays, deductibles, and payment collection.',
+    description: 'Payer types, eligibility, insurance cards, copays, payment collection, ICD-10/CPT coding, referrals, and prior authorization.',
     path: '/insurance',
   },
   {
     icon: ClipboardList,
     title: 'Front Office Workflows',
-    description: 'Registration, scheduling, check-in, check-out, and 24 step-by-step SOP guides for daily operations.',
+    description: 'Registration, scheduling, check-in, check-out, administrative skills, cash handling, supply management, and 24 SOP guides.',
     path: '/workflows',
+  },
+  {
+    icon: MessageCircle,
+    title: 'Patient Communication',
+    description: 'Communication styles, active listening, de-escalation, cultural competence, phone etiquette, and team communication.',
+    path: '/communication',
   },
   {
     icon: Monitor,
     title: 'EHR & Practice Management',
-    description: 'PM vs EHR systems, encounter types, scheduling methods, phone encounters, and duplicate record prevention.',
+    description: 'PM vs EHR systems, encounter types, scheduling, phone encounters, duplicate prevention, telehealth, and patient portals.',
     path: '/ehr-fundamentals',
   },
   {
@@ -192,7 +198,7 @@ export function ProgramIntro() {
           Your Learning Path
         </h2>
         <p className="text-gray-500 text-center mb-8 max-w-xl mx-auto">
-          Eight sections covering everything from HIPAA to hands-on EHR practice. Work through them in order or jump to what you need most.
+          Nine sections covering everything from HIPAA to hands-on EHR practice. Work through them in order or jump to what you need most.
         </p>
 
         <div className="space-y-3">

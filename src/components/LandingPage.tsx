@@ -239,9 +239,9 @@ export function LandingPage() {
           {/* Stats */}
           <div className="grid grid-cols-5 gap-3 max-w-3xl mx-auto">
             {[
-              { value: '8', label: 'Training Sections' },
-              { value: '40+', label: 'Lessons' },
-              { value: '8', label: 'Quizzes' },
+              { value: '9', label: 'Training Sections' },
+              { value: '80+', label: 'Lessons' },
+              { value: '18', label: 'Quizzes' },
               { value: '24', label: 'SOP Guides' },
               { value: '24/7', label: 'AI Tutor' },
             ].map((stat) => (
@@ -403,7 +403,7 @@ export function LandingPage() {
               What You'll Learn
             </h2>
             <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto">
-              8 training sections covering every skill your front desk needs
+              9 training sections covering every skill your front desk needs
             </p>
           </div>
 
@@ -417,12 +417,13 @@ export function LandingPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: <IconFoundations />, title: 'Healthcare Foundations', badge: '3 lessons', desc: 'Understand acute vs. ambulatory care, the front office role, and how healthcare delivery works.' },
-                { icon: <IconLaw />, title: 'Medical Law & Compliance', badge: '9 lessons', desc: 'HIPAA essentials, PHI protection, patient rights, authorization, consent, EMTALA, and fraud prevention.' },
-                { icon: <IconInsurance />, title: 'Insurance & Billing', badge: '7 lessons', desc: 'Payer types, plan types, reading insurance cards, eligibility verification, copays, and payment collection.' },
-                { icon: <IconWorkflows />, title: 'Front Office Workflows', badge: '4 lessons + 24 SOPs', desc: 'Registration, scheduling, check-in, check-out, and step-by-step guides for daily operations.' },
-                { icon: <IconTerminology />, title: 'EHR & Practice Management', badge: '9 lessons', desc: 'PM vs EHR systems, encounter types, scheduling methods, phone encounters, and duplicate prevention.', isNew: true },
+                { icon: <IconLaw />, title: 'Medical Law & Compliance', badge: '18 lessons', desc: 'HIPAA essentials, PHI, patient rights, consent, EMTALA, fraud prevention, plus workplace safety, infection control, and administrative procedures.' },
+                { icon: <IconInsurance />, title: 'Insurance & Billing', badge: '18 lessons', desc: 'Payer types, eligibility, reading insurance cards, copays, payment collection, ICD-10, CPT coding, referrals, and prior authorization.' },
+                { icon: <IconWorkflows />, title: 'Front Office Workflows', badge: '10 lessons + 24 SOPs', desc: 'Registration, scheduling, check-in, check-out, administrative skills, cash handling, supply management, and 24 SOP guides.' },
+                { icon: <IconLaw />, title: 'Patient Communication', badge: '7 lessons', desc: 'Communication styles, active listening, de-escalation, cultural competence, phone etiquette, and team communication.', isNew: true },
+                { icon: <IconTerminology />, title: 'EHR & Practice Management', badge: '13 lessons', desc: 'PM vs EHR systems, encounter types, scheduling, phone encounters, duplicate prevention, telehealth, and patient portals.' },
                 { icon: <IconTerminology />, title: 'Medical Terminology', badge: '5 lessons + flashcards', desc: 'Decode medical terms using prefixes, roots, and suffixes. Interactive flashcards for practice.' },
-                { icon: <IconWorkflows />, title: 'EHR Practice Lab', badge: 'Simulation', desc: 'Hands-on practice in a simulated PM system — schedule, register, check-in, and manage a clinic day.', isNew: true },
+                { icon: <IconWorkflows />, title: 'EHR Practice Lab', badge: 'Simulation', desc: 'Hands-on practice in a simulated PM system — schedule, register, check-in, and manage a clinic day.' },
                 { icon: <IconFoundations />, title: 'Job Readiness', badge: '6 tools', desc: 'Phone simulations, mock interviews, resume builder, insurance hotline practice, and readiness assessments.' },
               ].map((module) => (
                 <div key={module.title} className="bg-white rounded-2xl p-6 shadow-apple border border-gray-200/50 hover-lift transition-all duration-300 relative">
@@ -451,10 +452,7 @@ export function LandingPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { title: 'Medications', desc: 'Prescription handling, drug classes, controlled substances' },
-                { title: 'Referrals & Prior Auth', desc: 'Authorization workflows, tracking, appeals' },
-                { title: 'Coding Basics', desc: 'ICD-10, CPT codes, reading EOBs' },
-                { title: 'Patient Communication', desc: 'Phone etiquette, difficult conversations' },
+                { title: 'Medications for Front Office', desc: 'Prescription handling, drug classes, DEA schedules, controlled substances' },
               ].map((item) => (
                 <div key={item.title} className="bg-gray-50/50 rounded-2xl p-5 border border-dashed border-gray-200">
                   <h5 className="font-medium text-gray-700 text-sm mb-1">{item.title}</h5>
@@ -493,8 +491,8 @@ export function LandingPage() {
 
             <ul className="space-y-2.5 mb-8 text-left max-w-xs mx-auto">
               {[
-                'All 8 training sections',
-                '40+ lessons, 8 quizzes & 24 SOPs',
+                'All 9 training sections',
+                '80+ lessons, 18 quizzes & 24 SOPs',
                 'Hands-on EHR Practice Lab',
                 'CMAA exam readiness tracking',
                 'Job readiness tools & mock interviews',
