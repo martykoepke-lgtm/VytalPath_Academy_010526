@@ -23,6 +23,7 @@ const sectionMap: Record<string, { sectionId: string; sectionName: string }> = {
   '/terminology': { sectionId: 'terminology', sectionName: 'Medical Terminology' },
   '/practice': { sectionId: 'practice', sectionName: 'Practice & Review' },
   '/ehr-lab': { sectionId: 'ehr-lab', sectionName: 'EHR Practice Lab' },
+  '/communication': { sectionId: 'communication', sectionName: 'Patient Communication' },
   '/ehr-fundamentals': { sectionId: 'ehr-fundamentals', sectionName: 'EHR & Practice Management' },
 };
 

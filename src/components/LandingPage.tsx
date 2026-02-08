@@ -184,14 +184,6 @@ export function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-6 md:pt-16 md:pb-10">
           {/* Headline */}
           <div className="text-center mb-10">
-            <div className="mb-6">
-              <img
-                src="/vytalpath-logo.png"
-                alt="VytalPath Academy"
-                className="h-28 md:h-36 w-auto mx-auto"
-              />
-            </div>
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-4 leading-tight">
               How do you get a healthcare job
               <span className="block text-blue-600 mt-1">
@@ -203,7 +195,7 @@ export function LandingPage() {
               You get trained. VytalPath Academy is the only platform purpose-built for healthcare front office roles — insurance, HIPAA, workflows, EHR simulation, and more. Job-ready in weeks, not months.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
               <button
                 onClick={() => setAuthModal('signUp')}
                 className="group px-8 py-3.5 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg flex items-center gap-2"

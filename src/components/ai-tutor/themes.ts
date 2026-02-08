@@ -23,6 +23,7 @@ export const aiTutorThemes: Record<string, AiTutorTheme> = {
   practice: unifiedTheme,
   'ehr-lab': unifiedTheme,
   'ehr-fundamentals': unifiedTheme,
+  communication: unifiedTheme,
 };
 
 export const defaultSuggestedQuestions: Record<string, string[]> = {
@@ -79,5 +80,11 @@ export const defaultSuggestedQuestions: Record<string, string[]> = {
     'Explain encounter types in a clinic',
     'What is the encounter lifecycle?',
     'How do scheduling templates work?',
+  ],
+  communication: [
+    'What are the four communication styles?',
+    'How do I handle an angry patient at the front desk?',
+    'What active listening techniques should I use?',
+    'When should I escalate a difficult situation?',
   ],
 };

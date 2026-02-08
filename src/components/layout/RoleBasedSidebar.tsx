@@ -13,6 +13,8 @@ import {
   Search,
   Compass,
   Monitor,
+  Award,
+  MessageCircle,
   type LucideIcon
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -43,6 +45,7 @@ const studentNavGroups: NavGroup[] = [
       { path: '/medical-law-ethics', label: 'Compliance', icon: Scale },
       { path: '/insurance', label: 'Insurance & Billing', icon: DollarSign },
       { path: '/workflows', label: 'Front Office Workflows', icon: ClipboardList },
+      { path: '/communication', label: 'Communication', icon: MessageCircle },
       { path: '/ehr-fundamentals', label: 'EHR & PM', icon: Monitor },
       { path: '/terminology', label: 'Terminology', icon: BookA },
     ],
@@ -58,6 +61,7 @@ const studentNavGroups: NavGroup[] = [
     heading: 'Track',
     items: [
       { path: '/progress', label: 'CMAA Progress', icon: BarChart3 },
+      { path: '/certificate', label: 'Certificate', icon: Award },
       { path: '/search', label: 'Search', icon: Search },
     ],
   },

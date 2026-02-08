@@ -26,6 +26,7 @@ import { InsuranceSection } from './components/sections/InsuranceSection';
 import { TerminologySection } from './components/sections/TerminologySection';
 import { WorkflowsSection } from './components/sections/WorkflowsSection';
 import { EHRSection } from './components/sections/EHRSection';
+import { CommunicationSection } from './components/sections/CommunicationSection';
 import { InteractiveHub } from './components/interactive';
 import { PhoneCallSimulator } from './components/practice/PhoneCallSimulator';
 import { DayInTheLife } from './components/practice/DayInTheLife';
@@ -38,6 +39,7 @@ import { PricingPage } from './components/billing/PricingPage';
 import { CurriculumPage } from './pages/CurriculumPage';
 import { ProgramIntro } from './components/ProgramIntro';
 import { CMAADashboard } from './components/progress/CMAADashboard';
+import { CertificatePage } from './components/certificate/CertificatePage';
 import { EHRPracticeLab } from './components/ehr-lab/EHRPracticeLab';
 
 export const router = createBrowserRouter([
@@ -132,6 +134,19 @@ export const router = createBrowserRouter([
         path: 'workflows/sops/:slug',
         element: <AuthRoute><SOPDetailPage /></AuthRoute>,
       },
+      // Patient Communication Section
+      {
+        path: 'communication',
+        element: <AuthRoute><CommunicationSection /></AuthRoute>,
+      },
+      {
+        path: 'communication/:moduleSlug/:lessonSlug',
+        element: <AuthRoute><LessonPlayer /></AuthRoute>,
+      },
+      {
+        path: 'communication/:moduleSlug/quiz',
+        element: <AuthRoute><QuizPlayer /></AuthRoute>,
+      },
       // EHR & Practice Management Section
       {
         path: 'ehr-fundamentals',
@@ -154,6 +169,11 @@ export const router = createBrowserRouter([
       {
         path: 'progress',
         element: <AuthRoute><CMAADashboard /></AuthRoute>,
+      },
+      // Certificate of Completion
+      {
+        path: 'certificate',
+        element: <AuthRoute><CertificatePage /></AuthRoute>,
       },
       // Interactive Practice
       {

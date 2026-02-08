@@ -49,3 +49,36 @@
     transform: translateY(-2px);
   }
 }
+
+/* Certificate print styles */
+@media print {
+  @page {
+    size: 11in 8.5in landscape;
+    margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .certificate-printable,
+  .certificate-printable * {
+    visibility: visible;
+  }
+
+  .certificate-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 11in;
+    height: 8.5in;
+    max-width: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

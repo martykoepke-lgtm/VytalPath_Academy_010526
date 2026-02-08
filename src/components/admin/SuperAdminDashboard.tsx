@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Building2, Users, Clock, ChevronRight, LinkIcon, UserPlus,
   BarChart3, Calendar, CheckCircle, AlertCircle, Mail, X, UserCog,
-  Copy, Shield, Trash2, ExternalLink
+  Copy, Shield, Trash2, Award, Printer
 } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 
@@ -60,6 +60,7 @@ export function SuperAdminDashboard() {
   const [pendingInvitations, setPendingInvitations] = useState<Invitation[]>([]);
   const [loading, setLoading] = useState(true);
   const [showInviteModal, setShowInviteModal] = useState(false);
+  const [showCertModal, setShowCertModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'orgs' | 'invitations' | 'self-registered'>('orgs');
 
   useEffect(() => {
@@ -550,7 +551,7 @@ export function SuperAdminDashboard() {
       )}
 
       {/* Quick Actions */}
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
         <Link
           to="/admin/orgs/new"
           className="p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 hover:border-blue-300 transition-colors group"
@@ -595,6 +596,21 @@ export function SuperAdminDashboard() {
             </div>
           </div>
         </button>
+
+        <button
+          onClick={() => setShowCertModal(true)}
+          className="p-5 bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl border border-amber-100 hover:border-amber-200 transition-colors group text-left"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center group-hover:bg-amber-200 transition-colors">
+              <Award className="w-5 h-5 text-amber-600" />
+            </div>
+            <div>
+              <h3 className="font-medium text-gray-900">Generate Certificate</h3>
+              <p className="text-sm text-gray-500">Create on the fly</p>
+            </div>
+          </div>
+        </button>
       </div>
 
       {/* Invite User Modal */}
@@ -607,6 +623,11 @@ export function SuperAdminDashboard() {
             setShowInviteModal(false);
           }}
         />
+      )}
+
+      {/* Certificate Generator Modal */}
+      {showCertModal && (
+        <CertificateGeneratorModal onClose={() => setShowCertModal(false)} />
       )}
     </div>
   );
@@ -883,6 +904,175 @@ function InviteUserModal({ orgs, onClose, onSuccess }: InviteUserModalProps) {
             </button>
           </div>
         </form>
+      </div>
+    </div>
+  );
+}
+
+// ─── Certificate Generator Modal ───
+
+function getLocalDateString(): string {
+  const now = new Date();
+  return now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function getLocalCertNumber(): string {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return `VPA-${code}`;
+}
+
+function CertificateGeneratorModal({ onClose }: { onClose: () => void }) {
+  const [studentName, setStudentName] = useState('');
+  const [certNumber] = useState(getLocalCertNumber);
+  const [formattedDate] = useState(getLocalDateString);
+
+  const handlePrint = () => window.print();
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-auto">
+      <div className="bg-white rounded-xl shadow-xl max-w-5xl w-full mx-auto my-4">
+        {/* Header */}
+        <div className="no-print p-5 border-b border-gray-200 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+              <Award className="w-5 h-5 text-amber-600" />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Generate Certificate</h2>
+              <p className="text-sm text-gray-500">Create a certificate on the fly for any student</p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Form Controls */}
+        <div className="no-print p-5 border-b border-gray-200">
+          <div className="flex gap-4 items-end max-w-2xl mx-auto">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Student Name</label>
+              <input
+                type="text"
+                value={studentName}
+                onChange={(e) => setStudentName(e.target.value)}
+                placeholder="Enter full name"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={handlePrint}
+                disabled={!studentName.trim()}
+                className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors font-medium"
+              >
+                <Printer className="w-4 h-4" />
+                Print
+              </button>
+            </div>
+          </div>
+          <p className="text-xs text-gray-400 mt-2 text-center">
+            {formattedDate} &middot; Certificate #{certNumber}
+          </p>
+        </div>
+
+        {/* Certificate Preview */}
+        <div className="p-6">
+          <div
+            className="certificate-printable bg-white mx-auto border border-gray-200 shadow-apple overflow-hidden"
+            style={{ aspectRatio: '11 / 8.5', maxWidth: '1056px' }}
+          >
+            <div className="w-full h-full p-[3%]">
+              <div
+                className="w-full h-full flex flex-col items-center justify-between py-[4%] px-[6%]"
+                style={{
+                  border: '3px double #1e3a5f',
+                  boxShadow: 'inset 0 0 0 1px #d4af37, inset 0 0 0 4px #fff, inset 0 0 0 5px #1e3a5f',
+                }}
+              >
+                {/* Logo — pinned to top */}
+                <div className="w-full flex justify-center pt-[1%]">
+                  <img
+                    src="/vytalpath-logo.png"
+                    alt="VytalPath Academy"
+                    className="h-32 object-contain"
+                  />
+                </div>
+
+                {/* Centered content — pb offsets the taller logo so text feels page-centered */}
+                <div className="text-center flex-1 flex flex-col items-center justify-center w-full pb-[4%]">
+                  <h2
+                    className="text-3xl font-bold tracking-wide mb-1"
+                    style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: '#1e3a5f' }}
+                  >
+                    CERTIFICATE OF COMPLETION
+                  </h2>
+                  <div className="w-48 mx-auto mb-4" style={{ borderTop: '2px solid #d4af37' }} />
+                  <p className="text-sm text-gray-500 mb-3 tracking-wide">This certifies that</p>
+                  <div className="flex items-center gap-4 mb-3 max-w-lg w-full justify-center">
+                    <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, #d4af37)' }} />
+                    <p
+                      className="text-2xl font-semibold min-w-0 px-2"
+                      style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: '#1e3a5f' }}
+                    >
+                      {studentName || 'Student Name'}
+                    </p>
+                    <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, #d4af37)' }} />
+                  </div>
+                  <p className="text-sm text-gray-600 mb-2">has successfully completed all requirements of the program</p>
+                  <h3
+                    className="text-xl font-bold tracking-wide mb-3"
+                    style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: '#1e3a5f' }}
+                  >
+                    Healthcare Foundations for Front Office Professionals
+                  </h3>
+                  <p className="text-xs text-gray-500 max-w-md leading-relaxed">
+                    Including 6 training sections, 13 competency assessments,
+                    hands-on EHR simulation, and job readiness preparation.
+                  </p>
+                </div>
+
+                {/* Bottom row */}
+                <div className="w-full flex items-end justify-between mt-4">
+                  <div className="text-left">
+                    <p className="text-sm font-medium" style={{ color: '#1e3a5f' }}>{formattedDate}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5">Certificate #{certNumber}</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="w-16 h-16 rounded-full flex items-center justify-center"
+                      style={{
+                        background: 'linear-gradient(135deg, #1e3a5f, #2d5a8e)',
+                        boxShadow: '0 0 0 3px #d4af37, 0 0 0 5px #1e3a5f, 0 2px 8px rgba(0,0,0,0.2)',
+                      }}
+                    >
+                      <span
+                        className="text-lg font-bold text-white"
+                        style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
+                      >
+                        VP
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <img
+                      src="/images/m-koepke-signature.png"
+                      alt="M Koepke"
+                      className="h-10 ml-auto mb-1 object-contain"
+                    />
+                    <div className="w-40 mb-1" style={{ borderTop: '1px solid #1e3a5f' }} />
+                    <p className="text-sm font-medium" style={{ color: '#1e3a5f' }}>VytalPath Academy</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
