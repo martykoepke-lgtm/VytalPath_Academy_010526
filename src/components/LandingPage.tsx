@@ -95,6 +95,12 @@ const platformScreenshots = [
     label: 'Competency Mapping',
     desc: 'Every knowledge statement links directly to the lesson that covers it — so you know exactly where to study.',
   },
+  {
+    src: '/images/landing/certificate.png',
+    alt: 'Certificate of Completion',
+    label: 'Certificate of Completion',
+    desc: 'Earn a professional certificate when you complete all lessons and pass every competency assessment.',
+  },
 ];
 
 type AuthModal = 'signIn' | 'signUp' | 'forgotPassword' | null;
@@ -332,7 +338,7 @@ export function LandingPage() {
             </div>
 
             {/* Thumbnails */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-5 gap-3">
               {platformScreenshots.map((shot, i) => (
                 <button
                   key={shot.label}
