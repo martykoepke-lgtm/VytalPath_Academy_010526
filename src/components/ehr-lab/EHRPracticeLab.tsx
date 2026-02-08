@@ -8,6 +8,7 @@ import {
   RotateCcw,
   AlertTriangle,
   ArrowLeft,
+  HelpCircle,
 } from 'lucide-react';
 import { EHRSessionProvider, useEHRSession } from './EHRSessionContext';
 import { ProviderScheduleView } from './ProviderScheduleView';
@@ -22,6 +23,8 @@ import { CheckOutFlow } from './CheckOutFlow';
 import { PatientSearchModal } from './PatientSearchModal';
 import { EncounterSelectModal } from './EncounterSelectModal';
 import { EncounterTypeModal } from './EncounterTypeModal';
+import { EHRQuickReference } from './EHRQuickReference';
+import type { QuickRefTab } from './EHRQuickReference';
 import type { EncounterType } from '../../types/ehr';
 
 // ========================================
@@ -84,6 +87,14 @@ function EHRLabContent() {
 
   const [view, setView] = useState<EHRView>({ type: 'schedule' });
   const [viewHistory, setViewHistory] = useState<EHRView[]>([]);
+
+  const [quickRefOpen, setQuickRefOpen] = useState(false);
+  const [quickRefTab, setQuickRefTab] = useState<QuickRefTab>('patients');
+
+  const openQuickRef = (tab: QuickRefTab = 'patients') => {
+    setQuickRefTab(tab);
+    setQuickRefOpen(true);
+  };
 
   // Chart flow modals
   const [chartSearchOpen, setChartSearchOpen] = useState(false);
@@ -237,6 +248,13 @@ function EHRLabContent() {
               {sessionTimeRemaining}
             </span>
             <button
+              onClick={() => openQuickRef()}
+              className="p-1.5 rounded-lg text-gray-500 hover:text-teal-600 hover:bg-teal-50 transition-all"
+              title="Quick Reference"
+            >
+              <HelpCircle className="w-3.5 h-3.5" />
+            </button>
+            <button
               onClick={resetSession}
               className="p-1.5 rounded-lg text-gray-500 hover:text-red-500 hover:bg-red-50 transition-all"
               title="Reset session"
@@ -246,6 +264,23 @@ function EHRLabContent() {
           </div>
         </div>
       </nav>
+
+      {/* Quick-start strip */}
+      <div className="bg-gray-100 border-b border-gray-200 px-6 py-1.5">
+        <div className="max-w-7xl mx-auto flex items-center gap-3 text-xs text-gray-500">
+          <button onClick={() => openQuickRef('patients')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+            View test patients
+          </button>
+          <span className="text-gray-300">|</span>
+          <button onClick={() => openQuickRef('schedule')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+            Today's schedule
+          </button>
+          <span className="text-gray-300">|</span>
+          <button onClick={() => openQuickRef('workflows')} className="hover:text-teal-600 transition-colors underline underline-offset-2 decoration-gray-300 hover:decoration-teal-500">
+            Workflow guides
+          </button>
+        </div>
+      </div>
 
       {/* Content area */}
       <main className="flex-1 py-4 px-6">
@@ -362,6 +397,11 @@ function EHRLabContent() {
           )}
         </div>
       </main>
+
+      {/* Quick Reference modal */}
+      {quickRefOpen && (
+        <EHRQuickReference onClose={() => setQuickRefOpen(false)} defaultTab={quickRefTab} />
+      )}
 
       {/* Chart flow modals */}
       {chartSearchOpen && (

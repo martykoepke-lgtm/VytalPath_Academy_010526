@@ -26,8 +26,8 @@ const ehrModules = [
     },
     lessons: [
       { id: 'ehr-l1', slug: 'encounters-and-identifiers', title: 'Encounter Types & Patient Identifiers', description: 'Learn the different encounter types in an EHR and the critical difference between MRN and FIN.', content_type: 'reading' as ContentType, duration_minutes: 8 },
-      { id: 'ehr-l2', slug: 'pm-vs-ehr', title: 'Practice Management vs EHR', description: 'Understand what PM and EHR systems do, which screens you work in, and how they connect.', content_type: 'reading' as ContentType, duration_minutes: 7 },
-      { id: 'ehr-l3', slug: 'ehr-navigation', title: 'Navigating the EHR', description: 'Tour the key EHR sections: patient banner, demographics, encounters, orders, results, and security.', content_type: 'reading' as ContentType, duration_minutes: 8 },
+      { id: 'ehr-l2', slug: 'pm-vs-ehr', title: 'The Two Systems in Every Clinic', description: 'Understand what PM and EHR systems do, which screens you work in, and how they connect.', content_type: 'video' as ContentType, video_url: `${VIDEO_BASE_URL}/The%20Two%20Systems%20in%20Every%20Clinic_1080p_caption.mp4`, duration_minutes: 6 },
+      { id: 'ehr-l3', slug: 'ehr-navigation', title: 'Inside the Chart — Your EHR Orientation', description: 'Tour the key EHR sections: patient banner, demographics, encounters, orders, results, and security.', content_type: 'reading' as ContentType, duration_minutes: 8 },
     ],
   },
   {
@@ -44,7 +44,7 @@ const ehrModules = [
       max_attempts: 3,
     },
     lessons: [
-      { id: 'ehr-l4', slug: 'clinic-encounter-types', title: 'Clinic Encounter Types', description: 'Deep dive into NP, EST, MAWV, TCM, Preventive, Procedure, and Consult encounters.', content_type: 'reading' as ContentType, duration_minutes: 10 },
+      { id: 'ehr-l4', slug: 'clinic-encounter-types', title: 'Encounters & Encounter Selection', description: 'Understand encounters, MRN vs FIN, clinic encounter types (NP, EST, AWV, TCM), and why appointment type selection matters.', content_type: 'video' as ContentType, video_url: `${VIDEO_BASE_URL}/Encounters%20%26%20Encounter%20Selection%20-%20VytalPath%20Academy_1080p_caption.mp4`, duration_minutes: 5 },
       { id: 'ehr-l5', slug: 'encounter-lifecycle', title: 'The Encounter Lifecycle', description: 'Follow an encounter from scheduling through check-in, clinical workflow, charge capture, and billing.', content_type: 'reading' as ContentType, duration_minutes: 8 },
       { id: 'ehr-l6', slug: 'scheduling-types-templates', title: 'Scheduling Types & Templates', description: 'Learn time-specified, wave, modified wave, block, and open scheduling methods.', content_type: 'reading' as ContentType, duration_minutes: 7 },
     ],
@@ -72,7 +72,7 @@ const ehrModules = [
 
 export function EHRSection() {
   const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
-  const [showSectionIntro, setShowSectionIntro] = useState(true);
+  const [showSectionIntro, setShowSectionIntro] = useState(false);
   const progress = useProgress();
 
   const toggleModule = (moduleId: string) => {
@@ -130,7 +130,6 @@ export function EHRSection() {
             <div className="aspect-video bg-black">
               <video
                 controls
-                autoPlay
                 className="w-full h-full"
                 controlsList="nodownload"
               >
@@ -247,6 +246,8 @@ export function EHRSection() {
                         >
                           {isLessonDone(lesson.slug) ? (
                             <CheckCircle className="w-4 h-4 text-green-600" />
+                          ) : lesson.content_type === 'video' ? (
+                            <Play className="w-4 h-4 text-white" />
                           ) : (
                             <FileText className="w-4 h-4 text-white" />
                           )}

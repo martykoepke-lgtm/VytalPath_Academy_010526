@@ -4460,6 +4460,1412 @@ Duplicate records aren't just an administrative inconvenience — they're a **pa
     module: { id: 'ins-m1', course_id: 'insurance', slug: 'insurance-fundamentals', title: 'Insurance Fundamentals', description: 'Health insurance basics.', sort_order: 1, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
     courseTitle: 'Insurance & Billing', prevLesson: 'key-insurance-terms', nextLesson: null, nextIsQuiz: true,
   },
+  // ─── Insurance Module 3: Government Plans & Coverage Rules ───
+  'government-plans-deep-dive': {
+    lesson: {
+      id: 'ins-l10', module_id: 'ins-m3', slug: 'government-plans-deep-dive',
+      title: 'Government Plans: Medicare, Medicaid & TRICARE',
+      description: 'Understand the major government insurance programs — who they cover, how they work, and what the front desk needs to know.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Government Plans: Medicare, Medicaid & TRICARE
+
+## Why This Matters
+
+About **half** of all Americans get their health insurance through a government program. If you work at the front desk, you will check in Medicare patients, verify Medicaid eligibility, and occasionally handle TRICARE or VA coverage — often all in the same day.
+
+Each program has its own rules for eligibility, enrollment periods, and coverage. Mixing them up can lead to denied claims, unexpected patient bills, and frustrated phone calls. This lesson gives you the practical knowledge you need to handle government-insured patients confidently.
+
+---
+
+## Medicare: The Basics
+
+**Medicare** is the federal health insurance program for:
+- People **age 65 and older**
+- People under 65 with **certain disabilities** (after a 24-month waiting period)
+- People with **End-Stage Renal Disease (ESRD)** — permanent kidney failure requiring dialysis or a transplant
+- People with **ALS (Lou Gehrig's disease)** — no waiting period
+
+Medicare is administered by the **Centers for Medicare & Medicaid Services (CMS)**, a federal agency. Unlike Medicaid, Medicare eligibility is **not** based on income — it's based on age, disability status, or specific medical conditions.
+
+> **Front desk tip:** When a patient says "I have Medicare," your next question should be: "Do you have original Medicare or a Medicare Advantage plan?" This determines how you verify benefits and where you send the claim.
+
+---
+
+## The Four Parts of Medicare
+
+Medicare is divided into four distinct parts. Think of them as four separate types of coverage that work together:
+
+| Part | What It Covers | Who Pays | Key Details |
+|------|---------------|----------|-------------|
+| **Part A** | Hospital/inpatient stays, skilled nursing facilities, hospice, some home health | Most people pay no premium (earned through work history) | Has a deductible per benefit period (~$1,632 in 2024) |
+| **Part B** | Doctor visits, outpatient care, preventive services, medical equipment | Monthly premium (~$174.70/month in 2024) | 80/20 split — Medicare pays 80%, patient pays 20% after deductible |
+| **Part C** | Medicare Advantage — private plans that bundle Parts A + B (often includes drug coverage) | Varies by plan; may have $0 additional premium | Managed by private insurance companies like UnitedHealthcare or Humana |
+| **Part D** | Prescription drug coverage | Monthly premium varies by plan | Standalone drug plans for Original Medicare; often built into Part C |
+
+**Original Medicare** = Part A + Part B (with optional Part D for drugs)
+
+**Medicare Advantage** = Part C — a private plan that replaces Original Medicare
+
+> **Front desk tip:** Medicare Advantage plans often have different networks, referral requirements, and prior authorization rules than Original Medicare. Always verify which type the patient has.
+
+---
+
+## Medigap (Medicare Supplement Insurance)
+
+Some patients with Original Medicare also carry a **Medigap** policy. This is a supplemental plan sold by private insurance companies that helps cover the costs Original Medicare doesn't pay — like the 20% coinsurance under Part B, deductibles, and copays.
+
+**Key facts about Medigap:**
+- Standardized plans labeled **A through N** — the letter tells you what's covered
+- Only works with Original Medicare (Parts A & B), **not** with Medicare Advantage
+- The patient will have **two cards**: a red-white-and-blue Medicare card and a separate Medigap card
+- You bill Medicare first; the Medigap plan picks up the remaining balance
+
+> **Front desk tip:** When a patient hands you a Medicare card AND a supplemental card, enter both into the system. Medicare is primary, the Medigap plan is secondary. This ensures the patient isn't billed for the portion their supplement covers.
+
+---
+
+## Medicare Enrollment Periods
+
+Medicare has strict enrollment windows. Patients sometimes call the front desk asking about enrollment — while it's not your job to enroll them, knowing the basics helps you guide them:
+
+| Period | When | What Patients Can Do |
+|--------|------|---------------------|
+| **Initial Enrollment Period (IEP)** | 7-month window around the patient's 65th birthday (3 months before, birth month, 3 months after) | Sign up for Parts A and B for the first time |
+| **Annual Enrollment Period (AEP)** | October 15 – December 7 every year | Switch between Original Medicare and Medicare Advantage, change Part D plans |
+| **Special Enrollment Period (SEP)** | Triggered by qualifying life events (moving, losing other coverage, etc.) | Make changes outside the normal enrollment windows |
+
+> **Why this matters at the front desk:** If a patient says their Medicare "hasn't started yet," check whether they're still in their Initial Enrollment Period. They may need to call 1-800-MEDICARE to complete enrollment.
+
+---
+
+## Medicaid: Coverage for Low-Income Americans
+
+**Medicaid** is a joint **federal-state** program that provides health coverage to people with limited income and resources. Unlike Medicare (which is purely federal), each state runs its own Medicaid program with its own name, rules, and eligibility criteria.
+
+**Who qualifies for Medicaid:**
+- Low-income adults (in states that expanded Medicaid under the ACA)
+- Children in low-income families
+- Pregnant women
+- People with disabilities
+- Elderly adults who need long-term care
+
+**Key differences from Medicare:**
+
+| | Medicare | Medicaid |
+|---|---------|---------|
+| **Based on** | Age or disability | Income and resources |
+| **Funded by** | Federal government | Federal + state governments |
+| **Administered by** | CMS (federal) | Each state individually |
+| **Cost to patient** | Premiums, deductibles, coinsurance | Little to no cost (varies by state) |
+| **Network** | Most providers accept it | Fewer providers accept it |
+
+**CHIP (Children's Health Insurance Program):** Provides coverage for children in families who earn too much to qualify for Medicaid but can't afford private insurance. Like Medicaid, CHIP is run at the state level.
+
+---
+
+## Dual-Eligible Patients
+
+Some patients qualify for **both** Medicare and Medicaid simultaneously. These are called **dual-eligible** or "dual" patients. This is more common than you might think — about 12 million Americans have both.
+
+**How billing works for duals:**
+1. Medicare is always billed **first** (it's the primary payer)
+2. Medicaid picks up remaining costs — deductibles, coinsurance, copays
+3. The patient should owe **little to nothing** out of pocket
+
+> **Front desk tip:** If you see both a Medicare and Medicaid card, enter both into the system. Never collect a copay from a dual-eligible patient without checking — Medicaid typically covers the patient's share.
+
+---
+
+## TRICARE: Military Healthcare
+
+**TRICARE** is the healthcare program for uniformed service members, retirees, and their families. It's managed by the **Defense Health Agency (DHA)**.
+
+**Main TRICARE plan types:**
+
+| Plan | Who It's For | How It Works |
+|------|-------------|--------------|
+| **TRICARE Prime** | Active duty and their families | HMO-style; assigned a primary care manager, low or no cost |
+| **TRICARE Select** | Active duty families, retirees | PPO-style; more provider choice, higher cost-sharing |
+| **TRICARE For Life** | Military retirees with Medicare Part A & B | Wraps around Medicare — Medicare pays first, TRICARE covers the rest |
+| **TRICARE Reserve Select** | Reserve and National Guard members | Premium-based plan similar to Select |
+
+**VA Healthcare** is a separate system — the VA runs its own hospitals and clinics for veterans. Some veterans have both VA and TRICARE benefits, or VA plus Medicare.
+
+> **Front desk tip:** TRICARE patients should have a military ID or a TRICARE benefits card. Always verify the specific plan type, because each has different referral and authorization requirements.
+
+---
+
+## Front Desk Verification Tips for Government Plans
+
+When checking in a patient with government insurance:
+
+**1. Verify every visit** — Government plan eligibility can change monthly. A patient who had Medicaid coverage last month may not have it today.
+
+**2. Check the correct plan type** — "I have Medicare" isn't enough. Is it Original Medicare, Medicare Advantage, or a specific plan? Each bills differently.
+
+**3. Watch for dual coverage** — Ask if they have any additional insurance. Many Medicare patients also have Medigap, Medicaid, or a retiree plan.
+
+**4. Know your practice's participation status** — Not all providers accept Medicaid or TRICARE. If your practice doesn't participate in a specific government plan, the patient needs to know before the visit — not after.
+
+**5. Don't guess on copays** — Medicare Advantage plans have different copay structures than Original Medicare. Always verify benefits before collecting.
+
+> **Common pitfall:** A patient presents a Medicare Advantage card from Humana, but your office is out of network with that specific Humana plan. The claim will be denied. Always verify the specific plan, not just the insurance company name.`,
+      duration_minutes: 8, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m3', course_id: 'insurance', slug: 'coverage-rules', title: 'Government Plans & Coverage Rules', description: 'Government insurance programs and coverage rules.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'network-status-special-coverage', nextIsQuiz: false,
+  },
+  'network-status-special-coverage': {
+    lesson: {
+      id: 'ins-l11', module_id: 'ins-m3', slug: 'network-status-special-coverage',
+      title: 'In-Network, Out-of-Network & Special Coverage',
+      description: 'Learn how provider networks affect patient costs, plus workers\' comp, liability claims, and minors\' rights.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# In-Network, Out-of-Network & Special Coverage
+
+## Why This Matters
+
+One of the most common questions you'll hear at the front desk is: **"Do you take my insurance?"** What the patient is really asking is whether your provider is **in-network** with their plan. The answer directly affects how much they'll pay — and whether their visit will be covered at all.
+
+Beyond standard health insurance, you'll also encounter patients covered by **workers' compensation**, **motor vehicle accident claims**, and situations involving **minors' rights**. Each of these follows different rules than regular health insurance, and knowing the basics keeps things running smoothly.
+
+---
+
+## How Provider Networks Work
+
+Insurance companies build **networks** — groups of doctors, hospitals, labs, and other providers who have agreed to accept negotiated rates for their services.
+
+Think of it like a membership club. The insurance company says to the provider: *"If you agree to charge our patients $150 for a visit instead of your regular $250 rate, we'll send you thousands of patients."* The provider agrees, and they become **in-network**.
+
+**In-network** means:
+- The provider has a contract with the insurance company
+- The patient pays lower out-of-pocket costs (lower copays, lower coinsurance)
+- The provider accepts the insurance company's negotiated rate as payment in full
+
+**Out-of-network** means:
+- The provider does **not** have a contract with that insurance company
+- The patient pays significantly higher out-of-pocket costs — or the visit may not be covered at all
+- The provider can charge their full rate (no negotiated discount)
+
+---
+
+## Plan Type Determines Network Rules
+
+Different plan types handle out-of-network care differently:
+
+| Plan Type | In-Network | Out-of-Network |
+|-----------|-----------|----------------|
+| **HMO** (Health Maintenance Organization) | Must use in-network providers | No coverage for out-of-network care (except emergencies) |
+| **PPO** (Preferred Provider Organization) | Lower cost with in-network providers | Partial coverage for out-of-network — patient pays more |
+| **EPO** (Exclusive Provider Organization) | Must use in-network providers | No out-of-network coverage (like an HMO, but no referrals needed) |
+| **POS** (Point of Service) | Lower cost in-network, needs PCP referral | Some out-of-network coverage with higher cost |
+
+> **Front desk tip:** If a patient has an HMO or EPO, and your provider is out-of-network, the patient may have **zero coverage** for the visit. It's better to tell them before they're seen than to surprise them with a full bill afterward.
+
+---
+
+## Balance Billing: What It Is and When It Applies
+
+**Balance billing** happens when an out-of-network provider bills the patient for the difference between their full charge and what the insurance company paid.
+
+**Example:** A provider charges $300 for a visit. The insurance company considers $180 a "reasonable" amount and pays 70% of that ($126). The provider then bills the patient for the remaining $174 ($300 minus $126).
+
+**Important legal protections:**
+- The **No Surprises Act** (effective January 2022) protects patients from surprise balance billing for **emergency services** and certain situations at in-network facilities where the patient unknowingly receives care from an out-of-network provider
+- Many states have additional balance billing protections
+- **Medicare and Medicaid providers cannot balance bill** — they must accept the program's approved amount as payment in full
+- In-network providers **cannot balance bill** for covered services — they agreed to accept the negotiated rate
+
+> **Front desk tip:** If a patient asks about balance billing, you can explain: "Our office is [in-network/out-of-network] with your plan. Being in-network means we've agreed to the insurance company's rates, so you won't be billed beyond your normal copay and coinsurance."
+
+---
+
+## Workers' Compensation
+
+**Workers' compensation** (workers' comp) is a completely separate system from health insurance. It covers employees who are injured or become ill **because of their job**.
+
+**Key facts about workers' comp:**
+
+- **The employer pays** for workers' comp insurance — not the employee
+- Workers' comp is **required by law** in almost every state
+- It covers medical treatment, lost wages, and rehabilitation for work-related injuries or illness
+- It operates **independently** from the patient's health insurance — you do **not** bill the patient's regular insurance for a workers' comp claim
+- There is **no copay, deductible, or coinsurance** for the patient
+
+**Front desk workflow for workers' comp:**
+1. Ask for the **employer's name** and **workers' comp carrier** (insurance company)
+2. Get the **claim number** (the employer or their HR department should provide this)
+3. Verify the claim is **accepted and active** with the workers' comp carrier
+4. Bill the workers' comp carrier directly — **not** the patient's health insurance
+5. **Do not collect payment** from the patient for a workers' comp visit
+
+> **Common scenario:** A patient comes in saying they hurt their back at work. They hand you their Blue Cross card. Stop — if this is a work injury, it goes through workers' comp, not their regular insurance. Ask: "Did this happen at work? Has your employer filed a workers' comp claim?"
+
+---
+
+## Motor Vehicle Accident (MVA) & Liability Claims
+
+When a patient's injury is caused by a **car accident** or another person's actions, a **liability claim** or **auto insurance** may be responsible for paying the medical bills — not the patient's health insurance.
+
+**How MVA claims typically work:**
+- The **at-fault driver's auto insurance** (liability coverage) pays the injured person's medical bills
+- If the patient has **PIP (Personal Injury Protection)** or **MedPay** on their own auto policy, that may pay first regardless of fault
+- The patient may also have an attorney handling the case
+
+**Front desk tips for MVA patients:**
+- Ask: "Was this injury from a car accident?" — this changes the billing
+- Collect the **auto insurance information**, claim number, and any attorney contact info
+- Your billing department will determine which insurance to bill
+- Some offices require MVA patients to sign a **lien** (an agreement that the practice will be paid from the legal settlement)
+
+---
+
+## Minors' Rights and Consent
+
+Most of the time, a **parent or legal guardian** provides consent for a minor's (under 18) medical care and is responsible for insurance and payment. But there are important exceptions:
+
+**Situations where a minor can consent to their own care (varies by state):**
+
+| Situation | What It Means |
+|-----------|--------------|
+| **Emancipated minor** | A court has granted the minor adult legal status (married, in the military, or court-declared) — they can consent to all their own care |
+| **Mature minor** | Some states allow providers to treat minors who demonstrate sufficient maturity to understand the treatment, particularly for low-risk care |
+| **Specific services** | Most states allow minors to consent to treatment for: sexual health & contraception, STI testing/treatment, substance abuse treatment, mental health services |
+
+> **Front desk tip:** If an unaccompanied teenager comes in requesting certain sensitive services, check your state laws and office policy before turning them away. Many states specifically protect minors' right to access these services without parental consent.
+
+---
+
+## Self-Pay and Uninsured Patients
+
+Not every patient has insurance. When someone doesn't have coverage, they're considered **self-pay**. Here's what you need to know:
+
+**Your responsibilities at the front desk:**
+- Treat self-pay patients with the **same respect** as insured patients
+- Inform them of the practice's **self-pay rates** (many offices offer a discount for uninsured patients)
+- Let them know about **payment plan options** if available
+- Ask if they've applied for **Medicaid** or a **marketplace plan** — they may qualify and not know it
+- Provide information about **financial assistance programs** or sliding fee scales if your practice offers them
+
+**Price transparency requirements:**
+- Hospitals are required to post their standard charges online
+- The **No Surprises Act** requires providers to give uninsured patients a **Good Faith Estimate** of costs before scheduled services
+
+> **Key rule:** Never refuse to provide **emergency care** based on a patient's ability to pay. **EMTALA** (the Emergency Medical Treatment and Labor Act) requires hospitals with emergency departments to stabilize any patient regardless of insurance status or ability to pay.`,
+      duration_minutes: 7, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m3', course_id: 'insurance', slug: 'coverage-rules', title: 'Government Plans & Coverage Rules', description: 'Government insurance programs and coverage rules.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'government-plans-deep-dive', nextLesson: 'coordination-of-benefits', nextIsQuiz: false,
+  },
+  'coordination-of-benefits': {
+    lesson: {
+      id: 'ins-l12', module_id: 'ins-m3', slug: 'coordination-of-benefits',
+      title: 'Coordination of Benefits & Insurance Rules',
+      description: 'Master the rules for patients with multiple insurance plans — the birthday rule, COB, and dependent eligibility.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Coordination of Benefits & Insurance Rules
+
+## Why This Matters
+
+Many patients have **more than one health insurance plan**. A retiree might have Medicare plus a former employer's retiree plan. A child might be covered under both parents' insurance. An employee might have their own plan plus coverage through a spouse.
+
+When a patient has two (or more) insurance plans, someone has to figure out **which plan pays first**. This process is called **Coordination of Benefits (COB)** — and getting it wrong means claims get denied, payments are delayed, and patients get bills they shouldn't.
+
+As front desk staff, you won't process the claims yourself, but you **will** be the person collecting the information. Asking the right questions during registration is critical.
+
+---
+
+## Primary vs. Secondary Insurance
+
+When a patient has two insurance plans:
+
+**Primary insurance** pays first. It processes the claim as if it were the only insurance the patient has.
+
+**Secondary insurance** pays second. It reviews what the primary plan paid and may cover some or all of the remaining balance — the deductible, coinsurance, or copay the patient would otherwise owe.
+
+**How the process works:**
+1. Your office submits the claim to the **primary** insurance
+2. The primary plan processes the claim and sends an **EOB** showing what they paid and what's left
+3. Your office then submits the remaining balance to the **secondary** insurance
+4. The secondary plan reviews the EOB from the primary and pays its share
+5. Any remaining balance after both plans have paid is the **patient's responsibility**
+
+> **Important:** Having two insurance plans does not mean the patient pays nothing. Secondary insurance covers the patient's share — but only up to what the plan allows. The patient may still have out-of-pocket costs.
+
+---
+
+## How to Determine Which Plan Is Primary
+
+The rules for determining primary vs. secondary follow a specific order. Here are the most common situations:
+
+### 1. Employee's Own Plan vs. Spouse's Plan
+
+If a patient has insurance through **their own employer** AND is also covered under **their spouse's employer plan**:
+- The patient's **own** employer plan is **primary**
+- The spouse's plan is **secondary**
+
+**Example:** Maria has Blue Cross through her job and is also covered under her husband's Aetna plan. Blue Cross (her own plan) is primary. Aetna (husband's plan) is secondary.
+
+### 2. Active Employee vs. Retiree Plan
+
+If someone has coverage as an **active employee** and also has a **retiree plan** from a previous employer:
+- The **active employee** plan is primary
+- The **retiree** plan is secondary
+
+### 3. Medicare and Employer Coverage
+
+This one depends on the employer's size:
+- If the employer has **20 or more employees**: the employer plan is **primary**, Medicare is secondary
+- If the employer has **fewer than 20 employees**: Medicare is **primary**, the employer plan is secondary
+
+> **Front desk tip:** Always ask Medicare patients: "Do you have any other insurance through an employer — yours or your spouse's?" This is essential for billing in the correct order.
+
+---
+
+## The Birthday Rule: Coverage for Dependent Children
+
+When a child is covered under **both parents' insurance plans**, a special rule determines which plan is primary. This is called the **birthday rule**.
+
+**The birthday rule says:**
+- The parent whose **birthday falls earlier in the calendar year** (by month and day) has the **primary** plan for the child
+- The parent whose birthday falls later in the year has the **secondary** plan
+- **Birth year does not matter** — only the month and day
+
+**Example:**
+- Mom's birthday: **March 15**
+- Dad's birthday: **September 22**
+- Mom's plan is **primary** for the child (March comes before September)
+
+**Important exceptions:**
+- If the parents are **divorced**, the birthday rule may not apply. A **court order** typically specifies which parent's plan is primary
+- If one parent has **custody** and no court order exists, the custodial parent's plan is usually primary
+- If the custodial parent **remarries**, the order is typically: custodial parent → stepparent → non-custodial parent → non-custodial stepparent
+
+> **Front desk tip:** When registering a child, always ask: "Is this child covered under any other parent's insurance?" If the answer is yes, ask for **both parents' dates of birth** so you can apply the birthday rule correctly. Don't guess — ask.
+
+---
+
+## Coordination of Benefits: The Process
+
+**Coordination of Benefits (COB)** is the formal process insurance companies use to prevent duplicate payments when a patient has multiple plans.
+
+**The three COB methods:**
+
+| Method | How It Works | Result |
+|--------|-------------|--------|
+| **Traditional/Standard** | Secondary pays up to what it would have paid if it were the primary plan, minus what the primary already paid | Patient may have a small remaining balance |
+| **Non-duplication** | Secondary pays only if the primary paid less than the secondary would have paid as primary | Patient may owe more |
+| **Maintenance of Benefits** | Secondary calculates its own payment as if it were primary, then subtracts whatever the primary already paid | Most common method |
+
+**Key COB rules to remember:**
+- The total combined payment from both plans will **never exceed** the total allowed charge for the service
+- Insurance companies share COB information — if a claim is denied because COB information is missing, the billing team needs to update the payer order
+- Patients are **required** to disclose all insurance coverage — it's typically a condition of their policy
+
+---
+
+## Dependent Eligibility Rules
+
+Understanding who qualifies as a dependent on a health insurance plan is important for verifying coverage:
+
+**ACA (Affordable Care Act) dependent rules:**
+- Children can stay on a parent's health plan until **age 26** — regardless of marital status, student status, financial dependency, or whether they're offered insurance through their own employer
+- This applies to all individual and employer plans
+
+**Common dependent categories:**
+- Spouse (including same-sex spouse)
+- Children (biological, adopted, stepchildren, foster children)
+- Children under legal guardianship
+
+**When dependent coverage typically ends:**
+- **Age 26** for children on a parent's plan (coverage ends at the end of the month or plan year in which they turn 26, depending on the plan)
+- **Divorce** ends spousal coverage (COBRA may be available)
+- **Death** of the employee — dependents may qualify for COBRA continuation
+
+> **Front desk tip:** If a patient is between ages 23–26 and covered under a parent's plan, that's perfectly normal under the ACA. Don't question it — just verify the coverage is active.
+
+---
+
+## COBRA: Continuation Coverage
+
+**COBRA** (Consolidated Omnibus Budget Reconciliation Act) allows employees and their dependents to **continue their employer-sponsored health coverage** after a qualifying event — like job loss, reduced hours, divorce, or aging out of a parent's plan.
+
+**Key COBRA facts:**
+- Available for employers with **20 or more employees**
+- The person pays the **full premium** (employee share + employer share) plus a 2% administrative fee
+- Coverage lasts **18 months** for most qualifying events (36 months for divorce, death, or aging out)
+- The coverage is the **exact same plan** — same network, same benefits
+
+> **Front desk tip:** COBRA patients often have the same insurance card they had before. The difference is that COBRA coverage can lapse if the person misses a premium payment. Always verify eligibility — don't assume it's still active just because the card looks familiar.
+
+---
+
+## Asking the Right Questions at Registration
+
+Getting COB information right starts at registration. Here are the questions you should ask every patient:
+
+**For every patient:**
+1. "Do you have more than one insurance plan?"
+2. "Has your insurance changed since your last visit?"
+3. "Are you covered under a spouse's or parent's plan?"
+4. "Do you have Medicare? If so, do you also have employer coverage?"
+
+**For children:**
+1. "Is this child covered under both parents' insurance?"
+2. "What are both parents' dates of birth?" (for the birthday rule)
+3. "Are the parents divorced? Is there a court order specifying insurance?"
+
+**For injury-related visits:**
+1. "Was this injury related to your job?" (workers' comp)
+2. "Was this from a car accident or another person's actions?" (liability/MVA)
+
+> **Remember:** You're not expected to memorize every COB rule. But you ARE expected to **collect the information**. If you ask the right questions during registration, the billing team can apply the rules correctly. If you don't ask, claims get denied — and it takes far more work to fix the problem later than to ask one extra question up front.`,
+      duration_minutes: 7, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m3', course_id: 'insurance', slug: 'coverage-rules', title: 'Government Plans & Coverage Rules', description: 'Government insurance programs and coverage rules.', sort_order: 3, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'network-status-special-coverage', nextLesson: null, nextIsQuiz: true,
+  },
+  // ─── Insurance Module 4: Financial Documents You'll See ───
+  'explanation-of-benefits': {
+    lesson: {
+      id: 'ins-l13', module_id: 'ins-m4', slug: 'explanation-of-benefits',
+      title: 'Understanding an EOB',
+      description: 'Learn what an Explanation of Benefits is, how to read one, and how to help patients who call with questions.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Understanding an EOB (Explanation of Benefits)
+
+## Why This Matters
+
+One of the most common phone calls you'll get at the front desk goes something like this: *"I just got something from my insurance company and it says I owe $400. What IS this?"*
+
+What they received is almost certainly an **Explanation of Benefits (EOB)** — and the good news is, **it's not a bill**. But most patients don't know that, and they're often confused or upset when they call. Understanding how to read an EOB helps you calm the patient down, explain what they're looking at, and route them to the right person if they have questions about specific charges.
+
+---
+
+## What Is an EOB?
+
+An **Explanation of Benefits (EOB)** is a statement sent by the insurance company to the patient **after a claim has been processed**. It explains:
+- What services were provided
+- How much the provider charged
+- How much the insurance plan covered
+- How much the patient may owe
+
+**Critical distinction:** An EOB is **not a bill**. It's an explanation of how the insurance company processed the claim. The patient's actual bill comes from your office (the provider), not from the insurance company.
+
+> **When patients call about an EOB:** Try this response: "What you received is an Explanation of Benefits from your insurance company — it's a summary of how they processed your visit. It's not a bill from us. If you have an outstanding balance, you'll receive a separate statement from our office."
+
+---
+
+## Key Sections of an EOB
+
+While the exact format varies by insurance company, every EOB contains the same core information. Here's what each section means:
+
+| Section | What It Shows | Why It Matters |
+|---------|--------------|----------------|
+| **Patient Information** | Patient name, member ID, group number | Confirms the claim is for the right person and plan |
+| **Provider Information** | Name and address of the provider or facility | Shows who provided the service |
+| **Claim Number** | Unique identifier for this specific claim | Reference this number if you need to call the insurance company about the claim |
+| **Date of Service** | When the service was provided | Matches to a specific visit or procedure |
+| **Service Description** | What was done (office visit, lab work, X-ray, etc.) | Often shown as a procedure code (CPT) with a plain-language description |
+| **Billed Amount** | What the provider charged for the service | This is the provider's full "sticker price" — not what anyone actually pays |
+| **Allowed Amount** | The maximum the insurance company considers reasonable for that service | This is the negotiated rate — the real price |
+| **Plan Paid** | How much the insurance company paid | Based on the patient's benefits after deductible, copay, and coinsurance |
+| **Patient Responsibility** | What the patient may owe | Broken down into deductible, copay, and/or coinsurance portions |
+| **Remark/Reason Codes** | Codes explaining how the claim was processed or why something was adjusted | These tell the story — "applied to deductible," "service not covered," etc. |
+
+---
+
+## Reading an EOB: A Walkthrough
+
+Let's walk through a real-world example:
+
+**Scenario:** Sarah visited her primary care doctor for an annual checkup. The doctor also ordered blood work.
+
+| | Office Visit | Blood Work |
+|---|---|---|
+| **Billed Amount** | $250.00 | $180.00 |
+| **Allowed Amount** | $175.00 | $120.00 |
+| **Plan Paid** | $175.00 | $96.00 |
+| **Deductible** | $0.00 | $0.00 |
+| **Copay** | $0.00 | $0.00 |
+| **Coinsurance (20%)** | $0.00 | $24.00 |
+| **Patient Responsibility** | $0.00 | $24.00 |
+| **Remark** | Preventive service — covered at 100% | Subject to coinsurance after deductible met |
+
+**What happened here:**
+- The annual checkup was covered at **100%** because the ACA requires preventive services to be covered with no cost-sharing
+- The blood work was partially covered — Sarah's plan pays 80%, so she owes 20% coinsurance on the allowed amount
+- The provider wrote off $75 on the office visit and $60 on the blood work (the difference between billed and allowed amounts) — this is the **contractual adjustment** that in-network providers agree to
+
+---
+
+## Common EOB Remark Codes
+
+When patients call with questions, the remark codes on their EOB often explain the situation:
+
+| Code/Message | What It Means | What to Tell the Patient |
+|------|---------------|--------------------------|
+| **"Applied to deductible"** | The patient hasn't met their annual deductible yet, so they owe this amount | "Your insurance applied this charge to your deductible — once you've met your deductible, your plan will start paying its share." |
+| **"Service not covered"** | The service isn't included in the patient's plan benefits | "Your plan doesn't cover this particular service. You may want to call your insurance company to understand your benefits." |
+| **"Out-of-network provider"** | The provider isn't in the patient's network | "This charge was processed at out-of-network rates, which means your share is higher." |
+| **"Prior authorization required"** | The service needed advance approval that wasn't obtained | "This service required prior approval from your insurance, which wasn't obtained before the visit." |
+| **"Timely filing limit exceeded"** | The claim was submitted too late | This is a provider/billing issue — the patient should not be billed for this. Escalate to your billing department. |
+
+> **Front desk tip:** You don't need to memorize every remark code. When a patient calls confused about their EOB, focus on the **patient responsibility** amount and the **remark/reason** column. Those two pieces tell you whether the patient owes money and why.
+
+---
+
+## Why Patients Call About EOBs
+
+Understanding **why** patients call helps you handle these conversations better:
+
+**1. "Is this a bill?"** — Most common question. Reassure them it's not a bill.
+
+**2. "Why did I owe anything? I have insurance."** — Explain that insurance doesn't cover 100% of every service. They may have a deductible, copay, or coinsurance.
+
+**3. "The amount seems wrong."** — Take down the claim number and date of service. Let them know you'll have the billing department review it.
+
+**4. "Why didn't my insurance cover this?"** — Look at the remark code. Common reasons: applied to deductible, service not covered, out-of-network, or prior auth required.
+
+**5. "I already paid my copay at the visit — why do I owe more?"** — The copay is separate from coinsurance or deductible amounts. The EOB shows the full picture after the insurance processed the claim.
+
+> **Key skill:** When patients call upset about an EOB, your job is to **listen, explain calmly, and route appropriately**. You can explain what the EOB sections mean, but specific questions about charges, adjustments, or disputes should go to your billing department.`,
+      duration_minutes: 7, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m4', course_id: 'insurance', slug: 'financial-documents', title: "Financial Documents You'll See", description: 'Key financial documents in healthcare.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'era-and-claim-processing', nextIsQuiz: false,
+  },
+  'era-and-claim-processing': {
+    lesson: {
+      id: 'ins-l14', module_id: 'ins-m4', slug: 'era-and-claim-processing',
+      title: 'ERA, Claim Scrubbing & Clearinghouses',
+      description: 'Understand how claims flow from your office to the insurance company and back — ERAs, clearinghouses, and denials.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# ERA, Claim Scrubbing & Clearinghouses
+
+## Why This Matters
+
+Every time a patient is seen in your office, a **claim** is generated and sent to the insurance company for payment. But the claim doesn't go directly from your computer to the insurance company — it passes through a series of checkpoints designed to catch errors before they cause denials and delayed payments.
+
+As front desk staff, you won't submit claims or process payments. But understanding the **claim flow** helps you answer patient questions, understand why claims are denied, and know why accurate information at check-in matters so much. Every piece of data you enter at the front desk — the patient's name, date of birth, insurance ID, subscriber information — flows directly into the claim. If it's wrong, the claim gets rejected.
+
+---
+
+## The Claim Submission Flow
+
+Here's how a claim moves from your office to the insurance company and back:
+
+**Step 1: Charge Capture**
+After the patient is seen, the provider documents what they did (procedures) and why they did it (diagnoses). These are translated into standardized codes — **CPT codes** for procedures and **ICD-10 codes** for diagnoses.
+
+**Step 2: Claim Creation**
+Your practice management (PM) system assembles the claim using all the information from the encounter: patient demographics, insurance information, provider details, procedure codes, diagnosis codes, and the date of service.
+
+**Step 3: Claim Scrubbing**
+Before the claim goes anywhere, it passes through **claim scrubbing** software. This is an automated review that checks for common errors.
+
+**Step 4: Clearinghouse**
+The scrubbed claim is sent to a **clearinghouse** — a third-party intermediary that formats the claim and routes it to the correct insurance company.
+
+**Step 5: Payer Adjudication**
+The insurance company (payer) receives the claim and **adjudicates** it — meaning they review it against the patient's benefits and decide how much to pay.
+
+**Step 6: Payment & ERA**
+The insurance company sends payment to the provider along with an **ERA** (Electronic Remittance Advice) that explains how the claim was processed.
+
+---
+
+## What Is Claim Scrubbing?
+
+**Claim scrubbing** is an automated process that checks claims for errors before they're submitted to the insurance company. Think of it as a spell-checker for medical claims.
+
+**What claim scrubbers catch:**
+
+| Error Type | Example | What Happens |
+|-----------|---------|--------------|
+| **Missing information** | No subscriber ID, missing date of birth | Claim is held — can't be submitted without required fields |
+| **Invalid codes** | Expired CPT code, invalid ICD-10 code | Claim is flagged — codes must be current and valid |
+| **Mismatched codes** | Diagnosis doesn't support the procedure | Claim is flagged — medical necessity may be questioned |
+| **Duplicate claims** | Same service, same date, same patient already submitted | Claim is held — prevents accidental double-billing |
+| **Missing modifiers** | Procedure requires a modifier that's not included | Claim is flagged — may be denied without the correct modifier |
+
+**Why scrubbing matters:** A claim that fails scrubbing is caught **before** it leaves your office. That's far better than having the insurance company deny it weeks later. Denied claims take extra work to fix, delay payment, and can frustrate patients who receive confusing EOB statements.
+
+---
+
+## What Is a Clearinghouse?
+
+A **clearinghouse** is a third-party company that acts as a middleman between healthcare providers and insurance companies. It's like a postal sorting facility for medical claims.
+
+**What clearinghouses do:**
+1. **Receive claims** from your practice management system
+2. **Check formatting** — make sure the claim meets the specific electronic format the insurance company requires (called the ANSI X12 837 standard)
+3. **Route claims** to the correct insurance company
+4. **Report back** — tell your office whether the claim was accepted or rejected by the payer
+
+**Why clearinghouses exist:** There are hundreds of insurance companies, each with slightly different formatting requirements. Without a clearinghouse, your office would need to format claims differently for every single payer. The clearinghouse handles all the formatting and routing.
+
+**Common clearinghouses you might hear about:** Availity, Change Healthcare (now part of Optum), Trizetto, Office Ally, Waystar.
+
+> **Front desk connection:** When your billing team says "the claim was rejected at the clearinghouse," that means the error was caught early — before the insurance company even saw it. This is usually fixable quickly.
+
+---
+
+## Clean Claims vs. Dirty Claims
+
+| | Clean Claim | Dirty Claim |
+|---|------------|-------------|
+| **Definition** | A claim that is complete, accurate, and passes all scrubbing checks | A claim with errors, missing information, or formatting problems |
+| **What happens** | Processed by the insurance company without delays | Rejected or denied — must be corrected and resubmitted |
+| **Result** | Faster payment (typically 14–30 days) | Delayed payment, extra work, potential revenue loss |
+| **Your role** | Accurate check-in information helps create clean claims | Errors at check-in (wrong ID, misspelled name, wrong DOB) can create dirty claims |
+
+**The clean claim standard:** Insurance companies are required to process clean claims within specific timeframes — typically **30 days** for electronic claims and **45 days** for paper claims.
+
+> **Front desk tip:** The #1 reason claims become "dirty" is **inaccurate patient information**. A misspelled name, wrong date of birth, or outdated insurance ID number can cause an otherwise perfect claim to be rejected. That's why verifying demographics and insurance at every visit is so important.
+
+---
+
+## What Is an ERA?
+
+An **ERA (Electronic Remittance Advice)** is the electronic document the insurance company sends back to the provider after processing a claim. Think of it as the **provider's version of an EOB**.
+
+**EOB vs. ERA — what's the difference?**
+
+| | EOB | ERA |
+|---|-----|-----|
+| **Sent to** | The patient (by mail or online) | The provider (electronically) |
+| **Format** | Plain language, easy to read | Standardized electronic format (ANSI X12 835) |
+| **Purpose** | Explain to the patient what their insurance covered | Tell the provider what was paid, adjusted, and denied |
+| **Contains** | Same core information: charges, allowed amounts, payments, patient responsibility | Same core information plus detailed adjustment reason codes and remark codes |
+
+**What the ERA tells your billing team:**
+- How much the insurance company paid for each service
+- Any **adjustments** (contractual write-offs, sequestration reductions)
+- The **patient responsibility** amount (what the office should collect from the patient)
+- **Reason codes** explaining any denials or reductions
+- **Remark codes** providing additional context
+
+---
+
+## Common Claim Denial Reasons
+
+Even with scrubbing and clearinghouses, claims still get denied. Here are the denials your front desk may hear about or need to explain to patients:
+
+| Denial Reason | What Happened | Who Can Fix It |
+|--------------|---------------|----------------|
+| **Patient not eligible on date of service** | Insurance wasn't active when the patient was seen | Front desk — this is why you verify eligibility before the visit |
+| **Subscriber ID not found** | The member ID number is wrong or outdated | Front desk — correct the ID and resubmit |
+| **Duplicate claim** | The same claim was already submitted and processed | Billing team — verify the original claim status |
+| **Prior authorization required** | The service needed approval that wasn't obtained | Clinical/front desk — this should have been obtained before the visit |
+| **Service not covered** | The patient's plan doesn't include this benefit | Patient and billing team — patient may be responsible |
+| **Timely filing exceeded** | The claim wasn't submitted within the payer's deadline | Billing team — may need to appeal with proof of timely submission |
+| **Coordination of benefits needed** | The payer needs information about other insurance | Front desk — collect the patient's other insurance information |
+
+> **Front desk takeaway:** Many claim denials trace back to the check-in process. Wrong insurance information, expired eligibility, missing prior authorizations — these are all things that can be prevented with thorough verification at the front desk. You are the first line of defense against claim denials.`,
+      duration_minutes: 7, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m4', course_id: 'insurance', slug: 'financial-documents', title: "Financial Documents You'll See", description: 'Key financial documents in healthcare.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'explanation-of-benefits', nextLesson: 'advanced-beneficiary-notice', nextIsQuiz: false,
+  },
+  'advanced-beneficiary-notice': {
+    lesson: {
+      id: 'ins-l15', module_id: 'ins-m4', slug: 'advanced-beneficiary-notice',
+      title: 'The Advanced Beneficiary Notice (ABN)',
+      description: 'Learn when and how to present an ABN to Medicare patients — and why skipping it costs the practice money.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# The Advanced Beneficiary Notice (ABN)
+
+## Why This Matters
+
+Imagine this: a Medicare patient comes in for a visit. The doctor orders a test that Medicare probably won't cover — maybe it's a screening that isn't considered medically necessary, or a service that's done more frequently than Medicare allows. If the patient doesn't know ahead of time that they might have to pay, they'll be surprised and upset when the bill arrives.
+
+That's exactly what the **Advanced Beneficiary Notice (ABN)** prevents. It's a form that tells the Medicare patient, *before the service is provided*, that Medicare might not pay — and gives the patient the choice of whether to proceed.
+
+If your office skips the ABN when it's required, **the practice cannot bill the patient** for the denied service. The practice absorbs the entire cost. This makes the ABN one of the most financially important forms you'll handle at the front desk.
+
+---
+
+## What Is an ABN?
+
+An **Advanced Beneficiary Notice of Noncoverage** — commonly called an ABN — is a standardized form (CMS form **CMS-R-131**) that Medicare requires providers to give patients when:
+
+- A service **may not be covered** by Medicare
+- The provider has reason to believe Medicare **will deny the claim**
+
+The ABN notifies the patient that they may be **financially responsible** for the service and gives them the opportunity to decide whether to proceed.
+
+**Key facts:**
+- The ABN is **only** for patients with **Original Medicare** (Parts A and B)
+- It is **not** used for Medicare Advantage (Part C) plans — those plans have their own notification requirements
+- The ABN must be given to the patient **before** the service is provided — not after
+- The patient must **sign** the ABN to acknowledge they understand
+
+> **Important:** An ABN is NOT required for services that Medicare never covers (like cosmetic surgery or routine dental care). It's required when a service **might** be covered in some circumstances but the provider believes it **won't be** in this particular case.
+
+---
+
+## When Is an ABN Required?
+
+An ABN is typically needed in these situations:
+
+| Situation | Example |
+|-----------|---------|
+| **Frequency limits exceeded** | Medicare covers a wellness visit once per year. The patient wants another one 8 months later. |
+| **Medical necessity not established** | The doctor orders a lab test, but the patient's diagnosis doesn't meet Medicare's criteria for that test to be considered medically necessary. |
+| **Service may not be considered reasonable** | A specific treatment approach that Medicare might consider experimental or unproven for the patient's condition. |
+| **Screening outside covered guidelines** | A screening test that's performed more frequently than Medicare's recommended schedule. |
+
+**When an ABN is NOT required:**
+- Routine services that are clearly covered (standard office visits, covered preventive care)
+- Services that Medicare **never** covers (the patient is already expected to know these aren't covered)
+- Emergency services
+- For Medicare Advantage patients (they have separate plan-specific rules)
+
+---
+
+## The Three Patient Options
+
+The ABN form presents the patient with **three choices**. The patient must select one and sign:
+
+### Option 1: "I want the service. You may bill Medicare."
+
+The patient wants the service AND wants you to submit the claim to Medicare. If Medicare denies the claim, the **patient agrees to pay**. This option also preserves the patient's right to **appeal** the denial.
+
+**This is the most commonly selected option.** The patient is saying: "Go ahead and try to get it covered. If Medicare says no, I'll pay."
+
+### Option 2: "I want the service. Don't bill Medicare. I'll pay out of pocket."
+
+The patient wants the service but doesn't want you to submit a claim. They agree to pay the full cost out of pocket immediately. The patient gives up their right to appeal because no claim was submitted.
+
+**Patients choose this when** they know Medicare won't cover it and don't want to deal with the claim process.
+
+### Option 3: "I don't want the service."
+
+The patient decides not to have the service. No charge, no claim, no bill.
+
+**Patients choose this when** they don't want to pay for something that won't be covered.
+
+---
+
+## How to Present an ABN at the Front Desk
+
+Here's the step-by-step process for handling an ABN:
+
+**Step 1: Identify the need**
+The provider or clinical staff tells you that a service may not be covered by Medicare. Sometimes your billing system flags it during scheduling or pre-visit preparation.
+
+**Step 2: Fill out the form**
+Complete the ABN with:
+- Patient's name and Medicare number
+- A clear description of the service that may not be covered
+- The reason Medicare may not pay (in plain language the patient can understand)
+- The estimated cost to the patient
+
+**Step 3: Explain it to the patient**
+Use simple language: *"Before we do this test, I need to let you know that Medicare may not cover it. This form explains why and gives you three choices. Take a moment to read through them, and let me know if you have questions."*
+
+**Step 4: Let the patient choose**
+Point out the three options and let the patient decide. **Do not pressure them** toward any particular option.
+
+**Step 5: Get the signature**
+The patient must sign and date the form. If they refuse to sign, note on the form: "Patient refused to sign" with the date, and have a witness sign.
+
+**Step 6: Give them a copy**
+The patient keeps a copy. Your office keeps the original.
+
+**Step 7: Document in the chart**
+Note in the patient's record that an ABN was provided, which option was selected, and that the patient signed.
+
+---
+
+## What Happens If You Skip the ABN?
+
+This is the critical part: if an ABN was required and your office **did not** provide one before the service:
+
+**The practice cannot bill the patient.** If Medicare denies the claim, your office must **absorb the cost** — writing it off as a loss. The patient cannot be held financially responsible because they were never given the opportunity to make an informed choice.
+
+**In practical terms:**
+- No ABN + Medicare denial = the practice gets $0 for that service
+- The provider performed work for free
+- This is a preventable financial loss
+
+> **This is why ABN compliance matters:** Forgetting to present an ABN before a non-covered service can cost the practice hundreds of dollars per incident. Over the course of a year, that adds up significantly.
+
+---
+
+## Common ABN Mistakes to Avoid
+
+| Mistake | Why It's a Problem | How to Avoid It |
+|---------|-------------------|-----------------|
+| **Giving the ABN after the service** | The whole point is informed consent BEFORE the service | Present the ABN during check-in or before the procedure begins |
+| **Not explaining it clearly** | The patient signs without understanding — this doesn't protect the practice | Take 60 seconds to explain in plain language |
+| **Using a blank or generic ABN** | The form must specify the particular service and reason for potential non-coverage | Fill in all required fields before presenting |
+| **Not getting a signature** | An unsigned ABN doesn't protect the practice | Always get the signature; note refusal if they won't sign |
+| **Losing the form** | Without the signed ABN on file, you can't prove it was given | Scan immediately; keep originals organized |
+
+---
+
+## Quick Reference Summary
+
+| Question | Answer |
+|----------|--------|
+| **What is it?** | A form notifying Medicare patients that a service may not be covered |
+| **CMS form number** | CMS-R-131 |
+| **Who gets it?** | Original Medicare (Parts A & B) patients only |
+| **When?** | BEFORE the service is provided |
+| **What must the patient do?** | Choose one of three options and sign |
+| **What if we skip it?** | The practice cannot bill the patient if Medicare denies the claim |
+| **How many options?** | Three: bill Medicare and I'll pay if denied; I'll pay out of pocket; I don't want the service |
+
+> **Front desk takeaway:** The ABN is not just a form — it's a financial safeguard for both the patient and the practice. Presenting it properly takes about two minutes. Skipping it can cost the practice hundreds of dollars. Make it part of your routine for every Medicare patient when flagged by the provider or billing system.`,
+      duration_minutes: 6, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m4', course_id: 'insurance', slug: 'financial-documents', title: "Financial Documents You'll See", description: 'Key financial documents in healthcare.', sort_order: 4, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'era-and-claim-processing', nextLesson: null, nextIsQuiz: true,
+  },
+  // ─── Insurance Module 5: Revenue Cycle & Payment Models ───
+  'revenue-cycle-overview': {
+    lesson: {
+      id: 'ins-l16', module_id: 'ins-m5', slug: 'revenue-cycle-overview',
+      title: 'The Revenue Cycle: From Scheduling to Payment',
+      description: 'Follow a patient encounter through all seven phases of the revenue cycle and see where the front desk fits in.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# The Revenue Cycle: From Scheduling to Payment
+
+## Why This Matters
+
+Healthcare is a business, and every business needs to get paid for the services it provides. The **revenue cycle** is the entire process of how a healthcare organization earns money — from the moment a patient schedules an appointment to the moment the final payment is collected.
+
+What makes healthcare different from most businesses is that payment doesn't happen at the time of service. When you buy coffee, you pay immediately. In healthcare, the bill goes to an insurance company, gets reviewed, partially paid, and the remaining balance is billed to the patient — a process that can take weeks or months.
+
+As front desk staff, you play a critical role in the first two phases of the revenue cycle and support several others. When you do your job accurately, claims are paid faster and the practice stays financially healthy. When errors slip through, the entire cycle slows down.
+
+---
+
+## The Seven Phases of the Revenue Cycle
+
+The revenue cycle has seven phases. Think of them as links in a chain — if one link breaks, everything downstream is affected.
+
+| Phase | What Happens | Who's Involved |
+|-------|-------------|----------------|
+| **1. Scheduling & Pre-Registration** | Patient calls for an appointment; demographics and insurance are collected | Front desk |
+| **2. Registration & Check-In** | Patient arrives; identity is verified, insurance is confirmed, copay is collected | Front desk |
+| **3. Charge Capture** | Provider documents services and diagnoses; CPT and ICD-10 codes are assigned | Providers, clinical coders |
+| **4. Claim Submission** | Claim is created, scrubbed, and sent through a clearinghouse to the payer | Billing department |
+| **5. Payment Posting** | Insurance payment and ERA are received; payments are posted to patient accounts | Billing department |
+| **6. Accounts Receivable (AR) Management** | Unpaid claims are followed up on; denials are appealed; patient statements are sent | Billing department |
+| **7. Reporting & Analysis** | Data is analyzed to identify trends, inefficiencies, and opportunities | Management, billing leadership |
+
+---
+
+## Phase 1: Scheduling & Pre-Registration
+
+**This is where you come in.** The revenue cycle starts the moment a patient contacts your office.
+
+**What happens:**
+- You schedule the appointment and record the patient's basic information
+- You collect (or verify) insurance information
+- You may run a **pre-visit eligibility check** to confirm the patient's coverage is active
+- For new patients, you may send registration paperwork in advance
+
+**Why this phase matters financially:**
+- If you schedule a patient whose insurance your practice doesn't accept, the claim will be denied
+- If you collect the wrong subscriber ID or group number, the claim will be rejected
+- Catching problems at scheduling prevents surprises at check-in
+
+> **Revenue cycle impact:** An insurance verification done 48–72 hours before the appointment can prevent the majority of eligibility-related denials. This one step saves the practice thousands of dollars in rework.
+
+---
+
+## Phase 2: Registration & Check-In
+
+When the patient arrives, you're the last checkpoint before clinical services begin.
+
+**What happens:**
+- You verify the patient's identity (photo ID, date of birth)
+- You confirm or update demographics (address, phone, emergency contact)
+- You verify insurance is active and note any changes since the last visit
+- You collect the **copay** (or coinsurance/deductible if applicable)
+- You scan the insurance card (front and back)
+- You have the patient sign any required forms (consent, financial policy, ABN if applicable)
+
+**Why this phase matters financially:**
+- Every field you enter flows directly into the claim
+- A wrong date of birth, misspelled name, or old insurance card = rejected claim
+- Collecting the copay now means the practice doesn't have to bill and chase it later
+
+> **Best practice:** Verify insurance at **every** visit, even for established patients. Insurance changes are more common than you think — job changes, open enrollment switches, divorce, turning 26 and losing a parent's plan.
+
+---
+
+## Phase 3: Charge Capture
+
+After the patient is seen, the provider documents what was done and why.
+
+**What happens:**
+- The provider records procedures (what was done) using **CPT codes**
+- The provider records diagnoses (why it was done) using **ICD-10 codes**
+- These codes are entered into the system — either by the provider directly or by a medical coder
+- The codes must accurately represent the service and support **medical necessity**
+
+**Front desk connection:** You don't code, but you should understand that every visit generates codes that turn into charges. If the provider sees the patient but the charges aren't captured, the practice doesn't get paid. Period.
+
+---
+
+## Phase 4: Claim Submission
+
+The charges from Phase 3 are assembled into a claim and sent to the insurance company.
+
+**What happens:**
+- The billing system creates a claim combining: patient demographics, insurance info, provider info, procedure codes, diagnosis codes, and date of service
+- The claim is **scrubbed** for errors
+- The claim passes through a **clearinghouse** to the insurance company
+- The insurance company acknowledges receipt
+
+**CMS requirements for Medicare claims:**
+- Claims must be submitted within **12 months** from the date of service (the "timely filing" deadline)
+- Claims must use current, valid code sets
+- Documentation must support the services billed
+- Many commercial payers have their own timely filing limits — some as short as **90 days**
+
+> **Why timely filing matters:** If a claim isn't submitted within the payer's deadline, it will be denied — and the practice cannot bill the patient for it. The revenue is simply lost.
+
+---
+
+## Phase 5: Payment Posting
+
+When the insurance company processes the claim, they send payment along with an ERA.
+
+**What happens:**
+- The insurance company's payment is posted to the patient's account
+- Contractual adjustments (the difference between billed and allowed amounts) are written off
+- The patient's remaining responsibility is identified
+- If secondary insurance exists, the remaining balance is submitted to the secondary payer
+
+**Front desk connection:** When a patient calls and asks about their balance, the information comes from payment posting. If the payment hasn't been posted yet, you may need to tell them: "Your insurance is still processing the claim. Once we receive their payment, we'll know your exact balance."
+
+---
+
+## Phase 6: Accounts Receivable (AR) Management
+
+Not every claim gets paid on the first try. AR management is the process of following up on unpaid claims and collecting patient balances.
+
+**What happens:**
+- **Denied claims** are reviewed, corrected, and resubmitted or appealed
+- **Patient statements** are generated and mailed for outstanding balances
+- **Collection calls** may be made for overdue accounts
+- Claims are categorized by **age**: 0–30 days, 31–60 days, 61–90 days, 91–120 days, and 120+ days
+
+**The goal:** Collect as much revenue as possible, as quickly as possible. The older a claim gets, the less likely it is to be paid.
+
+**Front desk connection:** When a patient checks in and has an outstanding balance, you may need to inform them and attempt to collect. Some offices flag accounts at check-in so you know to ask about payment.
+
+---
+
+## Phase 7: Reporting & Analysis
+
+The final phase uses data from the entire cycle to improve performance.
+
+**Key reports:**
+- **Days in AR:** Average number of days it takes to collect payment (lower is better; industry benchmark is 30–40 days)
+- **Clean claim rate:** Percentage of claims that are accepted on first submission (goal: 95%+)
+- **Denial rate:** Percentage of claims denied (goal: under 5%)
+- **Collection rate:** Percentage of expected revenue actually collected
+- **Payer mix:** Breakdown of revenue by insurance type (commercial, Medicare, Medicaid, self-pay)
+
+**Front desk connection:** If the reporting shows a spike in eligibility denials, your manager might ask the front desk team to be more rigorous about verifying insurance. Data from Phase 7 often drives process improvements in Phases 1 and 2.
+
+---
+
+## The Front Desk's Revenue Cycle Impact
+
+Here's a summary of how your work at the front desk directly impacts the revenue cycle:
+
+| What You Do | Revenue Cycle Impact |
+|-------------|---------------------|
+| Verify insurance before the visit | Prevents eligibility denials |
+| Collect accurate demographics | Ensures clean claims |
+| Scan insurance cards (front & back) | Provides complete billing information |
+| Collect copays at check-in | Reduces accounts receivable |
+| Update insurance changes | Prevents claims to wrong payer |
+| Present ABNs when required | Protects the practice from Medicare write-offs |
+| Ask about other insurance (COB) | Ensures correct primary/secondary billing |
+
+> **Bottom line:** The revenue cycle starts and ends with data. You are the person who collects the data. When that data is accurate and complete, claims are paid faster, patients get fewer surprise bills, and the practice stays financially healthy.`,
+      duration_minutes: 8, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m5', course_id: 'insurance', slug: 'revenue-cycle', title: 'The Revenue Cycle & Payment Models', description: 'Revenue cycle phases and payment models.', sort_order: 5, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: null, nextLesson: 'payment-models', nextIsQuiz: false,
+  },
+  'payment-models': {
+    lesson: {
+      id: 'ins-l17', module_id: 'ins-m5', slug: 'payment-models',
+      title: 'Healthcare Payment Models',
+      description: 'Compare fee-for-service, capitation, value-based care, and bundled payments — and how each affects your daily work.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Healthcare Payment Models
+
+## Why This Matters
+
+How does a doctor actually get paid? It seems like a simple question, but the answer has changed dramatically over the past few decades — and it directly affects your work at the front desk.
+
+The payment model your practice uses determines how services are billed, how much patients owe, and even how appointments are scheduled. Understanding these models helps you make sense of the financial conversations happening around you and handle patient billing questions with confidence.
+
+---
+
+## The Four Main Payment Models
+
+There are four primary ways healthcare providers are paid for their services. Most practices operate under one or a combination of these models:
+
+| Model | How the Provider Gets Paid | Best Analogy |
+|-------|---------------------------|--------------|
+| **Fee-for-Service (FFS)** | Paid for each individual service performed | Paying per song on iTunes |
+| **Capitation** | Paid a fixed monthly amount per patient, regardless of services | An all-you-can-eat buffet |
+| **Value-Based Care** | Payment tied to quality outcomes and patient satisfaction | A performance bonus |
+| **Bundled Payments** | One payment covers all services for a specific episode of care | A vacation package deal |
+
+---
+
+## Fee-for-Service (FFS)
+
+**Fee-for-service** is the traditional payment model and still the most common in the United States. The concept is straightforward: the provider performs a service, submits a claim, and gets paid for that specific service.
+
+**How it works:**
+- Each service has a **CPT code** with a set reimbursement rate
+- The more services the provider performs, the more revenue the practice earns
+- Each service generates a separate line on the claim
+- Payment is based on **volume** — the number of services provided
+
+**Advantages:**
+- Simple to understand
+- Providers are compensated for every service they provide
+- Clear connection between work performed and payment received
+
+**Criticisms:**
+- Can incentivize **overtreatment** — more services = more revenue, even if the patient doesn't benefit
+- Doesn't directly reward keeping patients healthy or achieving good outcomes
+- Can drive up healthcare costs overall
+
+**Front desk impact:**
+- Each visit generates a claim, so accurate insurance verification matters for every appointment
+- Patients may have copays, coinsurance, or deductible amounts for each individual service
+- You may see patients scheduled for frequent follow-ups because each generates revenue
+
+> **Example:** A patient visits for a sore throat. The doctor charges for the office visit ($150), a strep test ($35), and a throat culture ($45). The practice bills each service separately and is paid for each one. Total billed: $230.
+
+---
+
+## Capitation
+
+**Capitation** flips the fee-for-service model on its head. Instead of paying per service, the insurance company pays the provider a **fixed monthly amount per patient** — called a **PMPM (per member per month)** payment — regardless of how many times the patient is seen.
+
+**How it works:**
+- The provider receives a set amount (say $35/month) for each patient assigned to them
+- If the patient comes in 5 times that month, the payment is still $35
+- If the patient doesn't come in at all, the payment is still $35
+- The provider is incentivized to keep patients **healthy** and avoid unnecessary services
+
+**Advantages:**
+- Predictable revenue for the practice
+- Encourages preventive care and wellness (keeping patients healthy = lower costs)
+- Reduces unnecessary procedures and tests
+
+**Criticisms:**
+- Can incentivize **undertreatment** — the provider is paid the same regardless of how much care they provide
+- Financial risk shifts to the provider — if a patient is very sick and needs expensive care, the capitated payment may not cover the cost
+- Providers may avoid taking on high-risk patients
+
+**Front desk impact:**
+- Payment is not directly tied to individual visits, so the billing process may look different
+- The practice may focus more on **appointment completion rates** and **preventive care visits** since keeping patients healthy reduces costs
+- You may track which patients are overdue for wellness checks or screenings
+
+> **Example:** A practice has 2,000 capitated patients at $35/month each. The practice receives $70,000/month regardless of how many of those patients are seen. If only 500 patients come in that month, the practice still gets $70,000. If 1,500 come in, it's still $70,000.
+
+---
+
+## Value-Based Care
+
+**Value-based care** (also called **value-based purchasing** or **pay-for-performance**) ties a portion of the provider's payment to **quality metrics** — measurable outcomes that demonstrate good patient care.
+
+**How it works:**
+- Providers are still paid for services (often fee-for-service as a base)
+- But a portion of their payment is adjusted up or down based on **performance scores**
+- Performance is measured by standardized quality metrics
+
+**Common quality metrics:**
+
+| Metric | What It Measures | Example |
+|--------|-----------------|---------|
+| **Patient satisfaction** | How patients rate their experience | Scores from patient surveys (e.g., CG-CAHPS) |
+| **Preventive care rates** | Whether patients receive recommended screenings and immunizations | Percentage of patients who received a flu vaccine |
+| **Chronic disease management** | How well chronic conditions are controlled | Percentage of diabetic patients with HbA1c under control |
+| **Hospital readmission rates** | Whether patients are readmitted within 30 days of discharge | Lower readmission rates = better score |
+| **Care coordination** | How well care is managed across providers | Timely follow-up after hospital discharge |
+
+**CMS programs tied to value-based care:**
+- **MIPS (Merit-based Incentive Payment System)** — adjusts Medicare payments based on quality, cost, and improvement activities
+- **APMs (Alternative Payment Models)** — provide bonuses for providers who participate in advanced models like ACOs (Accountable Care Organizations)
+
+**Front desk impact:**
+- Patient satisfaction surveys matter — your interactions at check-in and check-out directly affect scores
+- The practice may place extra emphasis on scheduling preventive care visits and follow-ups
+- You may help track patients who are overdue for screenings or wellness visits
+
+> **Example:** A practice scores in the top 25% for patient satisfaction and diabetes management. CMS gives them a 3% bonus on all Medicare payments for the following year. A practice that scores poorly gets a 3% reduction.
+
+---
+
+## Bundled Payments
+
+**Bundled payments** (also called **episode-based payments**) group all services related to a specific treatment or condition into a **single payment**.
+
+**How it works:**
+- Instead of billing separately for the surgery, anesthesia, hospital stay, follow-up visits, and physical therapy, all providers involved receive one combined payment
+- The providers then divide the payment among themselves
+- If they deliver care efficiently (under budget), they keep the savings
+- If care costs more than the bundle, they absorb the loss
+
+**Common bundled payment scenarios:**
+- Joint replacement surgery (hip or knee)
+- Cardiac surgery (bypass, valve replacement)
+- Maternity care (prenatal visits through delivery and postpartum)
+
+**Advantages:**
+- Encourages coordination between providers
+- Reduces unnecessary services
+- Provides cost predictability for patients and payers
+
+**Front desk impact:**
+- Bundled payment patients may have **no copay** for follow-up visits that are included in the bundle
+- You may need to know which visits fall within the bundle period and which don't
+- Scheduling follow-ups within the bundle timeframe is important for compliance
+
+> **Example:** A patient receives a knee replacement. The total bundled payment is $25,000 and covers the surgery, hospital stay, post-op visits, and 90 days of physical therapy. If the total actual cost is $22,000, the providers keep the $3,000 savings. If it costs $28,000, they absorb the $3,000 loss.
+
+---
+
+## Third-Party Payer Requirements
+
+Regardless of the payment model, third-party payers (insurance companies, Medicare, Medicaid) impose requirements that affect billing and collections:
+
+| Requirement | What It Means | Why It Matters |
+|------------|---------------|----------------|
+| **Timely filing limits** | Claims must be submitted within a deadline (30 days to 12+ months depending on payer) | Miss the deadline = denied claim, no payment, can't bill the patient |
+| **Clean claim standards** | Claims must be complete and error-free | Dirty claims are rejected, delaying payment |
+| **Prior authorization** | Certain services need approval before being performed | No auth = potential denial |
+| **Appeal deadlines** | If a claim is denied, appeals must be filed within a specific timeframe | Miss the appeal deadline = denial stands |
+| **Credentialing** | Providers must be credentialed (enrolled) with each payer | No credentialing = no reimbursement from that payer |
+
+**Common timely filing limits:**
+
+| Payer | Filing Deadline |
+|-------|----------------|
+| **Medicare** | 12 months from date of service |
+| **Medicaid** | Varies by state (90 days to 12 months) |
+| **Commercial plans** | Typically 90 days to 12 months (varies by contract) |
+
+> **Front desk tip:** When you verify insurance, make note of any authorization requirements. Some plans require prior auth for specialist visits, imaging, or procedures. If the auth isn't obtained before the visit, the claim may be denied — and the patient may be stuck with the bill.
+
+---
+
+## How Payment Models Affect Your Daily Work
+
+| Payment Model | How It Changes Your Day |
+|--------------|------------------------|
+| **Fee-for-Service** | Every visit matters financially; verify insurance and collect copays at every appointment |
+| **Capitation** | Focus on getting patients in for preventive care; track panel management and missed appointments |
+| **Value-Based** | Patient experience matters; be warm, efficient, and thorough; help track quality measures |
+| **Bundled** | Know which services are part of the bundle; schedule follow-ups within the bundle window |
+
+> **Bottom line:** You don't need to be a billing expert, but understanding payment models helps you see the bigger picture. When you know WHY accurate check-in matters, WHY copay collection is important, and WHY preventive care scheduling is emphasized, your daily work makes more sense — and you perform it better.`,
+      duration_minutes: 7, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m5', course_id: 'insurance', slug: 'revenue-cycle', title: 'The Revenue Cycle & Payment Models', description: 'Revenue cycle phases and payment models.', sort_order: 5, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'revenue-cycle-overview', nextLesson: 'financial-assistance-collections', nextIsQuiz: false,
+  },
+  'financial-assistance-collections': {
+    lesson: {
+      id: 'ins-l18', module_id: 'ins-m5', slug: 'financial-assistance-collections',
+      title: 'Financial Assistance, Aging Reports & Collections',
+      description: 'Learn about sliding fee scales, payment plans, aging reports, and the collections process at the front desk.',
+      content_type: 'reading', video_url: null,
+      reading_content: `# Financial Assistance, Aging Reports & Collections
+
+## Why This Matters
+
+Not every patient can pay their medical bill right away — and some can't pay at all. As front desk staff, you'll encounter patients who are uninsured, underinsured, or simply struggling to afford their care. How you handle these situations matters: both for the patient's well-being and for the practice's financial health.
+
+This lesson covers the programs and processes healthcare organizations use to help patients with financial difficulties — and what happens when bills go unpaid. You'll learn about sliding fee scales, financial assistance programs, payment plans, aging reports, and the collections process.
+
+---
+
+## Sliding Fee Scales
+
+A **sliding fee scale** is a discount system that reduces the cost of care based on a patient's **income and family size**. The less a patient earns relative to the **Federal Poverty Level (FPL)**, the bigger the discount.
+
+**Key facts:**
+- **Federally Qualified Health Centers (FQHCs)** are **required by HRSA** (the Health Resources and Services Administration) to offer a sliding fee scale — it's a condition of their federal funding
+- Many non-FQHC practices also offer sliding fee programs voluntarily
+- Discounts are typically based on a percentage of the FPL — for example, patients at 100% of FPL or below might pay nothing, while patients at 150% of FPL pay 25% of the normal charge
+
+**How the sliding fee scale typically works:**
+
+| Income Level (% of FPL) | Typical Discount | Patient Pays |
+|--------------------------|-----------------|--------------|
+| **≤ 100% FPL** | Full discount | Nominal fee only ($15–$25) |
+| **101–150% FPL** | 75% discount | 25% of charges |
+| **151–200% FPL** | 50% discount | 50% of charges |
+| **201–250% FPL** | 25% discount | 75% of charges |
+| **> 250% FPL** | No discount | Full charges |
+
+*Note: Percentages vary by organization. This is a common example, not a universal standard.*
+
+**Front desk role:**
+- Know whether your practice offers a sliding fee scale
+- Direct patients who express financial difficulty to the appropriate person or application
+- Don't make assumptions about who qualifies — let the application process determine eligibility
+- Treat every patient with the same respect regardless of their payment status
+
+---
+
+## Charity Care & Financial Assistance Programs
+
+Beyond sliding fee scales, many healthcare organizations — especially hospitals — offer **charity care** or **financial assistance programs**.
+
+**Charity care** is free or discounted care provided to patients who cannot afford to pay. Under the **ACA (Affordable Care Act)**, nonprofit hospitals are required to:
+- Have a written financial assistance policy
+- Make that policy **publicly available**
+- Attempt to determine whether a patient qualifies for financial assistance **before** sending them to collections
+
+**Common types of financial assistance:**
+- **Full charity care** — the entire bill is written off
+- **Partial charity care** — a portion of the bill is forgiven
+- **Discount programs** — reduced rates for uninsured or underinsured patients
+- **Community programs** — local, state, or federal programs that help with medical costs (Medicaid, ACA marketplace subsidies, state assistance programs)
+
+**Front desk role:**
+- If a patient says they can't afford their bill, don't try to solve it yourself — but **do** connect them with the right resource
+- Have financial assistance applications available or know where to direct the patient
+- Many patients don't know these programs exist — a simple "We have a financial assistance program. Would you like information about it?" can make a huge difference
+
+---
+
+## Patient Payment Plans
+
+When a patient owes a balance they can't pay all at once, many practices offer **payment plans** — an agreement to pay the balance in monthly installments.
+
+**Typical payment plan structures:**
+- Monthly payments over 3, 6, or 12 months
+- Some practices charge **no interest** on payment plans; others may use a third-party financing company that does
+- The patient usually signs a written agreement outlining the payment amount, schedule, and consequences of missed payments
+- Automatic payment options (credit card on file, autopay) increase compliance
+
+**Front desk role:**
+- Know your practice's payment plan policy
+- If a patient expresses concern about a balance, mention that payment plans may be available
+- Don't negotiate terms on your own — follow your practice's established policies and route the patient to the billing department if needed
+- If your office collects payment plan payments, process them carefully and provide receipts
+
+> **Key principle:** Offering a payment plan is almost always better for the practice than sending a bill to collections. Payment plans maintain the patient relationship, cost less to administer, and have higher collection rates.
+
+---
+
+## Aging Reports: Tracking Unpaid Balances
+
+An **aging report** (also called an **accounts receivable aging report**) is a financial report that categorizes unpaid balances by how long they've been outstanding. It's the primary tool billing departments use to prioritize collection efforts.
+
+**How aging reports are organized:**
+
+| Age Bucket | What It Means | Priority Level |
+|-----------|---------------|----------------|
+| **0–30 days** | Recently billed; normal processing time | Low — most claims are still being processed |
+| **31–60 days** | Getting stale; may need follow-up | Medium — check claim status with payer |
+| **61–90 days** | Overdue; likely needs action | High — investigate why payment hasn't been received |
+| **91–120 days** | Significantly overdue | Very high — denials should be appealed; patients should be contacted |
+| **120+ days** | Seriously delinquent | Critical — at risk of becoming uncollectible; may go to collections |
+
+**Key metrics from aging reports:**
+- **Days in AR (Accounts Receivable):** The average number of days it takes to collect payment. Industry benchmark is **30–40 days**. Over 50 days signals a problem.
+- **AR over 120 days:** The percentage of total AR that's over 120 days old. If this number is high, the practice is leaving money on the table.
+
+**Front desk connection:** You probably won't pull aging reports yourself, but you should understand that when your supervisor emphasizes collecting copays at check-in or verifying insurance before the visit, they're trying to **keep balances out of the 90+ day buckets**. Money collected at check-in never ends up on an aging report.
+
+---
+
+## The Collections Process
+
+When a patient doesn't pay their bill despite statements and reminders, the practice may escalate to **collections**. Here's the typical progression:
+
+**Step 1: Patient Statements**
+The practice sends monthly statements to the patient — usually 3–4 statements over several months.
+
+**Step 2: Courtesy Calls**
+The billing team (or you, if assigned) may call the patient to discuss the outstanding balance and offer payment options.
+
+**Step 3: Final Notice**
+A final statement is sent with clear language: "If payment is not received within 30 days, your account may be sent to a collections agency."
+
+**Step 4: Collections Agency**
+The account is sent to a **third-party collections agency**. The agency contacts the patient and attempts to collect. The agency keeps a percentage (typically 25–50%) of whatever they collect.
+
+**Step 5: Credit Reporting**
+If the patient still doesn't pay, the debt may be reported to **credit bureaus**, affecting the patient's credit score. (Note: Medical debt credit reporting rules have changed — as of 2023, paid medical debts and medical debts under $500 are no longer reported to credit bureaus.)
+
+> **Important:** Sending a patient to collections is a last resort. It damages the patient relationship, the practice only receives a fraction of the balance, and it reflects poorly on the organization. The goal is always to resolve the balance before it gets to this point.
+
+---
+
+## Adjustments and Write-Offs
+
+Not all unpaid balances are collected. Some are intentionally reduced through adjustments:
+
+**Contractual adjustments:** The difference between the provider's billed charge and the insurance company's allowed amount. These are expected and automatic for in-network providers.
+
+**Example:** Provider bills $200. Insurance allowed amount is $140. The $60 difference is a contractual adjustment — the provider agreed to this when they joined the network.
+
+**Bad debt write-offs:** When a patient owes a balance but doesn't pay despite all collection efforts. The practice writes off the amount as a loss.
+
+**Charity care write-offs:** When a patient qualifies for financial assistance, the bill (or a portion) is written off as charity care.
+
+| Type | Why It Happens | Is It a Problem? |
+|------|---------------|-----------------|
+| **Contractual adjustment** | Normal part of being in-network | No — expected and planned for |
+| **Charity care write-off** | Patient qualifies for financial assistance | No — fulfills the organization's mission |
+| **Bad debt write-off** | Patient won't or can't pay after collection attempts | Yes — represents lost revenue |
+
+> **Front desk tip:** You don't process write-offs, but you can help prevent bad debt by collecting patient responsibility at the time of service. Every dollar collected at check-in is a dollar that never needs to appear on an aging report, a statement, or a collections account.
+
+---
+
+## Putting It All Together
+
+Here's how these concepts connect in your daily work:
+
+| Situation | What You Do |
+|-----------|------------|
+| Patient says "I can't afford my copay today" | Collect what you can; note the balance; mention payment plan options if available |
+| Patient asks about financial assistance | Provide information about your practice's financial assistance program or application |
+| Patient has an outstanding balance at check-in | Inform them of the balance and attempt to collect; offer payment plan if appropriate |
+| Patient says "I don't have insurance" | Register them as self-pay; inform them of self-pay rates; mention financial assistance and ACA marketplace options |
+| Patient is upset about a bill | Listen empathetically; explain the charges; offer to connect them with the billing department for details |
+
+> **Bottom line:** Financial assistance and collections may not be the most glamorous part of your job, but they're essential. Treating patients with compassion about money — while still doing your part to collect what's owed — is a skill that makes you invaluable to any practice.`,
+      duration_minutes: 7, sort_order: 3,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'ins-m5', course_id: 'insurance', slug: 'revenue-cycle', title: 'The Revenue Cycle & Payment Models', description: 'Revenue cycle phases and payment models.', sort_order: 5, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Insurance & Billing', prevLesson: 'payment-models', nextLesson: null, nextIsQuiz: true,
+  },
   // Terminology Section
   'common-abbreviations-video': {
     lesson: {

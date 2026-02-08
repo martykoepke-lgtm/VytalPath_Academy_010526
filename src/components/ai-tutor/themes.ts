@@ -21,6 +21,8 @@ export const aiTutorThemes: Record<string, AiTutorTheme> = {
   administration: unifiedTheme,
   terminology: unifiedTheme,
   practice: unifiedTheme,
+  'ehr-lab': unifiedTheme,
+  'ehr-fundamentals': unifiedTheme,
 };
 
 export const defaultSuggestedQuestions: Record<string, string[]> = {
@@ -65,5 +67,17 @@ export const defaultSuggestedQuestions: Record<string, string[]> = {
     'Quiz me on insurance terms',
     'Help me practice phone etiquette',
     'Test my knowledge of HIPAA rules',
+  ],
+  'ehr-lab': [
+    'How do I find a patient in the system?',
+    'Walk me through checking in a patient',
+    'What patients are available to practice with?',
+    'How do I open a patient chart?',
+  ],
+  'ehr-fundamentals': [
+    'What is the difference between PM and EHR?',
+    'Explain encounter types in a clinic',
+    'What is the encounter lifecycle?',
+    'How do scheduling templates work?',
   ],
 };

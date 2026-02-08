@@ -596,12 +596,13 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k61',
         text: 'Considerations for in-network and out-of-network coverage',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'payer-types-plan-types', label: 'Payer Types & Plan Types', section: 'Insurance', link: '/insurance/insurance-fundamentals/payer-types-plan-types' },
           { type: 'quiz', slug: 'insurance-fundamentals', label: 'Insurance Fundamentals Quiz', section: 'Insurance', link: '/insurance/insurance-fundamentals/quiz' },
+          { type: 'lesson', slug: 'network-status-special-coverage', label: 'In-Network, Out-of-Network & Special Coverage', section: 'Insurance', link: '/insurance/coverage-rules/network-status-special-coverage' },
+          { type: 'quiz', slug: 'coverage-rules', label: 'Coverage Rules Quiz', section: 'Insurance', link: '/insurance/coverage-rules/quiz' },
         ],
-        plannedContent: 'Needs deeper in-network/out-of-network coverage',
       },
       {
         id: 'k62',
@@ -707,9 +708,11 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k72',
         text: 'Acceptable secondary health records (workers\' compensation, liability, minors\' rights)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Insurance Expansion',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'network-status-special-coverage', label: 'In-Network, Out-of-Network & Special Coverage', section: 'Insurance', link: '/insurance/coverage-rules/network-status-special-coverage' },
+          { type: 'quiz', slug: 'coverage-rules', label: 'Coverage Rules Quiz', section: 'Insurance', link: '/insurance/coverage-rules/quiz' },
+        ],
       },
       {
         id: 'k73',
@@ -724,18 +727,21 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k74',
         text: 'Government insurance plans (Medicare, Medicaid, Medigap, TRICARE)',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'payer-types-plan-types', label: 'Payer Types & Plan Types', section: 'Insurance', link: '/insurance/insurance-fundamentals/payer-types-plan-types' },
+          { type: 'lesson', slug: 'government-plans-deep-dive', label: 'Government Plans: Medicare, Medicaid & TRICARE', section: 'Insurance', link: '/insurance/coverage-rules/government-plans-deep-dive' },
+          { type: 'quiz', slug: 'coverage-rules', label: 'Coverage Rules Quiz', section: 'Insurance', link: '/insurance/coverage-rules/quiz' },
         ],
-        plannedContent: 'Needs Medicare Parts A-D, Medicaid, TRICARE depth',
       },
       {
         id: 'k75',
         text: 'Insurance rules (dependent and birthday rules, coordination of benefits)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'coordination-of-benefits', label: 'Coordination of Benefits & Insurance Rules', section: 'Insurance', link: '/insurance/coverage-rules/coordination-of-benefits' },
+          { type: 'quiz', slug: 'coverage-rules', label: 'Coverage Rules Quiz', section: 'Insurance', link: '/insurance/coverage-rules/quiz' },
+        ],
       },
       {
         id: 'k76',
@@ -752,23 +758,29 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k77',
         text: 'Advanced Beneficiary Notice (ABN)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'advanced-beneficiary-notice', label: 'The Advanced Beneficiary Notice (ABN)', section: 'Insurance', link: '/insurance/financial-documents/advanced-beneficiary-notice' },
+          { type: 'quiz', slug: 'financial-documents', label: 'Financial Documents Quiz', section: 'Insurance', link: '/insurance/financial-documents/quiz' },
+        ],
       },
       {
         id: 'k78',
         text: 'Contents of Explanation of Benefits (EOB)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Coding Basics for Front Office module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'explanation-of-benefits', label: 'Understanding an EOB', section: 'Insurance', link: '/insurance/financial-documents/explanation-of-benefits' },
+          { type: 'quiz', slug: 'financial-documents', label: 'Financial Documents Quiz', section: 'Insurance', link: '/insurance/financial-documents/quiz' },
+        ],
       },
       {
         id: 'k79',
         text: 'Electronic remittance advice (ERA)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'era-and-claim-processing', label: 'ERA, Claim Scrubbing & Clearinghouses', section: 'Insurance', link: '/insurance/financial-documents/era-and-claim-processing' },
+          { type: 'quiz', slug: 'financial-documents', label: 'Financial Documents Quiz', section: 'Insurance', link: '/insurance/financial-documents/quiz' },
+        ],
       },
       {
         id: 'k80',
@@ -793,53 +805,67 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k81',
         text: 'Phases of the revenue cycle and how they interact/impact each other',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'revenue-cycle-overview', label: 'The Revenue Cycle: From Scheduling to Payment', section: 'Insurance', link: '/insurance/revenue-cycle/revenue-cycle-overview' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k82',
         text: 'Healthcare payment models (fee for service, value-based plans)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'payment-models', label: 'Healthcare Payment Models', section: 'Insurance', link: '/insurance/revenue-cycle/payment-models' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k83',
         text: 'Financial eligibility, sliding scales, and indigent programs',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'financial-assistance-collections', label: 'Financial Assistance, Aging Reports & Collections', section: 'Insurance', link: '/insurance/revenue-cycle/financial-assistance-collections' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k84',
         text: 'Difference between Medicare and Medicaid',
-        coverageStatus: 'partial',
+        coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'payer-types-plan-types', label: 'Payer Types & Plan Types', section: 'Insurance', link: '/insurance/insurance-fundamentals/payer-types-plan-types' },
+          { type: 'lesson', slug: 'government-plans-deep-dive', label: 'Government Plans: Medicare, Medicaid & TRICARE', section: 'Insurance', link: '/insurance/coverage-rules/government-plans-deep-dive' },
+          { type: 'quiz', slug: 'coverage-rules', label: 'Coverage Rules Quiz', section: 'Insurance', link: '/insurance/coverage-rules/quiz' },
         ],
-        plannedContent: 'Needs billing-level Medicare vs Medicaid comparison',
       },
       {
         id: 'k85',
         text: 'CMS billing and documentation requirements',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'revenue-cycle-overview', label: 'The Revenue Cycle: From Scheduling to Payment', section: 'Insurance', link: '/insurance/revenue-cycle/revenue-cycle-overview' },
+          { type: 'lesson', slug: 'advanced-beneficiary-notice', label: 'The Advanced Beneficiary Notice (ABN)', section: 'Insurance', link: '/insurance/financial-documents/advanced-beneficiary-notice' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k86',
         text: 'Aging reports, collections due, adjustments, and write-offs',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'financial-assistance-collections', label: 'Financial Assistance, Aging Reports & Collections', section: 'Insurance', link: '/insurance/revenue-cycle/financial-assistance-collections' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k87',
         text: 'Third-party payer billing requirements',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'payment-models', label: 'Healthcare Payment Models', section: 'Insurance', link: '/insurance/revenue-cycle/payment-models' },
+          { type: 'quiz', slug: 'revenue-cycle', label: 'Revenue Cycle Quiz', section: 'Insurance', link: '/insurance/revenue-cycle/quiz' },
+        ],
       },
       {
         id: 'k88',
@@ -851,9 +877,11 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k89',
         text: 'Clearinghouse and claim scrubbing processes',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Billing & Revenue Cycle module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'era-and-claim-processing', label: 'ERA, Claim Scrubbing & Clearinghouses', section: 'Insurance', link: '/insurance/financial-documents/era-and-claim-processing' },
+          { type: 'quiz', slug: 'financial-documents', label: 'Financial Documents Quiz', section: 'Insurance', link: '/insurance/financial-documents/quiz' },
+        ],
       },
     ],
   },
