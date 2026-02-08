@@ -10,7 +10,7 @@ interface AppointmentDetailProps {
   appointmentId: string;
   onCheckIn: (appointmentId: string) => void;
   onCheckOut: (appointmentId: string) => void;
-  onReschedule: (patientId: string, date?: string, time?: string) => void;
+  onReschedule: (appointmentId: string) => void;
   onViewChart: (patientId: string) => void;
 }
 
@@ -94,8 +94,8 @@ export function AppointmentDetail({ appointmentId, onCheckIn, onCheckOut, onResc
       });
     }
     setShowNoShowModal(false);
-    if (noShowReschedule && patient) {
-      onReschedule(patient.id);
+    if (noShowReschedule) {
+      onReschedule(appointmentId);
     }
   };
 
@@ -219,7 +219,7 @@ export function AppointmentDetail({ appointmentId, onCheckIn, onCheckOut, onResc
             </button>
           )}
           {canReschedule && (
-            <button onClick={() => patient && onReschedule(patient.id)} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-medium bg-orange-100 text-orange-700 hover:bg-orange-200 transition-all">
+            <button onClick={() => onReschedule(appointmentId)} className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-sm font-medium bg-orange-100 text-orange-700 hover:bg-orange-200 transition-all">
               <RefreshCw className="w-4 h-4" /> Reschedule
             </button>
           )}

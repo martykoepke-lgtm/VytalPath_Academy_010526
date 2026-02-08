@@ -42,7 +42,7 @@ type EHRView =
   | { type: 'chart'; patientId: string; encounterId: string | null }
   | { type: 'messages' }
   | { type: 'register-patient'; returnTo: 'appointments' | 'chart' }
-  | { type: 'book-appointment'; patientId?: string; date?: string; time?: string }
+  | { type: 'book-appointment'; patientId?: string; date?: string; time?: string; rescheduleFromId?: string }
   | { type: 'appointment-detail'; appointmentId: string }
   | { type: 'check-in'; appointmentId: string }
   | { type: 'check-out'; appointmentId: string };
@@ -242,6 +242,13 @@ function EHRLabContent() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Practice mode announcement */}
+      <div className="bg-red-900 text-white px-6 py-2">
+        <div className="max-w-7xl mx-auto text-center text-sm">
+          <span className="font-semibold">Practice Mode</span> — This is your personal EHR training environment. Edit patient records, schedule appointments, and practice workflows freely. All changes are private to your session and will automatically reset to system defaults after 48 hours. Click the reset button at any time to start fresh.
+        </div>
+      </div>
+
       {/* Teal header */}
       <header className="bg-teal-700 text-white px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -475,7 +482,7 @@ function EHRLabContent() {
               }}
               onCheckIn={(id) => navigate({ type: 'check-in', appointmentId: id })}
               onCheckOut={(id) => navigate({ type: 'check-out', appointmentId: id })}
-              onReschedule={(patientId, date, time) => navigate({ type: 'book-appointment', patientId, date, time })}
+              onReschedule={(appointmentId) => navigate({ type: 'book-appointment', rescheduleFromId: appointmentId })}
               onAddAppointment={() => navigate({ type: 'appointments' })}
             />
           )}
@@ -538,6 +545,7 @@ function EHRLabContent() {
               preselectedPatientId={view.patientId}
               preselectedDate={view.date}
               preselectedTime={view.time}
+              rescheduleFromId={view.rescheduleFromId}
               onComplete={(appointmentId) => navigate({ type: 'appointment-detail', appointmentId })}
               onCancel={goBack}
             />
@@ -548,7 +556,7 @@ function EHRLabContent() {
               appointmentId={view.appointmentId}
               onCheckIn={(id) => navigate({ type: 'check-in', appointmentId: id })}
               onCheckOut={(id) => navigate({ type: 'check-out', appointmentId: id })}
-              onReschedule={(patientId, date, time) => navigate({ type: 'book-appointment', patientId, date, time })}
+              onReschedule={(appointmentId) => navigate({ type: 'book-appointment', rescheduleFromId: appointmentId })}
               onViewChart={(patientId) => {
                 setChartPatientId(patientId);
                 setEncounterSelectOpen(true);

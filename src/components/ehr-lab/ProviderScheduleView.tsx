@@ -9,7 +9,7 @@ interface ProviderScheduleViewProps {
   onViewChart: (patientId: string) => void;
   onCheckIn: (appointmentId: string) => void;
   onCheckOut: (appointmentId: string) => void;
-  onReschedule: (patientId: string, date: string, time: string) => void;
+  onReschedule: (appointmentId: string) => void;
   onAddAppointment: () => void;
 }
 
@@ -164,7 +164,7 @@ export function ProviderScheduleView({
             )}
             {canReschedule(appt.status) && (
               <button
-                onClick={(e) => { e.stopPropagation(); onReschedule(appt.patientId, appt.date, appt.time); }}
+                onClick={(e) => { e.stopPropagation(); onReschedule(appt.id); }}
                 className="p-1.5 rounded-lg text-blue-500 hover:bg-blue-50 transition-colors"
                 title="Reschedule"
               >

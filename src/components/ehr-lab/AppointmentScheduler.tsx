@@ -7,6 +7,7 @@ interface AppointmentSchedulerProps {
   preselectedPatientId?: string;
   preselectedDate?: string;
   preselectedTime?: string;
+  rescheduleFromId?: string;
   onComplete: (appointmentId: string) => void;
   onCancel: () => void;
 }
@@ -29,18 +30,21 @@ const typeColors: Record<string, string> = {
   'pre-op': 'border-orange-300 bg-orange-50',
 };
 
-export function AppointmentScheduler({ preselectedPatientId, preselectedDate, preselectedTime, onComplete, onCancel }: AppointmentSchedulerProps) {
-  const { patients, searchPatients, provider, appointmentTypes, addAppointment, getDayAppointments, getNoShowCount } = useEHRSession();
+export function AppointmentScheduler({ preselectedPatientId, preselectedDate, preselectedTime, rescheduleFromId, onComplete, onCancel }: AppointmentSchedulerProps) {
+  const { patients, searchPatients, provider, appointmentTypes, addAppointment, rescheduleAppointment, getAppointment, getDayAppointments, getNoShowCount } = useEHRSession();
 
-  const [patientId, setPatientId] = useState(preselectedPatientId || '');
+  const originalAppt = rescheduleFromId ? getAppointment(rescheduleFromId) : undefined;
+  const isReschedule = !!originalAppt;
+
+  const [patientId, setPatientId] = useState(originalAppt?.patientId || preselectedPatientId || '');
   const [patientQuery, setPatientQuery] = useState('');
-  const [apptType, setApptType] = useState<AppointmentType>('follow-up');
+  const [apptType, setApptType] = useState<AppointmentType>(originalAppt?.appointmentType || 'follow-up');
   const [date, setDate] = useState(preselectedDate || new Date().toISOString().split('T')[0]);
   const [time, setTime] = useState(preselectedTime || '');
-  const [reason, setReason] = useState('');
-  const [referral, setReferral] = useState('');
-  const [priorAuth, setPriorAuth] = useState('');
-  const [notes, setNotes] = useState('');
+  const [reason, setReason] = useState(originalAppt?.reasonForVisit || '');
+  const [referral, setReferral] = useState(originalAppt?.referralNumber || '');
+  const [priorAuth, setPriorAuth] = useState(originalAppt?.priorAuthNumber || '');
+  const [notes, setNotes] = useState(originalAppt?.notes || '');
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const selectedPatient = patients.find((p) => p.id === patientId);
@@ -95,33 +99,42 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
 
   const handleSubmit = () => {
     if (!canSubmit || !selectedType) return;
-    const appt = addAppointment({
-      patientId,
-      providerId: provider.id,
-      date,
-      time,
-      durationMinutes: selectedType.defaultDuration,
-      appointmentType: apptType,
-      status: 'scheduled',
-      reasonForVisit: reason,
-      referralNumber: referral,
-      priorAuthNumber: priorAuth,
-      notes,
-      confirmationStatus: 'unconfirmed',
-      reminderPreference: ['text'],
-      isRecurring: false,
-      recurringInterval: null,
-      arrivalTime: null,
-      copayCollected: false,
-      copayAmount: null,
-      cancellationReason: null,
-      rescheduledFrom: null,
-      rescheduledTo: null,
-      noShowFollowUp: null,
-      createdBy: 'Front Desk',
-    });
-    setShowConfirmation(true);
-    setTimeout(() => onComplete(appt.id), 1500);
+
+    if (isReschedule && rescheduleFromId) {
+      // Reschedule: moves the original appointment to the new date/time
+      const newAppt = rescheduleAppointment(rescheduleFromId, date, time);
+      // Update any fields the user may have changed
+      setShowConfirmation(true);
+      setTimeout(() => onComplete(newAppt.id), 1500);
+    } else {
+      const appt = addAppointment({
+        patientId,
+        providerId: provider.id,
+        date,
+        time,
+        durationMinutes: selectedType.defaultDuration,
+        appointmentType: apptType,
+        status: 'scheduled',
+        reasonForVisit: reason,
+        referralNumber: referral,
+        priorAuthNumber: priorAuth,
+        notes,
+        confirmationStatus: 'unconfirmed',
+        reminderPreference: ['text'],
+        isRecurring: false,
+        recurringInterval: null,
+        arrivalTime: null,
+        copayCollected: false,
+        copayAmount: null,
+        cancellationReason: null,
+        rescheduledFrom: null,
+        rescheduledTo: null,
+        noShowFollowUp: null,
+        createdBy: 'Front Desk',
+      });
+      setShowConfirmation(true);
+      setTimeout(() => onComplete(appt.id), 1500);
+    }
   };
 
   if (showConfirmation) {
@@ -129,7 +142,7 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
       <div className="max-w-lg mx-auto py-16 text-center">
         <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-10">
           <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-          <h2 className="text-2xl font-semibold text-gray-900 mb-2">Appointment Scheduled</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 mb-2">{isReschedule ? 'Appointment Rescheduled' : 'Appointment Scheduled'}</h2>
           <p className="text-gray-500">
             {selectedPatient?.demographics.firstName} {selectedPatient?.demographics.lastName} — {formatTime(time)} on {new Date(date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
           </p>
@@ -144,7 +157,7 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-semibold text-gray-900">Schedule Appointment</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">{isReschedule ? 'Reschedule Appointment' : 'Schedule Appointment'}</h2>
         <button onClick={onCancel} className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all">
           <X className="w-4 h-4" /> Cancel
         </button>
@@ -162,7 +175,9 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
                   <p className="font-medium text-gray-900">{selectedPatient.demographics.lastName}, {selectedPatient.demographics.firstName}</p>
                   <p className="text-sm text-gray-500">{selectedPatient.mrn} | DOB: {selectedPatient.demographics.dateOfBirth}</p>
                 </div>
-                <button onClick={() => { setPatientId(''); setPatientQuery(''); }} className="text-sm text-blue-600 hover:text-blue-700">Change</button>
+                {!isReschedule && (
+                  <button onClick={() => { setPatientId(''); setPatientQuery(''); }} className="text-sm text-blue-600 hover:text-blue-700">Change</button>
+                )}
               </div>
             ) : (
               <div>
@@ -209,7 +224,12 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
 
           {/* Date, Time, Reason */}
           <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 p-5 space-y-4">
-            <h3 className="font-medium text-gray-900 mb-3">3. Date, Time & Reason</h3>
+            <h3 className="font-medium text-gray-900 mb-3">{isReschedule ? '3. Select New Date & Time' : '3. Date, Time & Reason'}</h3>
+            {isReschedule && originalAppt && (
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-3 text-sm text-orange-800">
+                <span className="font-medium">Original appointment:</span> {formatTime(originalAppt.time)} on {new Date(originalAppt.date + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })} — select a new date and time below.
+              </div>
+            )}
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className={labelCls}>Date</label>
@@ -302,7 +322,7 @@ export function AppointmentScheduler({ preselectedPatientId, preselectedDate, pr
             }`}
           >
             <Save className="w-4 h-4" />
-            Book Appointment
+            {isReschedule ? 'Reschedule Appointment' : 'Book Appointment'}
           </button>
         </div>
       </div>
