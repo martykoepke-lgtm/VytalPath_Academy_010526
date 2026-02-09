@@ -81,19 +81,13 @@ export function AppLayout() {
 
         <div className="p-4 border-t border-gray-200/50">
           {user ? (
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 px-3 py-2 bg-gray-50/80 rounded-2xl">
-                <User className="w-4 h-4 text-gray-600" />
-                <span className="text-sm text-gray-700 truncate">{user.email}</span>
-              </div>
-              <button
-                onClick={handleSignOut}
-                className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-2xl transition-all duration-300"
-              >
-                <LogOut className="w-4 h-4" />
-                Sign Out
-              </button>
-            </div>
+            <button
+              onClick={handleSignOut}
+              className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-2xl transition-all duration-300"
+            >
+              <LogOut className="w-4 h-4" />
+              Sign Out
+            </button>
           ) : (
             <button
               onClick={() => setAuthModal('signIn')}
