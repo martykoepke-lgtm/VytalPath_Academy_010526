@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-**VytalPath Academy** is a comprehensive training platform designed for healthcare front office staff. It provides video lessons, reading lessons with slide-based content, interactive exercises, medical terminology study tools, 24 standard operating procedures (SOPs), a built-in EHR Practice Lab simulation, job readiness tools, and competency progress tracking.
+**VytalPath Academy** is a comprehensive training platform designed for healthcare front office staff. It provides video lessons, reading lessons with slide-based content, interactive exercises, medical terminology study tools, 24 standard operating procedures (SOPs), a built-in EHR Practice Lab simulation, job readiness tools, competency progress tracking, completion certificates, and an account management system with subscription handling.
 
 **Target Users:** Front office staff, medical receptionists, referral coordinators, clinic employees
 
 **Business Model:** $327/year individual access, tiered pricing for organizations
 
-**Competitive Position:** Priced between free platforms (Alison) and expensive certification programs (Stepful at $1,000+). Unique differentiators: built-in EHR Practice Lab simulation, competency progress tracking, 24 SOP workflow guides, interactive exercises, deep insurance training.
+**Competitive Position:** Priced between free platforms (Alison) and expensive certification programs (Stepful at $1,000+). Unique differentiators: built-in EHR Practice Lab simulation, competency progress tracking, 24 SOP workflow guides, interactive exercises, deep insurance training, completion certificates.
 
 **Live Deployment:** Vercel (connected to `martykoepke-lgtm/VytalPath_Academy_010526`)
 
@@ -69,28 +69,44 @@ src/
 │   │   ├── InsuranceTermMatch.tsx       # Insurance term matching game
 │   │   ├── HealthcareSettingSorter.tsx  # Drag-sort healthcare settings
 │   │   └── HIPAAScenarioSorter.tsx      # HIPAA scenario categorizer
+│   ├── account/               # Account management
+│   │   ├── AccountPage.tsx              # Account settings, subscription info, cancellation
+│   │   ├── CancellationPolicy.tsx       # Cancellation & refund policy display
+│   │   └── FAQ.tsx                      # Account FAQ
 │   ├── admin/                 # Admin dashboards
-│   │   ├── SuperAdminDashboard.tsx      # Platform-wide management
+│   │   ├── SuperAdminDashboard.tsx      # Platform-wide management + certificate generator
 │   │   ├── OrgAdminDashboard.tsx        # Organization management
 │   │   └── OrgAdminRoute.tsx            # Route protection
+│   ├── auth/                  # Authentication components
+│   │   ├── AuthRoute.tsx                # Authenticated + subscribed route guard
+│   │   ├── AuthOnlyRoute.tsx            # Authenticated-only route guard (no subscription check)
+│   │   └── ResetPassword.tsx            # Password reset flow
+│   ├── certificate/           # Certificate system
+│   │   └── CertificatePage.tsx          # Completion certificate (locked after generation)
 │   ├── layout/
-│   │   ├── AppLayout.tsx                # Main layout with sidebar
-│   │   └── RoleBasedSidebar.tsx         # Grouped sidebar nav (Learn/Practice/Track)
+│   │   ├── AppLayout.tsx                # Main layout with sidebar + sticky top banner
+│   │   └── RoleBasedSidebar.tsx         # Grouped sidebar nav (Learn/Practice/Track) + View As toggle
 │   ├── LandingPage.tsx        # Public marketing page
+│   ├── StickyBanner.tsx       # Top banner with user email, logo, Account link
 │   ├── ProgramIntro.tsx       # Authenticated welcome/overview page
 │   └── SEO.tsx                # Dynamic SEO + JSON-LD
 ├── data/
 │   ├── cmaaCompetencyMap.ts   # 101 knowledge statements mapped to lessons
 │   └── phoneCallScenarios.ts  # Phone simulation scenario data
 ├── contexts/
-│   ├── AuthContext.tsx        # Supabase auth provider
-│   └── ProgressContext.tsx    # Lesson/quiz progress tracking
+│   ├── AuthContext.tsx        # Supabase auth + role detection + View As switching
+│   ├── ProgressContext.tsx    # Lesson/quiz progress tracking
+│   └── SubscriptionContext.tsx # Subscription status, checkout, cancellation
 ├── types/
 │   ├── course.ts              # Course, Module, Lesson types
 │   ├── ehr.ts                 # EHR Lab types (Patient, Appointment, Encounter, etc.)
 │   ├── medical.ts             # MedicalTerm types
 │   ├── sop.ts                 # SOP types
 │   └── progress.ts            # Progress tracking types
+├── utils/
+│   ├── cmaaCompetencyEngine.ts  # Competency level calculation logic
+│   ├── completionCalculator.ts  # Course completion percentage calculation
+│   └── refundPolicy.ts          # Prorated refund calculation
 ├── router.tsx                 # React Router configuration
 └── main.tsx                   # App entry with providers
 
@@ -110,13 +126,20 @@ docs/                          # Content documentation (organized by section num
 └── _archive/                  # Archived materials
 
 supabase/
-├── migrations/                # Database migrations
-└── functions/                 # Edge functions (e.g., provision-user)
+├── migrations/                # Database migrations (certificates, completion tracking)
+└── functions/                 # Edge functions (provision-user, process-cancellation)
 ```
 
-## Sidebar Navigation Structure
+## Layout & Navigation
 
-The sidebar (`RoleBasedSidebar.tsx`) uses grouped navigation:
+### Sticky Top Banner (`StickyBanner.tsx`)
+- Left: User email (icon + truncated email)
+- Center: VytalPath Academy logo
+- Right: Account settings link (`/account`)
+- Sticky (`sticky top-0 z-40`) — always visible on scroll
+
+### Sidebar Navigation (`RoleBasedSidebar.tsx`)
+The sidebar uses grouped navigation with a View As toggle for super admins:
 
 ```
 Welcome                          (/welcome)
@@ -125,18 +148,31 @@ Welcome                          (/welcome)
   Compliance                     (/medical-law-ethics)
   Insurance & Billing            (/insurance)
   Front Office Workflows         (/workflows)
+  Communication                  (/communication)
   EHR & PM                       (/ehr-fundamentals)
   Terminology                    (/terminology)
-  Communication                  (/communication)
 ─── Practice ───
   EHR Practice Lab               (/ehr-lab)
   Job Readiness                  (/practice)
 ─── Track ───
   My Progress                    (/progress)
+  Certificate                    (/certificate)
   Search                         (/search)
+  Account                        (/account)
+───
+  [Admin Dashboard]              (admins only)
+  [View As toggle]               (super admins only: Admin | Org Admin | Student)
+  [Sign Out]
 ```
 
-## Training Curriculum (8 Live Sections)
+### View As Toggle (Super Admin Only)
+- Segmented control at sidebar bottom: **Admin** | **Org Admin** | **Student**
+- Changes sidebar navigation and admin link visibility
+- Does NOT affect route guards (super admin retains full access)
+- State stored in `AuthContext.viewAs` / `effectiveRoleInfo`
+- Resets on sign-out and page refresh (session-only, not persisted)
+
+## Training Curriculum (9 Live Sections)
 
 ### Section 1: Foundations of Healthcare (`/foundations`) ✅
 Healthcare administration fundamentals.
@@ -292,7 +328,7 @@ Professional communication skills for healthcare front office.
 - 80% passing score, 3 attempts per quiz
 - Immediate feedback with explanations
 - Navigation to next module on completion
-- 8 quizzes across 4 sections (28+ questions in EHR section alone)
+- 18 quizzes across 6 sections
 
 ### Interactive Exercises
 - Insurance Term Matching (drag-and-drop)
@@ -312,6 +348,28 @@ Professional communication skills for healthcare front office.
 - Quiz scores and pass status tracked
 - Visual progress bars on each section page
 - Competency level calculation
+- Completion percentage calculation (`src/utils/completionCalculator.ts`)
+
+### Certificate System (`/certificate`)
+- Generates a locked completion certificate with unique certificate number
+- Stored in Supabase `certificates` table (one per user, RLS-protected)
+- Super admins can view all certificates and generate on-the-fly certificates
+- RPCs: `get_all_certificates()`, `admin_delete_certificate()`
+
+### Account Management (`/account`)
+- Account settings page showing user info and subscription status
+- Subscription details: plan type, period dates, cancel-at-period-end status
+- Cancellation flow with prorated refund calculation (`src/utils/refundPolicy.ts`)
+- FAQ and cancellation policy sub-pages
+- Edge function: `process-cancellation` for server-side cancellation
+
+### Subscription System (`SubscriptionContext.tsx`)
+- Tracks access type: `individual` | `organization` | `none`
+- Subscription status, period dates, cancel-at-period-end flag
+- Checkout session creation (Stripe integration)
+- Customer portal access
+- Cancellation with prorated refund calculation
+- `AuthRoute` requires active subscription; `AuthOnlyRoute` requires auth only
 
 ## Database Schema (Supabase)
 
@@ -320,12 +378,23 @@ Professional communication skills for healthcare front office.
 - `categories` / `subcategories` - Term organization
 - `sops` - Standard operating procedures (JSONB steps)
 - `user_sop_progress` - Session-based progress tracking
+- `certificates` - Locked student certificates (id, user_id, student_name, certificate_number, issued_at, is_locked; unique per user)
 
 ### Organization Tables
 - `organizations` - Org details (id, name, slug, settings)
 - `org_members` - User-org relationships (user_id, org_id, role, status)
 - `invitations` - Unified invitation system (token, email, role, max_uses, expires_at)
 - `user_profiles` - User display info (first_name, last_name, display_name)
+
+### RPC Functions
+- `ensure_user_membership()` - Creates/returns student membership on login
+- `check_org_admin()` - Verifies org admin status for route guards
+- `get_all_organizations()` - Lists all orgs (super admin only)
+- `get_org_invitations()` / `get_org_admins()` - Org-scoped data
+- `create_invitation()` / `cancel_invitation()` / `accept_invitation()` - Invitation lifecycle
+- `remove_org_member()` - Remove student/admin from org
+- `get_all_certificates()` - All certificates (super admin only)
+- `admin_delete_certificate()` - Delete a certificate (super admin only)
 
 ### Key Types
 ```typescript
@@ -462,11 +531,13 @@ Each section uses a distinct Tailwind color for its icon/accent:
 ### Pricing Tiers
 
 **Individual:** $327/year (1 year access)
-- All 8 training sections
-- 40+ lessons, 8 quizzes & 24 SOPs
+- All 9 training sections
+- 80+ lessons, 18 quizzes & 24 SOPs
 - Hands-on EHR Practice Lab
 - Job readiness tools & mock interviews
 - AI study assistant on every page
+- Completion certificate
+- Account management with subscription portal
 - New content added regularly
 
 **Organization Pricing (Planned):**
@@ -482,23 +553,27 @@ Each section uses a distinct Tailwind color for its icon/accent:
 | Feature | VytalPath | Stepful | Alison |
 |---------|-----------|---------|--------|
 | Price | $327/year | ~$1,000+ | Free |
-| Training Sections | 8 | ~5-6 | 2-3 |
+| Training Sections | 9 | ~5-6 | 2-3 |
 | Video Lessons | 20+ | 20+ | 0 |
-| Reading Lessons | 20+ | Unknown | 0 |
+| Reading Lessons | 60+ | Unknown | 0 |
 | SOPs/Guides | 24 | 0 | 0 |
 | EHR Simulation | ✅ Built-in | ❌ | ❌ |
 | Competency Tracking | ✅ 101 topics tracked | ✅ CMAA cert included | ❌ |
-| Insurance Training | ✅ Deep (7 lessons) | ⚠️ Basic | ❌ |
+| Insurance Training | ✅ Deep (18 lessons) | ⚠️ Basic | ❌ |
 | Interactive Exercises | ✅ 4 types | ⚠️ Basic | ❌ |
 | Job Readiness Tools | ✅ 6 tools | ⚠️ Resume only | ❌ |
+| Completion Certificate | ✅ | ✅ | ❌ |
+| Account Management | ✅ Self-service | ⚠️ Basic | ❌ |
 
 ### Unique Differentiators
 1. **EHR Practice Lab** - Only platform with built-in PM/EHR simulation (no external system)
 2. **Competency Dashboard** - Maps all 101 knowledge statements to curriculum
 3. **24 SOP Workflow Guides** - Ready-to-use on the job
-4. **Deep Insurance Training** - 7 video lessons vs competitors' brief coverage
+4. **Deep Insurance Training** - 18 lessons (7 video + 11 reading) vs competitors' brief coverage
 5. **Job Readiness Suite** - Phone simulator, mock interviews, resume builder, hotline practice
 6. **Interactive Exercises** - Term matching, healthcare setting sorter, HIPAA scenarios, flashcards
+7. **Completion Certificate** - Locked certificate with unique number, verifiable by employers
+8. **Self-Service Account Management** - Subscription portal, cancellation with prorated refunds
 
 ### Target Market
 - New healthcare front office staff
@@ -510,11 +585,13 @@ Each section uses a distinct Tailwind color for its icon/accent:
 ## Organization & Role System
 
 ### Three Roles
-1. **Super Admin** - Hardcoded emails (platform owners)
+1. **Super Admin** - Hardcoded emails in `AuthContext.tsx` (`SUPER_ADMIN_EMAILS`)
    - Full platform access at `/admin`
    - Create/manage organizations
    - Add Org Admins by email or invite link
-   - View all students and progress
+   - View all students, progress, and certificates
+   - **View As toggle** — switch sidebar between Admin/Org Admin/Student views
+   - Certificate generator (on-the-fly creation from dashboard)
 
 2. **Org Admin** - Stored in `org_members` with `role='admin'`
    - Access their org at `/admin/orgs/:slug`
@@ -523,10 +600,20 @@ Each section uses a distinct Tailwind color for its icon/accent:
    - Remove members
 
 3. **Student** - Default role
-   - Access all learning content (8 sections)
+   - Access all learning content (9 sections)
    - Access EHR Practice Lab and Job Readiness tools
    - Track competency progress
+   - Generate completion certificate
+   - Manage account and subscription at `/account`
    - Can be org-based or self-registered
+
+### View As System (Super Admin)
+- `AuthContext` exposes: `viewAs`, `setViewAs()`, `effectiveRoleInfo`
+- `viewAs` type: `'super_admin' | 'org_admin' | 'student' | null`
+- `effectiveRoleInfo` overrides `roleInfo` for UI display when `viewAs` is set
+- `RoleBasedSidebar` and `MobileBottomNav` read `effectiveRoleInfo` for navigation rendering
+- Route guards (`AdminRoute`, `OrgAdminRoute`, `AuthRoute`) always use real `roleInfo` — security unchanged
+- Toggle resets on sign-out and page refresh
 
 ### Invitation System
 - Unified `invitations` table replaces old system
@@ -545,4 +632,10 @@ Each section uses a distinct Tailwind color for its icon/accent:
 - Reading lessons use markdown slide format separated by `\n---\n`
 - Section intro videos auto-play when section page loads (dismissible)
 - Landing page uses Problem-Agitation-Solution marketing framework
-- Welcome page (`ProgramIntro.tsx`) includes intro video and 8-section learning path
+- Welcome page (`ProgramIntro.tsx`) includes intro video and 9-section learning path
+- Sticky top banner (`StickyBanner.tsx`) shows user email (left), logo (center), Account link (right)
+- Sign Out button lives in sidebar bottom; user email moved to top banner
+- Super admin View As toggle uses `effectiveRoleInfo` for UI, real `roleInfo` for security
+- Certificates are locked once generated (one per user, stored in Supabase)
+- Subscription cancellation calculates prorated refund via `src/utils/refundPolicy.ts`
+- Two route guard types: `AuthRoute` (auth + subscription) and `AuthOnlyRoute` (auth only, used for `/account`)
