@@ -61,6 +61,9 @@ export const cmaaDomains: CMAAdomain[] = [
         activities: [
           { type: 'lesson', slug: 'understanding-healthcare-delivery', label: 'Understanding Healthcare Delivery', section: 'Foundations', link: '/foundations/healthcare-delivery/understanding-healthcare-delivery' },
           { type: 'quiz', slug: 'healthcare-delivery', label: 'Healthcare Delivery Quiz', section: 'Foundations', link: '/foundations/healthcare-delivery/quiz' },
+          { type: 'lesson', slug: 'healthcare-team-roles', label: 'Healthcare Team Roles & Your Role', section: 'Foundations', link: '/foundations/your-role-in-healthcare/healthcare-team-roles' },
+          { type: 'lesson', slug: 'patient-journey-overview', label: 'The Patient Journey End-to-End', section: 'Foundations', link: '/foundations/your-role-in-healthcare/patient-journey-overview' },
+          { type: 'quiz', slug: 'your-role-in-healthcare', label: 'Your Role in Healthcare Quiz', section: 'Foundations', link: '/foundations/your-role-in-healthcare/quiz' },
         ],
       },
       {
@@ -514,6 +517,8 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Medical administrative assistant scope of practice',
         coverageStatus: 'covered',
         activities: [
+          { type: 'lesson', slug: 'healthcare-team-roles', label: 'Healthcare Team Roles & Your Role', section: 'Foundations', link: '/foundations/your-role-in-healthcare/healthcare-team-roles' },
+          { type: 'quiz', slug: 'your-role-in-healthcare', label: 'Your Role in Healthcare Quiz', section: 'Foundations', link: '/foundations/your-role-in-healthcare/quiz' },
           { type: 'lesson', slug: 'professional-ethics-boundaries', label: 'Professional Ethics & Boundaries', section: 'Medical Law', link: '/medical-law-ethics/ethics-data-security/professional-ethics-boundaries' },
           { type: 'quiz', slug: 'ethics-data-security', label: 'Ethics & Data Security Quiz', section: 'Medical Law', link: '/medical-law-ethics/ethics-data-security/quiz' },
         ],
@@ -708,9 +713,11 @@ export const cmaaDomains: CMAAdomain[] = [
       {
         id: 'k65',
         text: 'Special considerations for intake (visually impaired, language barriers, kiosk/tablet support)',
-        coverageStatus: 'gap',
-        activities: [],
-        plannedContent: 'Patient Communication Excellence module',
+        coverageStatus: 'covered',
+        activities: [
+          { type: 'lesson', slug: 'patient-journey-overview', label: 'The Patient Journey End-to-End', section: 'Foundations', link: '/foundations/your-role-in-healthcare/patient-journey-overview' },
+          { type: 'quiz', slug: 'your-role-in-healthcare', label: 'Your Role in Healthcare Quiz', section: 'Foundations', link: '/foundations/your-role-in-healthcare/quiz' },
+        ],
       },
       {
         id: 'k66',

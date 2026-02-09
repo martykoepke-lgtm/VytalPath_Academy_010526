@@ -4400,6 +4400,269 @@ How medication is given:
       'Most of your career will involve ambulatory care workflows and outpatient documentation',
     ],
   },
+  // Foundations Module 2: Your Role in Healthcare
+  'healthcare-team-roles': {
+    lesson: {
+      id: 'fs-l4', module_id: 'fs-m2', slug: 'healthcare-team-roles',
+      title: 'Healthcare Team Roles & Your Role',
+      description: 'Understand the clinical and administrative roles in a medical office and where the medical administrative assistant fits in.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## The Healthcare Team
+
+Every healthcare office — whether it's a small family practice or a large multi-specialty clinic — depends on two groups of professionals working together: the **clinical team** and the **administrative team**.
+
+Understanding who does what isn't just helpful — it's essential. You'll route calls, schedule with the right provider, relay messages accurately, and know exactly when to escalate. The better you understand each role, the more effective you'll be from day one.
+
+---
+
+## The Clinical Team
+
+The **clinical team** provides direct patient care. Here are the roles you'll interact with most:
+
+**Physicians (MD/DO)** — Diagnose conditions, prescribe medications, order tests, and create treatment plans. They are the primary decision-makers for patient care.
+
+**Advanced Practice Providers (NP/PA)** — Nurse Practitioners and Physician Assistants can examine patients, diagnose, prescribe, and manage care. In many clinics, they carry their own patient panels just like physicians.
+
+**Registered Nurses (RN)** — Coordinate clinical care, triage patient calls, administer medications, and educate patients. They're often your go-to contact for clinical questions.
+
+**Medical Assistants (MA)** — Room patients, take vitals, assist with procedures, and handle clinical documentation. MAs are the bridge between the front office and the exam room.
+
+**Licensed Practical Nurses (LPN)** — Provide basic nursing care under RN or provider supervision, including wound care, medication administration, and patient monitoring.
+
+---
+
+## The Administrative Team
+
+The **administrative team** keeps the business side running. This is your team:
+
+**Front Desk / Receptionist** — First point of contact for patients. Handles check-in, check-out, phones, and appointment scheduling. This is where most entry-level roles begin.
+
+**Medical Administrative Assistant (MAA)** — A broader role that includes front desk duties plus insurance verification, referral coordination, prior authorizations, and medical records management. This is the role this course prepares you for.
+
+**Billing & Coding Specialists** — Process claims, apply diagnosis and procedure codes, follow up on denied claims, and manage the revenue cycle.
+
+**Office Manager / Practice Manager** — Oversees daily operations, staffing, compliance, and financial performance. They ensure the administrative and clinical teams work together smoothly.
+
+**Health Information / Medical Records** — Maintains patient records, handles release of information requests, and ensures documentation meets regulatory requirements.
+
+---
+
+## Where the Front Office and Clinical Worlds Connect
+
+The front office and clinical teams interact constantly throughout the day. Here are the key connection points:
+
+**Patient Check-In → Clinical Handoff:** You verify demographics, insurance, and consent forms. Then you notify the clinical team the patient is ready — often by updating the patient's status in the EHR.
+
+**Phone Calls & Messages:** Patients call with symptoms, medication questions, and test result inquiries. You take the message, determine urgency, and route it to the right clinical team member.
+
+**Scheduling:** Providers have specific scheduling templates — some see new patients on certain days, or block time for procedures. You need to understand these patterns to schedule correctly.
+
+**Referrals & Prior Authorizations:** A provider orders a referral or procedure. You handle the paperwork — calling insurance, getting authorization, coordinating with the specialist's office, and communicating timelines back to the patient.
+
+**Prescription Refills:** Patients call requesting refills. You take the information and route it to the provider or nurse for approval.
+
+---
+
+## The Medical Administrative Assistant Scope of Practice
+
+As an MAA, you have a defined **scope of practice** — the boundaries of what you can and cannot do. Understanding this protects both you and your patients.
+
+**You CAN:**
+- Schedule and confirm appointments
+- Register patients and update demographics
+- Verify insurance eligibility and benefits
+- Collect copays and outstanding balances
+- Process referrals and prior authorizations
+- Handle medical records requests (following HIPAA)
+- Route clinical messages to the appropriate team member
+- Manage the provider's schedule and templates
+
+**You CANNOT:**
+- Give medical advice (even if you think you know the answer)
+- Interpret test results for patients
+- Recommend medications or dosage changes
+- Diagnose symptoms or conditions
+- Authorize prescription refills without provider approval
+- Share patient information without proper authorization
+
+**The golden rule:** If a patient asks you a clinical question, the answer is always: *"That's a great question — let me have the nurse/provider get back to you on that."*
+
+---
+
+## Why This Matters for Your Career
+
+The medical administrative assistant role is the **hub of the medical office**. You connect patients to providers, insurance to billing, and clinical decisions to administrative action.
+
+Employers value MAAs who:
+- Understand the full care team and each person's role
+- Know when to handle something independently vs. when to escalate
+- Communicate clearly across both clinical and administrative teams
+- Stay within their scope of practice — always
+
+This role is also a launching pad. Many MAAs advance into office management, billing supervision, health information management, or clinical roles with additional training.`,
+      duration_minutes: 8, sort_order: 1,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'fs-m2', course_id: 'foundations', slug: 'your-role-in-healthcare', title: 'Your Role in Healthcare', description: 'Understand the healthcare team and your scope of practice.', sort_order: 2, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Foundations of Healthcare', prevLesson: null, nextLesson: 'patient-journey-overview', nextIsQuiz: false,
+    keyTakeaways: [
+      'Healthcare offices have two teams: clinical (providers, nurses, MAs) and administrative (front desk, MAA, billing, office manager)',
+      'The front office connects to clinical through check-in handoffs, phone triage, scheduling, referrals, and prescription routing',
+      'MAAs have a defined scope of practice — handle administrative tasks, but never give medical advice or interpret results',
+      'The MAA role is the hub of the medical office and a career launching pad into management, billing, or clinical roles',
+    ],
+  },
+  'patient-journey-overview': {
+    lesson: {
+      id: 'fs-l5', module_id: 'fs-m2', slug: 'patient-journey-overview',
+      title: 'The Patient Journey End-to-End',
+      description: 'Follow a patient from first contact through check-out, and learn how to handle accessibility needs and special intake considerations.',
+      content_type: 'reading', video_url: null,
+      reading_content: `## Following the Patient Journey
+
+Every patient interaction follows a predictable path — from the moment they contact your office to the moment they leave. Understanding this full journey helps you anticipate what comes next, prepare what's needed, and create a smooth experience for both patients and providers.
+
+In this lesson, we'll walk through each stage and highlight what the front office handles at every step.
+
+---
+
+## Stage 1: First Contact
+
+The patient journey begins before they ever walk through your door. First contact usually happens by:
+
+- **Phone call** — The most common. Patient calls to schedule, ask about services, or get directions.
+- **Online scheduling** — Patient books through a portal or website. You may need to confirm or adjust.
+- **Walk-in** — Patient arrives without an appointment. You assess availability and urgency.
+- **Referral** — Another provider sends the patient to your office. You receive paperwork and reach out to schedule.
+
+**Your role:** Collect basic information (name, DOB, reason for visit, insurance), determine the right appointment type, and schedule appropriately. For new patients, you'll also start the registration process.
+
+---
+
+## Stage 2: Pre-Visit Preparation
+
+Between scheduling and the visit, several things need to happen:
+
+- **Insurance verification** — Confirm the patient's coverage is active and your provider is in-network.
+- **Prior authorization** — If required for the visit type or procedure, obtain approval from the insurance company before the appointment.
+- **New patient paperwork** — Send registration forms, consent documents, and health history questionnaires.
+- **Appointment reminders** — Call, text, or email reminders reduce no-shows.
+- **Chart preparation** — Ensure the patient's record is ready: referral documents uploaded, past records obtained, forms flagged for signature.
+
+**Your role:** Complete the administrative prep so the visit runs smoothly. A well-prepared chart saves everyone time.
+
+---
+
+## Stage 3: Arrival & Check-In
+
+When the patient arrives, check-in is your moment to set the tone for the entire visit:
+
+1. **Greet the patient** warmly and professionally.
+2. **Verify identity** — Confirm name, date of birth, and photo ID.
+3. **Update demographics** — Address, phone number, emergency contact, employer.
+4. **Verify insurance** — Scan the card, confirm it matches what's on file.
+5. **Collect signatures** — Consent to treat, financial responsibility, HIPAA acknowledgment, Notice of Privacy Practices.
+6. **Collect copay** — Collect the patient's copayment at check-in per office policy.
+7. **Update the EHR** — Mark the patient as arrived so the clinical team knows they're ready.
+
+**Average check-in time:** 3–5 minutes for established patients, 10–15 minutes for new patients.
+
+---
+
+## Stage 4: Special Considerations for Intake
+
+Not every patient fits the standard check-in flow. You'll encounter situations that require flexibility, patience, and awareness. Handling these well is a sign of a skilled front office professional.
+
+**Language Barriers:**
+- Use your office's interpreter services — most clinics have phone interpreter lines or video interpreting available.
+- Never use a family member (especially a child) as an interpreter for clinical or consent conversations. This creates HIPAA and accuracy risks.
+- Have key forms available in your most common non-English languages.
+- Speak clearly and at a normal pace. Avoid idioms or medical jargon.
+
+**Visual Impairments:**
+- Offer to read forms aloud or provide large-print versions.
+- Guide the patient verbally: *"The sign-in sheet is directly in front of you on the counter."*
+- Offer assistance filling out paperwork without assuming they need it — ask first.
+- Ensure consent forms are explained thoroughly since the patient may not be able to read them.
+
+**Hearing Impairments:**
+- Face the patient directly when speaking — many people read lips.
+- Write down key information if needed.
+- Check if the office has TTY/TDD services or video relay for phone appointments.
+- Be patient with communication — don't rush or speak louder; speak clearly.
+
+**Mobility and Physical Limitations:**
+- Ensure the waiting area is accessible — clear pathways, accessible seating.
+- Assist with clipboard and paperwork positioning if needed.
+- If using a kiosk or tablet for check-in, ensure it's at an accessible height.
+
+**Kiosk and Tablet Check-In:**
+- Many offices use self-service check-in. Be ready to assist patients who are unfamiliar with the technology.
+- Elderly patients, patients with tremors, or those with low tech literacy may need hands-on guidance.
+- Always have a manual check-in option available as a backup.
+- Monitor the kiosk area to catch patients who are struggling but haven't asked for help.
+
+**Cognitive or Developmental Considerations:**
+- Speak in simple, clear sentences.
+- Allow extra time — don't rush the check-in process.
+- If a caregiver is present, include both the patient and caregiver in the conversation.
+- Confirm understanding by asking the patient to repeat key information back to you.
+
+---
+
+## Stage 5: During the Visit
+
+While the patient is with the provider, the front office stays busy:
+
+- **Manage the schedule** — Monitor for delays, notify patients if the provider is running behind.
+- **Handle phone calls** — Triage incoming calls, take messages, schedule other patients.
+- **Process incoming faxes and referrals** — Route documents to the right chart or provider inbox.
+- **Prepare for check-out** — Look ahead at what the provider may order (follow-up, referral, labs) so you're ready.
+
+**Your role:** Keep operations moving while the clinical team focuses on patient care.
+
+---
+
+## Stage 6: Check-Out
+
+After the visit, the patient returns to the front desk:
+
+1. **Schedule follow-up** — Book the next appointment based on the provider's instructions (e.g., "return in 2 weeks").
+2. **Process referrals** — If the provider ordered a referral, explain the next steps to the patient and begin the authorization process.
+3. **Collect payments** — Collect any outstanding balances, procedure copays, or co-insurance.
+4. **Provide visit summary** — Hand the patient their after-visit summary (AVS) with instructions, prescriptions, and next steps.
+5. **Update the record** — Ensure all check-out tasks are documented in the EHR.
+
+**Your role:** Close the loop on the visit and make sure the patient leaves knowing exactly what happens next.
+
+---
+
+## The Full Picture
+
+Here's the patient journey at a glance:
+
+| Stage | What Happens | Front Office Role |
+|-------|-------------|-------------------|
+| First Contact | Patient calls, books online, walks in, or is referred | Collect info, schedule, start registration |
+| Pre-Visit | Insurance verified, auth obtained, chart prepared | Complete all administrative prep |
+| Check-In | Identity confirmed, forms signed, copay collected | Set the tone, verify everything, update EHR |
+| Special Needs | Accommodate language, vision, hearing, mobility, tech | Adapt the process with patience and resources |
+| During Visit | Provider sees patient, clinical care delivered | Manage schedule, phones, incoming documents |
+| Check-Out | Follow-up scheduled, referrals started, payments collected | Close the loop, ensure patient knows next steps |
+
+Every stage connects to the next. When you do your part well at each step, the entire experience is seamless — for the patient and for your team.`,
+      duration_minutes: 10, sort_order: 2,
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    },
+    module: { id: 'fs-m2', course_id: 'foundations', slug: 'your-role-in-healthcare', title: 'Your Role in Healthcare', description: 'Understand the healthcare team and your scope of practice.', sort_order: 2, created_at: new Date().toISOString(), updated_at: new Date().toISOString() },
+    courseTitle: 'Foundations of Healthcare', prevLesson: 'healthcare-team-roles', nextLesson: null, nextIsQuiz: true,
+    keyTakeaways: [
+      'The patient journey follows six stages: first contact, pre-visit prep, check-in, during visit, and check-out',
+      'Special intake considerations include language barriers, visual/hearing impairments, mobility needs, and tech assistance for kiosk check-in',
+      'Never use family members as interpreters — use professional interpreter services for clinical and consent conversations',
+      'Every stage connects to the next — your preparation and follow-through at each step makes the entire experience seamless',
+    ],
+  },
   // ─── EHR & Practice Management Section ───
   'encounters-and-identifiers': {
     lesson: {

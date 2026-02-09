@@ -58,6 +58,38 @@ const foundationsModules = [
       },
     ],
   },
+  {
+    id: 'm2',
+    slug: 'your-role-in-healthcare',
+    title: 'Your Role in Healthcare',
+    description: 'Learn who makes up the healthcare team, where you fit in, and follow the patient journey from first contact through check-out.',
+    sort_order: 2,
+    quiz: {
+      id: 'q-fs2',
+      title: 'Your Role in Healthcare Quiz',
+      description: 'Test your knowledge of healthcare team roles, scope of practice, and the patient journey',
+      passing_score: 80,
+      max_attempts: 3,
+    },
+    lessons: [
+      {
+        id: 'l4',
+        slug: 'healthcare-team-roles',
+        title: 'Healthcare Team Roles & Your Role',
+        description: 'Understand the clinical and administrative roles in a medical office and where the medical administrative assistant fits in.',
+        content_type: 'reading' as ContentType,
+        duration_minutes: 8,
+      },
+      {
+        id: 'l5',
+        slug: 'patient-journey-overview',
+        title: 'The Patient Journey End-to-End',
+        description: 'Follow a patient from first contact through check-out, and learn how to handle accessibility needs and special intake considerations.',
+        content_type: 'reading' as ContentType,
+        duration_minutes: 10,
+      },
+    ],
+  },
 ];
 
 const contentTypeIcons: Record<ContentType, React.ElementType> = {
