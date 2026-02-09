@@ -435,7 +435,7 @@ export function WorkflowsSection() {
                 className="w-full h-full"
                 controlsList="nodownload"
               >
-                <source src={`${VIDEO_BASE_URL}/wfintro.mp4`} type="video/mp4" />
+                <source src={`${VIDEO_BASE_URL}/FO_workflows2.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

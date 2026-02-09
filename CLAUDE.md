@@ -2,13 +2,13 @@
 
 ## Project Overview
 
-**VytalPath Academy** is a comprehensive training platform designed for healthcare front office staff. It provides video lessons, reading lessons with slide-based content, interactive exercises, medical terminology study tools, 24 standard operating procedures (SOPs), a built-in EHR Practice Lab simulation, job readiness tools, and CMAA exam competency tracking.
+**VytalPath Academy** is a comprehensive training platform designed for healthcare front office staff. It provides video lessons, reading lessons with slide-based content, interactive exercises, medical terminology study tools, 24 standard operating procedures (SOPs), a built-in EHR Practice Lab simulation, job readiness tools, and competency progress tracking.
 
 **Target Users:** Front office staff, medical receptionists, referral coordinators, clinic employees
 
 **Business Model:** $327/year individual access, tiered pricing for organizations
 
-**Competitive Position:** Priced between free platforms (Alison) and expensive certification programs (Stepful at $1,000+). Unique differentiators: built-in EHR Practice Lab simulation, CMAA exam competency tracking, 24 SOP workflow guides, interactive exercises, deep insurance training.
+**Competitive Position:** Priced between free platforms (Alison) and expensive certification programs (Stepful at $1,000+). Unique differentiators: built-in EHR Practice Lab simulation, competency progress tracking, 24 SOP workflow guides, interactive exercises, deep insurance training.
 
 **Live Deployment:** Vercel (connected to `martykoepke-lgtm/VytalPath_Academy_010526`)
 
@@ -59,7 +59,7 @@ src/
 │   │   ├── MockInterview.tsx            # AI mock interview
 │   │   ├── ResumeBuilder.tsx            # Resume builder tool
 │   │   └── InsuranceHotline.tsx         # Insurance hotline practice
-│   ├── progress/              # CMAA competency tracking
+│   ├── progress/              # Competency tracking
 │   │   └── CMAADashboard.tsx            # Competency dashboard with domain progress
 │   ├── reference/             # Reference tools
 │   │   ├── SOPLibrary.tsx               # SOP browsing & search
@@ -80,7 +80,7 @@ src/
 │   ├── ProgramIntro.tsx       # Authenticated welcome/overview page
 │   └── SEO.tsx                # Dynamic SEO + JSON-LD
 ├── data/
-│   ├── cmaaCompetencyMap.ts   # 101 CMAA knowledge statements mapped to lessons
+│   ├── cmaaCompetencyMap.ts   # 101 knowledge statements mapped to lessons
 │   └── phoneCallScenarios.ts  # Phone simulation scenario data
 ├── contexts/
 │   ├── AuthContext.tsx        # Supabase auth provider
@@ -132,7 +132,7 @@ Welcome                          (/welcome)
   EHR Practice Lab               (/ehr-lab)
   Job Readiness                  (/practice)
 ─── Track ───
-  CMAA Progress                  (/progress)
+  My Progress                    (/progress)
   Search                         (/search)
 ```
 
@@ -188,7 +188,7 @@ Front office procedures with SOPs.
 - ~70 min total
 
 ### Section 5: EHR & Practice Management (`/ehr-fundamentals`) ✅ NEW
-PM/EHR systems and encounter management. Covers 43% of CMAA exam content (Domains 1, 4, 5).
+PM/EHR systems and encounter management.
 - **Module 1: Understanding Your Systems** (3 reading lessons)
   - Encounter Types & Patient Identifiers, Practice Management vs EHR, Navigating the EHR
 - **Module 2: Clinic Encounters** (3 reading lessons)
@@ -265,10 +265,10 @@ Professional communication skills for healthcare front office.
 
 ## Key Features
 
-### CMAA Competency Dashboard (`/progress`)
-- Maps 101 NHA CMAA knowledge statements to VytalPath lessons
+### Competency Dashboard (`/progress`)
+- Maps 101 knowledge statements to VytalPath lessons
 - 6 competency levels: not_available → not_started → exposed → practiced → assessed → mastered
-- Domain-level progress bars (7 CMAA domains)
+- Domain-level progress bars (7 domains)
 - Coverage status tracking: gap / partial / covered per knowledge statement
 - Data in `src/data/cmaaCompetencyMap.ts`
 
@@ -311,7 +311,7 @@ Professional communication skills for healthcare front office.
 - Lesson completion persisted in localStorage
 - Quiz scores and pass status tracked
 - Visual progress bars on each section page
-- CMAA competency level calculation
+- Competency level calculation
 
 ## Database Schema (Supabase)
 
@@ -487,14 +487,14 @@ Each section uses a distinct Tailwind color for its icon/accent:
 | Reading Lessons | 20+ | Unknown | 0 |
 | SOPs/Guides | 24 | 0 | 0 |
 | EHR Simulation | ✅ Built-in | ❌ | ❌ |
-| CMAA Exam Prep | ✅ Competency tracking | ✅ CMAA cert included | ❌ |
+| Competency Tracking | ✅ 101 topics tracked | ✅ CMAA cert included | ❌ |
 | Insurance Training | ✅ Deep (7 lessons) | ⚠️ Basic | ❌ |
 | Interactive Exercises | ✅ 4 types | ⚠️ Basic | ❌ |
 | Job Readiness Tools | ✅ 6 tools | ⚠️ Resume only | ❌ |
 
 ### Unique Differentiators
 1. **EHR Practice Lab** - Only platform with built-in PM/EHR simulation (no external system)
-2. **CMAA Competency Dashboard** - Maps all 101 knowledge statements to curriculum
+2. **Competency Dashboard** - Maps all 101 knowledge statements to curriculum
 3. **24 SOP Workflow Guides** - Ready-to-use on the job
 4. **Deep Insurance Training** - 7 video lessons vs competitors' brief coverage
 5. **Job Readiness Suite** - Phone simulator, mock interviews, resume builder, hotline practice
@@ -505,7 +505,7 @@ Each section uses a distinct Tailwind color for its icon/accent:
 - Career changers entering healthcare
 - Clinic trainers needing standardized onboarding
 - Staffing agencies placing healthcare admin workers
-- CMAA exam candidates needing study support
+- Healthcare certification candidates needing study support
 
 ## Organization & Role System
 
@@ -525,7 +525,7 @@ Each section uses a distinct Tailwind color for its icon/accent:
 3. **Student** - Default role
    - Access all learning content (8 sections)
    - Access EHR Practice Lab and Job Readiness tools
-   - Track CMAA competency progress
+   - Track competency progress
    - Can be org-based or self-registered
 
 ### Invitation System

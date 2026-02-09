@@ -1,4 +1,4 @@
-// CMAA Competency Engine — Pure computation, no React dependencies
+// Competency Engine — Pure computation, no React dependencies
 // Reads progress data from localStorage and computes competency levels per knowledge statement
 
 import { cmaaDomains, type CMAAdomain, type KnowledgeStatement, type ActivityRef } from '../data/cmaaCompetencyMap';

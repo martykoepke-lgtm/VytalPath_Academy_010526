@@ -1,4 +1,4 @@
-// CMAA Competency Map — All 101 NHA Knowledge Statements
+// Competency Map — All 101 Knowledge Statements
 // Maps each knowledge statement to VytalPath Academy activities for progress tracking
 
 export type CoverageStatus = 'covered' | 'partial' | 'gap';

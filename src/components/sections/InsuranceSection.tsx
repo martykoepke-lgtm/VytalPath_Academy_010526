@@ -453,7 +453,7 @@ export function InsuranceSection() {
                 className="w-full h-full"
                 controlsList="nodownload"
               >
-                <source src={`${VIDEO_BASE_URL}/insuranceintro.mp4`} type="video/mp4" />
+                <source src={`${VIDEO_BASE_URL}/Bill_ins2.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

@@ -35,6 +35,8 @@ import { MockInterview } from './components/practice/MockInterview';
 import { ResumeBulletBuilder } from './components/practice/ResumeBulletBuilder';
 import { ReadinessAssessment } from './components/practice/ReadinessAssessment';
 import { AuthRoute } from './components/auth/AuthRoute';
+import { AuthOnlyRoute } from './components/auth/AuthOnlyRoute';
+import { AccountPage } from './components/account/AccountPage';
 import { PricingPage } from './components/billing/PricingPage';
 import { CurriculumPage } from './pages/CurriculumPage';
 import { ProgramIntro } from './components/ProgramIntro';
@@ -165,7 +167,7 @@ export const router = createBrowserRouter([
         path: 'ehr-lab',
         element: <AuthRoute><EHRPracticeLab /></AuthRoute>,
       },
-      // CMAA Progress Dashboard
+      // My Progress Dashboard
       {
         path: 'progress',
         element: <AuthRoute><CMAADashboard /></AuthRoute>,
@@ -174,6 +176,11 @@ export const router = createBrowserRouter([
       {
         path: 'certificate',
         element: <AuthRoute><CertificatePage /></AuthRoute>,
+      },
+      // Account (auth only, no subscription check)
+      {
+        path: 'account',
+        element: <AuthOnlyRoute><AccountPage /></AuthOnlyRoute>,
       },
       // Interactive Practice
       {

@@ -66,7 +66,6 @@ function KSRow({ ks, competency }: { ks: KnowledgeStatement; competency: KSCompe
         ) : (
           <span className="w-3 flex-shrink-0" />
         )}
-        <span className="text-[11px] font-mono text-gray-400 flex-shrink-0 w-6">{ks.id}</span>
         <span className="text-[12px] text-gray-700 flex-1 leading-tight">{ks.text}</span>
         <div className="flex-shrink-0 ml-2">
           <CompetencyBadge level={competency.level} />
@@ -138,7 +137,7 @@ export function DomainCard({ domain }: DomainCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className="text-[13px] font-semibold text-gray-900">{meta.name}</span>
-            <span className="text-[11px] text-gray-400">{meta.examItems} items · {Math.round(meta.examWeight * 100)}%</span>
+            <span className="text-[11px] text-gray-400">{meta.knowledgeStatements.length} topics</span>
           </div>
           <StackedBar distribution={domain.distribution} total={totalKS} />
         </div>

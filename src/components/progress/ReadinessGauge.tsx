@@ -1,4 +1,4 @@
-// SVG radial gauge for CMAA readiness score
+// SVG radial gauge for readiness score
 
 interface ReadinessGaugeProps {
   score: number;

@@ -18,7 +18,18 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git status:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(wc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite build:*)",
+      "Bash(git -C \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\" status)",
+      "Bash(git -C \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\" diff --stat)",
+      "Bash(git -C \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\" log --oneline -5)",
+      "Bash(git -C \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\" add src/components/ehr-lab/EHRQuickReference.tsx src/components/ehr-lab/EHRPracticeLab.tsx src/components/layout/AppLayout.tsx src/components/ai-tutor/themes.ts supabase/functions/ai-tutor/knowledge-base.ts CLAUDE.md docs/07-EHR-PM/scripts/ehr-heyGen-scripts.md src/components/academy/LessonPlayer.tsx src/components/quiz/QuizPlayer.tsx src/components/sections/EHRSection.tsx src/components/sections/InsuranceSection.tsx src/data/cmaaCompetencyMap.ts docs/07-EHR-PM/scripts/xxehr-heyGen-scripts.md)",
+      "Bash(git -C \"c:\\\\Users\\\\marty\\\\VytalPath-Academy-main\" push newrepo main)",
+      "Bash(dir:*)",
+      "Bash(ren:*)",
+      "Bash(npm run dev:*)"
     ]
   }
 }

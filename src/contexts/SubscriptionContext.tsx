@@ -6,6 +6,7 @@ interface SubscriptionStatus {
   hasAccess: boolean;
   accessType: 'individual' | 'organization' | 'none';
   subscriptionStatus: string | null;
+  currentPeriodStart: Date | null;
   currentPeriodEnd: Date | null;
   orgName: string | null;
   cancelAtPeriodEnd: boolean;
@@ -16,12 +17,14 @@ interface SubscriptionContextType extends SubscriptionStatus {
   refresh: () => Promise<void>;
   createCheckoutSession: (priceType: 'individual' | 'org', orgId?: string, quantity?: number) => Promise<string | null>;
   openCustomerPortal: () => Promise<string | null>;
+  cancelSubscription: () => Promise<{ success: boolean; refundAmount: number; error?: string }>;
 }
 
 const defaultState: SubscriptionStatus = {
   hasAccess: false,
   accessType: 'none',
   subscriptionStatus: null,
+  currentPeriodStart: null,
   currentPeriodEnd: null,
   orgName: null,
   cancelAtPeriodEnd: false,
@@ -50,6 +53,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         hasAccess: true,
         accessType: 'individual',
         subscriptionStatus: 'active',
+        currentPeriodStart: null,
         currentPeriodEnd: null,
         orgName: null,
         cancelAtPeriodEnd: false,
@@ -60,7 +64,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
 
     try {
       // Call the RPC function to get subscription status
-      const { data, error } = await supabase.rpc('get_user_subscription_status', {
+      const { data, error } = await (supabase.rpc as any)('get_user_subscription_status', {
         p_user_id: user.id
       });
 
@@ -68,11 +72,12 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         console.error('Error fetching subscription status:', error);
         setStatus(defaultState);
       } else if (data && data.length > 0) {
-        const result = data[0];
+        const result = data[0] as any;
         setStatus({
           hasAccess: result.has_access,
           accessType: result.access_type as 'individual' | 'organization' | 'none',
           subscriptionStatus: result.subscription_status,
+          currentPeriodStart: result.current_period_start ? new Date(result.current_period_start) : null,
           currentPeriodEnd: result.current_period_end ? new Date(result.current_period_end) : null,
           orgName: result.org_name,
           cancelAtPeriodEnd: result.cancel_at_period_end || false,
@@ -184,6 +189,40 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const cancelSubscription = async (): Promise<{ success: boolean; refundAmount: number; error?: string }> => {
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        return { success: false, refundAmount: 0, error: 'Not authenticated' };
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/process-cancellation`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`,
+          },
+          body: JSON.stringify({}),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return { success: false, refundAmount: 0, error: data.error || 'Cancellation failed' };
+      }
+
+      // Refresh subscription status after cancellation
+      await fetchSubscriptionStatus();
+      return { success: true, refundAmount: data.refund_amount || 0 };
+    } catch (err: any) {
+      console.error('Error cancelling subscription:', err);
+      return { success: false, refundAmount: 0, error: err.message || 'Cancellation failed' };
+    }
+  };
+
   return (
     <SubscriptionContext.Provider
       value={{
@@ -192,6 +231,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
         refresh: fetchSubscriptionStatus,
         createCheckoutSession,
         openCustomerPortal,
+        cancelSubscription,
       }}
     >
       {children}

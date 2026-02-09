@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useMemo, ReactNode } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabase';
 
@@ -24,6 +24,8 @@ export interface UserRoleInfo {
   isSelfRegistered: boolean;
 }
 
+export type ViewAsRole = 'super_admin' | 'org_admin' | 'student' | null;
+
 interface AuthContextType {
   user: User | null;
   session: Session | null;
@@ -37,6 +39,10 @@ interface AuthContextType {
   roleInfo: UserRoleInfo;
   roleLoading: boolean;
   refreshRole: () => Promise<void>;
+  // View-as switching (super admin only)
+  viewAs: ViewAsRole;
+  setViewAs: (role: ViewAsRole) => void;
+  effectiveRoleInfo: UserRoleInfo;
   // Password change requirement (for provisioned accounts)
   mustChangePassword: boolean;
   clearPasswordChangeFlag: () => void;
@@ -59,6 +65,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [roleInfo, setRoleInfo] = useState<UserRoleInfo>(DEFAULT_ROLE_INFO);
   const [roleLoading, setRoleLoading] = useState(false);
   const [mustChangePassword, setMustChangePassword] = useState(false);
+  const [viewAs, setViewAsState] = useState<ViewAsRole>(null);
 
   // Check if user needs to change password (provisioned accounts)
   const checkPasswordChangeRequired = (currentUser: User | null) => {
@@ -151,6 +158,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await fetchUserRole(user);
   };
 
+  // View-as switching — only super admins can use this
+  const setViewAs = (role: ViewAsRole) => {
+    if (!isSuperAdmin(user?.email)) return;
+    setViewAsState(role);
+  };
+
+  const effectiveRoleInfo = useMemo<UserRoleInfo>(() => {
+    if (!viewAs || !isSuperAdmin(user?.email)) return roleInfo;
+    switch (viewAs) {
+      case 'super_admin':
+        return roleInfo;
+      case 'org_admin':
+        return { role: 'org_admin', orgId: null, orgSlug: null, orgName: null, isSelfRegistered: false };
+      case 'student':
+        return { role: 'student', orgId: null, orgSlug: null, orgName: null, isSelfRegistered: false };
+      default:
+        return roleInfo;
+    }
+  }, [viewAs, roleInfo, user?.email]);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -194,6 +221,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
+    setViewAsState(null);
     await supabase.auth.signOut();
   };
 
@@ -226,6 +254,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     roleInfo,
     roleLoading,
     refreshRole,
+    viewAs,
+    setViewAs,
+    effectiveRoleInfo,
     mustChangePassword,
     clearPasswordChangeFlag,
   };

@@ -85,15 +85,15 @@ const platformScreenshots = [
   },
   {
     src: '/images/landing/cmaa-dashboard.png',
-    alt: 'CMAA Exam Readiness Dashboard',
-    label: 'CMAA Exam Readiness',
-    desc: 'Track your progress against all 101 NHA CMAA knowledge statements across 7 exam domains.',
+    alt: 'Learning Progress Dashboard',
+    label: 'Learning Progress',
+    desc: 'Track your progress across 101 competency topics in 7 knowledge domains — see exactly where to focus next.',
   },
   {
     src: '/images/landing/cmaa-detail.png',
-    alt: 'CMAA Knowledge Statements with Lesson Links',
+    alt: 'Competency Mapping with Lesson Links',
     label: 'Competency Mapping',
-    desc: 'Every knowledge statement links directly to the lesson that covers it — so you know exactly where to study.',
+    desc: 'Every competency topic links directly to the lesson that covers it — so you know exactly where to study.',
   },
   {
     src: '/images/landing/certificate.png',
@@ -209,12 +209,18 @@ export function LandingPage() {
                 Start Learning Today
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-              <a
-                href="#pricing"
+              <button
+                onClick={() => setShowCurriculum(true)}
                 className="px-8 py-3.5 text-lg font-medium text-gray-700 border-2 border-gray-200 rounded-2xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
               >
-                View Pricing
-              </a>
+                View Full Curriculum
+              </button>
+              <button
+                onClick={() => setAuthModal('signUp')}
+                className="px-8 py-3.5 text-lg font-medium text-blue-600 hover:text-blue-700 transition-all duration-300"
+              >
+                Sign Up Today for $327
+              </button>
             </div>
           </div>
 
@@ -228,7 +234,7 @@ export function LandingPage() {
                 className="w-full aspect-video"
                 preload="metadata"
               >
-                <source src={`${VIDEO_BASE_URL}/welcome_landing_page.mp4`} type="video/mp4" />
+                <source src={`${VIDEO_BASE_URL}/welcome_landing2.mp4`} type="video/mp4" />
               </video>
             </div>
             <p className="text-center text-sm text-gray-400 mt-3 font-light">
@@ -254,7 +260,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* CMAA Alignment Section */}
+      {/* Competency-Based Curriculum Section */}
       <section className="bg-gradient-to-r from-indigo-50 via-blue-50 to-indigo-50 py-10 md:py-14 border-y border-indigo-100">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -263,7 +269,7 @@ export function LandingPage() {
               <div className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl shadow-apple border border-indigo-100 flex items-center justify-center">
                 <div className="text-center">
                   <GraduationCap className="w-10 h-10 text-indigo-600 mx-auto mb-1" />
-                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider leading-tight block">CMAA<br/>Aligned</span>
+                  <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider leading-tight block">Competency<br/>Based</span>
                 </div>
               </div>
             </div>
@@ -271,23 +277,23 @@ export function LandingPage() {
             {/* Content */}
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 mb-3">
-                Built to CMAA Certification Standards
+                Comprehensive Competency-Based Curriculum
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Every lesson, quiz, and exercise in VytalPath Academy is designed to align with the <span className="font-medium text-gray-900">NHA Certified Medical Administrative Assistant (CMAA)</span> exam content outline. While this platform is not a certified training program, the curriculum is purpose-built to cover all 101 knowledge statements across all 7 exam domains — giving you the strongest possible foundation for certification success.
+                Every lesson, quiz, and exercise in VytalPath Academy is mapped to <span className="font-medium text-gray-900">101 competency topics across 7 knowledge domains</span>. The curriculum covers the full scope of healthcare front office work — from insurance and compliance to EHR workflows and patient communication — with real-time progress tracking so you always know where you stand.
               </p>
               <div className="flex flex-wrap items-center gap-3 justify-center md:justify-start">
                 <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
                   <Shield className="w-4 h-4" />
-                  <span>101 Knowledge Statements Mapped</span>
+                  <span>101 Competency Topics</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
                   <CheckCircle className="w-4 h-4" />
-                  <span>7 Exam Domains Covered</span>
+                  <span>7 Knowledge Domains</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-indigo-700 bg-white px-4 py-2 rounded-full border border-indigo-100">
                   <Monitor className="w-4 h-4" />
-                  <span>Real-Time Readiness Tracking</span>
+                  <span>Real-Time Progress Tracking</span>
                 </div>
               </div>
             </div>
@@ -494,7 +500,7 @@ export function LandingPage() {
                 'All 9 training sections',
                 '80+ lessons, 18 quizzes & 24 SOPs',
                 'Hands-on EHR Practice Lab',
-                'CMAA exam readiness tracking',
+                'Competency progress tracking',
                 'Job readiness tools & mock interviews',
                 'AI study assistant on every page',
                 'New content added regularly',
@@ -580,7 +586,7 @@ export function LandingPage() {
               />
             </div>
             <p className="text-sm text-center md:text-left font-light">
-              Professional healthcare front office training — aligned with CMAA certification standards
+              Comprehensive healthcare front office training
             </p>
             <div className="flex items-center gap-6 text-sm">
               <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors duration-300">Contact</a>

@@ -8,12 +8,11 @@
 
 ## Program Overview
 
-VytalPath Academy provides structured, self-paced training across 8 sections designed to prepare healthcare front office staff for every aspect of their role. The curriculum maps directly to the NHA Certified Medical Administrative Assistant (CMAA) exam blueprint, covering all 7 exam domains and 101 knowledge statements.
+VytalPath Academy provides structured, self-paced training across 8 sections designed to prepare healthcare front office staff for every aspect of their role. The curriculum covers 101 competency topics across 7 knowledge domains, providing comprehensive preparation for healthcare front office careers.
 
 - **Format:** Self-paced online learning (video lessons, reading modules, interactive exercises, simulations)
 - **Total Training Time:** 5+ hours core curriculum + unlimited practice and simulation time
 - **Assessments:** 14 quizzes (80% passing score, 3 attempts each) + competency tracking
-- **Credential Alignment:** NHA CMAA Exam (110 scored questions, 2h 15m, 390/500 passing)
 
 ---
 
@@ -39,7 +38,7 @@ VytalPath Academy provides structured, self-paced training across 8 sections des
 
 **Estimated Time:** 13 minutes + interactive exercise
 **Format:** Video lessons + quiz + interactive exercise
-**CMAA Domains:** Domain 1 (Foundational Knowledge)
+**Knowledge Domains:** Foundational Knowledge
 
 ## Learning Objectives
 
@@ -83,7 +82,7 @@ Discover how ambulatory care works through multiple discrete encounters and why 
 
 **Estimated Time:** 90 minutes + interactive exercise
 **Format:** Video lessons + reading modules + quizzes + interactive exercise
-**CMAA Domains:** Domain 3 (Medical Law, Ethics & Compliance)
+**Knowledge Domains:** Medical Law, Ethics & Compliance
 
 ## Learning Objectives
 
@@ -186,7 +185,7 @@ Learn about fraud, kickbacks, and self-referral rules that protect patients. Cov
 
 **Estimated Time:** 120 minutes + interactive exercises
 **Format:** Video lessons + reading modules + quizzes + interactive explorers
-**CMAA Domains:** Domain 6 (Billing & Revenue Cycle), Domain 5 (Patient Encounter)
+**Knowledge Domains:** Billing & Revenue Cycle, Patient Encounter
 
 ## Learning Objectives
 
@@ -355,7 +354,7 @@ Learn about sliding fee scales, payment plans, charity care, aging reports (30/6
 
 **Estimated Time:** 160 minutes + unlimited SOP reference
 **Format:** Video lessons + reading modules + quiz + 24 Standard Operating Procedures
-**CMAA Domains:** Domain 4 (Scheduling), Domain 5 (Patient Encounter), Domain 7 (Medical Practice Admin Procedures)
+**Knowledge Domains:** Scheduling, Patient Encounter, Medical Practice Admin Procedures
 
 ## Learning Objectives
 
@@ -457,7 +456,7 @@ Every lesson in this section includes a corresponding SOP — a detailed, step-b
 
 **Estimated Time:** 66 minutes
 **Format:** Video lessons + reading modules + quizzes
-**CMAA Domains:** Domain 1 (Foundational Knowledge), Domain 4 (Scheduling), Domain 5 (Patient Encounter) — Covers 43% of CMAA exam content
+**Knowledge Domains:** Foundational Knowledge, Scheduling, Patient Encounter
 
 ## Learning Objectives
 
@@ -551,7 +550,7 @@ How duplicates happen, the two-identifier rule, the Master Patient Index (MPI), 
 
 **Estimated Time:** 50 minutes + unlimited flashcard practice
 **Format:** Video lessons + reading modules + quiz + interactive flashcards + term builder
-**CMAA Domains:** Domain 1 (Foundational Knowledge)
+**Knowledge Domains:** Foundational Knowledge
 
 ## Learning Objectives
 
@@ -623,7 +622,7 @@ Recognize common symptoms and conditions by body system — chest pain, SOB, N/V
 
 **Estimated Time:** Unlimited (self-paced simulation)
 **Format:** Interactive PM/EHR simulation
-**CMAA Domains:** Domain 4 (Scheduling), Domain 5 (Patient Encounter), Domain 7 (Medical Practice Admin)
+**Knowledge Domains:** Scheduling, Patient Encounter, Medical Practice Admin
 
 ## Overview
 
@@ -683,7 +682,7 @@ Students work in a realistic clinical environment with simulated patient data, p
 
 **Estimated Time:** Varies (self-paced practice)
 **Format:** Interactive tools and AI-powered simulators
-**CMAA Domains:** Domain 2 (Communication & Professionalism)
+**Knowledge Domains:** Communication & Professionalism
 
 ## Overview
 
@@ -724,7 +723,7 @@ Step-by-step resume creation with healthcare-specific guidance:
 
 - Professional summary tailored to healthcare front office roles
 - Experience bullet points with industry-specific language
-- Skills section aligned with CMAA competencies
+- Skills section aligned with healthcare front office competencies
 - Education and certification formatting
 - Download and export functionality
 
@@ -741,33 +740,6 @@ Simulate calling insurance companies to practice:
 - Handling holds, transfers, and callbacks
 
 ---
-
----
-
-# CMAA Exam Alignment
-
-## NHA CMAA Exam Overview
-
-- **Exam:** Certified Medical Administrative Assistant (CMAA)
-- **Certifying Body:** National Healthcareer Association (NHA)
-- **Questions:** 110 scored items
-- **Duration:** 2 hours 15 minutes
-- **Passing Score:** 390 out of 500
-- **Knowledge Statements:** 101 across 7 domains
-
-## Domain Coverage Map
-
-| Domain | Items | Weight | VytalPath Sections |
-|--------|-------|--------|---------------------|
-| D1: Foundational Knowledge | 10 | 9% | Foundations, Terminology, EHR & PM |
-| D2: Communication & Professionalism | 21 | 19% | Job Readiness (Phone Sim, Mock Interview) |
-| D3: Medical Law, Ethics & Compliance | 17 | 15% | Medical Law & Compliance |
-| D4: Scheduling | 16 | 15% | Workflows, EHR & PM |
-| D5: Patient Encounter | 21 | 19% | Workflows, Insurance, EHR & PM, EHR Lab |
-| D6: Billing & Revenue Cycle | 11 | 10% | Insurance & Billing |
-| D7: Medical Practice Admin Procedures | 14 | 13% | Workflows (SOPs), EHR & PM |
-
-The VytalPath Academy CMAA Competency Dashboard tracks student progress against every knowledge statement in real time, showing mastery level (Not Started, Exposed, Practiced, Assessed, Mastered) and identifying gaps that need attention.
 
 ---
 

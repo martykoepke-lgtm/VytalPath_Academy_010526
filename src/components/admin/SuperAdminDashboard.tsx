@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import {
   Building2, Users, Clock, ChevronRight, LinkIcon, UserPlus,
   BarChart3, Calendar, CheckCircle, AlertCircle, Mail, X, UserCog,
-  Copy, Shield, Trash2, Award, Printer
+  Copy, Shield, Trash2, Award, Printer, CreditCard
 } from 'lucide-react';
+import { calculateRefundEligibility } from '../../utils/refundPolicy';
 import { supabase } from '../../lib/supabase';
 
 interface OrgSummary {
@@ -53,15 +54,42 @@ interface DashboardStats {
   self_registered_count: number;
 }
 
+interface IssuedCertificate {
+  id: string;
+  user_id: string;
+  student_name: string;
+  certificate_number: string;
+  issued_at: string;
+  user_email: string;
+}
+
+interface StudentSubscription {
+  user_id: string;
+  email: string;
+  display_name: string;
+  subscription_status: string;
+  current_period_start: string;
+  current_period_end: string;
+  cancel_at_period_end: boolean;
+  completion_percentage: number;
+  last_progress_sync: string | null;
+  days_enrolled: number;
+  org_name: string | null;
+}
+
 export function SuperAdminDashboard() {
   const [orgs, setOrgs] = useState<OrgSummary[]>([]);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [selfRegistered, setSelfRegistered] = useState<SelfRegisteredStudent[]>([]);
   const [pendingInvitations, setPendingInvitations] = useState<Invitation[]>([]);
+  const [certificates, setCertificates] = useState<IssuedCertificate[]>([]);
+  const [certsLoaded, setCertsLoaded] = useState(false);
+  const [subscriptions, setSubscriptions] = useState<StudentSubscription[]>([]);
+  const [subsLoaded, setSubsLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showInviteModal, setShowInviteModal] = useState(false);
   const [showCertModal, setShowCertModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<'orgs' | 'invitations' | 'self-registered'>('orgs');
+  const [activeTab, setActiveTab] = useState<'orgs' | 'invitations' | 'self-registered' | 'certificates' | 'subscriptions'>('orgs');
 
   useEffect(() => {
     loadDashboardData();
@@ -214,6 +242,34 @@ export function SuperAdminDashboard() {
     }
   }
 
+  async function loadCertificates() {
+    if (certsLoaded) return;
+    try {
+      const { data, error } = await supabase.rpc('get_all_certificates');
+      if (!error && data) {
+        setCertificates(data as IssuedCertificate[]);
+      }
+    } catch (e) {
+      console.error('Error loading certificates:', e);
+    } finally {
+      setCertsLoaded(true);
+    }
+  }
+
+  async function loadSubscriptions() {
+    if (subsLoaded) return;
+    try {
+      const { data, error } = await (supabase.rpc as any)('get_students_refund_status');
+      if (!error && data) {
+        setSubscriptions(data as StudentSubscription[]);
+      }
+    } catch (e) {
+      console.error('Error loading subscriptions:', e);
+    } finally {
+      setSubsLoaded(true);
+    }
+  }
+
   function getJoinUrl(token: string) {
     return `${window.location.origin}/join/${token}`;
   }
@@ -333,6 +389,28 @@ export function SuperAdminDashboard() {
         >
           <UserCog className="w-4 h-4 inline-block mr-2" />
           Self-Registered ({selfRegistered.length})
+        </button>
+        <button
+          onClick={() => { setActiveTab('certificates'); loadCertificates(); }}
+          className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+            activeTab === 'certificates'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          <Award className="w-4 h-4 inline-block mr-2" />
+          Certificates{certsLoaded ? ` (${certificates.length})` : ''}
+        </button>
+        <button
+          onClick={() => { setActiveTab('subscriptions'); loadSubscriptions(); }}
+          className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+            activeTab === 'subscriptions'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+          }`}
+        >
+          <CreditCard className="w-4 h-4 inline-block mr-2" />
+          Subscriptions{subsLoaded ? ` (${subscriptions.length})` : ''}
         </button>
       </div>
 
@@ -545,6 +623,184 @@ export function SuperAdminDashboard() {
                   </span>
                 </div>
               ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Certificates Tab */}
+      {activeTab === 'certificates' && (
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="p-5 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">Issued Certificates</h2>
+                <p className="text-sm text-gray-500 mt-1">All certificates generated by students</p>
+              </div>
+              <button
+                onClick={() => { setCertsLoaded(false); loadCertificates(); }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Refresh
+              </button>
+            </div>
+          </div>
+
+          {!certsLoaded ? (
+            <div className="p-12 text-center">
+              <div className="animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto mb-4" />
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto" />
+              </div>
+            </div>
+          ) : certificates.length === 0 ? (
+            <div className="p-12 text-center">
+              <Award className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No certificates issued yet</h3>
+              <p className="text-gray-500">Certificates will appear here when students complete the program</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50">
+                    <th className="text-left px-5 py-3 font-medium text-gray-500">Student Name</th>
+                    <th className="text-left px-5 py-3 font-medium text-gray-500">Email</th>
+                    <th className="text-left px-5 py-3 font-medium text-gray-500">Certificate #</th>
+                    <th className="text-left px-5 py-3 font-medium text-gray-500">Issued Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {certificates.map((cert) => (
+                    <tr key={cert.id} className="hover:bg-gray-50">
+                      <td className="px-5 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                            <Award className="w-4 h-4 text-amber-600" />
+                          </div>
+                          <span className="font-medium text-gray-900">{cert.student_name}</span>
+                        </div>
+                      </td>
+                      <td className="px-5 py-4 text-gray-500">{cert.user_email}</td>
+                      <td className="px-5 py-4">
+                        <code className="px-2 py-0.5 bg-gray-100 rounded text-xs text-gray-700">{cert.certificate_number}</code>
+                      </td>
+                      <td className="px-5 py-4 text-gray-500">
+                        <Calendar className="w-3.5 h-3.5 inline mr-1" />
+                        {new Date(cert.issued_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Subscriptions Tab */}
+      {activeTab === 'subscriptions' && (
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+          <div className="p-5 border-b border-gray-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">Student Subscriptions & Refund Status</h2>
+                <p className="text-sm text-gray-500 mt-1">View enrollment status, progress, and refund eligibility for all subscribers</p>
+              </div>
+              <button
+                onClick={() => { setSubsLoaded(false); loadSubscriptions(); }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Refresh
+              </button>
+            </div>
+          </div>
+
+          {!subsLoaded ? (
+            <div className="p-12 text-center">
+              <div className="animate-pulse">
+                <div className="h-4 bg-gray-200 rounded w-1/3 mx-auto mb-4" />
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto" />
+              </div>
+            </div>
+          ) : subscriptions.length === 0 ? (
+            <div className="p-12 text-center">
+              <CreditCard className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">No active subscriptions</h3>
+              <p className="text-gray-500">Student subscriptions will appear here</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200 bg-gray-50">
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Student</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Status</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Progress</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Days</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Refund Tier</th>
+                    <th className="text-left px-4 py-3 font-medium text-gray-500">Org</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {subscriptions.map((sub) => {
+                    const refundTier = calculateRefundEligibility(
+                      new Date(sub.current_period_start),
+                      sub.completion_percentage
+                    );
+                    const refundColors = {
+                      green: 'bg-green-100 text-green-700',
+                      yellow: 'bg-yellow-100 text-yellow-700',
+                      orange: 'bg-orange-100 text-orange-700',
+                      red: 'bg-red-100 text-red-700',
+                    };
+                    return (
+                      <tr key={sub.user_id} className="hover:bg-gray-50">
+                        <td className="px-4 py-3">
+                          <div>
+                            <p className="font-medium text-gray-900 truncate max-w-[200px]">{sub.display_name}</p>
+                            <p className="text-xs text-gray-500 truncate max-w-[200px]">{sub.email}</p>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3">
+                          <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${
+                            sub.subscription_status === 'active'
+                              ? 'bg-green-100 text-green-700'
+                              : sub.subscription_status === 'past_due'
+                              ? 'bg-yellow-100 text-yellow-700'
+                              : 'bg-gray-100 text-gray-600'
+                          }`}>
+                            {sub.subscription_status}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-blue-500 rounded-full"
+                                style={{ width: `${sub.completion_percentage}%` }}
+                              />
+                            </div>
+                            <span className="text-xs text-gray-600">{sub.completion_percentage}%</span>
+                          </div>
+                        </td>
+                        <td className="px-4 py-3 text-gray-600">
+                          {sub.days_enrolled}
+                        </td>
+                        <td className="px-4 py-3">
+                          <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${refundColors[refundTier.color]}`}>
+                            {refundTier.label}
+                            {refundTier.amount > 0 ? ` ($${refundTier.amount})` : ''}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-gray-500 text-xs">
+                          {sub.org_name || '—'}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

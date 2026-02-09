@@ -16,9 +16,9 @@ export function CMAADashboard() {
         <div className="inline-flex items-center justify-center w-16 h-16 mb-3 bg-indigo-100 rounded-2xl shadow-sm">
           <BarChart3 className="w-8 h-8 text-indigo-600" />
         </div>
-        <h1 className="text-3xl font-semibold tracking-tight text-gray-900 mb-1">CMAA Exam Readiness</h1>
+        <h1 className="text-3xl font-semibold tracking-tight text-gray-900 mb-1">My Progress</h1>
         <p className="text-sm text-gray-500">
-          Track your progress against all 101 NHA CMAA knowledge statements across 7 exam domains.
+          Track your learning across all competency areas and see where to focus next.
         </p>
       </header>
 
@@ -95,14 +95,8 @@ export function CMAADashboard() {
         </div>
       </div>
 
-      {/* Exam Info Bar */}
-      <div className="bg-indigo-50 rounded-xl border border-indigo-100 px-4 py-2.5 mb-5 flex items-center justify-between text-[11px] text-indigo-700">
-        <span>NHA CMAA Exam: 110 scored questions · 2h 15m · Passing: 390/500</span>
-        <span className="font-medium">7 Domains · 101 Knowledge Statements</span>
-      </div>
-
       {/* Domain Cards */}
-      <section className="space-y-3" aria-label="CMAA Domains">
+      <section className="space-y-3" aria-label="Competency Domains">
         {readiness.domains.map(domain => (
           <DomainCard key={domain.domainId} domain={domain} />
         ))}

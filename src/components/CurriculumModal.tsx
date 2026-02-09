@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import {
   X, CheckCircle, Clock,
   Heart, Scale, DollarSign, BookA, ClipboardList,
-  Pill, Code, Monitor, MessageSquare, Video
+  Pill, Monitor, MessageCircle, Briefcase
 } from 'lucide-react';
 
 interface CurriculumModalProps {
@@ -17,56 +17,93 @@ const currentModules = [
     description: 'Understand the healthcare system and your role in it.',
     icon: Heart,
     lessonCount: '3 lessons',
-    duration: '~25 min',
+    duration: '~13 min',
     topics: [
-      'Acute care vs. ambulatory care settings',
-      'The front office professional\'s role',
-      'How healthcare delivery works',
-      'Understanding the patient journey',
+      'Healthcare care settings and delivery models',
+      'The inpatient encounter',
+      'The ambulatory care journey',
+      'Interactive healthcare setting sorter',
     ],
   },
   {
     id: 'law-ethics',
     title: 'Medical Law & Compliance',
-    description: 'Master HIPAA and protect patient privacy.',
+    description: 'Master HIPAA, patient rights, and workplace compliance.',
     icon: Scale,
-    lessonCount: '9 lessons',
-    duration: '~90 min',
+    lessonCount: '18 lessons',
+    duration: '~130 min',
     topics: [
-      'HIPAA essentials and compliance',
-      'Protected Health Information (PHI)',
-      'Patient authorization & consent',
-      'Violations, penalties, and EMTALA',
+      'HIPAA essentials, PHI, and access rules',
+      'Patient rights, authorization, and consent',
+      'EMTALA, fraud, and Stark Law',
+      'Workplace safety, OSHA, and emergency preparedness',
+      'Professional ethics and data security',
     ],
   },
   {
     id: 'insurance',
     title: 'Insurance & Billing',
-    description: 'Navigate insurance like a pro.',
+    description: 'From basics to coding and referrals — the deepest insurance training available.',
     icon: DollarSign,
-    lessonCount: '9 lessons',
-    duration: '~60 min',
+    lessonCount: '18 lessons',
+    duration: '~120 min',
     topics: [
-      'Healthcare payers and plan types',
-      'Reading insurance cards',
-      'Eligibility verification',
-      'Copays, deductibles, and coinsurance',
-      'Payment collection best practices',
+      'Payer types, plan types, and key insurance terms',
+      'Reading insurance cards and eligibility verification',
+      'Copays, deductibles, coinsurance, and payment collection',
+      'Government plans, coordination of benefits, and coverage rules',
+      'EOBs, ERAs, ABNs, revenue cycle, and payment models',
+      'ICD-10, CPT, HCPCS coding basics and medical necessity',
+      'Referrals, prior authorization, tracking, and appeals',
     ],
   },
   {
     id: 'workflows',
     title: 'Front Office Workflows',
-    description: 'From opening to closing — every procedure in your day.',
+    description: 'Your entire workday — from opening the office to closing it down.',
     icon: ClipboardList,
-    lessonCount: '4 lessons + 24 SOPs',
-    duration: '~55 min',
+    lessonCount: '10 lessons + 24 SOPs',
+    duration: '~70 min',
     topics: [
-      'Opening & closing procedures',
-      'Patient registration & scheduling',
-      'Check-in and check-out workflows',
-      'Cash drawer & EOD reconciliation',
-      'Administrative compliance documentation',
+      'Opening procedures: phone system, cash drawer, schedule prep',
+      'Registration, scheduling, and appointment reminders',
+      'Check-in and check-out for all patient types',
+      'No-shows, waitlists, and multitasking strategies',
+      'Cash reconciliation and end-of-day closing',
+      'Administrative skills: filing, correspondence, ADA, downtime',
+    ],
+  },
+  {
+    id: 'communication',
+    title: 'Patient Communication',
+    description: 'Professional communication skills for the healthcare front office.',
+    icon: MessageCircle,
+    lessonCount: '11 lessons',
+    duration: '~80 min',
+    isNew: true,
+    topics: [
+      'Communication styles and nonverbal communication',
+      'Active listening and overcoming barriers',
+      'De-escalation, conflict resolution, and empathy',
+      'Inclusive and culturally competent communication',
+      'Telephone and email etiquette',
+      'Intraoffice communication and documentation',
+    ],
+  },
+  {
+    id: 'ehr',
+    title: 'EHR & Practice Management',
+    description: 'Master the systems you\'ll use every day — PM and EHR.',
+    icon: Monitor,
+    lessonCount: '13 lessons',
+    duration: '~95 min',
+    topics: [
+      'PM vs. EHR systems and how they connect',
+      'Encounter types, patient identifiers (MRN/FIN)',
+      'The encounter lifecycle and scheduling methods',
+      'Phone encounters and non-visit encounters',
+      'Duplicate records: prevention and resolution',
+      'Telehealth platforms, patient portals, and procedures',
     ],
   },
   {
@@ -78,9 +115,40 @@ const currentModules = [
     duration: '~50 min',
     topics: [
       'Medical word building (prefixes, roots, suffixes)',
-      'Common abbreviations (STAT, PRN, BID, etc.)',
-      'Decoding and building medical terms',
-      'Interactive flashcard practice',
+      'Common abbreviations and the "Do Not Use" list',
+      'Body systems and anatomical terms',
+      'What you\'ll hear at the front desk',
+      'Interactive flashcard study mode',
+    ],
+  },
+  {
+    id: 'ehr-lab',
+    title: 'EHR Practice Lab',
+    description: 'Hands-on simulation — schedule, register, check in, and manage a clinic day.',
+    icon: Monitor,
+    lessonCount: 'Simulation',
+    duration: 'Unlimited',
+    topics: [
+      'Provider schedule and appointment management',
+      'Patient registration and demographics',
+      'Check-in and check-out workflows',
+      'Encounter management and patient charts',
+      'Message routing and inbox management',
+    ],
+  },
+  {
+    id: 'job-readiness',
+    title: 'Job Readiness',
+    description: 'Career preparation tools to land your first healthcare job.',
+    icon: Briefcase,
+    lessonCount: '6 tools',
+    duration: 'Varies',
+    topics: [
+      'Phone call simulator with AI-powered scenarios',
+      'Mock interview practice with real-time feedback',
+      'Resume builder with healthcare-specific guidance',
+      'Insurance hotline practice',
+      'Readiness assessments',
     ],
   },
 ];
@@ -91,43 +159,7 @@ const upcomingModules = [
     title: 'Medications for Front Office',
     description: 'Handle prescriptions and refills confidently.',
     icon: Pill,
-    topics: ['Prescription workflows', 'Drug classes overview', 'Controlled substances', 'Prior authorization for medications'],
-  },
-  {
-    id: 'referrals',
-    title: 'Referrals & Prior Authorization',
-    description: 'High-demand skill for career advancement.',
-    icon: ClipboardList,
-    topics: ['The referral process', 'Initiating prior authorizations', 'Tracking authorizations', 'Handling denials and appeals'],
-  },
-  {
-    id: 'coding',
-    title: 'Coding Basics for Front Office',
-    description: 'Understand codes without being a coder.',
-    icon: Code,
-    topics: ['ICD-10 basics', 'CPT code fundamentals', 'E&M visit levels', 'Reading an EOB'],
-  },
-  {
-    id: 'ehr',
-    title: 'EHR Practice Lab',
-    description: 'Hands-on simulation with real EHR software.',
-    icon: Monitor,
-    featured: true,
-    topics: ['EHR navigation', 'Patient registration', 'Scheduling in EHR', 'Chart basics and documentation'],
-  },
-  {
-    id: 'communication',
-    title: 'Patient Communication',
-    description: 'Soft skills that set you apart.',
-    icon: MessageSquare,
-    topics: ['Professional phone etiquette', 'Handling difficult conversations', 'Communicating with empathy'],
-  },
-  {
-    id: 'telehealth',
-    title: 'Telehealth Support',
-    description: 'Future-proof your skills.',
-    icon: Video,
-    topics: ['Telehealth basics', 'Preparing patients for virtual visits', 'Troubleshooting common issues'],
+    topics: ['Prescription workflows', 'Drug classes overview', 'DEA schedules and controlled substances', 'Prior authorization for medications'],
   },
 ];
 
@@ -167,7 +199,7 @@ export function CurriculumModal({ isOpen, onClose }: CurriculumModalProps) {
         <div className="flex items-center justify-between px-8 py-5 border-b border-gray-200/50 flex-shrink-0">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Full Curriculum</h2>
-            <p className="text-sm text-gray-500 mt-0.5">5 training domains available now, with new content added weekly</p>
+            <p className="text-sm text-gray-500 mt-0.5">9 training sections · 80+ lessons · 18 quizzes · 24 SOPs</p>
           </div>
           <button
             onClick={onClose}
@@ -192,8 +224,11 @@ export function CurriculumModal({ isOpen, onClose }: CurriculumModalProps) {
                 return (
                   <div
                     key={module.id}
-                    className="bg-white rounded-2xl border border-gray-200/50 p-5 hover-lift transition-all duration-300"
+                    className="bg-white rounded-2xl border border-gray-200/50 p-5 hover-lift transition-all duration-300 relative"
                   >
+                    {'isNew' in module && module.isNew && (
+                      <div className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-medium px-2.5 py-0.5 rounded-full">NEW</div>
+                    )}
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-xl flex items-center justify-center text-sm font-medium text-gray-400">
                         {String(index + 1).padStart(2, '0')}
@@ -239,15 +274,8 @@ export function CurriculumModal({ isOpen, onClose }: CurriculumModalProps) {
                 return (
                   <div
                     key={module.id}
-                    className={`bg-gray-50/50 rounded-2xl p-5 border border-dashed border-gray-200 relative ${
-                      module.featured ? 'ring-1 ring-blue-200' : ''
-                    }`}
+                    className="bg-gray-50/50 rounded-2xl p-5 border border-dashed border-gray-200"
                   >
-                    {module.featured && (
-                      <div className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] font-medium px-2.5 py-0.5 rounded-full">
-                        PRIORITY
-                      </div>
-                    )}
                     <div className="flex items-center gap-3 mb-2">
                       <div className="w-8 h-8 bg-gray-200 rounded-xl flex items-center justify-center">
                         <Icon className="w-4 h-4 text-gray-500" />
@@ -256,15 +284,12 @@ export function CurriculumModal({ isOpen, onClose }: CurriculumModalProps) {
                     </div>
                     <p className="text-xs text-gray-500 mb-3">{module.description}</p>
                     <ul className="space-y-1">
-                      {module.topics.slice(0, 3).map((topic, i) => (
+                      {module.topics.map((topic, i) => (
                         <li key={i} className="text-xs text-gray-400 flex items-center gap-1.5">
                           <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
                           {topic}
                         </li>
                       ))}
-                      {module.topics.length > 3 && (
-                        <li className="text-xs text-gray-400">+{module.topics.length - 3} more</li>
-                      )}
                     </ul>
                   </div>
                 );

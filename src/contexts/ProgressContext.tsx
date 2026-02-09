@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
+import { supabase } from '../lib/supabase';
+import { calculateCompletionPercent } from '../utils/completionCalculator';
 
 // Types for progress tracking
 interface QuizAttempt {
@@ -78,6 +80,38 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     } catch (e) {
       console.error('Failed to save progress to localStorage:', e);
     }
+  }, [progress]);
+
+  // Debounced sync of completion % to Supabase (5s delay)
+  const syncTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastSyncedPercent = useRef<number>(-1);
+
+  useEffect(() => {
+    if (syncTimer.current) clearTimeout(syncTimer.current);
+
+    syncTimer.current = setTimeout(async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return;
+
+        const isLesson = (slug: string) => progress.lessonProgress[slug]?.completed || false;
+        const isQuiz = (slug: string) => (progress.quizAttempts[slug] || []).some(a => a.passed);
+        const { percent } = calculateCompletionPercent(isLesson, isQuiz);
+
+        // Only sync if the percentage actually changed
+        if (percent !== lastSyncedPercent.current) {
+          lastSyncedPercent.current = percent;
+          await (supabase.rpc as any)('sync_completion_percentage', {
+            p_user_id: user.id,
+            p_completion_percentage: percent,
+          });
+        }
+      } catch (err) {
+        // Silent fail — sync is best-effort
+      }
+    }, 5000);
+
+    return () => { if (syncTimer.current) clearTimeout(syncTimer.current); };
   }, [progress]);
 
   // Quiz functions

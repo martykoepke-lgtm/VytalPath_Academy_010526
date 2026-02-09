@@ -15,9 +15,10 @@ import {
   Monitor,
   Award,
   MessageCircle,
+  Settings,
   type LucideIcon
 } from 'lucide-react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth, type ViewAsRole } from '../../contexts/AuthContext';
 
 type NavItem = {
   path: string;
@@ -60,9 +61,10 @@ const studentNavGroups: NavGroup[] = [
   {
     heading: 'Track',
     items: [
-      { path: '/progress', label: 'CMAA Progress', icon: BarChart3 },
+      { path: '/progress', label: 'My Progress', icon: BarChart3 },
       { path: '/certificate', label: 'Certificate', icon: Award },
       { path: '/search', label: 'Search', icon: Search },
+      { path: '/account', label: 'Account', icon: Settings },
     ],
   },
 ];
@@ -86,26 +88,27 @@ interface RoleBasedSidebarProps {
 
 export function RoleBasedSidebar({ className = '' }: RoleBasedSidebarProps) {
   const location = useLocation();
-  const { roleInfo, roleLoading } = useAuth();
+  const { roleInfo, roleLoading, effectiveRoleInfo, viewAs, setViewAs } = useAuth();
 
   // Helper to check if we're in the admin dashboard (not /administration which is a learning section)
   const isInAdminDashboard = location.pathname === '/admin' || location.pathname.startsWith('/admin/');
 
   // Determine if we should use admin nav (flat list) or student nav (grouped)
+  // Uses effectiveRoleInfo so "View As" switching changes the sidebar
   const useAdminNav =
-    (roleInfo.role === 'super_admin' || (roleInfo.role === 'org_admin' && roleInfo.orgSlug)) &&
+    (effectiveRoleInfo.role === 'super_admin' || (effectiveRoleInfo.role === 'org_admin' && effectiveRoleInfo.orgSlug)) &&
     isInAdminDashboard;
 
   let adminItems: NavItem[] | null = null;
   let adminTitle: string | null = null;
 
   if (useAdminNav) {
-    if (roleInfo.role === 'super_admin') {
+    if (effectiveRoleInfo.role === 'super_admin') {
       adminItems = superAdminNavItems;
       adminTitle = 'Super Admin';
-    } else if (roleInfo.role === 'org_admin' && roleInfo.orgSlug) {
-      adminItems = getOrgAdminNavItems(roleInfo.orgSlug);
-      adminTitle = roleInfo.orgName || 'Organization';
+    } else if (effectiveRoleInfo.role === 'org_admin' && effectiveRoleInfo.orgSlug) {
+      adminItems = getOrgAdminNavItems(effectiveRoleInfo.orgSlug);
+      adminTitle = effectiveRoleInfo.orgName || 'Organization';
     }
   }
 
@@ -200,16 +203,47 @@ export function RoleBasedSidebar({ className = '' }: RoleBasedSidebarProps) {
         </div>
       ))}
 
-      {/* Show switch to admin for admins */}
-      {(roleInfo.role === 'super_admin' || roleInfo.role === 'org_admin') && (
+      {/* Show switch to admin for admins (hidden when viewing as student) */}
+      {(effectiveRoleInfo.role === 'super_admin' || effectiveRoleInfo.role === 'org_admin') && (
         <div className="px-6 pt-4 mt-2 border-t border-gray-200/50">
           <Link
-            to={roleInfo.role === 'super_admin' ? '/admin' : `/admin/orgs/${roleInfo.orgSlug}`}
+            to={effectiveRoleInfo.role === 'super_admin' ? '/admin' : `/admin/orgs/${effectiveRoleInfo.orgSlug}`}
             className="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors"
           >
             <LayoutDashboard className="w-4 h-4" />
             Admin Dashboard
           </Link>
+        </div>
+      )}
+
+      {/* View As switcher — only for real super admins */}
+      {roleInfo.role === 'super_admin' && (
+        <div className="px-4 pt-3 mt-2 border-t border-gray-200/50">
+          <div className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2 px-1">
+            View As
+          </div>
+          <div className="flex bg-gray-100 rounded-lg p-0.5">
+            {([
+              { value: null as ViewAsRole, label: 'Admin' },
+              { value: 'org_admin' as ViewAsRole, label: 'Org Admin' },
+              { value: 'student' as ViewAsRole, label: 'Student' },
+            ]).map((opt) => {
+              const isActive = viewAs === opt.value;
+              return (
+                <button
+                  key={opt.label}
+                  onClick={() => setViewAs(opt.value)}
+                  className={`flex-1 text-xs py-1.5 rounded-md transition-all ${
+                    isActive
+                      ? 'bg-white text-blue-600 shadow-sm font-medium'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
@@ -219,20 +253,20 @@ export function RoleBasedSidebar({ className = '' }: RoleBasedSidebarProps) {
 // Mobile bottom navigation - simplified for students
 export function MobileBottomNav() {
   const location = useLocation();
-  const { roleInfo } = useAuth();
+  const { effectiveRoleInfo } = useAuth();
 
   // Check if we're in the admin dashboard (not /administration which is a learning section)
   const isInAdminDashboard = location.pathname === '/admin' || location.pathname.startsWith('/admin/');
 
   // For admins in admin section, show different mobile nav
-  if ((roleInfo.role === 'super_admin' || roleInfo.role === 'org_admin') && isInAdminDashboard) {
+  if ((effectiveRoleInfo.role === 'super_admin' || effectiveRoleInfo.role === 'org_admin') && isInAdminDashboard) {
     return (
       <nav className="md:hidden fixed bottom-0 left-0 right-0 glass border-t border-gray-200/50 shadow-apple z-50">
         <div className="flex justify-around items-center h-16">
           <Link
-            to={roleInfo.role === 'super_admin' ? '/admin' : `/admin/orgs/${roleInfo.orgSlug}`}
+            to={effectiveRoleInfo.role === 'super_admin' ? '/admin' : `/admin/orgs/${effectiveRoleInfo.orgSlug}`}
             className={`flex flex-col items-center justify-center flex-1 h-full transition-all duration-300 ${
-              location.pathname === '/admin' || location.pathname === `/admin/orgs/${roleInfo.orgSlug}`
+              location.pathname === '/admin' || location.pathname === `/admin/orgs/${effectiveRoleInfo.orgSlug}`
                 ? 'text-blue-600' : 'text-gray-400'
             }`}
           >
