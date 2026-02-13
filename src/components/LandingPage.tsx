@@ -208,6 +208,7 @@ export function LandingPage() {
       <section className="relative overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-6 md:pt-16 md:pb-10">
           <div className="text-center mb-10">
+            <p className="text-sm font-medium text-blue-600 uppercase tracking-wider mb-4">Healthcare Front Office Training</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-4 leading-tight">
               The training{' '}
               <span className="text-blue-600">nobody told you</span>
