@@ -35,21 +35,33 @@ export function ReturnsPolicy() {
       </div>
 
       <div className="prose prose-sm max-w-none text-gray-700 space-y-6">
+        <p>
+          Since VytalPath Academy, operated by Practical Informatics LLC, offers non-tangible,
+          irrevocable digital goods (immediate access to an online training platform), we do not
+          generally issue refunds after a purchase is made. However, we recognize that exceptional
+          circumstances may arise and have established the following policy to ensure fairness.
+        </p>
+
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">1. Overview</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">3-Day Guarantee</h2>
           <p>
-            VytalPath Academy offers a fair, transparent refund policy for individual subscribers.
-            Because our product is a digital training platform with immediate access to all content upon
-            purchase, our refund structure is based on your enrollment duration and course completion
-            percentage.
+            We offer a full refund within 3 calendar days of your purchase — no questions asked. If
+            you are unsatisfied for any reason within this window, simply cancel from
+            your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> or
+            email us and we will process a complete refund.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">2. Refund Tiers</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Progress-Based Refunds</h2>
+          <p>
+            After the initial 3-day window, refund eligibility is determined by your course
+            completion percentage at the time of cancellation. Because you receive immediate access
+            to all content upon purchase, the refund amount decreases as you progress through the
+            program.
+          </p>
 
-          {/* Visual breakdown — matches CancellationPolicy.tsx */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
             <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
               <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
@@ -88,36 +100,26 @@ export function ReturnsPolicy() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">3. How to Request a Refund</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">How to Request a Refund</h2>
           <p>You can cancel your subscription and initiate a refund in two ways:</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Self-service:</strong> Go to your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> and click "Cancel My Subscription." Your refund is calculated automatically.</li>
-            <li><strong>Email:</strong> Contact us at <a href="mailto:hello@vytalpath.com" className="text-blue-600 hover:text-blue-700">hello@vytalpath.com</a> with your account email and we will process the cancellation for you.</li>
+            <li><strong>Self-service:</strong> Go to your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> and click "Cancel My Subscription." Your refund is calculated automatically based on your progress.</li>
+            <li><strong>Email:</strong> Contact us at <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a> with your account email and we will process the cancellation for you.</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">4. How Refunds Are Calculated</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Refunds are based on your <strong>course completion percentage</strong> at the time of cancellation</li>
-            <li>Course completion includes lessons completed and quizzes passed, calculated automatically by the Platform</li>
-            <li>The base price for refund calculation is $327 (individual annual subscription)</li>
-            <li>Within the first 3 days, you receive a full refund regardless of completion</li>
-          </ul>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Refund Processing</h2>
+          <p>
+            Refunds are processed to your original payment method (the card used for purchase).
+            Please allow 5-10 business days for the refund to appear, depending on your bank or
+            card issuer. You will receive a confirmation email when your refund is initiated. Access
+            to all course content ends immediately upon cancellation.
+          </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">5. Refund Processing</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Refunds are processed to your original payment method (the card used for purchase)</li>
-            <li>Processing time is typically 5-10 business days, depending on your bank or card issuer</li>
-            <li>You will receive a confirmation email when your refund is initiated</li>
-            <li>Access to all course content ends immediately upon cancellation</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">6. What Happens After Cancellation</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">After Cancellation</h2>
           <ul className="list-disc pl-5 space-y-1">
             <li>Your access to lessons, quizzes, the EHR Practice Lab, and all premium features ends immediately</li>
             <li>Your locally-stored progress data remains on your device unless you clear your browser data</li>
@@ -127,22 +129,22 @@ export function ReturnsPolicy() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">7. Organization Subscriptions</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Organization Subscriptions</h2>
           <p>
-            Refund policies for organization (team) subscriptions are handled on a case-by-case basis.
-            Organization administrators should contact us at{' '}
-            <a href="mailto:hello@vytalpath.com" className="text-blue-600 hover:text-blue-700">hello@vytalpath.com</a>{' '}
-            to discuss cancellation and refund terms.
+            Refund policies for organization (team) subscriptions are handled on a case-by-case
+            basis. Organization administrators should contact us
+            at <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a> to
+            discuss cancellation and refund terms.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">8. Exceptions</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Exceptions</h2>
           <p>
-            In exceptional circumstances (billing errors, duplicate charges, technical issues preventing
-            access), we may offer refunds outside of the standard policy. Contact us at{' '}
-            <a href="mailto:hello@vytalpath.com" className="text-blue-600 hover:text-blue-700">hello@vytalpath.com</a>{' '}
-            and we will work with you to resolve the issue.
+            In exceptional circumstances (billing errors, duplicate charges, technical issues
+            preventing access), we may offer refunds outside of the standard policy. Contact us
+            at <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a> and
+            we will work with you to resolve the issue.
           </p>
         </section>
 
@@ -150,10 +152,10 @@ export function ReturnsPolicy() {
         <div className="flex items-start gap-2 p-3 bg-gray-50 rounded-lg mt-6">
           <Shield className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-gray-500 leading-relaxed">
-            Refunds are calculated automatically based on your Stripe payment date and course completion
-            percentage at the time of cancellation. All refund amounts are determined by the tier structure
-            above. VytalPath Academy reserves the right to modify this policy with 30 days' notice to
-            existing subscribers.
+            Refunds are calculated automatically based on your Stripe payment date and course
+            completion percentage at the time of cancellation. All refund amounts are determined by
+            the tier structure above. Practical Informatics LLC reserves the right to modify this
+            policy with 30 days' notice to existing subscribers.
           </p>
         </div>
       </div>

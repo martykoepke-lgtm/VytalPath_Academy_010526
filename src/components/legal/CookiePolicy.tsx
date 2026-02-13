@@ -135,8 +135,13 @@ export function CookiePolicy() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">6. Contact</h2>
           <p>
-            If you have questions about our use of cookies, contact us at{' '}
-            <a href="mailto:hello@vytalpath.com" className="text-blue-600 hover:text-blue-700">hello@vytalpath.com</a>.
+            If you have questions about our use of cookies, you may contact us using the
+            following details:
+          </p>
+          <p className="mt-2">
+            <strong>Practical Informatics LLC</strong>
+            <br />
+            <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a>.
           </p>
         </section>
       </div>

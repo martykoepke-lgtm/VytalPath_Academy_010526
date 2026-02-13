@@ -20,49 +20,62 @@ export function TermsOfService() {
       </div>
 
       <div className="prose prose-sm max-w-none text-gray-700 space-y-6">
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">1. Agreement to Terms</h2>
-          <p>
-            By accessing or using VytalPath Academy ("the Platform"), you agree to be bound by these Terms of
-            Service ("Terms"). If you do not agree to these Terms, you may not use the Platform. These Terms
-            constitute a legally binding agreement between you and VytalPath Academy.
-          </p>
-        </section>
+        <p>
+          Your access to and use of VytalPath Academy ("the Platform"), operated by Practical
+          Informatics LLC ("Company," "we," "us," or "our"), is conditioned on your acceptance of
+          and compliance with these Terms of Service. By accessing or using the Platform, you agree
+          to be bound by these Terms.
+        </p>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">2. Description of Service</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Limitations of Use</h2>
           <p>
-            VytalPath Academy is an online training platform for healthcare front office professionals. The Platform provides:
+            By using the Platform, you warrant on behalf of yourself, your users, and other parties
+            you represent that you will not:
           </p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Video and reading-based lessons across 9 training sections</li>
-            <li>Interactive quizzes and competency assessments</li>
-            <li>A simulated EHR Practice Lab environment</li>
-            <li>Standard Operating Procedure (SOP) guides</li>
-            <li>AI-powered Study Assistant</li>
-            <li>Job readiness tools (phone simulator, mock interviews, resume builder)</li>
-            <li>Competency progress tracking and completion certificates</li>
+            <li>Modify, copy, prepare derivative works of, decompile, or reverse engineer any materials or software contained on the Platform</li>
+            <li>Remove any copyright or other proprietary notations from any materials and software on the Platform</li>
+            <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+            <li>Knowingly or negligently use the Platform in a way that abuses or disrupts our networks or any other service Practical Informatics LLC provides</li>
+            <li>Use the Platform to transmit or publish any harassing, indecent, obscene, fraudulent, or unlawful material</li>
+            <li>Use the Platform in violation of any applicable laws or regulations</li>
+            <li>Use the Platform to send unauthorized advertising or spam</li>
+            <li>Harvest, collect, or gather user data without the user's consent</li>
+            <li>Use the Platform in conjunction with sending unwanted or unsolicited material</li>
+            <li>Share your account credentials with others or allow others to access the Platform using your account</li>
+            <li>Create multiple accounts to circumvent rate limits, subscription requirements, or policy enforcement</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">3. Account Registration</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>You must create an account to access paid content on the Platform</li>
-            <li>You must provide a valid email address and create a secure password</li>
-            <li>You are responsible for maintaining the confidentiality of your account credentials</li>
-            <li>You are responsible for all activity that occurs under your account</li>
-            <li>You must notify us immediately of any unauthorized access to your account</li>
-            <li>You must be at least 18 years old or the age of majority in your jurisdiction to create an account</li>
-          </ul>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Intellectual Property</h2>
+          <p>
+            The intellectual property in the materials contained on the Platform is owned by or
+            licensed to Practical Informatics LLC and is protected by applicable copyright and
+            trademark law. We grant our users permission to access and use the Platform content
+            solely for personal, non-commercial, educational purposes related to their VytalPath
+            Academy subscription.
+          </p>
+          <p className="mt-2">
+            This constitutes the grant of a license, not a transfer of title. This license shall
+            automatically terminate if you violate any of these restrictions or the Terms of
+            Service, and may be terminated by Practical Informatics LLC at any time.
+          </p>
+          <p className="mt-2">
+            All content on the Platform — including lessons, videos, quizzes, standard operating
+            procedures, simulations, and written materials — is the intellectual property of
+            Practical Informatics LLC. You may not copy, reproduce, distribute, sell, record,
+            screen-capture, or share any Platform content without our written permission.
+          </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">4. Subscription & Payment</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Subscription & Payment</h2>
           <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Individual plan:</strong> $327 per year, providing full access to all Platform content</li>
+            <li><strong>Individual plan:</strong> $327 per year, providing full access to all Platform content for one year from the date of purchase</li>
             <li><strong>Organization plans:</strong> Volume pricing available for teams — contact us for details</li>
-            <li>Payments are processed securely through Stripe</li>
+            <li>All payments are processed securely through Stripe. Practical Informatics LLC does not store your credit card information</li>
             <li>Subscriptions automatically renew unless cancelled before the renewal date</li>
             <li>Prices are subject to change with 30 days' notice to existing subscribers</li>
             <li>You authorize us to charge your payment method on file for subscription renewals</li>
@@ -70,116 +83,157 @@ export function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">5. Cancellation & Refunds</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Cancellation & Refunds</h2>
           <p>
-            Our cancellation and refund policy is designed to be fair and transparent:
+            Our cancellation and refund policy is designed to be fair and transparent. Within the
+            first 3 days of purchase, you may receive a full refund — no questions asked. After
+            3 days, refunds are based on your course completion percentage at the time of
+            cancellation.
           </p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li><strong>3-day guarantee:</strong> Full refund within 3 days of payment, no questions asked</li>
-            <li><strong>Progress-based refunds:</strong> After 3 days, refunds are based on your course completion percentage</li>
-            <li>Access ends immediately upon cancellation</li>
-            <li>Refunds are processed to your original payment method within 5-10 business days</li>
-          </ul>
           <p className="mt-2">
-            See our full <Link to="/returns" className="text-blue-600 hover:text-blue-700">Returns & Refund Policy</Link> for complete details.
+            Access to Platform content ends immediately upon cancellation. Refunds are processed
+            to your original payment method within 5-10 business days. See our
+            full <Link to="/returns" className="text-blue-600 hover:text-blue-700">Returns & Refund Policy</Link> for
+            complete details including refund tier amounts.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">6. Intellectual Property</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>All content on the Platform — including lessons, videos, quizzes, SOPs, simulations, and written materials — is the intellectual property of VytalPath Academy</li>
-            <li>Your subscription grants you a personal, non-transferable, non-exclusive license to access and use the content for your own educational purposes</li>
-            <li>You may not copy, reproduce, distribute, sell, or share any Platform content without our written permission</li>
-            <li>You may not record, screenshot, or otherwise capture video lessons for redistribution</li>
-            <li>The VytalPath Academy name, logo, and branding are our trademarks</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">7. Certificates</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Certificates of completion are issued upon completing all required lessons and passing all quizzes</li>
-            <li>Certificates are non-transferable and linked to your account</li>
-            <li>The certificate name you enter is permanent — it cannot be changed after generation</li>
-            <li>VytalPath Academy certificates represent completion of training, not professional certification or licensure</li>
-            <li>We reserve the right to revoke certificates if they were obtained through fraudulent means</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">8. AI Study Assistant</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>The AI Study Assistant is provided as a learning aid and is not a substitute for professional medical, legal, or clinical advice</li>
-            <li>AI responses may occasionally contain inaccuracies — always verify information with your supervisor or authoritative sources</li>
-            <li>You agree not to use the AI assistant for purposes outside of your VytalPath Academy learning</li>
-            <li>Usage of the AI assistant is subject to rate limits to ensure fair access for all users</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">9. EHR Practice Lab</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>The EHR Practice Lab is a simulated environment for educational purposes only</li>
-            <li>All patient data in the simulation is fictional — no real patient information is used or stored</li>
-            <li>Skills practiced in the simulation should be applied under supervision in real clinical settings</li>
-            <li>The simulation does not represent any specific commercial EHR product</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">10. Acceptable Use</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Certificates</h2>
           <p>
-            Your use of the Platform is subject to our <Link to="/acceptable-use" className="text-blue-600 hover:text-blue-700">Acceptable Use Policy</Link>,
+            Certificates of completion are issued upon completing all required lessons and passing
+            all quizzes. Certificates are non-transferable, linked to your account, and the name
+            you enter is permanent and cannot be changed after generation. VytalPath Academy
+            certificates represent completion of training — they are not professional
+            certifications or licensures. We reserve the right to revoke certificates obtained
+            through fraudulent means.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">AI Study Assistant</h2>
+          <p>
+            The Platform includes an AI-powered Study Assistant provided as a learning aid. AI
+            responses may occasionally contain inaccuracies — always verify information with your
+            supervisor or authoritative sources. The AI Study Assistant is not a substitute for
+            professional medical, legal, or clinical advice. You agree not to submit real patient
+            information, protected health information (PHI), or other sensitive data to the AI
+            assistant. Usage is subject to rate limits.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">EHR Practice Lab</h2>
+          <p>
+            The EHR Practice Lab is a simulated environment for educational purposes only. All
+            patient data in the simulation is entirely fictional — no real patient information is
+            used or stored. Skills practiced in the simulation should be applied under supervision
+            in real clinical settings. The simulation does not represent any specific commercial
+            EHR product.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Acceptable Use</h2>
+          <p>
+            Your use of the Platform is subject to
+            our <Link to="/acceptable-use" className="text-blue-600 hover:text-blue-700">Acceptable Use Policy</Link>,
             which is incorporated into these Terms by reference.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">11. Disclaimers</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>VytalPath Academy is an educational platform, not a healthcare provider or certification body</li>
-            <li>Completing our training does not guarantee employment or professional certification</li>
-            <li>Content is provided "as is" — while we strive for accuracy, we cannot guarantee that all information is error-free</li>
-            <li>We are not responsible for decisions you make based on the training content</li>
-            <li>The Platform may experience downtime for maintenance or updates</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">12. Limitation of Liability</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Liability</h2>
           <p>
-            To the maximum extent permitted by law, VytalPath Academy shall not be liable for any indirect,
-            incidental, special, consequential, or punitive damages, or any loss of profits or revenues,
-            whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible
-            losses resulting from your use of the Platform. Our total liability for any claim arising from
-            these Terms shall not exceed the amount you paid us in the 12 months preceding the claim.
+            Our Platform and the materials on our Platform are provided on an "as is" basis. To
+            the extent permitted by law, Practical Informatics LLC makes no warranties, expressed
+            or implied, and hereby disclaims and negates all other warranties including, without
+            limitation, implied warranties or conditions of merchantability, fitness for a
+            particular purpose, or non-infringement of intellectual property, or other violation
+            of rights.
+          </p>
+          <p className="mt-2">
+            In no event shall Practical Informatics LLC or its suppliers be liable for any
+            consequential loss suffered or incurred by you or any third party arising from the use
+            or inability to use the Platform or the materials on the Platform, even if Practical
+            Informatics LLC or an authorized representative has been notified, orally or in
+            writing, of the possibility of such damage.
+          </p>
+          <p className="mt-2">
+            In the context of this agreement, "consequential loss" includes any consequential
+            loss, indirect loss, real or anticipated loss of profit, loss of benefit, loss of
+            revenue, loss of business, loss of goodwill, loss of opportunity, loss of savings,
+            loss of reputation, loss of use and/or loss or corruption of data, whether under
+            statute, contract, equity, tort (including negligence), indemnity, or otherwise.
+          </p>
+          <p className="mt-2">
+            Because some jurisdictions do not allow limitations on implied warranties, or
+            limitations of liability for consequential or incidental damages, these limitations
+            may not apply to you. Our total liability for any claim arising from these Terms shall
+            not exceed the amount you paid us in the 12 months preceding the claim.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">13. Governing Law</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Accuracy of Materials</h2>
           <p>
-            These Terms shall be governed by and construed in accordance with the laws of the State of
-            Washington, United States, without regard to its conflict of law provisions. Any disputes arising
-            from these Terms shall be resolved in the courts located in the State of Washington.
+            The materials appearing on the Platform are not comprehensive and are for general
+            educational purposes only. Practical Informatics LLC does not warrant or make any
+            representations concerning the accuracy, likely results, or reliability of the use of
+            the materials on the Platform, or otherwise relating to such materials or on any
+            resources linked to the Platform. Completing our training does not guarantee
+            employment or professional certification.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">14. Changes to Terms</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Links</h2>
           <p>
-            We reserve the right to modify these Terms at any time. We will provide notice of material
-            changes by posting the updated Terms on this page. Your continued use of the Platform after
-            changes constitutes acceptance of the modified Terms.
+            Practical Informatics LLC has not reviewed all of the sites linked to the Platform and
+            is not responsible for the contents of any such linked site. The inclusion of any link
+            does not imply endorsement, approval, or control by Practical Informatics LLC of the
+            site. Use of any such linked site is at your own risk and we strongly advise you make
+            your own investigations with respect to the suitability of those sites.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">15. Contact</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Right to Terminate</h2>
           <p>
-            For questions about these Terms, contact us at{' '}
-            <a href="mailto:hello@vytalpath.com" className="text-blue-600 hover:text-blue-700">hello@vytalpath.com</a>.
+            We may suspend or terminate your right to use the Platform and terminate these Terms
+            of Service immediately upon written notice to you for any breach of these Terms of
+            Service. Upon termination, your right to use the Platform will cease immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Severance</h2>
+          <p>
+            Any term of these Terms of Service which is wholly or partially void or unenforceable
+            is severed to the extent that it is void or unenforceable. The validity of the
+            remainder of these Terms of Service is not affected.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Governing Law</h2>
+          <p>
+            These Terms of Service are governed by and construed in accordance with the laws of
+            California. You irrevocably submit to the exclusive jurisdiction of the courts in that
+            State or location.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Contact Us</h2>
+          <p>
+            For any questions or concerns regarding these Terms of Service, you may contact us
+            using the following details:
+          </p>
+          <p className="mt-2">
+            <strong>Practical Informatics LLC</strong>
+            <br />
+            <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a>
           </p>
         </section>
       </div>
