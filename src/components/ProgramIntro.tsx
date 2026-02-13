@@ -110,13 +110,11 @@ export function ProgramIntro() {
     <article className="max-w-3xl mx-auto">
       {/* Welcome Header */}
       <header className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-blue-100 rounded-3xl shadow-apple-sm">
-          <img
-            src="/vp-checkmark.png"
-            alt="VytalPath Academy"
-            className="h-12 w-auto"
-          />
-        </div>
+        <img
+          src="/vp-long-logo.png"
+          alt="VytalPath Academy"
+          className="h-14 md:h-16 w-auto mx-auto mb-6"
+        />
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900 mb-4">
           Welcome to VytalPath Academy
         </h1>
