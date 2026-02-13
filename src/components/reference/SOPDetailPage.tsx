@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Sparkles } from 'lucide-react';
 import { getSOPBySlug } from '../../services/sopService';
 import { SOPDetail } from '../SOPDetail';
+import { useAgentOrchestrator } from '../../contexts/AgentOrchestratorContext';
 import type { SOP } from '../../types/sop';
 
 export function SOPDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const [sop, setSOP] = useState<SOP | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const orchestrator = useAgentOrchestrator();
 
   useEffect(() => {
     if (slug) {
@@ -25,6 +27,12 @@ export function SOPDetailPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handlePracticeSOP = () => {
+    if (!sop) return;
+    // Set up SOP scenario agent with this SOP's context
+    orchestrator.setActiveAgent('sop-scenario');
   };
 
   if (isLoading) {
@@ -55,9 +63,21 @@ export function SOPDetailPage() {
   }
 
   return (
-    <SOPDetail
-      sop={sop}
-      onBack={() => window.history.back()}
-    />
+    <div>
+      {/* Practice This SOP button */}
+      <div className="max-w-4xl mx-auto mb-4">
+        <button
+          onClick={handlePracticeSOP}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 transition-all"
+        >
+          <Sparkles className="w-4 h-4" />
+          Practice This SOP with AI Scenarios
+        </button>
+      </div>
+      <SOPDetail
+        sop={sop}
+        onBack={() => window.history.back()}
+      />
+    </div>
   );
 }

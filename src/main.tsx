@@ -7,6 +7,7 @@ import './index.css';
 import { AuthProvider } from './contexts/AuthContext';
 import { ProgressProvider } from './contexts/ProgressContext';
 import { SubscriptionProvider } from './contexts/SubscriptionContext';
+import { AgentOrchestratorProvider } from './contexts/AgentOrchestratorContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <SubscriptionProvider>
           <ProgressProvider>
-            <RouterProvider router={router} />
+            <AgentOrchestratorProvider>
+              <RouterProvider router={router} />
+            </AgentOrchestratorProvider>
           </ProgressProvider>
         </SubscriptionProvider>
       </AuthProvider>

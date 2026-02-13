@@ -261,6 +261,91 @@ export function computeCMAAReadiness(): CMAAReadiness {
   };
 }
 
+// ─── Enhanced competency with practice engagement ───
+
+/**
+ * Enhanced KS competency that factors in adaptive practice engagement.
+ * Practice engagement can upgrade 'exposed' → 'practiced' but NEVER:
+ * - Downgrades a level
+ * - Replaces a graded quiz requirement
+ * - Affects certificate eligibility (use computeKSCompetency for that)
+ */
+export function computeEnhancedKSCompetency(
+  ks: KnowledgeStatement,
+  progress: ProgressState,
+  practiceKSData: { ksId: string; questionsCorrect: number; questionsAsked: number }[]
+): KSCompetency {
+  const base = computeKSCompetency(ks, progress);
+
+  // Only enhance 'exposed' level — higher levels already account for graded activities
+  if (base.level !== 'exposed') return base;
+
+  const relevantPractice = practiceKSData.filter(p => p.ksId === ks.id);
+  if (relevantPractice.length === 0) return base;
+
+  const totalCorrect = relevantPractice.reduce((sum, p) => sum + p.questionsCorrect, 0);
+  const totalAsked = relevantPractice.reduce((sum, p) => sum + p.questionsAsked, 0);
+
+  // Need at least 3 correct answers to upgrade
+  if (totalCorrect >= 3 && totalAsked > 0 && (totalCorrect / totalAsked) >= 0.7) {
+    return { ...base, level: 'practiced' };
+  }
+
+  return base;
+}
+
+/**
+ * Compute full CMAA readiness with practice enhancement.
+ * Separate from computeCMAAReadiness() which remains the graded-only version.
+ */
+export function computeEnhancedCMAAReadiness(
+  practiceKSData: { ksId: string; questionsCorrect: number; questionsAsked: number }[]
+): CMAAReadiness {
+  const progress = readProgressData();
+  const domains = cmaaDomains.map(domain => {
+    const ksCompetencies = domain.knowledgeStatements.map(ks =>
+      computeEnhancedKSCompetency(ks, progress, practiceKSData)
+    );
+
+    const distribution: Record<CompetencyLevel, number> = {
+      not_available: 0, not_started: 0, exposed: 0, practiced: 0, assessed: 0, mastered: 0,
+    };
+    for (const ksc of ksCompetencies) distribution[ksc.level]++;
+
+    const weights: Record<CompetencyLevel, number> = {
+      not_available: 0, not_started: 0, exposed: 0.25, practiced: 0.5, assessed: 0.75, mastered: 1.0,
+    };
+    const availableKS = ksCompetencies.filter(k => k.level !== 'not_available');
+    let score = 0;
+    if (availableKS.length > 0) {
+      const sum = availableKS.reduce((acc, k) => acc + weights[k.level], 0);
+      score = Math.round((sum / availableKS.length) * 100);
+    }
+
+    return { domainId: domain.id, domainMeta: domain, overallScore: score, ksCompetencies, distribution };
+  });
+
+  const overallScore = Math.round(
+    domains.reduce((sum, d) => sum + d.overallScore * d.domainMeta.examWeight, 0) /
+    domains.reduce((sum, d) => sum + d.domainMeta.examWeight, 0)
+  );
+
+  let totalKSCovered = 0, totalKSPartial = 0, totalKSGap = 0;
+  for (const domain of cmaaDomains) {
+    for (const ks of domain.knowledgeStatements) {
+      if (ks.coverageStatus === 'covered') totalKSCovered++;
+      else if (ks.coverageStatus === 'partial') totalKSPartial++;
+      else totalKSGap++;
+    }
+  }
+
+  const sorted = [...domains].sort((a, b) => b.overallScore - a.overallScore);
+  const topStrengths = sorted.filter(d => d.overallScore > 0).slice(0, 2).map(d => d.domainMeta.shortName);
+  const topGaps = sorted.filter(d => d.overallScore < 50).reverse().slice(0, 2).map(d => d.domainMeta.shortName);
+
+  return { overallScore, domains, totalKSCovered, totalKSPartial, totalKSGap, topStrengths, topGaps };
+}
+
 // Competency level display helpers
 export const competencyLevelConfig: Record<CompetencyLevel, { label: string; color: string; bg: string; border: string }> = {
   not_available: { label: 'Not Yet Available', color: 'text-gray-400', bg: 'bg-gray-100', border: 'border-gray-200 border-dashed' },

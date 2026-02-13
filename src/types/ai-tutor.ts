@@ -14,6 +14,10 @@ export interface SectionContext {
   practiceMode?: string;
   scenarioType?: string;
   scenarioInstructions?: string;
+  // Agent orchestration fields
+  agentMode?: string;
+  studentWeaknesses?: string;
+  ehrLabState?: string;
 }
 
 export interface AiTutorTheme {

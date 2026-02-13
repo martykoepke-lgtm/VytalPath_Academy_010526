@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Calendar,
   CalendarPlus,
@@ -16,6 +16,7 @@ import {
   X,
 } from 'lucide-react';
 import { EHRSessionProvider, useEHRSession } from './EHRSessionContext';
+import { useAgentOrchestrator } from '../../contexts/AgentOrchestratorContext';
 import { ProviderScheduleView } from './ProviderScheduleView';
 import { AppointmentsView } from './AppointmentsView';
 import { PatientChartView } from './PatientChartView';
@@ -90,6 +91,7 @@ function getAge(dob: string): number {
 
 function EHRLabContent() {
   const {
+    session,
     sessionTimeRemaining,
     isSessionExpired,
     resetSession,
@@ -101,6 +103,16 @@ function EHRLabContent() {
     getAppointment,
     getEncounter,
   } = useEHRSession();
+
+  const orchestrator = useAgentOrchestrator();
+  const snapshotTimerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  // Activate EHR Coach agent on mount, revert on unmount
+  useEffect(() => {
+    orchestrator.setActiveAgent('ehr-coach');
+    return () => orchestrator.setActiveAgent('tutor');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [view, setView] = useState<EHRView>({ type: 'schedule' });
   const [viewHistory, setViewHistory] = useState<EHRView[]>([]);
@@ -220,6 +232,22 @@ function EHRLabContent() {
   const bannerPatient = bannerPatientId ? getPatient(bannerPatientId) : null;
   const bannerEncounter = view.type === 'chart' && view.encounterId ? getEncounter(view.encounterId) : null;
   const encounterTypeLabels: Record<string, string> = { clinic: 'Clinic', 'non-clinic': 'Non-Clinic', phone: 'Phone', abstraction: 'Abstraction' };
+
+  // Update EHR snapshot for coach agent (debounced 300ms)
+  useEffect(() => {
+    if (snapshotTimerRef.current) clearTimeout(snapshotTimerRef.current);
+    snapshotTimerRef.current = setTimeout(() => {
+      orchestrator.updateEHRSnapshot({
+        currentView: view.type,
+        activePatientId: bannerPatientId,
+        activeEncounterId: view.type === 'chart' ? (view.encounterId ?? null) : null,
+        recentActions: [],
+        sessionAge: Math.floor((Date.now() - session.createdAt) / 60000),
+      });
+    }, 300);
+    return () => { if (snapshotTimerRef.current) clearTimeout(snapshotTimerRef.current); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view, bannerPatientId]);
 
   // Expired session
   if (isSessionExpired) {

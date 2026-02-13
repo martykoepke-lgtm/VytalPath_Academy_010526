@@ -43,6 +43,11 @@ import { ProgramIntro } from './components/ProgramIntro';
 import { CMAADashboard } from './components/progress/CMAADashboard';
 import { CertificatePage } from './components/certificate/CertificatePage';
 import { EHRPracticeLab } from './components/ehr-lab/EHRPracticeLab';
+import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
+import { TermsOfService } from './components/legal/TermsOfService';
+import { CookiePolicy } from './components/legal/CookiePolicy';
+import { AcceptableUsePolicy } from './components/legal/AcceptableUsePolicy';
+import { ReturnsPolicy } from './components/legal/ReturnsPolicy';
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +66,27 @@ export const router = createBrowserRouter([
       {
         path: 'curriculum',
         element: <CurriculumPage />,
+      },
+      // Legal Pages (public, no auth required)
+      {
+        path: 'privacy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: 'terms-of-service',
+        element: <TermsOfService />,
+      },
+      {
+        path: 'cookies',
+        element: <CookiePolicy />,
+      },
+      {
+        path: 'acceptable-use',
+        element: <AcceptableUsePolicy />,
+      },
+      {
+        path: 'returns',
+        element: <ReturnsPolicy />,
       },
       // Program Introduction - Entry point for new users
       {

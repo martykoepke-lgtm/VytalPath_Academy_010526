@@ -577,21 +577,33 @@ export function LandingPage() {
       {/* Footer */}
       <footer className="bg-gray-950 text-gray-400 py-12">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center">
-              <img
-                src="/vytalpath-logo.png"
-                alt="VytalPath Academy"
-                className="h-10 w-auto brightness-0 invert"
-              />
+          <div className="flex flex-col gap-8">
+            {/* Top row: logo + tagline + contact */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center">
+                <img
+                  src="/vytalpath-logo.png"
+                  alt="VytalPath Academy"
+                  className="h-10 w-auto brightness-0 invert"
+                />
+              </div>
+              <p className="text-sm text-center md:text-left font-light">
+                Comprehensive healthcare front office training
+              </p>
+              <div className="flex items-center gap-6 text-sm">
+                <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors duration-300">Contact</a>
+                <span className="text-gray-700">|</span>
+                <span>&copy; 2026 VytalPath</span>
+              </div>
             </div>
-            <p className="text-sm text-center md:text-left font-light">
-              Comprehensive healthcare front office training
-            </p>
-            <div className="flex items-center gap-6 text-sm">
-              <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors duration-300">Contact</a>
-              <span className="text-gray-700">|</span>
-              <span>&copy; 2026 VytalPath</span>
+
+            {/* Legal links */}
+            <div className="border-t border-gray-800 pt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+              <Link to="/privacy" className="hover:text-white transition-colors duration-300">Privacy</Link>
+              <Link to="/terms-of-service" className="hover:text-white transition-colors duration-300">Terms</Link>
+              <Link to="/cookies" className="hover:text-white transition-colors duration-300">Cookies</Link>
+              <Link to="/acceptable-use" className="hover:text-white transition-colors duration-300">Acceptable Use</Link>
+              <Link to="/returns" className="hover:text-white transition-colors duration-300">Returns</Link>
             </div>
           </div>
         </div>

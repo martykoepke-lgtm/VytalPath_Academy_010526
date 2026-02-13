@@ -1,7 +1,14 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-const FAQ_ITEMS = [
+interface FAQItem {
+  q: string;
+  a: string;
+  link?: { to: string; label: string };
+}
+
+const FAQ_ITEMS: FAQItem[] = [
   {
     q: 'How long do I have access after I subscribe?',
     a: 'Your subscription gives you 1 year of access to all VytalPath Academy content. This includes all training sections, the EHR Practice Lab, job readiness tools, and any new content added during your subscription period.',
@@ -9,6 +16,11 @@ const FAQ_ITEMS = [
   {
     q: 'Can I cancel my subscription?',
     a: 'Yes. You can cancel anytime from your Account page. Refunds are based on how far you are in the program — see our Cancellation & Refund Policy for the full breakdown.',
+  },
+  {
+    q: 'What is your refund policy?',
+    a: 'We offer a 3-day full refund guarantee. After 3 days, refunds are based on your course completion percentage: less than 25% complete = 75% refund ($245), 25-49% = 50% ($163), 50-74% = 25% ($82), 75%+ = no refund.',
+    link: { to: '/returns', label: 'View full Returns & Refund Policy' },
   },
   {
     q: 'What happens when my subscription expires?',
@@ -33,6 +45,16 @@ const FAQ_ITEMS = [
   {
     q: 'Is this program a certification?',
     a: 'VytalPath Academy is a competency-based training program, not a certification exam. Our curriculum maps to 101 knowledge statements covering the skills needed for healthcare front office roles. The certificate of completion demonstrates that you have completed comprehensive training.',
+  },
+  {
+    q: 'What data do you collect about me?',
+    a: 'We collect your email and name for your account, payment information processed through Stripe, and learning progress stored locally in your browser. We do not sell your data to third parties. AI Study Assistant conversations are not permanently stored.',
+    link: { to: '/privacy', label: 'View full Privacy Policy' },
+  },
+  {
+    q: 'Does the platform use cookies?',
+    a: "We use minimal cookies — only what is needed for authentication. Your learning progress is stored in your browser's local storage, not in cookies. We do not use advertising or tracking cookies.",
+    link: { to: '/cookies', label: 'View full Cookie Policy' },
   },
 ];
 
@@ -59,6 +81,14 @@ export function FAQ() {
             {isOpen && (
               <div className="px-4 pb-4">
                 <p className="text-sm text-gray-600 leading-relaxed">{item.a}</p>
+                {item.link && (
+                  <Link
+                    to={item.link.to}
+                    className="inline-block mt-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    {item.link.label} &rarr;
+                  </Link>
+                )}
               </div>
             )}
           </div>

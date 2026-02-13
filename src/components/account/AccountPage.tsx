@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { CreditCard, HelpCircle, FileText, AlertTriangle, Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CreditCard, HelpCircle, FileText, Shield, AlertTriangle, Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useSubscription } from '../../contexts/SubscriptionContext';
 import { useProgress } from '../../contexts/ProgressContext';
@@ -8,7 +9,7 @@ import { calculateRefundEligibility, getDaysSinceStart } from '../../utils/refun
 import { FAQ } from './FAQ';
 import { CancellationPolicy } from './CancellationPolicy';
 
-type Tab = 'billing' | 'faq' | 'cancellation';
+type Tab = 'billing' | 'faq' | 'cancellation' | 'legal';
 
 export function AccountPage() {
   const { user } = useAuth();
@@ -46,7 +47,8 @@ export function AccountPage() {
   const tabs: { key: Tab; label: string; icon: React.ReactNode }[] = [
     { key: 'billing', label: 'Billing', icon: <CreditCard className="w-4 h-4" /> },
     { key: 'faq', label: 'FAQ', icon: <HelpCircle className="w-4 h-4" /> },
-    { key: 'cancellation', label: 'Cancellation Policy', icon: <FileText className="w-4 h-4" /> },
+    { key: 'cancellation', label: 'Cancellation', icon: <FileText className="w-4 h-4" /> },
+    { key: 'legal', label: 'Legal', icon: <Shield className="w-4 h-4" /> },
   ];
 
   return (
@@ -218,6 +220,38 @@ export function AccountPage() {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-apple-sm p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Cancellation & Refund Policy</h2>
           <CancellationPolicy />
+        </div>
+      )}
+
+      {activeTab === 'legal' && (
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-apple-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Legal & Policies</h2>
+          <p className="text-sm text-gray-500 mb-5">
+            Review our platform policies. These documents govern your use of VytalPath Academy.
+          </p>
+          <div className="space-y-3">
+            {[
+              { to: '/privacy', label: 'Privacy Policy', desc: 'How we collect, use, and protect your data' },
+              { to: '/terms-of-service', label: 'Terms of Service', desc: 'Agreement governing your use of the platform' },
+              { to: '/cookies', label: 'Cookie Policy', desc: 'How we use cookies and local storage' },
+              { to: '/acceptable-use', label: 'Acceptable Use Policy', desc: 'Rules for using the platform' },
+              { to: '/returns', label: 'Returns & Refund Policy', desc: 'Cancellation and refund details' },
+            ].map((policy) => (
+              <Link
+                key={policy.to}
+                to={policy.to}
+                className="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors group"
+              >
+                <div>
+                  <p className="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{policy.label}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{policy.desc}</p>
+                </div>
+                <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            ))}
+          </div>
         </div>
       )}
 

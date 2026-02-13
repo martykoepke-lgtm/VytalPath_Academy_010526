@@ -88,3 +88,31 @@ export const defaultSuggestedQuestions: Record<string, string[]> = {
     'When should I escalate a difficult situation?',
   ],
 };
+
+// Agent mode-specific suggested questions
+export const agentModeSuggestedQuestions: Record<string, string[]> = {
+  'ehr-coach': [
+    'What should I do first in the lab?',
+    'Walk me through scheduling a new patient',
+    'How do I check in a patient?',
+    'Guide me through the check-out process',
+  ],
+  assessment: [
+    'Quiz me on my weakest areas',
+    'Give me an insurance practice question',
+    'Test my HIPAA knowledge',
+    'Practice questions on front office workflows',
+  ],
+  'sop-scenario': [
+    'Give me a new patient registration scenario',
+    'Test me on the check-in process',
+    'Create a scenario with an insurance issue',
+    'Practice a difficult end-of-day closing',
+  ],
+  'patient-sim': [
+    'Start a scenario with a confused new patient',
+    'I want to practice with a Medicare patient',
+    'Give me a scenario with insurance complications',
+    'Simulate a walk-in urgent visit',
+  ],
+};

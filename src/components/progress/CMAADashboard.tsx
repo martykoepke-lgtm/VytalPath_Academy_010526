@@ -3,11 +3,14 @@ import { BarChart3, BookOpen, AlertTriangle, CheckCircle2, Target } from 'lucide
 import { computeCMAAReadiness, competencyLevelConfig, type CompetencyLevel } from '../../utils/cmaaCompetencyEngine';
 import { ReadinessGauge } from './ReadinessGauge';
 import { DomainCard } from './DomainCard';
+import { PracticeEngagementPanel } from './PracticeEngagementPanel';
+import { useAgentOrchestrator } from '../../contexts/AgentOrchestratorContext';
 
 const legendLevels: CompetencyLevel[] = ['mastered', 'assessed', 'practiced', 'exposed', 'not_started', 'not_available'];
 
 export function CMAADashboard() {
   const readiness = useMemo(() => computeCMAAReadiness(), []);
+  const { practiceEngagement } = useAgentOrchestrator();
 
   return (
     <article className="max-w-4xl mx-auto">
@@ -100,6 +103,11 @@ export function CMAADashboard() {
         {readiness.domains.map(domain => (
           <DomainCard key={domain.domainId} domain={domain} />
         ))}
+      </section>
+
+      {/* AI Practice Engagement */}
+      <section className="mt-5" aria-label="Practice Engagement">
+        <PracticeEngagementPanel engagement={practiceEngagement} />
       </section>
 
       {/* Footer note */}

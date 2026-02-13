@@ -14,7 +14,11 @@ interface UseAiTutorReturn {
   cancelRequest: () => void;
 }
 
-export function useAiTutor(sectionContext: SectionContext): UseAiTutorReturn {
+interface UseAiTutorOptions {
+  onAssistantMessage?: (content: string) => void;
+}
+
+export function useAiTutor(sectionContext: SectionContext, options?: UseAiTutorOptions): UseAiTutorReturn {
   const { session } = useAuth();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,6 +88,11 @@ export function useAiTutor(sectionContext: SectionContext): UseAiTutorReturn {
       };
 
       setMessages(prev => [...prev, assistantMessage]);
+
+      // Notify callback for agent response parsing
+      if (options?.onAssistantMessage) {
+        options.onAssistantMessage(data.message);
+      }
 
       if (data.rateLimitRemaining !== undefined) {
         setRateLimitRemaining(data.rateLimitRemaining);
