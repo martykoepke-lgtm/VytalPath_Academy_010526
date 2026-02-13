@@ -249,7 +249,7 @@ export function LandingPage() {
               { value: '80+', label: 'Lessons' },
               { value: '18', label: 'Quizzes' },
               { value: '24', label: 'SOP Guides' },
-              { value: '24/7', label: 'AI Tutor' },
+              { value: '24/7', label: 'Adaptive AI' },
             ].map((stat) => (
               <div key={stat.label} className="bg-white rounded-2xl p-4 text-center border border-gray-200/50 shadow-apple-sm">
                 <div className="text-2xl font-semibold text-gray-900 mb-0.5">{stat.value}</div>
@@ -309,7 +309,7 @@ export function LandingPage() {
               See the Platform in Action
             </h2>
             <p className="text-lg font-light text-gray-500 max-w-2xl mx-auto">
-              Real tools you'll use every day — from EHR simulation to AI-powered practice scenarios
+              From EHR simulation to AI that adapts to your progress — real tools that meet you where you are
             </p>
           </div>
 
@@ -386,7 +386,7 @@ export function LandingPage() {
               { icon: FileText, label: 'SOPs & Guides', desc: '24 step-by-step references' },
               { icon: Brain, label: 'EHR Simulation', desc: 'Hands-on PM practice' },
               { icon: Sparkles, label: 'Exercises', desc: 'Quizzes, flashcards & more' },
-              { icon: MessageCircle, label: 'AI Tutor', desc: 'Ask anything, anytime' },
+              { icon: MessageCircle, label: 'Adaptive AI', desc: 'Coaches you at every step' },
               { icon: Award, label: 'Job Readiness', desc: 'Interview & resume prep' },
             ].map((mode) => (
               <div key={mode.label} className="bg-white rounded-2xl p-5 text-center border border-gray-200/50 shadow-apple-sm hover-lift transition-all duration-300">
@@ -429,8 +429,8 @@ export function LandingPage() {
                 { icon: <IconLaw />, title: 'Patient Communication', badge: '7 lessons', desc: 'Communication styles, active listening, de-escalation, cultural competence, phone etiquette, and team communication.', isNew: true },
                 { icon: <IconTerminology />, title: 'EHR & Practice Management', badge: '13 lessons', desc: 'PM vs EHR systems, encounter types, scheduling, phone encounters, duplicate prevention, telehealth, and patient portals.' },
                 { icon: <IconTerminology />, title: 'Medical Terminology', badge: '5 lessons + flashcards', desc: 'Decode medical terms using prefixes, roots, and suffixes. Interactive flashcards for practice.' },
-                { icon: <IconWorkflows />, title: 'EHR Practice Lab', badge: 'Simulation', desc: 'Hands-on practice in a simulated PM system — schedule, register, check-in, and manage a clinic day.' },
-                { icon: <IconFoundations />, title: 'Job Readiness', badge: '6 tools', desc: 'Phone simulations, mock interviews, resume builder, insurance hotline practice, and readiness assessments.' },
+                { icon: <IconWorkflows />, title: 'EHR Practice Lab', badge: 'Simulation', desc: 'Hands-on practice in a simulated PM system with AI coaching — schedule, register, check-in, and manage a clinic day.' },
+                { icon: <IconFoundations />, title: 'Job Readiness', badge: '6 tools', desc: 'AI-powered phone simulations, mock interviews, patient scenarios, resume builder, and readiness assessments.' },
               ].map((module) => (
                 <div key={module.title} className="bg-white rounded-2xl p-6 shadow-apple border border-gray-200/50 hover-lift transition-all duration-300 relative">
                   {'isNew' in module && module.isNew && (
@@ -502,7 +502,7 @@ export function LandingPage() {
                 'Hands-on EHR Practice Lab',
                 'Competency progress tracking',
                 'Job readiness tools & mock interviews',
-                'AI study assistant on every page',
+                'Adaptive AI coaching, practice & simulation',
                 'New content added regularly',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2.5 text-sm text-gray-700">

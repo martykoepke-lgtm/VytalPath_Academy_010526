@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Play, FileText, Sparkles, MessageCircle, ChevronRight,
   Heart, Scale, DollarSign, ClipboardList, BookA, Monitor, Briefcase,
-  ArrowRight, X
+  ArrowRight, X, Bot, Stethoscope, ClipboardCheck, Users
 } from 'lucide-react';
+import { useAgentOrchestrator } from '../contexts/AgentOrchestratorContext';
+import SuggestedActionCard from './ai-tutor/SuggestedActionCard';
 
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
@@ -90,6 +92,19 @@ const programSections = [
 
 export function ProgramIntro() {
   const [showIntroVideo, setShowIntroVideo] = useState(false);
+  const navigate = useNavigate();
+  const { suggestedNextAction, setActiveAgent } = useAgentOrchestrator();
+
+  const handleSuggestedAction = () => {
+    if (suggestedNextAction) {
+      if (suggestedNextAction.agentMode) {
+        setActiveAgent(suggestedNextAction.agentMode);
+      }
+      if (suggestedNextAction.route) {
+        navigate(suggestedNextAction.route);
+      }
+    }
+  };
 
   return (
     <article className="max-w-3xl mx-auto">
@@ -224,23 +239,52 @@ export function ProgramIntro() {
         </div>
       </section>
 
-      {/* AI Enhancement Note */}
+      {/* AI-Enhanced Learning */}
       <section className="mb-16">
-        <div className="bg-blue-50/50 rounded-2xl border border-blue-100 p-8 text-center">
-          <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <MessageCircle className="w-7 h-7 text-white" />
+        <div className="bg-gradient-to-br from-slate-50 to-blue-50/50 rounded-2xl border border-slate-200/60 p-8">
+          <div className="text-center mb-6">
+            <div className="w-14 h-14 bg-slate-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Bot className="w-7 h-7 text-white" />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">AI That Adapts to Your Learning</h3>
+            <p className="text-gray-500 max-w-lg mx-auto leading-relaxed">
+              Your AI study assistant follows your progress and meets you where you are — explaining concepts when you're studying,
+              coaching you through the EHR Lab, generating practice questions on your weak areas, and simulating real patient
+              interactions so you're prepared before day one.
+            </p>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">AI-Enhanced Learning</h3>
-          <p className="text-gray-500 max-w-lg mx-auto mb-1 leading-relaxed">
-            Your AI study assistant is available on every page. Ask it to explain concepts,
-            walk you through scenarios, quiz you on what you've learned, or clarify anything
-            from the curriculum.
-          </p>
-          <p className="text-sm text-gray-400">
-            Look for the chat icon in the bottom corner.
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+            {[
+              { icon: MessageCircle, label: 'Explains concepts', color: 'text-blue-600', bg: 'bg-blue-50' },
+              { icon: Stethoscope, label: 'Coaches EHR workflows', color: 'text-teal-600', bg: 'bg-teal-50' },
+              { icon: ClipboardCheck, label: 'Targets weak areas', color: 'text-green-600', bg: 'bg-green-50' },
+              { icon: Users, label: 'Simulates patients', color: 'text-purple-600', bg: 'bg-purple-50' },
+            ].map((item) => (
+              <div key={item.label} className="flex flex-col items-center text-center gap-2 p-3">
+                <div className={`w-9 h-9 ${item.bg} rounded-xl flex items-center justify-center`}>
+                  <item.icon className={`w-4.5 h-4.5 ${item.color}`} />
+                </div>
+                <span className="text-xs font-medium text-gray-600">{item.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-gray-400">
+            Look for the chat icon in the bottom corner — it's available on every page.
           </p>
         </div>
       </section>
+
+      {/* Suggested Next Step */}
+      {suggestedNextAction && (
+        <section className="mb-16">
+          <div className="max-w-md mx-auto">
+            <p className="text-xs font-medium text-gray-400 uppercase tracking-wider text-center mb-3">Recommended for you</p>
+            <SuggestedActionCard action={suggestedNextAction} onAction={handleSuggestedAction} />
+          </div>
+        </section>
+      )}
 
       {/* Get Started CTA */}
       <div className="text-center pb-8">
