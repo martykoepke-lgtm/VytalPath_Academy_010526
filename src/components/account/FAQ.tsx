@@ -15,11 +15,11 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     q: 'Can I cancel my subscription?',
-    a: 'Yes. You can cancel anytime from your Account page. Refunds are based on how far you are in the program — see our Cancellation & Refund Policy for the full breakdown.',
+    a: 'Yes. You can cancel anytime from the Billing tab on your Account page. If you cancel within the first 3 days, you get a full refund. After 3 days, you can still cancel but no refund will be issued.',
   },
   {
     q: 'What is your refund policy?',
-    a: 'We offer a 3-day full refund guarantee. After 3 days, refunds are based on your course completion percentage: less than 25% complete = 75% refund ($245), 25-49% = 50% ($163), 50-74% = 25% ($82), 75%+ = no refund.',
+    a: 'We offer a 3-day no-risk guarantee. Cancel within 3 days of your purchase for a full $327 refund — no questions asked. After 3 days, cancellations do not include a refund. Refunds are processed to your original payment method and typically appear within 5-10 business days.',
     link: { to: '/returns', label: 'View full Returns & Refund Policy' },
   },
   {

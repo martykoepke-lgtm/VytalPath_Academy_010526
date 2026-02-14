@@ -85,16 +85,15 @@ export function TermsOfService() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Cancellation & Refunds</h2>
           <p>
-            Our cancellation and refund policy is designed to be fair and transparent. Within the
-            first 3 days of purchase, you may receive a full refund — no questions asked. After
-            3 days, refunds are based on your course completion percentage at the time of
-            cancellation.
+            We offer a 3-day no-risk guarantee. You may cancel within 3 calendar days of purchase
+            for a full refund — no questions asked. After 3 days, you may still cancel at any time,
+            but no refund will be issued.
           </p>
           <p className="mt-2">
             Access to Platform content ends immediately upon cancellation. Refunds are processed
             to your original payment method within 5-10 business days. See our
             full <Link to="/returns" className="text-blue-600 hover:text-blue-700">Returns & Refund Policy</Link> for
-            complete details including refund tier amounts.
+            complete details.
           </p>
         </section>
 

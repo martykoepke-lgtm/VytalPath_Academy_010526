@@ -1,6 +1,5 @@
 // Supabase Edge Function: Process Subscription Cancellation
-// Calculates refund amount server-side and cancels via Stripe API.
-// Refund tiers: 100% (days 1-3), 75% (<25%), 50% (25-49%), 25% (50-74%), 0% (75%+)
+// 3-day no-risk guarantee: full refund within 3 days, no refund after.
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@14.14.0?target=deno'
@@ -13,14 +12,11 @@ const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY')!, {
 
 const COURSE_PRICE_CENTS = 32700 // $327.00
 
-function calculateRefundCents(daysSinceStart: number, completionPercent: number): number {
-  // Days 1-3: full refund
+function calculateRefundCents(daysSinceStart: number): number {
+  // Within first 3 days: full refund
   if (daysSinceStart < 3) return COURSE_PRICE_CENTS
 
-  // Day 4+: based on completion
-  if (completionPercent < 25) return Math.round(COURSE_PRICE_CENTS * 0.75)
-  if (completionPercent < 50) return Math.round(COURSE_PRICE_CENTS * 0.50)
-  if (completionPercent < 75) return Math.round(COURSE_PRICE_CENTS * 0.25)
+  // After 3 days: no refund
   return 0
 }
 
@@ -80,9 +76,8 @@ Deno.serve(async (req) => {
     const now = new Date()
     const msPerDay = 1000 * 60 * 60 * 24
     const daysSinceStart = Math.floor((now.getTime() - startDate.getTime()) / msPerDay)
-    const completionPercent = subscription.completion_percentage || 0
 
-    const refundCents = calculateRefundCents(daysSinceStart, completionPercent)
+    const refundCents = calculateRefundCents(daysSinceStart)
     const refundDollars = refundCents / 100
 
     // Cancel the Stripe subscription immediately
@@ -91,7 +86,7 @@ Deno.serve(async (req) => {
       { prorate: false }
     )
 
-    // Issue refund if applicable
+    // Issue refund if within 3-day guarantee window
     if (refundCents > 0) {
       // Find the latest paid invoice for this subscription
       const invoices = await stripe.invoices.list({
@@ -121,17 +116,16 @@ Deno.serve(async (req) => {
 
     console.log(
       `Cancellation processed for user ${user.id}: ` +
-      `${daysSinceStart} days enrolled, ${completionPercent}% complete, ` +
-      `refund $${refundDollars}`
+      `${daysSinceStart} days enrolled, ` +
+      `refund $${refundDollars} (${daysSinceStart < 3 ? 'within 3-day guarantee' : 'past guarantee window'})`
     )
 
     return new Response(
       JSON.stringify({
         success: true,
         refund_amount: refundDollars,
-        refund_percent: refundCents > 0 ? Math.round((refundCents / COURSE_PRICE_CENTS) * 100) : 0,
         days_enrolled: daysSinceStart,
-        completion_percent: completionPercent,
+        within_guarantee: daysSinceStart < 3,
       }),
       { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     )

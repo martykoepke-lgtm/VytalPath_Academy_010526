@@ -1,20 +1,5 @@
 import { Link } from 'react-router-dom';
-import { RotateCcw, ArrowLeft, Shield, Clock, BookOpen } from 'lucide-react';
-import { REFUND_TIERS } from '../../utils/refundPolicy';
-
-const tierColors = {
-  green: 'bg-green-50 border-green-200 text-green-800',
-  yellow: 'bg-yellow-50 border-yellow-200 text-yellow-800',
-  orange: 'bg-orange-50 border-orange-200 text-orange-800',
-  red: 'bg-red-50 border-red-200 text-red-800',
-};
-
-const dotColors = {
-  green: 'bg-green-500',
-  yellow: 'bg-yellow-500',
-  orange: 'bg-orange-500',
-  red: 'bg-red-500',
-};
+import { RotateCcw, ArrowLeft, Shield, Clock } from 'lucide-react';
 
 export function ReturnsPolicy() {
   return (
@@ -30,7 +15,7 @@ export function ReturnsPolicy() {
         </div>
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-gray-900">Returns & Refund Policy</h1>
-          <p className="text-sm text-gray-500">Last updated: February 12, 2026</p>
+          <p className="text-sm text-gray-500">Last updated: February 13, 2026</p>
         </div>
       </div>
 
@@ -38,72 +23,44 @@ export function ReturnsPolicy() {
         <p>
           Since VytalPath Academy, operated by Practical Informatics LLC, offers non-tangible,
           irrevocable digital goods (immediate access to an online training platform), we do not
-          generally issue refunds after a purchase is made. However, we recognize that exceptional
-          circumstances may arise and have established the following policy to ensure fairness.
+          generally issue refunds after a purchase is made. However, we want you to feel confident
+          in your purchase, so we offer a straightforward guarantee.
         </p>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">3-Day Guarantee</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">3-Day No-Risk Guarantee</h2>
+          <div className="flex items-start gap-3 p-4 bg-green-50 rounded-xl border border-green-200 mb-4">
+            <Clock className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-medium text-green-900">Full refund within 3 days — no questions asked</p>
+              <p className="text-xs text-green-700 mt-1">
+                If you cancel within 3 calendar days of your purchase, you will receive a complete
+                refund of $327 to your original payment method.
+              </p>
+            </div>
+          </div>
           <p>
-            We offer a full refund within 3 calendar days of your purchase — no questions asked. If
-            you are unsatisfied for any reason within this window, simply cancel from
-            your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> or
-            email us and we will process a complete refund.
+            We want you to try VytalPath Academy with confidence. If the program isn't the right fit
+            for any reason, simply cancel from
+            your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> within
+            3 days and you'll get your money back.
           </p>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Progress-Based Refunds</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">After 3 Days</h2>
           <p>
-            After the initial 3-day window, refund eligibility is determined by your course
-            completion percentage at the time of cancellation. Because you receive immediate access
-            to all content upon purchase, the refund amount decreases as you progress through the
-            program.
+            After the 3-day guarantee window, you may still cancel your subscription at any time, but
+            no refund will be issued. Upon cancellation, your access to all course content ends
+            immediately.
           </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
-            <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-xl">
-              <Clock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-blue-900">3-Day Guarantee</p>
-                <p className="text-xs text-blue-700 mt-1">Full refund within 3 days of payment — no questions asked.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3 p-4 bg-purple-50 rounded-xl">
-              <BookOpen className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="text-sm font-medium text-purple-900">Progress-Based After 3 Days</p>
-                <p className="text-xs text-purple-700 mt-1">Your refund amount depends on how much of the course you've completed.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            {REFUND_TIERS.map((tier) => (
-              <div
-                key={tier.label}
-                className={`flex items-center justify-between p-3 border rounded-lg ${tierColors[tier.color]}`}
-              >
-                <div className="flex items-center gap-3">
-                  <div className={`w-2.5 h-2.5 rounded-full ${dotColors[tier.color]}`} />
-                  <div>
-                    <span className="text-sm font-medium">{tier.label}</span>
-                    <span className="text-xs opacity-75 ml-2">— {tier.condition}</span>
-                  </div>
-                </div>
-                <span className="text-sm font-semibold">
-                  {tier.amount > 0 ? `$${tier.amount}` : '$0'}
-                </span>
-              </div>
-            ))}
-          </div>
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">How to Request a Refund</h2>
-          <p>You can cancel your subscription and initiate a refund in two ways:</p>
+          <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">How to Cancel</h2>
+          <p>You can cancel your subscription in two ways:</p>
           <ul className="list-disc pl-5 space-y-1">
-            <li><strong>Self-service:</strong> Go to your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link> and click "Cancel My Subscription." Your refund is calculated automatically based on your progress.</li>
+            <li><strong>Self-service:</strong> Go to your <Link to="/account" className="text-blue-600 hover:text-blue-700">Account page</Link>, open the Billing tab, and click "Cancel My Subscription."</li>
             <li><strong>Email:</strong> Contact us at <a href="mailto:contact@practicalinformatics.com" className="text-blue-600 hover:text-blue-700">contact@practicalinformatics.com</a> with your account email and we will process the cancellation for you.</li>
           </ul>
         </section>
@@ -113,8 +70,7 @@ export function ReturnsPolicy() {
           <p>
             Refunds are processed to your original payment method (the card used for purchase).
             Please allow 5-10 business days for the refund to appear, depending on your bank or
-            card issuer. You will receive a confirmation email when your refund is initiated. Access
-            to all course content ends immediately upon cancellation.
+            card issuer. You will receive a confirmation email when your refund is initiated.
           </p>
         </section>
 
@@ -152,10 +108,10 @@ export function ReturnsPolicy() {
         <div className="flex items-start gap-2 p-3 bg-gray-50 rounded-lg mt-6">
           <Shield className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
           <p className="text-xs text-gray-500 leading-relaxed">
-            Refunds are calculated automatically based on your Stripe payment date and course
-            completion percentage at the time of cancellation. All refund amounts are determined by
-            the tier structure above. Practical Informatics LLC reserves the right to modify this
-            policy with 30 days' notice to existing subscribers.
+            Refund eligibility is determined by the date of your Stripe payment. All refund
+            calculations are performed server-side based on your subscription start date.
+            Practical Informatics LLC reserves the right to modify this policy with 30 days'
+            notice to existing subscribers.
           </p>
         </div>
       </div>

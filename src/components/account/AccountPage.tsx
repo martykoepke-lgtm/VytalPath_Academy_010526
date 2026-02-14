@@ -1,15 +1,14 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { CreditCard, HelpCircle, FileText, Shield, AlertTriangle, Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { CreditCard, HelpCircle, Shield, AlertTriangle, Loader2, CheckCircle, XCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useSubscription } from '../../contexts/SubscriptionContext';
 import { useProgress } from '../../contexts/ProgressContext';
 import { calculateCompletionPercent } from '../../utils/completionCalculator';
-import { calculateRefundEligibility, getDaysSinceStart } from '../../utils/refundPolicy';
+import { calculateRefundEligibility, getDaysSinceStart, isWithinGuaranteePeriod } from '../../utils/refundPolicy';
 import { FAQ } from './FAQ';
-import { CancellationPolicy } from './CancellationPolicy';
 
-type Tab = 'billing' | 'faq' | 'cancellation' | 'legal';
+type Tab = 'billing' | 'faq' | 'legal';
 
 export function AccountPage() {
   const { user } = useAuth();
@@ -29,8 +28,8 @@ export function AccountPage() {
 
   const refundTier = useMemo(() => {
     if (!subscription.currentPeriodStart) return null;
-    return calculateRefundEligibility(subscription.currentPeriodStart, completion.percent);
-  }, [subscription.currentPeriodStart, completion.percent]);
+    return calculateRefundEligibility(subscription.currentPeriodStart);
+  }, [subscription.currentPeriodStart]);
 
   const daysSinceStart = subscription.currentPeriodStart
     ? getDaysSinceStart(subscription.currentPeriodStart)
@@ -47,7 +46,6 @@ export function AccountPage() {
   const tabs: { key: Tab; label: string; icon: React.ReactNode }[] = [
     { key: 'billing', label: 'Billing', icon: <CreditCard className="w-4 h-4" /> },
     { key: 'faq', label: 'FAQ', icon: <HelpCircle className="w-4 h-4" /> },
-    { key: 'cancellation', label: 'Cancellation', icon: <FileText className="w-4 h-4" /> },
     { key: 'legal', label: 'Legal', icon: <Shield className="w-4 h-4" /> },
   ];
 
@@ -138,20 +136,22 @@ export function AccountPage() {
                   </p>
                 </div>
 
-                {/* Refund eligibility */}
-                {refundTier && subscription.accessType === 'individual' && (
+                {/* 3-Day Guarantee Status */}
+                {subscription.accessType === 'individual' && daysSinceStart !== null && (
                   <div className="pt-4 border-t border-gray-100">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Refund Eligibility</p>
-                    <p className="text-sm text-gray-700">
-                      {refundTier.percent > 0
-                        ? `${refundTier.label} ($${refundTier.amount}) — ${refundTier.condition}`
-                        : 'No refund — 75% or more of the course has been completed'}
-                    </p>
-                    {daysSinceStart !== null && (
-                      <p className="text-xs text-gray-400 mt-1">
-                        Day {daysSinceStart + 1} of enrollment
+                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">3-Day No-Risk Guarantee</p>
+                    {subscription.currentPeriodStart && isWithinGuaranteePeriod(subscription.currentPeriodStart) ? (
+                      <p className="text-sm text-green-700">
+                        You're within your 3-day guarantee window. If you cancel now, you'll receive a full $327 refund.
+                      </p>
+                    ) : (
+                      <p className="text-sm text-gray-500">
+                        Your 3-day guarantee window has passed. Cancellations after day 3 do not include a refund.
                       </p>
                     )}
+                    <p className="text-xs text-gray-400 mt-1">
+                      Day {daysSinceStart + 1} of enrollment
+                    </p>
                   </div>
                 )}
               </div>
@@ -172,9 +172,14 @@ export function AccountPage() {
           {subscription.hasAccess && subscription.accessType === 'individual' && !subscription.cancelAtPeriodEnd && (
             <div className="bg-white rounded-2xl border border-gray-200 shadow-apple-sm p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">Cancel Subscription</h2>
-              <p className="text-sm text-gray-500 mb-4">
-                Cancellation is immediate. Your refund amount is based on our tiered policy.
-              </p>
+              <div className="text-sm text-gray-500 mb-4 space-y-2">
+                <p>
+                  We offer a <strong className="text-gray-700">3-day no-risk guarantee</strong>. If you cancel within 3 days of your purchase, you'll receive a full refund of $327 — no questions asked.
+                </p>
+                <p>
+                  After 3 days, you can still cancel anytime, but no refund will be issued. Access ends immediately upon cancellation.
+                </p>
+              </div>
 
               {cancelResult?.success ? (
                 <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-xl">
@@ -183,8 +188,8 @@ export function AccountPage() {
                     <p className="text-sm font-medium text-green-900">Subscription cancelled</p>
                     <p className="text-sm text-green-700 mt-1">
                       {cancelResult.refundAmount > 0
-                        ? `A refund of $${cancelResult.refundAmount.toFixed(2)} has been initiated to your payment method.`
-                        : 'No refund is applicable based on your course progress.'}
+                        ? `A refund of $${cancelResult.refundAmount.toFixed(2)} has been initiated to your payment method. Allow 5-10 business days for it to appear.`
+                        : 'Your subscription has been cancelled. No refund applies after the 3-day guarantee window.'}
                     </p>
                   </div>
                 </div>
@@ -213,13 +218,6 @@ export function AccountPage() {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-apple-sm p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Frequently Asked Questions</h2>
           <FAQ />
-        </div>
-      )}
-
-      {activeTab === 'cancellation' && (
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-apple-sm p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Cancellation & Refund Policy</h2>
-          <CancellationPolicy />
         </div>
       )}
 
@@ -273,20 +271,21 @@ export function AccountPage() {
 
             <div className="p-6">
               <p className="text-sm text-gray-600 mb-4">
-                Your access to all course content will end immediately. Based on your
-                current progress and enrollment date:
+                Your access to all course content will end immediately.
               </p>
 
               {refundTier && (
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-5">
+                <div className={`border rounded-xl p-4 mb-5 ${refundTier.percent > 0 ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'}`}>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Estimated refund</span>
-                    <span className="text-lg font-semibold text-gray-900">
-                      {refundTier.amount > 0 ? `$${refundTier.amount}` : 'No refund'}
+                    <span className="text-sm text-gray-600">Refund</span>
+                    <span className={`text-lg font-semibold ${refundTier.percent > 0 ? 'text-green-700' : 'text-gray-900'}`}>
+                      {refundTier.amount > 0 ? `$${refundTier.amount} full refund` : 'No refund'}
                     </span>
                   </div>
                   <p className="text-xs text-gray-500 mt-1">
-                    {refundTier.condition} ({completion.percent}% complete)
+                    {refundTier.percent > 0
+                      ? 'Within 3-day guarantee window'
+                      : '3-day guarantee window has passed'}
                   </p>
                 </div>
               )}
