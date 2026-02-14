@@ -16,6 +16,7 @@ import {
   Award,
   MessageCircle,
   Settings,
+  Bot,
   type LucideIcon
 } from 'lucide-react';
 import { useAuth, type ViewAsRole } from '../../contexts/AuthContext';
@@ -37,6 +38,7 @@ const studentNavGroups: NavGroup[] = [
     heading: '',
     items: [
       { path: '/welcome', label: 'Welcome', icon: Compass },
+      { path: '/ai-guide', label: 'AI Study Guide', icon: Bot },
     ],
   },
   {

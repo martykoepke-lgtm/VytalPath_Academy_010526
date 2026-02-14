@@ -89,6 +89,7 @@ src/
 │   ├── LandingPage.tsx        # Public marketing page
 │   ├── StickyBanner.tsx       # Top banner with user email, logo, Account link
 │   ├── ProgramIntro.tsx       # Authenticated welcome/overview page
+│   ├── AiStudyGuide.tsx       # In-app AI Study Assistant guide (/ai-guide)
 │   └── SEO.tsx                # Dynamic SEO + JSON-LD
 ├── data/
 │   ├── cmaaCompetencyMap.ts   # 101 knowledge statements mapped to lessons
@@ -143,6 +144,7 @@ The sidebar uses grouped navigation with a View As toggle for super admins:
 
 ```
 Welcome                          (/welcome)
+AI Study Guide                   (/ai-guide)
 ─── Learn ───
   Foundations                    (/foundations)
   Compliance                     (/medical-law-ethics)
@@ -300,6 +302,15 @@ Professional communication skills for healthcare front office.
 | **Total** | | | **80+ lessons** | **18 quizzes** | **~10+ hours** |
 
 ## Key Features
+
+### AI Study Guide (`/ai-guide`)
+- In-app visual walkthrough of the 5-mode AI Study Assistant system
+- Explains page-aware modes (Tutor, EHR Coach) vs you-aware modes (Practice, Patient Sim, Scenarios)
+- Describes each mode with examples, icons, and recommended section pairings
+- Covers suggested action cards, ungraded practice, and job readiness AI tools
+- Discoverable from: sidebar (below Welcome), Welcome page CTA, and ChatPanel help icon (?)
+- Component: `src/components/AiStudyGuide.tsx`
+- External training doc: `docs/AI-Agent-Training-Guide.md`
 
 ### Competency Dashboard (`/progress`)
 - Maps 101 knowledge statements to VytalPath lessons

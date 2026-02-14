@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, KeyboardEvent } from 'react';
-import { X, Send, Trash2, MessageCircle, Loader2 } from 'lucide-react';
+import { X, Send, Trash2, MessageCircle, Loader2, HelpCircle } from 'lucide-react';
 import type { AiTutorTheme, ChatMessage, SectionContext } from '../../types/ai-tutor';
 import type { AgentMode } from '../../types/agent';
 import { useAgentTutor } from '../../hooks/useAgentTutor';
@@ -204,6 +204,13 @@ export default function ChatPanel({ isOpen, onClose, theme, sectionContext }: Ch
             <span className="font-medium text-sm">AI Study Assistant</span>
           </div>
           <div className="flex items-center gap-1">
+            <button
+              onClick={() => { onClose(); navigate('/ai-guide'); }}
+              className="p-1.5 rounded-lg hover:bg-white/20 transition-all duration-300"
+              title="AI Study Guide"
+            >
+              <HelpCircle className="w-4 h-4" />
+            </button>
             {messages.length > 0 && (
               <button
                 onClick={clearMessages}

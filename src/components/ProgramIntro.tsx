@@ -246,31 +246,39 @@ export function ProgramIntro() {
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">AI That Adapts to Your Learning</h3>
             <p className="text-gray-500 max-w-lg mx-auto leading-relaxed">
-              Your AI study assistant follows your progress and meets you where you are — explaining concepts when you're studying,
-              coaching you through the EHR Lab, generating practice questions on your weak areas, and simulating real patient
-              interactions so you're prepared before day one.
+              Your AI study assistant is available on every page. Click the chat icon in the bottom corner, then use the
+              mode selector to switch between five different learning experiences — without leaving the page you are on.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 mb-6">
             {[
-              { icon: MessageCircle, label: 'Explains concepts', color: 'text-blue-600', bg: 'bg-blue-50' },
-              { icon: Stethoscope, label: 'Coaches EHR workflows', color: 'text-teal-600', bg: 'bg-teal-50' },
-              { icon: ClipboardCheck, label: 'Targets weak areas', color: 'text-green-600', bg: 'bg-green-50' },
-              { icon: Users, label: 'Simulates patients', color: 'text-purple-600', bg: 'bg-purple-50' },
+              { icon: Bot, label: 'Tutor', desc: 'Ask questions', color: 'text-blue-600', bg: 'bg-blue-50' },
+              { icon: Stethoscope, label: 'EHR Coach', desc: 'Lab guidance', color: 'text-teal-600', bg: 'bg-teal-50' },
+              { icon: ClipboardCheck, label: 'Practice', desc: 'Targeted quiz', color: 'text-green-600', bg: 'bg-green-50' },
+              { icon: Users, label: 'Patient Sim', desc: 'Role-play', color: 'text-purple-600', bg: 'bg-purple-50' },
+              { icon: FileText, label: 'Scenarios', desc: 'SOP practice', color: 'text-amber-600', bg: 'bg-amber-50' },
             ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center gap-2 p-3">
+              <div key={item.label} className="flex flex-col items-center text-center gap-1.5 p-3">
                 <div className={`w-9 h-9 ${item.bg} rounded-xl flex items-center justify-center`}>
                   <item.icon className={`w-4.5 h-4.5 ${item.color}`} />
                 </div>
-                <span className="text-xs font-medium text-gray-600">{item.label}</span>
+                <span className="text-xs font-semibold text-gray-700">{item.label}</span>
+                <span className="text-[10px] text-gray-400">{item.desc}</span>
               </div>
             ))}
           </div>
 
-          <p className="text-center text-sm text-gray-400">
-            Look for the chat icon in the bottom corner — it's available on every page.
-          </p>
+          <div className="text-center">
+            <Link
+              to="/ai-guide"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-600 text-white text-sm font-medium rounded-2xl hover:bg-slate-700 shadow-apple-sm transition-all duration-300"
+            >
+              <Bot className="w-4 h-4" />
+              Explore the AI Study Guide
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

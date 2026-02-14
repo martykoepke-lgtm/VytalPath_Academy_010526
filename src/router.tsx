@@ -40,6 +40,7 @@ import { AccountPage } from './components/account/AccountPage';
 import { PricingPage } from './components/billing/PricingPage';
 import { CurriculumPage } from './pages/CurriculumPage';
 import { ProgramIntro } from './components/ProgramIntro';
+import { AiStudyGuide } from './components/AiStudyGuide';
 import { CMAADashboard } from './components/progress/CMAADashboard';
 import { CertificatePage } from './components/certificate/CertificatePage';
 import { EHRPracticeLab } from './components/ehr-lab/EHRPracticeLab';
@@ -92,6 +93,11 @@ export const router = createBrowserRouter([
       {
         path: 'welcome',
         element: <AuthRoute><ProgramIntro /></AuthRoute>,
+      },
+      // AI Study Guide
+      {
+        path: 'ai-guide',
+        element: <AuthRoute><AiStudyGuide /></AuthRoute>,
       },
       // Protected Learning Content - Requires Authentication
       {

@@ -94,8 +94,14 @@ export const seoConfigs = {
   },
   pricing: {
     title: 'Pricing - Healthcare Training Plans',
-    description: 'Affordable healthcare front office training. Individual plans starting at $327/year. Team discounts up to 70% for organizations. No free trial - full access from day one.',
+    description: 'Affordable healthcare front office training. Individual plans starting at $327/year. Team discounts up to 70% for organizations. Full access from day one with a 3-day money-back guarantee.',
     keywords: 'healthcare training cost, medical receptionist training price, front office training pricing, healthcare education pricing',
     canonical: '/pricing',
+  },
+  aiGuide: {
+    title: 'AI Study Assistant Guide',
+    description: 'Learn how to use the AI Study Assistant in VytalPath Academy. Five learning modes: Tutor, EHR Coach, Practice, Patient Simulation, and SOP Scenarios. Available on every page.',
+    keywords: 'AI tutor, study assistant, healthcare AI, EHR coaching, adaptive practice, patient simulation, SOP scenarios',
+    canonical: '/ai-guide',
   },
 };
