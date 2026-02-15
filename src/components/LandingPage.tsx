@@ -408,6 +408,7 @@ export function LandingPage() {
                 src={platformScreenshots[activeScreenshot].src}
                 alt={platformScreenshots[activeScreenshot].alt}
                 className="w-full object-cover"
+                loading="lazy"
               />
               <button
                 onClick={() => setActiveScreenshot((prev) => (prev - 1 + platformScreenshots.length) % platformScreenshots.length)}
@@ -439,7 +440,7 @@ export function LandingPage() {
                       : 'border-gray-200 hover:border-gray-300 opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={shot.src} alt={shot.alt} className="w-full aspect-video object-cover" />
+                  <img src={shot.src} alt={shot.alt} className="w-full aspect-video object-cover" loading="lazy" />
                   <div className="px-2 py-1.5 bg-white">
                     <span className={`text-[11px] font-medium ${i === activeScreenshot ? 'text-blue-600' : 'text-gray-500'}`}>
                       {shot.label}

@@ -9,7 +9,7 @@ interface SEOProps {
   image?: string;
 }
 
-const BASE_URL = 'https://academy.vytalpath.com';
+const BASE_URL = 'https://www.vytalpath.com';
 const DEFAULT_IMAGE = `${BASE_URL}/vp-checkmark.png`;
 
 export function SEO({
@@ -39,8 +39,10 @@ export function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:image" content={image} />
+      <meta property="og:site_name" content="VytalPath Academy" />
 
       {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
@@ -88,25 +90,25 @@ export const seoConfigs = {
   },
   curriculum: {
     title: 'Healthcare Front Office Training Curriculum',
-    description: 'Complete healthcare front office training curriculum: HIPAA compliance, insurance verification, medical terminology, and workflow procedures. 10 modules, 40+ lessons, 24 SOPs.',
+    description: 'Full healthcare front office curriculum: HIPAA, insurance verification, medical terminology, EHR training, and 24 SOP guides. 80+ lessons across 9 sections.',
     keywords: 'healthcare training curriculum, front office training, medical receptionist course, HIPAA training online, insurance verification training, medical terminology course',
     canonical: '/curriculum',
   },
   pricing: {
     title: 'Pricing - Healthcare Training Plans',
-    description: 'Affordable healthcare front office training. Individual plans starting at $327/year. Team discounts up to 70% for organizations. Full access from day one with a 3-day money-back guarantee.',
+    description: 'Healthcare front office training for $327/year. Team discounts up to 63% off. Full access from day one with a 3-day money-back guarantee.',
     keywords: 'healthcare training cost, medical receptionist training price, front office training pricing, healthcare education pricing',
     canonical: '/pricing',
   },
   aiGuide: {
     title: 'AI Study Assistant Guide',
-    description: 'Learn how to use the AI Study Assistant in VytalPath Academy. Five learning modes: Tutor, EHR Coach, Practice, Patient Simulation, and SOP Scenarios. Available on every page.',
+    description: 'Five AI learning modes built into VytalPath Academy: Tutor, EHR Coach, Practice, Patient Simulation, and SOP Scenarios. Available on every page.',
     keywords: 'AI tutor, study assistant, healthcare AI, EHR coaching, adaptive practice, patient simulation, SOP scenarios',
     canonical: '/ai-guide',
   },
   skillsGuide: {
-    title: '10 Essential Skills for Healthcare Front Office Professionals',
-    description: 'The 10 skills every healthcare front office professional needs: HIPAA compliance, insurance verification, EHR navigation, medical terminology, and more. Free guide for medical receptionists and administrative staff.',
+    title: '10 Skills for Healthcare Front Office Pros',
+    description: 'The 10 skills every healthcare front office professional needs: HIPAA, insurance verification, EHR navigation, medical terminology, and more. Free guide.',
     keywords: 'healthcare front office skills, medical receptionist skills, healthcare administrative skills, front desk skills medical office, HIPAA training, insurance verification, EHR training, patient registration skills',
     canonical: '/skills',
   },
