@@ -49,6 +49,7 @@ import { TermsOfService } from './components/legal/TermsOfService';
 import { CookiePolicy } from './components/legal/CookiePolicy';
 import { AcceptableUsePolicy } from './components/legal/AcceptableUsePolicy';
 import { ReturnsPolicy } from './components/legal/ReturnsPolicy';
+import { SkillsGuide } from './components/SkillsGuide';
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +89,11 @@ export const router = createBrowserRouter([
       {
         path: 'returns',
         element: <ReturnsPolicy />,
+      },
+      // Skills Guide (public lead generation page)
+      {
+        path: 'skills',
+        element: <SkillsGuide />,
       },
       // Program Introduction - Entry point for new users
       {

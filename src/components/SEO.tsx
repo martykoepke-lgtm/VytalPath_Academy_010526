@@ -104,4 +104,10 @@ export const seoConfigs = {
     keywords: 'AI tutor, study assistant, healthcare AI, EHR coaching, adaptive practice, patient simulation, SOP scenarios',
     canonical: '/ai-guide',
   },
+  skillsGuide: {
+    title: '10 Essential Skills for Healthcare Front Office Professionals',
+    description: 'The 10 skills every healthcare front office professional needs: HIPAA compliance, insurance verification, EHR navigation, medical terminology, and more. Free guide for medical receptionists and administrative staff.',
+    keywords: 'healthcare front office skills, medical receptionist skills, healthcare administrative skills, front desk skills medical office, HIPAA training, insurance verification, EHR training, patient registration skills',
+    canonical: '/skills',
+  },
 };

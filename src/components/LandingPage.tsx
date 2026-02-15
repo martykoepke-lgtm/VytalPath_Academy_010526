@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   ArrowRight, CheckCircle, Clock, Shield,
   Play, FileText, Sparkles, MessageCircle, Award, Brain,
-  ChevronLeft, ChevronRight, ChevronDown, Monitor, GraduationCap, Users
+  ChevronLeft, ChevronRight, ChevronDown, Monitor, GraduationCap, Users, BookOpen
 } from 'lucide-react';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
@@ -764,6 +764,54 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ============ FREE GUIDE CTA ============ */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-16 md:py-20">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-hidden">
+            <div className="md:flex">
+              <div className="md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-600 p-8 md:p-10 flex flex-col items-center justify-center text-center">
+                <div className="w-20 h-20 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center mb-4">
+                  <BookOpen className="w-10 h-10 text-white" />
+                </div>
+                <div className="inline-block px-3 py-1 bg-white/20 backdrop-blur rounded-full text-xs font-semibold text-white uppercase tracking-wider mb-2">
+                  Free Resource
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  10 Essential Skills
+                </h3>
+              </div>
+              <div className="md:w-3/5 p-8 md:p-10">
+                <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                  Not sure where to start? We've mapped it out.
+                </h4>
+                <p className="text-gray-500 leading-relaxed mb-6">
+                  Every healthcare front office role requires 10 core skills — from HIPAA compliance
+                  to insurance verification to EHR navigation. Our free guide breaks down each skill
+                  and shows exactly how VytalPath trains you for it.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    to="/skills"
+                    className="flex-1 px-6 py-3 text-center font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:shadow-lg transition-all duration-300"
+                  >
+                    Get the Free Guide
+                  </Link>
+                  <button
+                    onClick={() => setAuthModal('signUp')}
+                    className="flex-1 px-6 py-3 text-center font-medium text-blue-600 bg-blue-50 rounded-xl hover:bg-blue-100 transition-all duration-300"
+                  >
+                    Start Training Now
+                  </button>
+                </div>
+                <p className="text-xs text-gray-400 mt-4">
+                  No credit card required · Instant access
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ FINAL CTA ============ */}
       <section className="bg-gray-900 py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
@@ -829,6 +877,7 @@ export function LandingPage() {
         <SignUp
           onClose={() => setAuthModal(null)}
           onSwitchToSignIn={() => setAuthModal('signIn')}
+          onSwitchToForgotPassword={() => setAuthModal('forgotPassword')}
         />
       )}
       {authModal === 'forgotPassword' && (
