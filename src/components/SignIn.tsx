@@ -164,7 +164,7 @@ export function SignIn({ onClose, onSwitchToSignUp, onSwitchToForgotPassword }: 
           {googleLoading ? 'Redirecting...' : 'Continue with Google'}
         </button>
 
-        <div className="mt-6 text-center">
+        <div className="mt-6 text-center space-y-2">
           <p className="text-gray-600">
             Don't have an account?{' '}
             <button
@@ -172,6 +172,14 @@ export function SignIn({ onClose, onSwitchToSignUp, onSwitchToForgotPassword }: 
               className="text-blue-600 font-semibold hover:text-blue-700"
             >
               Sign Up
+            </button>
+          </p>
+          <p>
+            <button
+              onClick={onSwitchToForgotPassword}
+              className="text-gray-500 text-sm hover:text-blue-600 transition-colors"
+            >
+              Forgot your password?
             </button>
           </p>
         </div>

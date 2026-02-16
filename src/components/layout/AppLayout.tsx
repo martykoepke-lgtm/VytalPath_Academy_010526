@@ -77,7 +77,7 @@ export function AppLayout() {
           />
         </Link>
 
-        <RoleBasedSidebar className="flex-1" />
+        <RoleBasedSidebar className="flex-1 overflow-y-auto" />
 
         <div className="p-4 border-t border-gray-200/50">
           {user ? (

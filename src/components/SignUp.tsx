@@ -29,9 +29,10 @@ function GoogleIcon() {
 interface SignUpProps {
   onClose: () => void;
   onSwitchToSignIn: () => void;
+  onSwitchToForgotPassword?: () => void;
 }
 
-export function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
+export function SignUp({ onClose, onSwitchToSignIn, onSwitchToForgotPassword }: SignUpProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -209,7 +210,7 @@ export function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
               {googleLoading ? 'Redirecting...' : 'Continue with Google'}
             </button>
 
-            <div className="mt-6 text-center">
+            <div className="mt-6 text-center space-y-2">
               <p className="text-gray-600">
                 Already have an account?{' '}
                 <button
@@ -219,6 +220,16 @@ export function SignUp({ onClose, onSwitchToSignIn }: SignUpProps) {
                   Sign In
                 </button>
               </p>
+              {onSwitchToForgotPassword && (
+                <p>
+                  <button
+                    onClick={onSwitchToForgotPassword}
+                    className="text-gray-500 text-sm hover:text-blue-600 transition-colors"
+                  >
+                    Forgot your password?
+                  </button>
+                </p>
+              )}
             </div>
           </>
         )}
