@@ -31,32 +31,32 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div className="relative w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Decorative header */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6">
-          <div className="flex items-center gap-3 mb-2">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-5 rounded-t-2xl">
+          <div className="flex items-center gap-3 mb-1">
             <img
               src="/vp-checkmark.png"
               alt="VytalPath"
-              className="h-10 w-10"
+              className="h-9 w-9"
             />
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-2xl font-bold text-white">
               Welcome to VytalPath Academy!
             </h2>
           </div>
-          <p className="text-blue-100">
+          <p className="text-blue-100 text-sm">
             Subscribe to unlock all training content and start your journey
           </p>
         </div>
 
         {/* Content */}
-        <div className="px-8 py-8">
+        <div className="px-8 py-6">
           {/* What's included */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+          <div className="mb-6">
+            <h3 className="text-base font-semibold text-gray-900 mb-3">
               What You'll Get:
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-1.5">
               {[
                 '9 comprehensive training sections',
                 '80+ video and reading lessons',
@@ -68,9 +68,9 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
                 'Completion certificate',
                 'New content added regularly'
               ].map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700">{feature}</span>
+                <div key={index} className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-gray-700 text-sm">{feature}</span>
                 </div>
               ))}
             </div>
