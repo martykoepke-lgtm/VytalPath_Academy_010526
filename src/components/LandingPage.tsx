@@ -632,7 +632,7 @@ export function LandingPage() {
 
           {/* Comparison Table */}
           <div className="pt-4">
-            <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-x-auto">
+            <div className="bg-white rounded-2xl shadow-apple border border-gray-200/50 overflow-x-auto pt-4">
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b border-gray-100">
