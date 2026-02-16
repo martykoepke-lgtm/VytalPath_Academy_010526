@@ -9,7 +9,9 @@ import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
 import { CurriculumModal } from './CurriculumModal';
+import { SubscriptionModal } from './SubscriptionModal';
 import { useAuth } from '../contexts/AuthContext';
+import { useSubscription } from '../contexts/SubscriptionContext';
 
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
 
@@ -142,9 +144,14 @@ export function LandingPage() {
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [activeScreenshot, setActiveScreenshot] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [subscriptionModalDismissed, setSubscriptionModalDismissed] = useState(() => {
+    return localStorage.getItem('vytalpath_subscription_modal_dismissed') === 'true';
+  });
+
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, session } = useAuth();
+  const { hasAccess, loading: subscriptionLoading } = useSubscription();
   const state = location.state as LocationState | null;
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -161,6 +168,22 @@ export function LandingPage() {
       navigate(state.from.pathname, { replace: true });
     }
   }, [user, state, navigate]);
+
+  // Clear dismissal flag if user gains access (subscribed)
+  useEffect(() => {
+    if (session && !subscriptionLoading && hasAccess && subscriptionModalDismissed) {
+      localStorage.removeItem('vytalpath_subscription_modal_dismissed');
+      setSubscriptionModalDismissed(false);
+    }
+  }, [session, subscriptionLoading, hasAccess, subscriptionModalDismissed]);
+
+  // Show subscription modal for logged-in users without access
+  const showSubscriptionModal = session && !subscriptionLoading && !hasAccess && !subscriptionModalDismissed;
+
+  const handleDismissSubscriptionModal = () => {
+    localStorage.setItem('vytalpath_subscription_modal_dismissed', 'true');
+    setSubscriptionModalDismissed(true);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -890,6 +913,14 @@ export function LandingPage() {
 
       {/* Curriculum Modal */}
       <CurriculumModal isOpen={showCurriculum} onClose={() => setShowCurriculum(false)} />
+
+      {/* Subscription Modal - for logged-in users without subscription */}
+      {showSubscriptionModal && (
+        <SubscriptionModal
+          onClose={handleDismissSubscriptionModal}
+          dismissible={true}
+        />
+      )}
     </div>
   );
 }

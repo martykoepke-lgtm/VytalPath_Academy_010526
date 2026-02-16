@@ -30,7 +30,7 @@ const sectionMap: Record<string, { sectionId: string; sectionName: string }> = {
 export function AppLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, session, signOut } = useAuth();
+  const { user, session, signOut, roleInfo } = useAuth();
   const [authModal, setAuthModal] = useState<AuthModal>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
