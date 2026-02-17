@@ -49,7 +49,7 @@ const coursesData: Record<string, CourseWithModules> = {
           title: 'Healthcare Settings Quiz',
           description: 'Test your knowledge of healthcare settings',
           passing_score: 80,
-          max_attempts: 3,
+          max_attempts: 0,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -106,7 +106,7 @@ const coursesData: Record<string, CourseWithModules> = {
           title: 'Authorization & Consent Quiz',
           description: 'Test your knowledge of HIPAA and patient privacy',
           passing_score: 80,
-          max_attempts: 3,
+          max_attempts: 0,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -195,7 +195,7 @@ const coursesData: Record<string, CourseWithModules> = {
           title: 'Insurance Overview Quiz',
           description: 'Test your understanding of basic health insurance concepts',
           passing_score: 80,
-          max_attempts: 3,
+          max_attempts: 0,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -268,7 +268,7 @@ const coursesData: Record<string, CourseWithModules> = {
           title: 'Medical Terminology Quiz',
           description: 'Test your knowledge of medical abbreviations and terms',
           passing_score: 80,
-          max_attempts: 3,
+          max_attempts: 0,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -393,7 +393,7 @@ const coursesData: Record<string, CourseWithModules> = {
           title: 'Insurance Operations Quiz',
           description: 'Test your knowledge of day-to-day insurance verification and payment collection',
           passing_score: 80,
-          max_attempts: 3,
+          max_attempts: 0,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
         },
@@ -780,7 +780,7 @@ export function CourseDetail() {
                             </span>
                           ) : (
                             <span className="text-sm text-gray-500">
-                              {module.quiz.max_attempts} attempts allowed
+                              Unlimited retakes
                             </span>
                           )}
                           <ChevronRight className="w-4 h-4 text-gray-400" />

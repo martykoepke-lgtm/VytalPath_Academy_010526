@@ -20,7 +20,7 @@ const communicationModules = [
       title: 'Communication Foundations Quiz',
       description: 'Test your understanding of communication styles, active listening, and nonverbal cues',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'comm-l1', slug: 'communication-styles-and-cycle', title: 'Communication Styles & the Communication Cycle', description: 'Learn the four communication styles, the sender-message-receiver cycle, and how to relay information clearly.', content_type: 'reading' as ContentType, duration_minutes: 7 },
@@ -39,7 +39,7 @@ const communicationModules = [
       title: 'Patient Interactions Quiz',
       description: 'Test your skills in patient questioning techniques, barrier navigation, and inclusive communication',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'comm-l4', slug: 'interviewing-techniques', title: 'Interviewing & Questioning Techniques', description: 'Use open-ended, closed-ended, probing, and screening questions — and know the boundaries of what you can ask.', content_type: 'reading' as ContentType, duration_minutes: 7 },
@@ -59,7 +59,7 @@ const communicationModules = [
       title: 'Professional Standards Quiz',
       description: 'Test your knowledge of professional conduct, de-escalation, and communication documentation',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'comm-l8', slug: 'professional-presence', title: 'Professional Presence & Workplace Conduct', description: 'Appearance, hygiene, demeanor, boundaries, language, and tone — the unwritten rules of healthcare professionalism.', content_type: 'reading' as ContentType, duration_minutes: 6 },
@@ -255,7 +255,7 @@ export function CommunicationSection() {
                             {quizPassed ? (
                               <span className="text-sm text-green-600 font-medium">Completed</span>
                             ) : (
-                              <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                              <span className="text-sm text-gray-500">Unlimited retakes</span>
                             )}
                             <ChevronRight className="w-4 h-4 text-gray-400" />
                           </div>

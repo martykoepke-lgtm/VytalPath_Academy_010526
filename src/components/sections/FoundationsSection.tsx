@@ -26,7 +26,7 @@ const foundationsModules = [
       title: 'Healthcare Delivery Quiz',
       description: 'Test your knowledge of healthcare delivery models',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -69,7 +69,7 @@ const foundationsModules = [
       title: 'Your Role in Healthcare Quiz',
       description: 'Test your knowledge of healthcare team roles, scope of practice, and the patient journey',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -280,7 +280,7 @@ export function FoundationsSection() {
                           {quizPassed ? (
                             <span className="text-sm text-green-600 font-medium">Completed</span>
                           ) : (
-                            <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                            <span className="text-sm text-gray-500">Unlimited retakes</span>
                           )}
                           <ChevronRight className="w-4 h-4 text-gray-400" />
                         </div>

@@ -22,7 +22,7 @@ const ehrModules = [
       title: 'EHR Basics Quiz',
       description: 'Test your knowledge of PM systems, EHR components, and patient identifiers',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'ehr-l1', slug: 'encounters-and-identifiers', title: 'Encounter Types & Patient Identifiers', description: 'Learn the different encounter types in an EHR and the critical difference between MRN and FIN.', content_type: 'reading' as ContentType, duration_minutes: 8 },
@@ -41,7 +41,7 @@ const ehrModules = [
       title: 'Clinic Encounters Quiz',
       description: 'Test your knowledge of encounter types, lifecycle stages, and scheduling methods',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'ehr-l4', slug: 'clinic-encounter-types', title: 'Encounters & Encounter Selection', description: 'Understand encounters, MRN vs FIN, clinic encounter types (NP, EST, AWV, TCM), and why appointment type selection matters.', content_type: 'video' as ContentType, video_url: `${VIDEO_BASE_URL}/Encounters%20%26%20Encounter%20Selection%20-%20VytalPath%20Academy_1080p_caption.mp4`, duration_minutes: 5 },
@@ -60,7 +60,7 @@ const ehrModules = [
       title: 'Non-Clinic Encounters Quiz',
       description: 'Test your knowledge of phone encounters, non-visit types, and duplicate prevention',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'ehr-l7', slug: 'phone-encounters', title: 'Phone Encounters', description: 'When and why phone encounters are created, documentation standards, and message routing.', content_type: 'reading' as ContentType, duration_minutes: 6 },
@@ -79,7 +79,7 @@ const ehrModules = [
       title: 'Telehealth & Portals Quiz',
       description: 'Test your knowledge of telehealth workflows, platforms, and patient portal management',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       { id: 'ehr-l10', slug: 'telehealth-appointment-types', title: 'Telehealth Appointment Types', description: 'Which visits work for telehealth, scheduling considerations, and common encounter types for virtual care.', content_type: 'reading' as ContentType, duration_minutes: 7 },
@@ -314,7 +314,7 @@ export function EHRSection() {
                             {quizPassed ? (
                               <span className="text-sm text-green-600 font-medium">Completed</span>
                             ) : (
-                              <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                              <span className="text-sm text-gray-500">Unlimited retakes</span>
                             )}
                             <ChevronRight className="w-4 h-4 text-gray-400" />
                           </div>

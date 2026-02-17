@@ -682,7 +682,7 @@ export function WorkflowsSection() {
                             {progress.hasPassedQuiz('admin-procedures') ? (
                               <span className="text-sm text-green-600 font-medium">Completed</span>
                             ) : (
-                              <span className="text-sm text-gray-500">3 attempts</span>
+                              <span className="text-sm text-gray-500">Unlimited retakes</span>
                             )}
                             <ChevronRight className="w-4 h-4 text-gray-400" />
                           </div>

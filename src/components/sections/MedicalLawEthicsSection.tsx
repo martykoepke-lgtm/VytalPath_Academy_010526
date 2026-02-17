@@ -65,7 +65,7 @@ const medicalLawModules: Module[] = [
       title: 'HIPAA Foundations Quiz',
       description: 'Test your understanding of HIPAA basics and PHI',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -109,7 +109,7 @@ const medicalLawModules: Module[] = [
       title: 'Patient Rights Quiz',
       description: 'Test your knowledge of patient rights and authorization',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -153,7 +153,7 @@ const medicalLawModules: Module[] = [
       title: 'Healthcare Laws Quiz',
       description: 'Test your knowledge of EMTALA and fraud prevention laws',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -208,7 +208,7 @@ const medicalLawModules: Module[] = [
       title: 'Workplace Safety Quiz',
       description: 'Test your knowledge of OSHA, regulatory agencies, and incident management',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -279,7 +279,7 @@ const medicalLawModules: Module[] = [
       title: 'Ethics & Data Security Quiz',
       description: 'Test your knowledge of professional ethics, data safeguards, and records management',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -585,7 +585,7 @@ export function MedicalLawEthicsSection() {
                               {quizPassed ? (
                                 <span className="text-sm text-green-600 font-medium">Completed</span>
                               ) : (
-                                <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                                <span className="text-sm text-gray-500">Unlimited retakes</span>
                               )}
                               <ChevronRight className="w-4 h-4 text-gray-400" />
                             </div>

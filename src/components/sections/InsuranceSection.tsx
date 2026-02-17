@@ -28,7 +28,7 @@ const insuranceModules = [
       title: 'Insurance Basics Quiz',
       description: 'Test your understanding of basic health insurance concepts',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -80,7 +80,7 @@ const insuranceModules = [
       title: 'Insurance Operations Quiz',
       description: 'Test your knowledge of day-to-day insurance verification and payment collection',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -150,7 +150,7 @@ const insuranceModules = [
       title: 'Coverage Rules Quiz',
       description: 'Test your knowledge of government plans, special coverage, and coordination of benefits',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -190,7 +190,7 @@ const insuranceModules = [
       title: 'Financial Documents Quiz',
       description: 'Test your knowledge of EOBs, ERAs, claim processing, and ABNs',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -230,7 +230,7 @@ const insuranceModules = [
       title: 'Revenue Cycle Quiz',
       description: 'Test your knowledge of revenue cycle phases, payment models, and collections',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -270,7 +270,7 @@ const insuranceModules = [
       title: 'Coding Basics Quiz',
       description: 'Test your knowledge of medical coding systems and medical necessity',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -326,7 +326,7 @@ const insuranceModules = [
       title: 'Referrals & Prior Auth Quiz',
       description: 'Test your knowledge of referral workflows and prior authorization processes',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
     },
     lessons: [
       {
@@ -616,7 +616,7 @@ export function InsuranceSection() {
                           {quizPassed ? (
                             <span className="text-sm text-green-600 font-medium">Completed</span>
                           ) : (
-                            <span className="text-sm text-gray-500">{module.quiz.max_attempts} attempts</span>
+                            <span className="text-sm text-gray-500">Unlimited retakes</span>
                           )}
                           <ChevronRight className="w-4 h-4 text-gray-400" />
                         </div>
