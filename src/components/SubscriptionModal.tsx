@@ -45,7 +45,7 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
             </h2>
           </div>
           <p className="text-blue-100 text-sm">
-            Subscribe to unlock all training content and start your journey
+            Subscribe to access all learning content
           </p>
         </div>
 
@@ -58,14 +58,13 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
             </h3>
             <div className="space-y-1.5">
               {[
-                '9 comprehensive training sections',
+                '9 learning sections',
                 '80+ video and reading lessons',
-                '23 interactive quizzes',
+                '18 knowledge checks',
                 'Built-in EHR Practice Lab simulation',
                 '24 SOP workflow guides',
-                'Job readiness tools & mock interviews',
+                'Practice tools & simulations',
                 'AI study assistant on every page',
-                'Completion certificate',
                 'New content added regularly'
               ].map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">

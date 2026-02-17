@@ -100,12 +100,11 @@ export function TermsOfService() {
         <section>
           <h2 className="text-lg font-semibold text-gray-900 mt-8 mb-3">Certificates</h2>
           <p>
-            Certificates of completion are issued upon completing all required lessons and passing
-            all quizzes. Certificates are non-transferable, linked to your account, and the name
-            you enter is permanent and cannot be changed after generation. VytalPath Academy
-            certificates represent completion of training — they are not professional
-            certifications or licensures. We reserve the right to revoke certificates obtained
-            through fraudulent means.
+            Certificate features may not be available to all users. Where issued, certificates of
+            completion are non-transferable, linked to your account, and the name you enter is
+            permanent and cannot be changed after generation. VytalPath Academy certificates
+            represent completion of educational content — they are not professional certifications
+            or licensures. We reserve the right to revoke certificates obtained through fraudulent means.
           </p>
         </section>
 

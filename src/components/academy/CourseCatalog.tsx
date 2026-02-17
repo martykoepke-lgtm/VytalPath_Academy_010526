@@ -270,12 +270,12 @@ export function CourseCatalog() {
       <div className="mt-10 p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
-            <img src="/icons/courses-icon.png" alt="Certificates" className="w-10 h-10" />
+            <img src="/icons/courses-icon.png" alt="Progress" className="w-10 h-10" />
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 mb-1">Earn Certificates</h3>
+            <h3 className="font-bold text-gray-900 mb-1">Track Your Progress</h3>
             <p className="text-sm text-gray-600">
-              Complete each course to earn a certificate. Pass all module quizzes to demonstrate your knowledge and add credentials to your resume.
+              Complete each course and knowledge check to track your understanding across all healthcare front office topics.
             </p>
           </div>
         </div>

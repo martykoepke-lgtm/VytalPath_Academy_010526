@@ -13,7 +13,6 @@ import {
   Search,
   Compass,
   Monitor,
-  Award,
   MessageCircle,
   Settings,
   Bot,
@@ -57,14 +56,13 @@ const studentNavGroups: NavGroup[] = [
     heading: 'Practice',
     items: [
       { path: '/ehr-lab', label: 'EHR Practice Lab', icon: Monitor },
-      { path: '/practice', label: 'Job Readiness', icon: Briefcase },
+      { path: '/practice', label: 'Practice & Skills', icon: Briefcase },
     ],
   },
   {
     heading: 'Track',
     items: [
       { path: '/progress', label: 'My Progress', icon: BarChart3 },
-      { path: '/certificate', label: 'Certificate', icon: Award },
       { path: '/search', label: 'Search', icon: Search },
       { path: '/account', label: 'Account', icon: Settings },
     ],

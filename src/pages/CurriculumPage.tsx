@@ -455,10 +455,10 @@ export function CurriculumPage() {
 
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <dt className="font-semibold text-gray-900 mb-2">
-                  Is there a certificate upon completion?
+                  How do I track my progress?
                 </dt>
                 <dd className="text-gray-600">
-                  Yes, you'll receive a certificate of completion for each module and a comprehensive certificate when you finish the entire curriculum. These can be added to your resume and LinkedIn profile.
+                  VytalPath tracks your progress across all 9 sections and 101 knowledge topics. Complete lessons and knowledge checks to see your understanding grow across every topic area.
                 </dd>
               </div>
             </dl>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {
   Bot, Stethoscope, ClipboardCheck, Users, FileText,
   MessageCircle, MousePointerClick, ArrowRight, Sparkles,
-  Phone, Briefcase, ShieldCheck, Target, Monitor, RotateCcw,
+  Phone, ShieldCheck, Target, Monitor, RotateCcw,
   type LucideIcon
 } from 'lucide-react';
 import { SEO, seoConfigs } from './SEO';
@@ -265,7 +265,7 @@ export function AiStudyGuide() {
             <div>
               <h3 className="text-sm font-semibold text-emerald-900 mb-1">Practice Is Always Safe</h3>
               <p className="text-sm text-emerald-700/80 leading-relaxed">
-                Everything you do with the AI agents is completely ungraded. Practice questions, patient simulations, and SOP scenarios are tracked separately from your standardized quizzes. They will never affect your quiz scores, progress percentages, or certificate eligibility. Use them as much as you want.
+                Everything you do with the AI agents is completely ungraded. Practice questions, patient simulations, and SOP scenarios are tracked separately from your knowledge checks. They will never affect your quiz scores or progress tracking. Use them as much as you want.
               </p>
             </div>
           </div>
@@ -303,10 +303,10 @@ export function AiStudyGuide() {
         {/* Job Readiness AI Tools */}
         <section className="mb-14">
           <h2 className="text-xl font-semibold tracking-tight text-gray-900 mb-2 text-center">
-            AI-Powered Job Readiness Tools
+            AI-Powered Practice Tools
           </h2>
           <p className="text-gray-500 text-center mb-6 max-w-xl mx-auto text-sm">
-            The Job Readiness section includes four additional AI simulations with dedicated interfaces, separate from the chat panel modes.
+            The Practice & Skills section includes additional AI simulations with dedicated interfaces, separate from the chat panel modes.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -315,12 +315,6 @@ export function AiStudyGuide() {
               title="Phone Simulator"
               aiRole="the caller"
               description="Practice handling incoming calls: new patient scheduling, insurance questions, prescription refills, angry patients, referrals, and emergencies."
-            />
-            <JobReadinessCard
-              icon={Briefcase}
-              title="Mock Interview"
-              aiRole="the hiring manager"
-              description="8-10 progressive questions with coaching after each answer. Get a final evaluation with strengths, improvement areas, and a hiring recommendation."
             />
             <JobReadinessCard
               icon={Phone}
@@ -341,7 +335,7 @@ export function AiStudyGuide() {
               to="/practice"
               className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
             >
-              Go to Job Readiness
+              Go to Practice & Skills
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

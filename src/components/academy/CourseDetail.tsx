@@ -822,15 +822,15 @@ export function CourseDetail() {
       </div>
 
       {/* Certificate Preview */}
-      <div className="mt-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200">
+      <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center">
-            <img src="/icons/courses-icon.png" alt="Certificate" className="w-10 h-10" />
+            <img src="/icons/courses-icon.png" alt="Progress" className="w-10 h-10" />
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 mb-1">{course.certificate_title}</h3>
+            <h3 className="font-bold text-gray-900 mb-1">Track Your Progress</h3>
             <p className="text-sm text-gray-600">
-              Complete all modules and pass each quiz to earn your certificate. This credential demonstrates your foundational knowledge in healthcare administration.
+              Complete all modules and knowledge checks to track your understanding across healthcare administration topics.
             </p>
           </div>
         </div>

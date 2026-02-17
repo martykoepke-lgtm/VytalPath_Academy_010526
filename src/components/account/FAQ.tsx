@@ -11,7 +11,7 @@ interface FAQItem {
 const FAQ_ITEMS: FAQItem[] = [
   {
     q: 'How long do I have access after I subscribe?',
-    a: 'Your subscription gives you 1 year of access to all VytalPath Academy content. This includes all training sections, the EHR Practice Lab, job readiness tools, and any new content added during your subscription period.',
+    a: 'Your subscription gives you 1 year of access to all VytalPath Academy content. This includes all learning sections, the EHR Practice Lab, practice tools, and any new content added during your subscription period.',
   },
   {
     q: 'Can I cancel my subscription?',
@@ -27,24 +27,20 @@ const FAQ_ITEMS: FAQItem[] = [
     a: 'When your subscription period ends, you will no longer be able to access course content. Your progress is saved, so if you resubscribe, you can pick up where you left off.',
   },
   {
-    q: 'Is there a certificate of completion?',
-    a: 'Yes. Once you complete all lessons and pass all quizzes, you can generate a certificate of completion. Your name will be permanently displayed on the certificate, so make sure to enter it correctly.',
-  },
-  {
     q: 'What is the EHR Practice Lab?',
     a: 'The EHR Practice Lab is a built-in simulation of a Practice Management / Electronic Health Record system. You can practice registering patients, scheduling appointments, checking patients in and out, and managing encounters — all without needing access to a real EHR system.',
   },
   {
-    q: 'How many quizzes are there, and what score do I need to pass?',
-    a: 'There are 18 quizzes across the training sections. Each quiz requires an 80% score to pass, and you get up to 3 attempts per quiz.',
+    q: 'How many knowledge checks are there?',
+    a: 'There are 18 knowledge checks across the learning sections. We suggest aiming for 80% or higher, but you can retake them as many times as you like.',
   },
   {
     q: 'Can my employer purchase access for our team?',
     a: 'Yes. We offer volume pricing for organizations starting at $245/seat for teams of 6-15. Contact us for details on team and clinic pricing.',
   },
   {
-    q: 'Is this program a certification?',
-    a: 'VytalPath Academy is a competency-based training program, not a certification exam. Our curriculum maps to 101 knowledge statements covering the skills needed for healthcare front office roles. The certificate of completion demonstrates that you have completed comprehensive training.',
+    q: 'Is this a certification program?',
+    a: 'No — VytalPath Academy is an educational platform, not a certification or accredited program. Our content covers topics relevant to healthcare front office operations across 101 knowledge areas.',
   },
   {
     q: 'What data do you collect about me?',

@@ -45,7 +45,7 @@ const skills: Skill[] = [
     description:
       'Every clinic runs on an electronic health record system. You\'ll register patients, schedule visits, route messages, and manage encounters in it all day. Clinics don\'t have time to teach you from scratch.',
     atVytalPath:
-      '13 EHR & Practice Management lessons plus the only built-in EHR Practice Lab in any training program — no external software needed.',
+      '13 EHR & Practice Management lessons plus the only built-in EHR Practice Lab in any learning platform — no external software needed.',
   },
   {
     number: 4,
@@ -213,9 +213,8 @@ export function SkillsGuide() {
               Needs
             </h1>
             <p className="text-lg font-light text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              Whether you're applying for your first front desk role or training
-              a new hire, these are the skills that separate "just hired" from
-              "job-ready."
+              Whether you're exploring a front desk role or learning
+              what the job involves, these are the 10 skills that matter most.
             </p>
           </div>
         </section>
@@ -351,9 +350,9 @@ export function SkillsGuide() {
                 The bottom line
               </p>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-gray-900 mb-4 leading-snug">
-                Most people walk into their first front office job knowing 2-3
-                of these skills. The ones who know all 10 get hired faster and
-                promoted sooner.
+                Most people start in healthcare front office work knowing 2-3
+                of these skills. The ones who understand all 10 stand out in
+                any healthcare setting.
               </h2>
               <p className="text-gray-500 mb-8 max-w-xl mx-auto leading-relaxed">
                 VytalPath Academy covers every skill on this list — 80+ lessons,

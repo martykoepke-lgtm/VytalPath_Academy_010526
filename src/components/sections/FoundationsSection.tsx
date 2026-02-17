@@ -33,7 +33,7 @@ const foundationsModules = [
         id: 'l1',
         slug: 'understanding-healthcare-delivery',
         title: 'Understanding How Healthcare is Delivered',
-        description: 'Explore the two main healthcare delivery models and why understanding them matters for your career.',
+        description: 'Explore the two main healthcare delivery models and why understanding them matters in healthcare settings.',
         content_type: 'video' as ContentType,
         video_url: `${VIDEO_BASE_URL}/healthdelivery_overview.mp4`,
         duration_minutes: 3,

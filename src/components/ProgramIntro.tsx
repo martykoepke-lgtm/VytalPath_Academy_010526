@@ -29,7 +29,7 @@ const learningModes = [
   {
     icon: Sparkles,
     title: 'Interactive Exercises',
-    description: 'Flashcards, term matching, phone simulations, mock interviews, and hands-on practice scenarios.',
+    description: 'Flashcards, term matching, phone simulations, and hands-on practice scenarios.',
   },
 ];
 
@@ -84,8 +84,8 @@ const programSections = [
   },
   {
     icon: Briefcase,
-    title: 'Job Readiness',
-    description: 'Phone simulations, mock interviews, resume building, and readiness assessments.',
+    title: 'Practice & Skills',
+    description: 'Phone simulations, insurance verification practice, and knowledge assessments.',
     path: '/practice',
   },
 ];
@@ -119,7 +119,7 @@ export function ProgramIntro() {
           Welcome to VytalPath Academy
         </h1>
         <p className="text-xl font-light text-gray-500 leading-relaxed max-w-2xl mx-auto">
-          A comprehensive training program designed to prepare you for success in healthcare front office administration.
+          Explore the knowledge and skills behind healthcare front office operations — from HIPAA to EHR systems.
         </p>
       </header>
 
@@ -166,7 +166,7 @@ export function ProgramIntro() {
               </div>
               <h2 className="text-lg font-bold text-gray-900 mb-1">Meet Your Instructor</h2>
               <p className="text-gray-600 text-sm">
-                A quick introduction to the program and how it will prepare you for success.
+                A quick introduction to the platform and what you'll learn.
               </p>
             </div>
             <button
@@ -298,7 +298,7 @@ export function ProgramIntro() {
           to="/foundations"
           className="inline-flex items-center gap-3 px-8 py-4 bg-blue-600 text-white font-medium text-lg rounded-2xl hover:bg-blue-700 shadow-apple hover:shadow-apple-lg transition-all duration-300"
         >
-          Begin Your Training
+          Start Learning
           <ArrowRight className="w-5 h-5" />
         </Link>
         <p className="text-sm text-gray-400 mt-3">Start with Foundations of Healthcare</p>

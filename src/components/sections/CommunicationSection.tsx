@@ -52,7 +52,7 @@ const communicationModules = [
     id: 'comm-m3',
     slug: 'professional-standards',
     title: 'Professional Standards',
-    description: 'Build the professional communication habits every healthcare employer expects — presence, de-escalation, documentation, and digital etiquette.',
+    description: 'Build the professional communication habits used in healthcare settings every day — presence, de-escalation, documentation, and digital etiquette.',
     sort_order: 3,
     quiz: {
       id: 'comm-q3',
@@ -72,7 +72,7 @@ const communicationModules = [
 
 const communicationSeoConfig = {
   title: 'Patient Communication | VytalPath Academy',
-  description: 'Build the communication skills every healthcare employer values — from active listening and empathy to conflict de-escalation and professional documentation.',
+  description: 'Build the communication skills healthcare teams rely on — from active listening and empathy to conflict de-escalation and professional documentation.',
   path: '/communication',
 };
 
@@ -113,7 +113,7 @@ export function CommunicationSection() {
           </div>
           <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Patient Communication</h1>
           <p className="text-xl font-light text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            Build the communication skills every healthcare employer values — from active listening to conflict de-escalation.
+            Build the communication skills healthcare teams rely on — from active listening to conflict de-escalation.
           </p>
         </header>
 

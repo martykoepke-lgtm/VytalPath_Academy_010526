@@ -1,6 +1,6 @@
 // Practice Session Tracker — Ungraded adaptive practice tracking
 // Stored in localStorage separately from graded progress (vytalpath_progress)
-// This data NEVER affects quiz pass/fail or certificate eligibility
+// This data NEVER affects quiz scores or progress tracking
 
 import type { AgentMode, PracticeSession, PracticeEngagementSummary, PracticeStore } from '../types/agent';
 

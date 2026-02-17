@@ -268,7 +268,7 @@ export function computeCMAAReadiness(): CMAAReadiness {
  * Practice engagement can upgrade 'exposed' → 'practiced' but NEVER:
  * - Downgrades a level
  * - Replaces a graded quiz requirement
- * - Affects certificate eligibility (use computeKSCompetency for that)
+ * - Affects progress tracking (use computeKSCompetency for that)
  */
 export function computeEnhancedKSCompetency(
   ks: KnowledgeStatement,

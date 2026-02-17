@@ -138,17 +138,16 @@ const currentModules = [
   },
   {
     id: 'job-readiness',
-    title: 'Job Readiness',
-    description: 'Career preparation tools to land your first healthcare job.',
+    title: 'Practice & Skills',
+    description: 'Practice tools to reinforce what you\'ve learned.',
     icon: Briefcase,
-    lessonCount: '6 tools',
+    lessonCount: '4 tools',
     duration: 'Varies',
     topics: [
       'Phone call simulator with AI-powered scenarios',
-      'Mock interview practice with real-time feedback',
-      'Resume builder with healthcare-specific guidance',
       'Insurance hotline practice',
-      'Readiness assessments',
+      'Day-in-the-life simulations',
+      'Knowledge assessments',
     ],
   },
 ];
@@ -199,7 +198,7 @@ export function CurriculumModal({ isOpen, onClose }: CurriculumModalProps) {
         <div className="flex items-center justify-between px-8 py-5 border-b border-gray-200/50 flex-shrink-0">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Full Curriculum</h2>
-            <p className="text-sm text-gray-500 mt-0.5">9 training sections · 80+ lessons · 18 quizzes · 24 SOPs</p>
+            <p className="text-sm text-gray-500 mt-0.5">9 learning sections · 80+ lessons · 18 knowledge checks · 24 SOPs</p>
           </div>
           <button
             onClick={onClose}

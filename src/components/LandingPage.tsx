@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
-  ArrowRight, CheckCircle, Clock, Shield,
-  Play, FileText, Sparkles, MessageCircle, Award, Brain,
+  ArrowRight, CheckCircle, Shield,
+  FileText,
   ChevronLeft, ChevronRight, ChevronDown, Monitor, GraduationCap, Users,
   Minus, Stethoscope, ClipboardList, DollarSign, BookA, Briefcase
 } from 'lucide-react';
@@ -44,9 +44,9 @@ const platformScreenshots = [
   },
   {
     src: '/images/landing/certificate.png',
-    alt: 'Certificate of Completion',
-    label: 'Certificate of Completion',
-    desc: 'Earn a professional certificate when you complete all lessons and pass every competency assessment.',
+    alt: 'Learning Progress Dashboard',
+    label: 'Track Your Progress',
+    desc: 'See your progress across all 9 topic areas and 101 knowledge topics — know exactly where to focus.',
   },
 ];
 
@@ -60,12 +60,12 @@ const faqData = [
     answer: "No. VytalPath Academy is designed for beginners with no healthcare experience. We start with the fundamentals and build from there.",
   },
   {
-    question: 'Will I be certified?',
-    answer: "You'll earn a Certificate of Completion covering 101 knowledge areas across 9 essential sections. This demonstrates comprehensive training to employers. VytalPath is competency-based — we teach practical skills hiring managers look for.",
+    question: 'Is this a certification program?',
+    answer: "No — VytalPath Academy is an educational platform, not a certification or accredited program. You'll learn practical concepts and workflows used in healthcare front office settings. What you do with that knowledge is up to you.",
   },
   {
     question: "What if I can't afford $327 right now?",
-    answer: "We offer a 3-payment plan — just $109/month for 3 months — so you can get started without paying everything upfront. You get the same full access from day one. Traditional programs cost $1,000–$5,000. VytalPath gives you comprehensive training, hands-on practice, and job readiness tools for a fraction of that — and you have 3 days to request a full refund if it's not right for you.",
+    answer: "We offer a 3-payment plan — just $109/month for 3 months — so you can get started without paying everything upfront. You get the same full access from day one. Other programs cost $1,000–$5,000. VytalPath gives you a full year of learning content, hands-on practice, and simulations for a fraction of that — and you have 3 days to request a full refund if it's not right for you.",
   },
   {
     question: "What's the refund policy?",
@@ -76,8 +76,8 @@ const faqData = [
     answer: "No. VytalPath includes 80+ lessons, 18 quizzes, 24 procedure guides — and a built-in EHR Practice Lab where you practice real workflows in a simulated system with AI coaching. You're not just watching — you're doing.",
   },
   {
-    question: 'Will employers actually hire me with this?',
-    answer: "Employers need people who understand HIPAA, insurance billing, medical terminology, EHR systems, scheduling, and patient communication. VytalPath teaches all of that — and you get hands-on practice so you can confidently say \"Yes, I know how to do this\" in interviews. Our job readiness tools (resume builder, mock interviews) help you demonstrate competency to hiring managers.",
+    question: 'Who is this designed for?',
+    answer: "Anyone curious about healthcare front office work — career changers, people exploring healthcare, or current staff who want to deepen their understanding. VytalPath covers HIPAA, insurance, EHR systems, medical terminology, scheduling, and patient communication through hands-on learning.",
   },
   {
     question: 'What if I get stuck or have questions?',
@@ -193,20 +193,20 @@ export function LandingPage() {
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-6 md:pt-16 md:pb-10">
           <div className="text-center mb-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 mb-4 leading-tight">
-              Get Hired in Healthcare{' '}
-              <span className="text-blue-600">Without Going Back to School</span>
+              Learn Healthcare Front Office Skills{' '}
+              <span className="text-blue-600">At Your Own Pace</span>
             </h1>
 
             <p className="text-lg md:text-xl font-light text-gray-500 max-w-2xl mx-auto mb-6 leading-relaxed">
-              Master HIPAA, insurance billing, EHR systems, and medical office workflows with hands-on training — then land your first healthcare front office job with confidence.
+              Understand HIPAA, insurance billing, EHR systems, and medical office workflows through hands-on learning — no classroom required.
             </p>
 
             {/* Proof stats as bullets */}
             <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-500 mb-8">
               {[
-                '80+ lessons covering everything employers need',
+                '80+ lessons across 9 healthcare topic areas',
                 'Built-in EHR Practice Lab — actually practice real workflows',
-                '$327 for comprehensive training (competitors charge $1,000+)',
+                '$327 for a full year of access (other programs charge $1,000+)',
                 'Complete at your own pace — full year of access',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
@@ -245,10 +245,7 @@ export function LandingPage() {
             {/* Trust signals */}
             <div className="flex flex-wrap items-center justify-center gap-4 mt-2">
               <span className="flex items-center gap-1.5 text-xs text-gray-400">
-                <Award className="w-3.5 h-3.5" /> Certificate of Completion Included
-              </span>
-              <span className="flex items-center gap-1.5 text-xs text-gray-400">
-                <Briefcase className="w-3.5 h-3.5" /> Resume Builder & Mock Interviews
+                <Briefcase className="w-3.5 h-3.5" /> Practice Tools & Simulations
               </span>
               <span className="flex items-center gap-1.5 text-xs text-gray-400">
                 <GraduationCap className="w-3.5 h-3.5" /> Learn from 20+ Years Healthcare Experience
@@ -284,25 +281,25 @@ export function LandingPage() {
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <p className="text-sm font-medium text-red-400/80 uppercase tracking-wider mb-3 text-center">The real barrier</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 text-center mb-8">
-            You Want a Stable Healthcare Career, But the System Keeps You Locked Out
+            You're Curious About Healthcare Work, But Don't Know Where to Start
           </h2>
           <div className="space-y-5 text-gray-500 leading-relaxed text-lg">
             <p>
-              You're applying to medical office jobs, but every posting says "experience required." You can't get experience
-              because no one will hire you without training. You can't afford training because programs cost $1,000 to $5,000.
-              And even if you could afford it, you can't commit to rigid classroom schedules.
+              You're interested in healthcare front office work — but you don't know what the job actually involves.
+              What does HIPAA mean in practice? How does insurance verification work? What happens in an EHR system?
+              These aren't things you can learn from a job posting.
             </p>
             <p>
-              Every rejection email makes you feel more frustrated. You know you'd be great at this work — you're organized,
-              you care about helping people, you learn fast — but employers never give you a chance to prove it.
+              Most educational programs in this space cost $1,000 to $5,000, require rigid classroom schedules,
+              and take months to complete. If you just want to explore the subject and learn how things work,
+              that's a big commitment.
             </p>
             <p>
-              Meanwhile, you're working unstable jobs that don't pay enough and don't lead anywhere. You watch people with
-              healthcare careers build steady income, job security, and meaningful work while you stay locked out.
+              You're organized, you care about helping people, and you learn fast. You just need a way to explore
+              these topics at your own pace — without the cost and time commitment of a formal program.
             </p>
             <p className="font-medium text-gray-900">
-              It feels like healthcare careers are only for people who can afford expensive programs or already have connections.
-              That's not fair — and it's not true.
+              That's exactly why we built VytalPath Academy.
             </p>
           </div>
         </div>
@@ -313,7 +310,7 @@ export function LandingPage() {
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Visual pullquote */}
           <blockquote className="text-2xl md:text-3xl font-semibold leading-snug mb-10 pl-6 border-l-2 border-blue-400">
-            "I couldn't get hired in healthcare even with a bachelor's degree — until I learned the foundational knowledge employers actually need."
+            "I didn't know where to start — until I learned what healthcare front office work actually involves."
           </blockquote>
 
           <p className="text-sm font-medium text-blue-400 uppercase tracking-wider mb-4">Why we built this</p>
@@ -334,9 +331,9 @@ export function LandingPage() {
               building training content, and partnering with clinic leadership to help staff adopt new systems and improve processes.
             </p>
             <p>
-              When my wife Lori — a clinic manager constantly struggling to find qualified front office candidates — asked me
-              to build a training program, I said yes. But I refused to build another course full of boring videos and PDFs
-              that don't actually help people get hired.
+              When my wife Lori — a clinic manager — asked me to build a learning platform for people curious about
+              healthcare front office work, I said yes. But I refused to build another course full of boring videos and PDFs
+              that don't actually help people understand this work.
             </p>
             <p>
               Real learning requires hands-on practice and coaching. So I spent months building AI agents that coach learners
@@ -345,8 +342,8 @@ export function LandingPage() {
             </p>
             <p>
               I built VytalPath Academy because I know what that foundation did for me, and I want to give more people the same
-              chance. <span className="text-white font-medium">You don't need years of experience to get started — you need the
-              right knowledge.</span> Once you have that foundation, doors start opening.
+              opportunity to learn. <span className="text-white font-medium">Understanding how healthcare front office operations
+              work starts with the right knowledge.</span> VytalPath makes that accessible.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 mt-8">
@@ -368,10 +365,10 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-semibold tracking-tight text-gray-900 mb-4">
-              Everything You Need to Get Hired — In One Program
+              Everything You Need to Understand Healthcare Front Office Work
             </h2>
             <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto">
-              Nine training areas covering the exact skills clinics are hiring for
+              Nine topic areas covering the day-to-day of healthcare front office operations
             </p>
           </div>
 
@@ -380,22 +377,22 @@ export function LandingPage() {
               {
                 icon: Shield,
                 title: 'HIPAA & Compliance Mastery',
-                outcome: "Stop worrying about \"Do I know enough?\" Master patient privacy laws, confidentiality standards, and compliance requirements — the foundation of every healthcare job.",
+                outcome: "Understand patient privacy laws, confidentiality standards, and compliance requirements — the foundation of every healthcare setting.",
               },
               {
                 icon: DollarSign,
                 title: 'Insurance Billing & Verification',
-                outcome: 'Speak the language employers need to hear. Understand insurance types, authorization processes, claims, and billing workflows — skills that make you immediately valuable.',
+                outcome: 'Understand insurance types, authorization processes, claims, and billing workflows — the concepts behind every front office insurance interaction.',
               },
               {
                 icon: BookA,
                 title: 'Medical Terminology',
-                outcome: 'Stop feeling lost in healthcare conversations. Learn body systems, common diagnoses, procedures, and abbreviations so you can communicate confidently with clinical staff and patients.',
+                outcome: 'Learn body systems, common diagnoses, procedures, and abbreviations — the language you\'ll hear in any healthcare setting.',
               },
               {
                 icon: Monitor,
                 title: 'EHR Systems & Documentation',
-                outcome: "Know how the systems actually work. Navigate electronic health records, understand clinical workflows, and document patient interactions the way real offices do.",
+                outcome: "Explore how electronic health records work, understand clinical workflows, and see how patient interactions are documented in real healthcare settings.",
               },
               {
                 icon: ClipboardList,
@@ -415,13 +412,8 @@ export function LandingPage() {
               },
               {
                 icon: Briefcase,
-                title: 'Resume Builder & Mock Interviews',
-                outcome: 'Show up prepared and confident. Use our job readiness tools to build a healthcare-focused resume and practice interview questions with AI feedback.',
-              },
-              {
-                icon: Award,
-                title: 'Certificate of Completion',
-                outcome: "Prove you've done the work. Show employers you've completed comprehensive training covering 101 knowledge areas across 9 essential sections.",
+                title: 'Practice Tools & Simulations',
+                outcome: 'Go beyond lessons — practice phone calls, insurance verification, and daily scenarios with AI-powered simulations that adapt to your responses.',
               },
             ].map((feature) => (
               <div
@@ -526,10 +518,10 @@ export function LandingPage() {
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-3">
-              The Only Program Where You Actually Practice Healthcare Workflows
+              The Only Platform Where You Actually Practice Healthcare Workflows
             </h2>
             <p className="text-lg font-light text-gray-500 max-w-2xl mx-auto">
-              Watching videos doesn't prepare you for the job. Hands-on practice does.
+              Watching videos isn't the same as doing. Hands-on practice builds real understanding.
             </p>
           </div>
 
@@ -566,7 +558,7 @@ export function LandingPage() {
                   'Practice real workflows in a simulated system',
                   'Get AI coaching in real time',
                   'Answer questions, troubleshoot problems, build muscle memory',
-                  'Walk into interviews knowing you\'ve actually done the work',
+                  'Build real understanding through hands-on practice',
                   '80+ lessons, 18 quizzes, 24 procedure guides',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-gray-700">
@@ -580,32 +572,27 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* ============ PATTERN INTERRUPT ============ */}
+      {/* ============ LEARN BY DOING ============ */}
       <section className="bg-gray-900 py-14 md:py-16">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
           <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 text-center">
-            "But Is It Accredited? Will Employers Actually Hire Me With This?"
+            Learn By Doing — Not Just Watching
           </h3>
           <div className="space-y-4 text-gray-300 leading-relaxed text-center">
             <p>
-              VytalPath Academy is competency-based training — we teach you the 101 knowledge areas employers need
+              VytalPath Academy is an educational platform — we cover 101 topic areas
               across HIPAA, insurance billing, medical terminology, EHR systems, scheduling, and patient communication.
             </p>
             <p>
-              Our certificate demonstrates you've completed comprehensive training covering everything a healthcare
-              front office professional needs to know.
+              But what makes VytalPath different is the hands-on practice. Our built-in EHR Practice Lab, phone call simulations,
+              and AI coaching let you experience real healthcare workflows — not just read about them.
             </p>
             <p>
-              Here's what matters to employers: Can you navigate an EHR? Do you understand HIPAA? Can you verify insurance?
-              Do you know medical terminology? Can you handle scheduling conflicts?
+              You'll explore how insurance verification works, practice navigating electronic health records, and work through
+              the daily scenarios that healthcare front office staff handle every day.
             </p>
             <p className="text-white font-medium">
-              The answer is yes — and you can prove it.
-            </p>
-            <p>
-              Many employers value practical competency alongside (or instead of) formal certification. We include job readiness
-              tools — resume builder, mock interviews, procedure guides — so you can walk into applications and interviews
-              with verified skills and confidence.
+              Understanding comes from doing — and that's what VytalPath is built for.
             </p>
           </div>
           <div className="text-center mt-6">
@@ -662,10 +649,8 @@ export function LandingPage() {
                   { feature: 'Hands-on EHR Practice Lab', traditional: false, vytalpath: true, free: false },
                   { feature: 'AI Coaching (24/7)', traditional: false, vytalpath: true, free: false },
                   { feature: '24 Procedure Guides (SOPs)', traditional: false, vytalpath: true, free: false },
-                  { feature: 'Phone & Interview Simulations', traditional: false, vytalpath: true, free: false },
-                  { feature: 'Healthcare Resume Builder', traditional: false, vytalpath: true, free: false },
-                  { feature: 'Competency Tracking (101 topics)', traditional: 'Varies', vytalpath: true, free: false },
-                  { feature: 'Certificate of Completion', traditional: true, vytalpath: true, free: false },
+                  { feature: 'Phone & Insurance Simulations', traditional: false, vytalpath: true, free: false },
+                  { feature: 'Progress Tracking (101 topics)', traditional: 'Varies', vytalpath: true, free: false },
                   { feature: 'Refund Guarantee', traditional: 'Varies', vytalpath: '3-Day Full Refund', free: 'N/A' },
                 ].map((row, i) => (
                   <tr key={row.feature} className={i % 2 === 0 ? 'bg-gray-50/30' : 'bg-white'}>
@@ -716,8 +701,8 @@ export function LandingPage() {
               <div>
                 <h4 className="font-medium text-gray-900 mb-1">For Clinic Managers & Office Administrators</h4>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  Volume pricing available for teams — as low as $121/seat. Train your entire front office staff with
-                  standardized, comprehensive content that reduces turnover and improves onboarding.{' '}
+                  Volume pricing available for teams — as low as $121/seat. Give your front office staff access to
+                  consistent, comprehensive learning content that supports onboarding and ongoing development.{' '}
                   <a href="mailto:hello@vytalpath.com?subject=VytalPath%20Academy%20Team%20Pricing" className="text-blue-600 hover:text-blue-700 transition-colors font-medium">
                     Contact us for team pricing
                   </a>
@@ -741,24 +726,24 @@ export function LandingPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                title: 'Career Changers & Job Seekers',
-                pain: '"I want stable healthcare work but I don\'t know where to start, can\'t afford expensive programs, and keep getting rejected for lack of experience."',
-                answer: 'Get the foundational knowledge employers need — HIPAA, insurance, EHR systems, medical terminology — at a fraction of the cost. Practice real workflows. Walk into applications with verified competency and confidence.',
+                title: 'Curious About Healthcare Work',
+                pain: '"I\'m interested in healthcare front office work but I don\'t know what it actually involves — and I can\'t afford expensive programs just to explore."',
+                answer: 'Explore HIPAA, insurance, EHR systems, and medical terminology at your own pace. Understand what healthcare front office work looks like from the inside — without the cost or commitment of a formal program.',
               },
               {
-                title: 'Moms & Career Restarters',
-                pain: '"I need flexible learning that fits around my schedule — no rigid classrooms, no expensive childcare, no months of commitment."',
-                answer: 'Learn at your own pace over a full year. Complete lessons whenever you have time. Pause and restart as needed. Build a career with stability, growth, and meaning on your terms.',
+                title: 'Flexible Learners',
+                pain: '"I need learning that fits around my schedule — no rigid classrooms, no expensive commitments, no months-long programs."',
+                answer: 'Learn at your own pace over a full year. Complete lessons whenever you have time. Pause and restart as needed. Learn on your terms.',
               },
               {
-                title: 'Office Professionals Transitioning to Healthcare',
-                pain: '"I have admin experience but lack healthcare-specific knowledge. Employers won\'t hire me because I don\'t know HIPAA, insurance billing, or clinical workflows."',
-                answer: 'Leverage your existing skills — organization, communication, multitasking — and add the healthcare foundation employers need. You already know how to do the work. We teach you how to do it in healthcare.',
+                title: 'Office Professionals Exploring Healthcare',
+                pain: '"I have admin experience but I don\'t know HIPAA, insurance billing, or clinical workflows. I want to understand how healthcare offices work."',
+                answer: 'Leverage your existing skills — organization, communication, multitasking — and add healthcare-specific knowledge. You already know how offices run. We teach you how healthcare offices are different.',
               },
               {
-                title: 'Clinic Managers & Hiring Teams',
-                pain: '"High front office turnover. Unqualified applicants. Strong candidates we can\'t hire because they lack foundational knowledge. Inconsistent training across staff."',
-                answer: 'Standardized training for new hires and existing staff. Volume pricing as low as $121/seat. Reduce onboarding time, improve retention, and ensure everyone has the same foundational competency.',
+                title: 'Clinic Managers & Office Administrators',
+                pain: '"Inconsistent knowledge across staff. No standardized learning content. New team members need a consistent foundation."',
+                answer: 'Consistent learning content for your team. Volume pricing as low as $121/seat. Give staff a shared foundation in HIPAA, insurance, EHR systems, and patient communication.',
               },
             ].map((card) => (
               <div key={card.title} className="bg-gray-50/50 rounded-2xl p-6 border border-gray-200/50">
@@ -804,15 +789,11 @@ export function LandingPage() {
       <section className="bg-gray-900 py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h3 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4">
-            You're One Foundation Away From a Stable Healthcare Career
+            Ready to Understand How Healthcare Front Office Work Really Works?
           </h3>
           <p className="text-lg font-light text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto">
-            You don't need years of experience or thousands of dollars. You need the right knowledge — HIPAA, insurance billing,
-            medical terminology, EHR systems, scheduling, and patient communication. You need hands-on practice so you can walk
-            into interviews with confidence. And you need a credential that shows employers you've done the work.
-          </p>
-          <p className="text-lg text-gray-300 mb-8">
-            That's exactly what VytalPath Academy gives you.
+            Explore HIPAA, insurance billing, medical terminology, EHR systems, scheduling, and patient communication —
+            all at your own pace. Hands-on practice, AI coaching, and 80+ lessons across 9 topic areas.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
@@ -828,7 +809,7 @@ export function LandingPage() {
               3 Payments of $109
             </button>
           </div>
-          <p className="text-sm text-gray-500 mt-4">3-day money-back guarantee · Full year of access · Certificate of Completion</p>
+          <p className="text-sm text-gray-500 mt-4">3-day money-back guarantee · Full year of access</p>
         </div>
       </section>
 
@@ -845,7 +826,7 @@ export function LandingPage() {
                 />
               </div>
               <p className="text-sm text-center md:text-left font-light">
-                Comprehensive healthcare front office training
+                Healthcare front office learning platform
               </p>
               <div className="flex items-center gap-6 text-sm">
                 <a href="mailto:hello@vytalpath.com" className="hover:text-white transition-colors duration-300">Contact</a>

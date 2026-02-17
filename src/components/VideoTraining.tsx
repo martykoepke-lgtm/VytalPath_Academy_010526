@@ -27,7 +27,7 @@ const trainingSections: TrainingSection[] = [
   {
     id: 'welcome',
     title: 'Welcome to VytalPath Academy',
-    description: 'Meet your AI instructor and learn what this training program is all about',
+    description: 'Meet your AI instructor and learn what VytalPath Academy is all about',
     icon: Sparkles,
     color: 'rose',
     lessons: [

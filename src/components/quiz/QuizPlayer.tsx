@@ -25,7 +25,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Healthcare Settings Quiz',
       description: 'Test your knowledge of healthcare environments and settings.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -183,7 +183,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Your Role in Healthcare Quiz',
       description: 'Test your knowledge of healthcare team roles, scope of practice, and the patient journey.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -356,7 +356,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Authorization & Consent Quiz',
       description: 'Test your knowledge of HIPAA authorization, consent, and protecting patient information.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -529,7 +529,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Insurance Fundamentals Quiz',
       description: 'Test your knowledge of health insurance basics, payers, and key terms.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -697,7 +697,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Insurance Operations Quiz',
       description: 'Test your knowledge of day-to-day insurance verification and payment collection.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -843,7 +843,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Coverage Rules Quiz',
       description: 'Test your knowledge of government plans, special coverage situations, and coordination of benefits.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1016,7 +1016,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Financial Documents Quiz',
       description: 'Test your knowledge of EOBs, ERAs, claim processing, and ABNs.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1162,7 +1162,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Revenue Cycle Quiz',
       description: 'Test your knowledge of revenue cycle phases, payment models, and collections.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1303,7 +1303,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Medical Terminology Quiz',
       description: 'Test your knowledge of medical abbreviations and word building.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1476,7 +1476,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Registration & Scheduling Quiz',
       description: 'Test your knowledge of patient registration, scheduling, and workflow best practices.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1657,7 +1657,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'EHR Basics Quiz',
       description: 'Test your knowledge of PM systems, EHR components, and patient identifiers.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -1835,7 +1835,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Clinic Encounters Quiz',
       description: 'Test your knowledge of encounter types, lifecycle stages, and scheduling methods.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2013,7 +2013,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Non-Clinic Encounters Quiz',
       description: 'Test your knowledge of phone encounters, non-visit types, and duplicate prevention.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2160,7 +2160,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Telehealth & Patient Portals Quiz',
       description: 'Test your knowledge of telehealth visit types, platforms, patient portals, and troubleshooting.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2291,7 +2291,7 @@ const quizzesData: Record<string, QuizData> = {
       id: 'comm-q1', module_id: 'comm-m1',
       title: 'Communication Foundations Quiz',
       description: 'Test your understanding of communication styles, active listening, and nonverbal cues.',
-      passing_score: 80, max_attempts: 3,
+      passing_score: 80, max_attempts: 0,
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
     moduleTitle: 'Communication Foundations',
@@ -2370,7 +2370,7 @@ const quizzesData: Record<string, QuizData> = {
       id: 'comm-q2', module_id: 'comm-m2',
       title: 'Patient Interactions Quiz',
       description: 'Test your skills in patient questioning techniques, barrier navigation, and inclusive communication.',
-      passing_score: 80, max_attempts: 3,
+      passing_score: 80, max_attempts: 0,
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
     moduleTitle: 'Patient Interactions',
@@ -2449,7 +2449,7 @@ const quizzesData: Record<string, QuizData> = {
       id: 'comm-q3', module_id: 'comm-m3',
       title: 'Professional Standards Quiz',
       description: 'Test your knowledge of professional conduct, de-escalation, and communication documentation.',
-      passing_score: 80, max_attempts: 3,
+      passing_score: 80, max_attempts: 0,
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     },
     moduleTitle: 'Professional Standards',
@@ -2530,7 +2530,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Coding Basics Quiz',
       description: 'Test your knowledge of medical coding systems — ICD-10, CPT, HCPCS, SNOMED CT — and medical necessity.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2661,7 +2661,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Referrals & Prior Authorization Quiz',
       description: 'Test your knowledge of referral workflows, prior authorization processes, and denial management.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2792,7 +2792,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Administrative Skills Quiz',
       description: 'Test your knowledge of filing systems, business correspondence, ADA compliance, and system management.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2879,7 +2879,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Workplace Safety & Compliance Quiz',
       description: 'Test your knowledge of medical law concepts, OSHA, regulatory agencies, mandatory reporting, and emergency preparedness.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -2961,7 +2961,7 @@ const quizzesData: Record<string, QuizData> = {
       title: 'Ethics & Data Security Quiz',
       description: 'Test your knowledge of professional ethics, data safeguards, and medical records retention.',
       passing_score: 80,
-      max_attempts: 3,
+      max_attempts: 0,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -3066,8 +3066,8 @@ export function QuizPlayer() {
   if (!quizData) {
     return (
       <div className="max-w-4xl mx-auto text-center py-12">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Quiz Not Found</h2>
-        <p className="text-gray-600 mb-6">This quiz is not yet available.</p>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Knowledge Check Not Found</h2>
+        <p className="text-gray-600 mb-6">This knowledge check is not yet available.</p>
         <Link
           to={`/courses/${courseSlug}`}
           className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
@@ -3084,7 +3084,8 @@ export function QuizPlayer() {
 
   // Get previous attempt info
   const previousAttempts = moduleSlug ? progress.getQuizAttempts(moduleSlug) : [];
-  const remainingAttempts = moduleSlug ? progress.getRemainingAttempts(moduleSlug, quiz.max_attempts) : quiz.max_attempts;
+  // Unlimited attempts — no longer enforced
+  const remainingAttempts = Infinity;
   const bestScore = moduleSlug ? progress.getBestQuizScore(moduleSlug) : 0;
 
   // Calculate score
@@ -3165,19 +3166,13 @@ export function QuizPlayer() {
             <Trophy className="w-10 h-10 text-green-600" />
           </div>
 
-          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Quiz Completed!</h1>
-          <p className="text-gray-600 mb-4">You've already passed this quiz.</p>
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">Knowledge Check Complete</h1>
+          <p className="text-gray-600 mb-4">You've already completed this knowledge check.</p>
 
           <div className="text-5xl font-semibold text-green-600 mb-2">
             {savedScore}%
           </div>
           <p className="text-sm text-gray-500 mb-6">Best Score</p>
-
-          <div className="bg-gray-50 rounded-2xl p-4 mb-6">
-            <p className="text-sm text-gray-600">
-              <span className="font-medium">Attempts used:</span> {previousAttempts.length} of {quiz.max_attempts}
-            </p>
-          </div>
 
           <div className="flex items-center justify-center gap-4">
             <button
@@ -3188,7 +3183,7 @@ export function QuizPlayer() {
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all duration-300"
             >
               <RotateCcw className="w-4 h-4" />
-              Retake Quiz
+              Try Again
             </button>
             {nextModuleSlug && nextModuleFirstLesson ? (
               <button
@@ -3237,9 +3232,7 @@ export function QuizPlayer() {
           <div className="flex items-center justify-center gap-6 text-sm text-gray-500 mb-6">
             <span>{questions.length} questions</span>
             <span>•</span>
-            <span>Pass: {quiz.passing_score}%</span>
-            <span>•</span>
-            <span>{remainingAttempts} attempts remaining</span>
+            <span>Aim for {quiz.passing_score}%</span>
           </div>
 
           {/* Previous Attempts Info */}
@@ -3252,7 +3245,7 @@ export function QuizPlayer() {
                   <ul className="text-sm text-blue-700 space-y-1">
                     {previousAttempts.map((attempt, idx) => (
                       <li key={idx}>
-                        Attempt {attempt.attemptNumber}: {attempt.score}% {attempt.passed ? '✓ Passed' : '✗ Failed'}
+                        Attempt {attempt.attemptNumber}: {attempt.score}%
                       </li>
                     ))}
                   </ul>
@@ -3264,16 +3257,15 @@ export function QuizPlayer() {
             </div>
           )}
 
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8 text-left">
+          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-8 text-left">
             <div className="flex gap-3">
-              <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
-                <h3 className="font-medium text-amber-800 mb-1">Before you begin</h3>
-                <ul className="text-sm text-amber-700 space-y-1">
-                  <li>• You must score {quiz.passing_score}% or higher to pass</li>
-                  <li>• You have {remainingAttempts} of {quiz.max_attempts} attempts remaining</li>
-                  <li>• Review your answers after submitting</li>
-                  <li>• Passing unlocks the next module</li>
+                <h3 className="font-medium text-blue-800 mb-1">How it works</h3>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• Aim for {quiz.passing_score}% or higher</li>
+                  <li>• You can retake this as many times as you like</li>
+                  <li>• Review explanations after each attempt</li>
                 </ul>
               </div>
             </div>
@@ -3281,22 +3273,11 @@ export function QuizPlayer() {
 
           <button
             onClick={handleStartQuiz}
-            disabled={remainingAttempts === 0}
-            className={`inline-flex items-center gap-2 px-8 py-3 text-lg font-medium text-white rounded-2xl transition-all duration-300 shadow-apple-sm ${
-              remainingAttempts === 0
-                ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
-            }`}
+            className="inline-flex items-center gap-2 px-8 py-3 text-lg font-medium text-white rounded-2xl transition-all duration-300 shadow-apple-sm bg-blue-600 hover:bg-blue-700"
           >
-            {previousAttempts.length > 0 ? 'Retake Quiz' : 'Start Quiz'}
+            {previousAttempts.length > 0 ? 'Try Again' : 'Start Knowledge Check'}
             <ArrowRight className="w-5 h-5" />
           </button>
-
-          {remainingAttempts === 0 && (
-            <p className="mt-4 text-sm text-red-600">
-              You've used all {quiz.max_attempts} attempts. Contact your instructor for assistance.
-            </p>
-          )}
         </div>
       </div>
     );
@@ -3318,13 +3299,13 @@ export function QuizPlayer() {
           </div>
 
           <h1 className="text-3xl font-semibold text-gray-900 mb-2">
-            {passed ? 'Congratulations!' : 'Not Quite'}
+            {passed ? 'Great Job!' : 'Keep Learning'}
           </h1>
 
           <p className="text-gray-600 mb-6">
             {passed
-              ? 'You passed the quiz and can continue to the next module.'
-              : `You need ${quiz.passing_score}% to pass. Review the material and try again.`}
+              ? `You scored ${score}% — well done! Review the explanations below or continue to the next module.`
+              : `You scored ${score}%. Review the explanations below and try again anytime.`}
           </p>
 
           <div className={`text-6xl font-semibold mb-2 ${passed ? 'text-green-600' : 'text-red-600'}`}>
@@ -3339,7 +3320,7 @@ export function QuizPlayer() {
 
           {/* Answer Review with Full Explanations */}
           <div className="text-left mb-8">
-            <h3 className="font-medium text-gray-900 mb-4">Quiz Review</h3>
+            <h3 className="font-medium text-gray-900 mb-4">Review Your Answers</h3>
             <div className="space-y-4">
               {questions.map((q, index) => {
                 const userAnswer = answers[q.id];
@@ -3474,7 +3455,7 @@ export function QuizPlayer() {
             onClick={handleNextQuestion}
             className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
           >
-            {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'Submit Quiz'}
+            {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'See Results'}
             <ArrowRight className="w-4 h-4" />
           </button>
         )}

@@ -15,8 +15,8 @@ export function LandingPageRouter() {
   return (
     <>
       <Helmet>
-        <title>VytalPath Academy | Healthcare Front Office Training</title>
-        <meta name="description" content="Professional training for healthcare front office staff. Master HIPAA compliance, insurance verification, medical terminology, and clinical workflows. Start your healthcare career today." />
+        <title>VytalPath Academy | Healthcare Front Office Learning</title>
+        <meta name="description" content="Online learning platform for healthcare front office topics. Explore HIPAA compliance, insurance verification, medical terminology, and clinical workflows. Start learning today." />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -54,8 +54,8 @@ export function LandingPageRouter() {
 
               {/* Headline - Benefit focused */}
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Get Job-Ready for Healthcare Front Office in
-                <span className="text-blue-600"> Days, Not Months</span>
+                Learn Healthcare Front Office Fundamentals
+                <span className="text-blue-600"> At Your Own Pace</span>
               </h1>
 
               {/* Subheadline - Address the problem */}
@@ -105,8 +105,8 @@ export function LandingPageRouter() {
               <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
                 {/* Stats Header */}
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
-                  <h3 className="text-lg font-semibold mb-1">Complete Training Program</h3>
-                  <p className="text-blue-100 text-sm">Everything you need to succeed</p>
+                  <h3 className="text-lg font-semibold mb-1">Complete Learning Platform</h3>
+                  <p className="text-blue-100 text-sm">Everything you need to learn</p>
                 </div>
 
                 {/* Stats Grid */}
@@ -427,7 +427,7 @@ export function LandingPageRouter() {
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-12 shadow-2xl">
             <h2 className="text-4xl font-bold text-white mb-4">
-              Ready to Launch Your Healthcare Career?
+              Ready to Start Learning?
             </h2>
             <p className="text-xl text-blue-100 mb-8">
               Join thousands of healthcare professionals who started here.

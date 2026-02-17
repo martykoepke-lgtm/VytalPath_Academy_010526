@@ -14,15 +14,15 @@ const DEFAULT_IMAGE = `${BASE_URL}/vp-checkmark.png`;
 
 export function SEO({
   title,
-  description = 'Free online training for healthcare front office staff. Learn HIPAA compliance, medical terminology, insurance verification, and clinical workflows.',
-  keywords = 'healthcare training, front office training, medical receptionist training, HIPAA training, medical terminology',
+  description = 'Online learning platform for healthcare front office topics. Explore HIPAA compliance, medical terminology, insurance verification, and clinical workflows.',
+  keywords = 'healthcare learning, front office learning, medical receptionist education, HIPAA training, medical terminology',
   canonical,
   type = 'website',
   image = DEFAULT_IMAGE,
 }: SEOProps) {
   const fullTitle = title
     ? `${title} | VytalPath Academy`
-    : 'VytalPath Academy | Healthcare Front Office Training';
+    : 'VytalPath Academy | Healthcare Front Office Learning';
 
   const fullCanonical = canonical ? `${BASE_URL}${canonical}` : BASE_URL;
 
@@ -53,51 +53,51 @@ export function SEO({
 // Pre-defined SEO configs for each section
 export const seoConfigs = {
   foundations: {
-    title: 'Foundations of Healthcare Training',
-    description: 'Learn healthcare administration fundamentals. Understand different healthcare settings, acute vs ambulatory care, and your essential role in front office operations.',
-    keywords: 'healthcare foundations, healthcare settings, ambulatory care, acute care, front office training, healthcare administration',
+    title: 'Foundations of Healthcare',
+    description: 'Learn healthcare administration fundamentals. Understand different healthcare settings, acute vs ambulatory care, and your role in front office operations.',
+    keywords: 'healthcare foundations, healthcare settings, ambulatory care, acute care, front office learning, healthcare administration',
     canonical: '/foundations',
   },
   medicalLawEthics: {
-    title: 'Medical Law & Ethics Training',
-    description: 'Master HIPAA compliance, patient rights, authorization requirements, and healthcare fraud prevention. Essential legal and ethical training for healthcare professionals.',
+    title: 'Medical Law & Ethics',
+    description: 'Learn HIPAA compliance, patient rights, authorization requirements, and healthcare fraud prevention. Essential legal and ethical knowledge for healthcare professionals.',
     keywords: 'HIPAA training, medical law, healthcare ethics, patient rights, PHI, healthcare compliance, EMTALA, Stark Law, healthcare fraud',
     canonical: '/medical-law-ethics',
   },
   insurance: {
-    title: 'Health Insurance Training for Front Office',
-    description: 'Master health insurance operations. Learn eligibility verification, copays, deductibles, coinsurance, payment collection, and insurance card reading. Free training.',
-    keywords: 'health insurance training, eligibility verification, copay collection, deductible, coinsurance, insurance verification, front office insurance',
+    title: 'Health Insurance for Front Office',
+    description: 'Learn health insurance operations. Understand eligibility verification, copays, deductibles, coinsurance, payment collection, and insurance card reading.',
+    keywords: 'health insurance learning, eligibility verification, copay collection, deductible, coinsurance, insurance verification, front office insurance',
     canonical: '/insurance',
   },
   terminology: {
-    title: 'Medical Terminology Training & Study Guide',
+    title: 'Medical Terminology Study Guide',
     description: 'Learn medical terminology with prefixes, roots, suffixes, and abbreviations. Interactive flashcards and study mode for healthcare professionals.',
     keywords: 'medical terminology, medical prefixes, medical suffixes, root words, medical abbreviations, healthcare vocabulary, anatomy terms',
     canonical: '/terminology',
   },
   ehrFundamentals: {
-    title: 'EHR & Practice Management Training',
-    description: 'Learn how Practice Management and EHR systems work together. Master encounter types, scheduling methods, phone encounters, and duplicate record prevention.',
-    keywords: 'EHR training, practice management, encounter types, patient scheduling, MRN, FIN, phone encounters, duplicate records, healthcare systems',
+    title: 'EHR & Practice Management',
+    description: 'Learn how Practice Management and EHR systems work together. Understand encounter types, scheduling methods, phone encounters, and duplicate record prevention.',
+    keywords: 'EHR learning, practice management, encounter types, patient scheduling, MRN, FIN, phone encounters, duplicate records, healthcare systems',
     canonical: '/ehr-fundamentals',
   },
   workflows: {
     title: 'Healthcare Front Office Workflows & SOPs',
-    description: 'Master front office workflows. Learn patient registration, scheduling, check-in, check-out, and appointment management procedures.',
+    description: 'Learn front office workflows. Understand patient registration, scheduling, check-in, check-out, and appointment management procedures.',
     keywords: 'front office workflows, patient registration, appointment scheduling, check-in procedures, healthcare SOPs, clinic workflows',
     canonical: '/workflows',
   },
   curriculum: {
-    title: 'Healthcare Front Office Training Curriculum',
-    description: 'Full healthcare front office curriculum: HIPAA, insurance verification, medical terminology, EHR training, and 24 SOP guides. 80+ lessons across 9 sections.',
-    keywords: 'healthcare training curriculum, front office training, medical receptionist course, HIPAA training online, insurance verification training, medical terminology course',
+    title: 'Healthcare Front Office Curriculum',
+    description: 'Full healthcare front office curriculum: HIPAA, insurance verification, medical terminology, EHR systems, and 24 SOP guides. 80+ lessons across 9 sections.',
+    keywords: 'healthcare curriculum, front office learning, medical receptionist education, HIPAA learning online, insurance verification, medical terminology course',
     canonical: '/curriculum',
   },
   pricing: {
-    title: 'Pricing - Healthcare Training Plans',
-    description: 'Healthcare front office training for $327/year. Team discounts up to 63% off. Full access from day one with a 3-day money-back guarantee.',
-    keywords: 'healthcare training cost, medical receptionist training price, front office training pricing, healthcare education pricing',
+    title: 'Pricing - Healthcare Learning Plans',
+    description: 'Healthcare front office learning for $327/year. Team discounts up to 63% off. Full access from day one with a 3-day money-back guarantee.',
+    keywords: 'healthcare learning cost, medical receptionist education price, front office learning pricing, healthcare education pricing',
     canonical: '/pricing',
   },
   aiGuide: {

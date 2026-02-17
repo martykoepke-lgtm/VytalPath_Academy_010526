@@ -51,7 +51,7 @@ export function PracticeEngagementPanel({ engagement }: PracticeEngagementPanelP
         </div>
         <div>
           <h3 className="text-base font-semibold text-gray-900">AI Practice Engagement</h3>
-          <p className="text-xs text-gray-500">Ungraded adaptive practice — does not affect quiz scores or certificate</p>
+          <p className="text-xs text-gray-500">Ungraded adaptive practice — does not affect quiz scores or progress</p>
         </div>
       </div>
 

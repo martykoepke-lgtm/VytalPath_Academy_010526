@@ -31,8 +31,6 @@ import { InteractiveHub } from './components/interactive';
 import { PhoneCallSimulator } from './components/practice/PhoneCallSimulator';
 import { DayInTheLife } from './components/practice/DayInTheLife';
 import { InsuranceHotline } from './components/practice/InsuranceHotline';
-import { MockInterview } from './components/practice/MockInterview';
-import { ResumeBulletBuilder } from './components/practice/ResumeBulletBuilder';
 import { ReadinessAssessment } from './components/practice/ReadinessAssessment';
 import { AuthRoute } from './components/auth/AuthRoute';
 import { AuthOnlyRoute } from './components/auth/AuthOnlyRoute';
@@ -42,7 +40,6 @@ import { CurriculumPage } from './pages/CurriculumPage';
 import { ProgramIntro } from './components/ProgramIntro';
 import { AiStudyGuide } from './components/AiStudyGuide';
 import { CMAADashboard } from './components/progress/CMAADashboard';
-import { CertificatePage } from './components/certificate/CertificatePage';
 import { EHRPracticeLab } from './components/ehr-lab/EHRPracticeLab';
 import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
 import { TermsOfService } from './components/legal/TermsOfService';
@@ -210,11 +207,6 @@ export const router = createBrowserRouter([
         path: 'progress',
         element: <AuthRoute><CMAADashboard /></AuthRoute>,
       },
-      // Certificate of Completion
-      {
-        path: 'certificate',
-        element: <AuthRoute><CertificatePage /></AuthRoute>,
-      },
       // Account (auth only, no subscription check)
       {
         path: 'account',
@@ -236,14 +228,6 @@ export const router = createBrowserRouter([
       {
         path: 'practice/insurance-hotline',
         element: <AuthRoute><InsuranceHotline /></AuthRoute>,
-      },
-      {
-        path: 'practice/interview',
-        element: <AuthRoute><MockInterview /></AuthRoute>,
-      },
-      {
-        path: 'practice/resume',
-        element: <AuthRoute><ResumeBulletBuilder /></AuthRoute>,
       },
       {
         path: 'practice/readiness',

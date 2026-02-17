@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Briefcase, Users, Eye, Gauge, Trophy,
   CheckCircle2, ChevronRight, Sparkles,
-  Award, Phone, Clock, HeadphonesIcon, ClipboardCheck,
-  MessageSquare, FileText
+  Phone, Clock, HeadphonesIcon, ClipboardCheck
 } from 'lucide-react';
 import { SimulationExperience } from './SimulationExperience';
 import { SpotTheViolation } from './SpotTheViolation';
@@ -32,7 +31,6 @@ interface ReadinessData {
   buildSkills: number; // 0-3 completed
   practiceScenarios: number; // 0-3 completed
   proveReady: boolean;
-  careerPrep: number; // 0-2 completed
   overall: number; // 0-100
 }
 
@@ -40,7 +38,6 @@ function computeReadiness(): ReadinessData {
   let buildSkills = 0;
   let practiceScenarios = 0;
   let proveReady = false;
-  let careerPrep = 0;
 
   // Stage 1: Build Skills (existing 3 experiences)
   try {
@@ -78,7 +75,7 @@ function computeReadiness(): ReadinessData {
     }
   } catch { /* ignore */ }
 
-  // Stage 3: Readiness Assessment
+  // Stage 3: Knowledge Check
   try {
     const readiness = localStorage.getItem('vytalpath_readiness');
     if (readiness) {
@@ -87,29 +84,12 @@ function computeReadiness(): ReadinessData {
     }
   } catch { /* ignore */ }
 
-  // Stage 4: Career Prep
-  try {
-    const interview = localStorage.getItem('vytalpath_interview');
-    if (interview) {
-      const data = JSON.parse(interview);
-      if (data.completedInterviews?.length > 0) careerPrep++;
-    }
-  } catch { /* ignore */ }
-
-  try {
-    const resume = localStorage.getItem('vytalpath_resume');
-    if (resume) {
-      const data = JSON.parse(resume);
-      if (data.bulletPoints?.length > 0) careerPrep++;
-    }
-  } catch { /* ignore */ }
-
   // Overall: weighted score
-  const totalPossible = 3 + 3 + 1 + 2; // 9 total
-  const totalCompleted = buildSkills + practiceScenarios + (proveReady ? 1 : 0) + careerPrep;
+  const totalPossible = 3 + 3 + 1; // 7 total
+  const totalCompleted = buildSkills + practiceScenarios + (proveReady ? 1 : 0);
   const overall = Math.round((totalCompleted / totalPossible) * 100);
 
-  return { buildSkills, practiceScenarios, proveReady, careerPrep, overall };
+  return { buildSkills, practiceScenarios, proveReady, overall };
 }
 
 export function InteractiveHub() {
@@ -117,8 +97,6 @@ export function InteractiveHub() {
   const [activeExperience, setActiveExperience] = useState<ActiveExperience>('hub');
   const [progress, setProgress] = useState<ExperienceProgress>(defaultProgress);
   const [readiness, setReadiness] = useState<ReadinessData>(computeReadiness);
-  const [showCertificate, setShowCertificate] = useState(false);
-
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -169,52 +147,6 @@ export function InteractiveHub() {
   }
   if (activeExperience === 'risk-meter') {
     return <RiskMeter onComplete={handleRiskMeterComplete} onBack={() => setActiveExperience('hub')} />;
-  }
-
-  // Certificate
-  if (showCertificate && progress.allCompleted) {
-    return (
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-apple overflow-hidden">
-          <div className="bg-gray-900 p-8 text-white text-center">
-            <Award className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-3xl font-semibold tracking-tight">Certificate of Completion</h1>
-          </div>
-          <div className="p-8 text-center">
-            <p className="text-gray-500 mb-2">This certifies that</p>
-            <p className="text-2xl font-medium text-gray-900 mb-2">Healthcare Professional</p>
-            <p className="text-gray-500 mb-6">has successfully completed</p>
-            <div className="bg-blue-50/50 rounded-2xl p-6 mb-6 border border-blue-100">
-              <h2 className="text-xl font-medium text-gray-900 mb-2">Build Your Skills</h2>
-              <p className="text-blue-600">Interactive Learning Experiences</p>
-            </div>
-            <div className="grid grid-cols-3 gap-4 mb-6 text-sm">
-              <div className="bg-gray-50 rounded-2xl p-4">
-                <p className="font-medium text-gray-900">Simulation</p>
-                <p className="text-gray-500">{progress.simulationScore}/{progress.simulationTotal}</p>
-              </div>
-              <div className="bg-gray-50 rounded-2xl p-4">
-                <p className="font-medium text-gray-900">Spot Violation</p>
-                <p className="text-gray-500">{progress.spotViolationScore}/{progress.spotViolationTotal}</p>
-              </div>
-              <div className="bg-gray-50 rounded-2xl p-4">
-                <p className="font-medium text-gray-900">Risk Meter</p>
-                <p className="text-gray-500">{progress.riskMeterScore}/{progress.riskMeterTotal}</p>
-              </div>
-            </div>
-            <p className="text-sm text-gray-400 mb-6">
-              Completed on {new Date(progress.completedAt || '').toLocaleDateString()}
-            </p>
-            <button
-              onClick={() => setShowCertificate(false)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all duration-300 shadow-apple-sm"
-            >
-              Back to Hub
-            </button>
-          </div>
-        </div>
-      </div>
-    );
   }
 
   // Stages
@@ -291,45 +223,19 @@ export function InteractiveHub() {
     },
     {
       number: 3,
-      title: 'Prove You\'re Ready',
-      subtitle: 'Comprehensive scenario-based evaluation across all domains',
+      title: 'Check Your Knowledge',
+      subtitle: 'Test your understanding across all topics',
       color: 'emerald',
       progress: readiness.proveReady ? '1/1' : '0/1',
       aiPowered: true,
       items: [
         {
           id: 'readiness-assessment',
-          title: 'Readiness Assessment',
-          description: 'Five practical tasks covering every domain — score 80%+ to earn your "Job Ready" badge.',
+          title: 'Skills Review',
+          description: 'Review what you\'ve learned across every topic area.',
           icon: ClipboardCheck,
           completed: readiness.proveReady,
           action: () => navigate('/practice/readiness'),
-        },
-      ],
-    },
-    {
-      number: 4,
-      title: 'Get the Job',
-      subtitle: 'Career tools to help you land your healthcare front office role',
-      color: 'amber',
-      progress: `${readiness.careerPrep}/2`,
-      aiPowered: true,
-      items: [
-        {
-          id: 'mock-interview',
-          title: 'Mock Interview',
-          description: 'Practice answering real interview questions with AI coaching after each response.',
-          icon: MessageSquare,
-          completed: readiness.careerPrep > 0,
-          action: () => navigate('/practice/interview'),
-        },
-        {
-          id: 'resume-builder',
-          title: 'Resume Bullet Builder',
-          description: 'Generate resume bullet points based on the skills you\'ve demonstrated.',
-          icon: FileText,
-          completed: readiness.careerPrep > 1,
-          action: () => navigate('/practice/resume'),
         },
       ],
     },
@@ -339,7 +245,6 @@ export function InteractiveHub() {
     blue: { bg: 'bg-blue-600', text: 'text-blue-600', lightBg: 'bg-blue-50', border: 'border-blue-200', fill: 'bg-blue-500' },
     purple: { bg: 'bg-purple-600', text: 'text-purple-600', lightBg: 'bg-purple-50', border: 'border-purple-200', fill: 'bg-purple-500' },
     emerald: { bg: 'bg-emerald-600', text: 'text-emerald-600', lightBg: 'bg-emerald-50', border: 'border-emerald-200', fill: 'bg-emerald-500' },
-    amber: { bg: 'bg-amber-600', text: 'text-amber-600', lightBg: 'bg-amber-50', border: 'border-amber-200', fill: 'bg-amber-500' },
   };
 
   return (
@@ -349,9 +254,9 @@ export function InteractiveHub() {
         <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 rounded-3xl shadow-apple-sm mb-6">
           <Briefcase className="w-9 h-9 text-blue-600" />
         </div>
-        <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Job Readiness Center</h1>
+        <h1 className="text-4xl font-semibold tracking-tight text-gray-900 mb-3">Practice & Skills</h1>
         <p className="text-xl font-light text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          Build skills, practice real scenarios, prove you're ready, and land the job.
+          Build skills, practice real scenarios, and check your understanding.
         </p>
       </div>
 
@@ -363,22 +268,11 @@ export function InteractiveHub() {
               <Trophy className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <h3 className="font-medium text-gray-900">Overall Readiness</h3>
+              <h3 className="font-medium text-gray-900">Overall Progress</h3>
               <p className="text-sm text-gray-500">Complete activities across all stages to reach 100%</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <span className="text-2xl font-semibold text-gray-900">{readiness.overall}%</span>
-            {progress.allCompleted && (
-              <button
-                onClick={() => setShowCertificate(true)}
-                className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 transition-all text-sm font-medium"
-              >
-                <Award className="w-4 h-4" />
-                Certificate
-              </button>
-            )}
-          </div>
+          <span className="text-2xl font-semibold text-gray-900">{readiness.overall}%</span>
         </div>
         <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
           <div
@@ -488,7 +382,7 @@ export function InteractiveHub() {
       {/* Footer */}
       <div className="mt-12 text-center text-sm text-gray-400">
         <p>
-          Complete activities across all stages to build your readiness score.
+          Complete activities across all stages to build your progress score.
           <br />
           AI-powered experiences use Claude to simulate real workplace interactions.
         </p>
