@@ -462,11 +462,27 @@ function ReadingSlide({
 function useSlides(content: string | null): string[] {
   return useMemo(() => {
     if (!content) return [];
-    // Split by --- divider, filter empty slides
-    return content
-      .split(/\n---\n/)
-      .map(slide => slide.trim())
-      .filter(slide => slide.length > 0);
+    // Split by standalone --- divider only (not table separators like | --- | --- |)
+    const lines = content.split('\n');
+    const slides: string[] = [];
+    let current: string[] = [];
+
+    for (const line of lines) {
+      // A slide break is a line that is exactly '---' (with optional whitespace)
+      // but NOT a markdown table separator (contains pipes)
+      if (/^\s*---\s*$/.test(line) && !line.includes('|')) {
+        const slide = current.join('\n').trim();
+        if (slide.length > 0) slides.push(slide);
+        current = [];
+      } else {
+        current.push(line);
+      }
+    }
+
+    const lastSlide = current.join('\n').trim();
+    if (lastSlide.length > 0) slides.push(lastSlide);
+
+    return slides;
   }, [content]);
 }
 

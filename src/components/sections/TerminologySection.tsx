@@ -79,30 +79,6 @@ const terminologyModule = {
       content_type: 'reading' as ContentType,
       duration_minutes: 10,
     },
-    {
-      id: 'l14',
-      slug: 'do-not-use-abbreviations',
-      title: 'The "Do Not Use" List',
-      description: 'Learn the dangerous abbreviations banned by the Joint Commission — and why they can kill patients.',
-      content_type: 'reading' as ContentType,
-      duration_minutes: 12,
-    },
-    {
-      id: 'l15',
-      slug: 'body-systems-overview',
-      title: 'Body Systems: Your Navigation Guide',
-      description: 'Master anatomical directions and body system roots to decode medical terms and route information correctly.',
-      content_type: 'reading' as ContentType,
-      duration_minutes: 15,
-    },
-    {
-      id: 'l16',
-      slug: 'common-diseases-symptoms',
-      title: 'What You\'ll Hear at the Front Desk',
-      description: 'Recognize common symptoms by body system — and know when to escalate immediately.',
-      content_type: 'reading' as ContentType,
-      duration_minutes: 15,
-    },
   ],
 };
 

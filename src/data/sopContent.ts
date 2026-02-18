@@ -136,21 +136,20 @@ export const existingPatientSchedulingSOP: SOPContent = {
   steps: [
     {
       number: 1,
-      title: 'Identify the Patient',
+      title: 'Pull Up Patient Record and Verify Identity',
       details: [
         'Verify patient identity using two identifiers (name and DOB)',
         'Pull up the patient\'s existing record in the system',
-        'Confirm phone number and address are still current',
+        'Never assume who\'s calling — always confirm name and date of birth',
       ],
     },
     {
       number: 2,
-      title: 'Verify Insurance Status',
+      title: 'Review and Update Demographics and Insurance',
       details: [
-        'Check if insurance information on file is current',
+        'Ask "Any changes to your address, phone number, or insurance?"',
         'If patient has new insurance, collect and enter updated card information',
-        'Run eligibility verification if insurance has changed or if it\'s been more than 30 days since last verification',
-        'Note any changes to copay or deductible status',
+        'Update contact information and emergency contacts if needed',
       ],
       callout: {
         type: 'warning',
@@ -159,31 +158,44 @@ export const existingPatientSchedulingSOP: SOPContent = {
     },
     {
       number: 3,
-      title: 'Determine Appointment Need',
+      title: 'Re-Verify Insurance Eligibility',
       details: [
-        'Ask the reason for the visit to select the correct appointment type',
-        'Check for any outstanding orders, referrals, or follow-up notes from previous visits',
-        'Verify if the visit requires a specific provider or can be scheduled with any available provider',
+        'Even for existing patients, eligibility can lapse — always re-verify before scheduling',
+        'Run eligibility verification if insurance has changed or if it\'s been more than 30 days since last verification',
+        'Note any changes to copay or deductible status',
       ],
     },
     {
       number: 4,
-      title: 'Schedule the Appointment',
+      title: 'Check Outstanding Balances and Inform Patient',
       details: [
-        'Find an available slot that matches patient preference and clinical needs',
-        'Confirm the date, time, provider, and location with the patient',
-        'Enter the appointment with the correct appointment type code',
-        'Set up appointment reminders per patient preference',
+        'Review the patient\'s account for any outstanding balances from previous visits',
+        'If there is a balance, mention it so the patient can prepare for payment',
+        'Document that the patient was informed of the balance',
       ],
+      callout: {
+        type: 'tip',
+        text: 'Mentioning balances before the visit gives patients time to prepare and reduces awkward conversations at check-in.',
+      },
     },
     {
       number: 5,
-      title: 'Provide Confirmation',
+      title: 'Schedule Appointment with Correct Provider and Visit Type',
       details: [
-        'Send appointment confirmation via patient\'s preferred method',
-        'Remind patient to bring insurance cards if there have been any changes',
+        'Ask the reason for the visit to select the correct appointment type',
+        'Match the provider from their last visit (continuity of care) unless they request otherwise',
+        'Find an available slot that matches patient preference and clinical needs',
+        'Enter the appointment with the correct appointment type code',
+      ],
+    },
+    {
+      number: 6,
+      title: 'Confirm Appointment and Remind About Copay/Balance',
+      details: [
+        'Confirm the date, time, provider, and location with the patient',
+        'Remind patient of any outstanding balance and expected copay at check-in',
         'Note any special instructions (fasting, bring medication list, etc.)',
-        'Remind patient of office cancellation policy',
+        'Set up appointment reminders per patient preference',
       ],
       callout: {
         type: 'tip',
@@ -193,11 +205,11 @@ export const existingPatientSchedulingSOP: SOPContent = {
   ],
   quickReference: [
     'Verify identity with name and DOB',
-    'Confirm contact info is current',
-    'Check for insurance changes and re-verify if needed',
-    'Determine appointment type based on visit reason',
-    'Schedule with correct provider and appointment type',
-    'Send confirmation and pre-visit reminders',
+    'Review and update demographics and insurance',
+    'Re-verify insurance eligibility before scheduling',
+    'Check and communicate any outstanding balances',
+    'Schedule with correct provider and visit type',
+    'Confirm appointment and remind about copay/balance',
   ],
 };
 
