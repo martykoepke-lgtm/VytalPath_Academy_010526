@@ -47,6 +47,7 @@ import { CookiePolicy } from './components/legal/CookiePolicy';
 import { AcceptableUsePolicy } from './components/legal/AcceptableUsePolicy';
 import { ReturnsPolicy } from './components/legal/ReturnsPolicy';
 import { SkillsGuide } from './components/SkillsGuide';
+import { NotFound } from './components/NotFound';
 
 export const router = createBrowserRouter([
   {
@@ -292,6 +293,11 @@ export const router = createBrowserRouter([
       {
         path: 'reset-password',
         element: <ResetPassword />,
+      },
+      // 404 catch-all — must be last
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
