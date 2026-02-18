@@ -231,7 +231,7 @@ export function LandingPage() {
                 className="w-full aspect-video"
                 preload="metadata"
               >
-                <source src={`${VIDEO_BASE_URL}/welcome_landing2.mp4`} type="video/mp4" />
+                <source src={`${VIDEO_BASE_URL}/WelcometoVPfinal.mp4`} type="video/mp4" />
               </video>
             </div>
             <p className="text-center text-sm text-gray-400 mt-3 font-light">
