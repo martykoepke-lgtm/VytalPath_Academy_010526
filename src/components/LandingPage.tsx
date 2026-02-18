@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   ArrowRight, CheckCircle, Shield,
   FileText,
-  ChevronLeft, ChevronRight, ChevronDown, Monitor, GraduationCap, Users,
+  ChevronDown, Monitor, GraduationCap, Users,
   Minus, Stethoscope, ClipboardList, DollarSign, BookA, Briefcase
 } from 'lucide-react';
 import { SignIn } from './SignIn';
@@ -15,40 +15,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { useSubscription } from '../contexts/SubscriptionContext';
 
 const VIDEO_BASE_URL = 'https://vwieorhlcapeeamvltqa.supabase.co/storage/v1/object/public/videos';
-
-// Platform screenshots for showcase
-const platformScreenshots = [
-  {
-    src: '/images/landing/ehr-lab.png',
-    alt: 'EHR Practice Lab — Provider Schedule',
-    label: 'EHR Practice Lab',
-    desc: 'Manage a clinic schedule, check in patients, and navigate encounters in a hands-on simulation.',
-  },
-  {
-    src: '/images/landing/phone-sim.png',
-    alt: 'Phone Call Simulator',
-    label: 'Phone Call Simulator',
-    desc: 'Practice handling real patient calls with AI-powered scenarios that react to your responses.',
-  },
-  {
-    src: '/images/landing/cmaa-dashboard.png',
-    alt: 'Learning Progress Dashboard',
-    label: 'Learning Progress',
-    desc: 'Track your progress across 101 competency topics in 7 knowledge domains — see exactly where to focus next.',
-  },
-  {
-    src: '/images/landing/cmaa-detail.png',
-    alt: 'Competency Mapping with Lesson Links',
-    label: 'Competency Mapping',
-    desc: 'Every competency topic links directly to the lesson that covers it — so you know exactly where to study.',
-  },
-  {
-    src: '/images/landing/certificate.png',
-    alt: 'Learning Progress Dashboard',
-    label: 'Track Your Progress',
-    desc: 'See your progress across all 9 topic areas and 101 knowledge topics — know exactly where to focus.',
-  },
-];
 
 const faqData = [
   {
@@ -103,7 +69,6 @@ interface LocationState {
 export function LandingPage() {
   const [authModal, setAuthModal] = useState<AuthModal>(null);
   const [showCurriculum, setShowCurriculum] = useState(false);
-  const [activeScreenshot, setActiveScreenshot] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [subscriptionModalDismissed, setSubscriptionModalDismissed] = useState(() => {
     return localStorage.getItem('vytalpath_subscription_modal_dismissed') === 'true';
@@ -462,53 +427,19 @@ export function LandingPage() {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden shadow-apple-lg border border-gray-200/50 bg-gray-50 mb-4">
-              <img
-                src={platformScreenshots[activeScreenshot].src}
-                alt={platformScreenshots[activeScreenshot].alt}
-                className="w-full object-cover"
-                loading="lazy"
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-apple-lg border border-gray-200/50 bg-gray-900" style={{ paddingBottom: '62.5%' }}>
+              <iframe
+                src="https://www.loom.com/embed/7e9b7d1c3f8341209c8de85c8ba09daf"
+                frameBorder="0"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full"
+                title="VytalPath Academy Platform Tour"
               />
-              <button
-                onClick={() => setActiveScreenshot((prev) => (prev - 1 + platformScreenshots.length) % platformScreenshots.length)}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5 text-gray-700" />
-              </button>
-              <button
-                onClick={() => setActiveScreenshot((prev) => (prev + 1) % platformScreenshots.length)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors"
-              >
-                <ChevronRight className="w-5 h-5 text-gray-700" />
-              </button>
             </div>
-
-            <div className="text-center mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">{platformScreenshots[activeScreenshot].label}</h3>
-              <p className="text-sm text-gray-500 max-w-lg mx-auto">{platformScreenshots[activeScreenshot].desc}</p>
-            </div>
-
-            <div className="grid grid-cols-5 gap-3">
-              {platformScreenshots.map((shot, i) => (
-                <button
-                  key={shot.label}
-                  onClick={() => setActiveScreenshot(i)}
-                  className={`rounded-xl overflow-hidden border-2 transition-all duration-300 ${
-                    i === activeScreenshot
-                      ? 'border-blue-500 shadow-apple ring-2 ring-blue-200'
-                      : 'border-gray-200 hover:border-gray-300 opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <img src={shot.src} alt={shot.alt} className="w-full aspect-video object-cover" loading="lazy" />
-                  <div className="px-2 py-1.5 bg-white">
-                    <span className={`text-[11px] font-medium ${i === activeScreenshot ? 'text-blue-600' : 'text-gray-500'}`}>
-                      {shot.label}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
+            <p className="text-center text-sm text-gray-400 mt-3 font-light">
+              Take a guided tour of VytalPath Academy — see the lessons, EHR Practice Lab, and AI coaching in action.
+            </p>
           </div>
         </div>
       </section>
