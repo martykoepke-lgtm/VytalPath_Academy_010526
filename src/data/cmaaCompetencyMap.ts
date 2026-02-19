@@ -1,5 +1,5 @@
-// Competency Map — All 101 Knowledge Statements
-// Maps each knowledge statement to VytalPath Academy activities for progress tracking
+// Competency Map — Learning Outcome Statements
+// Maps each learning outcome to VytalPath Academy activities for progress tracking
 
 export type CoverageStatus = 'covered' | 'partial' | 'gap';
 
@@ -43,7 +43,7 @@ export const cmaaDomains: CMAAdomain[] = [
     knowledgeStatements: [
       {
         id: 'k1',
-        text: 'Types of healthcare organizations and delivery models (outpatient, inpatient, PCMH, ACO, hospice, home health, mobile health)',
+        text: 'Inpatient and outpatient healthcare delivery models and their impact on patient flow and front office operations',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'understanding-healthcare-delivery', label: 'Understanding Healthcare Delivery', section: 'Foundations', link: '/foundations/healthcare-delivery/understanding-healthcare-delivery' },
@@ -68,7 +68,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k3',
-        text: 'Types of health records (paper, electronic, app-based, cloud-based) and implications for use',
+        text: 'Electronic health record systems (PM and EHR): components, differences, and workflows',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'encounters-and-identifiers', label: 'Encounter Types & Patient Identifiers', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/encounters-and-identifiers' },
@@ -78,7 +78,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k4',
-        text: 'EHR and EMR components (demographics, clinical records, medication administration record, diagnoses, lab reports, orders, billing)',
+        text: 'EHR components including demographics, clinical summary, medication list, diagnoses, lab results, orders, and billing',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'ehr-navigation', label: 'Navigating the EHR', section: 'EHR & PM', link: '/ehr-fundamentals/ehr-basics/ehr-navigation' },
@@ -88,7 +88,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k5',
-        text: 'Spelling, pronunciation, and definition of medical terms',
+        text: 'Meaning and decoding of medical terms using word parts (prefixes, roots, suffixes)',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'word-building-decoding-terms', label: 'Word Building: Decoding Terms', section: 'Terminology', link: '/terminology/medical-terminology-basics/word-building-decoding-terms' },
@@ -125,7 +125,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k9',
-        text: 'Prefixes, roots, and suffixes (an-, hyper-, hypo-, cardi/o, vascul/o, -osis, -pathy, -ist)',
+        text: 'Prefixes, roots, and suffixes (an-, hyper-, hypo-, cardi/o, angi/o, -osis, -pathy, -ist)',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'common-prefixes', label: 'Common Prefixes', section: 'Terminology', link: '/terminology/medical-terminology-basics/common-prefixes' },
@@ -433,7 +433,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k42',
-        text: 'The Joint Commission guidelines including National Patient Safety Goals',
+        text: 'Regulatory agencies overseeing healthcare (The Joint Commission, CMS, OSHA)',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'regulatory-agencies', label: 'Regulatory Agencies', section: 'Medical Law', link: '/medical-law-ethics/workplace-safety/regulatory-agencies' },
@@ -641,7 +641,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k62',
-        text: 'Pre-appointment screening requirements (symptom screening, vaccination, insurance changes, telehealth tech checks)',
+        text: 'Pre-appointment preparation (schedule review, insurance verification, reminder calls, telehealth tech checks)',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'appointment-reminders', label: 'Appointment Reminder Calls', section: 'Workflows', link: '/workflows/lessons/before-visit/appointment-reminders' },
@@ -715,7 +715,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k68',
-        text: 'Basic recognition and purpose of code sets (ICD-10-CM, ICD-10-PCS, CPT, HCPCS)',
+        text: 'Basic recognition and purpose of code sets (ICD-10-CM, CPT, HCPCS)',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'icd-10-diagnosis-coding', label: 'ICD-10: Diagnosis Coding', section: 'Insurance', link: '/insurance/coding-basics/icd-10-diagnosis-coding' },
@@ -970,7 +970,7 @@ export const cmaaDomains: CMAAdomain[] = [
       },
       {
         id: 'k92',
-        text: 'Petty cash management and end-of-day financial reconciliation requirements',
+        text: 'Cash drawer management and end-of-day financial reconciliation',
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'cash-drawer-opening', label: 'Cash Drawer Opening', section: 'Workflows', link: '/workflows/lessons/opening/cash-drawer-opening' },
