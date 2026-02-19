@@ -79,6 +79,30 @@ const terminologyModule = {
       content_type: 'reading' as ContentType,
       duration_minutes: 10,
     },
+    {
+      id: 'l14a',
+      slug: 'do-not-use-abbreviations',
+      title: 'The "Do Not Use" Abbreviation List',
+      description: 'Learn which abbreviations are prohibited in healthcare documentation and why patient safety depends on clear communication.',
+      content_type: 'reading' as ContentType,
+      duration_minutes: 10,
+    },
+    {
+      id: 'l15a',
+      slug: 'body-systems-overview',
+      title: 'Body Systems Overview',
+      description: 'Learn the major body systems, their anatomical structures, key organs, and directional terminology.',
+      content_type: 'reading' as ContentType,
+      duration_minutes: 12,
+    },
+    {
+      id: 'l16a',
+      slug: 'common-diseases-symptoms',
+      title: 'Common Diseases & Symptoms',
+      description: 'Learn the signs, symptoms, and terminology for common diseases, conditions, and injuries.',
+      content_type: 'reading' as ContentType,
+      duration_minutes: 15,
+    },
   ],
 };
 

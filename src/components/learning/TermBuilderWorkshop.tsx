@@ -211,10 +211,12 @@ export function TermBuilderWorkshop() {
             {slotCount === 2 ? 'Place 2 components' : 'Place 3 components'} in order
           </p>
           <div className="flex gap-3 mb-6">
-            {slots.map((slot, i) => {
-              const expectedType = term.correctComponents[i].type;
-              const isSlotCorrect = submitted && slot && slot.text === term.correctComponents[i].text;
-              const isSlotWrong = submitted && slot && slot.text !== term.correctComponents[i].text;
+            {slots.slice(0, term.correctComponents.length).map((slot, i) => {
+              const expected = term.correctComponents[i];
+              if (!expected) return null;
+              const expectedType = expected.type;
+              const isSlotCorrect = submitted && slot && slot.text === expected.text;
+              const isSlotWrong = submitted && slot && slot.text !== expected.text;
 
               return (
                 <button
@@ -247,7 +249,7 @@ export function TermBuilderWorkshop() {
                         <CheckCircle className="w-4 h-4 text-green-600" />
                       ) : isSlotWrong ? (
                         <span className="text-[10px] text-red-600 font-medium">
-                          → {term.correctComponents[i].text}
+                          → {expected.text}
                         </span>
                       ) : null}
                     </div>

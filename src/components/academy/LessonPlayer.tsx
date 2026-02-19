@@ -4134,6 +4134,444 @@ How medication is given:
     },
     courseTitle: 'Healthcare Foundations',
     prevLesson: 'common-suffixes',
+    nextLesson: 'do-not-use-abbreviations',
+    nextIsQuiz: false,
+  },
+  'do-not-use-abbreviations': {
+    lesson: {
+      id: 'l14a',
+      module_id: 'm4',
+      slug: 'do-not-use-abbreviations',
+      title: 'The "Do Not Use" Abbreviation List',
+      description: 'Learn which abbreviations are prohibited in healthcare documentation and why patient safety depends on clear communication.',
+      content_type: 'reading',
+      content: `## Why Abbreviation Safety Matters
+
+Healthcare abbreviations save time, but the wrong abbreviation can **harm or kill a patient**. A misread "U" (unit) that looks like a "0" can result in a **10x medication overdose**. A trailing decimal ("1.0 mg") can be misread as "10 mg."
+
+Because of these real-world errors, **The Joint Commission (TJC)** created an Official "Do Not Use" List that applies to **all handwritten and pre-printed orders, medication-related documentation, and clinical communication**. Every accredited hospital and clinic must follow it.
+
+As front office staff, you will encounter these abbreviations on prescriptions, clinical notes, referral letters, and phone messages from providers. You need to know which abbreviations are **acceptable** and which must **never be used**.
+
+---
+
+## The Joint Commission's Official "Do Not Use" List
+
+These abbreviations are **prohibited** in all accredited healthcare organizations:
+
+| Do Not Use | Intended Meaning | Problem | Use Instead |
+| --- | --- | --- | --- |
+| U, u | Unit | Mistaken for 0 (zero), 4, or cc | Write **"unit"** |
+| IU | International Unit | Mistaken for IV (intravenous) or the number 10 | Write **"International Unit"** |
+| Q.D., QD, q.d., qd | Every day | Period after Q mistaken for "I"; QD and QOD confused | Write **"daily"** |
+| Q.O.D., QOD, q.o.d., qod | Every other day | Mistaken for QD (daily) — patient gets double doses | Write **"every other day"** |
+| Trailing zero (X.0 mg) | X mg | Decimal point missed — "1.0" read as "10" | Write **X mg** (no trailing zero) |
+| Lack of leading zero (.X mg) | 0.X mg | Decimal point missed — ".5" read as "5" | Write **0.X mg** (always use leading zero) |
+| MS | Morphine sulfate | Confused with magnesium sulfate | Write **"morphine sulfate"** |
+| MSO4 | Morphine sulfate | Confused with MgSO4 | Write **"morphine sulfate"** |
+| MgSO4 | Magnesium sulfate | Confused with MSO4 | Write **"magnesium sulfate"** |
+
+---
+
+## Additional Dangerous Abbreviations
+
+The Joint Commission also recommends avoiding these abbreviations. Many organizations include them in their own "Do Not Use" policies:
+
+| Avoid Using | Intended Meaning | Problem | Use Instead |
+| --- | --- | --- | --- |
+| mcg | Microgram | Misread as "mg" (1,000x error) | Write **"microgram"** or **"mcg"** clearly |
+| cc | Cubic centimeters | Mistaken for "u" (units) | Write **"mL"** |
+| @ | At | Mistaken for the number "2" | Write **"at"** |
+| > or < | Greater/less than | Confused for each other or for the number 7 | Write **"greater than"** or **"less than"** |
+| AS, AD, AU | Left ear, right ear, both ears | Confused with OS, OD, OU (eye abbreviations) | Write **"left ear," "right ear,"** or **"both ears"** |
+| HS | Half-strength or at bedtime | Ambiguous — could mean either | Write **"half-strength"** or **"at bedtime"** |
+| SC or SQ | Subcutaneous | SC mistaken for SL (sublingual) | Write **"subcutaneous"** |
+| D/C | Discharge or discontinue | Ambiguous — could mean either | Write **"discharge"** or **"discontinue"** |
+| TIW | Three times a week | Mistaken for three times a day (TID) | Write **"3 times weekly"** |
+
+---
+
+## Acceptable vs. Unacceptable: Quick Reference
+
+**Acceptable Practices:**
+- Use full words for any abbreviation on the "Do Not Use" list
+- Always include a **leading zero** before a decimal point: **0.5 mg** (correct)
+- Never include a **trailing zero** after a whole number: **5 mg** (correct)
+- Spell out "unit," "daily," "every other day," and drug name salts
+- When in doubt, **write it out** — clarity always wins over speed
+- Follow your organization's specific approved abbreviation list
+
+**Unacceptable Practices:**
+- Using any abbreviation on the TJC "Do Not Use" list
+- Writing ".5 mg" instead of "0.5 mg"
+- Writing "5.0 mg" instead of "5 mg"
+- Using ambiguous abbreviations like "MS," "D/C," or "HS" without context
+- Creating your own non-standard abbreviations
+- Assuming the reader will "figure out" what you mean
+
+---
+
+## What This Means for Front Office Staff
+
+You may not write prescriptions, but you **will**:
+
+- **Transcribe phone messages** from providers that contain medication instructions
+- **Read referral letters** that use clinical abbreviations
+- **Enter data into the EHR** where abbreviation standards apply
+- **Communicate with patients** about their visit instructions
+- **Handle prior authorization forms** with medication details
+
+If you see a prohibited abbreviation in a document, **do not guess**. Ask the clinical team to clarify before passing information along.
+
+**Key rules to remember:**
+1. If a provider calls in and says "give 5 u of insulin," document it as **"5 units of insulin"** — never "5 u"
+2. If you see "MS" on a medication list, ask whether it means morphine sulfate or magnesium sulfate
+3. If a prescription says "QD," confirm whether the provider means "daily" or if it could be "QOD" (every other day)
+4. Always use your organization's **approved abbreviation list** — it may be stricter than TJC's minimum requirements
+
+---
+
+## Summary
+
+| Key Point | Detail |
+| --- | --- |
+| Who created the list? | The Joint Commission (TJC) |
+| When was it established? | 2004 (National Patient Safety Goal) |
+| Who must follow it? | All TJC-accredited healthcare organizations |
+| What does it cover? | Handwritten orders, medication documentation, clinical notes |
+| Front office role | Recognize prohibited abbreviations, ask for clarification, document using full words |
+| Golden rule | **When in doubt, write it out** |
+
+*The Joint Commission's "Do Not Use" List is a patient safety requirement — not a suggestion. Every healthcare worker, clinical or administrative, shares responsibility for clear communication.*`,
+      video_url: null,
+      duration_minutes: 10,
+      sort_order: 6,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'm4',
+      course_id: '1',
+      slug: 'medical-terminology-basics',
+      title: 'Medical Terminology Basics',
+      description: 'Learn essential medical terminology for clinic operations.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Terminology',
+    prevLesson: 'common-abbreviations',
+    nextLesson: 'body-systems-overview',
+    nextIsQuiz: false,
+  },
+  'body-systems-overview': {
+    lesson: {
+      id: 'l15a',
+      module_id: 'm4',
+      slug: 'body-systems-overview',
+      title: 'Body Systems Overview',
+      description: 'Learn the major body systems, their anatomical structures, key organs, and directional terminology used in clinical documentation.',
+      content_type: 'reading',
+      content: `## Introduction to Body Systems
+
+The human body is organized into **organ systems** — groups of organs that work together to perform major functions. As front office staff, you encounter body system terminology every day in:
+
+- **Appointment scheduling** — "The patient needs to see cardiology"
+- **Referral processing** — "Refer to gastroenterology for GI complaints"
+- **Insurance authorization** — "Prior auth needed for musculoskeletal MRI"
+- **Phone triage** — "Patient reports respiratory symptoms"
+- **EHR documentation** — Reading clinical notes with system-specific terms
+
+You don't need to diagnose conditions, but you **do** need to recognize which body system is involved so you can route patients, process referrals, and communicate accurately with clinical staff.
+
+---
+
+## The 11 Major Body Systems
+
+| System | Primary Function | Key Organs/Structures | Common Prefix/Root |
+| --- | --- | --- | --- |
+| **Integumentary** | Protection, temperature regulation | Skin, hair, nails, sweat glands | derm/o, cut/ane/o |
+| **Musculoskeletal** | Movement, support, protection | Bones, muscles, joints, tendons, ligaments | oste/o, my/o, arthr/o |
+| **Cardiovascular** | Blood circulation | Heart, arteries, veins, capillaries | cardi/o, angi/o, hem/o |
+| **Respiratory** | Gas exchange (O2 in, CO2 out) | Lungs, trachea, bronchi, diaphragm | pulmon/o, pneum/o |
+| **Gastrointestinal (GI)** | Digestion, nutrient absorption | Stomach, intestines, liver, pancreas | gastr/o, enter/o, hepat/o |
+| **Urinary** | Waste filtration, fluid balance | Kidneys, ureters, bladder, urethra | ren/o, nephr/o, cyst/o |
+| **Nervous** | Communication, coordination | Brain, spinal cord, nerves | neur/o, encephal/o |
+| **Endocrine** | Hormone regulation | Thyroid, adrenals, pancreas, pituitary | endo-, thyr/o |
+| **Reproductive** | Reproduction | Ovaries, uterus, testes, prostate | gyn/o, orch/o |
+| **Lymphatic/Immune** | Infection defense, fluid balance | Lymph nodes, spleen, thymus, tonsils | lymph/o, splen/o |
+| **Hematologic** | Blood cell production, clotting | Bone marrow, blood, platelets | hem/o, hemat/o |
+
+---
+
+## Anatomical Directional Terms
+
+Healthcare providers use precise directional terms instead of everyday words like "above" or "near." You will see these in clinical notes, imaging orders, and referral documentation.
+
+| Term | Meaning | Example |
+| --- | --- | --- |
+| **Superior** | Above, toward the head | "The heart is superior to the diaphragm" |
+| **Inferior** | Below, toward the feet | "The bladder is inferior to the kidneys" |
+| **Anterior (ventral)** | Front of the body | "The sternum is anterior" |
+| **Posterior (dorsal)** | Back of the body | "The spine is posterior" |
+| **Medial** | Toward the midline (center) | "The nose is medial to the eyes" |
+| **Lateral** | Away from the midline (to the side) | "The ears are lateral to the nose" |
+| **Proximal** | Closer to the trunk/point of attachment | "The elbow is proximal to the wrist" |
+| **Distal** | Farther from the trunk/point of attachment | "The fingers are distal to the elbow" |
+| **Superficial** | Near the surface | "A superficial wound affects only skin" |
+| **Deep** | Away from the surface | "Deep tissue injury affects muscle" |
+
+---
+
+## Body Planes and Positions
+
+**Body Planes** — Imaginary flat surfaces that divide the body:
+
+| Plane | How It Divides the Body | Used In |
+| --- | --- | --- |
+| **Sagittal** | Left and right halves | Brain MRI |
+| **Frontal (Coronal)** | Front and back halves | Chest imaging |
+| **Transverse (Axial)** | Upper and lower halves | CT scans, abdominal imaging |
+
+**Common Patient Positions:**
+
+| Position | Description | When Used |
+| --- | --- | --- |
+| **Supine** | Lying face up (on back) | Most examinations, surgeries |
+| **Prone** | Lying face down (on stomach) | Back examinations, some surgeries |
+| **Lateral** | Lying on one side | X-rays, certain exams |
+| **Fowler's** | Sitting up at 45-90 degrees | Breathing difficulty, eating |
+| **Trendelenburg** | Head lower than feet | Shock treatment |
+| **Lithotomy** | On back, legs elevated in stirrups | Gynecological exams |
+
+---
+
+## Body Cavities
+
+Body cavities are spaces that contain and protect internal organs:
+
+| Cavity | Location | Key Organs Inside |
+| --- | --- | --- |
+| **Cranial** | Inside the skull | Brain |
+| **Thoracic** | Chest area | Heart, lungs |
+| **Abdominal** | Below diaphragm, above pelvis | Stomach, liver, intestines, kidneys |
+| **Pelvic** | Below abdominal cavity | Bladder, reproductive organs |
+| **Spinal** | Along the vertebral column | Spinal cord |
+
+The **abdominal cavity** is often divided into **four quadrants** for clinical reference:
+- **RUQ** (Right Upper Quadrant) — liver, gallbladder
+- **LUQ** (Left Upper Quadrant) — spleen, stomach
+- **RLQ** (Right Lower Quadrant) — appendix
+- **LLQ** (Left Lower Quadrant) — sigmoid colon
+
+You will see quadrant abbreviations in clinical notes, triage calls, and imaging orders.
+
+---
+
+## How Front Office Staff Use This Knowledge
+
+| Situation | What You Need to Know |
+| --- | --- |
+| Scheduling a referral | Which specialty handles which body system (e.g., cardiology = heart) |
+| Processing prior auth | Recognize the body area for imaging (e.g., "MRI of the lumbar spine" = lower back) |
+| Taking phone messages | Understand basic anatomy terms a provider might use |
+| Reading clinical notes | Recognize directional terms and body regions |
+| Routing patient calls | Know which system is involved to triage to the right department |
+
+**Key takeaway:** You don't need to know anatomy at the level of a nurse or physician. You need to know enough to **route, schedule, and communicate accurately** — and to ask clarifying questions when something is unclear.
+
+---
+
+## Summary
+
+- The body has **11 major organ systems**, each with its own terminology
+- **Directional terms** (superior/inferior, anterior/posterior, medial/lateral) replace everyday words in clinical documentation
+- **Body planes** (sagittal, frontal, transverse) describe how imaging slices through the body
+- **Body cavities** organize where organs are located; the abdomen uses **quadrant abbreviations** (RUQ, LUQ, RLQ, LLQ)
+- Front office staff use this knowledge for **scheduling, referrals, prior auth, and patient communication**`,
+      video_url: null,
+      duration_minutes: 12,
+      sort_order: 7,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'm4',
+      course_id: '1',
+      slug: 'medical-terminology-basics',
+      title: 'Medical Terminology Basics',
+      description: 'Learn essential medical terminology for clinic operations.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Terminology',
+    prevLesson: 'do-not-use-abbreviations',
+    nextLesson: 'common-diseases-symptoms',
+    nextIsQuiz: false,
+  },
+  'common-diseases-symptoms': {
+    lesson: {
+      id: 'l16a',
+      module_id: 'm4',
+      slug: 'common-diseases-symptoms',
+      title: 'Common Diseases & Symptoms',
+      description: 'Learn the signs, symptoms, and terminology for the most common diseases, conditions, and injuries you will encounter in clinical settings.',
+      content_type: 'reading',
+      content: `## Why Front Office Staff Need to Know Common Conditions
+
+You are often the **first point of contact** when patients call or arrive. While you never diagnose, you need to:
+
+- **Recognize condition names** on schedules, referrals, and clinical notes
+- **Understand common symptoms** patients describe on the phone to route them appropriately
+- **Process prior authorizations** that reference specific diagnoses
+- **Schedule follow-ups** for conditions that require ongoing management
+- **Communicate with clinical staff** using correct terminology
+
+This lesson covers the most common diseases and conditions organized by body system, along with their key signs and symptoms.
+
+---
+
+## Signs vs. Symptoms: What's the Difference?
+
+| Term | Definition | Example |
+| --- | --- | --- |
+| **Sign** | An objective finding that can be **observed or measured** by someone else | Fever (measured with thermometer), rash (visible), high blood pressure |
+| **Symptom** | A subjective experience **reported by the patient** | Pain, nausea, dizziness, fatigue |
+
+A patient might report the **symptom** of chest pain. The provider observes the **sign** of elevated heart rate. Both are documented in the medical record.
+
+---
+
+## Cardiovascular Conditions
+
+| Condition | Abbreviation | Key Signs & Symptoms |
+| --- | --- | --- |
+| **Hypertension** (High Blood Pressure) | HTN | Often no symptoms ("silent killer"); headaches, dizziness at extreme levels |
+| **Coronary Artery Disease** | CAD | Chest pain (angina), shortness of breath, fatigue |
+| **Congestive Heart Failure** | CHF | Swelling in legs (edema), shortness of breath, weight gain, fatigue |
+| **Atrial Fibrillation** | AFib | Irregular heartbeat, palpitations, dizziness, fatigue |
+| **Myocardial Infarction** (Heart Attack) | MI | Chest pain/pressure, pain radiating to arm/jaw, shortness of breath, sweating |
+| **Deep Vein Thrombosis** | DVT | Leg swelling, warmth, redness, pain in one leg |
+
+---
+
+## Respiratory Conditions
+
+| Condition | Abbreviation | Key Signs & Symptoms |
+| --- | --- | --- |
+| **Asthma** | — | Wheezing, shortness of breath (SOB), coughing, chest tightness |
+| **Chronic Obstructive Pulmonary Disease** | COPD | Chronic cough, shortness of breath, wheezing, frequent respiratory infections |
+| **Pneumonia** | PNA | Fever, cough with mucus, chest pain, difficulty breathing |
+| **Upper Respiratory Infection** | URI | Nasal congestion, sore throat, cough, low-grade fever |
+| **Influenza** | Flu | High fever, body aches, fatigue, cough, headache |
+
+---
+
+## Endocrine & Metabolic Conditions
+
+| Condition | Abbreviation | Key Signs & Symptoms |
+| --- | --- | --- |
+| **Diabetes Mellitus Type 1** | DM1, T1DM | Excessive thirst, frequent urination, weight loss, fatigue |
+| **Diabetes Mellitus Type 2** | DM2, T2DM | Increased thirst, frequent urination, blurred vision, slow-healing wounds |
+| **Hypothyroidism** | — | Fatigue, weight gain, cold intolerance, constipation, dry skin |
+| **Hyperthyroidism** | — | Weight loss, rapid heartbeat, anxiety, heat intolerance, tremors |
+| **Obesity** | — | BMI over 30, joint pain, fatigue, sleep apnea |
+
+---
+
+## Gastrointestinal Conditions
+
+| Condition | Abbreviation | Key Signs & Symptoms |
+| --- | --- | --- |
+| **Gastroesophageal Reflux Disease** | GERD | Heartburn, regurgitation, chest pain after eating |
+| **Irritable Bowel Syndrome** | IBS | Abdominal pain, bloating, diarrhea and/or constipation |
+| **Peptic Ulcer Disease** | PUD | Burning stomach pain, nausea, bloating |
+| **Cholelithiasis** (Gallstones) | — | RUQ pain (especially after fatty meals), nausea, vomiting |
+| **Hepatitis** | Hep A/B/C | Fatigue, jaundice (yellow skin/eyes), abdominal pain, dark urine |
+
+---
+
+## Musculoskeletal Conditions & Injuries
+
+| Condition | Abbreviation | Key Signs & Symptoms |
+| --- | --- | --- |
+| **Osteoarthritis** | OA | Joint pain, stiffness, reduced range of motion, swelling |
+| **Rheumatoid Arthritis** | RA | Joint pain and swelling (often symmetric), morning stiffness, fatigue |
+| **Osteoporosis** | — | Often no symptoms until fracture; loss of height, back pain |
+| **Fracture** | Fx | Pain, swelling, deformity, inability to bear weight |
+| **Sprain** | — | Pain, swelling, bruising, limited joint movement |
+| **Strain** | — | Muscle pain, spasm, weakness, swelling |
+| **Low Back Pain** | LBP | Pain in lumbar region, may radiate to legs (sciatica) |
+
+---
+
+## Neurological Conditions
+
+| Condition | Key Signs & Symptoms |
+| --- | --- |
+| **Stroke (CVA)** | Sudden numbness/weakness (one side), confusion, trouble speaking, severe headache — **FAST: Face, Arms, Speech, Time** |
+| **Migraine** | Severe headache (often one-sided), nausea, light/sound sensitivity, visual aura |
+| **Epilepsy/Seizures** | Uncontrolled shaking, loss of consciousness, confusion, staring spells |
+| **Multiple Sclerosis (MS)** | Numbness, vision problems, balance issues, fatigue, muscle weakness |
+| **Parkinson's Disease** | Tremor, slow movement, stiffness, balance problems |
+
+---
+
+## Mental Health Conditions
+
+| Condition | Key Signs & Symptoms |
+| --- | --- |
+| **Major Depressive Disorder (MDD)** | Persistent sadness, loss of interest, fatigue, sleep changes, appetite changes |
+| **Generalized Anxiety Disorder (GAD)** | Excessive worry, restlessness, difficulty concentrating, muscle tension |
+| **Post-Traumatic Stress Disorder (PTSD)** | Flashbacks, nightmares, avoidance, hypervigilance |
+| **Substance Use Disorder (SUD)** | Cravings, withdrawal symptoms, tolerance, continued use despite consequences |
+
+Mental health conditions are treated with the same confidentiality protections as physical conditions. Many have additional privacy rules (42 CFR Part 2 for substance use).
+
+---
+
+## Common Injuries
+
+| Injury | Description | Key Signs |
+| --- | --- | --- |
+| **Laceration** | A cut or tear in the skin | Bleeding, open wound |
+| **Contusion** | A bruise | Discoloration, swelling, tenderness |
+| **Concussion** | Mild traumatic brain injury (TBI) | Headache, confusion, dizziness, nausea |
+| **Burns** | Tissue damage from heat, chemicals, or radiation | Redness (1st degree), blisters (2nd), charring (3rd) |
+| **Dislocation** | Bone forced out of joint position | Visible deformity, severe pain, inability to move joint |
+
+---
+
+## Summary
+
+| Key Point | Detail |
+| --- | --- |
+| **Signs vs. symptoms** | Signs are observable/measurable; symptoms are patient-reported |
+| **Most common chronic conditions** | HTN, DM, COPD, CAD, OA — you will see these daily |
+| **Most common abbreviations** | HTN, DM, CHF, COPD, GERD, URI, DVT, MI, OA, RA |
+| **Front office relevance** | Recognize condition names for scheduling, referrals, auth, and triage routing |
+| **Your role** | Never diagnose — recognize, route, and communicate accurately |
+
+*When a patient describes symptoms you don't recognize, document their exact words and pass the message to clinical staff. Accurate relay is more important than interpretation.*`,
+      video_url: null,
+      duration_minutes: 15,
+      sort_order: 8,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    module: {
+      id: 'm4',
+      course_id: '1',
+      slug: 'medical-terminology-basics',
+      title: 'Medical Terminology Basics',
+      description: 'Learn essential medical terminology for clinic operations.',
+      sort_order: 4,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+    },
+    courseTitle: 'Medical Terminology',
+    prevLesson: 'body-systems-overview',
     nextLesson: null,
     nextIsQuiz: true,
   },
