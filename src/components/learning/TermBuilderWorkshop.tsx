@@ -58,21 +58,21 @@ export function TermBuilderWorkshop() {
   const [submitted, setSubmitted] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [progress, setProgress] = useState<StoredProgress>(loadProgress);
+  const [initializedIndex, setInitializedIndex] = useState(-1);
 
   const term = buildableTerms[currentIndex];
   const slotCount = term.correctComponents.length;
-  const allFilled = slots.every(s => s !== null);
 
-  const initTerm = useCallback((t: BuildableTerm) => {
-    setSlots(new Array(t.correctComponents.length).fill(null));
-    setPool(shuffleArray([...t.correctComponents, ...t.distractors]));
+  // Synchronously reset state when currentIndex changes (prevents stale-render crashes)
+  if (initializedIndex !== currentIndex) {
+    setSlots(new Array(term.correctComponents.length).fill(null));
+    setPool(shuffleArray([...term.correctComponents, ...term.distractors]));
     setSubmitted(false);
     setShowHint(false);
-  }, []);
+    setInitializedIndex(currentIndex);
+  }
 
-  useEffect(() => {
-    initTerm(term);
-  }, [currentIndex, term, initTerm]);
+  const allFilled = slots.length === slotCount && slots.every(s => s !== null);
 
   const handleTileClick = (component: TermComponent) => {
     if (submitted) return;
@@ -305,7 +305,7 @@ export function TermBuilderWorkshop() {
             </>
           ) : (
             <button
-              onClick={() => initTerm(term)}
+              onClick={() => setInitializedIndex(-1)}
               className="flex items-center gap-2 px-5 py-2.5 rounded-2xl text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
             >
               <RotateCcw className="w-4 h-4" />
