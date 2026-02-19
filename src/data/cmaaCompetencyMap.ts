@@ -177,7 +177,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Communication styles',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'communication-styles', label: 'Communication Styles', section: 'Communication', link: '/communication/comm-foundations/communication-styles' },
+          { type: 'lesson', slug: 'communication-styles-and-cycle', label: 'Communication Styles & the Communication Cycle', section: 'Communication', link: '/communication/comm-foundations/communication-styles-and-cycle' },
           { type: 'quiz', slug: 'comm-foundations', label: 'Communication Foundations Quiz', section: 'Communication', link: '/communication/comm-foundations/quiz' },
         ],
       },
@@ -195,7 +195,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Interviewing and questioning techniques (screening, open-ended, closed-ended, probing)',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'questioning-techniques', label: 'Questioning Techniques', section: 'Communication', link: '/communication/comm-foundations/questioning-techniques' },
+          { type: 'lesson', slug: 'interviewing-techniques', label: 'Interviewing & Questioning Techniques', section: 'Communication', link: '/communication/comm-foundations/interviewing-techniques' },
           { type: 'quiz', slug: 'comm-foundations', label: 'Communication Foundations Quiz', section: 'Communication', link: '/communication/comm-foundations/quiz' },
         ],
       },
@@ -205,7 +205,7 @@ export const cmaaDomains: CMAAdomain[] = [
         coverageStatus: 'covered',
         activities: [
           { type: 'ai-practice', slug: 'vytalpath_phone_sim', label: 'Phone Simulator (Angry Patient)', section: 'Practice', link: '/practice/phone-simulator' },
-          { type: 'lesson', slug: 'difficult-situations', label: 'Handling Difficult Situations', section: 'Communication', link: '/communication/difficult-conversations/difficult-situations' },
+          { type: 'lesson', slug: 'difficult-situations-de-escalation', label: 'Handling Difficult Situations & De-escalation', section: 'Communication', link: '/communication/difficult-conversations/difficult-situations-de-escalation' },
           { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
         ],
       },
@@ -223,7 +223,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Gender identity and expression, use of pronouns',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'inclusive-communication', label: 'Inclusive Communication', section: 'Communication', link: '/communication/difficult-conversations/inclusive-communication' },
+          { type: 'lesson', slug: 'gender-identity-inclusivity', label: 'Gender Identity & Inclusive Language', section: 'Communication', link: '/communication/difficult-conversations/gender-identity-inclusivity' },
           { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
         ],
       },
@@ -233,16 +233,7 @@ export const cmaaDomains: CMAAdomain[] = [
         coverageStatus: 'covered',
         activities: [
           { type: 'lesson', slug: 'word-building-decoding-terms', label: 'Word Building: Decoding Terms', section: 'Terminology', link: '/terminology/medical-terminology-basics/word-building-decoding-terms' },
-          { type: 'lesson', slug: 'translating-medical-language', label: 'Translating Medical Language', section: 'Communication', link: '/communication/comm-foundations/translating-medical-language' },
-        ],
-      },
-      {
-        id: 'k20',
-        text: 'Scope of permitted questions and boundaries',
-        coverageStatus: 'covered',
-        activities: [
-          { type: 'lesson', slug: 'scope-of-communication', label: 'Scope of Communication', section: 'Communication', link: '/communication/professional-comm/scope-of-communication' },
-          { type: 'quiz', slug: 'professional-comm', label: 'Professional Communication Quiz', section: 'Communication', link: '/communication/professional-comm/quiz' },
+          { type: 'lesson', slug: 'medical-to-layman-terms', label: 'Translating Medical Language for Patients', section: 'Communication', link: '/communication/comm-foundations/medical-to-layman-terms' },
         ],
       },
       {
@@ -250,7 +241,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Active listening',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'active-listening', label: 'Active Listening', section: 'Communication', link: '/communication/comm-foundations/active-listening' },
+          { type: 'lesson', slug: 'active-listening-empathy', label: 'Active Listening & Showing Empathy', section: 'Communication', link: '/communication/comm-foundations/active-listening-empathy' },
           { type: 'quiz', slug: 'comm-foundations', label: 'Communication Foundations Quiz', section: 'Communication', link: '/communication/comm-foundations/quiz' },
         ],
       },
@@ -259,7 +250,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Empathy and compassion',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'empathy-in-healthcare', label: 'Empathy in Healthcare', section: 'Communication', link: '/communication/difficult-conversations/empathy-in-healthcare' },
+          { type: 'lesson', slug: 'active-listening-empathy', label: 'Active Listening & Showing Empathy', section: 'Communication', link: '/communication/difficult-conversations/active-listening-empathy' },
           { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
         ],
       },
@@ -268,7 +259,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Communication cycle (clear, concise message relay)',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'communication-cycle', label: 'The Communication Cycle', section: 'Communication', link: '/communication/comm-foundations/communication-cycle' },
+          { type: 'lesson', slug: 'communication-styles-and-cycle', label: 'Communication Styles & the Communication Cycle', section: 'Communication', link: '/communication/comm-foundations/communication-styles-and-cycle' },
           { type: 'quiz', slug: 'comm-foundations', label: 'Communication Foundations Quiz', section: 'Communication', link: '/communication/comm-foundations/quiz' },
         ],
       },
@@ -282,21 +273,12 @@ export const cmaaDomains: CMAAdomain[] = [
         ],
       },
       {
-        id: 'k25',
-        text: 'When and how to escalate problem situations',
-        coverageStatus: 'covered',
-        activities: [
-          { type: 'lesson', slug: 'escalation-chain-of-command', label: 'Escalation & Chain of Command', section: 'Communication', link: '/communication/difficult-conversations/escalation-chain-of-command' },
-          { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
-        ],
-      },
-      {
         id: 'k26',
         text: 'Conflict resolution and de-escalation strategies',
         coverageStatus: 'covered',
         activities: [
           { type: 'ai-practice', slug: 'vytalpath_phone_sim', label: 'Phone Simulator (De-escalation)', section: 'Practice', link: '/practice/phone-simulator' },
-          { type: 'lesson', slug: 'de-escalation-conflict-resolution', label: 'De-Escalation & Conflict Resolution', section: 'Communication', link: '/communication/difficult-conversations/de-escalation-conflict-resolution' },
+          { type: 'lesson', slug: 'difficult-situations-de-escalation', label: 'Handling Difficult Situations & De-escalation', section: 'Communication', link: '/communication/difficult-conversations/difficult-situations-de-escalation' },
           { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
         ],
       },
@@ -309,16 +291,7 @@ export const cmaaDomains: CMAAdomain[] = [
           { type: 'lesson', slug: 'phone-system-login', label: 'Phone System Login & Setup', section: 'Workflows', link: '/workflows/lessons/opening/phone-system-login' },
           { type: 'sop', slug: 'balancing-tasks', label: 'Balancing Tasks SOP', section: 'Workflows', link: '/workflows/sops/balancing-tasks' },
           { type: 'sop', slug: 'phone-system-login', label: 'Phone System Login SOP', section: 'Workflows', link: '/workflows/sops/phone-system-login' },
-          { type: 'lesson', slug: 'telephone-email-etiquette', label: 'Telephone & Email Etiquette', section: 'Communication', link: '/communication/professional-comm/telephone-email-etiquette' },
-          { type: 'quiz', slug: 'professional-comm', label: 'Professional Communication Quiz', section: 'Communication', link: '/communication/professional-comm/quiz' },
-        ],
-      },
-      {
-        id: 'k28',
-        text: 'Proper use of intraoffice messaging (chat, EHR messaging templates)',
-        coverageStatus: 'covered',
-        activities: [
-          { type: 'lesson', slug: 'intraoffice-communication', label: 'Intraoffice Communication', section: 'Communication', link: '/communication/professional-comm/intraoffice-communication' },
+          { type: 'lesson', slug: 'telecom-email-messaging', label: 'Telephone, Email & Intraoffice Messaging', section: 'Communication', link: '/communication/professional-comm/telecom-email-messaging' },
           { type: 'quiz', slug: 'professional-comm', label: 'Professional Communication Quiz', section: 'Communication', link: '/communication/professional-comm/quiz' },
         ],
       },
@@ -327,7 +300,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Documentation requirements for communication and correspondence',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'documentation-communication', label: 'Documentation & Communication Records', section: 'Communication', link: '/communication/professional-comm/documentation-communication' },
+          { type: 'lesson', slug: 'documentation-community-resources', label: 'Documenting Communications & Community Resources', section: 'Communication', link: '/communication/professional-comm/documentation-community-resources' },
           { type: 'quiz', slug: 'professional-comm', label: 'Professional Communication Quiz', section: 'Communication', link: '/communication/professional-comm/quiz' },
         ],
       },
@@ -336,7 +309,7 @@ export const cmaaDomains: CMAAdomain[] = [
         text: 'Available educational and community resources',
         coverageStatus: 'covered',
         activities: [
-          { type: 'lesson', slug: 'community-resources', label: 'Educational & Community Resources', section: 'Communication', link: '/communication/difficult-conversations/community-resources' },
+          { type: 'lesson', slug: 'documentation-community-resources', label: 'Documenting Communications & Community Resources', section: 'Communication', link: '/communication/professional-comm/documentation-community-resources' },
           { type: 'quiz', slug: 'difficult-conversations', label: 'Difficult Conversations Quiz', section: 'Communication', link: '/communication/difficult-conversations/quiz' },
         ],
       },
