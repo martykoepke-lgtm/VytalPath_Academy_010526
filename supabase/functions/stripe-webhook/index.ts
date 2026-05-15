@@ -83,45 +83,77 @@ async function handleCheckoutComplete(
   supabase: ReturnType<typeof createClient>,
   session: Stripe.Checkout.Session
 ) {
-  console.log('Checkout completed:', session.id)
+  console.log('Checkout completed:', session.id, 'Mode:', session.mode)
 
-  // Get metadata to determine user/org
   const metadata = session.metadata || {}
   const userId = metadata.user_id
   const orgId = metadata.org_id
   const subscriptionType = metadata.subscription_type // 'individual' or 'org'
 
-  if (!session.customer || !session.subscription) {
-    console.error('Missing customer or subscription in session')
+  if (!session.customer) {
+    console.error('Missing customer in session')
     return
   }
 
   const customerId = session.customer as string
-  const subscriptionId = session.subscription as string
 
-  // Fetch full subscription details
-  const subscription = await stripe.subscriptions.retrieve(subscriptionId)
-
-  if (subscriptionType === 'individual' && userId) {
-    // Create/update stripe_customers record
+  // One-time payment for individual access (1-year hard stop)
+  if (session.mode === 'payment' && subscriptionType === 'individual' && userId) {
     await supabase.from('stripe_customers').upsert({
       user_id: userId,
       stripe_customer_id: customerId,
       email: session.customer_email || ''
     }, { onConflict: 'user_id' })
 
-    // Create subscription record
+    // Look up the price ID from the checkout session line items
+    const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 1 })
+    const priceId = lineItems.data[0]?.price?.id || ''
+
+    const now = new Date()
+    const accessEnd = new Date(now)
+    accessEnd.setFullYear(now.getFullYear() + 1)
+
+    await supabase.from('subscriptions').upsert({
+      user_id: userId,
+      stripe_customer_id: customerId,
+      stripe_subscription_id: session.id, // checkout session ID — there's no Stripe subscription for one-time payments
+      stripe_price_id: priceId,
+      status: 'active',
+      current_period_start: now.toISOString(),
+      current_period_end: accessEnd.toISOString(),
+      cancel_at_period_end: true, // access does not renew
+      canceled_at: null
+    }, { onConflict: 'stripe_subscription_id' })
+
+    console.log('Granted 1-year access for user:', userId, 'until', accessEnd.toISOString())
+    return
+  }
+
+  // Subscription-based flow (org subscriptions, or any legacy individual subscription)
+  if (!session.subscription) {
+    console.error('Missing subscription in session for subscription-mode checkout')
+    return
+  }
+
+  const subscriptionId = session.subscription as string
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+
+  if (subscriptionType === 'individual' && userId) {
+    await supabase.from('stripe_customers').upsert({
+      user_id: userId,
+      stripe_customer_id: customerId,
+      email: session.customer_email || ''
+    }, { onConflict: 'user_id' })
+
     await upsertIndividualSubscription(supabase, userId, subscription)
 
   } else if (subscriptionType === 'org' && orgId) {
-    // Create/update stripe_customers record for org
     await supabase.from('stripe_customers').upsert({
       org_id: orgId,
       stripe_customer_id: customerId,
       email: session.customer_email || ''
     }, { onConflict: 'org_id' })
 
-    // Create org subscription record
     await upsertOrgSubscription(supabase, orgId, subscription)
   }
 }

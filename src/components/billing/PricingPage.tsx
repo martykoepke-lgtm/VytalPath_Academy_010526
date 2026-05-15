@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Check, ArrowLeft, Loader2, AlertCircle } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -6,14 +6,21 @@ import { useSubscription } from '../../contexts/SubscriptionContext';
 
 export function PricingPage() {
   const { user } = useAuth();
-  const { hasAccess, accessType, createCheckoutSession } = useSubscription();
+  const { hasAccess, loading: subscriptionLoading, createCheckoutSession } = useSubscription();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
 
   // Get the return URL from state if available
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/foundations';
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/welcome';
+
+  // If the user already has access, send them straight into the app.
+  useEffect(() => {
+    if (!subscriptionLoading && hasAccess) {
+      navigate(from, { replace: true });
+    }
+  }, [hasAccess, subscriptionLoading, from, navigate]);
 
   const handleSubscribe = async () => {
     if (!user) {
@@ -39,25 +46,12 @@ export function PricingPage() {
     }
   };
 
-  // If user already has access, show a message
-  if (hasAccess) {
+  // Brief loading state while we resolve whether the user already has access
+  // (the useEffect above routes them onward if they do).
+  if (subscriptionLoading || hasAccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-          <div className="bg-green-50 border border-green-200 rounded-xl p-8">
-            <Check className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">You're All Set!</h1>
-            <p className="text-gray-600 mb-6">
-              You have an active {accessType === 'organization' ? 'organization' : 'individual'} subscription.
-            </p>
-            <Link
-              to={from}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Continue to Training
-            </Link>
-          </div>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
       </div>
     );
   }
@@ -106,9 +100,8 @@ export function PricingPage() {
             <div className="px-8 py-8 border-b border-gray-100">
               <div className="flex items-baseline gap-2">
                 <span className="text-5xl font-bold text-gray-900">$327</span>
-                <span className="text-gray-500">/year</span>
               </div>
-              <p className="text-gray-500 mt-2">Billed annually</p>
+              <p className="text-gray-500 mt-2">One-time payment · 1 year of access · No auto-renewal</p>
             </div>
 
             {/* Features */}
@@ -145,7 +138,7 @@ export function PricingPage() {
                     Processing...
                   </>
                 ) : (
-                  'Subscribe Now'
+                  'Pay $327 — Full Year Access'
                 )}
               </button>
               <p className="text-center text-sm text-gray-500 mt-4">

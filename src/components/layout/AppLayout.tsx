@@ -55,10 +55,13 @@ export function AppLayout() {
     navigate('/', { replace: true });
   };
 
-  // Don't show navigation on landing page
-  const isLandingPage = location.pathname === '/';
+  // Don't show in-app navigation on the public/paywall pages.
+  // /pricing is the paywall — users without a subscription land here, and
+  // showing the sidebar + AI tutor would falsely suggest they already have access.
+  const isUnshelledPage =
+    location.pathname === '/' || location.pathname === '/pricing';
 
-  if (isLandingPage) {
+  if (isUnshelledPage) {
     return <Outlet />;
   }
 

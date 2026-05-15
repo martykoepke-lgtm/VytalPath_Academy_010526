@@ -233,10 +233,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signInWithGoogle = async () => {
+    // Always land at /pricing after Google sign-in. If the user already has
+    // access, the PricingPage will route them onward. If they don't, this is
+    // exactly where they need to be — no in-app shell, no confusion.
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin,
+        redirectTo: `${window.location.origin}/pricing`,
       },
     });
     return { error };

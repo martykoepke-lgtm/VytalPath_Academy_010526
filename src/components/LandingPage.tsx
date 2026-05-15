@@ -10,7 +10,6 @@ import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { ForgotPassword } from './ForgotPassword';
 import { CurriculumModal } from './CurriculumModal';
-import { SubscriptionModal } from './SubscriptionModal';
 import { useAuth } from '../contexts/AuthContext';
 import { useSubscription } from '../contexts/SubscriptionContext';
 
@@ -70,46 +69,32 @@ export function LandingPage() {
   const [authModal, setAuthModal] = useState<AuthModal>(null);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [subscriptionModalDismissed, setSubscriptionModalDismissed] = useState(() => {
-    return localStorage.getItem('vytalpath_subscription_modal_dismissed') === 'true';
-  });
 
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, session } = useAuth();
+  const { user } = useAuth();
   const { hasAccess, loading: subscriptionLoading } = useSubscription();
   const state = location.state as LocationState | null;
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Auto-show sign-in modal when redirected from protected route
+  // Auto-show sign-in modal when redirected from a protected route
   useEffect(() => {
     if (state?.showSignIn && !user) {
       setAuthModal('signIn');
     }
   }, [state, user]);
 
-  // Redirect to intended destination after sign-in (only when redirected from a protected route)
+  // Single source of truth for "where should a signed-in visitor go?"
+  // The landing page is for unauthenticated visitors only — once a user is
+  // signed in we route them away based on subscription state.
   useEffect(() => {
-    if (user && state?.from) {
+    if (!user || subscriptionLoading) return;
+    if (state?.from) {
       navigate(state.from.pathname, { replace: true });
+      return;
     }
-  }, [user, state, navigate]);
-
-  // Clear dismissal flag if user gains access (subscribed)
-  useEffect(() => {
-    if (session && !subscriptionLoading && hasAccess && subscriptionModalDismissed) {
-      localStorage.removeItem('vytalpath_subscription_modal_dismissed');
-      setSubscriptionModalDismissed(false);
-    }
-  }, [session, subscriptionLoading, hasAccess, subscriptionModalDismissed]);
-
-  // Show subscription modal for logged-in users without access
-  const showSubscriptionModal = session && !subscriptionLoading && !hasAccess && !subscriptionModalDismissed;
-
-  const handleDismissSubscriptionModal = () => {
-    localStorage.setItem('vytalpath_subscription_modal_dismissed', 'true');
-    setSubscriptionModalDismissed(true);
-  };
+    navigate(hasAccess ? '/welcome' : '/pricing', { replace: true });
+  }, [user, hasAccess, subscriptionLoading, state, navigate]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -187,18 +172,11 @@ export function LandingPage() {
                   onClick={() => setAuthModal('signUp')}
                   className="group px-8 py-3.5 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg flex items-center gap-2"
                 >
-                  Pay in Full — $327
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-                <button
-                  onClick={() => setAuthModal('signUp')}
-                  className="group px-8 py-3.5 text-lg font-medium text-gray-900 bg-white border-2 border-gray-900 rounded-2xl hover:bg-gray-50 transition-all duration-300 shadow-apple-sm hover:shadow-apple flex items-center gap-2"
-                >
-                  3 Payments of $109
+                  Get Started — $327
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
-              <p className="text-sm text-gray-500">3-day money-back guarantee on both options</p>
+              <p className="text-sm text-gray-500">One-time payment · Full year of access · 3-day money-back guarantee</p>
               <button
                 onClick={() => setShowCurriculum(true)}
                 className="px-8 py-3.5 text-lg font-medium text-gray-700 border-2 border-gray-200 rounded-2xl hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
@@ -611,16 +589,10 @@ export function LandingPage() {
                 onClick={() => setAuthModal('signUp')}
                 className="px-8 py-3.5 text-lg font-medium text-white bg-gray-900 rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-apple hover:shadow-apple-lg"
               >
-                Pay in Full — $327
-              </button>
-              <button
-                onClick={() => setAuthModal('signUp')}
-                className="px-8 py-3.5 text-lg font-medium text-gray-900 bg-white border-2 border-gray-900 rounded-2xl hover:bg-gray-50 transition-all duration-300 shadow-apple-sm hover:shadow-apple"
-              >
-                3 Payments of $109
+                Get Started — $327
               </button>
             </div>
-            <p className="text-sm text-gray-500 mt-3">3-day money-back guarantee · Full year of access</p>
+            <p className="text-sm text-gray-500 mt-3">One-time payment · Full year of access · 3-day money-back guarantee</p>
           </div>
 
           {/* Volume pricing callout */}
@@ -731,16 +703,10 @@ export function LandingPage() {
               onClick={() => setAuthModal('signUp')}
               className="px-8 py-4 text-lg font-medium text-gray-900 bg-white rounded-2xl hover:bg-gray-100 transition-all duration-300 shadow-apple hover:shadow-apple-lg"
             >
-              Pay in Full — $327
-            </button>
-            <button
-              onClick={() => setAuthModal('signUp')}
-              className="px-8 py-4 text-lg font-medium text-white border-2 border-white rounded-2xl hover:bg-white/10 transition-all duration-300"
-            >
-              3 Payments of $109
+              Get Started — $327
             </button>
           </div>
-          <p className="text-sm text-gray-500 mt-4">3-day money-back guarantee · Full year of access</p>
+          <p className="text-sm text-gray-500 mt-4">One-time payment · Full year of access · 3-day money-back guarantee</p>
         </div>
       </section>
 
@@ -801,14 +767,6 @@ export function LandingPage() {
 
       {/* Curriculum Modal */}
       <CurriculumModal isOpen={showCurriculum} onClose={() => setShowCurriculum(false)} />
-
-      {/* Subscription Modal - for logged-in users without subscription */}
-      {showSubscriptionModal && (
-        <SubscriptionModal
-          onClose={handleDismissSubscriptionModal}
-          dismissible={true}
-        />
-      )}
     </div>
   );
 }

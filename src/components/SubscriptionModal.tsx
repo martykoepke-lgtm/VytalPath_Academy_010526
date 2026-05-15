@@ -10,12 +10,11 @@ interface SubscriptionModalProps {
 export function SubscriptionModal({ onClose, dismissible = false }: SubscriptionModalProps) {
   const { createCheckoutSession } = useSubscription();
   const [loading, setLoading] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<'full' | 'installment'>('full');
 
   const handleSubscribe = async () => {
     setLoading(true);
     try {
-      const url = await createCheckoutSession('individual', undefined, undefined, selectedPlan);
+      const url = await createCheckoutSession('individual');
       if (url) {
         window.location.href = url;
       } else {
@@ -75,48 +74,15 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
             </div>
           </div>
 
-          {/* Pricing Options */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {/* Pay in Full */}
-            <button
-              type="button"
-              onClick={() => setSelectedPlan('full')}
-              className={`rounded-xl p-5 relative text-left transition-all duration-200 ${
-                selectedPlan === 'full'
-                  ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500 ring-2 ring-blue-200'
-                  : 'bg-gray-50 border-2 border-gray-200 opacity-60 hover:opacity-80'
-              }`}
-            >
-              <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full whitespace-nowrap">
-                Best Value
+          {/* Pricing */}
+          <div className="mb-6">
+            <div className="rounded-xl p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500 text-center">
+              <div className="text-4xl font-bold text-gray-900 mb-1">
+                $327
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 mb-0.5">
-                  $327
-                </div>
-                <p className="text-sm text-gray-600 font-medium">One-time payment</p>
-                <p className="text-xs text-gray-500 mt-1">Full year of access</p>
-              </div>
-            </button>
-
-            {/* 3-Payment Plan */}
-            <button
-              type="button"
-              onClick={() => setSelectedPlan('installment')}
-              className={`rounded-xl p-5 relative text-left transition-all duration-200 ${
-                selectedPlan === 'installment'
-                  ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-500 ring-2 ring-blue-200'
-                  : 'bg-gray-50 border-2 border-gray-200 opacity-60 hover:opacity-80'
-              }`}
-            >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 mb-0.5">
-                  3 <span className="text-xl">x</span> $109
-                </div>
-                <p className="text-sm text-gray-600 font-medium">3 monthly payments</p>
-                <p className="text-xs text-gray-500 mt-1">Same full access</p>
-              </div>
-            </button>
+              <p className="text-sm text-gray-700 font-medium">One-time payment</p>
+              <p className="text-xs text-gray-500 mt-1">Full year of access · No auto-renewal</p>
+            </div>
           </div>
 
           <p className="text-xs text-center text-gray-500 mb-4">
@@ -134,10 +100,8 @@ export function SubscriptionModal({ onClose, dismissible = false }: Subscription
                 <Loader2 className="w-5 h-5 animate-spin" />
                 Redirecting to checkout...
               </>
-            ) : selectedPlan === 'full' ? (
-              'Pay $327 — Full Year Access'
             ) : (
-              'Start 3 Monthly Payments of $109'
+              'Pay $327 — Full Year Access'
             )}
           </button>
 

@@ -15,7 +15,7 @@ interface SubscriptionStatus {
 interface SubscriptionContextType extends SubscriptionStatus {
   loading: boolean;
   refresh: () => Promise<void>;
-  createCheckoutSession: (priceType: 'individual' | 'org', orgId?: string, quantity?: number, paymentPlan?: 'full' | 'installment') => Promise<string | null>;
+  createCheckoutSession: (priceType: 'individual' | 'org', orgId?: string, quantity?: number) => Promise<string | null>;
   openCustomerPortal: () => Promise<string | null>;
   cancelSubscription: () => Promise<{ success: boolean; refundAmount: number; error?: string }>;
 }
@@ -116,8 +116,7 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
   const createCheckoutSession = async (
     priceType: 'individual' | 'org',
     orgId?: string,
-    quantity?: number,
-    paymentPlan?: 'full' | 'installment'
+    quantity?: number
   ): Promise<string | null> => {
     try {
       const { data: { session } } = await supabase.auth.getSession();
@@ -138,7 +137,6 @@ export function SubscriptionProvider({ children }: { children: ReactNode }) {
             price_type: priceType,
             org_id: orgId,
             quantity,
-            payment_plan: paymentPlan,
           }),
         }
       );

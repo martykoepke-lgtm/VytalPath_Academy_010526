@@ -55,10 +55,17 @@ Deno.serve(async (req) => {
     const body: CheckoutRequest = await req.json()
     const { price_type, payment_plan = 'full', org_id, quantity = 1, success_url, cancel_url } = body
 
+    // Installment plan was removed — individual access is a one-time payment for 1 year
+    if (price_type === 'individual' && payment_plan === 'installment') {
+      return new Response(
+        JSON.stringify({ error: 'Installment plan is no longer offered. Please use the one-time payment option.' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
     // Get or create Stripe customer
     let customerId: string
 
-    // Check if customer exists
     const { data: existingCustomer } = await supabase
       .from('stripe_customers')
       .select('stripe_customer_id')
@@ -68,7 +75,6 @@ Deno.serve(async (req) => {
     if (existingCustomer?.stripe_customer_id) {
       customerId = existingCustomer.stripe_customer_id
     } else {
-      // Create new Stripe customer
       const customer = await stripe.customers.create({
         email: user.email,
         metadata: {
@@ -79,19 +85,11 @@ Deno.serve(async (req) => {
       customerId = customer.id
     }
 
-    // Get price ID based on type and payment plan
+    // Get price IDs
     const individualPriceId = Deno.env.get('STRIPE_INDIVIDUAL_PRICE_ID')
-    const installmentPriceId = Deno.env.get('STRIPE_INDIVIDUAL_INSTALLMENT_PRICE_ID')
     const orgSeatPriceId = Deno.env.get('STRIPE_ORG_SEAT_PRICE_ID')
 
-    if (price_type === 'individual' && payment_plan === 'installment' && !installmentPriceId) {
-      return new Response(
-        JSON.stringify({ error: 'Installment price not configured' }),
-        { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
-    }
-
-    if (price_type === 'individual' && payment_plan !== 'installment' && !individualPriceId) {
+    if (price_type === 'individual' && !individualPriceId) {
       return new Response(
         JSON.stringify({ error: 'Individual price not configured' }),
         { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -129,48 +127,40 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Build line items — select price based on payment plan
-    const isInstallment = price_type === 'individual' && payment_plan === 'installment'
-    const selectedPriceId = price_type === 'org'
-      ? orgSeatPriceId
-      : isInstallment
-        ? installmentPriceId
-        : individualPriceId
+    // Build checkout session — different mode for individual (one-time) vs org (subscription)
+    const isIndividual = price_type === 'individual'
 
-    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = price_type === 'org'
-      ? [{ price: selectedPriceId, quantity }]
-      : [{ price: selectedPriceId, quantity: 1 }]
-
-    // For installment plans, auto-cancel after 3 billing cycles (~90 days)
-    const subscriptionData: Stripe.Checkout.SessionCreateParams.SubscriptionData = {
-      metadata: {
-        user_id: user.id,
-        subscription_type: price_type,
-        payment_plan,
-        ...(org_id && { org_id })
-      },
-      ...(isInstallment && {
-        cancel_at: Math.floor(Date.now() / 1000) + (90 * 24 * 60 * 60)
-      })
-    }
-
-    // Create checkout session
-    const session = await stripe.checkout.sessions.create({
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       customer: customerId,
-      mode: 'subscription',
+      mode: isIndividual ? 'payment' : 'subscription',
       payment_method_types: ['card'],
-      line_items: lineItems,
+      line_items: isIndividual
+        ? [{ price: individualPriceId, quantity: 1 }]
+        : [{ price: orgSeatPriceId, quantity }],
       success_url: success_url || `${req.headers.get('origin')}/foundations?checkout=success`,
       cancel_url: cancel_url || `${req.headers.get('origin')}/pricing?checkout=canceled`,
       metadata: {
         user_id: user.id,
         subscription_type: price_type,
-        payment_plan,
+        payment_plan: 'full',
         ...(org_id && { org_id })
       },
-      subscription_data: subscriptionData,
       allow_promotion_codes: true,
-    })
+    }
+
+    // subscription_data is only valid for mode='subscription' (org plans)
+    if (!isIndividual) {
+      sessionParams.subscription_data = {
+        metadata: {
+          user_id: user.id,
+          subscription_type: price_type,
+          payment_plan: 'full',
+          ...(org_id && { org_id })
+        }
+      }
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionParams)
 
     return new Response(
       JSON.stringify({
