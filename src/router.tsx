@@ -18,7 +18,6 @@ import { SuperAdminDashboard } from './components/admin/SuperAdminDashboard';
 import { OrgAdminDashboard } from './components/admin/OrgAdminDashboard';
 import { CreateOrganization } from './components/admin/CreateOrganization';
 import { AdminRedirect } from './components/admin/AdminRedirect';
-import { JoinOrganization } from './components/join/JoinOrganization';
 import { ResetPassword } from './components/auth/ResetPassword';
 import { FoundationsSection } from './components/sections/FoundationsSection';
 import { MedicalLawEthicsSection } from './components/sections/MedicalLawEthicsSection';
@@ -283,11 +282,6 @@ export const router = createBrowserRouter([
       {
         path: 'admin/orgs/:orgSlug',
         element: <OrgAdminRoute><OrgAdminDashboard /></OrgAdminRoute>,
-      },
-      // Student Join Route
-      {
-        path: 'join/:code',
-        element: <JoinOrganization />,
       },
       // Password Reset Route
       {
