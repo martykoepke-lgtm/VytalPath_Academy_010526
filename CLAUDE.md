@@ -1,12 +1,16 @@
 # VytalPath Academy
 
+> ⚠️ **Architectural pivot in progress (started 2026-05-14).** This app is being simplified from multi-tenant (orgs + individuals) to single-tenant (individuals only). See [DECISIONS.md](./DECISIONS.md) — ADR-001 (single-tenant pivot), ADR-002 (drop View As toggle), ADR-003 (admin role via hardcoded email list). See [ARCHITECTURE.md](./ARCHITECTURE.md) for the target shape, and [MIGRATION_PLAN.md](./MIGRATION_PLAN.md) for the phase-by-phase execution. Code still contains org-related modules that are scheduled for removal; **do not extend the org feature** — it is being deleted.
+>
+> **Post-pivot role model:** exactly two roles — `admin` and `student`. Admin is identified by email match against `ADMIN_EMAILS` in `AuthContext.tsx` (currently just `mkoepkeci@gmail.com`). Every other authenticated user is `student`. No `org_admin`, no "View As" toggle, no DB-stored role. To grow the admin list, edit `ADMIN_EMAILS` and redeploy (see ADR-003 for the upgrade path when 3+ admins are needed). To test the student experience as admin, sign in with a test student account in an Incognito window.
+
 ## Project Overview
 
 **VytalPath Academy** is a comprehensive training platform designed for healthcare front office staff. It provides video lessons, reading lessons with slide-based content, interactive exercises, medical terminology study tools, 24 standard operating procedures (SOPs), a built-in EHR Practice Lab simulation, job readiness tools, competency progress tracking, completion certificates, and an account management system with subscription handling.
 
 **Target Users:** Front office staff, medical receptionists, referral coordinators, clinic employees
 
-**Business Model:** $327/year individual access, tiered pricing for organizations
+**Business Model:** $327/year individual access. Promotional discounts via promo codes if needed. No org or seat-tiered pricing.
 
 **Competitive Position:** Priced between free platforms (Alison) and expensive certification programs (Stepful at $1,000+). Unique differentiators: built-in EHR Practice Lab simulation, competency progress tracking, 24 SOP workflow guides, interactive exercises, deep insurance training, completion certificates.
 
@@ -74,9 +78,9 @@ src/
 │   │   ├── CancellationPolicy.tsx       # Cancellation & refund policy display
 │   │   └── FAQ.tsx                      # Account FAQ
 │   ├── admin/                 # Admin dashboards
-│   │   ├── SuperAdminDashboard.tsx      # Platform-wide management + certificate generator
-│   │   ├── OrgAdminDashboard.tsx        # Organization management
-│   │   └── OrgAdminRoute.tsx            # Route protection
+│   │   ├── SuperAdminDashboard.tsx      # Student progress, subscriptions, certificates (admin only — file will be renamed to AdminDashboard.tsx in Phase 2d)
+│   │   ├── OrgAdminDashboard.tsx        # ⚠️ Being removed in pivot Phase 2b (see MIGRATION_PLAN.md)
+│   │   └── OrgAdminRoute.tsx            # ⚠️ Being removed in pivot Phase 2b
 │   ├── auth/                  # Authentication components
 │   │   ├── AuthRoute.tsx                # Authenticated + subscribed route guard
 │   │   ├── AuthOnlyRoute.tsx            # Authenticated-only route guard (no subscription check)
@@ -85,7 +89,7 @@ src/
 │   │   └── CertificatePage.tsx          # Completion certificate (locked after generation)
 │   ├── layout/
 │   │   ├── AppLayout.tsx                # Main layout with sidebar + sticky top banner
-│   │   └── RoleBasedSidebar.tsx         # Grouped sidebar nav (Learn/Practice/Track) + View As toggle
+│   │   └── RoleBasedSidebar.tsx         # Grouped sidebar nav (Learn/Practice/Track), admin variant adds Admin link
 │   ├── LandingPage.tsx        # Public marketing page
 │   ├── StickyBanner.tsx       # Top banner with user email, logo, Account link
 │   ├── ProgramIntro.tsx       # Authenticated welcome/overview page
@@ -95,7 +99,7 @@ src/
 │   ├── cmaaCompetencyMap.ts   # 101 knowledge statements mapped to lessons
 │   └── phoneCallScenarios.ts  # Phone simulation scenario data
 ├── contexts/
-│   ├── AuthContext.tsx        # Supabase auth + role detection + View As switching
+│   ├── AuthContext.tsx        # Supabase auth + role detection (admin vs student)
 │   ├── ProgressContext.tsx    # Lesson/quiz progress tracking
 │   └── SubscriptionContext.tsx # Subscription status, checkout, cancellation
 ├── types/
@@ -140,7 +144,7 @@ supabase/
 - Sticky (`sticky top-0 z-40`) — always visible on scroll
 
 ### Sidebar Navigation (`RoleBasedSidebar.tsx`)
-The sidebar uses grouped navigation with a View As toggle for super admins:
+The sidebar uses grouped navigation. Two variants by role: `student` (default) and `admin` (adds the Admin Dashboard link).
 
 ```
 Welcome                          (/welcome)
@@ -162,17 +166,11 @@ AI Study Guide                   (/ai-guide)
   Search                         (/search)
   Account                        (/account)
 ───
-  [Admin Dashboard]              (admins only)
-  [View As toggle]               (super admins only: Admin | Org Admin | Student)
+  [Admin Dashboard]              (admin only)
   [Sign Out]
 ```
 
-### View As Toggle (Super Admin Only)
-- Segmented control at sidebar bottom: **Admin** | **Org Admin** | **Student**
-- Changes sidebar navigation and admin link visibility
-- Does NOT affect route guards (super admin retains full access)
-- State stored in `AuthContext.viewAs` / `effectiveRoleInfo`
-- Resets on sign-out and page refresh (session-only, not persisted)
+No "View As" role-preview toggle (removed per [DECISIONS.md](./DECISIONS.md) ADR-002). To test the student experience as admin, sign in with a test student account in an Incognito window.
 
 ## Training Curriculum (9 Live Sections)
 
@@ -364,7 +362,7 @@ Professional communication skills for healthcare front office.
 ### Certificate System (`/certificate`)
 - Generates a locked completion certificate with unique certificate number
 - Stored in Supabase `certificates` table (one per user, RLS-protected)
-- Super admins can view all certificates and generate on-the-fly certificates
+- Admins can view all certificates and generate on-the-fly certificates
 - RPCs: `get_all_certificates()`, `admin_delete_certificate()`
 
 ### Account Management (`/account`)
@@ -375,7 +373,7 @@ Professional communication skills for healthcare front office.
 - Edge function: `process-cancellation` for server-side cancellation
 
 ### Subscription System (`SubscriptionContext.tsx`)
-- Tracks access type: `individual` | `organization` | `none`
+- Tracks access type: `individual` | `none` (after pivot — `organization` value is being removed in MIGRATION_PLAN Phase 2c)
 - Subscription status, period dates, cancel-at-period-end flag
 - Checkout session creation (Stripe integration)
 - Customer portal access
@@ -391,21 +389,25 @@ Professional communication skills for healthcare front office.
 - `user_sop_progress` - Session-based progress tracking
 - `certificates` - Locked student certificates (id, user_id, student_name, certificate_number, issued_at, is_locked; unique per user)
 
-### Organization Tables
-- `organizations` - Org details (id, name, slug, settings)
-- `org_members` - User-org relationships (user_id, org_id, role, status)
-- `invitations` - Unified invitation system (token, email, role, max_uses, expires_at)
-- `user_profiles` - User display info (first_name, last_name, display_name)
+### User Profile Table
+- `user_profiles` - Display info (first_name, last_name, display_name)
 
-### RPC Functions
-- `ensure_user_membership()` - Creates/returns student membership on login
-- `check_org_admin()` - Verifies org admin status for route guards
-- `get_all_organizations()` - Lists all orgs (super admin only)
-- `get_org_invitations()` / `get_org_admins()` - Org-scoped data
-- `create_invitation()` / `cancel_invitation()` / `accept_invitation()` - Invitation lifecycle
-- `remove_org_member()` - Remove student/admin from org
-- `get_all_certificates()` - All certificates (super admin only)
-- `admin_delete_certificate()` - Delete a certificate (super admin only)
+### ⚠️ Organization Tables (being removed in pivot Phase 3c)
+The following tables are scheduled for deletion per [MIGRATION_PLAN.md](./MIGRATION_PLAN.md). Do not add new code that depends on them.
+- `organizations`, `org_members`, `org_subscriptions`, `invitations`, `pending_org_admins`
+
+**⚠️ Pre-drop dependency:** before these tables can be dropped, three surviving functions (`has_active_access`, `get_user_subscription_status`, `get_students_refund_status`) must have their "or-org-access" branches removed. See MIGRATION_PLAN.md Phase 3a.
+
+### RPC Functions (post-pivot, surviving set)
+- `save_lesson_complete()`, `save_quiz_attempt()`, `load_user_progress()`, `bulk_sync_progress()` - Progress tracking
+- `get_user_subscription_status()`, `has_active_access()` - Subscription state
+- `get_all_certificates()` - All certificates (admin only)
+- `admin_delete_certificate()` - Delete a certificate (admin only)
+- `search_terms()` - Medical terminology trigram search
+
+### ⚠️ Org-related RPCs (being removed in pivot Phase 3b)
+The following RPCs are scheduled for deletion. Do not call them from new code.
+- `accept_invitation`, `add_org_admin_by_email`, `add_org_creator_as_admin`, `cancel_invitation`, `check_org_admin`, `create_invitation`, `ensure_user_membership`, `get_invitation`, `get_org_admins`, `get_org_invitations`, `get_org_members`, `get_self_registered_students`, `get_user_email_by_id`, `is_org_admin`, `remove_org_member`, `use_invite_link`
 
 ### Key Types
 ```typescript
@@ -539,25 +541,19 @@ Each section uses a distinct Tailwind color for its icon/accent:
 
 ## Business Strategy
 
-### Pricing Tiers
+### Pricing
 
-**Individual:** $327/year (1 year access)
-- All 9 training sections
-- 80+ lessons, 18 quizzes & 24 SOPs
+**$327/year individual access.** Single price point. Promotional discounts handled via Stripe promo codes when needed. No org pricing, no seat tiers, no annual recurring beyond the first 1-year term — purchase grants exactly 12 months of access.
+
+What's included:
+- All 9 training sections (80+ lessons, 18 quizzes, 24 SOPs)
 - Hands-on EHR Practice Lab
 - Job readiness tools & mock interviews
 - AI study assistant on every page
+- Competency progress tracking
 - Completion certificate
-- Account management with subscription portal
+- Self-service account management
 - New content added regularly
-
-**Organization Pricing (Planned):**
-| Tier | Seats | Price/Seat/Year |
-|------|-------|-----------------|
-| Starter | 1-5 | $327 |
-| Team | 6-15 | $245 (25% off) |
-| Clinic | 16-50 | $183 (44% off) |
-| Enterprise | 51+ | $121 (63% off) |
 
 ### Competitive Analysis
 
@@ -593,44 +589,43 @@ Each section uses a distinct Tailwind color for its icon/accent:
 - Staffing agencies placing healthcare admin workers
 - Healthcare certification candidates needing study support
 
-## Organization & Role System
+## Roles
 
-### Three Roles
-1. **Super Admin** - Hardcoded emails in `AuthContext.tsx` (`SUPER_ADMIN_EMAILS`)
-   - Full platform access at `/admin`
-   - Create/manage organizations
-   - Add Org Admins by email or invite link
-   - View all students, progress, and certificates
-   - **View As toggle** — switch sidebar between Admin/Org Admin/Student views
-   - Certificate generator (on-the-fly creation from dashboard)
+VytalPath has **two roles**, with no role stored in the database — both are derived from the user's email at sign-in.
 
-2. **Org Admin** - Stored in `org_members` with `role='admin'`
-   - Access their org at `/admin/orgs/:slug`
-   - Create student invite links
-   - Manage students, view progress
-   - Remove members
+### `admin`
+- Hardcoded email match in `AuthContext.tsx` (`ADMIN_EMAILS`).
+- Access to the Admin Dashboard at `/admin`:
+  - Student progress tracking (per-user `completion_percentage`, `last_progress_sync`, `days_enrolled`)
+  - Subscription and refund status for all subscribers
+  - Certificate management (view all, generate on the fly, delete)
+  - User list with subscription status
+- Everything a `student` can do, plus the above.
 
-3. **Student** - Default role
-   - Access all learning content (9 sections)
-   - Access EHR Practice Lab and Job Readiness tools
-   - Track competency progress
-   - Generate completion certificate
-   - Manage account and subscription at `/account`
-   - Can be org-based or self-registered
+### `student`
+- Every authenticated user who is not in `ADMIN_EMAILS`.
+- Access lessons, EHR Practice Lab, search, Job Readiness, terminology, account/subscription, certificate.
+- Subscription-gated routes wrapped in `<AuthRoute>` (requires both auth + active subscription).
+- Account routes wrapped in `<AuthOnlyRoute>` (auth, no subscription required).
 
-### View As System (Super Admin)
-- `AuthContext` exposes: `viewAs`, `setViewAs()`, `effectiveRoleInfo`
-- `viewAs` type: `'super_admin' | 'org_admin' | 'student' | null`
-- `effectiveRoleInfo` overrides `roleInfo` for UI display when `viewAs` is set
-- `RoleBasedSidebar` and `MobileBottomNav` read `effectiveRoleInfo` for navigation rendering
-- Route guards (`AdminRoute`, `OrgAdminRoute`, `AuthRoute`) always use real `roleInfo` — security unchanged
-- Toggle resets on sign-out and page refresh
+### Role resolution (after the pivot)
 
-### Invitation System
-- Unified `invitations` table replaces old system
-- Two types: email-specific (single use) or shareable link (unlimited/limited uses)
-- Flow: Admin creates invite → User visits `/join/:token` → Signs up → Auto-assigned to org
-- RPC functions: `create_invitation()`, `get_invitation()`, `accept_invitation()`
+```typescript
+const role = ADMIN_EMAILS.includes(currentUser.email)
+  ? 'admin'
+  : 'student';
+```
+
+That's it. No RPC call, no `org_members` lookup, no `viewAs` state. See [DECISIONS.md](./DECISIONS.md) ADR-001 and ADR-002 for the rationale, and [MIGRATION_PLAN.md](./MIGRATION_PLAN.md) for the phase that simplifies `AuthContext.tsx` to this shape (Phase 2d).
+
+## Security Rules
+
+**Never disable RLS on any table.** If a query is failing due to RLS, debug the policy or move the operation to a server-side function with elevated privileges (Supabase Edge Function with service role, or a `SECURITY DEFINER` RPC that checks `auth.uid()` internally). If you think you need to disable RLS for any reason, stop and ask me first.
+
+Corollary rules:
+- Never put sensitive keys (Stripe secret `sk_*`, Supabase service role, Anthropic / Claude, Resend) behind the `VITE_` prefix — `VITE_*` vars are bundled into the browser. Sensitive keys live in Supabase Edge Function secrets or Vercel server-side env vars only.
+- Never use `WITH CHECK (true)` or `USING (true)` on a multi-tenant table's INSERT/UPDATE/DELETE policies. Scope every policy to `auth.uid()` or to an admin check.
+- Never grant `EXECUTE` on a `SECURITY DEFINER` function to `PUBLIC` or `anon` without first confirming the function body verifies caller identity via `auth.uid()`.
 
 ## Notes
 
@@ -646,7 +641,6 @@ Each section uses a distinct Tailwind color for its icon/accent:
 - Welcome page (`ProgramIntro.tsx`) includes intro video and 9-section learning path
 - Sticky top banner (`StickyBanner.tsx`) shows user email (left), logo (center), Account link (right)
 - Sign Out button lives in sidebar bottom; user email moved to top banner
-- Super admin View As toggle uses `effectiveRoleInfo` for UI, real `roleInfo` for security
 - Certificates are locked once generated (one per user, stored in Supabase)
 - Subscription cancellation calculates prorated refund via `src/utils/refundPolicy.ts`
 - Two route guard types: `AuthRoute` (auth + subscription) and `AuthOnlyRoute` (auth only, used for `/account`)

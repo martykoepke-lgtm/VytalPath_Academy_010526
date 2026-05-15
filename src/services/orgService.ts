@@ -337,60 +337,16 @@ export async function addOrgAdmin(
   orgId: string,
   email: string
 ): Promise<{ success: boolean; error?: string }> {
-  // First, find the user by email using the RPC function
-  const { data: userData, error: userError } = await supabase
-    .rpc('get_user_by_email', { user_email: email });
+  const { data, error } = await supabase.rpc('add_org_admin_by_email', {
+    p_org_id: orgId,
+    p_email: email,
+  });
 
-  if (userError || !userData || userData.length === 0) {
-    return {
-      success: false,
-      error: 'User not found. They must create an account first.',
-    };
+  if (error) {
+    return { success: false, error: error.message };
   }
 
-  const userId = userData[0].id;
-
-  // Check if already a member
-  const { data: existing } = await supabase
-    .from('org_members')
-    .select('id, role')
-    .eq('org_id', orgId)
-    .eq('user_id', userId)
-    .single();
-
-  if (existing) {
-    if (existing.role === 'admin') {
-      return { success: false, error: 'User is already an admin of this organization.' };
-    }
-
-    // Upgrade from student to admin
-    const { error: updateError } = await supabase
-      .from('org_members')
-      .update({ role: 'admin' })
-      .eq('id', existing.id);
-
-    if (updateError) {
-      return { success: false, error: updateError.message };
-    }
-
-    return { success: true };
-  }
-
-  // Add as new admin
-  const { error: insertError } = await supabase
-    .from('org_members')
-    .insert({
-      org_id: orgId,
-      user_id: userId,
-      role: 'admin',
-      status: 'active',
-    });
-
-  if (insertError) {
-    return { success: false, error: insertError.message };
-  }
-
-  return { success: true };
+  return data as { success: boolean; error?: string };
 }
 
 // =============================================
