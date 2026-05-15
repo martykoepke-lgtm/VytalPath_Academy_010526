@@ -13,10 +13,7 @@ import { SearchPage } from './components/reference/SearchPage';
 import { InsuranceTermMatch } from './components/learning/InsuranceTermMatch';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminRoute } from './components/admin/AdminRoute';
-import { OrgAdminRoute } from './components/admin/OrgAdminRoute';
 import { SuperAdminDashboard } from './components/admin/SuperAdminDashboard';
-import { OrgAdminDashboard } from './components/admin/OrgAdminDashboard';
-import { CreateOrganization } from './components/admin/CreateOrganization';
 import { AdminRedirect } from './components/admin/AdminRedirect';
 import { ResetPassword } from './components/auth/ResetPassword';
 import { FoundationsSection } from './components/sections/FoundationsSection';
@@ -274,14 +271,6 @@ export const router = createBrowserRouter([
       {
         path: 'admin',
         element: <AdminRoute><SuperAdminDashboard /></AdminRoute>,
-      },
-      {
-        path: 'admin/orgs/new',
-        element: <AdminRoute><CreateOrganization /></AdminRoute>,
-      },
-      {
-        path: 'admin/orgs/:orgSlug',
-        element: <OrgAdminRoute><OrgAdminDashboard /></OrgAdminRoute>,
       },
       // Password Reset Route
       {
