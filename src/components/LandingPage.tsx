@@ -29,8 +29,8 @@ const faqData = [
     answer: "No — VytalPath Academy is an educational platform, not a certification or accredited program. You'll learn practical concepts and workflows used in healthcare front office settings. What you do with that knowledge is up to you.",
   },
   {
-    question: "What if I can't afford $327 right now?",
-    answer: "We offer a 3-payment plan — just $109/month for 3 months — so you can get started without paying everything upfront. You get the same full access from day one. Other programs cost $1,000–$5,000. VytalPath gives you a full year of learning content, hands-on practice, and simulations for a fraction of that — and you have 3 days to request a full refund if it's not right for you.",
+    question: 'Is $327 the only price?',
+    answer: "Yes — $327 for a full year of access. No subscription, no recurring charges, no hidden fees. Other programs cost $1,000–$5,000. VytalPath gives you a full year of learning content, hands-on practice, and simulations for a fraction of that — and you have 3 days to request a full refund if it's not right for you.",
   },
   {
     question: "What's the refund policy?",
